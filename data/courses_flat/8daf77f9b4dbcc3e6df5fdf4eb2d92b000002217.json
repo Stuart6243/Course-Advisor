@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8daf77f9b4dbcc3e6df5fdf4eb2d92b000002217",
+  "course_uid": "8daf77f9b4dbcc3e6df5fdf4eb2d92b000002217",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6920",
+  "title": "TOPICS IN VLSI SYSTEMS DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics in power management will be introduced including: linear regulators; digital linear regulator; switch-mode power converter; control schemes for DC-DC converters; power losses in DC-DC converter; switched capacitor converters; wireless power conversion; power converter modeling and simulation; design examples. Topics may change from year to year",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( EECS E4321 ) ELEN E4321 A comprehensive introduction to modern power management integrated circuits (PMIC) design.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6920 TOPICS IN VLSI SYSTEMS DESIGN. 3.00 points ."
+}

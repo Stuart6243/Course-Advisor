@@ -1,0 +1,36 @@
+{
+  "dedup_key": "7df1d0683138c5321eded282cc0db4773a6a5ee4",
+  "course_uid": "7df1d0683138c5321eded282cc0db4773a6a5ee4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E4440",
+  "title": "Rapid Prototyping for Aerospace Products",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Graduate-level design course focused on the rapid prototyping, integration, testing, and validation of aerospace systems. Students work in teams to design and build engineering models of aerospace systems (e.g., drones, CubeSat subsystems, ground systems, balloon payloads, or related aerospace hardware). Projects progress from concept to pre-production functional prototype through iterative sprint cycles emphasizing scoping, design, build, and test. Deliverables include mission-driven specifications and design reviews, working prototypes, and supporting documentation. Involves brainstorming concept generation, literature review, production of layout drawing(s) in Computer Aided Design (CAD) software tools, incorporation of multiple constraints, and adherence to appropriate engineering codes and standards. Business and product framing activities will support the technical work with market and mission relevance.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E1008 and MECE E3408 and ELEN E1201 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "AERO E4440",
+      "course_number": "AERO 4440",
+      "section_call_number": "001/18317",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "294 Engineering Terrace",
+      "instructor": "Evan Lerner",
+      "points": "3.00",
+      "enrollment_raw": "30/30",
+      "enrollment_current": 30,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E4440 Rapid Prototyping for Aerospace Products. 3.00 points ."
+}

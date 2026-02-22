@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8735113f6ac818ca28f654357fc75ead72bdad99",
+  "course_uid": "8735113f6ac818ca28f654357fc75ead72bdad99",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E4431",
+  "title": "Spaceflight Mechanics",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Two-body orbital motion, Newtonian and Keplerian mechanics, energy and angular momentum conservation, Vis-Viva equation, Kepler’s Equation, Euclidean geometry, vector mathematics, conic sections. Trajectory design using analytical and software-based methods. Systems Tool Kit Astrogator for simulation of Earth-Moon and interplanetary missions.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ENME E3105",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E4431 Spaceflight Mechanics. 3.00 points ."
+}

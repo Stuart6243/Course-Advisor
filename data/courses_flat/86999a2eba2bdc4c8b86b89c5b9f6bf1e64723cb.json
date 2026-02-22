@@ -1,0 +1,36 @@
+{
+  "dedup_key": "86999a2eba2bdc4c8b86b89c5b9f6bf1e64723cb",
+  "course_uid": "86999a2eba2bdc4c8b86b89c5b9f6bf1e64723cb",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4200",
+  "title": "PHYSICS OF FLUIDS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An introduction to the physical behavior of fluids for science and engineering students. Derivation of basic equations of fluid dynamics: conservation of mass, momentum, and energy. Dimensional analysis. Vorticity. Laminar boundary layers. Potential flow. Effects of compressibility, stratification, and rotation. Waves on a free surface; shallow water equations. Turbulence.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E4200",
+      "course_number": "APPH 4200",
+      "section_call_number": "001/13569",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "327 Uris Hall",
+      "instructor": "Lorenzo Polvani",
+      "points": "3.00",
+      "enrollment_raw": "19/35",
+      "enrollment_current": 19,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E4200 PHYSICS OF FLUIDS. 3.00 points ."
+}

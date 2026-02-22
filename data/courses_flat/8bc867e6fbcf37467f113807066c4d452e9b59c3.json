@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8bc867e6fbcf37467f113807066c4d452e9b59c3",
+  "course_uid": "8bc867e6fbcf37467f113807066c4d452e9b59c3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E4117",
+  "title": "Mechanics of Fiber-Reinforced Composites",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Overview of composite materials, including history, background, and manufacturing processes. Macro-mechanics: anisotropic elasticity and stress transformation. Micro-mechanics: Rule of Mixture, Composites Cylinder Model (CCM) and other models. Macro-mechanics: Classic Lamination Theory (CLT). Hygrothermal effects, residual stresses, Composite mechanical testing, fabrication. Failure modes and lamina-based failure theories. Bending and Buckling of composite plates. ICME of Composites (nano-, micro-, meso- and macro-scale analysis, experimental validation, process modeling, integration).",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Linear and tensor algebra.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E4117",
+      "course_number": "ENME 4117",
+      "section_call_number": "001/12681",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "644 Seeley W. Mudd Building",
+      "instructor": "Marianna Maiaru",
+      "points": "3.00",
+      "enrollment_raw": "8/40",
+      "enrollment_current": 8,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E4117 Mechanics of Fiber-Reinforced Composites. 3.00 points ."
+}

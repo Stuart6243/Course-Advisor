@@ -1,0 +1,49 @@
+{
+  "dedup_key": "8dc938a4424c537b4492efa08cc701c2898f759a",
+  "course_uid": "8dc938a4424c537b4492efa08cc701c2898f759a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4730",
+  "title": "Quantum Optimization and Machine Learning",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "IBM’s quantum programming framework Qiskit is utilized. Qbits, quantum gates and quantum measurements, quantum algorithms (Grover’s search, Simon’s algorithm, quantum Fourier transform, quantum phase estimation) quantum optimization (quantum annealing, QAOA, variational quantum eigensolver), quantum machine learning (quantum support vector machine, quantum neural networks)",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: probability theory, linear algebra An introduction to the recent development in quantum optimization and quantum machine learning using gate-based Noisy Intermediate Scale Quantum (NISQ) computers.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E4730",
+      "course_number": "ELEN 4730",
+      "section_call_number": "001/11508",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Xiaodong Wang, Jeremy Johnston",
+      "points": "3.00",
+      "enrollment_raw": "23/30",
+      "enrollment_current": 23,
+      "enrollment_capacity": 30
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E4730",
+      "course_number": "ELEN 4730",
+      "section_call_number": "V01/17541",
+      "times": "Xiaodong Wang, Jeremy Johnston",
+      "location": "",
+      "instructor": "3.00",
+      "points": "3/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4730 Quantum Optimization and Machine Learning. 3.00 points ."
+}

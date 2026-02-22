@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8dce052eab5d6ceebb5c61cb46a47109f525ee1f",
+  "course_uid": "8dce052eab5d6ceebb5c61cb46a47109f525ee1f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E6614",
+  "title": "OPTIMIZATION II",
+  "points_raw": "4.50 points",
+  "points_min": 4.5,
+  "points_max": 4.5,
+  "description": "Shortest path problems, maximum flow problems. Matching problems, bipartite and cardinality nonbipartite. Introduction to discrete algorithms and complexity theory: NP-completeness and approximation algorithms",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Linear algebra An introduction to combinatorial optimization, network flows and discrete algorithms.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E6614",
+      "course_number": "IEOR 6614",
+      "section_call_number": "001/13314",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "825 Seeley W. Mudd Building",
+      "instructor": "Clifford Stein",
+      "points": "4.50",
+      "enrollment_raw": "18/40",
+      "enrollment_current": 18,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E6614 OPTIMIZATION II. 4.50 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "847e3d8f5e06015c8ac6f05cd2cdc65b9802ad23",
+  "course_uid": "847e3d8f5e06015c8ac6f05cd2cdc65b9802ad23",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/materials-science-engineering-program/",
+  "source_page_title": "Materials Science and Engineering Program < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E8235",
+  "title": "SELECTED TPCS IN MATERIALS SCI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "May be repeated for credit. Selected topics in materials science. Topics and instructors change from year to year. For students in engineering, physical sciences, biological sciences, and related fields",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E8235 SELECTED TPCS IN MATERIALS SCI. 3.00 points ."
+}

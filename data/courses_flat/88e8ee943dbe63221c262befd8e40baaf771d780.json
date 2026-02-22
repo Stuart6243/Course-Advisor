@@ -1,0 +1,22 @@
+{
+  "dedup_key": "88e8ee943dbe63221c262befd8e40baaf771d780",
+  "course_uid": "88e8ee943dbe63221c262befd8e40baaf771d780",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4750",
+  "title": "SOUND AND HEARING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introductory acoustics, basics of waves and discrete mechanical systems. The mechanics of hearing - how sound is transmitted through the external and middle ear to the inner ear, and the mechanical processing of sound within the inner ear.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( PHYS UN1401 ) and ( MATH UN1201 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4750 SOUND AND HEARING. 3.00 points ."
+}

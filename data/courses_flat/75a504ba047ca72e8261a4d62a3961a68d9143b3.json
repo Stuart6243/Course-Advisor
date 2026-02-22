@@ -1,0 +1,36 @@
+{
+  "dedup_key": "75a504ba047ca72e8261a4d62a3961a68d9143b3",
+  "course_uid": "75a504ba047ca72e8261a4d62a3961a68d9143b3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4444",
+  "title": "PROGRAMMING ＆ PROBLEM SOLVING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Hands-on introduction to solving open-ended computational problems. Emphasis on creativity, cooperation, and collaboration. Projects spanning a variety of areas within computer science, typically requiring the development of computer programs. Generalization of solutions to broader problems, and specialization of complex problems to make them manageable. Team-oriented projects, student presentations, and in-class participation required.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W3134 and COMS W3136 ) or ( COMS W3137 and CSEE W3827 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "CC/GS: Partial Fulfillment of Science Requirement",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4444",
+      "course_number": "COMS 4444",
+      "section_call_number": "001/12844",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Kenneth Ross",
+      "points": "3.00",
+      "enrollment_raw": "31/34",
+      "enrollment_current": 31,
+      "enrollment_capacity": 34
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4444 PROGRAMMING ＆ PROBLEM SOLVING. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8502ea2c4accb6db6ffaa0331ebe6962f1b86481",
+  "course_uid": "8502ea2c4accb6db6ffaa0331ebe6962f1b86481",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4901",
+  "title": "SEM-PROBLMS IN APPLIED PHYSICS",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Required for, and can be taken only by, all applied physics majors and minors in the junior year. Discussion of specific and self-contained problems in areas such as applied electrodynamics, physics of solids, and plasma physics. Topics change yearly",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 1.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E4901",
+      "course_number": "APPH 4901",
+      "section_call_number": "001/13666",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Elizabeth Paul, Aravind Devarakonda",
+      "points": "1.00",
+      "enrollment_raw": "19/35",
+      "enrollment_current": 19,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E4901 SEM-PROBLMS IN APPLIED PHYSICS. 1.00 point ."
+}

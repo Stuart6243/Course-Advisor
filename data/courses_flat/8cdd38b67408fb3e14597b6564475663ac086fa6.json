@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8cdd38b67408fb3e14597b6564475663ac086fa6",
+  "course_uid": "8cdd38b67408fb3e14597b6564475663ac086fa6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E9001",
+  "title": "MASTER'S COLLOQUIUM",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Required for all M.S. students in residence in their first semester. Topics related to professional development and the practice of chemical engineering. No degree credits granted. Intended for M.S students only; and not for M.S./Ph.D. track, Ph.D. or D.E.S. students",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E9001",
+      "course_number": "CHEN 9001",
+      "section_call_number": "001/10227",
+      "times": "Th 2:40pm - 3:55pm",
+      "location": "750 Schapiro Cepser",
+      "instructor": "Christopher Vic Chen",
+      "points": "0.00",
+      "enrollment_raw": "48/70",
+      "enrollment_current": 48,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E9001 MASTER'S COLLOQUIUM. 0.00 points ."
+}

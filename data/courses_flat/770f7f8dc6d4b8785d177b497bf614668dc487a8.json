@@ -1,0 +1,49 @@
+{
+  "dedup_key": "770f7f8dc6d4b8785d177b497bf614668dc487a8",
+  "course_uid": "770f7f8dc6d4b8785d177b497bf614668dc487a8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3390",
+  "title": "EE SENIOR DESIGN PROJECT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Students work in teams to specify, design, implement and test an engineering prototype. Involves technical as well as non-technical considerations, such as manufacturability, impact on the environment, economics, adherence to engineering standards, and other real-world constraints. Projects are presented publicly by each design team in a school-wide expo.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E3399 ) and completion of most other required EE courses.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3390",
+      "course_number": "ELEN 3390",
+      "section_call_number": "001/11499",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "1206 Seeley W. Mudd Building",
+      "instructor": "David Vallancourt",
+      "points": "3.00",
+      "enrollment_raw": "2/40",
+      "enrollment_current": 2,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3390",
+      "course_number": "ELEN 3390",
+      "section_call_number": "002/16896",
+      "times": "F 6:00pm - 7:00pm",
+      "location": "1206 Seeley W. Mudd Building",
+      "instructor": "David Vallancourt",
+      "points": "3.00",
+      "enrollment_raw": "19/40",
+      "enrollment_current": 19,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3390 EE SENIOR DESIGN PROJECT. 3.00 points ."
+}

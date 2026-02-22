@@ -1,0 +1,36 @@
+{
+  "dedup_key": "97f21c87cce16b446403fe9e644e4001d1e9f877",
+  "course_uid": "97f21c87cce16b446403fe9e644e4001d1e9f877",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4709",
+  "title": "STATISTICAL ANALYSIS AND TIME SERIES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This graduate course is only for M.S. Program in Financial Engineering students. Empirical analysis of asset prices: heavy tails, test of the predictability of stock returns. Financial time series: ARMA, stochastic volatility, and GARCH models. Regression models: linear regression and test of CAPM, non-linear regression and fitting of term structures.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: IEOR E4702 Probability Corequisites: IEOR E4706 , IEOR E4707",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4709",
+      "course_number": "IEOR 4709",
+      "section_call_number": "001/13307",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "501 Schermerhorn Hall",
+      "instructor": "Agostino Capponi",
+      "points": "3.00",
+      "enrollment_raw": "153/163",
+      "enrollment_current": 153,
+      "enrollment_capacity": 163
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4709 STATISTICAL ANALYSIS AND TIME SERIES. 3.00 points ."
+}

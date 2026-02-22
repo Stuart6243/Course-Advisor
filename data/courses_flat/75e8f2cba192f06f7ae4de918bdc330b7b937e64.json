@@ -1,0 +1,62 @@
+{
+  "dedup_key": "75e8f2cba192f06f7ae4de918bdc330b7b937e64",
+  "course_uid": "75e8f2cba192f06f7ae4de918bdc330b7b937e64",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E3900",
+  "title": "UNDERGRAD RES IN APPLIED MATH",
+  "points_raw": "0.00-4.00 points",
+  "points_min": 0.0,
+  "points_max": 4.0,
+  "description": "This course may be repeated for credit, but no more than 6 points of this course may be counted toward the satisfaction of the B.S. degree requirements. Candidates for the B.S. degree may conduct an investigation in applied mathematics or carry out a special project under the supervision of the staff. Credit for the course is contingent upon the submission of an acceptable thesis or final report",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Written permission from instructor and approval from adviser.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E3900",
+      "course_number": "APMA 3900",
+      "section_call_number": "001/20356",
+      "times": "Marc Spiegelman",
+      "location": "",
+      "instructor": "0.00-4.00",
+      "points": "2/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E3900",
+      "course_number": "APMA 3900",
+      "section_call_number": "005/19883",
+      "times": "Lorenzo Polvani",
+      "location": "",
+      "instructor": "0.00-4.00",
+      "points": "2/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E3900",
+      "course_number": "APMA 3900",
+      "section_call_number": "002/20081",
+      "times": "Marc Spiegelman",
+      "location": "",
+      "instructor": "0.00-4.00",
+      "points": "2/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E3900 UNDERGRAD RES IN APPLIED MATH. 0.00-4.00 points ."
+}

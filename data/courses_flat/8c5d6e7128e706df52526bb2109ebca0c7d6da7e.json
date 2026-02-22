@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8c5d6e7128e706df52526bb2109ebca0c7d6da7e",
+  "course_uid": "8c5d6e7128e706df52526bb2109ebca0c7d6da7e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ECBM E4090",
+  "title": "BRAIN COMPUTER INTERFACES LAB",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Recording EEG (electroencephalogram) signals using data acquisition systems (non-invasive, scalp recordings). Real-time analysis and monitoring of brain responses. Analysis of intention and perception of external visual and audio signals",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3801 ) ELEN E3801 Hands-on experience with basic neural interface technologies.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ECBM E4090",
+      "course_number": "ECBM 4090",
+      "section_call_number": "001/11180",
+      "times": "T 10:10am - 12:40pm",
+      "location": "1205 Seeley W. Mudd Building",
+      "instructor": "Nima Mesgarani",
+      "points": "3.00",
+      "enrollment_raw": "37/42",
+      "enrollment_current": 37,
+      "enrollment_capacity": 42
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ECBM E4090 BRAIN COMPUTER INTERFACES LAB. 3.00 points ."
+}

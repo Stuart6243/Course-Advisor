@@ -1,0 +1,36 @@
+{
+  "dedup_key": "88163e8a7d11390207e6de9a8537897c44849f19",
+  "course_uid": "88163e8a7d11390207e6de9a8537897c44849f19",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E1000",
+  "title": "Chemical Engineering for Humanity",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Introduction to the role of Chemical Engineering in addressing grand challenges facing humanity. Address challenges illustrating the important role that Chemical Engineers play in solving societal problems, including to those related to climate change, biotechnology and medicine, clean energy, and sustainable manufacturing of chemicals and materials",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: This course will be available for first semester first year students to take.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E1000",
+      "course_number": "CHEN 1000",
+      "section_call_number": "001/10190",
+      "times": "M 4:10pm - 5:25pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Allie Obermeyer",
+      "points": "1.00",
+      "enrollment_raw": "42/45",
+      "enrollment_current": 42,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E1000 Chemical Engineering for Humanity. 1.00 point ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8a41448179dafaf046051f6e1eabbb6f141332a5",
+  "course_uid": "8a41448179dafaf046051f6e1eabbb6f141332a5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3102",
+  "title": "DEVELOPMENT TECHNOLOGY",
+  "points_raw": "1.00-2.00 points",
+  "points_min": 1.0,
+  "points_max": 2.0,
+  "description": "Introduction to software development tools and environments. Each section devoted to a specific tool or environment. One-point sections meet for two hours each week for half a semester, and two point sections include an additional two-hour lab",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Fluency in at least one programming language.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3102 DEVELOPMENT TECHNOLOGY. 1.00-2.00 points ."
+}

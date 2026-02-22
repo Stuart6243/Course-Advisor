@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8982ba6b0a151f9a21ff2bfd4734c330f96851b5",
+  "course_uid": "8982ba6b0a151f9a21ff2bfd4734c330f96851b5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6772",
+  "title": "TOPICS IN NETWORKING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Further study of areas such as communication protocols and architectures, flow and congestion control in data networks, performance evaluation in integrated networks. Content varies from year to year, and different topics rotate through the course numbers 6770 to 6779",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6772",
+      "course_number": "ELEN 6772",
+      "section_call_number": "001/11526",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Anwar Walid",
+      "points": "3.00",
+      "enrollment_raw": "27/50",
+      "enrollment_current": 27,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6772 TOPICS IN NETWORKING. 3.00 points ."
+}

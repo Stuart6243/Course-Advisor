@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8dcef8ae6425ff9ae0df9455947a35c935b165b8",
+  "course_uid": "8dcef8ae6425ff9ae0df9455947a35c935b165b8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6261",
+  "title": "ADVANCED CRYPTOGRAPHY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Concentration on theoretical foundations, rigorous approach, and provable security. Contents varies between offerings. May be repeated for credit",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W4261 ) COMS W4261 A study of advanced cryptographic research topics such as: secure computation, zero knowledge, privacy, anonymity, cryptographic protocols.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6261",
+      "course_number": "COMS 6261",
+      "section_call_number": "001/12378",
+      "times": "Th 2:10pm - 4:00pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Tal Malkin, Miranda Christ",
+      "points": "3.00",
+      "enrollment_raw": "10/40",
+      "enrollment_current": 10,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6261 ADVANCED CRYPTOGRAPHY. 3.00 points ."
+}

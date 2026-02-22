@@ -1,0 +1,49 @@
+{
+  "dedup_key": "7c457f016f456bec1194969b8973f6f03047981f",
+  "course_uid": "7c457f016f456bec1194969b8973f6f03047981f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4350",
+  "title": "Biomechanics of Developmental Biology",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Biophysical mechanisms of tissue organization during embryonic development: conservation laws, reaction-diffusion, finite elasticity, and fluid mechanics are reviewed and applied to a broad range of topics in developmental biology, from early development to later organogenesis of the central nervous, cardiovascular, musculoskeletal, respiratory, and gastrointestinal systems. Subdivided into modules on patterning (conversion of diffusible cues into cell fates) and morphogenesis (shaping of tissues), the course will include lectures, problem sets, reading of primary literature, and a final project",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Undergraduate-level course in mechanics e.g., MECE E3113, BMEN E4310 and cell biology e.g., BIOL UN2005 /6 or by instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E4350",
+      "course_number": "BMEN 4350",
+      "section_call_number": "001/13372",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Nandan Nerurkar",
+      "points": "3.00",
+      "enrollment_raw": "19/42",
+      "enrollment_current": 19,
+      "enrollment_capacity": 42
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E4350",
+      "course_number": "BMEN 4350",
+      "section_call_number": "V01/16634",
+      "times": "Nandan Nerurkar",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4350 Biomechanics of Developmental Biology. 3.00 points ."
+}

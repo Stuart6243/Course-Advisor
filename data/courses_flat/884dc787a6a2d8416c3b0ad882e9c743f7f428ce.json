@@ -1,0 +1,49 @@
+{
+  "dedup_key": "884dc787a6a2d8416c3b0ad882e9c743f7f428ce",
+  "course_uid": "884dc787a6a2d8416c3b0ad882e9c743f7f428ce",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3399",
+  "title": "ELECTRICAL ENGINEERING PRACTICE",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Design project planning, written and oral technical communication, the origin and role of standards, engineering ethics, and practical aspects of engineering as a profession, such as career development and societal and environmental impact. Generally taken fall of senior year just before ELEN E3390",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3399",
+      "course_number": "ELEN 3399",
+      "section_call_number": "001/11202",
+      "times": "M 11:40am - 12:55pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "David Vallancourt",
+      "points": "1.00",
+      "enrollment_raw": "20/50",
+      "enrollment_current": 20,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3399",
+      "course_number": "ELEN 3399",
+      "section_call_number": "002/20124",
+      "times": "F 6:00pm - 7:00pm",
+      "location": "420 Pupin Laboratories",
+      "instructor": "David Vallancourt",
+      "points": "1.00",
+      "enrollment_raw": "2/50",
+      "enrollment_current": 2,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3399 ELECTRICAL ENGINEERING PRACTICE. 1.00 point ."
+}

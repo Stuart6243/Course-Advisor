@@ -1,0 +1,49 @@
+{
+  "dedup_key": "96080d769837573559f2a043b79fdb5b3bc9d6bf",
+  "course_uid": "96080d769837573559f2a043b79fdb5b3bc9d6bf",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E4206",
+  "title": "ELEC ＆ MAGNETIC PROP OF SOLIDS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "A survey course on the electronic and magnetic properties of materials, oriented towards materials for solid state devices. Dielectric and magnetic properties, ferroelectrics and ferromagnets. Conductivity and superconductivity. Electronic band theory of solids: classification of metals, insulators, and semiconductors. Materials in devices: examples from semiconductor lasers, cellular telephones, integrated circuits, and magnetic storage devices. Topics from physics are introduced as necessary",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: PHYS W1401 AND PHYS C1402 AND PHYS W1403 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MSAE E4206",
+      "course_number": "MSAE 4206",
+      "section_call_number": "001/13573",
+      "times": "M W 10:10am - 11:25am",
+      "location": "1024 Seeley W. Mudd Building",
+      "instructor": "William Bailey",
+      "points": "3.00",
+      "enrollment_raw": "15/40",
+      "enrollment_current": 15,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MSAE E4206",
+      "course_number": "MSAE 4206",
+      "section_call_number": "V01/17952",
+      "times": "William Bailey",
+      "location": "",
+      "instructor": "3.00",
+      "points": "0/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E4206 ELEC ＆ MAGNETIC PROP OF SOLIDS. 3.00 points ."
+}

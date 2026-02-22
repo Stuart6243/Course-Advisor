@@ -1,0 +1,22 @@
+{
+  "dedup_key": "964b9463066ebcf64a8391cecc400075214abad5",
+  "course_uid": "964b9463066ebcf64a8391cecc400075214abad5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6904",
+  "title": "TPCS-ELEC ＆ COMPUT ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Analysis, modeling and design of transceiver architectures for wireless communication and sensing. Fundamentals of RF system analysis and design. Introduction to discrete-time behavioral modeling of transceiver analog blocks and digital methods for compensating analog impairments. Topics include transceiver architectures for ultra-low power communication, high-throughput sub-THz communication and compressed-sampling architectures for energy-efficient wideband spectrum sensing and rapid direction-of-arrival finding",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6904 TPCS-ELEC ＆ COMPUT ENGINEERING. 3.00 points ."
+}

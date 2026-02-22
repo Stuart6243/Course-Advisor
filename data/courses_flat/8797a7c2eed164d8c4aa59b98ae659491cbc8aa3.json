@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8797a7c2eed164d8c4aa59b98ae659491cbc8aa3",
+  "course_uid": "8797a7c2eed164d8c4aa59b98ae659491cbc8aa3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3132",
+  "title": "Intermediate Computing in Python",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Intermediate interdisciplinary course in computing intended for non-CS majors. Essential data structures and algorithms in Python with practical software development skills, applications in a variety of areas including biology, natural language processing, data science and others",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ENGI E1006 OR COMS W1002 ; or equivalent Python programming experience.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3132 Intermediate Computing in Python. 4.00 points ."
+}

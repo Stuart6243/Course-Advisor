@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8ef53327b137555e689616943549625673d4bcfa",
+  "course_uid": "8ef53327b137555e689616943549625673d4bcfa",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4535",
+  "title": "Immunoengineering with Biomaterials and Nanotechnology",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to fundamental aspects of immunology and engineering strategies to modulate the immune system to improve human health. We will cover the innate and adaptive immune system and current methods to characterize the immune response. Applications focus on cancer, vaccines, and autoimmune disorders",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E4535",
+      "course_number": "BMEN 4535",
+      "section_call_number": "001/13377",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Santiago Correa",
+      "points": "3.00",
+      "enrollment_raw": "49/50",
+      "enrollment_current": 49,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4535 Immunoengineering with Biomaterials and Nanotechnology. 3.00 points ."
+}

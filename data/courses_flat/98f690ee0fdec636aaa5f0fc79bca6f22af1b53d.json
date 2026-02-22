@@ -1,0 +1,24 @@
+{
+  "dedup_key": "98f690ee0fdec636aaa5f0fc79bca6f22af1b53d",
+  "course_uid": "98f690ee0fdec636aaa5f0fc79bca6f22af1b53d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4231",
+  "title": "ANALYSIS OF ALGORITHMS I",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "COMS W4231 ANALYSIS OF ALGORITHMS I. 3.00 points ."
+}

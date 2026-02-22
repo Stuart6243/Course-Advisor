@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8c6d99f4feae28737d2f1a9d728c8a6b12292260",
+  "course_uid": "8c6d99f4feae28737d2f1a9d728c8a6b12292260",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4762",
+  "title": "Machine Learning for Functional Genomics",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course will introduce modern probabilistic machine learning methods using applications in data analysis tasks from functional genomics, where massively-parallel sequencing is used to measure the state of cells: e.g. what genes are being expressed, what regions of DNA (“chromatin”) are active (“open”) or bound by specific proteins.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Proficiency in a high level programming language Python/R/Julia.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4762 Machine Learning for Functional Genomics. 3 points ."
+}

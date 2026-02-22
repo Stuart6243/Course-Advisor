@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8c9dccdfcc9d4eca8c1ac064505f5adb96998841",
+  "course_uid": "8c9dccdfcc9d4eca8c1ac064505f5adb96998841",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4139",
+  "title": "THRY/PRACT OF VIRTAL DSGN CONS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "History and development of Building Information Modeling (BIM), its uses in design and construction, and introduction to the importance of planning in BIM implementation. Role of visual design and construction concepts and methodologies, including integrated project delivery form in architecture, engineering, and construction industries from project design, cost estimating, scheduling, coordination, fabrication, installation, and financing",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E4129 ) or CIEN E4129 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4139",
+      "course_number": "CIEN 4139",
+      "section_call_number": "001/13579",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "252 Engineering Terrace",
+      "instructor": "Ayse Polat",
+      "points": "3.00",
+      "enrollment_raw": "13/22",
+      "enrollment_current": 13,
+      "enrollment_capacity": 22
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4139 THRY/PRACT OF VIRTAL DSGN CONS. 3.00 points ."
+}

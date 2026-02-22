@@ -1,0 +1,49 @@
+{
+  "dedup_key": "86e22882ea578236bc7b115bd4769578e39d5f40",
+  "course_uid": "86e22882ea578236bc7b115bd4769578e39d5f40",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CEEM E4899",
+  "title": "Research Training",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Research training course. Recommended in preparation for laboratory related research",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CEEM E4899",
+      "course_number": "CEEM 4899",
+      "section_call_number": "001/20450",
+      "times": "Xuan Di",
+      "location": "",
+      "instructor": "0.00",
+      "points": "2/20",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CEEM E4899",
+      "course_number": "CEEM 4899",
+      "section_call_number": "001/20229",
+      "times": "Xuan Di",
+      "location": "",
+      "instructor": "0.00",
+      "points": "1/20",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CEEM E4899 Research Training. 0.00 points ."
+}

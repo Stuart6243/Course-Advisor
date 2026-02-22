@@ -1,0 +1,36 @@
+{
+  "dedup_key": "884a813d1a2f2d3eb030c20e9e50c7a2abc58401",
+  "course_uid": "884a813d1a2f2d3eb030c20e9e50c7a2abc58401",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSEE W4121",
+  "title": "COMPUTER SYSTEMS FOR DATA SCIENCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "CSOR W4246 Algorithms for Data Science, STAT W4203 Probability Theory, or equivalent as approved by faculty advisor. An introduction to computer architecture and distributed systems with an emphasis on warehouse scale computing systems. Topics will include fundamental tradeoffs in computer systems, hardware and software techniques for exploiting instruction-level parallelism, data-level parallelism and task level parallelism, scheduling, caching, prefetching, network and memory architecture, latency and throughput optimizations, specialization, and an introduction to programming data center computers",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Background in Computer System Organization and good working knowledge of C/C++.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CSEE W4121",
+      "course_number": "CSEE 4121",
+      "section_call_number": "001/16119",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "301 Pupin Laboratories",
+      "instructor": "Waqar Aqeel",
+      "points": "3.00",
+      "enrollment_raw": "192/200",
+      "enrollment_current": 192,
+      "enrollment_capacity": 200
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSEE W4121 COMPUTER SYSTEMS FOR DATA SCIENCE. 3.00 points ."
+}

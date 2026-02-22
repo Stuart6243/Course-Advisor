@@ -1,0 +1,36 @@
+{
+  "dedup_key": "87a47d5eca20fb7b46fb310a8cb70fc7286aef63",
+  "course_uid": "87a47d5eca20fb7b46fb310a8cb70fc7286aef63",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6896",
+  "title": "TOPICS-INFORMATION PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics spanning electrical engineering and computer science such as speech processing and recognition, image and multimedia content analysis, and other areas drawing on signal processing, information theory, machine learning, pattern recognition, and related topics. Content varies from year to year, and different topics rotate through the course numbers 6890 to 6899. Topic: Quantum Computing and Communication",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EECS E6896",
+      "course_number": "EECS 6896",
+      "section_call_number": "001/13862",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "214 Pupin Laboratories",
+      "instructor": "Alexei Ashikhmin",
+      "points": "3.00",
+      "enrollment_raw": "12/55",
+      "enrollment_current": 12,
+      "enrollment_capacity": 55
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6896 TOPICS-INFORMATION PROCESSING. 3.00 points ."
+}

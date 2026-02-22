@@ -1,0 +1,36 @@
+{
+  "dedup_key": "88045e57b475f371d5105ef63a09b50cec507500",
+  "course_uid": "88045e57b475f371d5105ef63a09b50cec507500",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4213",
+  "title": "Lab-on-a-Chip and Microrobotic Devices",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to lab-on-a-chip and microrobotic devices with a focus on biomedical applications. Microfabrication techniques. Basics of micro- and nanoscale transport phenomena. Microsensors and microactuators. Microfluidic devices. Lab-on-a-chip systems. Microrobots",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( MECE E3100 ) and ( MECE E3311 ) MECE E3100 AND MECE E3311 ; course in transport phenomena, or instructor’s permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4213",
+      "course_number": "MECE 4213",
+      "section_call_number": "001/13852",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "253 Engineering Terrace",
+      "instructor": "Qiao Lin",
+      "points": "3.00",
+      "enrollment_raw": "18/25",
+      "enrollment_current": 18,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4213 Lab-on-a-Chip and Microrobotic Devices. 3.00 points ."
+}

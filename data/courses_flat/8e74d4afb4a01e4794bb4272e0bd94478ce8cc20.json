@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8e74d4afb4a01e4794bb4272e0bd94478ce8cc20",
+  "course_uid": "8e74d4afb4a01e4794bb4272e0bd94478ce8cc20",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EACE E4163",
+  "title": "Sustainable Water Treatment and Reuse",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals of water pollution and wastewater characteristics. Chemistry, microbiology, and reaction kinetics. Design of primary, secondary, and advanced treatment systems. Small community and residential systems",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EACE E4163",
+      "course_number": "EACE 4163",
+      "section_call_number": "001/12803",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "467 Ext Schermerhorn Hall",
+      "instructor": "Paul Knowles",
+      "points": "3.00",
+      "enrollment_raw": "24/40",
+      "enrollment_current": 24,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EACE E4163 Sustainable Water Treatment and Reuse. 3.00 points ."
+}

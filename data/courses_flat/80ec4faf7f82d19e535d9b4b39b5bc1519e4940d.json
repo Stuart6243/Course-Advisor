@@ -1,0 +1,22 @@
+{
+  "dedup_key": "80ec4faf7f82d19e535d9b4b39b5bc1519e4940d",
+  "course_uid": "80ec4faf7f82d19e535d9b4b39b5bc1519e4940d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4780",
+  "title": "QUANT METHODS IN CELL BIOLOGY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Quantitative statistical analysis and mathematical modeling in cell biology for an audience with diverse backgrounds. The course presents quantitative methods needed to analyze complex cell biological experimental data and to interpret the analysis in terms of the underlying cellular mechanisms. Optical and electrical experimental methods to study cells and basic image analysis techniques are described. Methods of statistical analysis of experimental data and techniques to test and compare mathematical models against measured statistical properties will be introduced. Concepts and techniques of mathematical modeling will be illustrated by applications to mechanosensing in cells, the mechanics of cytokinesis during cell division and synaptic transmission in the nervous system. Image analysis, statistical analysis, and model assessment will be illustrated for these systems.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4780 QUANT METHODS IN CELL BIOLOGY. 3.00 points ."
+}

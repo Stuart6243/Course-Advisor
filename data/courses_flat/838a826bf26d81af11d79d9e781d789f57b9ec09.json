@@ -1,0 +1,22 @@
+{
+  "dedup_key": "838a826bf26d81af11d79d9e781d789f57b9ec09",
+  "course_uid": "838a826bf26d81af11d79d9e781d789f57b9ec09",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEBM E6091",
+  "title": "TPCS IN COMP NEUROSCI/ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected advanced topics in computational neuroscience and neuroengineering. Content varies from year to year, and different topics rotate through the course numbers 6090-6099. Topic: Devices and Analysis for Neural Circuits",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEBM E6091 TPCS IN COMP NEUROSCI/ENGINEERING. 3.00 points ."
+}

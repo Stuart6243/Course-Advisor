@@ -1,0 +1,36 @@
+{
+  "dedup_key": "86fc5b73481a3a835e391abd46a88d7964f09232",
+  "course_uid": "86fc5b73481a3a835e391abd46a88d7964f09232",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E1101",
+  "title": "THE DIGITAL INFORMATION AGE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An introduction to information transmission and storage, including technological issues. Binary numbers; elementary computer logic; digital speech and image coding; basics of compact disks, telephones, modems, faxes, UPC bar codes, and the World Wide Web. Projects include implementing simple digital logic systems and Web pages. Intended primarily for students outside the School of Engineering and Applied Science. The only prerequisite is a working knowledge of elementary algebra",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "CC/GS: Partial Fulfillment of Science Requirement Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E1101",
+      "course_number": "ELEN 1101",
+      "section_call_number": "001/11181",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "301 Pupin Laboratories",
+      "instructor": "David Vallancourt",
+      "points": "3.00",
+      "enrollment_raw": "7/120",
+      "enrollment_current": 7,
+      "enrollment_capacity": 120
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E1101 THE DIGITAL INFORMATION AGE. 3.00 points ."
+}

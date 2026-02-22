@@ -1,0 +1,62 @@
+{
+  "dedup_key": "92aae7eba73325a75cb89221c47f2ac9c1609794",
+  "course_uid": "92aae7eba73325a75cb89221c47f2ac9c1609794",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4008",
+  "title": "Advanced and Applied Linear Algebra",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics in linear algebra with applications to data analysis, algorithms, dynamics and differential equations, and more. (1) General vector spaces, linear transformations, spaces isomorphisms; (2) spectral theory - normal matrices and their spectral properties, Rayleigh quotient, Courant-Fischer Theorem, Jordan forms, eigenvalue perturbations; (3) least squares problem and the Gauss-Markov Theorem; (4) singular value decomposition, its approximation properties, matrix norms, PCA and CCA",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: APMA E3101 AND APMA E4007 ; After the approval of APMA E4007 , it could also serve as a pre-requisite to 4008.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4008",
+      "course_number": "APMA 4008",
+      "section_call_number": "001/12917",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Yuan He",
+      "points": "3.00",
+      "enrollment_raw": "46/52",
+      "enrollment_current": 46,
+      "enrollment_capacity": 52
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4008",
+      "course_number": "APMA 4008",
+      "section_call_number": "C01/20203",
+      "times": "Yuan He",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4008",
+      "course_number": "APMA 4008",
+      "section_call_number": "V01/16787",
+      "times": "Yuan He",
+      "location": "",
+      "instructor": "3.00",
+      "points": "9/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4008 Advanced and Applied Linear Algebra. 3.00 points ."
+}

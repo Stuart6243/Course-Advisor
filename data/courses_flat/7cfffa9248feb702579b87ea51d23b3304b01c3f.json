@@ -1,0 +1,36 @@
+{
+  "dedup_key": "7cfffa9248feb702579b87ea51d23b3304b01c3f",
+  "course_uid": "7cfffa9248feb702579b87ea51d23b3304b01c3f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4140",
+  "title": "ENGINEERING SEPARATIONS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Design and analysis of unit operations employed in chemical engineering separations. Fundamental aspects of single and multistaged operations using both equilibrium and rate-based methods. Examples include distillation, absorption and stripping, extraction, membranes, crystallization, bioseparations, and environmental applications.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEE E3010 and CHEN E2100 and CHEN E3110 ) and or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4140",
+      "course_number": "CHEN 4140",
+      "section_call_number": "001/12736",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Daniel Esposito",
+      "points": "3.00",
+      "enrollment_raw": "30/45",
+      "enrollment_current": 30,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4140 ENGINEERING SEPARATIONS. 3.00 points ."
+}

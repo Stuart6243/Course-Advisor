@@ -1,0 +1,49 @@
+{
+  "dedup_key": "79109a2d0c5f4ae9aa07ae723d90371d7d90d1b3",
+  "course_uid": "79109a2d0c5f4ae9aa07ae723d90371d7d90d1b3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4380",
+  "title": "Green Chemical Engineering ＆ Innovation",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Technical and design practice and measuring the impacts of green and conventional approaches emphasized. Themes of business, regulatory, ethical, and social considerations relevant to chemical engineering practice",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CHEM W1404 AND CHEM S2444 AND CHEN E2100 Approaches used in chemistry and chemical engineering to design green, sustainable products and processes; focus of using the tenets of green chemistry as a means for chemical innovation.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4380",
+      "course_number": "CHEN 4380",
+      "section_call_number": "001/12757",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Christopher Vic Chen",
+      "points": "3.00",
+      "enrollment_raw": "27/45",
+      "enrollment_current": 27,
+      "enrollment_capacity": 45
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4380",
+      "course_number": "CHEN 4380",
+      "section_call_number": "V01/17133",
+      "times": "Christopher Vic Chen",
+      "location": "",
+      "instructor": "3.00",
+      "points": "4/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4380 Green Chemical Engineering ＆ Innovation. 3.00 points ."
+}

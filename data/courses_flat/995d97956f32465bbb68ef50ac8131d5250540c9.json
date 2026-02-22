@@ -1,0 +1,36 @@
+{
+  "dedup_key": "995d97956f32465bbb68ef50ac8131d5250540c9",
+  "course_uid": "995d97956f32465bbb68ef50ac8131d5250540c9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6901",
+  "title": "PROJECTS IN COMPUTER SCIENCE",
+  "points_raw": "1.00-12.00 points",
+  "points_min": 1.0,
+  "points_max": 12.0,
+  "description": "Software or hardware projects in computer science. Before registering, the student must submit a written proposal to the instructor for review. The proposal should give a brief outline of the project, estimated schedule of completion, and computer resources needed. Oral and written reports are required. May be taken over more than one semester, in which case the grade will be deferred until all 12 points have been completed. No more than 12 points of COMS E6901 may be taken. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS E6901",
+      "course_number": "COMS 6901",
+      "section_call_number": "062/19936",
+      "times": "Nakul Verma",
+      "location": "",
+      "instructor": "1.00-12.00",
+      "points": "8/40",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6901 PROJECTS IN COMPUTER SCIENCE. 1.00-12.00 points ."
+}

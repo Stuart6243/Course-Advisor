@@ -1,0 +1,22 @@
+{
+  "dedup_key": "79dc10ace7d59d8890b516cdf4d1ea8d6bc03624",
+  "course_uid": "79dc10ace7d59d8890b516cdf4d1ea8d6bc03624",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "DROM B8123",
+  "title": "Demand Analytics",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Tools to efficiently manage supply and demand networks. Topics include service and inventory trade-offs, stock allocation, pricing, markdown management and contracts, timely product distribution to market while avoiding excess inventory, allocating adequate resources to the most profitable products and selling the right product to the right customer at the right price and at the right time.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "DROM B8123 Demand Analytics. 3.00 points ."
+}

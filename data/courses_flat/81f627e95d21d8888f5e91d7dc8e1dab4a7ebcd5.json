@@ -1,0 +1,36 @@
+{
+  "dedup_key": "81f627e95d21d8888f5e91d7dc8e1dab4a7ebcd5",
+  "course_uid": "81f627e95d21d8888f5e91d7dc8e1dab4a7ebcd5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4180",
+  "title": "Machine Learning for Biomolecular and Cellular Applications",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Overview of biology. Introduction to biological neurons and neural networks, learning and memory. Parallels between biological and artificial neural networks. Deep neural networks are introduced, hands-on computational experience for students. Big data from experiments or computational simulations: machine learning to extract mechanisms, dimensional reduction. Deep learning applications include drug discovery, protein structure prediction, molecular coarse-graining for simulations, and acceleration of molecular dynamics simulations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Some knowledge of Python, elementary statistics, thermodynamics Introduction to machine learning techniques with applications to biological systems, emphasizing cell-biological molecular mechanisms and applications, and computational simulation.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4180",
+      "course_number": "CHEN 4180",
+      "section_call_number": "001/10216",
+      "times": "T 5:40pm - 8:10pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Ben O'Shaughnessy",
+      "points": "3.00",
+      "enrollment_raw": "31/52",
+      "enrollment_current": 31,
+      "enrollment_capacity": 52
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4180 Machine Learning for Biomolecular and Cellular Applications. 3.00 points ."
+}

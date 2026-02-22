@@ -1,0 +1,36 @@
+{
+  "dedup_key": "94754fa77cb53726db3caee36225954b2aa95be1",
+  "course_uid": "94754fa77cb53726db3caee36225954b2aa95be1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E4432",
+  "title": "Space Resource and Planetary Protection",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Planetary defense against asteroids and comets; astronaut rescue and emergency response; satellite constellations and orbital congestion; space debris and long-term sustainability; space law, treaties, and Artemis Accords; planetary protection, cislunar competition, and future international strategies. Weekly case studies on national doctrines, commercial actors, and modern enforcement challenges. Systems Tool Kit Astrogator software used to model satellite constellations, cislunar surveillance orbits, lunar frozen orbits, and defense scenarios connecting spaceflight mechanics with law and policy.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ENME E3105 ) Above Prerequisites OR Instructor’s Permission Corequisites: MECE E4431",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "AERO E4432",
+      "course_number": "AERO 4432",
+      "section_call_number": "001/18316",
+      "times": "M 1:10pm - 3:40pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Anthony Genova",
+      "points": "3.00",
+      "enrollment_raw": "21/40",
+      "enrollment_current": 21,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E4432 Space Resource and Planetary Protection. 3.00 points ."
+}

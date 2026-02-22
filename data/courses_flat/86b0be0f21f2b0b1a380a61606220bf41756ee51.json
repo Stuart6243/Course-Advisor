@@ -1,0 +1,49 @@
+{
+  "dedup_key": "86b0be0f21f2b0b1a380a61606220bf41756ee51",
+  "course_uid": "86b0be0f21f2b0b1a380a61606220bf41756ee51",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4301",
+  "title": "CARBON STORAGE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course is intended to provide a quantitative introduction to storage of carbon derived from greenhouse gases, mainly CO2, with a focus on geological carbon storage and mineralization in saline aquifers, depleted hydrocarbon reservoirs, and “reactive” subsurface formations (rocks rich in Fe, Ca, and Mg) as well and other natural and engineered storage reservoirs (e.g., terrestrial storage, ocean storage, building materials). Course modules cover fundamental processes such as geochemical fluid-rock interactions and fluid flow, transport, and trapping of supercritical and/or dissolved CO2 in the context of pore-scale properties to field-scale example storage reservoirs and specific integrative problems such as reservoir characterization and modeling techniques, estimating storage capacity, and regulations and monitoring.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Undergraduate level mathematics and science, or instructor’s permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E4301",
+      "course_number": "EAEE 4301",
+      "section_call_number": "001/12622",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Shaina Kelly",
+      "points": "3.00",
+      "enrollment_raw": "33/40",
+      "enrollment_current": 33,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E4301",
+      "course_number": "EAEE 4301",
+      "section_call_number": "V01/17922",
+      "times": "Shaina Kelly",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4301 CARBON STORAGE. 3.00 points ."
+}
