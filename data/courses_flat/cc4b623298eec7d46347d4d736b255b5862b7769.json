@@ -1,0 +1,36 @@
+{
+  "dedup_key": "cc4b623298eec7d46347d4d736b255b5862b7769",
+  "course_uid": "cc4b623298eec7d46347d4d736b255b5862b7769",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4144",
+  "title": "Real Estate Land Development Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Third-year undergraduate students with instructor's permission. Comprehensive review of various engineering disciplines in the process of real estate land development. Engineering disciplines covered include civil, infrastructure, transportation planning, environmental planning, permitting, environmental remediation, geotechnical, and waterfront/marine. Overview of land use and environmental law, architecture and urban planning, as related to land development. Discussion of how these subjects affect decisions—cost, schedule, programming—involved in real estate development",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Graduate and senior undergraduate students only.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4144",
+      "course_number": "CIEN 4144",
+      "section_call_number": "001/13574",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "313 Fayerweather",
+      "instructor": "George Leventis, Michele O'Conner, Christopher Vitolano",
+      "points": "3.00",
+      "enrollment_raw": "33/55",
+      "enrollment_current": 33,
+      "enrollment_capacity": 55
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4144 Real Estate Land Development Engineering. 3.00 points ."
+}

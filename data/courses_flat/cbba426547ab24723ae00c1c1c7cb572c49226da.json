@@ -1,0 +1,36 @@
+{
+  "dedup_key": "cbba426547ab24723ae00c1c1c7cb572c49226da",
+  "course_uid": "cbba426547ab24723ae00c1c1c7cb572c49226da",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MEBM E4710",
+  "title": "MORPHOGENESIS:BIOL MAT SHP/STR",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to how shape and structure are generated in biological materials using engineering approach emphasizing application of fundamental physical concepts to a diverse set of problems. Mechanisms of pattern formation, self-assembly, and self-organization in biological materials, including intracellular structures, cells, tissues, and developing embryos. Structure, mechanical properties, and dynamic behavior of these materials. Discussion of experimental approaches and modeling. Course uses textbook materials as well as collection of research papers",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Courses in mechanics, thermodynamics, and ordinary differential equations at the undergraduate level or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MEBM E4710",
+      "course_number": "MEBM 4710",
+      "section_call_number": "001/14138",
+      "times": "Th 1:10pm - 3:40pm",
+      "location": "603 Hamilton Hall",
+      "instructor": "Karen Kasza",
+      "points": "3.00",
+      "enrollment_raw": "10/25",
+      "enrollment_current": 10,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MEBM E4710 MORPHOGENESIS:BIOL MAT SHP/STR. 3.00 points ."
+}

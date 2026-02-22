@@ -1,0 +1,22 @@
+{
+  "dedup_key": "cd5c22bedac774ba51e9892f86da31c72905ca91",
+  "course_uid": "cd5c22bedac774ba51e9892f86da31c72905ca91",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APCH E4080",
+  "title": "SOFT CONDENSED MATTER",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Course is aimed at senior undergraduate and graduate students. Introduces fundamental ideas, concepts, and approaches in soft condensed matter with emphasis on biomolecular systems. Covers the broad range of molecular, nanoscale, and colloidal phenomena with revealing their mechanisms and physical foundations. The relationship between molecular architecture and interactions and macroscopic behavior are discussed for the broad range of soft and biological matter systems, from surfactants and liquid crystals to polymers, nanoparticles, and biomolecules. Modern characterization methods for soft materials, including X-ray scattering, molecular force probing, and electron microcopy are reviewed. Example problems, drawn from the recent scientific literature, link the studied materials to the actively developed research areas. Course grade based on midterm and final exams, weekly homework assignments, and final individual/team project",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CHEE E3010 AND MSAE E3111 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APCH E4080 SOFT CONDENSED MATTER. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "df918cc3538c26d75699a40af889a621ad0ea017",
+  "course_uid": "df918cc3538c26d75699a40af889a621ad0ea017",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4990",
+  "title": "SPEC TOPICS IN APPLIED MATH",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "May be repeated for credit. Topics and instructors from the Applied Mathematics Committee and the staff change from year to year. For advanced undergraduate students and graduate students in engineering, physical sciences, biological sciences, and other fields. Examples of topics include multi-scale analysis and Applied Harmonic Analysis",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Advanced calculus and junior year applied mathematics, or their equivalents.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E4990",
+      "course_number": "APMA 4990",
+      "section_call_number": "001/12771",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "253 Engineering Terrace",
+      "instructor": "Michael Weinstein",
+      "points": "3.00",
+      "enrollment_raw": "7/35",
+      "enrollment_current": 7,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4990 SPEC TOPICS IN APPLIED MATH. 3.00 points ."
+}

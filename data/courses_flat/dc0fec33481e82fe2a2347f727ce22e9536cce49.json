@@ -1,0 +1,22 @@
+{
+  "dedup_key": "dc0fec33481e82fe2a2347f727ce22e9536cce49",
+  "course_uid": "dc0fec33481e82fe2a2347f727ce22e9536cce49",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECS E4510",
+  "title": "EVOLUTIONARY COMPUTATION＆DESIGN AUTOMATI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamental and advanced topics in evolutionary algorithms and their application to open-ended optimization and computational design. Covers genetic algorithms, genetic programming, and evolutionary strategies, as well as governing dynamic of coevolution and symbiosis. Includes discussions of problem representations and applications to design problems in a variety of domains including software, electronics, and mechanics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Basic programming experience in any language.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECS E4510 EVOLUTIONARY COMPUTATION＆DESIGN AUTOMATI. 3.00 points ."
+}

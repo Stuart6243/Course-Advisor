@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d753caa5a92cc27da5f904f01405d9c1c3306540",
+  "course_uid": "d753caa5a92cc27da5f904f01405d9c1c3306540",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4007",
+  "title": "APPLIED LINEAR ALGEBRA",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Vector spaces and subspaces, linear independence, basis and dimension. The 4 fundamental subspaces of a matrix. Orthogonal projection onto a subspace and solution of Linear Least Squares problems, unitary matrices, inner products, orthogonalization algorithms and the QR factorization, applications. Determinants and applications. Eigen problems including diagonalization, symmetric matrices, positive-definite systems, eigen factorization and applications to dynamical systems and iterative maps. Introduction to the singular value decomposition and its applications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Cannot be taken together with APMA E3101 Fundamentals of Linear Algebra including vector and Matrix algebra, solution of linear systems, existence and uniqueness, gaussian elimination, gauss-jordan elimination, the matrix inverse, elementary matrices and the LU factorization, computational cost of solutions.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E4007",
+      "course_number": "APMA 4007",
+      "section_call_number": "001/12764",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "310 Fayerweather",
+      "instructor": "Michael Tippett",
+      "points": "3.00",
+      "enrollment_raw": "65/90",
+      "enrollment_current": 65,
+      "enrollment_capacity": 90
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4007 APPLIED LINEAR ALGEBRA. 3.00 points ."
+}

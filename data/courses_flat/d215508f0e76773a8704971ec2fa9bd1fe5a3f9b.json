@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d215508f0e76773a8704971ec2fa9bd1fe5a3f9b",
+  "course_uid": "d215508f0e76773a8704971ec2fa9bd1fe5a3f9b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6720",
+  "title": "BAYESIAN MOD MACHINE LEARNING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basic statistics and machine learning strongly recommended. Bayesian approaches to machine learning. Topics include mixed-membership models, latent factor models, Bayesian nonparametric methods, probit classification, hidden Markov models, Gaussian mixture models, model learning with mean-field variational inference, scalable inference for Big Data. Applications include image processing, topic modeling, collaborative filtering and recommendation systems",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Basic calculus, linear algebra, probability, and programming.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6720",
+      "course_number": "EECS 6720",
+      "section_call_number": "001/11563",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "John Paisley",
+      "points": "3.00",
+      "enrollment_raw": "37/50",
+      "enrollment_current": 37,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6720 BAYESIAN MOD MACHINE LEARNING. 3.00 points ."
+}

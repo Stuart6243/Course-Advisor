@@ -1,0 +1,36 @@
+{
+  "dedup_key": "c84bb22f26672eb0f8295ab5147b33e0f65e2fed",
+  "course_uid": "c84bb22f26672eb0f8295ab5147b33e0f65e2fed",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEME E3601",
+  "title": "Introduction to Continuous Control Systems",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to continuous systems with the treatment of classical and state-space formulations. Mathematical concepts, complex variables, integral transforms and their inverses, differential equations, and relevant linear algebra. Classical feedback control, time/frequency domain design, stability analysis, Laplace transform formulation and solutions, block diagram simplification and manipulation, signal flow graphs, modeling physical systems and linearization. state-space formulation and modeling, in parallel with classical single-input single-output formulation, connections between the two formulations. Transient and steady state analysis, methods of stability analysis, such as root locus methods, Nyquist stability criterion, Routh Hurwitz criterion, pole/zero placement, Bode plot analysis, Nichols chart analysis, phase lead and lag compensators, controllability, observability, realization of canonical forms, state estimation in multivariable systems, time-variant systems. Introduction to advanced stability analysis such as Lyapunov stability and simple optimal control formulation. May not take for credit if already received credit for EEME E4600 .",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MATH UN2030 and APMA E3101 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EEME E3601",
+      "course_number": "EEME 3601",
+      "section_call_number": "001/11100",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "329 Pupin Laboratories",
+      "instructor": "Homayoon Beigi",
+      "points": "3.00",
+      "enrollment_raw": "90/95",
+      "enrollment_current": 90,
+      "enrollment_capacity": 95
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEME E3601 Introduction to Continuous Control Systems. 3.00 points ."
+}

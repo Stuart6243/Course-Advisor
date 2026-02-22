@@ -1,0 +1,49 @@
+{
+  "dedup_key": "cb480a4b2a6301ba813397d88b433d5589a99177",
+  "course_uid": "cb480a4b2a6301ba813397d88b433d5589a99177",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4577",
+  "title": "TOPICS IN OPERATIONS RESEARCH",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Topics are usually offered on a one-time basis. Since the content of this course changes each time it is offered, it may be repeated for credit. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4004 AND IEOR E4106 AND IEOR E4150 ; IEOR E4150 , IEOR E4004 , and IEOR E4106 , or instructor's permission Special topics arranged as the need and availability arises.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4577",
+      "course_number": "IEOR 4577",
+      "section_call_number": "001/11831",
+      "times": "M 7:10pm - 9:40pm",
+      "location": "303 Uris Hall",
+      "instructor": "Amit Arora",
+      "points": "1.50",
+      "enrollment_raw": "14/60",
+      "enrollment_current": 14,
+      "enrollment_capacity": 60
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4577",
+      "course_number": "IEOR 4577",
+      "section_call_number": "001/13300",
+      "times": "F 1:00pm - 4:00pm",
+      "location": "326 Uris Hall",
+      "instructor": "Casandra Campbell",
+      "points": "1.50",
+      "enrollment_raw": "7/50",
+      "enrollment_current": 7,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4577 TOPICS IN OPERATIONS RESEARCH. 1.50 point ."
+}

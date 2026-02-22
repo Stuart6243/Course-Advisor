@@ -1,0 +1,22 @@
+{
+  "dedup_key": "c9426f4707253ec9d00251f21baef8adf9a26f8e",
+  "course_uid": "c9426f4707253ec9d00251f21baef8adf9a26f8e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEE E6252",
+  "title": "ADV SURFACE/COLLOID CHEMISTRY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Appropriate individual experiments and projects. Lab required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CHEE E4252 ) CHEE E4252 Applications of surface chemistry principles to wetting, flocculation, flotation, separation techniques, catalysis, mass transfer, emulsions, foams, aerosols, membranes, biological surfactant systems, microbial surfaces, enhanced oil recovery, and pollution problems.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect:2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEE E6252 ADV SURFACE/COLLOID CHEMISTRY. 3.00 points ."
+}

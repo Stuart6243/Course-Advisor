@@ -1,0 +1,36 @@
+{
+  "dedup_key": "de3e4fbd2f7707aca2282ab9d0c130992321a7b8",
+  "course_uid": "de3e4fbd2f7707aca2282ab9d0c130992321a7b8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E3106",
+  "title": "DYNAMICS AND VIBRATIONS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Kinematics of rigid bodies; momentum and energy methods; vibrations of discrete and continuous systems; eigen-value problems, natural frequencies and modes. Basics of computer simulation of dynamics problems using MATLAB or Mathematica",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( MATH UN1201 ) MATH V1201; ENME E3105 Corequisites: ENME E3105 .",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E3106",
+      "course_number": "ENME 3106",
+      "section_call_number": "001/12280",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "417 International Affairs Bldg",
+      "instructor": "Andrew Smyth",
+      "points": "3.00",
+      "enrollment_raw": "127/116",
+      "enrollment_current": 127,
+      "enrollment_capacity": 116
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E3106 DYNAMICS AND VIBRATIONS. 3.00 points ."
+}

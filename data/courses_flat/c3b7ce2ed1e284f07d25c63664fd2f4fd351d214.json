@@ -1,0 +1,36 @@
+{
+  "dedup_key": "c3b7ce2ed1e284f07d25c63664fd2f4fd351d214",
+  "course_uid": "c3b7ce2ed1e284f07d25c63664fd2f4fd351d214",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4300",
+  "title": "Graduate Design",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Team-based iterative design sequence to create a novel invention made to meet a well-defined need. Students will identify a need through research, develop a novel (in a patent sense) solution, create a proof-of-concept low-fidelity prototype, and finally create a refined prototype. Students will utilize theory, simulation, and experimentation to validate key design choices. The course will include ideation techniques, intellectual property, standards, advanced 3D modeling, rapid prototyping, kinematics, dynamic simulation, finite element analysis, optimization, and experimental design",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4300",
+      "course_number": "MECE 4300",
+      "section_call_number": "001/18319",
+      "times": "T 1:10pm - 3:40pm",
+      "location": "703 Hamilton Hall",
+      "instructor": "Yevgeniy Yesilevskiy",
+      "points": "3.00",
+      "enrollment_raw": "9/30",
+      "enrollment_current": 9,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4300 Graduate Design. 3.00 points ."
+}

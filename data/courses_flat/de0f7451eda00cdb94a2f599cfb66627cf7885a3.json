@@ -1,0 +1,36 @@
+{
+  "dedup_key": "de0f7451eda00cdb94a2f599cfb66627cf7885a3",
+  "course_uid": "de0f7451eda00cdb94a2f599cfb66627cf7885a3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4167",
+  "title": "COMPUTER ANIMATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Theory and practice of physics-based animation algorithms, including animated clothing, hair, smoke, water, collisions, impact, and kitchen sinks. Topics covered: Integration of ordinary differential equations, formulation of physical models, treatment of discontinuities including collisions/contact, animation control, constrained Lagrangian Mechanics, friction/dissipation, continuum mechanics, finite elements, rigid bodies, thin shells, discretization of Navier-Stokes equations. General education requirement: quantitative and deductive reasoning (QUA).",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4167",
+      "course_number": "COMS 4167",
+      "section_call_number": "001/16837",
+      "times": "T Th 4:10pm - 5:25pm",
+      "location": "214 Pupin Laboratories",
+      "instructor": "Changxi Zheng",
+      "points": "3.00",
+      "enrollment_raw": "40/50",
+      "enrollment_current": 40,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4167 COMPUTER ANIMATION. 3.00 points ."
+}

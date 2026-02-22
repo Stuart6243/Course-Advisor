@@ -1,0 +1,36 @@
+{
+  "dedup_key": "e14f08272172363bfbd65db66f13282066779dc3",
+  "course_uid": "e14f08272172363bfbd65db66f13282066779dc3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ECBM E4060",
+  "title": "INTRO-GENOMIC INFO SCI ＆ TECH",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to computational biology with emphasis on genomic data science tools and methodologies for analyzing data, such as genomic sequences, gene expression measurements and the presence of mutations. Applications of machine learning and exploratory data analysis for predicting drug response and disease progression. Latest technologies related to genomic information, such as single-cell sequencing and CRISPR, and the contributions of genomic data science to the drug development process",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ECBM E4060",
+      "course_number": "ECBM 4060",
+      "section_call_number": "001/11178",
+      "times": "M 7:00pm - 9:30pm",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Tai-Hsien Ou Yang",
+      "points": "3.00",
+      "enrollment_raw": "27/80",
+      "enrollment_current": 27,
+      "enrollment_capacity": 80
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ECBM E4060 INTRO-GENOMIC INFO SCI ＆ TECH. 3.00 points ."
+}

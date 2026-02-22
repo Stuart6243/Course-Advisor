@@ -1,0 +1,36 @@
+{
+  "dedup_key": "c9fd189c67950c2a459e2a140f399e82a567da05",
+  "course_uid": "c9fd189c67950c2a459e2a140f399e82a567da05",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/materials-science-engineering-program/",
+  "source_page_title": "Materials Science and Engineering Program < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E3013",
+  "title": "LABORATORY IN MATERIALS SCI II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This is the second of a two-semester sequence materials laboratory course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: (MSAE E3011) MSAE E3012 Metallographic sample preparation, optical microscopy, quantitative metallography, hardness and tensile testing, plastic deformation, annealing, phase diagrams, brittle fracture of glass, temperature and strain-rate dependent deformation of polymers; written and oral reports.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect.: 3",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MSAE E3013",
+      "course_number": "MSAE 3013",
+      "section_call_number": "001/12989",
+      "times": "Ismail Noyan",
+      "location": "",
+      "instructor": "3.00",
+      "points": "6/15",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E3013 LABORATORY IN MATERIALS SCI II. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "d8801e53b0810c3ab73fdafce9c325a8440604d7",
+  "course_uid": "d8801e53b0810c3ab73fdafce9c325a8440604d7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ORCA E4500",
+  "title": "FOUNDATIONS OF DATA SCIENCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Combines three perspectives: inferential thinking, computational thinking, and real-world applications. Given data arising from some real-world phenomenon, how does one analyze that data so as to understand that phenomenon? Teaches critical concepts and skills in computer programming, statistical inference, and machine learning, in conjunction with hands-on analysis of real-world datasets such as economic data, document collections, geographical data, and social networks",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: MATH V1101 AND MATH V1102; Some familiarity with programming Designed to provide an introduction to data science for sophomore SEAS majors.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ORCA E4500 FOUNDATIONS OF DATA SCIENCE. 3.00 points ."
+}

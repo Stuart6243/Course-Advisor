@@ -1,0 +1,36 @@
+{
+  "dedup_key": "dbebe7362cb57d88902c3dc918311a0b04c15495",
+  "course_uid": "dbebe7362cb57d88902c3dc918311a0b04c15495",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4444",
+  "title": "Climate Technology",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Scientific and economic analysis of real-world technologies for climate change mitigation and adaptation. Partner with students from the business school to assess and assigned technology based on technical viability, commercial opportunity, and impact on mitigating or adapting to climate change. Assigned technologies provided by the investment community to teams of four, with expectations for independent research on the technologies, with deliverables of written and oral presentations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4444",
+      "course_number": "CHEN 4444",
+      "section_call_number": "001/12789",
+      "times": "W 9:00am - 12:00pm",
+      "location": "570 Geffen Hall",
+      "instructor": "Alan West",
+      "points": "3.00",
+      "enrollment_raw": "14/15",
+      "enrollment_current": 14,
+      "enrollment_capacity": 15
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4444 Climate Technology. 3.00 points ."
+}

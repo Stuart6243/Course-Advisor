@@ -1,0 +1,62 @@
+{
+  "dedup_key": "e047a9b07354c063ddb8a05dd6960aee7ab7914f",
+  "course_uid": "e047a9b07354c063ddb8a05dd6960aee7ab7914f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E9800",
+  "title": "DOCTORAL RESEARCH INSTRUCTION",
+  "points_raw": "0.00-12.00 points",
+  "points_min": 0.0,
+  "points_max": 12.0,
+  "description": "A candidate for the Eng.Sc.D. degree in mineral engineering must register for 12 points of doctoral research instruction. Registration in EAEE E9800 may not be used to satisfy the minimum residence requirement for the degree",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E9800",
+      "course_number": "EAEE 9800",
+      "section_call_number": "001/19990",
+      "times": "Kartik Chandran",
+      "location": "",
+      "instructor": "0.00-12.00",
+      "points": "0/2",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E9800",
+      "course_number": "EAEE 9800",
+      "section_call_number": "001/18211",
+      "times": "Upmanu Lall",
+      "location": "",
+      "instructor": "0.00-12.00",
+      "points": "2/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E9800",
+      "course_number": "EAEE 9800",
+      "section_call_number": "002/19632",
+      "times": "Kartik Chandran",
+      "location": "",
+      "instructor": "0.00-12.00",
+      "points": "0/2",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E9800 DOCTORAL RESEARCH INSTRUCTION. 0.00-12.00 points ."
+}

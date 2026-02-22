@@ -1,0 +1,49 @@
+{
+  "dedup_key": "d11cc416e16a51c3e78ad3fb92be3079a2d08867",
+  "course_uid": "d11cc416e16a51c3e78ad3fb92be3079a2d08867",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6178",
+  "title": "Human-Computer Interaction",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topics include ubiquitous computing, mobile health, interaction techniques, social computing, mixed reality, accessibility, and ethics. Activities include readings, presentations, and discussions of research papers. Substantial HCI research project required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: COMS W4170 Human–computer interaction (HCI) studies (1) what computers are used for, (2) how people interact with computers, and (3) how either of those should change in the future.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6178",
+      "course_number": "COMS 6178",
+      "section_call_number": "001/12377",
+      "times": "W 1:10pm - 3:40pm",
+      "location": "1024 Seeley W. Mudd Building",
+      "instructor": "Brian Smith",
+      "points": "3.00",
+      "enrollment_raw": "34/33",
+      "enrollment_current": 34,
+      "enrollment_capacity": 33
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6178",
+      "course_number": "COMS 6178",
+      "section_call_number": "V01/16789",
+      "times": "Brian Smith",
+      "location": "",
+      "instructor": "3.00",
+      "points": "6/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6178 Human-Computer Interaction. 3.00 points ."
+}

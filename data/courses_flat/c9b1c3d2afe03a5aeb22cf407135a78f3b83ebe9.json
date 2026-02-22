@@ -1,0 +1,22 @@
+{
+  "dedup_key": "c9b1c3d2afe03a5aeb22cf407135a78f3b83ebe9",
+  "course_uid": "c9b1c3d2afe03a5aeb22cf407135a78f3b83ebe9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E6081",
+  "title": "SOLID STATE PHYSICS I",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Knowledge of statistical physics on the level of MSAE E3111 or PHYS GU4023 strongly recommended. Crystal structure, reciprocal lattices, classification of solids, lattice dynamics, anharmonic effects in crystals, classical electron models of metals, electron band structure, and low-dimensional electron structures",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( APPH E3100 ) APPH E3100 ; or the equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E6081 SOLID STATE PHYSICS I. 3.00 points ."
+}

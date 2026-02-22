@@ -1,0 +1,49 @@
+{
+  "dedup_key": "de7986ce1e27823d2300be31feee9a7ef08da67e",
+  "course_uid": "de7986ce1e27823d2300be31feee9a7ef08da67e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4199",
+  "title": "MSIEOR Quantitative Bootcamp",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Zero-credit course. Primer on quantitative and mathematical concepts. Required for all incoming MSOR and MSIE students",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4199",
+      "course_number": "IEOR 4199",
+      "section_call_number": "001/11891",
+      "times": "Michael Miller",
+      "location": "",
+      "instructor": "0.00",
+      "points": "199/250",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4199",
+      "course_number": "IEOR 4199",
+      "section_call_number": "001/18252",
+      "times": "0.00",
+      "location": "",
+      "instructor": "7/8",
+      "points": "",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4199 MSIEOR Quantitative Bootcamp. 0.00 points ."
+}

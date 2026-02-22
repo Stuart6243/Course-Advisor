@@ -1,0 +1,62 @@
+{
+  "dedup_key": "dcc78d8e896e77654a8c6943695862e6d6935e51",
+  "course_uid": "dcc78d8e896e77654a8c6943695862e6d6935e51",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEME E4601",
+  "title": "DISCRETE CONTROL SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The course studies control strategies and their implementation in the discrete domain. Introduction with examples; review of continuous control and Laplace Transforms; review of continuous state-space representation and Solutions; review of difference equations, discretization in time and frequency, the WKS (aka Shannon) sampling theorem, windowing, filters, Transforms: Fourier series, Fourier transform, z-transform and their inverses; Ideal sampler, Sample-and-hold devices, zero, one, polygonal, and slewer hold; Transfer functions, block diagrams, and signal flow graphs for discrete systems; Discrete State-Space transformation, controllabililty, observability, and stability in the state-space domain. Discrete time and z domain analysis, steady state analysis, discrete-time root-locus, and pole-zero placement; Discrete Nyquist stability criterion, Bode plot, Gain and Phase Margin analysis, Nichols chart, bandwidth and sensitivity analysis; Design criteria, self-tuning regulator, Kalman filter, and simulation, followed by advanced stability analysis such as Lyapunov stability; Overview of the discrete Euler-Lagrange equations, discrete maximum and minimum principle, optimal linear discrete regulator design, optimality and dynamic programming.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( EEME E3601 ) or (EEME E6601)",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EEME E4601",
+      "course_number": "EEME 4601",
+      "section_call_number": "001/12106",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Homayoon Beigi",
+      "points": "3.00",
+      "enrollment_raw": "24/50",
+      "enrollment_current": 24,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EEME E4601",
+      "course_number": "EEME 4601",
+      "section_call_number": "C01/18226",
+      "times": "Homayoon Beigi",
+      "location": "",
+      "instructor": "3.00",
+      "points": "0/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EEME E4601",
+      "course_number": "EEME 4601",
+      "section_call_number": "V01/16657",
+      "times": "Homayoon Beigi",
+      "location": "",
+      "instructor": "3.00",
+      "points": "4/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEME E4601 DISCRETE CONTROL SYSTEMS. 3.00 points ."
+}

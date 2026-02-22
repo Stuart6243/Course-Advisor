@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d13a92cc6735655c2670f0f43668999c24e92788",
+  "course_uid": "d13a92cc6735655c2670f0f43668999c24e92788",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4721",
+  "title": "TOPICS IN QUANT FINANCE",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "It develops a systematic framework for constructing optimal portfolios, beginning with the classical Markowitz model and enhancing it to address real-world portfolio objectives and constraints. Students learn how forecasts of asset returns, risk, and market impact are formulated in the optimizer objectives and constraints, and how estimation error affects portfolio construction and performance. They also study the robust estimation of key optimizer inputs such as risk models using modern statistical and econometric methods that handle noise and time-varying dynamics. Students gain hands-on experience constructing portfolios using industry-standard datasets, tools, and risk models. The course also provides a brief introduction to advanced topics such as random matrix theory, multiperiod optimization, and the use of modern machine learning methods, which represent emerging directions in quantitative portfolio research",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4700 ; Additional prerequisites will be announced depending on offering This graduate-level course provides a rigorous foundation in quantitative portfolio construction, bridging theory with practical implementation.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4721",
+      "course_number": "IEOR 4721",
+      "section_call_number": "001/13309",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Sridhar Gollamudi",
+      "points": "1.50",
+      "enrollment_raw": "31/50",
+      "enrollment_current": 31,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4721 TOPICS IN QUANT FINANCE. 1.50 point ."
+}

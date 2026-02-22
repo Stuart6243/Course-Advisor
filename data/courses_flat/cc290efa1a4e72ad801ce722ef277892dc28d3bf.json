@@ -1,0 +1,36 @@
+{
+  "dedup_key": "cc290efa1a4e72ad801ce722ef277892dc28d3bf",
+  "course_uid": "cc290efa1a4e72ad801ce722ef277892dc28d3bf",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4160",
+  "title": "SOLID ＆ HAZARDOUS WASTE MGMT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Generation, composition, collection, transport, storage and disposal of solid and hazardous waste. Impact on the environment and public health. Government regulations. Recycling and resource recovery",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E4160",
+      "course_number": "EAEE 4160",
+      "section_call_number": "001/13480",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Xiaoyang Shi",
+      "points": "3.00",
+      "enrollment_raw": "36/40",
+      "enrollment_current": 36,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4160 SOLID ＆ HAZARDOUS WASTE MGMT. 3.00 points ."
+}

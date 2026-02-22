@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d02401d325bab239c3f02acffcc6562f052a2f7a",
+  "course_uid": "d02401d325bab239c3f02acffcc6562f052a2f7a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4500",
+  "title": "Functional Genomics: Methods and Applications",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Genetic variation, gene expression and regulation at the epigenome, chromatin organization level, and link between gene and protein expression covered. Case studies covered: study of cancer and cancer-associated processes, neuro-biology, and organismal development. The presented methods study these events at the genome, epigenome, transcriptome, and proteome levels.Approaches that increase the resolution of functional genomic assays to the level of individual cells, spatial profiling, integration with genetic and chemical screening methods, and their application to chemical genomic approaches also studied. Programming assignments and a final project required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: BIOL C2005 AND BIOL C2006 Introduces approaches for the functional genomic analysis of biological systems and their use to define genotype-phenotype relationships.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4500",
+      "course_number": "BMEN 4500",
+      "section_call_number": "001/13199",
+      "times": "T 1:10pm - 3:40pm",
+      "location": "717 Hamilton Hall",
+      "instructor": "Jose McFaline-Figueroa",
+      "points": "3.00",
+      "enrollment_raw": "53/60",
+      "enrollment_current": 53,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4500 Functional Genomics: Methods and Applications. 3.00 points ."
+}

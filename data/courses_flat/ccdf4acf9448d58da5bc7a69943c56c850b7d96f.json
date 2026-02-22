@@ -1,0 +1,49 @@
+{
+  "dedup_key": "ccdf4acf9448d58da5bc7a69943c56c850b7d96f",
+  "course_uid": "ccdf4acf9448d58da5bc7a69943c56c850b7d96f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEB W4020",
+  "title": "Computational neuroscience: circuits in the brain",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The biophysics of computation: modeling biological neurons, the Hodgkin-Huxley neuron, modeling channel conductances and synapses as memristive systems, bursting neurons and central pattern generators, I/O equivalence and spiking neuron models. Information representation and neural encoding: stimulus representation with time encoding machines, the geometry of time encoding, encoding with neural circuits with feedback, population time encoding machines. Dendritic computation: elements of spike processing and neural computation, synaptic plasticity and learning algorithms, unsupervised learning and spike time-dependent plasticity, basic dendritic integration. Projects in MATLAB.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E3801 ) or ( BIOL UN3004 ) ELEN E3801 OR BIOL W3004",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEB W4020",
+      "course_number": "BMEB 4020",
+      "section_call_number": "001/11018",
+      "times": "T 7:00pm - 9:30pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Aurel Lazar",
+      "points": "3",
+      "enrollment_raw": "37/80",
+      "enrollment_current": 37,
+      "enrollment_capacity": 80
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEB W4020",
+      "course_number": "BMEB 4020",
+      "section_call_number": "V01/18380",
+      "times": "Aurel Lazar",
+      "location": "",
+      "instructor": "3",
+      "points": "4/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEB W4020 Computational neuroscience: circuits in the brain. 3 points ."
+}

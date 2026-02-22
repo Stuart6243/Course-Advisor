@@ -1,0 +1,49 @@
+{
+  "dedup_key": "d0c1c5b79cd2ffb9fc7475f9ea01814d1b02495c",
+  "course_uid": "d0c1c5b79cd2ffb9fc7475f9ea01814d1b02495c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6156",
+  "title": "TOPICS IN SOFTWARE ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topics in Software engineering arranged as the need and availability arises. Topics are usually offered on a one-time basis. Since the content of this course changes, it may be repeated for credit with advisor approval. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6156",
+      "course_number": "COMS 6156",
+      "section_call_number": "001/12376",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Gail Kaiser",
+      "points": "3.00",
+      "enrollment_raw": "23/20",
+      "enrollment_current": 23,
+      "enrollment_capacity": 20
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6156",
+      "course_number": "COMS 6156",
+      "section_call_number": "V01/16728",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "Online Only",
+      "instructor": "Gail Kaiser",
+      "points": "3.00",
+      "enrollment_raw": "5/99",
+      "enrollment_current": 5,
+      "enrollment_capacity": 99
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6156 TOPICS IN SOFTWARE ENGINEERING. 3.00 points ."
+}

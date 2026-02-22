@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d54a961c7e8a1abbf43d9c18741b7974953c179c",
+  "course_uid": "d54a961c7e8a1abbf43d9c18741b7974953c179c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4100",
+  "title": "STATISTICS ＆ SIMULATION",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Probability and simulation. Statistics building on knowledge in probability and simulation. Point and interval estimation, hypothesis testing, and regression. A specialized version of IEOR E4150 for MSE and MSBA students who are exempt from the first half of IEOR E4101 . Must obtain waiver for E4101",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Understanding of single- and multivariable calculus.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4100",
+      "course_number": "IEOR 4100",
+      "section_call_number": "001/13410",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "Room TBA",
+      "instructor": "Henry Lam",
+      "points": "1.50",
+      "enrollment_raw": "34/60",
+      "enrollment_current": 34,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4100 STATISTICS ＆ SIMULATION. 1.50 point ."
+}

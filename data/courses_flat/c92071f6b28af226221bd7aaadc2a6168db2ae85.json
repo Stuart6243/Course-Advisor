@@ -1,0 +1,22 @@
+{
+  "dedup_key": "c92071f6b28af226221bd7aaadc2a6168db2ae85",
+  "course_uid": "c92071f6b28af226221bd7aaadc2a6168db2ae85",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MEEE E6620",
+  "title": "Applied Acoustics and Signal Recognition",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Applied recognition and classification of acoustic and other time-dependent signals using a selection of tools borrowed from different disciplines. Feature extraction and analysis techniques such as spectral and cepstral features. Applications include machine and structural health monitoring, human biometrics, speech and acoustic events, imaging, geophysics, electronics, networking, languages, communications, and finance. Practical algorithms are covered in signal generation, modeling, feature extraction, metrics for comparison and classification, parameter estimation, supervised, un-supervised, and hierarchical clustering and learning, optimization, scaling and alignment, signals as codes emitted from natural sources, information theoretic concepts such as hidden markov modeling, latest deep learning techniques and architectures for time series analysis, and realtime large-scale systems.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( APMA E3101 and MATH UN2030 ) knowledge of a programming language, or permission of instructor.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MEEE E6620 Applied Acoustics and Signal Recognition. 3.00 points ."
+}

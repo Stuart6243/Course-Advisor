@@ -1,0 +1,36 @@
+{
+  "dedup_key": "cad32993c655729e7dcf2533156e67c90b744573",
+  "course_uid": "cad32993c655729e7dcf2533156e67c90b744573",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E2261",
+  "title": "ACCOUNTING AND FINANCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Examines the fundamental concepts of financial accounting and finance, from the perspective of both managers and investors. Key topics covered include principles of accrual accounting; recognizing and recording accounting transactions; preparation and analysis of financial statements; ratio analysis; pro-forma projections; time value of money (present values, future values and interest/discount rates); inflation; discounted-cash-flow (DCF) project evaluation methods; deterministic and probabilistic measures of risk; capital budgeting",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ECON UN1105 ) ECON W1105 For undergraduates only.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E2261",
+      "course_number": "IEOR 2261",
+      "section_call_number": "002/17019",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "329 Pupin Laboratories",
+      "instructor": "Nadejda Zaets",
+      "points": "3.00",
+      "enrollment_raw": "100/100",
+      "enrollment_current": 100,
+      "enrollment_capacity": 100
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E2261 ACCOUNTING AND FINANCE. 3.00 points ."
+}

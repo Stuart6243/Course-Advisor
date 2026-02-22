@@ -1,0 +1,22 @@
+{
+  "dedup_key": "d569634b8451ac2122ea8631ae655d0ea1eb9a23",
+  "course_uid": "d569634b8451ac2122ea8631ae655d0ea1eb9a23",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4650",
+  "title": "CONVEX OPTIMIZATION-EE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Theory of convex optimization; numerical algorithms; applications in circuits, communications, control, signal processing and power systems",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ELEN E3801 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4650 CONVEX OPTIMIZATION-EE. 3.00 points ."
+}

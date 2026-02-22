@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d8d363a15eef3690631f6ec70c30145159155ec6",
+  "course_uid": "d8d363a15eef3690631f6ec70c30145159155ec6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E6320",
+  "title": "COMPUTATIONAL POROMECHANICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "A fluid infiltrating porous solid is a multiphase material whose mechanical behavior is significantly influenced by the pore fluid. Diffusion, advection, capillarity, heating, cooling, and freezing of pore fluid, buildup of pore pressure, and mass exhanges among solid and fluid constituents all influence the stability and integrity of the solid skeleton, causing shrinkage, swelling, fracture, or liquefaction. These coupling phenomena are important for numerous disciplines, including geophysics, biomechanics, and material sciences. Fundamental principles of poromechanics essential for engineering practice and advanced study on porous media. Topics include balance principles, Biot’s poroelasticity, mixture theory, constitutive modeling of path independent and dependent multiphase materials, numerical methods for parabolic and hyperbolic systems, inf-sup conditions, and common stabilization procedures for mixed finite element models, explicit and implicit time integrators, and operator splitting techniques for poromechanics problems.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ENME E3332 ) or instructor's permission",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E6320",
+      "course_number": "ENME 6320",
+      "section_call_number": "001/12892",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Waiching Sun",
+      "points": "3.00",
+      "enrollment_raw": "2/25",
+      "enrollment_current": 2,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E6320 COMPUTATIONAL POROMECHANICS. 3.00 points ."
+}

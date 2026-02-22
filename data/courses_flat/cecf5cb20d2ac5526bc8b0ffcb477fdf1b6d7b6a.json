@@ -1,0 +1,22 @@
+{
+  "dedup_key": "cecf5cb20d2ac5526bc8b0ffcb477fdf1b6d7b6a",
+  "course_uid": "cecf5cb20d2ac5526bc8b0ffcb477fdf1b6d7b6a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6876",
+  "title": "Sparse and Low-Dimensional Models for High-Dimensional Data",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Recommended: ELEN E4810 or equivalent. Overview of theory, computation and applications for sparse and low-dimensional data modeling. Recoverability of sparse and low-rank models. Optimization methods for low-dim data modeling. Applications to imaging, neuroscience, communications, web data",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ELEN E4815 ; or equivalent and linear algebra.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6876 Sparse and Low-Dimensional Models for High-Dimensional Data. 3.00 points ."
+}

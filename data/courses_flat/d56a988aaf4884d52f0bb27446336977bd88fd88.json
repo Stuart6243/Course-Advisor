@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d56a988aaf4884d52f0bb27446336977bd88fd88",
+  "course_uid": "d56a988aaf4884d52f0bb27446336977bd88fd88",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6113",
+  "title": "Topics in Database Systems",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Concentration on some database paradigm, such as deductive, heterogeneous, or object-oriented, and/or some database issue, such as data modeling, distribution, query processing, semantics, or transaction management. A substantial project is typically required. May be repeated for credit with instructor's permission.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W4111 ) COMS W4111",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS E6113",
+      "course_number": "COMS 6113",
+      "section_call_number": "001/13528",
+      "times": "T 10:10am - 12:00pm",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Junfeng Yang",
+      "points": "3",
+      "enrollment_raw": "25/30",
+      "enrollment_current": 25,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6113 Topics in Database Systems. 3 points ."
+}

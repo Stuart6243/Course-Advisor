@@ -1,0 +1,38 @@
+{
+  "dedup_key": "d9d8bf36a15fdd021126f99ff27e162cd0d4fa92",
+  "course_uid": "d9d8bf36a15fdd021126f99ff27e162cd0d4fa92",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4235",
+  "title": "SURFACE REACTIONS ＆ KINETICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4235",
+      "course_number": "CHEN 4235",
+      "section_call_number": "001/11475",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "326 Uris Hall",
+      "instructor": "Jingguang Chen",
+      "points": "3.00",
+      "enrollment_raw": "61/62",
+      "enrollment_current": 61,
+      "enrollment_capacity": 62
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "CHEN E4235 SURFACE REACTIONS ＆ KINETICS. 3.00 points ."
+}

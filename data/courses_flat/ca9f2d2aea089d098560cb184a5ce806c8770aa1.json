@@ -1,0 +1,36 @@
+{
+  "dedup_key": "ca9f2d2aea089d098560cb184a5ce806c8770aa1",
+  "course_uid": "ca9f2d2aea089d098560cb184a5ce806c8770aa1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4903",
+  "title": "SEM-PROBLEMS IN APPLIED MATH",
+  "points_raw": "3.00-4.00 points",
+  "points_min": 3.0,
+  "points_max": 4.0,
+  "description": "Required for all applied mathematics majors in the senior year. Term paper required. Examples of problem areas are nonlinear dynamics, asymptotics, approximation theory, numerical methods, etc. Approximately three problem areas are studied per term.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E4903",
+      "course_number": "APMA 4903",
+      "section_call_number": "001/12770",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "428 Pupin Laboratories",
+      "instructor": "Chris Wiggins",
+      "points": "3.00-4.00",
+      "enrollment_raw": "65/70",
+      "enrollment_current": 65,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4903 SEM-PROBLEMS IN APPLIED MATH. 3.00-4.00 points ."
+}

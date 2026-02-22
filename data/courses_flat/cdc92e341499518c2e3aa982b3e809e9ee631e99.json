@@ -1,0 +1,36 @@
+{
+  "dedup_key": "cdc92e341499518c2e3aa982b3e809e9ee631e99",
+  "course_uid": "cdc92e341499518c2e3aa982b3e809e9ee631e99",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EESC UN3109",
+  "title": "CLIMATE PHYSICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This is a calculus-based treatment of climate system physics and the mechanisms of anthropogenic climate change. By the end of this course, students will understand: how solar radiation and rotating fluid dynamics determine the basic climate state, mechanisms of natural variability and change in climate, why anthropogenic climate change is occurring, and which scientific uncertainties are most important to estimates of 21st century change. This course is designed for undergraduate students seeking a quantitative introduction to climate and climate change science. EESC V2100 (Climate Systems) is not a prerequisite, but can also be taken for credit if it is taken before this course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EESC UN3109",
+      "course_number": "EESC 3109",
+      "section_call_number": "001/12416",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "555 Ext Schermerhorn Hall",
+      "instructor": "Adam Sobel",
+      "points": "3.00",
+      "enrollment_raw": "10/25",
+      "enrollment_current": 10,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EESC UN3109 CLIMATE PHYSICS. 3.00 points ."
+}

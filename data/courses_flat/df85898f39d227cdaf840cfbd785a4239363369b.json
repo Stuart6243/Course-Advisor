@@ -1,0 +1,36 @@
+{
+  "dedup_key": "df85898f39d227cdaf840cfbd785a4239363369b",
+  "course_uid": "df85898f39d227cdaf840cfbd785a4239363369b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AEME E4304",
+  "title": "Turbomachinery",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to basics of theory, design, analysis, and selection of turbomachinery. Turbomachines are widely used in myriad engineering applications such as energy conversion, HVAC, and propulsion, in the forms of pumps, compressors, gas turbines, jet engines, wind turbines, etc. Variety of such applications used as examples to illustrate important concepts",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "AEME E4304",
+      "course_number": "AEME 4304",
+      "section_call_number": "001/20208",
+      "times": "Sa 12:00pm - 2:30pm",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Sean Nolan",
+      "points": "3.00",
+      "enrollment_raw": "14/40",
+      "enrollment_current": 14,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AEME E4304 Turbomachinery. 3.00 points ."
+}

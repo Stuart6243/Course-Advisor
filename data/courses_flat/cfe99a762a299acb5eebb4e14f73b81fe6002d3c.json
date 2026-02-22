@@ -1,0 +1,36 @@
+{
+  "dedup_key": "cfe99a762a299acb5eebb4e14f73b81fe6002d3c",
+  "course_uid": "cfe99a762a299acb5eebb4e14f73b81fe6002d3c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E6510",
+  "title": "STEM CELL, GENOME ENG ＆ REGEN MED",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "General lectures on stem cell biology followed by student presentations and discussion of the primary literature. Themes presented include: basic stem cell concepts; basic cell and molecular biological characterization of endogenous stem cell populations; concepts related to reprogramming; directed differentiation of stem cell populations; use of stem cells in disease modeling or tissue replacement/repair; clinical translation of stem cell research.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( BMEN E4001 ) or ( BMEN E4002 ) and Biology, Cell Biology.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E6510",
+      "course_number": "BMEN 6510",
+      "section_call_number": "001/15993",
+      "times": "T 9:00am - 11:00am",
+      "location": "Ll205 Hammer Hlth Sciences Center",
+      "instructor": "Stephen Tsang, Gordana Vunjak-Novakovic",
+      "points": "3.00",
+      "enrollment_raw": "34/70",
+      "enrollment_current": 34,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E6510 STEM CELL, GENOME ENG ＆ REGEN MED. 3.00 points ."
+}

@@ -1,0 +1,38 @@
+{
+  "dedup_key": "e0b59e68940bb308f7f6860210abbd643f7a0f8a",
+  "course_uid": "e0b59e68940bb308f7f6860210abbd643f7a0f8a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6887",
+  "title": "TOPICS IN SIGNAL PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6887",
+      "course_number": "ELEN 6887",
+      "section_call_number": "001/14052",
+      "times": "T 1:10pm - 3:40pm",
+      "location": "603 Hamilton Hall",
+      "instructor": "Hui Jin",
+      "points": "3.00",
+      "enrollment_raw": "35/50",
+      "enrollment_current": 35,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "ELEN E6887 TOPICS IN SIGNAL PROCESSING. 3.00 points ."
+}

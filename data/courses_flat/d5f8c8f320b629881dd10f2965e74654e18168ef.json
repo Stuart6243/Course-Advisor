@@ -1,0 +1,38 @@
+{
+  "dedup_key": "d5f8c8f320b629881dd10f2965e74654e18168ef",
+  "course_uid": "d5f8c8f320b629881dd10f2965e74654e18168ef",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4152",
+  "title": "Engineering Software-as-a-Service",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: COMS W3134 AND COMS W3157 AND CSEE W3827 Modern software engineering concepts and practices including topics such as Software-as-a-Service, Service-oriented Architecture, Agile Development, Behavior-driven Development, Ruby on Rails, and Dev/ops",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4152",
+      "course_number": "COMS 4152",
+      "section_call_number": "001/12834",
+      "times": "T Th 8:40am - 9:55am",
+      "location": "833 Seeley W. Mudd Building",
+      "instructor": "Junfeng Yang",
+      "points": "3.00",
+      "enrollment_raw": "115/120",
+      "enrollment_current": 115,
+      "enrollment_capacity": 120
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "COMS W4152 Engineering Software-as-a-Service. 3.00 points ."
+}
