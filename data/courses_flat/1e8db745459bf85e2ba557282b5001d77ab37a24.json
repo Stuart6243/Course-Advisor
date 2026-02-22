@@ -1,0 +1,49 @@
+{
+  "dedup_key": "1e8db745459bf85e2ba557282b5001d77ab37a24",
+  "course_uid": "1e8db745459bf85e2ba557282b5001d77ab37a24",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4100",
+  "title": "Applied Analysis",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Elementary introduction to fundamental concepts and techniques in classical analysis; applications of such techniques in different topics in applied mathematics. Brief review of essential concepts and techniques in elementary analysis; elementary properties of metric and normed spaces; completeness, compactness, and their consequences; continuous functions and their properties; Contracting Mapping Theorem and its applications; elementary properties of Hilbert and Banach spaces; bounded linear operators in Hilbert spaces; Fourier series and their applications.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Strong background in multivariate calculus is required.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E4100",
+      "course_number": "APMA 4100",
+      "section_call_number": "001/12765",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Liliana Borcea",
+      "points": "3.00",
+      "enrollment_raw": "23/50",
+      "enrollment_current": 23,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E4100",
+      "course_number": "APMA 4100",
+      "section_call_number": "V01/20191",
+      "times": "Liliana Borcea",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4100 Applied Analysis. 3.00 points ."
+}

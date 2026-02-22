@@ -1,0 +1,22 @@
+{
+  "dedup_key": "04953cde4a1c2eed7b106d8ce4f8906fce0a38a7",
+  "course_uid": "04953cde4a1c2eed7b106d8ce4f8906fce0a38a7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APAM E4899",
+  "title": "Research Training",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Research training course. Recommended in preparation for laboratory related research",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APAM E4899 Research Training. 0.00 points ."
+}

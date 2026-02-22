@@ -1,0 +1,36 @@
+{
+  "dedup_key": "03db03bcbbb5f324fe0dc12164cf7fe9a294e23d",
+  "course_uid": "03db03bcbbb5f324fe0dc12164cf7fe9a294e23d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4214",
+  "title": "MEMS Sensors and Systems",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Connects basic MEMS transduction elements to applications by analyzing the analog signal chain, sensor packaging, and sensor integration into larger systems. Underlying concepts of analog instrumentation such as filtering and digitization covered. Hands-on projects involve off-the-shelf sensors and single-board computers to create self-contained sensor systems that demonstrate relevant issues.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E4212 ) MECE E4212",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4214",
+      "course_number": "MECE 4214",
+      "section_call_number": "001/12125",
+      "times": "M 7:00pm - 9:30pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "John Hilton",
+      "points": "3.00",
+      "enrollment_raw": "20/25",
+      "enrollment_current": 20,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4214 MEMS Sensors and Systems. 3.00 points ."
+}

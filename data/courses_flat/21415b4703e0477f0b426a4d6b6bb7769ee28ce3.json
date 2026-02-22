@@ -1,0 +1,22 @@
+{
+  "dedup_key": "21415b4703e0477f0b426a4d6b6bb7769ee28ce3",
+  "course_uid": "21415b4703e0477f0b426a4d6b6bb7769ee28ce3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4920",
+  "title": "PHARMACEUTICAL INDUSTRY FOR ENGINEERS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course provides students an overview of biopharmaceutical design, development, manufacturing, and regulatory requirements from an engineering perspective. The unit operations, equipment selection, and process development associated with small molecule, biologics, and vaccine manufacturing are all illustrated through examples, and quantitative engineering approaches are applied as appropriate. Small molecules, biologics, vaccines, solid oral formulations, sterile processing, and design of experiments (DoE) are treated along with a module on regulatory requirements.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4920 PHARMACEUTICAL INDUSTRY FOR ENGINEERS. 3.00 points ."
+}

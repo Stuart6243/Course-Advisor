@@ -1,0 +1,49 @@
+{
+  "dedup_key": "0fccb8257973fb6887dd3fb149174f89a9427951",
+  "course_uid": "0fccb8257973fb6887dd3fb149174f89a9427951",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00-2.00 points",
+  "points_min": 1.0,
+  "points_max": 2.0,
+  "description": "May be repeated for credit, but no more than 3 total points may be used toward the 128-credit degree requirement. Only for MECE undergraduate students who include relevant on-campus and off-campus work experience as part of their approved program of study. Final report and letter of evaluation required. Fieldwork credits may not count toward any major core, technical, elective, and nontechnical requirements. May not be taken for pass/fail credit or audited",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Obtained internship and approval from a faculty adviser.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E3999",
+      "course_number": "MECE 3999",
+      "section_call_number": "001/13166",
+      "times": "Arvind Narayanaswamy",
+      "location": "",
+      "instructor": "1.00-2.00",
+      "points": "0/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E3999",
+      "course_number": "MECE 3999",
+      "section_call_number": "001/20395",
+      "times": "Kristin Myers",
+      "location": "",
+      "instructor": "1.00-2.00",
+      "points": "1/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3999 FIELDWORK. 1.00-2.00 points ."
+}

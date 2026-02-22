@@ -1,0 +1,36 @@
+{
+  "dedup_key": "02dfa0cdbc5e0e3a4edfb339a047d59dd4875e42",
+  "course_uid": "02dfa0cdbc5e0e3a4edfb339a047d59dd4875e42",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4306",
+  "title": "INTRO TO AERODYNAMICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Principles of flight, incompressible flows, compressible regimes. Inviscid compressible aerodynamics in nozzles (wind tunnels, jet engines), around wings (aircraft, space shuttle) and around blunt bodies (rockets, reentry vehicles). Physics of normal shock waves, oblique shock waves, and explosion waves.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4306",
+      "course_number": "MECE 4306",
+      "section_call_number": "001/12127",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Peter LeVoci",
+      "points": "3.00",
+      "enrollment_raw": "44/60",
+      "enrollment_current": 44,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4306 INTRO TO AERODYNAMICS. 3.00 points ."
+}

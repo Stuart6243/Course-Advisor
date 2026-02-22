@@ -1,0 +1,36 @@
+{
+  "dedup_key": "215289bdef2a705bb8bbd98919b4df6ce2ad24f0",
+  "course_uid": "215289bdef2a705bb8bbd98919b4df6ce2ad24f0",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSEE W4868",
+  "title": "SYSTEM-ON-CHIP PLATFORMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topics include: overview of technology and economic trends, methodologies and supporting CAD tools for system-level design, models of computation, the SystemC language, transaction-level modeling, software simulation and virtual platforms, hardware-software partitioning, high-level synthesis, system programming and device drivers, on-chip communication, memory organization, power management and optimization, integration of programmable processor cores and specialized accelerators. Case studies of modern SoC platforms for various classes of applications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W3157 ) and ( CSEE W3827 ) COMS W3157 AND CSEE W3827 Design and programming of System-on-Chip (SoC) platforms.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CSEE W4868",
+      "course_number": "CSEE 4868",
+      "section_call_number": "001/12881",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Luca Carloni",
+      "points": "3.00",
+      "enrollment_raw": "62/60",
+      "enrollment_current": 62,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSEE W4868 SYSTEM-ON-CHIP PLATFORMS. 3.00 points ."
+}

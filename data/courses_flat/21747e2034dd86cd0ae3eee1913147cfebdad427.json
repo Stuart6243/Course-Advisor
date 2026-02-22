@@ -1,0 +1,49 @@
+{
+  "dedup_key": "21747e2034dd86cd0ae3eee1913147cfebdad427",
+  "course_uid": "21747e2034dd86cd0ae3eee1913147cfebdad427",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E1201",
+  "title": "INTRO-ELECTRICAL ENGINEERING",
+  "points_raw": "3.50 points",
+  "points_min": 3.5,
+  "points_max": 3.5,
+  "description": "Basic concepts of electrical engineering. Exploration of selected topics and their application. Electrical variables, circuit laws, nonlinear and linear elements, ideal and real sources, transducers, operational amplifiers in simple circuits, external behavior of diodes and transistors, first order RC and RL circuits. Digital representation of a signal, digital logic gates, flipflops. A lab is an integral part of the course. Required of electrical engineering and computer engineering majors.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MATH UN1101 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E1201",
+      "course_number": "ELEN 1201",
+      "section_call_number": "001/11182",
+      "times": "T Th 4:10pm - 5:25pm",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "David Vallancourt",
+      "points": "3.50",
+      "enrollment_raw": "102/120",
+      "enrollment_current": 102,
+      "enrollment_capacity": 120
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E1201",
+      "course_number": "ELEN 1201",
+      "section_call_number": "001/11494",
+      "times": "M W 4:10pm - 5:25pm",
+      "location": "501 Northwest Corner",
+      "instructor": "David Vallancourt",
+      "points": "3.50",
+      "enrollment_raw": "143/160",
+      "enrollment_current": 143,
+      "enrollment_capacity": 160
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E1201 INTRO-ELECTRICAL ENGINEERING. 3.50 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "087c6c594949427d4c023ed7f5b282a469919cbd",
+  "course_uid": "087c6c594949427d4c023ed7f5b282a469919cbd",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4203",
+  "title": "GRAPH THEORY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "General introduction to graph theory. Isomorphism testing, algebraic specification, symmetries, spanning trees, traversability, planarity, drawings on higher-order surfaces, colorings, extremal graphs, random graphs, graphical measurement, directed graphs, Burnside-Polya counting, voltage graph theory.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W3203 ) COMS W3203",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4203 GRAPH THEORY. 3.00 points ."
+}

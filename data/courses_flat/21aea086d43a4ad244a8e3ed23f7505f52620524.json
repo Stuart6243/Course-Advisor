@@ -1,0 +1,36 @@
+{
+  "dedup_key": "21aea086d43a4ad244a8e3ed23f7505f52620524",
+  "course_uid": "21aea086d43a4ad244a8e3ed23f7505f52620524",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EACE E3255",
+  "title": "ENVIRONMENTAL CONTROL AND POLLUTION REDUCTION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Sources of solid/gaseous air pollution and the technologies used for modern methods of abatement. Air pollution and its abatement from combustion of coal, oil, and natural gas and the thermodynamics of heat engines in power generation. Catalytic emission control is contrasted to thermal processes for abating carbon monoxide, hydrocarbons, oxides of nitrogen and sulfur from vehicles and stationary sources. Processing of petroleum for generating fuels. Technological challenges of controlling greenhouse gas emissions. Biomass and the hydrogen economy coupled with fuel cells as future sources of energy",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EACE E3255",
+      "course_number": "EACE 3255",
+      "section_call_number": "001/12801",
+      "times": "M W 10:10am - 11:25am",
+      "location": "304 Hamilton Hall",
+      "instructor": "Robert Farrauto",
+      "points": "3.00",
+      "enrollment_raw": "24/40",
+      "enrollment_current": 24,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EACE E3255 ENVIRONMENTAL CONTROL AND POLLUTION REDUCTION. 3.00 points ."
+}

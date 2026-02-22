@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1d2491846af7d089c7bb43b730fc15e06363f388",
+  "course_uid": "1d2491846af7d089c7bb43b730fc15e06363f388",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4613",
+  "title": "Industrial Automation",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to industrial automation technologies. Recognizing, modeling and integration of industrial automation problems. Hands-on experiments with robots, computer vision, data management and programming. Sensors engineering and measurement tools; process control; automation hardware and software architectures; programmable logic controllers",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4613",
+      "course_number": "MECE 4613",
+      "section_call_number": "001/12162",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Ali Dadgar",
+      "points": "3.00",
+      "enrollment_raw": "42/42",
+      "enrollment_current": 42,
+      "enrollment_capacity": 42
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4613 Industrial Automation. 3.00 points ."
+}

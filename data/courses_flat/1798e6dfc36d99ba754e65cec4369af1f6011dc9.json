@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1798e6dfc36d99ba754e65cec4369af1f6011dc9",
+  "course_uid": "1798e6dfc36d99ba754e65cec4369af1f6011dc9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4870",
+  "title": "Synthetic Organogenesis",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The goal of synthetic organogenesis is to use stem cells to reconstitute aspects of embryo development and organ formation in vitro. Examines the molecular basis of human embryogenesis. Introduces synthetic organogenesis as an interdisciplinary field. Students learn to recognize generic molecular mechanisms behind signaling and cell lineage specification. Covers recent advances in applying engineering and contemporary biology to creating organoids and organs on chips using human stem cells.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Any quantitative undergraduate course with elements of biology, such as Chemistry, Biochemical Engineering/Biochemistry, Biophysics, but also at the instructor’s permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4870",
+      "course_number": "CHEN 4870",
+      "section_call_number": "001/12787",
+      "times": "T 4:10pm - 6:55pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Mijo Simunovic",
+      "points": "3.00",
+      "enrollment_raw": "31/45",
+      "enrollment_current": 31,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4870 Synthetic Organogenesis. 3.00 points ."
+}

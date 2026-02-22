@@ -1,0 +1,49 @@
+{
+  "dedup_key": "1b3875110426c6ffc6a1725a520b9b5e38efec98",
+  "course_uid": "1b3875110426c6ffc6a1725a520b9b5e38efec98",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4115",
+  "title": "PROGRAMMING LANG ＆ TRANSLATORS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Modern programming languages and compiler design. Imperative, object-oriented, declarative, functional, and scripting languages. Language syntax, control structures, data types, procedures and parameters, binding, scope, run-time organization, and exception handling. Implementation of language translation tools including compilers and interpreters. Lexical, syntactic and semantic analysis; code generation; introduction to code optimization. Teams implement a language and its compiler.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W3134 ) or ( COMS W3136 ) or ( COMS W3137 ) or ( COMS W3261 and CSEE W3827 ) Or the instructor's permission",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4115",
+      "course_number": "COMS 4115",
+      "section_call_number": "001/12832",
+      "times": "M 1:10pm - 3:40pm",
+      "location": "417 International Affairs Bldg",
+      "instructor": "Hubertus Franke",
+      "points": "3.00",
+      "enrollment_raw": "47/110",
+      "enrollment_current": 47,
+      "enrollment_capacity": 110
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4115",
+      "course_number": "COMS 4115",
+      "section_call_number": "V01/17906",
+      "times": "Hubertus Franke",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4115 PROGRAMMING LANG ＆ TRANSLATORS. 3.00 points ."
+}

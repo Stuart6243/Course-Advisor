@@ -1,0 +1,36 @@
+{
+  "dedup_key": "19473335f697f067752361c9a8df570fac26fc98",
+  "course_uid": "19473335f697f067752361c9a8df570fac26fc98",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3801",
+  "title": "SIGNALS AND SYSTEMS",
+  "points_raw": "3.50 points",
+  "points_min": 3.5,
+  "points_max": 3.5,
+  "description": "Modeling, description, and classification of signals and systems. Continuous-time systems. Time domain analysis, convolution. Frequency domain analysis, transfer functions. Fourier series. Fourier and Laplace transforms. Discrete-time systems and the Z transform.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: APMA E2000 and MATH UN1201 Corequisites: ELEN E3084",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3801",
+      "course_number": "ELEN 3801",
+      "section_call_number": "001/13660",
+      "times": "T Th 7:10pm - 8:25pm",
+      "location": "428 Pupin Laboratories",
+      "instructor": "Xiaodong Wang",
+      "points": "3.50",
+      "enrollment_raw": "106/147",
+      "enrollment_current": 106,
+      "enrollment_capacity": 147
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3801 SIGNALS AND SYSTEMS. 3.50 points ."
+}

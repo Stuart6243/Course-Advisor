@@ -1,0 +1,22 @@
+{
+  "dedup_key": "0918df73024a9d1e0222fa0eff9d5cd9b76f1627",
+  "course_uid": "0918df73024a9d1e0222fa0eff9d5cd9b76f1627",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4585",
+  "title": "Optical Microscopy for Biomedical Research",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced optical microscopy techniques and their applications in biomedical research, scientific foundations, engineering principles, state-of-the-art techniques.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( BMEN E3010 and BMEN E3020 and BIOL UN2005 and BIOL UN2006 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4585 Optical Microscopy for Biomedical Research. 3.00 points ."
+}

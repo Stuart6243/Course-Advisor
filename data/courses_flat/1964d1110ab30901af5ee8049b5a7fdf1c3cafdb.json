@@ -1,0 +1,22 @@
+{
+  "dedup_key": "1964d1110ab30901af5ee8049b5a7fdf1c3cafdb",
+  "course_uid": "1964d1110ab30901af5ee8049b5a7fdf1c3cafdb",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4430",
+  "title": "AUTOMOTIVE DYNAMICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Recommended: ENME E3100 or E3106 . Reviews fundamentals of vehicle dynamics. A systems-based engineering approach to explore areas of: tire characteristics, aerodynamics, stability and control, wheel loads, ride and roll rates, suspension geometry, and dampers. A high-performance vehicle (racecar) platform used as an example to review topics.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ENME E3105 ) or or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4430 AUTOMOTIVE DYNAMICS. 3.00 points ."
+}

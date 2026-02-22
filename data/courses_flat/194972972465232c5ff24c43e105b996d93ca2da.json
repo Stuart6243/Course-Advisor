@@ -1,0 +1,22 @@
+{
+  "dedup_key": "194972972465232c5ff24c43e105b996d93ca2da",
+  "course_uid": "194972972465232c5ff24c43e105b996d93ca2da",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4165",
+  "title": "COMPUT TECHNIQUES-PIXEL PROCSS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Intended for graduate students and advanced undergraduates. An intensive introduction to image processing - digital filtering theory, image enhancement, image reconstruction, antialiasing, warping, and the state of the art in special effects. Topics from the basis of high-quality rendering in computer graphics and of low-level processing for computer vision, remote sensing, and medical imaging. Emphasizes computational techniques for implementing useful image-processing functions",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: COMS W3137 , COMS W3251 recommended, and a good working knowledge of UNIX and C.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4165 COMPUT TECHNIQUES-PIXEL PROCSS. 3.00 points ."
+}

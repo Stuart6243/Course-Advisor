@@ -1,0 +1,36 @@
+{
+  "dedup_key": "10a2dc098f23957feea00e8f37d091e15dbea6e5",
+  "course_uid": "10a2dc098f23957feea00e8f37d091e15dbea6e5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4949",
+  "title": "Chemical Engineering of Wine Making",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Course aimed at seniors and graduate students. Provides classroom experience on wine making. Wine making chemistry, design, safety, and process control are emphasized in classroom instruction. Applies basic chemical engineering concepts to chemical reactivity in wine making. Written and oral reports required. Wine making can be used anywhere in the world and the principles of the fermentation extend into other industries. Academic and industry contributions to the content of chemical engineering concepts in wine making include chemical reactivity hazards, industrial hygiene, risk assessment, inherently safer design, and hazard operability analysis. With the ultimate aim of leaning a skill set and safer operations in the chemical engineering profession, the applications of wine making will be emphasized.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: CHEN E3230",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4949",
+      "course_number": "CHEN 4949",
+      "section_call_number": "001/12996",
+      "times": "Th 2:40pm - 5:25pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Robert Bozic",
+      "points": "3.00",
+      "enrollment_raw": "9/30",
+      "enrollment_current": 9,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4949 Chemical Engineering of Wine Making. 3.00 points ."
+}

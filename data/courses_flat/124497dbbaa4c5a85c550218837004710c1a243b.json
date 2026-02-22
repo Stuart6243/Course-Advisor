@@ -1,0 +1,49 @@
+{
+  "dedup_key": "124497dbbaa4c5a85c550218837004710c1a243b",
+  "course_uid": "124497dbbaa4c5a85c550218837004710c1a243b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4670",
+  "title": "CHEMICAL ENGINEERING DATA ANALYSIS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Course is aimed at senior undergraduate and graduate students. Introduces fundamental concepts of Bayesian data analysis as applied to chemical engineering problems. Covers basic elements of probability theory, parameter estimation, model selection, and experimental design. Advanced topics such as nonparametric estimation and Markov chain Monte Carlo (MEME) techniques are introduced. Example problems and case studies drawn from chemical engineering practice are used to highlight the practical relevance of the material. Theory reduced to practice through programming in Mathematica. Course grade based on midterm and final exams, biweekly homework assignments, and final team project.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: CHEN E3230 ; CHEN E3230 or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4670",
+      "course_number": "CHEN 4670",
+      "section_call_number": "001/12741",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Kyle Bishop",
+      "points": "3.00",
+      "enrollment_raw": "10/50",
+      "enrollment_current": 10,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4670",
+      "course_number": "CHEN 4670",
+      "section_call_number": "V01/16643",
+      "times": "Kyle Bishop",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4670 CHEMICAL ENGINEERING DATA ANALYSIS. 3.00 points ."
+}

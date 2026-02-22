@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1ee08b1c4d7d727e16978445cc7ea79593f93052",
+  "course_uid": "1ee08b1c4d7d727e16978445cc7ea79593f93052",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BINF GU4001",
+  "title": "INTRO COMP BIOMED ＆ HEALTH",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course offers a comprehensive introduction to the core computational methods driving modern biomedical research and health data science. As biological and clinical datasets grow in scale and complexity—from genomic sequences and molecular profiles to electronic health records (EHRs) and consumer health data—this course equips students with the essential computational foundations to model, analyze, and interpret high-dimensional biomedical data. Organized around key algorithmic challenges spanning Clinical Informatics, Consumer Health Informatics, and Bioinformatics, the course focuses on the design and application of algorithms and statistical models to solve real-world biomedical problems. Lectures emphasize practical techniques and showcase their use across diverse biomedical data types. Designed for advanced undergraduates and graduate students in biomedical informatics, computer science, biomedical engineering, applied mathematics, and related fields, this course builds a rigorous understanding of computational biomedicine. It serves as a core requirement for the Biomedical Informatics PhD and master’s programs and is cross-listed with Computer Science. Students interested in careers in bioinformatics, health data science, computational biology, or biomedical AI will find this course especially valuable. As biomedical data continue to expand in size, diversity, and impact, this course provides a critical foundation in the algorithmic, statistical, and computational tools needed to advance the future of research at the intersection of computation and human health",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BINF GU4001",
+      "course_number": "BINF 4001",
+      "section_call_number": "001/10953",
+      "times": "T Th 4:10pm - 5:25pm",
+      "location": "606 Martin Luther King Building",
+      "instructor": "Gamze Gursoy",
+      "points": "3.00",
+      "enrollment_raw": "38/40",
+      "enrollment_current": 38,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BINF GU4001 INTRO COMP BIOMED ＆ HEALTH. 3.00 points ."
+}

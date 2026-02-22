@@ -1,0 +1,49 @@
+{
+  "dedup_key": "12e0cbcf9462ba72bdb5eb0ed4efaf5d1bb80c53",
+  "course_uid": "12e0cbcf9462ba72bdb5eb0ed4efaf5d1bb80c53",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Only for ME graduate students who need relevant off-campus work experience as part of their program of study as determined by the instructor. Written application must be made prior to registration outlining proposed study program. Final reports required. May not be taken for pass/fail credit or audited. International students must consult with the International Students and Scholars Office",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor’s written permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4999",
+      "course_number": "MECE 4999",
+      "section_call_number": "001/13165",
+      "times": "Matei Ciocarlie",
+      "location": "",
+      "instructor": "1.00",
+      "points": "5/15",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4999",
+      "course_number": "MECE 4999",
+      "section_call_number": "001/20396",
+      "times": "Michael Burke",
+      "location": "",
+      "instructor": "1.00",
+      "points": "0/15",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4999 FIELDWORK. 1.00 point ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1bec37396c84e1caa190f320f3173220dbc20e73",
+  "course_uid": "1bec37396c84e1caa190f320f3173220dbc20e73",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E3800",
+  "title": "EARTH ＆ ENVIR ENGIN LAB I",
+  "points_raw": "2.00 points",
+  "points_min": 2.0,
+  "points_max": 2.0,
+  "description": "Experiments on fundamental aspects of Earth and environmental engineering with emphasis on the applications of chemistry, biology and thermodynamics to environmental processes: energy generation, analysis and purification of water, environmental biology, and biochemical treatment of wastes. Students will learn the laboratory procedures and use analytical equipment firsthand, hence demonstrating experimentally the theoretical concepts learned in class.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 1.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E3800",
+      "course_number": "EAEE 3800",
+      "section_call_number": "001/12886",
+      "times": "T Th 11:00am - 1:00pm",
+      "location": "332 Uris Hall",
+      "instructor": "Luana Llanes",
+      "points": "2.00",
+      "enrollment_raw": "7/15",
+      "enrollment_current": 7,
+      "enrollment_capacity": 15
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E3800 EARTH ＆ ENVIR ENGIN LAB I. 2.00 points ."
+}

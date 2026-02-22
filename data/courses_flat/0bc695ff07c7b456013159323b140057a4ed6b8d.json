@@ -1,0 +1,36 @@
+{
+  "dedup_key": "0bc695ff07c7b456013159323b140057a4ed6b8d",
+  "course_uid": "0bc695ff07c7b456013159323b140057a4ed6b8d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E6370",
+  "title": "TURBULENCE THEORY ＆ MODELING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Turbulence phenomenology; spatial and temporal scales in turbulent flows; statistical description, filtering and Reynolds decomposition, equations governing the resolved flow, fluctuations and their energetics; turbulence closure problem for RANS and LES; two equation turbulence models and second moment closures",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ENME E3161 ) or ENME E3161 Ordinary and partial differential equations.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E6370",
+      "course_number": "ENME 6370",
+      "section_call_number": "001/13077",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "C01 80 Claremont",
+      "instructor": "Marco Giometto",
+      "points": "3.00",
+      "enrollment_raw": "12/25",
+      "enrollment_current": 12,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E6370 TURBULENCE THEORY ＆ MODELING. 3.00 points ."
+}

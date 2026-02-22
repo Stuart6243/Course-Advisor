@@ -1,0 +1,36 @@
+{
+  "dedup_key": "20b7ddf75e0b7730f101a5a568496e40ac2ef7b5",
+  "course_uid": "20b7ddf75e0b7730f101a5a568496e40ac2ef7b5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMCS E4575",
+  "title": "High-dimensional statistics for biomedical data",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Statistical machine learning techniques and advanced mathematical concepts for analysis of high-dimensional biomedical data. Topics include optimal transport and probabilistic modeling for multi-modal genomic and imaging data integration and analysis of spatial and temporal dynamics. Programming assignments, problem sets, and a final project will be required.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( APMA E2000 and COMS W4771 and MATH UN2010 ) or ( APMA E2101 ) Strong background in Python (or R) programming- Background in probability/statistics is recommended.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMCS E4575",
+      "course_number": "BMCS 4575",
+      "section_call_number": "001/13326",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Andrew Blumberg, Elham Azizi",
+      "points": "3.00",
+      "enrollment_raw": "20/40",
+      "enrollment_current": 20,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMCS E4575 High-dimensional statistics for biomedical data. 3.00 points ."
+}

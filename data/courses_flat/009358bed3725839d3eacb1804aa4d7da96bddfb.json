@@ -1,0 +1,24 @@
+{
+  "dedup_key": "009358bed3725839d3eacb1804aa4d7da96bddfb",
+  "course_uid": "009358bed3725839d3eacb1804aa4d7da96bddfb",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4580",
+  "title": "ARTIFICIAL INTELLIGENCE IN CHEMICAL ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "CHEN E4580 ARTIFICIAL INTELLIGENCE IN CHEMICAL ENGINEERING. 3.00 points ."
+}

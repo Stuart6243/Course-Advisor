@@ -1,0 +1,36 @@
+{
+  "dedup_key": "0c8e168f067cf1475de5259c99e4200dfd3e7b2f",
+  "course_uid": "0c8e168f067cf1475de5259c99e4200dfd3e7b2f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4140",
+  "title": "ENVIRONMENTAL PHYSICOCHEMICAL PROCESSES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals and applications of key physicochemical processes relevant to water quality engineering (such as water treatment, waste water treatment/reuse/recycling, desalination) and the natural environment (e.g. lakes, rivers, groundwater).",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( EACE E4163 and EACE E4252 ) or the equivalent, or the instructor's permission",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4140",
+      "course_number": "EAEE 4140",
+      "section_call_number": "001/13015",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "333 Uris Hall",
+      "instructor": "Yin Yip Ngai",
+      "points": "3.00",
+      "enrollment_raw": "7/35",
+      "enrollment_current": 7,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4140 ENVIRONMENTAL PHYSICOCHEMICAL PROCESSES. 3.00 points ."
+}

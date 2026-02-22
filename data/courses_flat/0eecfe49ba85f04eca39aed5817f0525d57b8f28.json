@@ -1,0 +1,22 @@
+{
+  "dedup_key": "0eecfe49ba85f04eca39aed5817f0525d57b8f28",
+  "course_uid": "0eecfe49ba85f04eca39aed5817f0525d57b8f28",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Only for SEAS computer science undergraduate students who include relevant off campus work experience as part of their approved program of study. Final report and letter of evaluation may be required. May not be used as a technical or nontechnical elective or as a GTE (general technical elective). May not be taken for pass/fail credit or audited",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Obtained internship and approval from faculty advisor May be repeated for credit, but no more than 3 total points may be used toward the 128-credit degree requirement.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3999 FIELDWORK. 1.00 point ."
+}

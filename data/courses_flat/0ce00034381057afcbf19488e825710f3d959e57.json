@@ -1,0 +1,36 @@
+{
+  "dedup_key": "0ce00034381057afcbf19488e825710f3d959e57",
+  "course_uid": "0ce00034381057afcbf19488e825710f3d959e57",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEE E4252",
+  "title": "INTRO-SURFACE AND COLLOID SCI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The principles of surfaces and colloid chemistry critical to range of technologies indispensable to modern life. Surface and colloid chemistry has significance to life sciences, pharmaceuticals, agriculture, environmental remediation and waste management, earth resources recovery, electronics, advanced materials, enhanced oil recovery, and emerging extraterrestrial mining. Topics include: thermodynamics of surfaces, properties of surfactant solutions and surface films, electrokinetic phenomena at interfaces, principles of adsorption and mass transfer and modern experimental techniques. Leads to deeper understanding of interfacial engineering, particulate dispersions, emulsions, foams, aerosols, polymers in solution, and soft matter topics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Elemental physical chemistry.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEE E4252",
+      "course_number": "CHEE 4252",
+      "section_call_number": "001/13490",
+      "times": "M W 9:10am - 10:25am",
+      "location": "233 Seeley W. Mudd Building",
+      "instructor": "Oscar Nordness",
+      "points": "3.00",
+      "enrollment_raw": "16/30",
+      "enrollment_current": 16,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEE E4252 INTRO-SURFACE AND COLLOID SCI. 3.00 points ."
+}

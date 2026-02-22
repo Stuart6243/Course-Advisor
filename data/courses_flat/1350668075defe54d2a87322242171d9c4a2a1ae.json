@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1350668075defe54d2a87322242171d9c4a2a1ae",
+  "course_uid": "1350668075defe54d2a87322242171d9c4a2a1ae",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4002",
+  "title": "ALTERNATIVE ENERGY RESOURCES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An engineering and economic analysis of past, present and future energy resources. Technological options and their role in the world energy markets. Understanding limits of energy and power density and its impact of resource adoption and feasibility. Comparison of renewable and non-renewable energy resources and analysis of the consequences of various technological choices and constraints. Economic considerations, energy availability, and the environmental consequences of large-scale, widespread use of each particular technology. Critical analysis of carbon dioxide capture and carbon dioxide disposal as a means of sustaining the fossil fuel options in comparison to dramatic increase of electrified resources",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4002",
+      "course_number": "EAEE 4002",
+      "section_call_number": "001/12894",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "428 Pupin Laboratories",
+      "instructor": "Dan Steingart",
+      "points": "3.00",
+      "enrollment_raw": "99/100",
+      "enrollment_current": 99,
+      "enrollment_capacity": 100
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4002 ALTERNATIVE ENERGY RESOURCES. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "0964bbfda011c6a4d9538b3db4263e94010abd34",
+  "course_uid": "0964bbfda011c6a4d9538b3db4263e94010abd34",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E9601",
+  "title": "Seminar in Data-Driven Analysis and Computation",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics and recent developments in mathematical techniques and computational tools for data science and engineering problems.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Open to doctoral candidates and qualified M.S.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect.: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E9601 Seminar in Data-Driven Analysis and Computation. 3.00 points ."
+}

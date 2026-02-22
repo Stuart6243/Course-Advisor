@@ -1,0 +1,36 @@
+{
+  "dedup_key": "13e0364b21aa8987d83e8230895bc12efc68cefc",
+  "course_uid": "13e0364b21aa8987d83e8230895bc12efc68cefc",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4901",
+  "title": "ENVIRONMENTAL MICROBIOLOGY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basic microbiological principles; microbial metabolism; identification and interactions of microbial populations responsible for the biotransformation of pollutants; mathematical modeling of microbially mediated processes; biotechnology and engineering applications using microbial systems for pollution control",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E4901",
+      "course_number": "EAEE 4901",
+      "section_call_number": "001/13484",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Preom Sarkar",
+      "points": "3.00",
+      "enrollment_raw": "4/25",
+      "enrollment_current": 4,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4901 ENVIRONMENTAL MICROBIOLOGY. 3.00 points ."
+}

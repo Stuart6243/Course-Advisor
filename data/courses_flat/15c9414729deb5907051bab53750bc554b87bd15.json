@@ -1,0 +1,36 @@
+{
+  "dedup_key": "15c9414729deb5907051bab53750bc554b87bd15",
+  "course_uid": "15c9414729deb5907051bab53750bc554b87bd15",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E3121",
+  "title": "STRUCTURAL ANALYSIS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Methods of structural analysis. Trusses, arches, cables, frames; influence lines; deflections; force method; displacement method; computer applications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E3121",
+      "course_number": "CIEN 3121",
+      "section_call_number": "001/12150",
+      "times": "M W 10:10am - 11:25am",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Maria Feng",
+      "points": "3.00",
+      "enrollment_raw": "14/35",
+      "enrollment_current": 14,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E3121 STRUCTURAL ANALYSIS. 3.00 points ."
+}

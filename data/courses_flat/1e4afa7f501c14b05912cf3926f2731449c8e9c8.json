@@ -1,0 +1,49 @@
+{
+  "dedup_key": "1e4afa7f501c14b05912cf3926f2731449c8e9c8",
+  "course_uid": "1e4afa7f501c14b05912cf3926f2731449c8e9c8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/interdisciplinary-engineering-courses/",
+  "source_page_title": "Interdisciplinary Engineering Courses < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENGI E1102",
+  "title": "THE ART OF ENGINEERING",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Bridge between the science-oriented, high school way of thinking and the engineering point of view. Fundamental concepts of math and science reviewed and re-framed in an engineering context; numerous examples of each concept drawn from all disciplines of engineering represented at Columbia. Non-technical issues of importance in professional engineering practice such as ethics, engineering project management, and societal impact. Only open to Columbia Engineering first-year undergraduate students or second-year transfer students. Lab fee: $150",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ENGI E1102",
+      "course_number": "ENGI 1102",
+      "section_call_number": "001/11987",
+      "times": "F 11:00am - 1:00pm",
+      "location": "301 Uris Hall",
+      "instructor": "David Vallancourt",
+      "points": "4.00",
+      "enrollment_raw": "257/259",
+      "enrollment_current": 257,
+      "enrollment_capacity": 259
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENGI E1102",
+      "course_number": "ENGI 1102",
+      "section_call_number": "001/10889",
+      "times": "F 11:00am - 1:00pm",
+      "location": "301 Pupin Laboratories",
+      "instructor": "David Vallancourt",
+      "points": "4.00",
+      "enrollment_raw": "251/258",
+      "enrollment_current": 251,
+      "enrollment_capacity": 258
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENGI E1102 THE ART OF ENGINEERING. 4.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "09972cbf09bb5ad30415002f6c606a0c061f482a",
+  "course_uid": "09972cbf09bb5ad30415002f6c606a0c061f482a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4944",
+  "title": "PRNCPLS OF DEVICE MICROFABRCTN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Science and technology of conventional and advanced microfabrication techniques for electronics, integrated and discrete components. Topics include diffusion; ion implantation, thin-film growth including oxides and metals, molecular beam and liquid-phase epitaxy; optical and advanced lithography; and plasma and wet etching",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E4944",
+      "course_number": "ELEN 4944",
+      "section_call_number": "001/19767",
+      "times": "M W 10:10am - 11:25am",
+      "location": "703 Hamilton Hall",
+      "instructor": "Ioannis Kymissis, Jacob Trevino, Oliver Durnan",
+      "points": "3.00",
+      "enrollment_raw": "29/50",
+      "enrollment_current": 29,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4944 PRNCPLS OF DEVICE MICROFABRCTN. 3.00 points ."
+}

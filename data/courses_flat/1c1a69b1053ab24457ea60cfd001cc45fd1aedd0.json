@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1c1a69b1053ab24457ea60cfd001cc45fd1aedd0",
+  "course_uid": "1c1a69b1053ab24457ea60cfd001cc45fd1aedd0",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4735",
+  "title": "Structured and Hybrid Products",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Conceptual and practical understanding of structured and hybrid products from the standpoint of relevant risk factors, design goals and characteristics, pricing, hedging and risk management. Detailed analysis of the underlying cash-flows, embedded derivative instruments and various structural features of these transactions, both from the investor and issuer perspectives, and analysis of the impact of the prevailing market conditions and parameters on their pricing and risk characteristics. Numerical methods for valuing and managing risk of structured/hybrid products and their embedded derivatives and their application to equity, interest rates, commodities and currencies, inflation and credit-related products. Conceptual and mathematical principles underlying these techniques, and practical issues that arise in their implementations in the Microsoft Excel/VBA and other programming environments. Special contractual provisions often encountered in structured and hybrid transactions, and attempt to incorporate yield curves, volatility smile, and other features of the underlying processes into pricing and implementation framework for these products.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( IEOR E4700 ) Refer to course syllabus.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4735",
+      "course_number": "IEOR 4735",
+      "section_call_number": "001/11846",
+      "times": "Th 7:10pm - 9:40pm",
+      "location": "329 Pupin Laboratories",
+      "instructor": "Alireza Javaheri",
+      "points": "3",
+      "enrollment_raw": "79/100",
+      "enrollment_current": 79,
+      "enrollment_capacity": 100
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4735 Structured and Hybrid Products. 3 points ."
+}
