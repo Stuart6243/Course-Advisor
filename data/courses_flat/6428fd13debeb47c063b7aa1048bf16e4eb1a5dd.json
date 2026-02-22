@@ -1,0 +1,36 @@
+{
+  "dedup_key": "6428fd13debeb47c063b7aa1048bf16e4eb1a5dd",
+  "course_uid": "6428fd13debeb47c063b7aa1048bf16e4eb1a5dd",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E9900",
+  "title": "DOCTORAL DISSERTATION",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "A candidate for the doctorate may be required to register for this course every term after the students coursework has been completed and until the dissertation has been accepted",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E9900",
+      "course_number": "CIEN 9900",
+      "section_call_number": "001/17650",
+      "times": "Raimondo Betti",
+      "location": "",
+      "instructor": "0.00",
+      "points": "1/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E9900 DOCTORAL DISSERTATION. 0.00 points ."
+}

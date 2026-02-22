@@ -1,0 +1,22 @@
+{
+  "dedup_key": "7111a2966ef89c36e2d9b54b57e94f91e925ac72",
+  "course_uid": "7111a2966ef89c36e2d9b54b57e94f91e925ac72",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MEEM E6432",
+  "title": "SMALL-SCALE MECH BEHAVIOR",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "strain constitutive relations to predict mechanical behavior. Topics include variational calculus, deformation and vibration of beam, strings, plates, and membranes; fracture, delamination, bulging, buckling of thin films, among others. Thermodynamics of solids will be reviewed to provide the basis for a detailed discussion of nonlinear elastic behavior as well as the study of the equilibrium and stability of surfaces",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: APMA E4200 AND ENME E3113 ; ENME E3113 or equivalent; APMA E4200 or equivalent Mechanics of small-scale materials and structures require nonlinear kinematics and/or nonlinear stress vs.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MEEM E6432 SMALL-SCALE MECH BEHAVIOR. 3.00 points ."
+}

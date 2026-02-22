@@ -1,0 +1,49 @@
+{
+  "dedup_key": "58320b4889ab764f25b3a41e814bd62936206b21",
+  "course_uid": "58320b4889ab764f25b3a41e814bd62936206b21",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4111",
+  "title": "OPERATIONS CONSULTING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Aims to develop and harness the modeling, analytical, and managerial skills of engineering students and apply them to improve the operations of both service and manufacturing firms. Structured as a hands-on laboratory in which students \"learn by doing\" on real-world consulting projects (October to May). The student teams focus on identifying, modeling, and testing (and sometimes implementing) operational improvements and innovations with high potential to enhance the profitability and/or achieve sustainable competitive advantage for their sponsor companies. The course is targeted toward students planning careers in technical consulting (including operations consulting) and management consulting, or pursuing positions as business analysts in operations, logistics, supply chain and revenue management functions, positions in general management, and future entrepreneurs.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Probability and statistics at the level of IEOR E3658 and E4307 or STAT GU4001 , and Deterministic Models at the level of IEOR E3608 or IEOR E4004 , or instructor permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4111",
+      "course_number": "IEOR 4111",
+      "section_call_number": "001/11807",
+      "times": "Th 7:10pm - 9:40pm",
+      "location": "501 Northwest Corner",
+      "instructor": "Soulaymane Kachani",
+      "points": "3.00",
+      "enrollment_raw": "91/110",
+      "enrollment_current": 91,
+      "enrollment_capacity": 110
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4111",
+      "course_number": "IEOR 4111",
+      "section_call_number": "001/13279",
+      "times": "Th 7:10pm - 9:40pm",
+      "location": "501 Northwest Corner",
+      "instructor": "Soulaymane Kachani",
+      "points": "3.00",
+      "enrollment_raw": "0/90",
+      "enrollment_current": 0,
+      "enrollment_capacity": 90
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4111 OPERATIONS CONSULTING. 3.00 points ."
+}

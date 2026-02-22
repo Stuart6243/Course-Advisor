@@ -1,0 +1,36 @@
+{
+  "dedup_key": "60af935f6469d219a8a3bc78f5eeb79f4bcaf4f4",
+  "course_uid": "60af935f6469d219a8a3bc78f5eeb79f4bcaf4f4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "DROM B8816",
+  "title": "Quantitative Pricing ＆ Revenue",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Knowledge in managerial statistics, probability, probability distributions, expected value calculations, etc Quantitative pricing and revenue analytics collectively refers to the set of practices and tools that firms in various industries use to quantitatively model consumer preferences, segment their market, and tactically optimize (often in micro targeted or personalized manner) their product assortment, pricing, and promotion strategies. The origins of this field, often referred to as revenue management as it is also called, are in the airline industry during the late 80s. The prototypical question is how a firm should set and update pricing and product availability decisions across its various selling channels in order to maximize its profitability. In the airline industry, as most of us know, tickets for the same flight may be sold at many different fares, the availability of which is changing as a function of purchase restrictions, the forecasted future demand, and the number of unsold seats. The adoption of such systems has transformed the transportation and hospitality industries, and is increasingly important in retail, telecommunications, entertainment, financial services, health care, manufacturing, as well as on-line advertising, online retailing, and online markets. In parallel, pricing and revenue optimization has become a rapidly expanding practice in consulting services, and a growing area of software and IT development. We will be doing a hands-on dive into the above tools in the context of 2-3 case studies and datasets, in conjunction with lectures to set the stage. The case studies will cover markdown pricing for a retailer, demand and inventory data for a self-storage company, customer research data of a mortgage lender, and peak load pricing data for a highway toll booth.Through this course, students will be able to model and identify opportunities for revenue optimization in different business contexts. As the ensuing outline reveals, most of the topics covered in the course are either directly or indirectly related to customer segmentation, demand modeling, and tactical price optimization.TextbookOne recommended book for the course is by Robert Phillips titled \"Pricing and Revenue Optimization. This will primarily be done in teams, much of it in class, and with the help of the TA(s) and the professor. Sample code will be shared for various parts of these analyses. Course deliverables align. Apart from class participation (30％ of the total grade), the other course deliverables consist of a set of in-class (homework) assignments (40％) and a take-home final exam (30％).Class participation: I will routinely ask that you review some material, or watch some short recor",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Familiar with the content covered in the managerial statistics, business analytics, managerial economics and marketing core courses.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "DROM B8816",
+      "course_number": "DROM 8816",
+      "section_call_number": "060/16470",
+      "times": "W 6:00pm - 9:00pm",
+      "location": "420 Geffen Hall",
+      "instructor": "Wei Ke",
+      "points": "1.50",
+      "enrollment_raw": "42/74",
+      "enrollment_current": 42,
+      "enrollment_capacity": 74
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "DROM B8816 Quantitative Pricing ＆ Revenue. 1.50 point ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "6c2fa51d4ea2c3b28d73f0c1329e8801a27bf8a8",
+  "course_uid": "6c2fa51d4ea2c3b28d73f0c1329e8801a27bf8a8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E3000",
+  "title": "THE ART OF STRUCTURAL DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basic scientific and engineering principles used for the design of buildings, bridges, and other parts of the built infrastructure. Application of principles to analysis and design of actual large-scale structures. Coverage of the history of major structural design innovations and of the engineers who introduced them. Critical examination of the unique aesthetic/artistic perspectives inherent in structural design. Consideration of management, socioeconomic, and ethical issues involved in design and construction of large-scale structures. Introduction to recent developments in sustainable engineering, including green building design and adaptable structural systems",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E3000",
+      "course_number": "CIEN 3000",
+      "section_call_number": "001/11695",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "313 Fayerweather",
+      "instructor": "George Deodatis",
+      "points": "3.00",
+      "enrollment_raw": "60/75",
+      "enrollment_current": 60,
+      "enrollment_capacity": 75
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E3000 THE ART OF STRUCTURAL DESIGN. 3.00 points ."
+}

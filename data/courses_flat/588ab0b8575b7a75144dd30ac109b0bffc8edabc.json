@@ -1,0 +1,36 @@
+{
+  "dedup_key": "588ab0b8575b7a75144dd30ac109b0bffc8edabc",
+  "course_uid": "588ab0b8575b7a75144dd30ac109b0bffc8edabc",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4411",
+  "title": "FUNDAMENTALS OF PHOTONICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Planar resonators. Photons and photon streams. Photons and atoms: energy levels and band structure; interactions of photons with matter; absorption, stimulated and spontaneous emission; thermal light, luminescence light. Laser amplifiers: gain, saturation, and phase shift; rate equations; pumping. Lasers: theory of oscillation; laser output characteristics. Photons in semiconductors: generation, recombination, and injection; heterostructures; absorption and gain coefficients. Semiconductor photon sources: LEDs; semiconductor optical amplifiers; homojunction and heterojunction laser diodes. Semiconductor photon detectors: p-n, p-i-n, and heterostructure photo diodes; avalanche photodiodes",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3401 ) or ELEN E3401 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E4411",
+      "course_number": "ELEN 4411",
+      "section_call_number": "001/14078",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "420 Pupin Laboratories",
+      "instructor": "Michal Lipson",
+      "points": "3.00",
+      "enrollment_raw": "23/50",
+      "enrollment_current": 23,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4411 FUNDAMENTALS OF PHOTONICS. 3.00 points ."
+}

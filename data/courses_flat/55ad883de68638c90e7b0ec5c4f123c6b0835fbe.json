@@ -1,0 +1,36 @@
+{
+  "dedup_key": "55ad883de68638c90e7b0ec5c4f123c6b0835fbe",
+  "course_uid": "55ad883de68638c90e7b0ec5c4f123c6b0835fbe",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E3999",
+  "title": "UNDERGRADUATE FIELDWORK",
+  "points_raw": "1.00-2.00 points",
+  "points_min": 1.0,
+  "points_max": 2.0,
+  "description": "Provides work experience on chemical engineering in relevant intern or fieldwork experience as part of their program of study as determined by the instructor. Written application must be made prior to registration outlining proposed internship/study program. A written report describing the experience and how it relates to the chemical engineering core curriculum is required. Employer feedback on student performance and the quality of the report are the basis of the grade. This course may not be taken for pass/fail or audited. May not be used as a technical or non­technical elective. May be repeated for credit, but no more than 3 points total of CHEN E3999 may be used for degree credit",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Restricted to Chemical Engineering undergraduate students.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E3999",
+      "course_number": "CHEN 3999",
+      "section_call_number": "001/20042",
+      "times": "Daniel Esposito",
+      "location": "",
+      "instructor": "1.00-2.00",
+      "points": "1/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E3999 UNDERGRADUATE FIELDWORK. 1.00-2.00 points ."
+}

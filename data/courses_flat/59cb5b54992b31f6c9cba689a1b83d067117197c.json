@@ -1,0 +1,36 @@
+{
+  "dedup_key": "59cb5b54992b31f6c9cba689a1b83d067117197c",
+  "course_uid": "59cb5b54992b31f6c9cba689a1b83d067117197c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Only EAEE graduate students who need relevant off-campus work experience as part of their program of study as determined by the instructor. Written application must be made prior to registration outlining proposed study program. Final reports required. This course may not be taken for pass/ fail credit or audited. International students must also consult with the International Students and Scholars Office",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's written permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E4999",
+      "course_number": "EAEE 4999",
+      "section_call_number": "001/19991",
+      "times": "Elizabeth Allende, Yin Yip Ngai",
+      "location": "",
+      "instructor": "1.00",
+      "points": "2/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4999 FIELDWORK. 1.00 point ."
+}

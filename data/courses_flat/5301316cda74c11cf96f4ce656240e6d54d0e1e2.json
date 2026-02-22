@@ -1,0 +1,36 @@
+{
+  "dedup_key": "5301316cda74c11cf96f4ce656240e6d54d0e1e2",
+  "course_uid": "5301316cda74c11cf96f4ce656240e6d54d0e1e2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E3201",
+  "title": "Materials Thermodynamics and Phase Diagrams",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Review of laws of thermodynamics, thermodynamic variables and relations, free energies and equilibrium in thermodynamic systems. Unary, binary, and ternary phase diagrams, compounds and intermediate phases, solid solutions and Hume-Rothery rules, relationship between phase diagrams and metastability, defects in crystals. Thermodynamics of surfaces and interfaces, effect of particle size on phase equilibria, adsorption isotherms, grain boundaries, surface energy, electrochemistry. Note: MSAE E4201 shares lectures and meeting times with E3201 and therefore, may not be taken in other semesters.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: MSAE E3010 Or equivalent or permission of the instructor",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MSAE E3201",
+      "course_number": "MSAE 3201",
+      "section_call_number": "001/12997",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Renata Wentzcovitch",
+      "points": "3.00",
+      "enrollment_raw": "8/10",
+      "enrollment_current": 8,
+      "enrollment_capacity": 10
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E3201 Materials Thermodynamics and Phase Diagrams. 3.00 points ."
+}

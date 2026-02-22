@@ -1,0 +1,22 @@
+{
+  "dedup_key": "69f7a6785911b17a551b0d67ce723500dae4f2d6",
+  "course_uid": "69f7a6785911b17a551b0d67ce723500dae4f2d6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E9301",
+  "title": "SEMINAR IN ELECTRONIC DEVICES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "candidates with instructor’s permission. Theoretical and experimental studies of semiconductor physics, devices, and technology",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Open to doctoral candidates, and to qualified M.S.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E9301 SEMINAR IN ELECTRONIC DEVICES. 3.00 points ."
+}

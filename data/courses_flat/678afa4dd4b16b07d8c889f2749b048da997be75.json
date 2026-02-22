@@ -1,0 +1,36 @@
+{
+  "dedup_key": "678afa4dd4b16b07d8c889f2749b048da997be75",
+  "course_uid": "678afa4dd4b16b07d8c889f2749b048da997be75",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4530",
+  "title": "DRUG AND GENE DELIVERY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basic polymer science, pharmacokinetics, and biomaterials, cell-substrate interactions, drug delivery system fabrication from nanoparticles to microparticles and electrospun fibrous membranes. Applications include cancer therapy, immunotherapy, gene therapy, tissue engineering, and regenerative medicine. Course readings include textbook chapters and journal papers. Homework assignments take format of assay responding to open-ended question. Term paper and 30-minute PowerPoint presentation required at end of semester",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: BMEN E3010 Application of polymers and other materials in drug and gene delivery, with focus on recent advances in field.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4530",
+      "course_number": "BMEN 4530",
+      "section_call_number": "001/13201",
+      "times": "M 1:10pm - 3:40pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Kam Leong",
+      "points": "3.00",
+      "enrollment_raw": "49/67",
+      "enrollment_current": 49,
+      "enrollment_capacity": 67
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4530 DRUG AND GENE DELIVERY. 3.00 points ."
+}

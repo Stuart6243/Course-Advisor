@@ -1,0 +1,22 @@
+{
+  "dedup_key": "63d6cde2e5dd7fce6c5ae01fd0450ee0c47909a1",
+  "course_uid": "63d6cde2e5dd7fce6c5ae01fd0450ee0c47909a1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4050",
+  "title": "ELECTROPHYS OF HUM MEMORY * NAVIGATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Human memory, including working, episodic, and procedural memory. Electrophysiology of cognition, noninvasive and invasive recordings. Neural basis of spatial navigation, with links to spatial and episodic memory. Computational models of memory, brain stimulation, lesion studies.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4050 ELECTROPHYS OF HUM MEMORY * NAVIGATION. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "6843bdd2e8b3d1defee48adad6a022f14332d571",
+  "course_uid": "6843bdd2e8b3d1defee48adad6a022f14332d571",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4412",
+  "title": "QUALITY CONTROL AND MANAGEMENT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Required for undergraduate students majoring in IE. Statistical methods for quality control and improvement: graphical methods, introduction to experimental design and reliability engineering and the relationships between quality and productivity. Contemporary methods used by manufacturing and service organizations in product and process design, production and delivery of products and services.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( IEOR E3658 ) Working knowledge of statistics.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4412 QUALITY CONTROL AND MANAGEMENT. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4faf180736a54fa19816177454745c5e59eda7e5",
+  "course_uid": "4faf180736a54fa19816177454745c5e59eda7e5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4350",
+  "title": "Building Energy Modeling and Simulation",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Review of building energy modeling techniques for simulating time-varying demand. Detailed Physics-based models, gray-box and black-box modeling. Static and dynamic models of building energy systems. Deterministic and Stochastic occupancy modeling. Modeling of control and dispatch of HVAC and local energy systems. Implementation of models in Energyplus and Modelica platforms. Modeling of low and net-zero carbon buildings and local energy systems",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4350",
+      "course_number": "MECE 4350",
+      "section_call_number": "001/11117",
+      "times": "T 1:10pm - 3:40pm",
+      "location": "252 Engineering Terrace",
+      "instructor": "Bianca Howard",
+      "points": "3.00",
+      "enrollment_raw": "21/22",
+      "enrollment_current": 21,
+      "enrollment_capacity": 22
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4350 Building Energy Modeling and Simulation. 3.00 points ."
+}

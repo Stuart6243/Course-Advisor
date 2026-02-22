@@ -1,0 +1,36 @@
+{
+  "dedup_key": "746324bdec1c14206ddec4d67903fceadda6a298",
+  "course_uid": "746324bdec1c14206ddec4d67903fceadda6a298",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6318",
+  "title": "MICROWAVE CIRCUIT DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to microwave engineering and microwave circuit design. Review of transmission lines. Smith chart, S-parameters, microwave impedance matching, transformation and power combining networks, active and passive microwave devices, S-parameter-based design of RF and microwave amplifiers. A microwave circuit design project (using microwave CAD) is an integral part of the course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3331 ) and ( ELEN E3401 ) or ELEN E3331 AND ELEN E3401 ; or equivalents.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6318",
+      "course_number": "ELEN 6318",
+      "section_call_number": "001/17120",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "313 Fayerweather",
+      "instructor": "Yves Baeyens",
+      "points": "3.00",
+      "enrollment_raw": "32/45",
+      "enrollment_current": 32,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6318 MICROWAVE CIRCUIT DESIGN. 3.00 points ."
+}

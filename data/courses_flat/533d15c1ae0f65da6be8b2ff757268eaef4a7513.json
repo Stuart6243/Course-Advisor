@@ -1,0 +1,36 @@
+{
+  "dedup_key": "533d15c1ae0f65da6be8b2ff757268eaef4a7513",
+  "course_uid": "533d15c1ae0f65da6be8b2ff757268eaef4a7513",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4133",
+  "title": "CAPITAL FACILITY PLANNING/FIN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Planning and financing of capital facilities with a strong emphasis upon civil infrastructure systems. Project feasibility and evaluation. Design of project delivery systems to encourage best value, innovation and private sector participation. Fundamentals of engineering economy and project finance. Elements of life cycle cost estimation and decision analysis. Environmental, institutional, social and political factors. Case studies from transportation, water supply and wastewater treatment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E4129 ) or CIEN E4129 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4133",
+      "course_number": "CIEN 4133",
+      "section_call_number": "001/13576",
+      "times": "F 4:10pm - 6:40pm",
+      "location": "1024 Seeley W. Mudd Building",
+      "instructor": "Sadegh Asgari",
+      "points": "3.00",
+      "enrollment_raw": "21/70",
+      "enrollment_current": 21,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4133 CAPITAL FACILITY PLANNING/FIN. 3.00 points ."
+}

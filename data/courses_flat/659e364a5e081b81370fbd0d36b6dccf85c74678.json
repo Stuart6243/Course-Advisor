@@ -1,0 +1,36 @@
+{
+  "dedup_key": "659e364a5e081b81370fbd0d36b6dccf85c74678",
+  "course_uid": "659e364a5e081b81370fbd0d36b6dccf85c74678",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6168",
+  "title": "Two-dimensional Materials",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to two-dimensional (2D) materials. Crystal structure. Synthesis and characterization. Mechanical behavior. Waves in 2D lattices, and phonon bandstructure. Basic concepts of quantum mechanics. Electronic bandstructure of graphene. Electrical transport in graphene. Optics of 2D semiconductors. Advanced topics include quantum Hall effects; topology; and ‘twisted’ 2D heterostructures.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Permission of instructor",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E6168",
+      "course_number": "MECE 6168",
+      "section_call_number": "001/18318",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "304 Uris Hall",
+      "instructor": "James Hone",
+      "points": "3.00",
+      "enrollment_raw": "13/20",
+      "enrollment_current": 13,
+      "enrollment_capacity": 20
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6168 Two-dimensional Materials. 3.00 points ."
+}

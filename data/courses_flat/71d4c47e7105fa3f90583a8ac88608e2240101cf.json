@@ -1,0 +1,22 @@
+{
+  "dedup_key": "71d4c47e7105fa3f90583a8ac88608e2240101cf",
+  "course_uid": "71d4c47e7105fa3f90583a8ac88608e2240101cf",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4325",
+  "title": "BIOSEPARATIONS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The course focuses on design and analysis of the concentration, recovery, and isolation of biological molecules relevant in biotechnology. The unit operations used in recovery and purification of biological molecules will be presented in this course. Theory and design of filtration, microfiltration, centrifugation, cell disruption, extraction, adsorption, chromatography, precipitation, ultrafiltration, crystallization, and drying will be discussed. By the end of the course students will have an understanding of basic principles of downstream processing, design and operations of various unit operations used in recovery of biological products, examining traditional unit operations, as well as new concepts and emerging technologies that are likely to benefit biochemical product recovery in the future.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEN E2100 and CHEE E3010 and CHEN E3110 and CHEN E3230 ) or",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4325 BIOSEPARATIONS. 3.00 points ."
+}

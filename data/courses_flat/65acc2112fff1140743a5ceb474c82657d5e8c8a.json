@@ -1,0 +1,22 @@
+{
+  "dedup_key": "65acc2112fff1140743a5ceb474c82657d5e8c8a",
+  "course_uid": "65acc2112fff1140743a5ceb474c82657d5e8c8a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E9303",
+  "title": "Seminar in electronic circuits",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Open to doctoral candidates, and to qualified M.S. candidates with the instructor's permission. Study of recent developments in electronic circuits.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E9303 Seminar in electronic circuits. 3 points ."
+}

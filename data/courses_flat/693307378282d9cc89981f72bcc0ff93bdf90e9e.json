@@ -1,0 +1,36 @@
+{
+  "dedup_key": "693307378282d9cc89981f72bcc0ff93bdf90e9e",
+  "course_uid": "693307378282d9cc89981f72bcc0ff93bdf90e9e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4150",
+  "title": "APPLIED FUNCTIONAL ANALYSIS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to modern tools in functional analysis that are used in the analysis of deterministic and stochastic partial differential equations and in the analysis of numerical methods: metric and normed spaces. Banach space of continuous functions, measurable spaces, the contraction mapping theorem, Banach and Hilbert spaces bounded linear operators on Hilbert spaces and their spectral decomposition, and time permitting distributions and Fourier transforms",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Advanced calculus and course in basic analysis, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4150",
+      "course_number": "APMA 4150",
+      "section_call_number": "001/12921",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "825 Seeley W. Mudd Building",
+      "instructor": "Michael Weinstein",
+      "points": "3.00",
+      "enrollment_raw": "15/30",
+      "enrollment_current": 15,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4150 APPLIED FUNCTIONAL ANALYSIS. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4ee194b5e21abd811b02cb79adfe70e92c9625d0",
+  "course_uid": "4ee194b5e21abd811b02cb79adfe70e92c9625d0",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEE E3111",
+  "title": "UNCERTAIN/RISK-CIVIL INF SYST",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to basic probability; hazard function; reliability function; stochastic models of natural and technological hazards; extreme value distributions; Monte Carlo simulation techniques; fundamentals of integrated risk assessment and risk management; topics in risk-based insurance; case studies involving civil infrastructure systems, environmental systems, mechanical and aerospace systems, construction management. Not open to undergraduate students",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Working knowledge of calculus.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEE E3111",
+      "course_number": "CIEE 3111",
+      "section_call_number": "001/12774",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "301 Pupin Laboratories",
+      "instructor": "Ioannis Kougioumtzoglou",
+      "points": "3.00",
+      "enrollment_raw": "13/50",
+      "enrollment_current": 13,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEE E3111 UNCERTAIN/RISK-CIVIL INF SYST. 3.00 points ."
+}

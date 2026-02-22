@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4c69af1a750f5e6a7a1d92ceb38447a84763937d",
+  "course_uid": "4c69af1a750f5e6a7a1d92ceb38447a84763937d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ORCS E4201",
+  "title": "Policy for Privacy Technologies",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to privacy technologies, their use in practice, and privacy regulations. Potential topics include anonymization, differential privacy, cryptography, secure multi-party computation, and legislation. Course material will be abased in real-world use cases of these tools",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ORCS E4201",
+      "course_number": "ORCS 4201",
+      "section_call_number": "001/17127",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Rachel Cummings",
+      "points": "3.00",
+      "enrollment_raw": "32/30",
+      "enrollment_current": 32,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ORCS E4201 Policy for Privacy Technologies. 3.00 points ."
+}

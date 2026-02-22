@@ -1,0 +1,22 @@
+{
+  "dedup_key": "5b8d82fe42f547607f69c21db41902c055192a21",
+  "course_uid": "5b8d82fe42f547607f69c21db41902c055192a21",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E8229",
+  "title": "SEL TPC:PROC MINERALS ＆ WASTES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Critical discussion of current research topics and publications in the area of flotation, flocculation, and other mineral processing techniques, particularly mechanisms of adsorption, interactions of particles in solution, thinning of liquid films, and optimization techniques.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEE E4252 ) or CHEE E4252 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E8229 SEL TPC:PROC MINERALS ＆ WASTES. 3.00 points ."
+}

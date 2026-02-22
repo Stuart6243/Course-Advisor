@@ -1,0 +1,36 @@
+{
+  "dedup_key": "503cbfe2528a2062adf4493d61ee784547d2879c",
+  "course_uid": "503cbfe2528a2062adf4493d61ee784547d2879c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4742",
+  "title": "Deep Learning for OR and FE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected topics of interest in area of quantitative finance. Some topics include energy derivatives, experimental finance, foreign exchange and related derivative instruments, inflation derivatives, hedge fund management, modeling equity derivatives in Java, mortgage-backed securities, numerical solutions of partial differential equations, quantitative portfolio management, risk management, trade and technology in financial markets. Note: open to IEOR students only",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4742",
+      "course_number": "IEOR 4742",
+      "section_call_number": "001/11848",
+      "times": "Ali Hirsa",
+      "location": "",
+      "instructor": "3.00",
+      "points": "104/100",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4742 Deep Learning for OR and FE. 3.00 points ."
+}

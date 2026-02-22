@@ -1,0 +1,22 @@
+{
+  "dedup_key": "6e9f5e9cf2be6016dacd38748b173a0e3f0a8673",
+  "course_uid": "6e9f5e9cf2be6016dacd38748b173a0e3f0a8673",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4312",
+  "title": "SOLAR THERMAL ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals of solar energy transport: radiation heat transfer, convention, conduction and phase change processes. Heat exchangers and solar collectors: basic methods of thermal design, flow arrangements, effects of variable conditions, rating procedures. Solar energy concentration. Piping Systems: series and parallel arrangements, fluid movers. Thermal response and management of photovoltaic energy conversion. Solar energy storage. Solar cooling, solar thermal power and cogeneration. Applications to the design of solar thermal engineering systems.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E3311 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4312 SOLAR THERMAL ENGINEERING. 3.00 points ."
+}

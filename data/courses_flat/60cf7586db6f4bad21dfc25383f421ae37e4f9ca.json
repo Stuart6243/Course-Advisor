@@ -1,0 +1,22 @@
+{
+  "dedup_key": "60cf7586db6f4bad21dfc25383f421ae37e4f9ca",
+  "course_uid": "60cf7586db6f4bad21dfc25383f421ae37e4f9ca",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4330",
+  "title": "THERMOFLUID SYSTEMS DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topics include boiling, condensation, phase change heat transfer, multimode heat transfer, heat exchangers, and modeling of thermal transport systems. Emphasis on applications of thermodynamics, heat transfer, and fluid mechanics to modeling actual physical systems. Term project on conceptual design and presentation of a thermofluid system that meets specified criteria",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( MECE E3100 ) and ( MECE E3301 ) and ( MECE E3311 ) MECE E3100 AND MECE E3301 AND MECE E3311 Theoretical and practical considerations, and design principles, for modern thermofluids systems.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4330 THERMOFLUID SYSTEMS DESIGN. 3.00 points ."
+}

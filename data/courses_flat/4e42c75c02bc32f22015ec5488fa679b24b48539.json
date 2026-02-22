@@ -1,0 +1,49 @@
+{
+  "dedup_key": "4e42c75c02bc32f22015ec5488fa679b24b48539",
+  "course_uid": "4e42c75c02bc32f22015ec5488fa679b24b48539",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4745",
+  "title": "Applied Financial Risk Management",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduces risk management principles, practical implementation and applications, standard market, liquidity, and credit risk measurement techniques, and their drawbacks and limitations. Note: restricted to IEOR students only",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Probability and statistics, instruments of the financial markets, and asset pricing models\nPrerequisites: see notes re: points probability and statistics, instruments of the financial markets, and asset pricing models.",
+  "prerequisites_source": "merged",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4745",
+      "course_number": "IEOR 4745",
+      "section_call_number": "001/11849",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "209 Havemeyer Hall",
+      "instructor": "Allan Malz",
+      "points": "3.00",
+      "enrollment_raw": "96/105",
+      "enrollment_current": 96,
+      "enrollment_capacity": 105
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4745",
+      "course_number": "IEOR 4745",
+      "section_call_number": "V01/17943",
+      "times": "Allan Malz",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4745 Applied Financial Risk Management. 3.00 points ."
+}

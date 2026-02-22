@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4ea62e04b681600236fcd9cf1d3168915098a6d6",
+  "course_uid": "4ea62e04b681600236fcd9cf1d3168915098a6d6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4137",
+  "title": "Managing Civil Infrastructure Systems",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Examination of the fundamentals of infrastructure planning and management, with a focus on the application of rational methods that support infrastructure decision-making. Institutional environment and issues. Decision-making under certainty and uncertainty. Capital budgeting and financing. Group decision processes. Elements of decision and finance theory. Priority given to graduate students in Construction Engineering and Management.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( IEOR E4003 ) and ( CIEN E4133 ) or IEOR E4003 AND CIEN E4133",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4137",
+      "course_number": "CIEN 4137",
+      "section_call_number": "001/12147",
+      "times": "M 7:00pm - 9:30pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Muqing Liu",
+      "points": "3",
+      "enrollment_raw": "26/50",
+      "enrollment_current": 26,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4137 Managing Civil Infrastructure Systems. 3 points ."
+}

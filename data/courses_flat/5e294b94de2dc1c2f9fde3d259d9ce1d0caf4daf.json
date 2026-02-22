@@ -1,0 +1,36 @@
+{
+  "dedup_key": "5e294b94de2dc1c2f9fde3d259d9ce1d0caf4daf",
+  "course_uid": "5e294b94de2dc1c2f9fde3d259d9ce1d0caf4daf",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4660",
+  "title": "BIOCHEMICAL ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Kinetics, reactor analysis, and design of batch and continuous fermentation and enzyme processes. Recovery and separations in biochemical engineering systems",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CHEN E4320 ) or CHEN E4320 ; Or instructor's permission Engineering of biochemical and microbiological reaction systems.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4660",
+      "course_number": "CHEN 4660",
+      "section_call_number": "001/16363",
+      "times": "F 1:10pm - 3:55pm",
+      "location": "140 Uris Hall",
+      "instructor": "Scott Banta, Mallori Herishko",
+      "points": "3.00",
+      "enrollment_raw": "7/45",
+      "enrollment_current": 7,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4660 BIOCHEMICAL ENGINEERING. 3.00 points ."
+}

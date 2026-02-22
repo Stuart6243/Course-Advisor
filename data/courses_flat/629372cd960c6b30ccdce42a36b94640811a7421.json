@@ -1,0 +1,36 @@
+{
+  "dedup_key": "629372cd960c6b30ccdce42a36b94640811a7421",
+  "course_uid": "629372cd960c6b30ccdce42a36b94640811a7421",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E6220",
+  "title": "STOCHASTIC ENGINEERING MECHANICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Random process theory: stationary and ergodic processes, correlation functions and power spectra, non-stationary, non-white and non-Gaussian processes. Uncertainty quantification and simulation of environmental excitations and material/media properties, even when subject to limited/incomplete data: joint time-frequency analysis, sparse representations and compressive sampling concepts and tools. Stochastic dynamics and reliability assessment of diverse engineering systems: complex nonlinear/hysteretic behaviors and/or fractional derivative modeling. Emphasis on solution methodologies based on Monte Carlo simulation, statistical linearization, and Wiener path integral. Examples from civil, marine, mechanical and aerospace engineering",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: (CIEN E4111) and ( ENME E4215 ) or CIEN E4111 AND ENME E4215 ; or equivalent or instructor's permission Review of random variables.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E6220",
+      "course_number": "ENME 6220",
+      "section_call_number": "001/12893",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "424 Kent Hall",
+      "instructor": "Ioannis Kougioumtzoglou",
+      "points": "3.00",
+      "enrollment_raw": "5/25",
+      "enrollment_current": 5,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E6220 STOCHASTIC ENGINEERING MECHANICS. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4f8123542559c8c178368ed260292015a9add5af",
+  "course_uid": "4f8123542559c8c178368ed260292015a9add5af",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4511",
+  "title": "POWER SYSTEMS ANALYSIS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Modeling of power networks, steady-state and transient behaviors, control and optimization, electricity market, and smart grid",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3201 ) and ( ELEN E3401 ) or ELEN E3201 AND ELEN E3401 ; or equivalents, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E4511",
+      "course_number": "ELEN 4511",
+      "section_call_number": "001/11212",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "214 Pupin Laboratories",
+      "instructor": "Ahmed Mousa",
+      "points": "3.00",
+      "enrollment_raw": "16/55",
+      "enrollment_current": 16,
+      "enrollment_capacity": 55
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4511 POWER SYSTEMS ANALYSIS. 3.00 points ."
+}

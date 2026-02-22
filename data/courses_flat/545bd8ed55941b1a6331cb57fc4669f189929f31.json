@@ -1,0 +1,36 @@
+{
+  "dedup_key": "545bd8ed55941b1a6331cb57fc4669f189929f31",
+  "course_uid": "545bd8ed55941b1a6331cb57fc4669f189929f31",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E3999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00-1.50 points",
+  "points_min": 1.0,
+  "points_max": 1.5,
+  "description": "CEEM undergraduate students only. Written application must be made prior to registration outlining proposed internship/study program. Final reports required. May not be taken for pass/fail credit or audited. International students must also consult with the International Students and Scholars Office",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Obtained internship and approval from faculty adviser.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E3999",
+      "course_number": "CIEN 3999",
+      "section_call_number": "001/19984",
+      "times": "Scott Kelly",
+      "location": "",
+      "instructor": "1.00-1.50",
+      "points": "1/20",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E3999 FIELDWORK. 1.00-1.50 points ."
+}

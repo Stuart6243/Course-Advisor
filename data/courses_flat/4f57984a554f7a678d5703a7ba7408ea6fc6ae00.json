@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4f57984a554f7a678d5703a7ba7408ea6fc6ae00",
+  "course_uid": "4f57984a554f7a678d5703a7ba7408ea6fc6ae00",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4313",
+  "title": "Decarbonizing Buildings Studio: Energy system retrofits at speed and scale",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Historical co-evolution of building energy systems and fuels. Classifying existing buildings into typologies that are a prevalent combination of building size, age, fuels, equipment, distribution and zoning controls. Fuels, electricity, furnaces, boilers, heat pumps. Overview of common heat and hot water distribution systems. Case-study based approach to evaluate retrofit options for each typology. Considerations of location, staging upgrades, envelope efficiency, retrofit cost structure, paybacks with a view towards decarbonization",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4313",
+      "course_number": "MECE 4313",
+      "section_call_number": "001/12128",
+      "times": "Th 1:10pm - 3:40pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Marc Zuluaga",
+      "points": "3.00",
+      "enrollment_raw": "31/34",
+      "enrollment_current": 31,
+      "enrollment_capacity": 34
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4313 Decarbonizing Buildings Studio: Energy system retrofits at speed and scale. 3.00 points ."
+}

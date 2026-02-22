@@ -1,0 +1,49 @@
+{
+  "dedup_key": "641d1738170fd71b66ef7242d07c8b96f916097c",
+  "course_uid": "641d1738170fd71b66ef7242d07c8b96f916097c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E9280",
+  "title": "EARTH ＆ ENVIRONMENTAL COLLOQ",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "All graduate students are required to attend the departmental colloquium as long as they are in residence. Advanced doctoral students may be excused after three years of residence. No degree credit is granted",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 1.5.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E9280",
+      "course_number": "EAEE 9280",
+      "section_call_number": "001/12492",
+      "times": "Th 10:10am - 11:25am",
+      "location": "413 Kent Hall",
+      "instructor": "Oscar Nordness",
+      "points": "0.00",
+      "enrollment_raw": "64/71",
+      "enrollment_current": 64,
+      "enrollment_capacity": 71
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E9280",
+      "course_number": "EAEE 9280",
+      "section_call_number": "001/13057",
+      "times": "Th 10:10am - 11:25am",
+      "location": "602 Hamilton Hall",
+      "instructor": "Oscar Nordness",
+      "points": "0.00",
+      "enrollment_raw": "1/85",
+      "enrollment_current": 1,
+      "enrollment_capacity": 85
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E9280 EARTH ＆ ENVIRONMENTAL COLLOQ. 0.00 points ."
+}

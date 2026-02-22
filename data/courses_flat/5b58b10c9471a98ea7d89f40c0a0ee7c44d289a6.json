@@ -1,0 +1,49 @@
+{
+  "dedup_key": "5b58b10c9471a98ea7d89f40c0a0ee7c44d289a6",
+  "course_uid": "5b58b10c9471a98ea7d89f40c0a0ee7c44d289a6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4142",
+  "title": "INTL CONSTRUCTION MGMT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Complex global construction industry environment. Social, cultural, technological, and political risks; technical, financial, and contractual risk. Understanding of successful global project delivery principals and skills for construction professionals. Industry efforts and trends to support global operational mechanism. Global Case Studies. Engage with industry expert professionals. Student group projects with active ongoing global initiatives",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CIEN E4129 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4142",
+      "course_number": "CIEN 4142",
+      "section_call_number": "001/12783",
+      "times": "Th 7:00pm - 9:30pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Ibrahim Odeh",
+      "points": "3.00",
+      "enrollment_raw": "15/40",
+      "enrollment_current": 15,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4142",
+      "course_number": "CIEN 4142",
+      "section_call_number": "V01/17904",
+      "times": "Ibrahim Odeh",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4142 INTL CONSTRUCTION MGMT. 3.00 points ."
+}

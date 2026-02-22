@@ -1,0 +1,36 @@
+{
+  "dedup_key": "700e41c38bb6c01a219ede4d1c7c0cc4a4b8d47d",
+  "course_uid": "700e41c38bb6c01a219ede4d1c7c0cc4a4b8d47d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4256",
+  "title": "Applied Machine Learning in Civil Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Utilization of data in everyday civil infrastructure. Optimization of decision-making for owners, facility managers, and policy-makers based on predictive results. Provides students with basic understanding of machine learning concepts and methods to formulate civil engineering problems to prediction problems. Introduces students to classic machine learning algorithms, deep learning algorithms, algorithmic thinking, and probabilistic views, and their applications in existing civil engineering problems.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Basic linear algebra.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4256",
+      "course_number": "CIEN 4256",
+      "section_call_number": "001/13754",
+      "times": "M 1:10pm - 3:40pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Zhengbo Zou",
+      "points": "3.00",
+      "enrollment_raw": "9/40",
+      "enrollment_current": 9,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4256 Applied Machine Learning in Civil Engineering. 3.00 points ."
+}

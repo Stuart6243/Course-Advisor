@@ -1,0 +1,36 @@
+{
+  "dedup_key": "626059c1f823e47bf121669f52d1d2082301bfb9",
+  "course_uid": "626059c1f823e47bf121669f52d1d2082301bfb9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEE E4116",
+  "title": "Energy Harvesting",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Criterion of energy harvesting, identification of energy sources. Theory of vibrations of discrete and continuous system, measurement and analysis. Selection of materials for energy conversion, piezoelectric, electromagnetic, thermoelectric, photovoltaic, etc. Design and characterization, modeling and fabrication of vibration, motion, wind, wave, thermal gradient, and light energy harvesters; resonance phenomenon, power electronics and energy storage and management. Applications to buildings, geothermal systems, and transportation. To alternate with ENME E4115 .",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ENME E3114 or equivalent, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEE E4116",
+      "course_number": "CIEE 4116",
+      "section_call_number": "001/12776",
+      "times": "W 1:10pm - 3:40pm",
+      "location": "331 Uris Hall",
+      "instructor": "Huiming Yin",
+      "points": "3.00",
+      "enrollment_raw": "3/30",
+      "enrollment_current": 3,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEE E4116 Energy Harvesting. 3.00 points ."
+}

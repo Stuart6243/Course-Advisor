@@ -1,0 +1,49 @@
+{
+  "dedup_key": "6420c92a57a8bcabaa98332e6930af3ce080e048",
+  "course_uid": "6420c92a57a8bcabaa98332e6930af3ce080e048",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4990",
+  "title": "SPECIAL TOPICS IN ME",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topics and Instructors change from year to year. For advanced undergraduate students and graduate students in engineering, physical sciences, and other fields",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Permission of the Instructor Prerequisite(s): Permission of the instructor.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4990",
+      "course_number": "MECE 4990",
+      "section_call_number": "001/18310",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "273 Engineering Terrace",
+      "instructor": "Sinisa Vukelic",
+      "points": "3.00",
+      "enrollment_raw": "19/20",
+      "enrollment_current": 19,
+      "enrollment_capacity": 20
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4990",
+      "course_number": "MECE 4990",
+      "section_call_number": "002/18320",
+      "times": "T F 9:10am - 10:25am",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Leonard Imas",
+      "points": "3.00",
+      "enrollment_raw": "17/24",
+      "enrollment_current": 17,
+      "enrollment_capacity": 24
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4990 SPECIAL TOPICS IN ME. 3.00 points ."
+}
