@@ -1,0 +1,62 @@
+{
+  "dedup_key": "aed08e493c2b93725cf8e20a0092676c98209954",
+  "course_uid": "aed08e493c2b93725cf8e20a0092676c98209954",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E9800",
+  "title": "DOCTORAL RESEARCH INSTRUCTION",
+  "points_raw": "3.00-12.00 points",
+  "points_min": 3.0,
+  "points_max": 12.0,
+  "description": "A candidate for the Eng.Sc.D. degree in electrical engineering must register for 12 points of doctoral research instruction. Registration in ELEN E9800 may not be used to satisfy the minimum residence requirement for the degree",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E9800",
+      "course_number": "ELEN 9800",
+      "section_call_number": "004/18553",
+      "times": "Christine Hendon",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "0/50",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E9800",
+      "course_number": "ELEN 9800",
+      "section_call_number": "005/19787",
+      "times": "Gil Zussman",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "0/50",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E9800",
+      "course_number": "ELEN 9800",
+      "section_call_number": "005/18326",
+      "times": "Christine Hendon",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "0/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E9800 DOCTORAL RESEARCH INSTRUCTION. 3.00-12.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "b245798ac9cdbe0a6f009754ba902ead5e06e68d",
+  "course_uid": "b245798ac9cdbe0a6f009754ba902ead5e06e68d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4302",
+  "title": "METHODS IN COMPUTATIONAL SCI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to the key concepts and issues in computational science aimed at getting students to a basic level of understanding where they can run simulations on machines aimed at a range of applications and sizes from a single workstation to modern super-computer hardware. Topics include but are not limited to basic knowledge of UNIX shells, version control systems, reproducibility, Open MP, MPI, and many-core technologies. Applications will be used throughout to demonstrate the various use cases and pitfalls of using the latest computing hardware",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( APMA E4300 ) and APMA E4300 ; and application and knowledge in C, Fortran or similar complied language.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4302",
+      "course_number": "APMA 4302",
+      "section_call_number": "001/16727",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "210 Seeley W. Mudd Building",
+      "instructor": "Marc Spiegelman",
+      "points": "3.00",
+      "enrollment_raw": "12/12",
+      "enrollment_current": 12,
+      "enrollment_capacity": 12
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4302 METHODS IN COMPUTATIONAL SCI. 3.00 points ."
+}

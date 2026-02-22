@@ -1,0 +1,22 @@
+{
+  "dedup_key": "ab9a3f2c3ff9c9ea1c139d1894b6a522b6581792",
+  "course_uid": "ab9a3f2c3ff9c9ea1c139d1894b6a522b6581792",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4930",
+  "title": "Biopharmaceutical Process Laboratory",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Processes and unit operations applied widely in the biopharmaceutical industry, including tableting, dissolution, disintegration, fermentation, chromatography, tangential flow filtration, mixing, and crystallization. Process parameters, chemical and molecular properties, process performance, and product attributes. Includes a combination of lectures (given during lab time), experiments, and report writing",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Organic Chemistry Lab I, Undergraduate Organic Chemistry.\nPrerequisites: see notes re: points Organic Chemistry Lab 1, Organic Chemistry Intended for junior and senior undergraduate and graduate students interested in gaining hands-on experience in biopharmaceutical processing.",
+  "prerequisites_source": "merged",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4930 Biopharmaceutical Process Laboratory. 3.00 points ."
+}

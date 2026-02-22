@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9bfcdcc4b16d808bed6aee86f79b5f5d75b7df1e",
+  "course_uid": "9bfcdcc4b16d808bed6aee86f79b5f5d75b7df1e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEE E3010",
+  "title": "PRIN-CHEM ENGIN-THERMODYNAMICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals are emphasized: the laws of thermodynamics are derived and their meaning explained and elucidated by applications to engineering problems. Pure systems are treated, with an emphasis on phase equilibrium",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEE E3010",
+      "course_number": "CHEE 3010",
+      "section_call_number": "001/10189",
+      "times": "T Th 8:40am - 9:55am",
+      "location": "330 Uris Hall",
+      "instructor": "Mijo Simunovic",
+      "points": "3.00",
+      "enrollment_raw": "32/60",
+      "enrollment_current": 32,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEE E3010 PRIN-CHEM ENGIN-THERMODYNAMICS. 3.00 points ."
+}

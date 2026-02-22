@@ -1,0 +1,49 @@
+{
+  "dedup_key": "a32803949895c5a7f08d77e9524d94aafcb51da3",
+  "course_uid": "a32803949895c5a7f08d77e9524d94aafcb51da3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6003",
+  "title": "MASTER'S THESIS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Research in an area of Electrical Engineering culminating in a verbal presentation and a written thesis document approved by the thesis instructor. Must obtain permission from a thesis instructor to enroll. Thesis projects span at least two terms: an ELEN E6001 or E6002 Advanced Project followed by the E6003 Master’s Thesis with the same instructor. Students must use a department recommended format for thesis writing. Counts towards the amount of research credit in the MS program",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ELEN E6001 OR ELEN E6002 ; A minimum of 3 points of credit in ELEN E6001 or ELEN E6002 advanced projects with the same instructor, the instructor’s permission, and completion of at least 12 points of credit in the MS program with a GPA of at least 3.5.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6003",
+      "course_number": "ELEN 6003",
+      "section_call_number": "021/18555",
+      "times": "Kenneth Shepard",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6003",
+      "course_number": "ELEN 6003",
+      "section_call_number": "011/20276",
+      "times": "Zoran Kostic",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/15",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6003 MASTER'S THESIS. 3.00 points ."
+}

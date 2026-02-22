@@ -1,0 +1,36 @@
+{
+  "dedup_key": "a16d80ba9ed47f8254a5abeb18cb941e50110f58",
+  "course_uid": "a16d80ba9ed47f8254a5abeb18cb941e50110f58",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4723",
+  "title": "TOPICS IN QUANTATIVE FINANCE",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "This course provides an introduction to ESG Finance from a financial engineer’s perspective. This course also discusses proliferation of newly available data sources and the associated quantitative techniques necessary to process those. A major component of this course is a discussion of Climate Risk, an area of particular focus due to its increasing general importance. The course includes an overview of both recent research and the evolving regulatory landscape in the climate risk space. An in-depth discussion of financial impact assessment of various climate risk-driven scenarios (climate risk stress testing) concludes the course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4700 ; Additional Prerequisites will be announced depending on offering ESG (Environmental, Social and Corporate Governance) Finance is a rapidly growing area of Investment Management – and Finance more broadly – that has received a lot of attention in the past several years from the investor community, financial regulatory agencies, and the general public alike.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4723",
+      "course_number": "IEOR 4723",
+      "section_call_number": "001/11842",
+      "times": "T 7:10pm - 9:40pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Cyril Shmatov",
+      "points": "1.50",
+      "enrollment_raw": "41/40",
+      "enrollment_current": 41,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4723 TOPICS IN QUANTATIVE FINANCE. 1.50 point ."
+}

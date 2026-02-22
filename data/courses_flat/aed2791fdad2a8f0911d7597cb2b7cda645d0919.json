@@ -1,0 +1,49 @@
+{
+  "dedup_key": "aed2791fdad2a8f0911d7597cb2b7cda645d0919",
+  "course_uid": "aed2791fdad2a8f0911d7597cb2b7cda645d0919",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4500",
+  "title": "PROCESS ＆ PRODUCT DESIGN I",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Use of ASPEN Plus for complex material and energy balances of real processes. Students are expected to build on previous coursework to identify creative solutions to two design projects of increasing complexity. Each design project culminates in an oral presentation, and in the case of the second project, a written report",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CHEN E2100 ) and ( CHEN E4140 ) CHEN E2100 AND CHEN E4140 The practical application of chemical engineering principles for the design and economic evaluation of chemical processes and plants.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 4.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4500",
+      "course_number": "CHEN 4500",
+      "section_call_number": "001/10220",
+      "times": "W 1:10pm - 2:25pm",
+      "location": "209 Havemeyer Hall",
+      "instructor": "Sakul Ratanalert",
+      "points": "4.00",
+      "enrollment_raw": "32/60",
+      "enrollment_current": 32,
+      "enrollment_capacity": 60
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4500",
+      "course_number": "CHEN 4500",
+      "section_call_number": "001/10220",
+      "times": "M 1:10pm - 3:55pm",
+      "location": "330 Uris Hall",
+      "instructor": "Sakul Ratanalert",
+      "points": "4.00",
+      "enrollment_raw": "32/60",
+      "enrollment_current": 32,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4500 PROCESS ＆ PRODUCT DESIGN I. 4.00 points ."
+}

@@ -1,0 +1,62 @@
+{
+  "dedup_key": "a59ff7bd8b4c45444593eb15c44e791460d67e7d",
+  "course_uid": "a59ff7bd8b4c45444593eb15c44e791460d67e7d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSEE W3827",
+  "title": "FUNDAMENTALS OF COMPUTER SYSTS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals of computer organization and digital logic. Boolean algebra, Karnaugh maps, basic gates and components, flipflops and latches, counters and state machines, basics of combinational and sequential digital design. Assembly language, instruction sets, ALU’s, single-cycle and multi-cycle processor design, introduction to pipelined processors, caches, and virtual memory.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: An introductory programming course.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CSEE W3827",
+      "course_number": "CSEE 3827",
+      "section_call_number": "001/12879",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "Cin Alfred Lerner Hall",
+      "instructor": "Martha Kim",
+      "points": "3.00",
+      "enrollment_raw": "233/320",
+      "enrollment_current": 233,
+      "enrollment_capacity": 320
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CSEE W3827",
+      "course_number": "CSEE 3827",
+      "section_call_number": "001/12394",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Daniel Rubenstein",
+      "points": "3.00",
+      "enrollment_raw": "118/110",
+      "enrollment_current": 118,
+      "enrollment_capacity": 110
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CSEE W3827",
+      "course_number": "CSEE 3827",
+      "section_call_number": "002/12395",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Daniel Rubenstein",
+      "points": "3.00",
+      "enrollment_raw": "117/110",
+      "enrollment_current": 117,
+      "enrollment_capacity": 110
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSEE W3827 FUNDAMENTALS OF COMPUTER SYSTS. 3.00 points ."
+}

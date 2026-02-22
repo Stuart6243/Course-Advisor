@@ -1,0 +1,49 @@
+{
+  "dedup_key": "9bb19fbc06162fb1599ebd2dd07a73e3f5dd29b1",
+  "course_uid": "9bb19fbc06162fb1599ebd2dd07a73e3f5dd29b1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4524",
+  "title": "ANALYTICS IN PRACTICE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "MSBA students only. Groups of students will work on real world projects in analytics, focusing on three aspects: identifying client analytical requirements; assembling, cleaning, and organizing data; identifying and implementing analytical techniques (statistics, OR, machine learning); and delivering results in a client-friendly format. Each project has a well-defined goal, comes with sources of data preidentified, and has been structured so that it can be completed in one semester. Client-facing class with numerous on-site client visits; students should keep Fridays clear for this purpose.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4524",
+      "course_number": "IEOR 4524",
+      "section_call_number": "001/13287",
+      "times": "Th 7:10pm - 9:40pm",
+      "location": "301 Pupin Laboratories",
+      "instructor": "Hardeep Johar",
+      "points": "3.00",
+      "enrollment_raw": "226/260",
+      "enrollment_current": 226,
+      "enrollment_capacity": 260
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4524",
+      "course_number": "IEOR 4524",
+      "section_call_number": "002/13288",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Yaren Kaya",
+      "points": "3.00",
+      "enrollment_raw": "21/30",
+      "enrollment_current": 21,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4524 ANALYTICS IN PRACTICE. 3.00 points ."
+}

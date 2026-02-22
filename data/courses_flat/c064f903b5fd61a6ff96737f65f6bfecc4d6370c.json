@@ -1,0 +1,22 @@
+{
+  "dedup_key": "c064f903b5fd61a6ff96737f65f6bfecc4d6370c",
+  "course_uid": "c064f903b5fd61a6ff96737f65f6bfecc4d6370c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/interdisciplinary-engineering-courses/",
+  "source_page_title": "Interdisciplinary Engineering Courses < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENGI E4999",
+  "title": "Engineering Fieldwork",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Only for MBAxMS graduate students who need relevant work experience as part of their program of study. May not be taken for pass/fail credit or audited",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENGI E4999 Engineering Fieldwork. 1.50 point ."
+}

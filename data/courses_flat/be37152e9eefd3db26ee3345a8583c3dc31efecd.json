@@ -1,0 +1,22 @@
+{
+  "dedup_key": "be37152e9eefd3db26ee3345a8583c3dc31efecd",
+  "course_uid": "be37152e9eefd3db26ee3345a8583c3dc31efecd",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6915",
+  "title": "TECH WRITING FOR CS AND ENGINRS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "and Ph.D candidates in CS/CE and EE. Topics to help CS/CE and EE graduate students’ communication skills. Emphasis on writing, presenting clear, concise proposals, journal articles, conference papers, theses, and technical presentations. Credit may not be used to satisfy degree requirements",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Available to M.S.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6915 TECH WRITING FOR CS AND ENGINRS. 3.00 points ."
+}

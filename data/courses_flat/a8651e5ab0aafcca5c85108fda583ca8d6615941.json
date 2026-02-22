@@ -1,0 +1,22 @@
+{
+  "dedup_key": "a8651e5ab0aafcca5c85108fda583ca8d6615941",
+  "course_uid": "a8651e5ab0aafcca5c85108fda583ca8d6615941",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E6150",
+  "title": "INDUSTRIAL CATALYSIS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamental principles of kinetics, characterization and preparation of catalysts for production of petroleum products for conventional transportation fuels, specialty chemicals, polymers, food products, hydrogen and fuel cells and the application of catalysis in biomass conversion to fuel. Update of the ever changing demands and challenges in environmental applications, focusing on advanced catalytic applications as described in modern literature and patents",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( EAEE E4550 ) or EAEE E4550 ; or equivalent, or instructors permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E6150 INDUSTRIAL CATALYSIS. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "bedc5767a5342945f4590197c97b7a58d9d5c87b",
+  "course_uid": "bedc5767a5342945f4590197c97b7a58d9d5c87b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4420",
+  "title": "SIGNAL MODELING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamental concepts of signal processing in linear systems and stochastic processes. Estimation, detection and filtering methods applied to biomedical signals. Harmonic analysis, auto-regressive model, Wiener and Matched filters, linear discriminants, and independent components. Methods are developed to answer concrete questions on specific data sets in modalities such as ECG, EEG, MEG, Ultrasound. Lectures accompanied by data analysis assignments using MATLAB.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4420 SIGNAL MODELING. 3.00 points ."
+}

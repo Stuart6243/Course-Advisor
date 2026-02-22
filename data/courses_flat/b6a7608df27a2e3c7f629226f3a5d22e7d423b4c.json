@@ -1,0 +1,49 @@
+{
+  "dedup_key": "b6a7608df27a2e3c7f629226f3a5d22e7d423b4c",
+  "course_uid": "b6a7608df27a2e3c7f629226f3a5d22e7d423b4c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E9500",
+  "title": "DEPARTMENTAL SEMINAR",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "All doctoral students are required to attend the department seminar as long as they are in residence. No degree credit is granted",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E9500",
+      "course_number": "CIEN 9500",
+      "section_call_number": "001/17888",
+      "times": "T 1:30pm - 3:00pm",
+      "location": "140 Uris Hall",
+      "instructor": "Scott Kelly, Zhengbo Zou",
+      "points": "0.00",
+      "enrollment_raw": "16/35",
+      "enrollment_current": 16,
+      "enrollment_capacity": 35
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E9500",
+      "course_number": "CIEN 9500",
+      "section_call_number": "001/12261",
+      "times": "T 1:30pm - 3:00pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "0.00",
+      "points": "10/40",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E9500 DEPARTMENTAL SEMINAR. 0.00 points ."
+}

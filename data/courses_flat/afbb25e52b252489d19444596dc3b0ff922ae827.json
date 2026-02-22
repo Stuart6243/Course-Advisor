@@ -1,0 +1,49 @@
+{
+  "dedup_key": "afbb25e52b252489d19444596dc3b0ff922ae827",
+  "course_uid": "afbb25e52b252489d19444596dc3b0ff922ae827",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/interdisciplinary-engineering-courses/",
+  "source_page_title": "Interdisciplinary Engineering Courses < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENGI E4990",
+  "title": "ADVANCED MASTER'S RESEARCH",
+  "points_raw": "0.00-6.00 points",
+  "points_min": 0.0,
+  "points_max": 6.0,
+  "description": "Research Course for Master's Students. Students must be nominated by a faculty member. The research credits may not be counted towards the credits required for the Master’s degree",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Previous research at Columbia.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ENGI E4990",
+      "course_number": "ENGI 4990",
+      "section_call_number": "001/11997",
+      "times": "Alexis Moore",
+      "location": "",
+      "instructor": "0.00-6.00",
+      "points": "64/100",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENGI E4990",
+      "course_number": "ENGI 4990",
+      "section_call_number": "001/16940",
+      "times": "Alexis Moore",
+      "location": "",
+      "instructor": "0.00-6.00",
+      "points": "56/49",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENGI E4990 ADVANCED MASTER'S RESEARCH. 0.00-6.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "a2869fbe8f770f1f8df75e0c0f0fc160b0ef8651",
+  "course_uid": "a2869fbe8f770f1f8df75e0c0f0fc160b0ef8651",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4242",
+  "title": "GEOTECHNICAL EARTHQUAKE ENGIN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Seismicity, earthquake intensity, propagation of seismic waves, design of earthquake motion, seismic site response analysis, in situ and laboratory evaluation of dynamic soil properties, seismic performance of underground structures, seismic performance of port and harbor facilities, evaluation and mitigation of soil liquefaction and its consequences. Seismic earth pressures, slopes stability, safety of dams and embankments, seismic code provisions and practice. To alternate with E4244.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CIEN E3141 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4242",
+      "course_number": "CIEN 4242",
+      "section_call_number": "001/12798",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "516 Hamilton Hall",
+      "instructor": "Hoe Ling",
+      "points": "3.00",
+      "enrollment_raw": "7/30",
+      "enrollment_current": 7,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4242 GEOTECHNICAL EARTHQUAKE ENGIN. 3.00 points ."
+}

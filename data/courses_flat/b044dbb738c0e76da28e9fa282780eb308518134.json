@@ -1,0 +1,64 @@
+{
+  "dedup_key": "b044dbb738c0e76da28e9fa282780eb308518134",
+  "course_uid": "b044dbb738c0e76da28e9fa282780eb308518134",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4721",
+  "title": "MACHINE LEARNING FOR DATA SCI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4721",
+      "course_number": "COMS 4721",
+      "section_call_number": "001/11556",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "142 Uris Hall",
+      "instructor": "Yining Liu",
+      "points": "3.00",
+      "enrollment_raw": "98/100",
+      "enrollment_current": 98,
+      "enrollment_capacity": 100
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4721",
+      "course_number": "COMS 4721",
+      "section_call_number": "002/12505",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "142 Uris Hall",
+      "instructor": "Yining Liu",
+      "points": "3.00",
+      "enrollment_raw": "106/100",
+      "enrollment_current": 106,
+      "enrollment_capacity": 100
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4721",
+      "course_number": "COMS 4721",
+      "section_call_number": "C01/17685",
+      "times": "Yining Liu",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "COMS W4721 MACHINE LEARNING FOR DATA SCI. 3.00 points ."
+}

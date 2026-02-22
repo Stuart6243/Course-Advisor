@@ -1,0 +1,49 @@
+{
+  "dedup_key": "ac3324dbaa4862c2d9c6467a3eaf4ff542cde79d",
+  "course_uid": "ac3324dbaa4862c2d9c6467a3eaf4ff542cde79d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4141",
+  "title": "PUBLIC-PRIVATE PARTNERSHIP IN GLOBAL INF",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Delivery of infrastructure assets through Public-Private Partnerships (PPP). Value for Money analysis. Project organization. Infrastructure sector characterization. Risk analysis, allocation and mitigation. Monte Carlo methods and Real Options. Project finance and financing instruments. Case studies from transportation, water supply and energy sectors",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4141",
+      "course_number": "CIEN 4141",
+      "section_call_number": "001/11668",
+      "times": "T 7:00pm - 9:30pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Patrick Foye",
+      "points": "3.00",
+      "enrollment_raw": "37/40",
+      "enrollment_current": 37,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4141",
+      "course_number": "CIEN 4141",
+      "section_call_number": "V01/16646",
+      "times": "Patrick Foye",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4141 PUBLIC-PRIVATE PARTNERSHIP IN GLOBAL INF. 3.00 points ."
+}

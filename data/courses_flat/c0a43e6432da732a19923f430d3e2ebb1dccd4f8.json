@@ -1,0 +1,36 @@
+{
+  "dedup_key": "c0a43e6432da732a19923f430d3e2ebb1dccd4f8",
+  "course_uid": "c0a43e6432da732a19923f430d3e2ebb1dccd4f8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4018",
+  "title": "APPLIED PHYSICS LABORATORY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Typical experiments are in the areas of plasma physics, microwaves, laser applications, optical spectroscopy physics, and superconductivity.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E3401 and APPH E3300 ) or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APPH E4018",
+      "course_number": "APPH 4018",
+      "section_call_number": "001/12976",
+      "times": "Aravind Devarakonda",
+      "location": "",
+      "instructor": "3.00",
+      "points": "20/25",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E4018 APPLIED PHYSICS LABORATORY. 3.00 points ."
+}

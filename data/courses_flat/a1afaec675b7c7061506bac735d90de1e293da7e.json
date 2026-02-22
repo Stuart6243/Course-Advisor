@@ -1,0 +1,62 @@
+{
+  "dedup_key": "a1afaec675b7c7061506bac735d90de1e293da7e",
+  "course_uid": "a1afaec675b7c7061506bac735d90de1e293da7e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6885",
+  "title": "Topics in signal processing",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topic: Reinforcement Learning.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E4810 ) ELEN E4810",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6885",
+      "course_number": "ELEN 6885",
+      "section_call_number": "001/14047",
+      "times": "F 8:10am - 10:00am",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Chong Li, Chonggang Wang",
+      "points": "3",
+      "enrollment_raw": "48/55",
+      "enrollment_current": 48,
+      "enrollment_capacity": 55
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6885",
+      "course_number": "ELEN 6885",
+      "section_call_number": "C01/20694",
+      "times": "Chong Li, Chonggang Wang",
+      "location": "",
+      "instructor": "3",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6885",
+      "course_number": "ELEN 6885",
+      "section_call_number": "V01/18109",
+      "times": "Chong Li, Chonggang Wang",
+      "location": "",
+      "instructor": "3",
+      "points": "4/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6885 Topics in signal processing. 3 points ."
+}

@@ -1,0 +1,51 @@
+{
+  "dedup_key": "a6c7aed72e16010e4c0872fa51e7479f1fe6f1ed",
+  "course_uid": "a6c7aed72e16010e4c0872fa51e7479f1fe6f1ed",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4110",
+  "title": "MODERN OPTICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( APPH E3300 ) APPH E3300 Ray optics, matrix formulation, wave effects, interference, Gaussian beams, Fourier optics, diffraction, image formation, electromagnetic theory of light, polarization and crystal optics, coherence, guided wave and fiber optics, optical elements, photons, selected topics in nonlinear optics",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APPH E4110",
+      "course_number": "APPH 4110",
+      "section_call_number": "001/12977",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Nanfang Yu",
+      "points": "3.00",
+      "enrollment_raw": "25/30",
+      "enrollment_current": 25,
+      "enrollment_capacity": 30
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APPH E4110",
+      "course_number": "APPH 4110",
+      "section_call_number": "V01/16672",
+      "times": "Nanfang Yu",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "APPH E4110 MODERN OPTICS. 3.00 points ."
+}

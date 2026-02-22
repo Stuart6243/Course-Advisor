@@ -1,0 +1,22 @@
+{
+  "dedup_key": "9abc46a373a16ad33db4f85356d59689dfbdb7fa",
+  "course_uid": "9abc46a373a16ad33db4f85356d59689dfbdb7fa",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E8501",
+  "title": "ADVNCD CONTINUUM BIOMECHANICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The essentials of finite deformation theory of solids and fluids needed to describe mechanical behavior of biological tissue: kinematics of finite deformations, balance laws, principle of material objectivity, theory of constitutive equations, concept of simple solids and simple fluids, approximate constitutive equations, some boundary-value problems. Topics include one- and two-point tensor components with respect to generalized coordinates; finite deformation tensors, such as right and left Cauchy-Green tensors; rate of deformation tensors, such as Rivlin-Ericksen tensors; various forms of objective time derivatives, such as corotational and convected derivatives of tensors; viscometric flows of simple fluids; examples of rate and integral type of constitutive equations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor’s permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E8501 ADVNCD CONTINUUM BIOMECHANICS. 3.00 points ."
+}

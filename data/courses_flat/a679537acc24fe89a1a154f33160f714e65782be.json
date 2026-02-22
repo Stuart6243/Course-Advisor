@@ -1,0 +1,36 @@
+{
+  "dedup_key": "a679537acc24fe89a1a154f33160f714e65782be",
+  "course_uid": "a679537acc24fe89a1a154f33160f714e65782be",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E8310",
+  "title": "ADV CONTINUUM MECHANICS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Review of continuum mechanics in Cartesian coordinates; tensor calculus and the calculus of variation; large deformations in curvilinear coordinates; electricity problems and applications.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E6422 ) and ( MECE E6423 ) MECE E6422 AND MECE E6423 ; Open to Ph.D.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect.: 3",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ENME E8310",
+      "course_number": "ENME 8310",
+      "section_call_number": "001/13755",
+      "times": "M Th 9:00am - 11:30am",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Gautam Dasgupta",
+      "points": "4.00",
+      "enrollment_raw": "1/20",
+      "enrollment_current": 1,
+      "enrollment_capacity": 20
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E8310 ADV CONTINUUM MECHANICS. 4.00 points ."
+}

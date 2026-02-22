@@ -1,0 +1,36 @@
+{
+  "dedup_key": "a66950d43defe57068c3e9c72327dff1972a9dd7",
+  "course_uid": "a66950d43defe57068c3e9c72327dff1972a9dd7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4226",
+  "title": "ADV DESIGN OF STEEL STRUCTURES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Material considerations in structural steel design. Behavior and design of rolled steel, welded, cold-formed light-gauge, and composite concrete/steel members. Design of multi-story buildings and space structures",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E3125 ) or CIEN E3125 Review of loads and structural design approaches.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4226",
+      "course_number": "CIEN 4226",
+      "section_call_number": "001/12235",
+      "times": "Th 7:00pm - 9:30pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Virginia Mosquera, Amr Ibrahim Aly",
+      "points": "3.00",
+      "enrollment_raw": "30/50",
+      "enrollment_current": 30,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4226 ADV DESIGN OF STEEL STRUCTURES. 3.00 points ."
+}

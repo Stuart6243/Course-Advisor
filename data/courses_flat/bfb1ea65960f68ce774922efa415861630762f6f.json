@@ -1,0 +1,22 @@
+{
+  "dedup_key": "bfb1ea65960f68ce774922efa415861630762f6f",
+  "course_uid": "bfb1ea65960f68ce774922efa415861630762f6f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6900",
+  "title": "TUTORIAL IN COMPUTER SCIENCE",
+  "points_raw": "1.00-3.00 points",
+  "points_min": 1.0,
+  "points_max": 3.0,
+  "description": "A reading course in an advanced topic for a small number of students, under faculty supervision",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6900 TUTORIAL IN COMPUTER SCIENCE. 1.00-3.00 points ."
+}

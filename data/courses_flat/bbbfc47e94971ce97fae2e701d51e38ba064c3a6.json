@@ -1,0 +1,49 @@
+{
+  "dedup_key": "bbbfc47e94971ce97fae2e701d51e38ba064c3a6",
+  "course_uid": "bbbfc47e94971ce97fae2e701d51e38ba064c3a6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4830",
+  "title": "DIGITAL IMAGE PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to the mathematical tools and algorithmic implementation for representation and processing of digital pictures, videos, and visual sensory data. Image representation, filtering, transform, quality enhancement, restoration, feature extraction, object segmentation, motion analysis, classification, and coding for data compression. A series of programming assignments reinforces material from the lectures",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E4830",
+      "course_number": "ELEN 4830",
+      "section_call_number": "001/11512",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "303 Uris Hall",
+      "instructor": "Christine Hendon",
+      "points": "3.00",
+      "enrollment_raw": "16/60",
+      "enrollment_current": 16,
+      "enrollment_capacity": 60
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E4830",
+      "course_number": "ELEN 4830",
+      "section_call_number": "V01/16658",
+      "times": "Christine Hendon",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4830 DIGITAL IMAGE PROCESSING. 3.00 points ."
+}

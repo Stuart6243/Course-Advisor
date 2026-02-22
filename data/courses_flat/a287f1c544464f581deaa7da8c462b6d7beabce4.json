@@ -1,0 +1,49 @@
+{
+  "dedup_key": "a287f1c544464f581deaa7da8c462b6d7beabce4",
+  "course_uid": "a287f1c544464f581deaa7da8c462b6d7beabce4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E2101",
+  "title": "INTRO TO APPLIED MATHEMATICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Concepts are illustrated with applications using the language of engineering, the natural sciences, and the social sciences. Students execute scripts in Mathematica and MATLAB (or the like) to illustrate and visualize course concepts (programming not required)",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: MATH V1201 A unified, single-semester introduction to differential equations and linear algebra with emphases on (1) elementary analytical and numerical technique and (2) discovering the analogs on the continuous and discrete sides of the mathematics of linear operators: superposition, diagonalization, fundamental solutions.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E2101",
+      "course_number": "APMA 2101",
+      "section_call_number": "001/12762",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "517 Hamilton Hall",
+      "instructor": "Yuan He",
+      "points": "3.00",
+      "enrollment_raw": "79/86",
+      "enrollment_current": 79,
+      "enrollment_capacity": 86
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E2101",
+      "course_number": "APMA 2101",
+      "section_call_number": "001/12911",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "207 Mathematics Building",
+      "instructor": "Yuan He",
+      "points": "3.00",
+      "enrollment_raw": "139/152",
+      "enrollment_current": 139,
+      "enrollment_capacity": 152
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E2101 INTRO TO APPLIED MATHEMATICS. 3.00 points ."
+}

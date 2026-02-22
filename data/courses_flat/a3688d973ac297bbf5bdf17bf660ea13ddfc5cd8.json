@@ -1,0 +1,36 @@
+{
+  "dedup_key": "a3688d973ac297bbf5bdf17bf660ea13ddfc5cd8",
+  "course_uid": "a3688d973ac297bbf5bdf17bf660ea13ddfc5cd8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EACE E4252",
+  "title": "Foundations of Environmental Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Review of fundamental principles that underlie the discipline of environmental engineering, i.e. constituent transport and transformation processes in environmental media such as water, air, and ecosystems. Engineering applications for addressing environmental problems such as water quality and treatment, air pollution emissions, and hazardous waste remediation. Presented in the context of current issues facing the practicing engineers and government agencies, including legal and regulatory framework, environmental impact assessments, and natural resource management",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CHEM W1403 AND ENME E3161 ; or equiv, or instructors permission Engineering aspects of problems involving human interaction with the natural environment.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EACE E4252",
+      "course_number": "EACE 4252",
+      "section_call_number": "001/12818",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "333 Uris Hall",
+      "instructor": "Benjamin Bostick",
+      "points": "3.00",
+      "enrollment_raw": "17/40",
+      "enrollment_current": 17,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EACE E4252 Foundations of Environmental Engineering. 3.00 points ."
+}

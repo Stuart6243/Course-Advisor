@@ -1,0 +1,49 @@
+{
+  "dedup_key": "af2634dafa0b122cd9eef44ca6926ade28a0531a",
+  "course_uid": "af2634dafa0b122cd9eef44ca6926ade28a0531a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4533",
+  "title": "Performance, Objectives, ＆ Results Using Data Analytics",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "OKR framework and different variations. Measurement techniques (A/B testing, validation, correlation, etc.) Identifying what to measure in product experience and business initiatives. Data-driven decision making",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4533",
+      "course_number": "IEOR 4533",
+      "section_call_number": "001/11825",
+      "times": "F Sa S 9:00am - 5:00pm",
+      "location": "141 Uris Hall",
+      "instructor": "Nicolas Chikhani",
+      "points": "1.50",
+      "enrollment_raw": "67/65",
+      "enrollment_current": 67,
+      "enrollment_capacity": 65
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4533",
+      "course_number": "IEOR 4533",
+      "section_call_number": "001/13292",
+      "times": "F Sa S 9:00am - 5:00pm",
+      "location": "313 Fayerweather",
+      "instructor": "Nicolas Chikhani",
+      "points": "1.50",
+      "enrollment_raw": "65/65",
+      "enrollment_current": 65,
+      "enrollment_capacity": 65
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4533 Performance, Objectives, ＆ Results Using Data Analytics. 1.50 point ."
+}

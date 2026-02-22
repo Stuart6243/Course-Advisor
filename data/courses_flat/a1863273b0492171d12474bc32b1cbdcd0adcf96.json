@@ -1,0 +1,49 @@
+{
+  "dedup_key": "a1863273b0492171d12474bc32b1cbdcd0adcf96",
+  "course_uid": "a1863273b0492171d12474bc32b1cbdcd0adcf96",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3301",
+  "title": "THERMODYNAMICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Classical thermodynamics. Basic properties and concepts, thermodynamic properties of pure substances, equation of state, work, heat, the first and second laws for flow and nonflow processes, energy equations, entropy, and irreversibility. Introduction to power and refrigeration cycles",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E3301",
+      "course_number": "MECE 3301",
+      "section_call_number": "001/11716",
+      "times": "T Th 8:40am - 9:55am",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Arvind Narayanaswamy",
+      "points": "3.00",
+      "enrollment_raw": "99/110",
+      "enrollment_current": 99,
+      "enrollment_capacity": 110
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E3301",
+      "course_number": "MECE 3301",
+      "section_call_number": "R01/14160",
+      "times": "F 9:00am - 10:00am",
+      "location": "467 Ext Schermerhorn Hall",
+      "instructor": "Arvind Narayanaswamy",
+      "points": "3.00",
+      "enrollment_raw": "11/40",
+      "enrollment_current": 11,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3301 THERMODYNAMICS. 3.00 points ."
+}

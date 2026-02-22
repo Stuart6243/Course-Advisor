@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9cdcdf9f828eef75e9310b29bc768200d447b353",
+  "course_uid": "9cdcdf9f828eef75e9310b29bc768200d447b353",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E3404",
+  "title": "SIMULATION MODELING AND ANALYSIS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "It is strongly advised that Stochastic modeling ( IEOR E3106 or IEOR E4106 ) be taken before this course. This is an introductory course to simulation, a statistical sampling technique that uses the power of computers to study complex stochastic systems when analytical or numerical techniques do not suffice. The course focuses on discrete-event simulation, a general technique used to analyze a model over time and determine the relevant quantities of interest. Topics covered in the course include the generation of random numbers, sampling from given distributions, simulation of discrete-event systems, output analysis, variance reduction techniques, goodness of fit tests, and the selection of input distributions. The first half of the course is oriented toward the design and implementation of algorithms, while the second half is more theoretical in nature and relies heavily on material covered in prior probability courses. The teaching methodology consists of lectures, recitations, weekly homework, and both in-class and take-home exams. Homework almost always includes a programming component for which students are encouraged to work in teams.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Knowledge of a programming language such as Python, C, C++ or Matlab",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E3404",
+      "course_number": "IEOR 3404",
+      "section_call_number": "001/13270",
+      "times": "M W 5:40pm - 6:55pm",
+      "location": "142 Uris Hall",
+      "instructor": "Yi Zhang",
+      "points": "4.00",
+      "enrollment_raw": "78/90",
+      "enrollment_current": 78,
+      "enrollment_capacity": 90
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E3404 SIMULATION MODELING AND ANALYSIS. 4.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "9dec4446d621ad5658733e1f4badb763e2547110",
+  "course_uid": "9dec4446d621ad5658733e1f4badb763e2547110",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4150",
+  "title": "COMPUTATIONAL FLUID DYNAMICS I",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": ".",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4150 COMPUTATIONAL FLUID DYNAMICS I. 3.00 points ."
+}

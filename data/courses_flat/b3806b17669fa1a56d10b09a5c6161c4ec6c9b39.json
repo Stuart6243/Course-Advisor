@@ -1,0 +1,36 @@
+{
+  "dedup_key": "b3806b17669fa1a56d10b09a5c6161c4ec6c9b39",
+  "course_uid": "b3806b17669fa1a56d10b09a5c6161c4ec6c9b39",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3430",
+  "title": "ENGINEERING DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Execution of a project involving the design, fabrication, and performance testing of an actual engineering device or system",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( MECE E3420 ) MECE E3420 Building on the preliminary design concept, the detailed elements of the design process are completed: systems synthesis, design analysis optimization, incorporation of multiple constraints, compliance with appropriate engineering codes and standards, and Computer Aided Design (CAD) component part drawings.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E3430",
+      "course_number": "MECE 3430",
+      "section_call_number": "001/12120",
+      "times": "T Th 9:00am - 11:30am",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Yevgeniy Yesilevskiy",
+      "points": "3.00",
+      "enrollment_raw": "75/85",
+      "enrollment_current": 75,
+      "enrollment_capacity": 85
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3430 ENGINEERING DESIGN. 3.00 points ."
+}

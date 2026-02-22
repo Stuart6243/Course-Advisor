@@ -1,0 +1,22 @@
+{
+  "dedup_key": "bdafa44f6625b28d2785e9f996ed70a90d919238",
+  "course_uid": "bdafa44f6625b28d2785e9f996ed70a90d919238",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6713",
+  "title": "Topics in communications",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics in communications, such as turbo codes, LDPC codes, multiuser communications, network coding, cross-layer optimization, cognitive radio. Content may vary from year to year to reflect the latest development in the field.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E6712 ) or ( ELEN E4702 ) or ( ELEN E4703 ) or ELEN E6712 OR ELEN E4702 OR ELEN E4703 ; or equivalent, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6713 Topics in communications. 3 points ."
+}
