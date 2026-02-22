@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f2dd6578166ae45fd5f483b5197851c9fb0830de",
+  "course_uid": "f2dd6578166ae45fd5f483b5197851c9fb0830de",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E4101",
+  "title": "Aerospace Structures",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Analysis of aerospace structures (solid and thin-walled structures), including bending, shear, and torsion; aircraft loading bearing members; introduction to aerospace materials; analysis of structural instability; experimental method in aerospace structures.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ENME E3105 and ENME E3113 ) or ( ENME E3105 and MECE E3414 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "AERO E4101",
+      "course_number": "AERO 4101",
+      "section_call_number": "001/17326",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Addis Kidane",
+      "points": "3.00",
+      "enrollment_raw": "9/40",
+      "enrollment_current": 9,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E4101 Aerospace Structures. 3.00 points ."
+}

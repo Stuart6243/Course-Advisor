@@ -1,0 +1,22 @@
+{
+  "dedup_key": "faa9e28623d4f44358e228aad5ec86bc9ff4a726",
+  "course_uid": "faa9e28623d4f44358e228aad5ec86bc9ff4a726",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4011",
+  "title": "Industrial ecology for manufacturing",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Application of industrial ecology to Design for Environment (DFE) of processes and products using environmental indices of resources consumption and pollution loads. Introduction of methodology for Life Cycle Assessment (LCA) of manufactured products. Analysis of several DFE and LCA case studies. Term project required on use of DFE/LCA on a specific product/process: (a) product design complete with materials and process selection, energy consumption, and waste loadings; (b) LCA of an existing industrial or consumer product using a commercially established method.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( EAEE E4001 ) or EAEE E4001 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4011 Industrial ecology for manufacturing. 3 points ."
+}

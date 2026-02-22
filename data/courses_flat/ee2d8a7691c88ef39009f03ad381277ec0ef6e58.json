@@ -1,0 +1,64 @@
+{
+  "dedup_key": "ee2d8a7691c88ef39009f03ad381277ec0ef6e58",
+  "course_uid": "ee2d8a7691c88ef39009f03ad381277ec0ef6e58",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3082",
+  "title": "DIGITAL SYSTEMS LABORATORY",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: CSEE W3827 ; Recommended preparation: ELEN E1201 or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lab: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3082",
+      "course_number": "ELEN 3082",
+      "section_call_number": "001/11791",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "1205 Seeley W. Mudd Building",
+      "instructor": "Kenneth Shepard",
+      "points": "1.00",
+      "enrollment_raw": "42/42",
+      "enrollment_current": 42,
+      "enrollment_capacity": 42
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3082",
+      "course_number": "ELEN 3082",
+      "section_call_number": "002/11792",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "1205 Seeley W. Mudd Building",
+      "instructor": "Kenneth Shepard",
+      "points": "1.00",
+      "enrollment_raw": "41/42",
+      "enrollment_current": 41,
+      "enrollment_capacity": 42
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3082",
+      "course_number": "ELEN 3082",
+      "section_call_number": "003/11793",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "1205 Seeley W. Mudd Building",
+      "instructor": "Kenneth Shepard",
+      "points": "1.00",
+      "enrollment_raw": "35/42",
+      "enrollment_current": 35,
+      "enrollment_capacity": 42
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "ELEN E3082 DIGITAL SYSTEMS LABORATORY. 1.00 point ."
+}

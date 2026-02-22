@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f0ab338c619f652a10bddc98aba9ba1822188ba8",
+  "course_uid": "f0ab338c619f652a10bddc98aba9ba1822188ba8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6910",
+  "title": "FIELDWORK",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Only for M.S. in the Computer Science Department who need relevant work experience as part of their program of study. Final report required. This course may not be taken for pass/fail credit or audited",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Obtained internship and approval from faculty adviser.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS E6910",
+      "course_number": "COMS 6910",
+      "section_call_number": "062/17969",
+      "times": "Nakul Verma",
+      "location": "",
+      "instructor": "1.00",
+      "points": "24/25",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6910 FIELDWORK. 1.00 point ."
+}

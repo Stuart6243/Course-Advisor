@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f257690a3958813f25d66d21ba1df7f924775da2",
+  "course_uid": "f257690a3958813f25d66d21ba1df7f924775da2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E6340",
+  "title": "DIAGNOSTIC RADIOL PRACTICUM",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Practical applications of diagnostic radiology for various measurements and equipment assessments. Instruction and supervised practice in radiation safety procedures, image quality assessments, regulatory compliance, radiation dose evaluations and calibration of equipment. Students participate in clinical QC of the following imaging equipment: radiologic units (mobile and fixed), fluoroscopy units (mobile and fixed), angiography units, mammography units, CT scanners, MRI units and ultrasound units. The objective is familiarization in routine operation of test instrumentation and QC measurements utilized in diagnostic medical physics. Students are required to submit QC forms with data on three different types of radiology imaging equipment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: APPH6330; Grade of B+ or better in APPH E6330 and instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lab: 6.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E6340",
+      "course_number": "APPH 6340",
+      "section_call_number": "001/11107",
+      "times": "Boyu Peng",
+      "location": "",
+      "instructor": "3.00",
+      "points": "6/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E6340 DIAGNOSTIC RADIOL PRACTICUM. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "eb4c1aeaedad052cb5aa25621ebd11596e43e185",
+  "course_uid": "eb4c1aeaedad052cb5aa25621ebd11596e43e185",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6102",
+  "title": "COMPUTATNL HEAT TRANSF-FL FLOW",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basics of finite-difference methods of discretization, explicit and implicit schemes, grid sizes, stability, and convergence. Solution of algebraic equations, relaxation. Heat conduction. Incompressible fluid flow, stream function-vorticity formulation. Forced and natural convection. Use of primitive variables, turbulence modeling, and coordinate transformations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: MECE E3100 AND MECE E3311 Mathematical description of pertinent physical phenomena.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6102 COMPUTATNL HEAT TRANSF-FL FLOW. 3.00 points ."
+}

@@ -1,0 +1,62 @@
+{
+  "dedup_key": "fa329f342c0e8134e31b32c530e8221859b14d0b",
+  "course_uid": "fa329f342c0e8134e31b32c530e8221859b14d0b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E6100",
+  "title": "RESEARCH SEMINAR",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "An M.S. degree requirement. Students attend at least three Applied Mathematics research seminars within the Department of Applied Physics and Applied Mathematics and submit reports on each.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E6100",
+      "course_number": "APMA 6100",
+      "section_call_number": "001/12772",
+      "times": "T 4:10pm - 5:00pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Kui Ren",
+      "points": "0.00",
+      "enrollment_raw": "32/50",
+      "enrollment_current": 32,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E6100",
+      "course_number": "APMA 6100",
+      "section_call_number": "N01/20379",
+      "times": "Kui Ren",
+      "location": "",
+      "instructor": "0.00",
+      "points": "0/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APMA E6100",
+      "course_number": "APMA 6100",
+      "section_call_number": "V01/19894",
+      "times": "Kui Ren",
+      "location": "",
+      "instructor": "0.00",
+      "points": "3/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E6100 RESEARCH SEMINAR. 0.00 points ."
+}

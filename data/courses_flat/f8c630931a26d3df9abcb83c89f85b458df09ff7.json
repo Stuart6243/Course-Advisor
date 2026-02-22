@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f8c630931a26d3df9abcb83c89f85b458df09ff7",
+  "course_uid": "f8c630931a26d3df9abcb83c89f85b458df09ff7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4521",
+  "title": "SYSTEM ENGI TOOLS/METHODS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "in engineering or applied sciences; probability and statistics, optimization, linear algebra, and basic economics. Applications of SE tools and methods in various settings. Encompasses modern complex system development environments, including aerospace and defense, transportation, energy, communications, and modern software-intensive systems",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: B.S.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4521 SYSTEM ENGI TOOLS/METHODS. 3.00 points ."
+}

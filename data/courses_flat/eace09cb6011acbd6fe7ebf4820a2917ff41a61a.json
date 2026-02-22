@@ -1,0 +1,22 @@
+{
+  "dedup_key": "eace09cb6011acbd6fe7ebf4820a2917ff41a61a",
+  "course_uid": "eace09cb6011acbd6fe7ebf4820a2917ff41a61a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E3120",
+  "title": "TRANSPORT PHENOMENA II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topics include: Turbulent energy cascade, wall-bounded turbulent shear flow, time-averaging of the equations of change, Prandtls mixing length hypothesis for the Reynolds stress, the Reynolds analogy, continuum modeling of turbulent flows and heat transfer processes, friction factor, and Nusselt number correlations for turbulent conditions. Then macroscopic (system-level) mass, momentum, and energy balances for one-component systems are developed and applied to complex flows and heat exchange processes. The final part focuses on mass transport in mixtures of simple fluids: Molecular-level origins of diffusion phenomena, Ficks law and its multicomponent generalizations, continuum-level framework for mixtures and its application to diffusion dominated processes, diffusion with chemical reaction, and forced/free convection mass transport",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CHEN E3110 ) CHEN E3110 ; CHEN E3220 Corequisites: CHEN E3220 Developments in Transport I are extended to handle turbulence.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E3120 TRANSPORT PHENOMENA II. 3.00 points ."
+}

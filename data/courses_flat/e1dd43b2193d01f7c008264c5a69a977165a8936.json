@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e1dd43b2193d01f7c008264c5a69a977165a8936",
+  "course_uid": "e1dd43b2193d01f7c008264c5a69a977165a8936",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4728",
+  "title": "TOPICS IN QUANTITATIVE FINANCE",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "The field of Alternative Investments covers a wide range of products such as convertible bonds, Preferred Shares, Hedge Funds, Venture Capital, and Cryptocurrencies. There is a growing need in the market for students with knowledge of these products and the practical and theoretical know how of valuing and risk managing these investments given that each product has it own nuances and anomalies. This course presents and studies some major Alternative Investment products and ways to evaluate and risk manage them",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4700 ; Additional prerequisites will be announced depending on offering The search for better performance has led investors to explore Alternative Investments that are outside the traditional categories of exchange traded equities, Treasury Bonds, and other investment-grade fixed income products.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4728",
+      "course_number": "IEOR 4728",
+      "section_call_number": "001/11844",
+      "times": "Th 1:10pm - 3:40pm",
+      "location": "331 Uris Hall",
+      "instructor": "Khosrow Dehnad",
+      "points": "1.50",
+      "enrollment_raw": "44/50",
+      "enrollment_current": 44,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4728",
+      "course_number": "IEOR 4728",
+      "section_call_number": "001/16950",
+      "times": "T 1:10pm - 3:40pm",
+      "location": "413 Kent Hall",
+      "instructor": "Khosrow Dehnad",
+      "points": "1.50",
+      "enrollment_raw": "12/50",
+      "enrollment_current": 12,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4728 TOPICS IN QUANTITATIVE FINANCE. 1.50 point ."
+}

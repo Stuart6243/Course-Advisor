@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e613913100998efa5dc72142236eb1a360a67a19",
+  "course_uid": "e613913100998efa5dc72142236eb1a360a67a19",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4706",
+  "title": "FOUNDATIONS FR FINANCIAL ENGIN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This graduate course is only for M.S. Program in Financial Engineering students, offered during the summer session. Discrete-time models of equity, bond, credit, and foreign-exchange markets. Introduction to derivative markets. Pricing and hedging of derivative securities. Complete and incomplete markets. Introduction to portfolio optimization and the capital asset pricing model.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( IEOR E4701 ) and (IEOR E4702) and Linear algebra Corequisites: IEOR E4709",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4706",
+      "course_number": "IEOR 4706",
+      "section_call_number": "001/11840",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "428 Pupin Laboratories",
+      "instructor": "Wenpin Tang",
+      "points": "3.00",
+      "enrollment_raw": "152/157",
+      "enrollment_current": 152,
+      "enrollment_capacity": 157
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4706",
+      "course_number": "IEOR 4706",
+      "section_call_number": "V01/20192",
+      "times": "Wenpin Tang",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4706 FOUNDATIONS FR FINANCIAL ENGIN. 3.00 points ."
+}

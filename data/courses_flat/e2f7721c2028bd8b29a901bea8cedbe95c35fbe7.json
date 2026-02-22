@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e2f7721c2028bd8b29a901bea8cedbe95c35fbe7",
+  "course_uid": "e2f7721c2028bd8b29a901bea8cedbe95c35fbe7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E9000",
+  "title": "CHEMICL ENGINEERING COLLOQUIUM",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "All graduate students are required to attend the department colloquium as long as they are in residence. No degree credit is granted",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E9000",
+      "course_number": "CHEN 9000",
+      "section_call_number": "001/13115",
+      "times": "T 3:00pm - 4:00pm",
+      "location": "601 Fairchild Life Sciences Bldg",
+      "instructor": "Mijo Simunovic",
+      "points": "0.00",
+      "enrollment_raw": "47/120",
+      "enrollment_current": 47,
+      "enrollment_capacity": 120
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E9000",
+      "course_number": "CHEN 9000",
+      "section_call_number": "001/12772",
+      "times": "T 3:00pm - 4:00pm",
+      "location": "750 Schapiro Cepser",
+      "instructor": "Mijo Simunovic",
+      "points": "0.00",
+      "enrollment_raw": "42/50",
+      "enrollment_current": 42,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E9000 CHEMICL ENGINEERING COLLOQUIUM. 0.00 points ."
+}

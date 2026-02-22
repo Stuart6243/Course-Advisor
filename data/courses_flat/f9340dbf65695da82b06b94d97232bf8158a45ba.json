@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f9340dbf65695da82b06b94d97232bf8158a45ba",
+  "course_uid": "f9340dbf65695da82b06b94d97232bf8158a45ba",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4146",
+  "title": "Advanced AEC Data Management",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Use of industry data sets from the design, construction, and operations of buildings to learn and practice data management and solve problems by aggregating industry data and creating data-driven reports in dashboard format. Exploration of industry data through ELT (Extract, Load, Transform) Services. Hands-on learning experiences through a series of workshops and case studies. Guides where predictive analysis is performed and how it is used for Project Management Information System (PMIS) and Facility Management (FM), leading to Digital Twin data management, data processing, and data visualization",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CIEN E4145 Focused on broadening knowledge of AEC data management.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4146 Advanced AEC Data Management. 3.00 points ."
+}

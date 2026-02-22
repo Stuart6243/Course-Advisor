@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e484fd5d969ff16b416444ce04cdb7589d548131",
+  "course_uid": "e484fd5d969ff16b416444ce04cdb7589d548131",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3311",
+  "title": "HEAT TRANSFER",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Steady and unsteady heat conduction. Radiative heat transfer. Internal and external forced and free convective heat transfer. Change of phase. Heat exchangers",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E3311",
+      "course_number": "MECE 3311",
+      "section_call_number": "001/12116",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "203 Mathematics Building",
+      "instructor": "Vijay Vedula",
+      "points": "3.00",
+      "enrollment_raw": "112/110",
+      "enrollment_current": 112,
+      "enrollment_capacity": 110
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E3311",
+      "course_number": "MECE 3311",
+      "section_call_number": "R01/12117",
+      "times": "F 1:00pm - 2:00pm",
+      "location": "142 Uris Hall",
+      "instructor": "Vijay Vedula",
+      "points": "3.00",
+      "enrollment_raw": "6/90",
+      "enrollment_current": 6,
+      "enrollment_capacity": 90
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3311 HEAT TRANSFER. 3.00 points ."
+}

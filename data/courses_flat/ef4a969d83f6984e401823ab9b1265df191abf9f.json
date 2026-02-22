@@ -1,0 +1,49 @@
+{
+  "dedup_key": "ef4a969d83f6984e401823ab9b1265df191abf9f",
+  "course_uid": "ef4a969d83f6984e401823ab9b1265df191abf9f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E9700",
+  "title": "BIOMEDICAL ENGINEERING SEMINAR",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "All matriculated graduate students are required to attend the seminar as long as they are in residence. No degree credit is granted. The seminar is the principal medium of communication among those with biomedical engineering interests within the University. Guest speakers from other institutions, Columbia faculty, and students within the Department who are advanced in their studies frequently offer sessions",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E9700",
+      "course_number": "BMEN 9700",
+      "section_call_number": "001/13557",
+      "times": "Th 1:10pm - 2:25pm",
+      "location": "301 Uris Hall",
+      "instructor": "Elizabeth Olson, Qi Wang, Camryn Hadley",
+      "points": "0.00",
+      "enrollment_raw": "157/225",
+      "enrollment_current": 157,
+      "enrollment_capacity": 225
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E9700",
+      "course_number": "BMEN 9700",
+      "section_call_number": "001/13488",
+      "times": "Th 1:10pm - 2:25pm",
+      "location": "301 Pupin Laboratories",
+      "instructor": "Qi Wang, Elizabeth Olson",
+      "points": "0.00",
+      "enrollment_raw": "134/272",
+      "enrollment_current": 134,
+      "enrollment_capacity": 272
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E9700 BIOMEDICAL ENGINEERING SEMINAR. 0.00 points ."
+}

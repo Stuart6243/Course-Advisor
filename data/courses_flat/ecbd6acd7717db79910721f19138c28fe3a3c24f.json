@@ -1,0 +1,36 @@
+{
+  "dedup_key": "ecbd6acd7717db79910721f19138c28fe3a3c24f",
+  "course_uid": "ecbd6acd7717db79910721f19138c28fe3a3c24f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4186",
+  "title": "MALWARE ANALYSIS＆REVERSE ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Hands-on analysis of malware. How hackers package and hide malware and viruses to evade analysis. Disassemblers, debuggers, and other tools for reverse engineering. Deep study of Windows Internals and x86 assembly.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: COMS W3157 AND CSEE W3827 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4186",
+      "course_number": "COMS 4186",
+      "section_call_number": "001/14310",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "233 Seeley W. Mudd Building",
+      "instructor": "Michael Sikorski",
+      "points": "3.00",
+      "enrollment_raw": "35/40",
+      "enrollment_current": 35,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4186 MALWARE ANALYSIS＆REVERSE ENGINEERING. 3.00 points ."
+}

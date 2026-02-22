@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f02bf02ae1947bb526e2ba64c5c104f2fe84cbf7",
+  "course_uid": "f02bf02ae1947bb526e2ba64c5c104f2fe84cbf7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E3157",
+  "title": "DESIGN PROJECT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Written permission from instructor and approval from adviser. E3156: a design problem in materials science or metallurgical engineering selected jointly by the student and a professor in the department. The project requires research by the student, directed reading, and regular conferences with the professor in charge. E3157: completion of the research, directed reading, and conferences, culminating in a written report and an oral presentation to the department",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Senior standing.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MSAE E3157",
+      "course_number": "MSAE 3157",
+      "section_call_number": "001/12992",
+      "times": "Yuan Yang",
+      "location": "",
+      "instructor": "3.00",
+      "points": "5/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E3157 DESIGN PROJECT. 3.00 points ."
+}

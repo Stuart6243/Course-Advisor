@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f06f30afdc99766426f2342008c2d267150977f8",
+  "course_uid": "f06f30afdc99766426f2342008c2d267150977f8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3028",
+  "title": "MECHANICAL ENGINEERING LAB II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Experiments in engineering and physical phenomena: aerofoil lift and drag in wind tunnels, laser Doppler anemometry in immersed fluidic channels, supersonic flow and shock waves, Rankine thermodynamical cycle for power generation, and structural truss mechanics and analysis",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E3028",
+      "course_number": "MECE 3028",
+      "section_call_number": "001/12115",
+      "times": "T Th 1:10pm - 3:40pm",
+      "location": "209 Havemeyer Hall",
+      "instructor": "Bianca Howard",
+      "points": "3.00",
+      "enrollment_raw": "84/100",
+      "enrollment_current": 84,
+      "enrollment_capacity": 100
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3028 MECHANICAL ENGINEERING LAB II. 3.00 points ."
+}

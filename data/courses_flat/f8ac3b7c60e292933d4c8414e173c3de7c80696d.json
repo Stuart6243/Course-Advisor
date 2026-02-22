@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f8ac3b7c60e292933d4c8414e173c3de7c80696d",
+  "course_uid": "f8ac3b7c60e292933d4c8414e173c3de7c80696d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4280",
+  "title": "Issues Facing the Water Industry",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Project-based class where students will work in teams to solve an issue for a water utility. Variety of external experts will lecture and serve as a resource for students for the project. Allows students to better understand the role of the water utility in providing safe drinking water in a sustainable manner. Students will become familiar with the challenges facing water utilities, gain knowledge in the design and operation of water treatment systems, and learn how to develop solutions to water supply and water quality issues which will allow them to pursue productive careers in the consulting, utility, or regulatory fields",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CHEE E3010 AND EAEE E3200 AND EAEE E4003 Principles and practice of water treatment and utility management will be presented.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4280",
+      "course_number": "EAEE 4280",
+      "section_call_number": "001/13045",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "602 Northwest Corner",
+      "instructor": "William Becker",
+      "points": "3.00",
+      "enrollment_raw": "4/30",
+      "enrollment_current": 4,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4280 Issues Facing the Water Industry. 3.00 points ."
+}

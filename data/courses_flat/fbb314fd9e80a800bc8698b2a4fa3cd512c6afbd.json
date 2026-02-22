@@ -1,0 +1,49 @@
+{
+  "dedup_key": "fbb314fd9e80a800bc8698b2a4fa3cd512c6afbd",
+  "course_uid": "fbb314fd9e80a800bc8698b2a4fa3cd512c6afbd",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00-2.00 points",
+  "points_min": 1.0,
+  "points_max": 2.0,
+  "description": "BMEN graduate students only. Only for BMEN graduate students who need relevant work experience as part of their program of study. Final reports required. May not be taken for pass/fail credit or audited",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Obtained internship and approval from faculty advisor.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4999",
+      "course_number": "BMEN 4999",
+      "section_call_number": "001/13248",
+      "times": "Clark Hung",
+      "location": "",
+      "instructor": "1.00-2.00",
+      "points": "11/100",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E4999",
+      "course_number": "BMEN 4999",
+      "section_call_number": "001/13381",
+      "times": "Clark Hung",
+      "location": "",
+      "instructor": "1.00-2.00",
+      "points": "0/100",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4999 FIELDWORK. 1.00-2.00 points ."
+}

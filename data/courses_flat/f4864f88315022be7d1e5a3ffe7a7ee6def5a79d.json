@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f4864f88315022be7d1e5a3ffe7a7ee6def5a79d",
+  "course_uid": "f4864f88315022be7d1e5a3ffe7a7ee6def5a79d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6185",
+  "title": "INTRUSION DETECTION SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The state of threats against computers, and networked systems. An overview of computer security solutions and why they fail. Provides a detailed treatment for Network and Host-based Intrusion Detection and Intrusion Prevention systems. Considerable depth is provided on anomaly detection systems to detect new attacks. Covers issues and problems in email (spam, and viruses) and insider attacks (masquerading and impersonation)",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: COMS W4180 Corequisites: COMS W4180 Corequisite: COMS 4180W.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6185 INTRUSION DETECTION SYSTEMS. 3.00 points ."
+}

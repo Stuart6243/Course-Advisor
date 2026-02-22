@@ -1,0 +1,49 @@
+{
+  "dedup_key": "f48ff901270f168d714a8a2cedaf5c9ba2c5cfb6",
+  "course_uid": "f48ff901270f168d714a8a2cedaf5c9ba2c5cfb6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6184",
+  "title": "ANONYMITY ＆ PRIVACY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course will cover the following topics: Legal and social framework for privacy. Data mining and databases. Anonymous commerce and Internet usage. Traffic analysis. Policy and national security considerations. Classes are seminars with students presenting papers and discussing them. Seminar focus changes frequently to remain timely.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W4261 ) or (COMS W4180) or ( CSEE W4119 ) or COMS W4261 OR COMS W4180 OR CSEE W4119",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6184",
+      "course_number": "COMS 6184",
+      "section_call_number": "001/16799",
+      "times": "F 12:10pm - 2:00pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Sebastian Zimmeck",
+      "points": "3.00",
+      "enrollment_raw": "18/40",
+      "enrollment_current": 18,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6184",
+      "course_number": "COMS 6184",
+      "section_call_number": "V01/19636",
+      "times": "F 12:10pm - 2:00pm",
+      "location": "Online Only",
+      "instructor": "Sebastian Zimmeck",
+      "points": "3.00",
+      "enrollment_raw": "4/99",
+      "enrollment_current": 4,
+      "enrollment_capacity": 99
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6184 ANONYMITY ＆ PRIVACY. 3.00 points ."
+}

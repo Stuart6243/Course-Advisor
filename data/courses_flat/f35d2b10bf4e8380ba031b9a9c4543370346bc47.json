@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f35d2b10bf4e8380ba031b9a9c4543370346bc47",
+  "course_uid": "f35d2b10bf4e8380ba031b9a9c4543370346bc47",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEE E4740",
+  "title": "BIOINSTRUMENTATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Design instrumentation to measure biomedical signals as well as to actuate living tissues. Transducers, signal conditioning electronics, data acquisition boards, the Arduino microprocessor, and data acquisition and processing using MATLAB will be covered. Various devices will be discussed throughout the course, with laboratory work focusing on building an emulated version of a cardiac pacemaker",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E1201 ) and ( COMS W1005 ) COMS W1005 AND ELEN E1201 Hands-on experience designing, building, and testing the various components of a benchtop cardiac pacemaker.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 1.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEE E4740 BIOINSTRUMENTATION. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f3dc95209cbc6ea07be25e6369b3513b1897a43b",
+  "course_uid": "f3dc95209cbc6ea07be25e6369b3513b1897a43b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4253",
+  "title": "COMP SOLID MECHANICS WITH AI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Theoretical, computational, and data-driven/machine learning techniques to derive, test, and validate computer models for solid mechanics (e.g., soil, rubber, and metals). Machine learning and data-driven simulations enabled by deep learning.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ENME E3332 ) or ENGI E1006 Knowledge of Python.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4253",
+      "course_number": "CIEN 4253",
+      "section_call_number": "001/12787",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "644 Seeley W. Mudd Building",
+      "instructor": "Waiching Sun",
+      "points": "3.00",
+      "enrollment_raw": "12/30",
+      "enrollment_current": 12,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4253 COMP SOLID MECHANICS WITH AI. 3.00 points ."
+}

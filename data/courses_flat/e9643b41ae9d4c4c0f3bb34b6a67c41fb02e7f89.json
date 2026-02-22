@@ -1,0 +1,36 @@
+{
+  "dedup_key": "e9643b41ae9d4c4c0f3bb34b6a67c41fb02e7f89",
+  "course_uid": "e9643b41ae9d4c4c0f3bb34b6a67c41fb02e7f89",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6414",
+  "title": "PHOTONIC INTEGRATED CIRCUITS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Photonic integrated circuits are important subsystem components for telecommunications, optically controlled radar, optical signal processing, and photonic local area networks. An introduction to the devices and the design of these circuits. Principle and modeling of dielectric waveguides (including silica on silicon and InP based materials), waveguide devices (simple and star couplers), and surface diffractive elements. Discussion of numerical techniques for modeling circuits, including beam propagation and finite difference codes, and design of other devices: optical isolators, demultiplexers",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6414",
+      "course_number": "ELEN 6414",
+      "section_call_number": "001/11522",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Michal Lipson",
+      "points": "3.00",
+      "enrollment_raw": "29/30",
+      "enrollment_current": 29,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6414 PHOTONIC INTEGRATED CIRCUITS. 3.00 points ."
+}
