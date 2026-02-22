@@ -1,0 +1,49 @@
+{
+  "dedup_key": "3fc1272b201968cb13e3ce77a383b78798b5c4e3",
+  "course_uid": "3fc1272b201968cb13e3ce77a383b78798b5c4e3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4488",
+  "title": "OPTICAL SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to optical systems based on physical design and engineering principles. Fundamental geometrical and wave optics with specific emphasis on developing analytical and numerical tools used in optical engineering design. Focus on applications that employ optical systems and networks, including examples in holographic imaging, tomography, Fourier imaging, confocal microscopy, optical signal processing, fiber optic communication systems, optical interconnects and networks",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3401 ) ELEN E3401 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E4488",
+      "course_number": "ELEN 4488",
+      "section_call_number": "001/11211",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Christine Hendon",
+      "points": "3.00",
+      "enrollment_raw": "5/50",
+      "enrollment_current": 5,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E4488",
+      "course_number": "ELEN 4488",
+      "section_call_number": "V01/18158",
+      "times": "Christine Hendon",
+      "location": "",
+      "instructor": "3.00",
+      "points": "3/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4488 OPTICAL SYSTEMS. 3.00 points ."
+}

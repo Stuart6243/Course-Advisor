@@ -1,0 +1,22 @@
+{
+  "dedup_key": "401b4d05d1d69b38292222f1b7a10db785d45f8a",
+  "course_uid": "401b4d05d1d69b38292222f1b7a10db785d45f8a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4078",
+  "title": "Internet of (Mechanical) Things",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Hands-on, project-oriented course covering foundations of Internet of Things (IoT) technologies as they relate to the physical world. Projects utilizing Arduino and Raspberry Pi platforms. End-to-end IoT including sensors, basic controls, embedded systems programming, networking, IoT protocols, power consumption/optimization, and cloud connectivity. Build real IoT devices and systems in two team-based projects",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4078 Internet of (Mechanical) Things. 3.00 points ."
+}

@@ -1,0 +1,51 @@
+{
+  "dedup_key": "3f4a9f08859632a637b77b9c061931e34da0c1b0",
+  "course_uid": "3f4a9f08859632a637b77b9c061931e34da0c1b0",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E4202",
+  "title": "KINETICS OF TRANSFORMATIONS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( MSAE E4201 ) MSAE E4201 Review of thermodynamics, irreversible thermodynamics, diffusion in crystals and noncrystalline materials, phase transformations via nucleation and growth, overall transformation analysis and time-temperature-transformation (TTT) diagrams, precipitation, grain growth, solidification, spinodal and order-disorder transformations, martensitic transformation",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MSAE E4202",
+      "course_number": "MSAE 4202",
+      "section_call_number": "001/13009",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "610 Martin Luther King Building",
+      "instructor": "James Im",
+      "points": "3.00",
+      "enrollment_raw": "25/25",
+      "enrollment_current": 25,
+      "enrollment_capacity": 25
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MSAE E4202",
+      "course_number": "MSAE 4202",
+      "section_call_number": "V01/16792",
+      "times": "James Im",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "MSAE E4202 KINETICS OF TRANSFORMATIONS. 3.00 points ."
+}

@@ -1,0 +1,49 @@
+{
+  "dedup_key": "21ea05430f895372eea81f6d5c5950c7a228901f",
+  "course_uid": "21ea05430f895372eea81f6d5c5950c7a228901f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4532",
+  "title": "Visualization and Storytelling with Data",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Data visualization and how to build a story with data. Using complex data or statistics to communicate results effectively. Learn to present analysis and results conscisely and effectively",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4532",
+      "course_number": "IEOR 4532",
+      "section_call_number": "001/11824",
+      "times": "F 9:00am - 5:00pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Michelle Glaser",
+      "points": "1.50",
+      "enrollment_raw": "68/60",
+      "enrollment_current": 68,
+      "enrollment_capacity": 60
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4532",
+      "course_number": "IEOR 4532",
+      "section_call_number": "001/13291",
+      "times": "F 9:00am - 5:00pm",
+      "location": "313 Fayerweather",
+      "instructor": "Michelle Glaser",
+      "points": "1.50",
+      "enrollment_raw": "58/60",
+      "enrollment_current": 58,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4532 Visualization and Storytelling with Data. 1.50 point ."
+}

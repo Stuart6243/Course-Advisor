@@ -1,0 +1,22 @@
+{
+  "dedup_key": "2df5208f20b7c6728423e3660a7a7478044b465a",
+  "course_uid": "2df5208f20b7c6728423e3660a7a7478044b465a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4119",
+  "title": "COMPUTER NETWORKS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to computer networks and the technical foundations of the internet, including applications, protocols, local area networks, algorithms for routing and congestion control, security, elementary performance evaluation. Several written and programming assignments required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Comfort with basic probability and programming fluency in Python, C++, Java, or Ruby.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4119 COMPUTER NETWORKS. 3.00 points ."
+}

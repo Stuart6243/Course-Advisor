@@ -1,0 +1,36 @@
+{
+  "dedup_key": "338ee9ad3d2ab220897c14c492b28b8709fd1f4b",
+  "course_uid": "338ee9ad3d2ab220897c14c492b28b8709fd1f4b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E8320",
+  "title": "VISCOELASTICITY AND PLASTICITY",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Constitutive equations of viscoelastic and plastic bodies. Formulation and methods of solution of the boundary value, problems of viscoelasticity and plasticity",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: (ENME E6315) or ENME E6315; or equivalent, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ENME E8320",
+      "course_number": "ENME 8320",
+      "section_call_number": "001/13756",
+      "times": "T 9:00am - 11:30am",
+      "location": "610 Martin Luther King Building",
+      "instructor": "Gautam Dasgupta",
+      "points": "4.00",
+      "enrollment_raw": "1/20",
+      "enrollment_current": 1,
+      "enrollment_capacity": 20
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E8320 VISCOELASTICITY AND PLASTICITY. 4.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4b04da3074f202136043c36911b6d4bda61a6a89",
+  "course_uid": "4b04da3074f202136043c36911b6d4bda61a6a89",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4011",
+  "title": "BIG DATA IN TRANSPORTATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Major elements of transportation analytics. Develop basic skills in applying fundamentals of data analytics to transportation data analysis. Apply coding languages (e.g., MATLAB, Python) and visualization tools (e.g., Excel, Carto, R, Processing) to analyze transportation data. Infer policy implications from analytics results.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4011",
+      "course_number": "CIEN 4011",
+      "section_call_number": "001/11657",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Xuan Di",
+      "points": "3.00",
+      "enrollment_raw": "16/30",
+      "enrollment_current": 16,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4011 BIG DATA IN TRANSPORTATION. 3.00 points ."
+}

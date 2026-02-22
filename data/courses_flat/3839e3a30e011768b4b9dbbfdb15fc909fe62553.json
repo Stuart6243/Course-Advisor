@@ -1,0 +1,49 @@
+{
+  "dedup_key": "3839e3a30e011768b4b9dbbfdb15fc909fe62553",
+  "course_uid": "3839e3a30e011768b4b9dbbfdb15fc909fe62553",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4880",
+  "title": "ATOMISTIC SIMULATIONS FOR SCIENCE AND EN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Thanks to progress in computer technology and methodological development, now there exist atomistic simulation approaches for the realistic modeling and quantitative prediction of such properties. Atomistic simulations are therefore becoming increasingly important as a complement for experimental characterization, to provide parameters for meso- and macroscale models, and for the in-silico discovery of entirely new materials. This course aims at providing a comprehensive overview of cutting-edge atomistic modeling techniques that are frequently used both in academic and industrial research and engineering. Participants will develop the ability to interpret results from atomistic simulations and to judge whether a problem can be reliably addressed with simulations. The students will also obtain basic working knowledge in standard simulation software",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: A course in statistical mechanics or thermodynamics or instructors permission Many materials properties and chemical processes are governed by atomic-scale phenomena such as phase transformations, atomic/ionic transport, and chemical reactions.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4880",
+      "course_number": "CHEN 4880",
+      "section_call_number": "001/12776",
+      "times": "T Th 4:10pm - 5:25pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Alexander Urban",
+      "points": "3.00",
+      "enrollment_raw": "41/45",
+      "enrollment_current": 41,
+      "enrollment_capacity": 45
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4880",
+      "course_number": "CHEN 4880",
+      "section_call_number": "V01/16644",
+      "times": "Alexander Urban",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4880 ATOMISTIC SIMULATIONS FOR SCIENCE AND EN. 3.00 points ."
+}

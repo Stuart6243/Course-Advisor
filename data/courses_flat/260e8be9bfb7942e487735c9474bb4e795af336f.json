@@ -1,0 +1,22 @@
+{
+  "dedup_key": "260e8be9bfb7942e487735c9474bb4e795af336f",
+  "course_uid": "260e8be9bfb7942e487735c9474bb4e795af336f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4722",
+  "title": "TOPICS IN QUANT FINANCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Stochastic control has broad applications in almost every walk of life, including finance, revenue management, energy, health care and robotics. Classical, model-based stochastic control theory assumes that the system dynamics and reward functions are known and given, whereas modern, model-free stochastic control problems call for reinforcement learning to learn optimal policies in an unknown environment. This course covers model-based stochastic control and model-free reinforcement learning, both in continuous time with continuous state space and possibly continuous control (action) space. It includes the following topics: Shortest path problem, calculus of variations and optimal control; formulation of stochastic control; maximum principle and backward stochastic differential equations; dynamic programming and Hamilton-Jacobi-Bellman (HJB) equation; linear-quadratic control and Riccati equations; applications in high-frequency trading; exploration versus exploitation in reinforcement learning; policy evaluation and martingale characterization; policy gradient; q-learning; applications in diffusion models for generative AI.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: IEOR E4700 Additional prerequisites announced depending on offering.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4722 TOPICS IN QUANT FINANCE. 3.00 points ."
+}

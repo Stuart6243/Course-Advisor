@@ -1,0 +1,49 @@
+{
+  "dedup_key": "38c82505eae2fbacec4bf30c1aad7339c09e7311",
+  "course_uid": "38c82505eae2fbacec4bf30c1aad7339c09e7311",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E3114",
+  "title": "EXPERIMENTAL MECH OF MATERIALS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Mechanical properties of metals and cement composites. Structural materials. Modern construction materials. Experimental investigation of material properties and behavior of structural elements including fracture, fatigue, bending, torsion, buckling",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ENME E3113 ) ENME E3113 Material behavior and constitutive relations.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E3114",
+      "course_number": "ENME 3114",
+      "section_call_number": "001/12289",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Shiho Kawashima",
+      "points": "4.00",
+      "enrollment_raw": "18/35",
+      "enrollment_current": 18,
+      "enrollment_capacity": 35
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E3114",
+      "course_number": "ENME 3114",
+      "section_call_number": "001/12289",
+      "times": "W 1:00pm - 4:00pm",
+      "location": "161 Engineering Terrace",
+      "instructor": "Shiho Kawashima",
+      "points": "4.00",
+      "enrollment_raw": "18/35",
+      "enrollment_current": 18,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E3114 EXPERIMENTAL MECH OF MATERIALS. 4.00 points ."
+}

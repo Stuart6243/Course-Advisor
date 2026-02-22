@@ -1,0 +1,36 @@
+{
+  "dedup_key": "49b8ced16cca86de85ba84563e7c7407f9348de7",
+  "course_uid": "49b8ced16cca86de85ba84563e7c7407f9348de7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4545",
+  "title": "Multimodal Neuroimaging",
+  "points_raw": "0.00-3.00 points",
+  "points_min": 0.0,
+  "points_max": 3.0,
+  "description": "Basics from anatomy to digital image analysis will be explored culminating in a final project",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: MATLAB and/or Python Practical implementation of neuroimaging techniques, data types, processing methods and clinical findings on independent datasets across a variety of neurological and psychiatric conditions.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E4545",
+      "course_number": "BMEN 4545",
+      "section_call_number": "001/16633",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Frank Provenzano",
+      "points": "0.00-3.00",
+      "enrollment_raw": "28/35",
+      "enrollment_current": 28,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4545 Multimodal Neuroimaging. 0.00-3.00 points ."
+}

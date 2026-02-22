@@ -1,0 +1,36 @@
+{
+  "dedup_key": "3a22036629162f6059f462d44964f3dc2599a98c",
+  "course_uid": "3a22036629162f6059f462d44964f3dc2599a98c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4212",
+  "title": "MICROELECTROMECHANICAL SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "MEMS markets and applications; scaling laws; silicon as a mechanical material; Sensors and actuators; micromechanical analysis and design; substrate (bulk) and surface micromachining; computer aided design; packaging; testing and characterization; microfluidics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4212",
+      "course_number": "MECE 4212",
+      "section_call_number": "001/11116",
+      "times": "Th 1:10pm - 3:40pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "P Schuck",
+      "points": "3.00",
+      "enrollment_raw": "27/30",
+      "enrollment_current": 27,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4212 MICROELECTROMECHANICAL SYSTEMS. 3.00 points ."
+}

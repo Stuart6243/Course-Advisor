@@ -1,0 +1,22 @@
+{
+  "dedup_key": "2d602932c9c3a2c7b79339dc96cbe566606fc5a3",
+  "course_uid": "2d602932c9c3a2c7b79339dc96cbe566606fc5a3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E3420",
+  "title": "Aerospace Engineering Design I",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "First semester of a senior capstone sequence for students interested in aerospace engineering. Focused on the technical design, prototyping, simulation, and validation of aerospace systems. Students work in teams to develop projects incorporating mechanical, electrical, and aerospace subsystems, progressing from concept to functional prototype. Emphasis is placed on 3D design, subsystem integration, critical testing, and mission-driven specifications and design reviews. Involves brainstorming concept generation, literature review, incorporation of multiple constraints, adherence to appropriate engineering codes and standards, and the production of a layout drawing of the proposed capstone design project in a Computer Aided Design (CAD) software tools. Business and product framing activities will support the technical work with market and mission relevance",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E3420 Aerospace Engineering Design I. 3.00 points ."
+}

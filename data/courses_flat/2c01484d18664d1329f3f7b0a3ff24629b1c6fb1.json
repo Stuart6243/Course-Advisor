@@ -1,0 +1,36 @@
+{
+  "dedup_key": "2c01484d18664d1329f3f7b0a3ff24629b1c6fb1",
+  "course_uid": "2c01484d18664d1329f3f7b0a3ff24629b1c6fb1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6488",
+  "title": "Optical interconnects and interconnection networks",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to optical interconnects and interconnection networks for digital systems. Fundamental optical interconnects technologies, optical interconnection network design, characterization, and performance evaluation. Enabling photonic technologies including free-space structures, hybrid and monolithic integration platforms for photonic on-chip, chip-to-chip, backplane, and node-to-node interconnects, as well as photonic networks on-chip.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E4411 ) or ( ELEN E4488 ) or ELEN E4411 OR ELEN E4488 ; or an equivalent photonics course.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6488",
+      "course_number": "ELEN 6488",
+      "section_call_number": "001/11240",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Keren Bergman",
+      "points": "3",
+      "enrollment_raw": "13/40",
+      "enrollment_current": 13,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6488 Optical interconnects and interconnection networks. 3 points ."
+}

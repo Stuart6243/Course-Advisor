@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4486fa8ec177330777269a5af70d149b5e5235ec",
+  "course_uid": "4486fa8ec177330777269a5af70d149b5e5235ec",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E4764",
+  "title": "Artificial Intelligence of Things (AIoT)",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Suggested preparation: ELEN E4703 , CSEE W4119 , CSEE W4840 , or related courses. Artificial Intelligence of Things (AIoT), Internet of Things (IoT), and Cyber-Physical Systems (CPS). Embedded and mobile platforms. Embedded programming. Sensors, actuators, and interfaces. Wireless networking, web services, and databases. Edge and cloud computing. Large language models (LLMs) for AIoT. Time-series data visualization and analytics. Group projects to build end-to-end AIoT systems and applications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Knowledge of programming or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EECS E4764",
+      "course_number": "EECS 4764",
+      "section_call_number": "001/11260",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "209 Havemeyer Hall",
+      "instructor": "Xiaofan Jiang",
+      "points": "3.00",
+      "enrollment_raw": "94/110",
+      "enrollment_current": 94,
+      "enrollment_capacity": 110
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E4764 Artificial Intelligence of Things (AIoT). 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "39b986886ef55f76e38e68834be06a558705c47f",
+  "course_uid": "39b986886ef55f76e38e68834be06a558705c47f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CEOR E4011",
+  "title": "INFRASTRUCTURE SYSTEMS OPTIMIZATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basic probability and statistics. Engineering economic concepts. Basic spreadsheet analysis and programming skills. Subject to instructor's permission. Infrastructure design and systems concepts, analysis, and design under competing/conflicting objectives, transportation network models, traffic assignments, optimization, and the simplex algorithm",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Basic linear algebra.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect.: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CEOR E4011",
+      "course_number": "CEOR 4011",
+      "section_call_number": "001/12623",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Xuan Di",
+      "points": "3.00",
+      "enrollment_raw": "15/30",
+      "enrollment_current": 15,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CEOR E4011 INFRASTRUCTURE SYSTEMS OPTIMIZATION. 3.00 points ."
+}

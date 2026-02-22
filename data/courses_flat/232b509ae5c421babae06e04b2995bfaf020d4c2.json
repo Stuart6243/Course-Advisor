@@ -1,0 +1,49 @@
+{
+  "dedup_key": "232b509ae5c421babae06e04b2995bfaf020d4c2",
+  "course_uid": "232b509ae5c421babae06e04b2995bfaf020d4c2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E9500",
+  "title": "GRADUATE SEMINAR",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "All doctoral students are required to complete successfully four semesters of the mechanical engineering seminar MECE E9500",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E9500",
+      "course_number": "MECE 9500",
+      "section_call_number": "001/14799",
+      "times": "F 11:00am - 12:00pm",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Matei Ciocarlie",
+      "points": "0.00",
+      "enrollment_raw": "27/35",
+      "enrollment_current": 27,
+      "enrollment_capacity": 35
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E9500",
+      "course_number": "MECE 9500",
+      "section_call_number": "001/12429",
+      "times": "F 11:00am - 12:00pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "0.00",
+      "points": "23/35",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E9500 GRADUATE SEMINAR. 0.00 points ."
+}

@@ -1,0 +1,49 @@
+{
+  "dedup_key": "2e778c433d06d59c632f5395c6c91cb63b321d23",
+  "course_uid": "2e778c433d06d59c632f5395c6c91cb63b321d23",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4733",
+  "title": "COMPUTATIONAL ASPECTS OF ROBOTICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to fundamental problems and algorithms in robotics. Topics include configuration spaces, motion and sensor models, search and sampling-based planning, state estimation, localization and mapping, perception, and learning.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W3134 or COMS W3136 or COMS W3137 ) and ( COMS W3251 or MATH UN2010 or APMA E2101 or APMA E3101 or MATH UN2015 ) and ( STAT GU4001 or IEOR E3658 or STAT UN1201 or MATH UN2015 ) Proficiency in Python or a similar programming language.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "CC/GS: Partial Fulfillment of Science Requirement",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4733",
+      "course_number": "COMS 4733",
+      "section_call_number": "001/12851",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Yunzhu Li",
+      "points": "3.00",
+      "enrollment_raw": "88/100",
+      "enrollment_current": 88,
+      "enrollment_capacity": 100
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4733",
+      "course_number": "COMS 4733",
+      "section_call_number": "V01/17915",
+      "times": "Yunzhu Li",
+      "location": "",
+      "instructor": "3.00",
+      "points": "10/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4733 COMPUTATIONAL ASPECTS OF ROBOTICS. 3.00 points ."
+}

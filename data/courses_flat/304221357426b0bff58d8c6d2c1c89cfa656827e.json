@@ -1,0 +1,22 @@
+{
+  "dedup_key": "304221357426b0bff58d8c6d2c1c89cfa656827e",
+  "course_uid": "304221357426b0bff58d8c6d2c1c89cfa656827e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E3210",
+  "title": "CHEM ENGINEERNG THERMODYNAMICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course deals with fundamental and applied thermodynamic principles that form the basis of chemical engineering practice. Topics include phase equilibria, methods to treat ideal and non-ideal mixtures, and estimation of properties",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CHEE E3010 ) and ( CHEN E2100 ) CHEE E3010 AND CHEN E2100 ; CHEN E3220 Corequisites: CHEN E3220 .",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E3210 CHEM ENGINEERNG THERMODYNAMICS. 3.00 points ."
+}

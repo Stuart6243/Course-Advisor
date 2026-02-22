@@ -1,0 +1,22 @@
+{
+  "dedup_key": "3af5c911c39c01ff53640a614b944f71e37584f4",
+  "course_uid": "3af5c911c39c01ff53640a614b944f71e37584f4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6902",
+  "title": "THESIS",
+  "points_raw": "1.00-9.00 points",
+  "points_min": 1.0,
+  "points_max": 9.0,
+  "description": "Available to M.S. and CSE candidates. An independent investigation of an appropriate problem in computer science carried out under the supervision of a faculty member. A formal written report is essential and an oral presentation may also be required. May be taken over more than one semester, in which case the grade will be deferred until all 9 points have been completed. No more than 9 points of COMS E6902 may be taken. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6902 THESIS. 1.00-9.00 points ."
+}

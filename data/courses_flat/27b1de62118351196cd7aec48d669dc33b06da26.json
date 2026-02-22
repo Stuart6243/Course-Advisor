@@ -1,0 +1,36 @@
+{
+  "dedup_key": "27b1de62118351196cd7aec48d669dc33b06da26",
+  "course_uid": "27b1de62118351196cd7aec48d669dc33b06da26",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E3901",
+  "title": "ENVIRONMENTAL MICROBIOLOGY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals of microbiology, genetics and molecular biology, principles of microbial nutrition, energetics and kinetics, application of novel and state-of-the-art techniques in monitoring the structure and function of microbial communities in the environment, engineered processes for biochemical waste treatment and bioremediation, microorganisms and public health, global microbial elemental cycles",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CHEM UN1404 ) or CHEM C1404; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E3901",
+      "course_number": "EAEE 3901",
+      "section_call_number": "001/13482",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Preom Sarkar",
+      "points": "3.00",
+      "enrollment_raw": "19/25",
+      "enrollment_current": 19,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E3901 ENVIRONMENTAL MICROBIOLOGY. 3.00 points ."
+}

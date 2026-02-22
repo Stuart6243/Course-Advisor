@@ -1,0 +1,49 @@
+{
+  "dedup_key": "3c89042f111ad63895093e07c142ec7f8a4ffc26",
+  "course_uid": "3c89042f111ad63895093e07c142ec7f8a4ffc26",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ECBM E4070",
+  "title": "Computing with Brain Circuits of Model Organisms",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Building the functional map of the fruit fly brain. Molecular transduction and spatio-temporal encoding in the early visual system. Predictive coding in the Drosophila retina. Canonical circuits in motion detection. Canonical navigation circuits in the central complex. Molecular transduction and combinatorial encoding in the early olfactory system. Predictive coding in the antennal lobe. The functional role of the mushroom body and the lateral horn. Canonical circuits for associative learning and innate memory. Projects in Python",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: BIOL W3004 AND ELEN E3801 ; and Python programming experience, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ECBM E4070",
+      "course_number": "ECBM 4070",
+      "section_call_number": "001/11503",
+      "times": "M 7:00pm - 9:30pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Aurel Lazar",
+      "points": "3.00",
+      "enrollment_raw": "24/50",
+      "enrollment_current": 24,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ECBM E4070",
+      "course_number": "ECBM 4070",
+      "section_call_number": "V01/16652",
+      "times": "Aurel Lazar",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ECBM E4070 Computing with Brain Circuits of Model Organisms. 3.00 points ."
+}

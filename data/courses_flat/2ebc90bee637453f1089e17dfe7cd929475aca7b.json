@@ -1,0 +1,49 @@
+{
+  "dedup_key": "2ebc90bee637453f1089e17dfe7cd929475aca7b",
+  "course_uid": "2ebc90bee637453f1089e17dfe7cd929475aca7b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4232",
+  "title": "Advanced Algorithms",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The focus is on most powerful paradigms and techniques of how to design algorithms, and how to measure their efficiency. The intent is to be broad, covering a diversity of algorithmic techniques, rather than be deep. The covered topics have all been implemented and are widely used in industry. Topics include: hashing, sketching/streaming, nearest neighbor search, graph algorithms, spectral graph theory, linear programming, models for large-scale computation, and other related topics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisite: Analysis of Algorithms (COMS W4231).\nPrerequisites: see notes re: points COMS W4231 Introduces classic and modern algorithmic ideas that are central to many areas of Computer Science.",
+  "prerequisites_source": "merged",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4232",
+      "course_number": "COMS 4232",
+      "section_call_number": "001/12355",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Alexandr Andoni",
+      "points": "3.00",
+      "enrollment_raw": "34/60",
+      "enrollment_current": 34,
+      "enrollment_capacity": 60
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4232",
+      "course_number": "COMS 4232",
+      "section_call_number": "V01/16649",
+      "times": "Alexandr Andoni",
+      "location": "",
+      "instructor": "3.00",
+      "points": "6/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4232 Advanced Algorithms. 3.00 points ."
+}

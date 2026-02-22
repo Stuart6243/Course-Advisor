@@ -1,0 +1,36 @@
+{
+  "dedup_key": "48e3d9ca54e3b0beea9b658efac4344d69e36654",
+  "course_uid": "48e3d9ca54e3b0beea9b658efac4344d69e36654",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4330",
+  "title": "Cellular Bioengineering ＆ Therapeutics",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Explores cutting-edge field of cellular bioengineering and applications of cell therapies. Comprehensive understanding of the principles, techniques, and ethical considerations involved in cells for medical applications studied.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: General understanding of chemistry and biology.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4330",
+      "course_number": "BMEN 4330",
+      "section_call_number": "001/13198",
+      "times": "W 1:30pm - 4:00pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Ke Cheng",
+      "points": "3.00",
+      "enrollment_raw": "69/69",
+      "enrollment_current": 69,
+      "enrollment_capacity": 69
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4330 Cellular Bioengineering ＆ Therapeutics. 3.00 points ."
+}

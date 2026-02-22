@@ -1,0 +1,22 @@
+{
+  "dedup_key": "25fdb7fe14cd4389c814353b90b9662899ffbb65",
+  "course_uid": "25fdb7fe14cd4389c814353b90b9662899ffbb65",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E9800",
+  "title": "DIRECTED RESEARCH IN COMP SCI",
+  "points_raw": "1.00-15.00 points",
+  "points_min": 1.0,
+  "points_max": 15.0,
+  "description": "The department must approve the number of points. May be repeated for credit. This course is only for Eng.Sc.D. candidates",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Submission of an outline of the proposed research for approval by the faculty member who will supervise.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E9800 DIRECTED RESEARCH IN COMP SCI. 1.00-15.00 points ."
+}

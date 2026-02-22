@@ -1,0 +1,22 @@
+{
+  "dedup_key": "3d080672f65d6cbe1bd8af084eee3d97f5cd55cf",
+  "course_uid": "3d080672f65d6cbe1bd8af084eee3d97f5cd55cf",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4220",
+  "title": "Energy System Economics and Optimization",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Transitioning into a sustainable energy system is not only a technical challenge but also an economical one. Teaches students fundamentals of power system economics over which current electricity markets are designed. Also examines challenges and opportunities in future sustainable energy systems such as carbon tax, renewable energy, demand response, and energy storage. Covers mixed-integer linear programming and demonstrates how mathematical optimizations are integrated into energy system operations. Provides overview of current energy system research topics. Includes a project using mathematical tools to solve real-world problems in the energy system",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Basic linear algebra, basic probability and statistics, and basic programming skills.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4220 Energy System Economics and Optimization. 3.00 points ."
+}

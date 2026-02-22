@@ -1,0 +1,49 @@
+{
+  "dedup_key": "3f1fabbe338967e70a37f7c8650d97f1949457eb",
+  "course_uid": "3f1fabbe338967e70a37f7c8650d97f1949457eb",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E3658",
+  "title": "PROBABILITY FOR ENGINEERS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introductory course to probability theory and does not assume any prior knowledge of subject. Teaches foundations required to use probability in applications, but course itself is theoretical in nature. Basic definitions and axioms of probability and notions of independence and conditional probability introduced. Focus on random variables, both continuous and discrete, and covers topics of expectation, variance, conditional distributions, conditional expectation and variance, and moment generating functions. Also Central Limit Theorem for sums of random variables. Consists of lectures, recitations, weekly homework, and in-class exams.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Calculus.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E3658",
+      "course_number": "IEOR 3658",
+      "section_call_number": "001/11798",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Kaizheng Wang",
+      "points": "3.00",
+      "enrollment_raw": "105/120",
+      "enrollment_current": 105,
+      "enrollment_capacity": 120
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E3658",
+      "course_number": "IEOR 3658",
+      "section_call_number": "001/13272",
+      "times": "M W 10:10am - 11:25am",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Daniel Lacker",
+      "points": "3.00",
+      "enrollment_raw": "113/115",
+      "enrollment_current": 113,
+      "enrollment_capacity": 115
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E3658 PROBABILITY FOR ENGINEERS. 3.00 points ."
+}

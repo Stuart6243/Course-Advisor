@@ -1,0 +1,36 @@
+{
+  "dedup_key": "22dad78485359ea2c585aaf1b97b0b9ef28ecb30",
+  "course_uid": "22dad78485359ea2c585aaf1b97b0b9ef28ecb30",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4702",
+  "title": "DIGITAL COMMUNICATIONS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Digital communications for both point-to-point and switched applications is further developed. Optimum receiver structures and transmitter signal shaping for both binary and M-ary signal transmission. An introduction to block codes and convolutional codes, with application to space communications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3701 ) or ELEN E3701 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E4702",
+      "course_number": "ELEN 4702",
+      "section_call_number": "001/11504",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Alexei Ashikhmin",
+      "points": "3.00",
+      "enrollment_raw": "7/50",
+      "enrollment_current": 7,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4702 DIGITAL COMMUNICATIONS. 3.00 points ."
+}

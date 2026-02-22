@@ -1,0 +1,49 @@
+{
+  "dedup_key": "488f47934f47d16b74c9fb6b55e147e574d0c055",
+  "course_uid": "488f47934f47d16b74c9fb6b55e147e574d0c055",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E9800",
+  "title": "DOCTORAL RESEARCH INSTRUCTION",
+  "points_raw": "3.00-12.00 points",
+  "points_min": 3.0,
+  "points_max": 12.0,
+  "description": "A candidate for the Eng.Sc.D. degree in chemical engineering must register for 12 points of doctoral research instruction. Registration in CHEN E9800 may not be used to satisfy the minimum residence requirement for the degree.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E9800",
+      "course_number": "CHEN 9800",
+      "section_call_number": "001/10006",
+      "times": "Allie Obermeyer",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "1/1",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E9800",
+      "course_number": "CHEN 9800",
+      "section_call_number": "001/16308",
+      "times": "Allie Obermeyer",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "1/1",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E9800 DOCTORAL RESEARCH INSTRUCTION. 3.00-12.00 points ."
+}

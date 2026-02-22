@@ -1,0 +1,36 @@
+{
+  "dedup_key": "34b3be2ea332be6aac96177fc149ac44500b6b7c",
+  "course_uid": "34b3be2ea332be6aac96177fc149ac44500b6b7c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E3111",
+  "title": "THERMO/KINETIC THRY/STAT MECH",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An introduction to the basic thermodynamics of systems, including concepts of equilibrium, entropy, thermodynamic functions, and phase changes. Basic kinetic theory and statistical mechanics, including diffusion processes, concept of phase space, classical and quantum statistics, and applications thereof",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MSAE E3111",
+      "course_number": "MSAE 3111",
+      "section_call_number": "001/13418",
+      "times": "T Th 4:10pm - 5:25pm",
+      "location": "424 Pupin Laboratories",
+      "instructor": "Michele Simoncelli",
+      "points": "3.00",
+      "enrollment_raw": "19/35",
+      "enrollment_current": 19,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E3111 THERMO/KINETIC THRY/STAT MECH. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "2e9907e014eba7a7bace527cfc1735d6b552a620",
+  "course_uid": "2e9907e014eba7a7bace527cfc1735d6b552a620",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4734",
+  "title": "FOR EXCH/RELATD DERIVATVS INST",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "What is unusual about foreign exchange is that although it can rightfully claim to be the largest of all financial markets, it remains an area where very few have any meaningful experience. Virtually everyone has traded stocks, bonds, and mutual funds. Comparatively few individuals have ever traded foreign exchange. In part that is because foreign exchange is an interbank market. Ironically the foreign exchange markets may be the best place to trade derivatives and to invent new derivatives—given the massive two-way flow of trading that goes through bank dealing rooms virtually 24 hours a day. And most of that is transacted at razor-thin margins, at least comparatively speaking, a fact that makes the foreign exchange market an ideal platform for derivatives. The emphasis is on familiarizing the student with the nature of the foreign exchange market and those factors that make it special among financial markets, enabling the student to gain a deeper understanding of the related market for derivatives on foreign exchange",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( IEOR E4700 ) IEOR E4700 Foreign exchange market and its related derivative instruments—the latter being forward contracts, futures, options, and exotic options.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4734",
+      "course_number": "IEOR 4734",
+      "section_call_number": "001/11845",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "303 Uris Hall",
+      "instructor": "David DeRosa",
+      "points": "1.50",
+      "enrollment_raw": "26/60",
+      "enrollment_current": 26,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4734 FOR EXCH/RELATD DERIVATVS INST. 1.50 point ."
+}

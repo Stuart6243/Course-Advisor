@@ -1,0 +1,36 @@
+{
+  "dedup_key": "255f1b85201c09a4b1667a053b09a98c983dea06",
+  "course_uid": "255f1b85201c09a4b1667a053b09a98c983dea06",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E3810",
+  "title": "CHEM ENG ＆ APPLIED CHEM LAB",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Emphasizes active, experiment-based resolution of open-ended problems involving use, design, and optimization of equipment, products, or materials. Under faculty guidance students formulate, carry out, validate, and refine experimental procedures, and present results in oral and written form. Develops analytical, communications, and cooperative problem-solving skills in the context of problems that span from traditional, large scale separations and processing operations to molecular level design of materials or products. Sample projects include: scale up of apparatus, process control, chemical separations, microfluidics, surface engineering, molecular sensing, and alternative energy sources. Safety awareness is integrated.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEN E2100 and CHEN E3230 and CHEN E4300 ) or instructor's permission",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lab: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E3810",
+      "course_number": "CHEN 3810",
+      "section_call_number": "001/12739",
+      "times": "M W 1:00pm - 5:00pm",
+      "location": "703 Hamilton Hall",
+      "instructor": "Aghavni Bedrossian, Neil Dolinski",
+      "points": "3.00",
+      "enrollment_raw": "33/40",
+      "enrollment_current": 33,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E3810 CHEM ENG ＆ APPLIED CHEM LAB. 3.00 points ."
+}

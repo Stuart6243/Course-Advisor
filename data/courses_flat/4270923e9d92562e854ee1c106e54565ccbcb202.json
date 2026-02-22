@@ -1,0 +1,22 @@
+{
+  "dedup_key": "4270923e9d92562e854ee1c106e54565ccbcb202",
+  "course_uid": "4270923e9d92562e854ee1c106e54565ccbcb202",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/materials-science-engineering-program/",
+  "source_page_title": "Materials Science and Engineering Program < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E6251",
+  "title": "THIN FILMS AND LAYERS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Vacuum basics, deposition methods, nucleation and growth, epitaxy, critical thickness, defects properties, effect of deposition procedure, mechanical properties, adhesion, interconnects, and electromigration",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E6251 THIN FILMS AND LAYERS. 3.00 points ."
+}

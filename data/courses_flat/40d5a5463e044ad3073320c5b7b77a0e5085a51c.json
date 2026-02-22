@@ -1,0 +1,36 @@
+{
+  "dedup_key": "40d5a5463e044ad3073320c5b7b77a0e5085a51c",
+  "course_uid": "40d5a5463e044ad3073320c5b7b77a0e5085a51c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E4001",
+  "title": "Foundation of Aerospace Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "History and development of aviation and spaceflight; application of fundamental physics to analyze atmospheric and space flight; core principles of aerodynamics, propulsion, and flight mechanics; basic aircraft performance and stability characteristics; influence of space and atmospheric environment on vehicles; key lightweight materials and structural design considerations in aerospace applications. Course intended for graduate students. Students who have previously taken AERO E3001 may not take AERO E4001 .",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MATH UN1101 and MATH UN1102 and PHYS UN1401 and PHYS UN1402 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "AERO E4001",
+      "course_number": "AERO 4001",
+      "section_call_number": "001/20119",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Marianna Maiaru",
+      "points": "3.00",
+      "enrollment_raw": "4/15",
+      "enrollment_current": 4,
+      "enrollment_capacity": 15
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E4001 Foundation of Aerospace Engineering. 3.00 points ."
+}

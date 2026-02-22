@@ -1,0 +1,22 @@
+{
+  "dedup_key": "32033fffc24b8217180a8d2c9874091d57d786c1",
+  "course_uid": "32033fffc24b8217180a8d2c9874091d57d786c1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E3430",
+  "title": "Aerospace Engineering Design II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Second semester of a senior capstone sequence for students interested in aerospace engineering focused on system-level integration, manufacturability, and launch readiness of aerospace systems. Students carry forward validated prototypes from Design I and advance them through pre-production and manufacturing sprints. Final deliverables include system demonstrations, validation reports, go-to-market strategies, and public-facing showcase materials. Students will adhere to appropriate engineering codes and standards and incorporate realistic design and manufacturing constraints",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E3430 Aerospace Engineering Design II. 3.00 points ."
+}
