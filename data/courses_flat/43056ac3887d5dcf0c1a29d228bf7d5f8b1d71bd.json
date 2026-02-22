@@ -1,0 +1,36 @@
+{
+  "dedup_key": "43056ac3887d5dcf0c1a29d228bf7d5f8b1d71bd",
+  "course_uid": "43056ac3887d5dcf0c1a29d228bf7d5f8b1d71bd",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSEE W4823",
+  "title": "Advanced Logic Design",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An introduction to modern digital system design. Advanced topics in digital logic: controller synthesis (Mealy and Moore machines); adders and multipliers; structured logic blocks (PLDs, PALs, ROMs); iterative circuits. Modern design methodology: register transfer level modelling (RTL); algorithmic state machines (ASMs); introduction to hardware description languages (VHDL or Verilog); system-level modelling and simulation; design examples.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CSEE W3827 ) or CSEE W3827 ; Or a half semester introduction to digital logic, or the equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CSEE W4823",
+      "course_number": "CSEE 4823",
+      "section_call_number": "001/11261",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "501 Schermerhorn Hall",
+      "instructor": "Mingoo Seok",
+      "points": "3",
+      "enrollment_raw": "120/120",
+      "enrollment_current": 120,
+      "enrollment_capacity": 120
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSEE W4823 Advanced Logic Design. 3 points ."
+}

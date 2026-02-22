@@ -1,0 +1,36 @@
+{
+  "dedup_key": "6f921fdbe3c12896977c88e9cd78b8f34e372396",
+  "course_uid": "6f921fdbe3c12896977c88e9cd78b8f34e372396",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3201",
+  "title": "CIRCUIT ANALYSIS",
+  "points_raw": "3.50 points",
+  "points_min": 3.5,
+  "points_max": 3.5,
+  "description": "A course on analysis of linear and nonlinear circuits and their applications. Formulation of circuit equations. Network theorems. Transient response of first and second order circuits. Sinusoidal steady state-analysis. Frequency response of linear circuits. Poles and zeros. Bode plots. Two-port networks.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E1201 ) or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3201",
+      "course_number": "ELEN 3201",
+      "section_call_number": "001/11201",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "702 Hamilton Hall",
+      "instructor": "Charles Zukowski",
+      "points": "3.50",
+      "enrollment_raw": "94/86",
+      "enrollment_current": 94,
+      "enrollment_capacity": 86
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3201 CIRCUIT ANALYSIS. 3.50 points ."
+}

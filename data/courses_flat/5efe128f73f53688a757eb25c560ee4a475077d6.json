@@ -1,0 +1,22 @@
+{
+  "dedup_key": "5efe128f73f53688a757eb25c560ee4a475077d6",
+  "course_uid": "5efe128f73f53688a757eb25c560ee4a475077d6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3137",
+  "title": "HONORS DATA STRUCTURES ＆ ALGOL",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Programming techniques for processing such structures: sorting and searching, hashing, garbage collection. Storage management. Design and analysis of algorithms. Taught in Java. Note: Due to significant overlap, students may receive credit for only one of the following three courses: COMS W3134 , W3136 , or W3137",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W1004 ) or (COMS W1007) COMS W1004 OR COMS W1007 Corequisites: COMS W3203 An honors introduction to data types and structures: arrays, stacks, singly and doubly linked lists, queues, trees, sets, and graphs.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3137 HONORS DATA STRUCTURES ＆ ALGOL. 4.00 points ."
+}

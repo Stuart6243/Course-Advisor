@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8ddba4b7a555871c40c8687196602f9fcdb901c3",
+  "course_uid": "8ddba4b7a555871c40c8687196602f9fcdb901c3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4890",
+  "title": "BIOPHARMACEUTICALS PRODUCT DEV",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Aimed at graduate students of Chemical Engineering. Examines the application of Chemical Engineering fundamentals and entrepreneurship in starting up a biopharmaceutical company and in developing a biopharmaceutical product. Serves as a description of the major stages of developing a biopharmaceutical product. Topics presented will include drug discovery, preclinical and clinical development, IP, manufacturing, and regulatory process. In addition, implementation of the lean startup methodology, business valuation, and financial considerations for a biopharmaceutical startup will be offered. Basic topics in the chemical engineering curriculum (reaction kinetics, mathematical modeling, unit operations, thermodynamics), as well as specific topics in developing biopharmaceuticals will be discussed in this course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4890 BIOPHARMACEUTICALS PRODUCT DEV. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "948994cc73131d7d18408534365f97c840d25eed",
+  "course_uid": "948994cc73131d7d18408534365f97c840d25eed",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4215",
+  "title": "ANALOG FILTER SYNTHESIS/DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Approximation techniques for magnitude, phase, and delay specifications, transfer function realization sensitivity, passive LC filters, active RC filters, MOSFET-C filters, Gm-C filters, switched-capacitor filters, automatic tuning techniques for integrated filters. Filter noise. A design project is an integral part of the course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3201 ) and ( ELEN E3801 ) or ELEN E3201 AND ELEN E3801 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4215 ANALOG FILTER SYNTHESIS/DESIGN. 3.00 points ."
+}

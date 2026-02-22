@@ -1,0 +1,22 @@
+{
+  "dedup_key": "06ba2cd177f0ac4b533bb57c47555e155d6f3f64",
+  "course_uid": "06ba2cd177f0ac4b533bb57c47555e155d6f3f64",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4208",
+  "title": "SEM IN HUMAN FACTORS DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An elective for undergraduate students majoring in IE. An in-depth exploration of the application potential of human factor principles for the design of products and processes. Applications to industrial products, tools, layouts, workplaces, and computer displays. Consideration to environmental factors, training and documentation. Term project",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( IEOR E4207 ) or IEOR E4207 ; IEOR E4207 or instructor’s permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4208 SEM IN HUMAN FACTORS DESIGN. 3.00 points ."
+}

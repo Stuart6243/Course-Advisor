@@ -1,0 +1,36 @@
+{
+  "dedup_key": "2d6cc68b24fa548c3e898c2e0c0a94936ef5cee0",
+  "course_uid": "2d6cc68b24fa548c3e898c2e0c0a94936ef5cee0",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4460",
+  "title": "Deep Learning in Biomedical Imaging",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to methods in deep learning, with focus on applications to quantitative problems in biomedical imaging and Artificial Intelligence (AI) in medicine. Network models: Deep feedforward networks, convolutional neural networks and recurrent neural networks. Deep autoencoders for denoising. Segmentation and classification of biological tissues and biomarkers of disease. Theory and methods lectures will be accompanied with examples from biomedical image including analysis of neurological images of the brain (MRI), CT images of the lung for cancer and COPD, cardiac ultrasound. Programming assignments will use tensorflow / Pytorch and Jupyter Notebook. Examinations and a final project will also be required.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: APMA E2000 and APMA E2101 and MATH UN1202 Recommended: background in Python programming.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E4460",
+      "course_number": "BMEN 4460",
+      "section_call_number": "001/13375",
+      "times": "W 1:10pm - 3:40pm",
+      "location": "517 Hamilton Hall",
+      "instructor": "Andrew Laine",
+      "points": "3.00",
+      "enrollment_raw": "49/70",
+      "enrollment_current": 49,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4460 Deep Learning in Biomedical Imaging. 3.00 points ."
+}

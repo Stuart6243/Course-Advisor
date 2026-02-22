@@ -1,0 +1,38 @@
+{
+  "dedup_key": "41963197e3e1b0c03743ff4b7a37510b0258acea",
+  "course_uid": "41963197e3e1b0c03743ff4b7a37510b0258acea",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E6543",
+  "title": "CHEMICAL ENGIN RES METHODOLOGY",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E6543",
+      "course_number": "CHEN 6543",
+      "section_call_number": "001/16507",
+      "times": "W 11:40am - 12:55pm",
+      "location": "826 Seeley W. Mudd Building",
+      "instructor": "Allie Obermeyer",
+      "points": "1.00",
+      "enrollment_raw": "0/20",
+      "enrollment_current": 0,
+      "enrollment_capacity": 20
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "CHEN E6543 CHEMICAL ENGIN RES METHODOLOGY. 1.00 point ."
+}

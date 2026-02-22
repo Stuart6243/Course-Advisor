@@ -1,0 +1,22 @@
+{
+  "dedup_key": "6e40ac005cafe9dfa5c4785b0172493e19e6dc21",
+  "course_uid": "6e40ac005cafe9dfa5c4785b0172493e19e6dc21",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4430",
+  "title": "PRIN OF MAG RESONANCE IMAGING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamental principles of Magnetic Resonance Imaging (MRI), including the underlying spin physics and mathematics of image formation with an emphasis on the application of MRI to neuroimaging, both anatomical and functional. The examines both theory and experimental design techniques",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( PHYS UN1403 ) and ( APMA E2101 ) or APMA E2101 AND PHYS C1403; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4430 PRIN OF MAG RESONANCE IMAGING. 3.00 points ."
+}

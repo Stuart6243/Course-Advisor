@@ -1,0 +1,36 @@
+{
+  "dedup_key": "c9c1940a266f52013e2711a7a962337f5f53774d",
+  "course_uid": "c9c1940a266f52013e2711a7a962337f5f53774d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E3230",
+  "title": "REACTOR KINETICS/REACTOR DESIGN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Reaction kinetics, applications to the design of batch and continuous reactors. Multiple reactions, non-isothermal reactors. Analysis and modeling of reactor behavior.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: CHEE E3010",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E3230",
+      "course_number": "CHEN 3230",
+      "section_call_number": "001/12759",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Asher Williams",
+      "points": "3.00",
+      "enrollment_raw": "27/45",
+      "enrollment_current": 27,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E3230 REACTOR KINETICS/REACTOR DESIGN. 3.00 points ."
+}

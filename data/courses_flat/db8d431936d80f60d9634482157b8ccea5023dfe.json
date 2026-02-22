@@ -1,0 +1,49 @@
+{
+  "dedup_key": "db8d431936d80f60d9634482157b8ccea5023dfe",
+  "course_uid": "db8d431936d80f60d9634482157b8ccea5023dfe",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4181",
+  "title": "SECURITY I",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to security. Threat models. Operating system security features. Vulnerabilities and tools. Firewalls, virtual private networks, viruses. Mobile and app security. Usable security. Note: May not earn credit for both W4181 and W4180 or W4187.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: COMS W3157 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4181",
+      "course_number": "COMS 4181",
+      "section_call_number": "001/16423",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "141 Uris Hall",
+      "instructor": "Sebastian Zimmeck",
+      "points": "3.00",
+      "enrollment_raw": "63/66",
+      "enrollment_current": 63,
+      "enrollment_capacity": 66
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4181",
+      "course_number": "COMS 4181",
+      "section_call_number": "V01/17910",
+      "times": "Sebastian Zimmeck",
+      "location": "",
+      "instructor": "3.00",
+      "points": "6/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4181 SECURITY I. 3.00 points ."
+}

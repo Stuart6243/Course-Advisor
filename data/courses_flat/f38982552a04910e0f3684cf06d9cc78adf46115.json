@@ -1,0 +1,49 @@
+{
+  "dedup_key": "f38982552a04910e0f3684cf06d9cc78adf46115",
+  "course_uid": "f38982552a04910e0f3684cf06d9cc78adf46115",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6412",
+  "title": "LIGHTWAVE DEVICES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Nonlinear optics: second-order nonlinear optics; third-order nonlinear optics; pulse propagation and solitons. Acousto-optics: interaction of light and sound; acousto-optic devices. Photonic switching and computing: photonic switches; all-optical switches; bistable optical devices. Introduction to fiber-optic communications: components of the fiber-optic link; modulation, multiplexing and coupling; system performance; receiver sensitivity; coherent optical communications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E4411 ) ELEN E4411 Electro-optics: principles; electro-optics of liquid crystals and photo-refractive materials.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6412",
+      "course_number": "ELEN 6412",
+      "section_call_number": "001/11236",
+      "times": "T 1:10pm - 3:40pm",
+      "location": "303 Uris Hall",
+      "instructor": "Xiang Meng",
+      "points": "3.00",
+      "enrollment_raw": "10/30",
+      "enrollment_current": 10,
+      "enrollment_capacity": 30
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6412",
+      "course_number": "ELEN 6412",
+      "section_call_number": "V01/20074",
+      "times": "Xiang Meng",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6412 LIGHTWAVE DEVICES. 3.00 points ."
+}

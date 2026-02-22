@@ -1,0 +1,22 @@
+{
+  "dedup_key": "20661ee716dcb9427e0921bd1414dd8281109323",
+  "course_uid": "20661ee716dcb9427e0921bd1414dd8281109323",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6423",
+  "title": "INTRO-THEORY OF ELASTICITY II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Analysis of stress and strain. Formulation of the problem of elastic equilibrium. Torsion and flexure of prismatic bars. Problems in stress concentration, rotating disks, shrink fits, and curved beams; pressure vessels, contact and impact of elastic bodies, thermal stresses, propagation of elastic waves.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Corequisites: APMA E4200",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6423 INTRO-THEORY OF ELASTICITY II. 3.00 points ."
+}

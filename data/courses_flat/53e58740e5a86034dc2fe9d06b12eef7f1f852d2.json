@@ -1,0 +1,22 @@
+{
+  "dedup_key": "53e58740e5a86034dc2fe9d06b12eef7f1f852d2",
+  "course_uid": "53e58740e5a86034dc2fe9d06b12eef7f1f852d2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4563",
+  "title": "Technology Breakthroughs",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Technological breakthroughs driven change, disruption, and transformation of the business landscape/society. Course covers overview of deep learning and neural networks; AI and robotics; imaging and vision; photonics; blockchain; smart/digital cities; and the application of these technologies for creating new products and services",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4563 Technology Breakthroughs. 1.50 point ."
+}

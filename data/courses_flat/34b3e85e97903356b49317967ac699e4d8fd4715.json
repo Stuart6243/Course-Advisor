@@ -1,0 +1,36 @@
+{
+  "dedup_key": "34b3e85e97903356b49317967ac699e4d8fd4715",
+  "course_uid": "34b3e85e97903356b49317967ac699e4d8fd4715",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E9701",
+  "title": "Seminar in information and communication theories",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Open to doctoral candidates, and to qualified M.S. candidates with the instructor's permission. Recent developments in telecommunication networks, information and communication theories, and related topics.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E9701",
+      "course_number": "ELEN 9701",
+      "section_call_number": "001/18223",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "306 Uris Hall",
+      "instructor": "Gil Zussman",
+      "points": "3",
+      "enrollment_raw": "8/20",
+      "enrollment_current": 8,
+      "enrollment_capacity": 20
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E9701 Seminar in information and communication theories. 3 points ."
+}

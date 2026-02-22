@@ -1,0 +1,22 @@
+{
+  "dedup_key": "4082f2c49ab6e7cb3f7921441f0df998212ee362",
+  "course_uid": "4082f2c49ab6e7cb3f7921441f0df998212ee362",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEBM E6091",
+  "title": "TPCS IN COMP NEUROSCI/ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected advanced topics in computational neuroscience and neuroengineering. Content varies from year to year, and different topics rotate through the course numbers 6090-6099. Topic: Devices and Analysis for Neural Circuits",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEBM E6091 TPCS IN COMP NEUROSCI/ENGINEERING. 3.00 points ."
+}

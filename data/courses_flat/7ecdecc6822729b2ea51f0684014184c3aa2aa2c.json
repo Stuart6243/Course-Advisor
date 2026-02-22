@@ -1,0 +1,22 @@
+{
+  "dedup_key": "7ecdecc6822729b2ea51f0684014184c3aa2aa2c",
+  "course_uid": "7ecdecc6822729b2ea51f0684014184c3aa2aa2c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E4811",
+  "title": "Aerospace Human Factors Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Engineering fundamentals and experimental methods of human factors design and evaluation for spacecraft and aircraft which incorporate human-in-the-loop control. Develop understanding of human factors specific to spacecraft and aircraft design with human-in-the-loop control. Design of human factors experiments utilizing task analysis and user testing with quantitative evaluation metrics to develop a sate and high-performing operational space system. Human-centered design, functional allocation and automation, human sensory performance in the space environment, task analysis, human factors experimental methods and statistics, space vehicle displays and controls, situation awareness, workload, usability, manual piloting and handling qualities, human error analysis and prevention, and anthropometrics. Includes team design project.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Permission of Instructor – All students interested must join the waitlist and fill out a questionnaire when registering for the class in order to be considered.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E4811 Aerospace Human Factors Engineering. 3.00 points ."
+}

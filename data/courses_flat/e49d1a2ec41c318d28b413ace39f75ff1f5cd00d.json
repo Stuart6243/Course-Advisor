@@ -1,0 +1,22 @@
+{
+  "dedup_key": "e49d1a2ec41c318d28b413ace39f75ff1f5cd00d",
+  "course_uid": "e49d1a2ec41c318d28b413ace39f75ff1f5cd00d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4725",
+  "title": "Topics in Quantitative Finance: Numerical Solutions of Partial Differential Equation",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Networks are ubiquitous in our modern society. Economic and social networks have been used extensively to model a variety of situations, in which individual decision-makers are affected by the choices of their peers in the network. This course will introduce the main mathematical models for the study of these networks. It will discuss game theoretical and dynamic optimization techniques, which can be used to analyze a wide variety of these networks, including their resilience to shocks, the diffusion of information leading to social contagion, and how the strategic behavior of agents shapes the performance of the network",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( IEOR E4700 ) Additional Prerequisites will be announced depending on offering",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4725 Topics in Quantitative Finance: Numerical Solutions of Partial Differential Equation. 3 points ."
+}

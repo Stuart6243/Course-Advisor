@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9fd7ab20a7dbef60b7ade60853e03e81312399a5",
+  "course_uid": "9fd7ab20a7dbef60b7ade60853e03e81312399a5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4990",
+  "title": "Special Topics in Earth and Environmental Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Special topics in earth and environmental engineering. Content and prerequisites vary between sections and semesters. May be repeated for credit",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4990",
+      "course_number": "EAEE 4990",
+      "section_call_number": "001/18033",
+      "times": "M W 6:10pm - 7:25pm",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Candace Agonafir",
+      "points": "3.00",
+      "enrollment_raw": "10/40",
+      "enrollment_current": 10,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4990 Special Topics in Earth and Environmental Engineering. 3.00 points ."
+}

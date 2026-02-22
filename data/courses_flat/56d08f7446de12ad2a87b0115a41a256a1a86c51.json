@@ -1,0 +1,22 @@
+{
+  "dedup_key": "56d08f7446de12ad2a87b0115a41a256a1a86c51",
+  "course_uid": "56d08f7446de12ad2a87b0115a41a256a1a86c51",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E6132",
+  "title": "Numerical methods in geomechanics",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "A detailed survey of numerical methods used in geomechanics, emphasizing the Finite Element Method (FEM). Review of the behavior of geological materials. Water and heat flow problems. FEM techniques for solving nonlinear problems, and simulating incremental excavation and loading on the surface and underground.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( EAEE E3112 ) and ( CIEN E4241 ) or CIEN E4241 ; and EAEE E3112 or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E6132 Numerical methods in geomechanics. 3 points ."
+}

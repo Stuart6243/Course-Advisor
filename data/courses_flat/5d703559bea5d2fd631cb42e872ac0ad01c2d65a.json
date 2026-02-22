@@ -1,0 +1,22 @@
+{
+  "dedup_key": "5d703559bea5d2fd631cb42e872ac0ad01c2d65a",
+  "course_uid": "5d703559bea5d2fd631cb42e872ac0ad01c2d65a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6882",
+  "title": "TOPICS IN SIGNAL PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Content varies from year to year, and different topics rotate through the course numbers 6880 to 6889",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ELEN E4810 Advanced topics in signal processing, such as multidimensional signal processing, image feature extraction, image/video editing and indexing, advanced digital filter design, multirate signal processing, adaptive signal processing, and wave-form coding of signals.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6882 TOPICS IN SIGNAL PROCESSING. 3.00 points ."
+}

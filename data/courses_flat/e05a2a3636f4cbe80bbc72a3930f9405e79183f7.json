@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e05a2a3636f4cbe80bbc72a3930f9405e79183f7",
+  "course_uid": "e05a2a3636f4cbe80bbc72a3930f9405e79183f7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3900",
+  "title": "HONORS TUTORIAL IN MECH ENGIN",
+  "points_raw": "1.00-3.00 points",
+  "points_min": 1.0,
+  "points_max": 3.0,
+  "description": "Individual study; may be selected after the first term of the junior year by students maintaining a 3.2 grade-point average. Course format may vary from individual tutorial to laboratory work to seminar instruction under faculty supervision. Projects requiring machine-shop use must be approved by the laboratory supervisor. Students may count up to 6 points toward degree requirements. Students must submit both a project outline prior to registration and a final project write up at the end of the semester",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: 3.2 or higher GPA.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E3900",
+      "course_number": "MECE 3900",
+      "section_call_number": "001/20644",
+      "times": "Matei Ciocarlie",
+      "location": "",
+      "instructor": "1.00-3.00",
+      "points": "1/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E3900",
+      "course_number": "MECE 3900",
+      "section_call_number": "002/20647",
+      "times": "Kristin Myers",
+      "location": "",
+      "instructor": "1.00-3.00",
+      "points": "1/2",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3900 HONORS TUTORIAL IN MECH ENGIN. 1.00-3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "3abdcc535d90698f76a643da893310df61511a72",
+  "course_uid": "3abdcc535d90698f76a643da893310df61511a72",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6889",
+  "title": "TOPICS IN SIGNAL PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Content varies from year to year, and different topics rotate through the course numbers 6880 to 6889. Topic: Large Data Stream Processing",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ELEN E4810 ELEN E4810 Advanced topics in signal processing, such as multidimensional signal processing, image feature extraction, image/video editing and indexing, advanced digital filter design, multirate signal processing, adaptive signal processing, and wave-form coding of signals.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6889",
+      "course_number": "ELEN 6889",
+      "section_call_number": "001/13665",
+      "times": "Th 7:00pm - 9:30pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Deepak Turaga",
+      "points": "3.00",
+      "enrollment_raw": "17/70",
+      "enrollment_current": 17,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6889 TOPICS IN SIGNAL PROCESSING. 3.00 points ."
+}

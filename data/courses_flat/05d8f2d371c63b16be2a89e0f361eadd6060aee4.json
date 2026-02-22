@@ -1,0 +1,36 @@
+{
+  "dedup_key": "05d8f2d371c63b16be2a89e0f361eadd6060aee4",
+  "course_uid": "05d8f2d371c63b16be2a89e0f361eadd6060aee4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4612",
+  "title": "SUSTAINABLE MANUFACTURING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals of sustainable design and manufacturing, metrics of sustainability, analytical tools, principles of life cycle assessment, manufacturing tools, processes and systems energy assessment and minimization in manufacturing, sustainable manufacturing automation, sustainable manufacturing systems, remanufacturing, recycling and reuse",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Introductory course in engineering materials and manufacturing processes or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4612",
+      "course_number": "MECE 4612",
+      "section_call_number": "001/12157",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Chaoqun Dong",
+      "points": "3.00",
+      "enrollment_raw": "23/50",
+      "enrollment_current": 23,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4612 SUSTAINABLE MANUFACTURING. 3.00 points ."
+}

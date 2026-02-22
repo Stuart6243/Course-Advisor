@@ -1,0 +1,24 @@
+{
+  "dedup_key": "ca19efa3f659ad9729dc5e4e767f33654b16cf43",
+  "course_uid": "ca19efa3f659ad9729dc5e4e767f33654b16cf43",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3401",
+  "title": "MECHANICS OF MACHINES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( ENME E3105 ) and ( MECE E3408 ) ENME E3105 AND MECE E3408 Introduction to mechanisms and machines, analytical and graphical synthesis of mechanism, displacement analysis, velocity analysis, acceleration analysis of linkages, dynamics of mechanism, cam design, gear and gear trains, and computer-aided mechanism design",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "MECE E3401 MECHANICS OF MACHINES. 3.00 points ."
+}

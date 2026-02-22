@@ -1,0 +1,22 @@
+{
+  "dedup_key": "1bb517487c2d7042098dd4b28e673cfb755d1f02",
+  "course_uid": "1bb517487c2d7042098dd4b28e673cfb755d1f02",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3770",
+  "title": "Mathematics for Machine Learning",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Mathematical foundations of machine learning: Linear algebra, multivariable calculus, and probability and statistics. Comprehensive review and additional treatment of relevant topics used in the analysis and design of machine learning models. Preliminary exposure to core algorithms such as linear regression, gradient descent, principal component analysis, low-rank approximations, and kernel methods.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MATH UN2010 or MATH UN2015 or APMA E2101 or APMA E3101 or COMS W3251 ) and ( MATH UN1201 or MATH UN1205 or APMA E2000 ) and ( STAT UN1201 or MATH UN2015 or IEOR E3658 ) Familiarity with mathematical proof writing",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3770 Mathematics for Machine Learning. 3.00 points ."
+}

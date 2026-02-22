@@ -1,0 +1,22 @@
+{
+  "dedup_key": "6249c915669e5d05dd914580b361e99acb523efe",
+  "course_uid": "6249c915669e5d05dd914580b361e99acb523efe",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E1304",
+  "title": "NAVAL SHIP SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Students are strongly advised to consult with the ME Department prior to registering for this course. A study of ship characteristics and types including ship design, hydrodynamic forces, stability, compartmentation, propulsion, electrical and auxiliary systems, interior communications, ship control, and damage control; theory and design of steam, gas turbine, and nuclear propulsion; shipboard safety and firefighting. This course is part of the Naval ROTC program at Columbia but will be taught at SUNY Maritime. Enrollment may be limited; priority is given to students participating in Naval ROTC. Will not count as a technical elective. Students should see a faculty adviser as well as Columbia NROTC staff (nrotc@columbia.edu) for more information",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E1304 NAVAL SHIP SYSTEMS. 3.00 points ."
+}

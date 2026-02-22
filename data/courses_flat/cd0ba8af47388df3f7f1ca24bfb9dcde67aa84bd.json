@@ -1,0 +1,24 @@
+{
+  "dedup_key": "cd0ba8af47388df3f7f1ca24bfb9dcde67aa84bd",
+  "course_uid": "cd0ba8af47388df3f7f1ca24bfb9dcde67aa84bd",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEE E4030",
+  "title": "NEURAL CONTROL ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( ELEN E3801 ) ELEN E3801 Topics include basic cell biophysics, active conductance and the Hodgkin-Huxley model, simple neuron models, ion channel models and synaptic models, statistical models of spike generation, Wilson-Cowan model of cortex, large-scale electrohysiological recording methods, sensorimotor integration and optimal state estimation, operant conditioning of neural activity, nonlinear modelling of neural systems, sensory systems: visual pathway and somatosensory pathway, neural encoding model; spike triggered average (STA) and spike triggered covariance (STC) analysis, neuronal response to electrical micro-stimulation, DBS for Parkinson's disease treatment, motor neural prostheses, and sensory neural prostheses",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "BMEE E4030 NEURAL CONTROL ENGINEERING. 3.00 points ."
+}

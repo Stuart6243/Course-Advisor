@@ -1,0 +1,49 @@
+{
+  "dedup_key": "885ae0ef4a188669029728dd4247b98ce33503d4",
+  "course_uid": "885ae0ef4a188669029728dd4247b98ce33503d4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4710",
+  "title": "Ethical and Responsible AI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Principles of Ethical Artificial Intelligence across technical and societal dimensions. Combines technical AI and machine learning implementations and ethical analysis. Students will learn to build, audit, and mitigate ethical risks in AI systems using tools like fairness libraries, explainability frameworks, and privacy-preserving techniques. Emphasizes coding, algorithmic critique, and real-world cases. Topics include: foundations of AI ethics, fairness, interpretability, explainability, accountability, privacy, robustness, alignment, safety, and societal benefit. Assessments include coding projects, bias auditing assignments, and ethical analysis papers.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W2132 ) or ( COMS W3134 ) or ( COMS W3136 ) or ( COMS W3137 ) or ( IEOR E2000 ) Programming proficiency in Python.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4710",
+      "course_number": "COMS 4710",
+      "section_call_number": "001/12362",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Ansaf Salleb-Aouissi",
+      "points": "3.00",
+      "enrollment_raw": "121/120",
+      "enrollment_current": 121,
+      "enrollment_capacity": 120
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4710",
+      "course_number": "COMS 4710",
+      "section_call_number": "V01/17540",
+      "times": "Ansaf Salleb-Aouissi",
+      "location": "",
+      "instructor": "3.00",
+      "points": "31/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4710 Ethical and Responsible AI. 3.00 points ."
+}

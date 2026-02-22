@@ -1,0 +1,22 @@
+{
+  "dedup_key": "e31516f8c0c6e07ee9623b5c8f6d0edf19b54398",
+  "course_uid": "e31516f8c0c6e07ee9623b5c8f6d0edf19b54398",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6324",
+  "title": "Principles of RF and Microwave Measurement",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Principles behind, and techniques related to, RF and microwave simulation and measurements. S parameters; simulations and measurements for small-signal and large signal / nonlinear circuits in the time and frequency domains; noise",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6324 Principles of RF and Microwave Measurement. 3.00 points ."
+}

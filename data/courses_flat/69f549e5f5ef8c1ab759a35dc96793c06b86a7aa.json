@@ -1,0 +1,22 @@
+{
+  "dedup_key": "69f549e5f5ef8c1ab759a35dc96793c06b86a7aa",
+  "course_uid": "69f549e5f5ef8c1ab759a35dc96793c06b86a7aa",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4650",
+  "title": "POLYMER PHYSICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Senior undergraduate/first-year graduate course on the physics of polymer systems. Topics include scaling behavior of chains under different conditions, mixing thermodynamics, networks and geation, polymer dynamics, including retation and entanglements. Special topics: nanocomposites.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEN E3110 ) and ( CHEN E4620 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4650 POLYMER PHYSICS. 3.00 points ."
+}

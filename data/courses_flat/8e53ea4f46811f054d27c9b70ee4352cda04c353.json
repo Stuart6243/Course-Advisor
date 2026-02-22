@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8e53ea4f46811f054d27c9b70ee4352cda04c353",
+  "course_uid": "8e53ea4f46811f054d27c9b70ee4352cda04c353",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4530",
+  "title": "TOPICS IN OPERATIONS RESEARCH",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course will cover the basics of game theory and market design, with a focus on how AI and optimization enables large-scale game solving and markets. We will cover the core ideas behind recent superhuman AIs for games such as Poker. Then, we will discuss how AI and game theory ideas are used in marketplaces such as internet advertising, fair course seat allocation, and spectrum reallocation. This is intended to be an advanced MS level and senior undergraduate course for students in Operations Research and Financial Engineering",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: A course in probability and statistics 4101/4150 or equivalent, basic python programming.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4530 TOPICS IN OPERATIONS RESEARCH. 3.00 points ."
+}

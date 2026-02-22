@@ -1,0 +1,22 @@
+{
+  "dedup_key": "c81b951626ce3d9dc374de17e5f953789d8af3e5",
+  "course_uid": "c81b951626ce3d9dc374de17e5f953789d8af3e5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E4115",
+  "title": "MICROMECH OF COMPOSITE MAT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An introduction to the constitutive modeling of composite materials: Green’s functions in heterogeneous media, Eshelby’s equivalent inclusion methods, eigenstrains, spherical and ellipsoidal inclusions, dislocations, homogenization of elastic fields, elastic, viscoelastic and elasto-plastic constitutive modeling, micromechanics-based models",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ENME E4113 ) or ENME E4113 ; Or instructor's approval.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E4115 MICROMECH OF COMPOSITE MAT. 3.00 points ."
+}

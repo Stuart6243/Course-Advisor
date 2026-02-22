@@ -1,0 +1,22 @@
+{
+  "dedup_key": "3cf5c32535a357d5f9d550298c9199d02ff30713",
+  "course_uid": "3cf5c32535a357d5f9d550298c9199d02ff30713",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4735",
+  "title": "VISUAL INTERFACES TO COMPUTERS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Survey and analysis of architecture, algorithms, and underlying assumptions of commercial and research systems that recognize and interpret human gestures, analyze imagery such as fingerprint or iris patterns, generate natural language descriptions of medical or map imagery. Explores foundations in human psychophysics, cognitive science, and artificial intelligence",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W3134 or COMS W3136 or COMS W3137 ) COMS W3134 OR COMS W3136 OR COMS W3137 Visual input as data and for control of computer systems.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4735 VISUAL INTERFACES TO COMPUTERS. 3.00 points ."
+}

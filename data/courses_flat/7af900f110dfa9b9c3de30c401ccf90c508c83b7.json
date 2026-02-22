@@ -1,0 +1,22 @@
+{
+  "dedup_key": "7af900f110dfa9b9c3de30c401ccf90c508c83b7",
+  "course_uid": "7af900f110dfa9b9c3de30c401ccf90c508c83b7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4901",
+  "title": "Projects in Computer Science",
+  "points_raw": "1-3 points",
+  "points_min": 1.0,
+  "points_max": 3.0,
+  "description": "A second-level independent project involving laboratory work, computer programming, analytical investigation, or engineering design. May be repeated for credit, but not for a total of more than 3 points of degree credit. Consult the department for section assignment.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Approval by a faculty member who agrees to supervise the work.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4901 Projects in Computer Science. 1-3 points ."
+}

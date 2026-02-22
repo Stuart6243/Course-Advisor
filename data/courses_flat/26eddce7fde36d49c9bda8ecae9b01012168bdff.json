@@ -1,0 +1,36 @@
+{
+  "dedup_key": "26eddce7fde36d49c9bda8ecae9b01012168bdff",
+  "course_uid": "26eddce7fde36d49c9bda8ecae9b01012168bdff",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4302",
+  "title": "CARBON CAPTURE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Major technologies to store carbon dioxide, geological, ocean, and in the carbon chemical pool. Carbon dioxide transport technologies also covered. In addition to basic science and engineering challenges of each technology, full spectrum of economic, environmental, regulatory, and political/policy aspects, and their implication for regional and global carbon management strategies of the future. Combination of lectures, class debates and breakout groups, student presentations, and independent final projects",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Undergraduate level math and science or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4302",
+      "course_number": "EAEE 4302",
+      "section_call_number": "001/13052",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "304 Hamilton Hall",
+      "instructor": "Xiaoyang Shi",
+      "points": "3.00",
+      "enrollment_raw": "36/40",
+      "enrollment_current": 36,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4302 CARBON CAPTURE. 3.00 points ."
+}

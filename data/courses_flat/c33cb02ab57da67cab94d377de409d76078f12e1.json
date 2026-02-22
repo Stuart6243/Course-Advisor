@@ -1,0 +1,22 @@
+{
+  "dedup_key": "c33cb02ab57da67cab94d377de409d76078f12e1",
+  "course_uid": "c33cb02ab57da67cab94d377de409d76078f12e1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEME E4810",
+  "title": "INTRO-HUMANS IN SPACE FLIGHT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to human spaceflight from a systems engineering perspective. Historical and current space programs and spacecraft. Motivation, cost, and rationale for human space exploration. Overview of space environment needed to sustain human life and health, including physiological and psychological concerns in space habitat. Astronaut selection and training processes, spacewalking, robotics, mission operations, and future program directions. Systems integration for successful operation of a spacecraft. Highlights from current events and space research, Space Shuttle, Hubble Space Telescope, and International Space Station (ISS). Includes a design project to assist International Space Station astronauts",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Department permission and knowledge of MATLAB or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEME E4810 INTRO-HUMANS IN SPACE FLIGHT. 3.00 points ."
+}

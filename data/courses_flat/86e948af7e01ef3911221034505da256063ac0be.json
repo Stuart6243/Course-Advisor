@@ -1,0 +1,49 @@
+{
+  "dedup_key": "86e948af7e01ef3911221034505da256063ac0be",
+  "course_uid": "86e948af7e01ef3911221034505da256063ac0be",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENGI E1006",
+  "title": "INTRO TO COMP FOR ENG/APP SCI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An interdisciplinary course in computing intended for first year SEAS students. Introduces computational thinking, algorithmic problem solving and Python programming with applications in science and engineering. Assumes no prior programming background",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ENGI E1006",
+      "course_number": "ENGI 1006",
+      "section_call_number": "001/12886",
+      "times": "M W 10:10am - 11:25am",
+      "location": "501 Schermerhorn Hall",
+      "instructor": "Daniel Bauer",
+      "points": "3.00",
+      "enrollment_raw": "192/189",
+      "enrollment_current": 192,
+      "enrollment_capacity": 189
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENGI E1006",
+      "course_number": "ENGI 1006",
+      "section_call_number": "001/12401",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "309 Havemeyer Hall",
+      "instructor": "Daniel Bauer, Maxwell Levatich",
+      "points": "3.00",
+      "enrollment_raw": "213/200",
+      "enrollment_current": 213,
+      "enrollment_capacity": 200
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENGI E1006 INTRO TO COMP FOR ENG/APP SCI. 3.00 points ."
+}

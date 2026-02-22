@@ -1,0 +1,22 @@
+{
+  "dedup_key": "7e1291357caa360f1883df83bd33ebe4360e7e81",
+  "course_uid": "7e1291357caa360f1883df83bd33ebe4360e7e81",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3998",
+  "title": "UNDERGRAD PROJECTS IN COMPUTER SCIENCE",
+  "points_raw": "1.00-3.00 points",
+  "points_min": 1.0,
+  "points_max": 3.0,
+  "description": "Independent project involving laboratory work, computer programming, analytical investigation, or engineering design. May be repeated for credit. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Approval by a faculty member who agrees to supervise the work.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3998 UNDERGRAD PROJECTS IN COMPUTER SCIENCE. 1.00-3.00 points ."
+}

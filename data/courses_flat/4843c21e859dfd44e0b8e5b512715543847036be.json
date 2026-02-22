@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4843c21e859dfd44e0b8e5b512715543847036be",
+  "course_uid": "4843c21e859dfd44e0b8e5b512715543847036be",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6350",
+  "title": "VLSI DESIGN LABORATORY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Design of a CMOS mixed-signal integrated circuit. The class divides up into teams to work on mixed-signal integrated circuit designs. The chips are fabricated to be tested the following term. Lectures cover use of computer-aided design tools, design issues specific to the projects, and chip integration issues. This course shares lectures with E4350, but the complexity requirements of integrated circuits are higher.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E4321 ) and ( ELEN E4312 ) or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lab: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6350",
+      "course_number": "ELEN 6350",
+      "section_call_number": "001/18125",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "601 Fairchild Life Sciences Bldg",
+      "instructor": "Harish Krishnaswamy",
+      "points": "3.00",
+      "enrollment_raw": "29/35",
+      "enrollment_current": 29,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6350 VLSI DESIGN LABORATORY. 3.00 points ."
+}

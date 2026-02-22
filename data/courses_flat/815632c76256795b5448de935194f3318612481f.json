@@ -1,0 +1,22 @@
+{
+  "dedup_key": "815632c76256795b5448de935194f3318612481f",
+  "course_uid": "815632c76256795b5448de935194f3318612481f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3411",
+  "title": "REVIEW OF FUNDMNTLS MECE ENGR",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Review of core courses in mechanical engineering, including mechanics, strength of materials, fluid mechanics, thermodynamics, heat transfer, materials and processing, control, and mechanical design and analysis. Review of additional topics, including engineering economics and ethics in engineering. The course culminates with a comprehensive examination, similar to the Fundamentals of Engineering examination. Meets the first 4.5 weeks only",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Senior standing.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3411 REVIEW OF FUNDMNTLS MECE ENGR. 1.00 point ."
+}

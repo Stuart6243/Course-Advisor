@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f88bd7056c8e48a44b2ada11ca7fe895418098ac",
+  "course_uid": "f88bd7056c8e48a44b2ada11ca7fe895418098ac",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E9143",
+  "title": "APPLIED PHYSICS SEMINAR",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "May be repeated for credit. Selected topics in applied physics. Topics and instructors change from year to year.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E9143 APPLIED PHYSICS SEMINAR. 3.00 points ."
+}

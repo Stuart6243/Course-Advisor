@@ -1,0 +1,22 @@
+{
+  "dedup_key": "125b2074bc70be759c98e1dd9658ece5f0ae0a73",
+  "course_uid": "125b2074bc70be759c98e1dd9658ece5f0ae0a73",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6614",
+  "title": "ADV TPC:ROBOTICS/MECH SYNTHES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Recommended: MECE E3401 or instructor’s permission. Kinematic modeling methods for serial, parallel, redundant, wire-actuated robots and multifingered hands with discussion of open research problems. Introduction to screw theory and line geometry tools for kinematics. Applications of homotopy continuation methods and symbolic-numerical methods for direct kinematics of parallel robots and synthesis of mechanisms. Course uses textbook materials as well as a collection of recent research papers.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6614 ADV TPC:ROBOTICS/MECH SYNTHES. 3.00 points ."
+}

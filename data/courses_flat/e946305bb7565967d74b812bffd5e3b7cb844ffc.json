@@ -1,0 +1,24 @@
+{
+  "dedup_key": "e946305bb7565967d74b812bffd5e3b7cb844ffc",
+  "course_uid": "e946305bb7565967d74b812bffd5e3b7cb844ffc",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6232",
+  "title": "ANALYSIS OF ALGORITHMS II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( CSOR W4231 ) CSOR W4231 Continuation of CSOR W4231",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "COMS E6232 ANALYSIS OF ALGORITHMS II. 3.00 points ."
+}

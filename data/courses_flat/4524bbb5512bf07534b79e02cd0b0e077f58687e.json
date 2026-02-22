@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4524bbb5512bf07534b79e02cd0b0e077f58687e",
+  "course_uid": "4524bbb5512bf07534b79e02cd0b0e077f58687e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6321",
+  "title": "Advanced digital electronic circuits",
+  "points_raw": "4.5 points",
+  "points_min": 4.5,
+  "points_max": 4.5,
+  "description": "Advanced topics in the design of digital integrated circuits. Clocked and non-clocked combinational logic styles. Timing circuits: latches and flip-flops, phase-locked loops, delay-locked loops. SRAM and DRAM memory circuits. Modeling and analysis of on-chip interconnect. Power distribution and power-supply noise. Clocking, timing, and synchronization issues. Circuits for chip-to-chip electrical communication. Advanced technology issues that affect circuit design. The class may include a team circuit design project.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( EECS E4321 ) EECS E4321",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6321",
+      "course_number": "EECS 6321",
+      "section_call_number": "001/11561",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "717 Hamilton Hall",
+      "instructor": "Mingoo Seok",
+      "points": "4.5",
+      "enrollment_raw": "60/80",
+      "enrollment_current": 60,
+      "enrollment_capacity": 80
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6321 Advanced digital electronic circuits. 4.5 points ."
+}

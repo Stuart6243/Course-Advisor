@@ -1,0 +1,22 @@
+{
+  "dedup_key": "5f9bc11f63c8bfab20992eaaea791aa97bb93619",
+  "course_uid": "5f9bc11f63c8bfab20992eaaea791aa97bb93619",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4180",
+  "title": "ELECTROCHEMICAL ENERGY STORAGE SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Survey course on electrochemical energy storage with a focus on closed-form cells. Fundamentals of thermodynamics will be reviewed and fundamentals of electrochemistry introduced. Application of fundamentals to devices such as batteries, flow batteries, and fuel cells. Device optimization with respect to energy density, power density, cycle life and capital cost will be considered.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEM UN1403 ) and ( CHEM UN1404 ) and ( MECE E3301 ) and ( PHYS UN1402 ) Or equivalent Corequisites: CHEN E4201 EAEE E3103",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4180 ELECTROCHEMICAL ENERGY STORAGE SYSTEMS. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "78604eb2086d0203a3114579f2162afccc4232fb",
+  "course_uid": "78604eb2086d0203a3114579f2162afccc4232fb",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEBM E6099",
+  "title": "TPCS:COMPUT NEUROSCI/NEUROENGI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected advanced topics in computational neurscience and neuroengineering. Content varies from year to year, and different topics rotate through the course numbers 6090-6099",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEBM E6099 TPCS:COMPUT NEUROSCI/NEUROENGI. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "046e12114601f75f8cb54d4150832f7f2ac0ffd7",
+  "course_uid": "046e12114601f75f8cb54d4150832f7f2ac0ffd7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3995",
+  "title": "TOPICS IN COMPUTER SCIENCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Consult the department for section assignment. Special topics arranged as the need and availability arise. Topics are usually offered on a one-time basis. Since the content of this course changes each time it is offered, it may be repeated for credit.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3995 TOPICS IN COMPUTER SCIENCE. 3.00 points ."
+}

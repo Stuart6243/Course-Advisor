@@ -1,0 +1,36 @@
+{
+  "dedup_key": "67775eb9627667e165a24240a4fcf7741bd07d4f",
+  "course_uid": "67775eb9627667e165a24240a4fcf7741bd07d4f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E3004",
+  "title": "URBAN INFRASTRUCTURE SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to: (a) the infrastructure systems that support urban socioeconomic activities and (b) fundamental system design and analysis methods. Coverage of water supply, transportation, buildings, and energy infrastructure, as well as their interdependencies. Emphasis upon the process that these systems serve, the factors that influence their performance, the basic mechanisms that govern their design and operation, and the impacts that they have regionally and globally. Student teams complete a design/analysis project on a large-scale urban development site in New York City with equal emphasis given to water resources/environmental engineering, geotechnical engineering, and construction engineering and management topics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E3004",
+      "course_number": "CIEN 3004",
+      "section_call_number": "001/11692",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Markus Schlaepfer",
+      "points": "3.00",
+      "enrollment_raw": "40/40",
+      "enrollment_current": 40,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E3004 URBAN INFRASTRUCTURE SYSTEMS. 3.00 points ."
+}

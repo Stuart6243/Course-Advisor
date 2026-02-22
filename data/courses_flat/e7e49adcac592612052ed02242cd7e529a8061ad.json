@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e7e49adcac592612052ed02242cd7e529a8061ad",
+  "course_uid": "e7e49adcac592612052ed02242cd7e529a8061ad",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E3820",
+  "title": "BIOMEDICAL ENGINEERING LAB II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Biomedical experimental design and hypothesis testing. Statistical analysis of experimental measurements. Analysis of experimental measurements. Analysis of variance, post hoc testing. Fluid shear and cell adhesion, neuro-electrophysiology, soft tissue biomechanics, biomecial imaging and ultrasound, characterization of excitable tissues, microfluidics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lab: 4.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E3820",
+      "course_number": "BMEN 3820",
+      "section_call_number": "001/13328",
+      "times": "W 1:10pm - 3:45pm",
+      "location": "382 Engineering Terrace",
+      "instructor": "Clark Hung, Barclay Morrison, Samuel Sia, Lauren Heckelman, Grace McIlvain",
+      "points": "3.00",
+      "enrollment_raw": "23/27",
+      "enrollment_current": 23,
+      "enrollment_capacity": 27
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E3820",
+      "course_number": "BMEN 3820",
+      "section_call_number": "002/13329",
+      "times": "Th 1:10pm - 3:45pm",
+      "location": "382 Engineering Terrace",
+      "instructor": "Grace McIlvain, Lauren Heckelman, Samuel Sia, Barclay Morrison, Clark Hung",
+      "points": "3.00",
+      "enrollment_raw": "28/27",
+      "enrollment_current": 28,
+      "enrollment_capacity": 27
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E3820 BIOMEDICAL ENGINEERING LAB II. 3.00 points ."
+}

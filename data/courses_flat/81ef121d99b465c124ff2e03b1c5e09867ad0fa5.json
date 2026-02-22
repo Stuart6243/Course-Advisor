@@ -1,0 +1,49 @@
+{
+  "dedup_key": "81ef121d99b465c124ff2e03b1c5e09867ad0fa5",
+  "course_uid": "81ef121d99b465c124ff2e03b1c5e09867ad0fa5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E3402",
+  "title": "PRODUCTN-INVENTORY PLAN-CONTRL",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Required for all undergraduate students majoring in IE, OR:EMS, OR:FE, and OR. Must be taken during (or before) the sixth semester. Inventory management and production planning. Continuous and periodic review models: optimal policies and heuristic solutions, deterministic and probabilistic demands. Material requirements planning. Aggregate planning of production, inventory, and work force. Multi-echelon integrated production-inventory systems. Production scheduling. Term project. Recitation section required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( IEOR E3608 ) and ( IEOR E3658 ) and IEOR E3608 AND IEOR E3658 For undergraduates only.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E3402",
+      "course_number": "IEOR 3402",
+      "section_call_number": "001/13269",
+      "times": "F 11:00am - 12:00pm",
+      "location": "142 Uris Hall",
+      "instructor": "Ali Sadighian",
+      "points": "4.00",
+      "enrollment_raw": "16/90",
+      "enrollment_current": 16,
+      "enrollment_capacity": 90
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E3402",
+      "course_number": "IEOR 3402",
+      "section_call_number": "001/13269",
+      "times": "M W 8:40am - 9:55am",
+      "location": "310 Fayerweather",
+      "instructor": "Ali Sadighian",
+      "points": "4.00",
+      "enrollment_raw": "16/90",
+      "enrollment_current": 16,
+      "enrollment_capacity": 90
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E3402 PRODUCTN-INVENTORY PLAN-CONTRL. 4.00 points ."
+}

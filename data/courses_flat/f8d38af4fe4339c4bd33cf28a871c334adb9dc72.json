@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f8d38af4fe4339c4bd33cf28a871c334adb9dc72",
+  "course_uid": "f8d38af4fe4339c4bd33cf28a871c334adb9dc72",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSEE E6915",
+  "title": "TECH WRITING FOR CS AND ENGINRS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "and Ph.D. candidates in CS/CE and EE. Topics to help CS/CE and EE graduate students’ communication skills. Emphasis on writing, presenting clear, concise proposals, journal articles, conference papers, theses, and technical presentations. Credit may not be used to satisfy degree requirements",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Available to M.S.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CSEE E6915",
+      "course_number": "CSEE 6915",
+      "section_call_number": "001/16627",
+      "times": "F 10:00am - 12:00pm",
+      "location": "414 Pupin Laboratories",
+      "instructor": "Janet Kayfetz",
+      "points": "3.00",
+      "enrollment_raw": "9/25",
+      "enrollment_current": 9,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSEE E6915 TECH WRITING FOR CS AND ENGINRS. 3.00 points ."
+}

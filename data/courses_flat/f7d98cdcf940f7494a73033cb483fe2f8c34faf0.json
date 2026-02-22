@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f7d98cdcf940f7494a73033cb483fe2f8c34faf0",
+  "course_uid": "f7d98cdcf940f7494a73033cb483fe2f8c34faf0",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4103",
+  "title": "Environmental Soil Chemistry",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to principles of chemical reactions in soils, soil chemical properties and processes, and the chemical nature of soil solids. The scientific background for characterizing soil health, addressing soil pollution, performing soil remediation, and sustainable use of soil/subsurface resources. Properties of elements and molecules in soil, soil water chemistry, redox reactions in natural systems, mineralogy and weathering processes in soils, soil carbon cycling, climate change impact on soil, soil organic matter formation and structure, and legacy and emerging contaminants.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEE E3010 ) Or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4103",
+      "course_number": "EAEE 4103",
+      "section_call_number": "001/13010",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "307 Uris Hall",
+      "instructor": "Adeyemi Adeleye",
+      "points": "3.00",
+      "enrollment_raw": "5/40",
+      "enrollment_current": 5,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4103 Environmental Soil Chemistry. 3.00 points ."
+}

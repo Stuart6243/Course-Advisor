@@ -1,0 +1,22 @@
+{
+  "dedup_key": "72a865f88aa55b62701df49664f2742a351a83e8",
+  "course_uid": "72a865f88aa55b62701df49664f2742a351a83e8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6906",
+  "title": "TPCS-ELEC ＆ COMPUT ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected topics in electrical and computer engineering. Content varies from year to year, and different topics rotate through the course numbers 6900 to 6909",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6906 TPCS-ELEC ＆ COMPUT ENGINEERING. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d0d1cb12dc44dc710312c05f8f67c7aba0ca2345",
+  "course_uid": "d0d1cb12dc44dc710312c05f8f67c7aba0ca2345",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4305",
+  "title": "CO2 UTILIZATION AND CONVERSION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to various CO2 utilization and conversion technologies that can reduce the overall carbon footprint of commodity chemicals and materials. Fundamentals of thermodynamics, fluid mechanics, reaction kinetics, catalysis and reactor design will be discussed using technological examples such as enhanced oil recovery, shale fracking, photo and electrochemical conversion of CO2 to chemical and fuels, and formation of solid carbonates and their various uses. Life cycle analyses of potential products and utilization schemes will also be discussed, as well as the use of renewable energy for CO2 conversion.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Undergraduate level thermodynamics or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4305",
+      "course_number": "EAEE 4305",
+      "section_call_number": "001/13054",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "420 Pupin Laboratories",
+      "instructor": "Robert Farrauto",
+      "points": "3.00",
+      "enrollment_raw": "40/50",
+      "enrollment_current": 40,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4305 CO2 UTILIZATION AND CONVERSION. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "93611b811fa45b3887247e5ed58b85c4dfa6616b",
+  "course_uid": "93611b811fa45b3887247e5ed58b85c4dfa6616b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEBM E6095",
+  "title": "TOPICS IN COMP NEUROSI ＆ ENG",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected advanced topics in computational neuroscience and neuroengineering. Content varies from year to year, and different topics rotate through the course numbers 6090 to 6099",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEBM E6095 TOPICS IN COMP NEUROSI ＆ ENG. 3.00 points ."
+}

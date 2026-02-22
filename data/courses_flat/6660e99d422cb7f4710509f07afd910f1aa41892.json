@@ -1,0 +1,22 @@
+{
+  "dedup_key": "6660e99d422cb7f4710509f07afd910f1aa41892",
+  "course_uid": "6660e99d422cb7f4710509f07afd910f1aa41892",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4237",
+  "title": "ARCH DESIGN, COMPUT＆METHOD",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Integrated methods of design and structural analysis between engineering and architecture. Lectures on historical precedents on material use, structural inventiveness and social importance. Labs on drafting and modeling software; physical modeling techniques and virtual reality visualization",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E3121 ) and ( CIEN E3125 ) or CIEN E3121 AND CIEN E3125 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4237 ARCH DESIGN, COMPUT＆METHOD. 3.00 points ."
+}

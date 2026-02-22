@@ -1,0 +1,24 @@
+{
+  "dedup_key": "75cf5fbdf36ab904dcde1540d823dc28bdd5d281",
+  "course_uid": "75cf5fbdf36ab904dcde1540d823dc28bdd5d281",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4210",
+  "title": "DRIVING FORCES OF BIOLOGICAL SYSTEMS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( CHEM UN1404 ) and ( MATH UN1202 ) BIOL C2005; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 4.",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "BMEN E4210 DRIVING FORCES OF BIOLOGICAL SYSTEMS. 4.00 points ."
+}

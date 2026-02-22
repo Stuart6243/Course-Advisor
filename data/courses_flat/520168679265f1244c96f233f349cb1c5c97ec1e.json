@@ -1,0 +1,36 @@
+{
+  "dedup_key": "520168679265f1244c96f233f349cb1c5c97ec1e",
+  "course_uid": "520168679265f1244c96f233f349cb1c5c97ec1e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6890",
+  "title": "Topics in information processing",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics spanning Electrical Engineering and Computer Science such as speech processing and recognition, image and multimedia content analysis, and other areas drawing on signal processing, information theory, machine learning, pattern recognition, and related topics. Content varies from year to year, and different topics rotate through the course numbers 6890 to 6899.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect.: 2.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6890",
+      "course_number": "EECS 6890",
+      "section_call_number": "001/11742",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Zhaoyou Wang",
+      "points": "3",
+      "enrollment_raw": "13/30",
+      "enrollment_current": 13,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6890 Topics in information processing. 3 points ."
+}

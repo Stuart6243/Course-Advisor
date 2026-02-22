@@ -1,0 +1,49 @@
+{
+  "dedup_key": "562d928222a6ac0471a68b1de0fdc751ba53ac32",
+  "course_uid": "562d928222a6ac0471a68b1de0fdc751ba53ac32",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4132",
+  "title": "PREV＆RESOL OF CONSTR DISPUTES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Contractual relationships in the engineering and construction industry and the actions that result in disputes. Emphasis on procedures required to prevent disputes and resolve them quickly and cost-effectively. Case studies requiring oral and written presentations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E4129 ) or CIEN E4129 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4132",
+      "course_number": "CIEN 4132",
+      "section_call_number": "001/11665",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Gregory Chertoff, Denis Serkin",
+      "points": "3.00",
+      "enrollment_raw": "16/40",
+      "enrollment_current": 16,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4132",
+      "course_number": "CIEN 4132",
+      "section_call_number": "V01/17136",
+      "times": "Gregory Chertoff, Denis Serkin",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4132 PREV＆RESOL OF CONSTR DISPUTES. 3.00 points ."
+}

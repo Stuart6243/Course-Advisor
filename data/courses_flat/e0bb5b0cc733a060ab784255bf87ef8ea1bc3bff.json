@@ -1,0 +1,36 @@
+{
+  "dedup_key": "e0bb5b0cc733a060ab784255bf87ef8ea1bc3bff",
+  "course_uid": "e0bb5b0cc733a060ab784255bf87ef8ea1bc3bff",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4470",
+  "title": "Deep Learning for Biomedical Signal Processing",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to methods in deep learning, focus on applications to biomedical signals and sequences. Review of traditional methods for analysis of signals and sequences. Temporal convolutional neural networks and recurrent neural networks. Long-short term memory (LSTM) models and deep state-space models. Theory and methods lectures accompanied with examples from biomedical signal and sequence analysis, including analysis of electroencephalogram (EEG), electrocardiogram (ECG/EKG), and genomics. Programming assignments use tensorflow/keras. Exams and final project required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Recommended: background in Python programming.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4470",
+      "course_number": "BMEN 4470",
+      "section_call_number": "001/14768",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "329 Pupin Laboratories",
+      "instructor": "Paul Sajda",
+      "points": "3.00",
+      "enrollment_raw": "61/80",
+      "enrollment_current": 61,
+      "enrollment_capacity": 80
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4470 Deep Learning for Biomedical Signal Processing. 3.00 points ."
+}

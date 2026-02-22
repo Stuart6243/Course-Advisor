@@ -1,0 +1,22 @@
+{
+  "dedup_key": "fb5cd92e2ff7ac734030052646c551e816365123",
+  "course_uid": "fb5cd92e2ff7ac734030052646c551e816365123",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6735",
+  "title": "VISUAL DATABASES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The analysis and retrieval of large collections of image and video data, with emphasis on visual semantics, human psychology, and user interfaces. Low-level processing: features and similarity measures; shot detection; key frame selection; machine learning methods for classification. Middle- level processing: organizational rules for videos, including unedited (home, educational), semiedited (sports, talk shows), edited (news, drama); human memory limits; progressive refinement; visualization techniques; incorporation of audio and text. Highlevel processing: extraction of thematic structures; ontologies, semantic filters, and learning; personalization of summaries and interfaces; detection of pacing and emotions. Examples and demonstrations from commercial and research systems throughout. Substantial course project or term paper required.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: COMS W4731 and COMS W4735 helpful but not required.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6735 VISUAL DATABASES. 3.00 points ."
+}

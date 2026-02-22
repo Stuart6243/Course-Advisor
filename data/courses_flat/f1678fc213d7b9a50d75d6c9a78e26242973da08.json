@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f1678fc213d7b9a50d75d6c9a78e26242973da08",
+  "course_uid": "f1678fc213d7b9a50d75d6c9a78e26242973da08",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E6001",
+  "title": "TOPICS IN BIOMED NANOTECHNOLOGY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Review and critical discussion of recent literature in nanobiotechnology and synthetic biology. Experimental and theoretical techniques, critical advances. Quality judgments of scientific impact and technical accuracy. Styles of written and graphical communication, the peer review process",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Targeted toward graduate students; undergraduate student may participate with instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E6001 TOPICS IN BIOMED NANOTECHNOLOGY. 3.00 points ."
+}

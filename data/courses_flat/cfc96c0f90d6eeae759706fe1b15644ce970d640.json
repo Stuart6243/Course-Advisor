@@ -1,0 +1,49 @@
+{
+  "dedup_key": "cfc96c0f90d6eeae759706fe1b15644ce970d640",
+  "course_uid": "cfc96c0f90d6eeae759706fe1b15644ce970d640",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4525",
+  "title": "MACHINE LEARNING FE ＆ OPR",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "MS IEOR students only. Introduction to machine learning, practical use of ML algorithms and applications to financial engineering and operations. Supervised learning: regression, classification, resampling methods, regularization, support vector machines (SVMs), and deep learning. Unsupervised learning: dimensionality reduction, matrix decomposition, and clustering algorithms",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Optimization, applied probability, statistics, and knowledge of or experience in computer programming.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4525",
+      "course_number": "IEOR 4525",
+      "section_call_number": "001/11822",
+      "times": "F 10:10am - 12:40pm",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Christian Kroer",
+      "points": "3.00",
+      "enrollment_raw": "74/100",
+      "enrollment_current": 74,
+      "enrollment_capacity": 100
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4525",
+      "course_number": "IEOR 4525",
+      "section_call_number": "001/13290",
+      "times": "M W 4:10pm - 5:25pm",
+      "location": "142 Uris Hall",
+      "instructor": "Daniel Bienstock",
+      "points": "3.00",
+      "enrollment_raw": "59/68",
+      "enrollment_current": 59,
+      "enrollment_capacity": 68
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4525 MACHINE LEARNING FE ＆ OPR. 3.00 points ."
+}

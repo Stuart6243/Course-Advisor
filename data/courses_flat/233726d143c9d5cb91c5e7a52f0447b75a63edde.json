@@ -1,0 +1,36 @@
+{
+  "dedup_key": "233726d143c9d5cb91c5e7a52f0447b75a63edde",
+  "course_uid": "233726d143c9d5cb91c5e7a52f0447b75a63edde",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E3998",
+  "title": "UNDERGRADUATE PROJECT I",
+  "points_raw": "2.00 points",
+  "points_min": 2.0,
+  "points_max": 2.0,
+  "description": "Students must enroll for both 3998x and 3999y during their senior year. Selection of an actual problem in Earth and environmental engineering, and design of an engineering solution including technical, economic, environmental, ethical, health and safety, social issues. Use of software for design, visualization, economic analysis, and report preparation. Students may work in teams. Presentation of results in a formal report and public presentation",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Senior standing.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E3998",
+      "course_number": "EAEE 3998",
+      "section_call_number": "001/13493",
+      "times": "Robert Farrauto",
+      "location": "",
+      "instructor": "2.00",
+      "points": "10/15",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E3998 UNDERGRADUATE PROJECT I. 2.00 points ."
+}

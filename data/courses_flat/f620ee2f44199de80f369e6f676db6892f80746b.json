@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f620ee2f44199de80f369e6f676db6892f80746b",
+  "course_uid": "f620ee2f44199de80f369e6f676db6892f80746b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4606",
+  "title": "DIGITAL MANUFACTURING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Additive manufacturing processes, CNC, Sheet cutting processes, Numerical control, Generative and algorithmic design. Social, economic, legal, and business implications. Course involves both theoretical exercises and a hands-on project",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Basic programming in any language.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4606",
+      "course_number": "MECE 4606",
+      "section_call_number": "001/12156",
+      "times": "T 6:10pm - 8:40pm",
+      "location": "517 Hamilton Hall",
+      "instructor": "Jonathan Blutinger",
+      "points": "3.00",
+      "enrollment_raw": "63/85",
+      "enrollment_current": 63,
+      "enrollment_capacity": 85
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4606 DIGITAL MANUFACTURING. 3.00 points ."
+}

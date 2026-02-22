@@ -1,0 +1,49 @@
+{
+  "dedup_key": "1eec8f82a741ddb2330e7d81e155a51c61f42109",
+  "course_uid": "1eec8f82a741ddb2330e7d81e155a51c61f42109",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4112",
+  "title": "TRANSPORT IN FLUID MIXTURES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Develops and applies non-equilibrium thermodynamics for modeling of transport phenomena in fluids and their mixtures. Continuum balances of mass, energy and momentum for pure fluids; non-equilibrium thermodynamic development of Newtons law of viscosity and Fouriers law; applications (conduction dominated energy transport, forced and free convection energy transport in fluids); balance laws for fluid mixtures; non-equilibrium thermodynamic development of Ficks law; applications (diffusion-reaction problems, analogy between energy and mass transport processes, transport in electrolyte solutions, sedimentation)",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CHEE E3010 AND CHEN E3110 ; or the equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4112",
+      "course_number": "CHEN 4112",
+      "section_call_number": "001/12745",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Christopher Durning",
+      "points": "3.00",
+      "enrollment_raw": "45/50",
+      "enrollment_current": 45,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4112",
+      "course_number": "CHEN 4112",
+      "section_call_number": "V01/17236",
+      "times": "Christopher Durning",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4112 TRANSPORT IN FLUID MIXTURES. 3.00 points ."
+}

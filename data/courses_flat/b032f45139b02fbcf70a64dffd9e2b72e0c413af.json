@@ -1,0 +1,22 @@
+{
+  "dedup_key": "b032f45139b02fbcf70a64dffd9e2b72e0c413af",
+  "course_uid": "b032f45139b02fbcf70a64dffd9e2b72e0c413af",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E3899",
+  "title": "Research Training",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Research training course. Recommended in preparation for laboratory related research",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E3899 Research Training. 0.00 points ."
+}

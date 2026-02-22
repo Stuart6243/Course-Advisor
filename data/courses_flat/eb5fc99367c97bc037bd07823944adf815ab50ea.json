@@ -1,0 +1,36 @@
+{
+  "dedup_key": "eb5fc99367c97bc037bd07823944adf815ab50ea",
+  "course_uid": "eb5fc99367c97bc037bd07823944adf815ab50ea",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ORCS E4529",
+  "title": "Reinforcement Learning",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Markov Decision Processes (MDP) and Reinforcement Learning (RL) problems. Reinforcement Learning algorithms including Q-learning, policy gradient methods, actor-critic method. Reinforcement learning while doing exploration-exploitation dilemma, multi-armed bandit problem. Monte Carlo Tree Search methods, Distributional, Multi-agent, and Causal Reinforcement Learning",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Probability and statistics, basic optimization e.g., familiarity with linear and convex optimization, gradient descent, basic algorithm design constructs, familiarity with programming in python.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ORCS E4529",
+      "course_number": "ORCS 4529",
+      "section_call_number": "001/11860",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "303 Seeley W. Mudd Building",
+      "instructor": "Shipra Agrawal",
+      "points": "3.00",
+      "enrollment_raw": "65/60",
+      "enrollment_current": 65,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ORCS E4529 Reinforcement Learning. 3.00 points ."
+}

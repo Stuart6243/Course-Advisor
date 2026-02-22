@@ -1,0 +1,22 @@
+{
+  "dedup_key": "0dd72a903c50df0148991ec1b6948e228a266b9b",
+  "course_uid": "0dd72a903c50df0148991ec1b6948e228a266b9b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "HSAM UN2901",
+  "title": "DATA:PAST, PRESENT AND FUTURE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Data-empowered algorithms are reshaping our professional, personal, and political realities, for good--and for bad. Data: Past, Present, and Future moves from the birth of statistics in the 18th century to the surveillance capitalism of the present day, covering racist eugenics, World War II cryptography, and creepy personalized advertising along the way. Rather than looking at ethics and history as separate from the science and engineering, the course integrates the teaching of algorithms and data manipulation with the political whirlwinds and ethical controversies from which those techniques emerged. We pair the introduction of technical developments with the shifting political and economic powers that encouraged and benefited from new capabilities. We couple primary and secondary readings on the history and ethics of data with computational work done largely with user-friendly Jupyter notebooks in Python",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 1.5.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "HSAM UN2901 DATA:PAST, PRESENT AND FUTURE. 3.00 points ."
+}

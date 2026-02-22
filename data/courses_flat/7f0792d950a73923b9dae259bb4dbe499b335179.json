@@ -1,0 +1,36 @@
+{
+  "dedup_key": "7f0792d950a73923b9dae259bb4dbe499b335179",
+  "course_uid": "7f0792d950a73923b9dae259bb4dbe499b335179",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E9800",
+  "title": "DOCTORAL RESEARCH INSTRUCTION",
+  "points_raw": "3.00-12.00 points",
+  "points_min": 3.0,
+  "points_max": 12.0,
+  "description": "A candidate for the Eng.Sc.D. degree in civil engineering must register for 12 points of doctoral research instruction. Registration in CIEN E9800 may not be used to satisfy the minimum residence requirement for the degree",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E9800",
+      "course_number": "CIEN 9800",
+      "section_call_number": "001/18117",
+      "times": "Raimondo Betti",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "1/15",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E9800 DOCTORAL RESEARCH INSTRUCTION. 3.00-12.00 points ."
+}

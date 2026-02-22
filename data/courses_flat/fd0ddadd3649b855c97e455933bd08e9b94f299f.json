@@ -1,0 +1,36 @@
+{
+  "dedup_key": "fd0ddadd3649b855c97e455933bd08e9b94f299f",
+  "course_uid": "fd0ddadd3649b855c97e455933bd08e9b94f299f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6792",
+  "title": "Deep Learning on the Edge",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced-level lab-based course. Build and experiment with deep-learning models implemented on low-power GPU edge computing device. Topics: architectures of low-power GPU devices, algorithms and DL models suitable for edge implementation, CUDA language, pre-processing of data, labeling for ground-truth annotation, profiling techniques, connectivity between edge devices and cloud computing servers, real-life data for experimentation, comparison of performance for a variety of methods, comparison of performance of edge-computing and cloud computing approaches.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Machine Learning, Linear Algebra, Probability and statistics, EECS E4040 Neural Networks and Deep Learning (or similar) E4620 - Numerical Methods for Data Science (or similar) Working knowledge of Python and a DL SW framework such as TensorFlow or PyTorch",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6792",
+      "course_number": "EECS 6792",
+      "section_call_number": "001/19983",
+      "times": "W 1:10pm - 3:40pm",
+      "location": "644 Seeley W. Mudd Building",
+      "instructor": "Zoran Kostic",
+      "points": "3.00",
+      "enrollment_raw": "28/25",
+      "enrollment_current": 28,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6792 Deep Learning on the Edge. 3.00 points ."
+}

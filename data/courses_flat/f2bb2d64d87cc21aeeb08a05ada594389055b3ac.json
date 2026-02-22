@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f2bb2d64d87cc21aeeb08a05ada594389055b3ac",
+  "course_uid": "f2bb2d64d87cc21aeeb08a05ada594389055b3ac",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ECIA W4100",
+  "title": "MGMT ＆ DEVPT OF WATER SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Decision analytic framework for operating, managing, and planning water systems, considering changing climate, values and needs. Public and private sector models explored through US-international case studies on topics ranging from integrated watershed management to the analysis of specific projects for flood mitigation, water and wastewater treatment, or distribution system evaluation and improvement",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ECIA W4100 MGMT ＆ DEVPT OF WATER SYSTEMS. 3.00 points ."
+}

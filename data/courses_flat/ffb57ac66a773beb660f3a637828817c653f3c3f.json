@@ -1,0 +1,22 @@
+{
+  "dedup_key": "ffb57ac66a773beb660f3a637828817c653f3c3f",
+  "course_uid": "ffb57ac66a773beb660f3a637828817c653f3c3f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E6085",
+  "title": "COMP ELEC STRUCT-COMPLX MTRS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basics of density functional theory (DFT) and its application to complex materials. Computation of electronics and mechanical properties of materials. Group theory, numerical methods, basis sets, computing, and running open source DFT codes. Problem sets and a small project",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( APPH E3100 ) or APPH E3100 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E6085 COMP ELEC STRUCT-COMPLX MTRS. 3.00 points ."
+}

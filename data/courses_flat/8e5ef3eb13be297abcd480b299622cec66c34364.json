@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8e5ef3eb13be297abcd480b299622cec66c34364",
+  "course_uid": "8e5ef3eb13be297abcd480b299622cec66c34364",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AEME E4305",
+  "title": "Propulsion",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to aerospace propulsion, including traditional and emerging aircraft and rocket propulsion systems — and energy storage approaches. Introduction to the design and thermodynamic performance analysis of such systems and their major components.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E3301 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AEME E4305 Propulsion. 3.00 points ."
+}

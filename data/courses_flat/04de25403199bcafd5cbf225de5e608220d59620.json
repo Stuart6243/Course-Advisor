@@ -1,0 +1,36 @@
+{
+  "dedup_key": "04de25403199bcafd5cbf225de5e608220d59620",
+  "course_uid": "04de25403199bcafd5cbf225de5e608220d59620",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "PSAM UN3707",
+  "title": "Persuasion at scale: causal inference, machine learning, and evidence-based understanding of the information environment",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "By employing statistical and computational methods, including randomized controlled trials, natural experiments, and machine learning techniques, students will engage directly with real-world data to uncover the intricacies of persuasion across different sectors, including but not limited to quantifying the effects of partisan media, social media, and political campaigns. The course will also delve into the historical evolution of these persuasive techniques, providing students with a rich contextual background to better understand current trends and anticipate future developments. This course fulfills the quantitative methods requirement for the Political Science major",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "PSAM UN3707",
+      "course_number": "PSAM 3707",
+      "section_call_number": "001/12687",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "413 Kent Hall",
+      "instructor": "Chris Wiggins, Eunji Kim",
+      "points": "3.00",
+      "enrollment_raw": "58/70",
+      "enrollment_current": 58,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "PSAM UN3707 Persuasion at scale: causal inference, machine learning, and evidence-based understanding of the information environment. 3.00 points ."
+}

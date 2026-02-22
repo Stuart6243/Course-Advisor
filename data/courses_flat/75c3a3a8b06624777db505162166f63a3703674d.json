@@ -1,0 +1,22 @@
+{
+  "dedup_key": "75c3a3a8b06624777db505162166f63a3703674d",
+  "course_uid": "75c3a3a8b06624777db505162166f63a3703674d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E8235",
+  "title": "SELECTED TPCS IN MATERIALS SCI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "May be repeated for credit. Selected topics in materials science. Topics and instructors change from year to year. For students in engineering, physical sciences, biological sciences, and related fields",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E8235 SELECTED TPCS IN MATERIALS SCI. 3.00 points ."
+}

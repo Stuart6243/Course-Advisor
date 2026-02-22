@@ -1,0 +1,62 @@
+{
+  "dedup_key": "59ea366527740b215cb09dbe48df31dc05bf4a5d",
+  "course_uid": "59ea366527740b215cb09dbe48df31dc05bf4a5d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4330",
+  "title": "ADVANCED CHEMICAL KINETICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Complex reactive systems. Catalysis. Heterogeneous systems, with an emphasis on coupled chemical kinetics and transport phenomena. Reactions at interfaces (surfaces, aerosols, bubbles). Reactions in solution.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEN E3230 ) or Or instructor's permission",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4330",
+      "course_number": "CHEN 4330",
+      "section_call_number": "D01/11462",
+      "times": "Robert Bozic",
+      "location": "",
+      "instructor": "3.00",
+      "points": "3/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4330",
+      "course_number": "CHEN 4330",
+      "section_call_number": "001/12747",
+      "times": "M W 4:10pm - 5:25pm",
+      "location": "414 Schapiro Cepser",
+      "instructor": "Juliana Silva Alves Carneiro",
+      "points": "3.00",
+      "enrollment_raw": "6/45",
+      "enrollment_current": 6,
+      "enrollment_capacity": 45
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4330",
+      "course_number": "CHEN 4330",
+      "section_call_number": "D01/18253",
+      "times": "Robert Bozic",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4330 ADVANCED CHEMICAL KINETICS. 3.00 points ."
+}

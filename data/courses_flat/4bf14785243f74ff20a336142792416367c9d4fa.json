@@ -1,0 +1,22 @@
+{
+  "dedup_key": "4bf14785243f74ff20a336142792416367c9d4fa",
+  "course_uid": "4bf14785243f74ff20a336142792416367c9d4fa",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4262",
+  "title": "Space Exploration and Mining",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Needs and opportunities for space exploration and mining, resources in planets and asteroids, history of human colonization, terraforming Mars, Titan, and Moon, safety and health issues, benign mining, space junk extraction, microbial mining",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4262 Space Exploration and Mining. 3.00 points ."
+}

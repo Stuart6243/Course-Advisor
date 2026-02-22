@@ -1,0 +1,22 @@
+{
+  "dedup_key": "a520371c213fe5d4f7b0ce73d90318ca1c2a8708",
+  "course_uid": "a520371c213fe5d4f7b0ce73d90318ca1c2a8708",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4012",
+  "title": "Sustainable Urban Systems Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basic probability theory and statistics. Basic programming skills. Introduction to urban data analytics (analysis and visualization of new types of ‘big’ urban data, statistical tools for urban data analysis, machine learning methods, data privacy). Conceptualization of cities as complex adaptive systems (coarse-graining of urban dynamics, network models for infrastructure interdependencies, agent-based urban simulation). Integrated urban infrastructure systems design (basic design solutions for coupled, people-centric, and climate-resilient civil infrastructure systems, Monte Carlo simulations for infrastructure scenario generation)",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Basic linear algebra.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4012 Sustainable Urban Systems Engineering. 3.00 points ."
+}

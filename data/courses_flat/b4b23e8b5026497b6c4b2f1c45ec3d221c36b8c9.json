@@ -1,0 +1,22 @@
+{
+  "dedup_key": "b4b23e8b5026497b6c4b2f1c45ec3d221c36b8c9",
+  "course_uid": "b4b23e8b5026497b6c4b2f1c45ec3d221c36b8c9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4620",
+  "title": "INTRO-POLYMERS/SOFT MATERIALS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An introduction to the chemistry and physics of soft material systems (polymers, colloids, organized surfactant systems and others), emphasizing the connection between microscopic structure and macroscopic physical properties. To develop an understanding of each system, illustrative experimental studies are discussed along with basic theoretical treatments. High molecular weight organic polymers are discussed first (basic notions, synthesis, properties of single polymer molecules, polymer solution and blend thermodynamics, rubber and gels). Colloidal systems are treated next (dominant forces in colloidal systems, flocculation, preparation and manipulation of colloidal systems) followed by a discussion of self-organizing surfactant systems (architecture of surfactants, miceles and surfactant membranes, phase behavior).",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4620 INTRO-POLYMERS/SOFT MATERIALS. 3.00 points ."
+}

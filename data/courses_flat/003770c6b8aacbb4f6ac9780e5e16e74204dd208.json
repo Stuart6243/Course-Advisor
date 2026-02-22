@@ -1,0 +1,36 @@
+{
+  "dedup_key": "003770c6b8aacbb4f6ac9780e5e16e74204dd208",
+  "course_uid": "003770c6b8aacbb4f6ac9780e5e16e74204dd208",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4261",
+  "title": "INTRO TO CRYPTOGRAPHY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Recommended: COMS W3261 or CSOR W4231 . An introduction to modern cryptography, focusing on the complexity-theoretic foundations of secure computation and communication in adversarial environments; a rigorous approach, based on precise definitions and provably secure protocols. Topics include private and public key encryption schemes, digital signatures, authentication, pseudorandom generators and functions, one-way functions, trapdoor functions, number theory and computational hardness, identification and zero knowledge protocols",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: COMS W3261 OR CSOR W4231 ; Comfort with basic discrete math and probability.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.5.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4261",
+      "course_number": "COMS 4261",
+      "section_call_number": "001/12842",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "142 Uris Hall",
+      "instructor": "Tal Malkin",
+      "points": "3.00",
+      "enrollment_raw": "32/105",
+      "enrollment_current": 32,
+      "enrollment_capacity": 105
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4261 INTRO TO CRYPTOGRAPHY. 3.00 points ."
+}

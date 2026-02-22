@@ -1,0 +1,49 @@
+{
+  "dedup_key": "25136130469f3c8e45b7daae8b257733a1099710",
+  "course_uid": "25136130469f3c8e45b7daae8b257733a1099710",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4310",
+  "title": "SOLID BIOMECHANICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The structure, function, and mechanical properties of various tissues in biolgical systems, such as blood vessels, muscle, skin, brain tissue, bone, tendon, cartilage, ligaments, etc. are examined. The establishment of basic governing mechanical principles and constitutive relations for each tissue. Experimental determination of various tissue properties. Medical and clinical implications of tissue mechanical behavior",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ENME E3105 ) and ( ENME E3113 ) and ENME E3105 AND ENME E3113 Applications of continuum mechanics to the understanding of various biological tissues properties.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect.: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4310",
+      "course_number": "BMEN 4310",
+      "section_call_number": "001/13197",
+      "times": "T 1:10pm - 3:40pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "X. Edward Guo",
+      "points": "3.00",
+      "enrollment_raw": "23/35",
+      "enrollment_current": 23,
+      "enrollment_capacity": 35
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4310",
+      "course_number": "BMEN 4310",
+      "section_call_number": "V01/17898",
+      "times": "X. Edward Guo",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4310 SOLID BIOMECHANICS. 3.00 points ."
+}

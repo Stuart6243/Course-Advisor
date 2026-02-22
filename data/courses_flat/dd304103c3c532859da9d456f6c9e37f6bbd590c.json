@@ -1,0 +1,49 @@
+{
+  "dedup_key": "dd304103c3c532859da9d456f6c9e37f6bbd590c",
+  "course_uid": "dd304103c3c532859da9d456f6c9e37f6bbd590c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4460",
+  "title": "PRIN-INNOVATN/ENTREPRENEURSHIP",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Team project centered course focused on principles of planning, creating, and growing a technology venture. Topics include: identifying and analyzing opportunities created by technology paradigm shifts, designing innovative products, protecting intellectual property, engineering innovative business models.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W3134 or COMS W3136 or COMS W3137 ) Or instructor's permission",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "CC/GS: Partial Fulfillment of Science Requirement",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4460",
+      "course_number": "COMS 4460",
+      "section_call_number": "001/12845",
+      "times": "M W 8:40am - 9:55am",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "William Reinisch",
+      "points": "3.00",
+      "enrollment_raw": "39/40",
+      "enrollment_current": 39,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4460",
+      "course_number": "COMS 4460",
+      "section_call_number": "001/12358",
+      "times": "M W 8:40am - 9:55am",
+      "location": "415 Schapiro Cepser",
+      "instructor": "William Reinisch",
+      "points": "3.00",
+      "enrollment_raw": "42/40",
+      "enrollment_current": 42,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4460 PRIN-INNOVATN/ENTREPRENEURSHIP. 3.00 points ."
+}

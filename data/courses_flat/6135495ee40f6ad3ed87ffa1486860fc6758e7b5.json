@@ -1,0 +1,22 @@
+{
+  "dedup_key": "6135495ee40f6ad3ed87ffa1486860fc6758e7b5",
+  "course_uid": "6135495ee40f6ad3ed87ffa1486860fc6758e7b5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4304",
+  "title": "TURBOMACHINERY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduces the basics of theory, design, selection and applications of turbomachinery. Turbomachines are widely used in many engineering applications such as energy conversion, power plants, air-conditioning, pumping, refrigeration and vehicle engines, as there are pumps, blowers, compressors, gas turbines, jet engines, wind turbines, etc. Applications are drawn from energy conversion technologies, HVAC and propulsion. Provides a basic understanding of the different kinds of turbomachines",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4304 TURBOMACHINERY. 3.00 points ."
+}

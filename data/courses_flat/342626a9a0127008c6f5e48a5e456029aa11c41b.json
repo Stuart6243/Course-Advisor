@@ -1,0 +1,36 @@
+{
+  "dedup_key": "342626a9a0127008c6f5e48a5e456029aa11c41b",
+  "course_uid": "342626a9a0127008c6f5e48a5e456029aa11c41b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E6613",
+  "title": "Optimization, I",
+  "points_raw": "4.5 points",
+  "points_min": 4.5,
+  "points_max": 4.5,
+  "description": "Theory and geometry of linear programming. The simplex method. Duality theory, sensitivity analysis, column generation and decomposition. Interior point methods. Introduction to nonlinear optimization: convexity, optimality conditions, steepest descent and Newton's method, active set and barrier methods.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Linear algebra",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E6613",
+      "course_number": "IEOR 6613",
+      "section_call_number": "001/11851",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Vineet Goyal",
+      "points": "4.5",
+      "enrollment_raw": "24/40",
+      "enrollment_current": 24,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E6613 Optimization, I. 4.5 points ."
+}

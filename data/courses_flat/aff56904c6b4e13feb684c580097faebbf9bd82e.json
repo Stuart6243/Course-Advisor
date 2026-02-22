@@ -1,0 +1,36 @@
+{
+  "dedup_key": "aff56904c6b4e13feb684c580097faebbf9bd82e",
+  "course_uid": "aff56904c6b4e13feb684c580097faebbf9bd82e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4502",
+  "title": "Python for Analytics",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Zero-credit course. Primer on Python for analytics concepts. Required for MSBA students",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4502",
+      "course_number": "IEOR 4502",
+      "section_call_number": "001/17723",
+      "times": "Paul Bulkley-Logston",
+      "location": "",
+      "instructor": "0.00",
+      "points": "256/250",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4502 Python for Analytics. 0.00 points ."
+}

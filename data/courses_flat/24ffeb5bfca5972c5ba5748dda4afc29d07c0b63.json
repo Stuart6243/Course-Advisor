@@ -1,0 +1,22 @@
+{
+  "dedup_key": "24ffeb5bfca5972c5ba5748dda4afc29d07c0b63",
+  "course_uid": "24ffeb5bfca5972c5ba5748dda4afc29d07c0b63",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6897",
+  "title": "Topics in Information Processing",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics spanning electrical engineering and computer science such as speech processing and recognition, image and multimedia content analysis, and other areas drawing on signal processing, information theory, machine learning, pattern recognition, and related topics. Content varies from year to year, and different topics rotate through the course numbers 6890 to 6899",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6897 Topics in Information Processing. 3.00 points ."
+}

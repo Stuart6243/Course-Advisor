@@ -1,0 +1,22 @@
+{
+  "dedup_key": "06af0334b209587cb381111ea221cf3058737b10",
+  "course_uid": "06af0334b209587cb381111ea221cf3058737b10",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6200",
+  "title": "TURBULENCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introductory concepts and statistical description. Kinematics of random velocity fields, dynamics of vorticity, and scalar quantities. Transport processes in a turbulent medium. Turbulent shear flows: deterministic and random structures. Experimental techniques, prediction methods, and simulation.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E6100 ) MECE E6100",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6200 TURBULENCE. 3.00 points ."
+}

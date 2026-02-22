@@ -1,0 +1,22 @@
+{
+  "dedup_key": "57afe972bbf99a642226f74d14949e90f8c02df1",
+  "course_uid": "57afe972bbf99a642226f74d14949e90f8c02df1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6106",
+  "title": "Finite Element Method for Fluid Flow and Fluid-Structure Interactions",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Solving convection-dominated phenomena using finite element method (FEM), including convection-diffusion equation, Navier-Stokes, equation for incompressible viscous flows, and nonlinear fluid-structure interactions (FSI). Foundational concepts of FEM include function spaces, strong and weak forms, Galerkin FEM, isoparametric discretization, stability analysis, and error estimates. Mixed FEM for Stokes flow, incompressibility and inf-sup conditions. Stabilization approaches, including residue-based variational multiscale methods. Arbitrary Lagrangian-Eulerian (ALE) formulation for nonlinear FSI, and selected advanced topics of research interest.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: MECE E4100 or MECE E6100 or ENME E4332 or equivalents, or instructor's permission and high-level programming language Fortran, C, C++, Python, MATLAB, etc.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6106 Finite Element Method for Fluid Flow and Fluid-Structure Interactions. 3.00 points ."
+}

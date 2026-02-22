@@ -1,0 +1,36 @@
+{
+  "dedup_key": "3e422f062a8adcdb3e7907f4a9b1bb7bcba43468",
+  "course_uid": "3e422f062a8adcdb3e7907f4a9b1bb7bcba43468",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6460",
+  "title": "Mechanics of Elastomeric and Elastomeric-Like Materials",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Mechanics of nonlinear mechanical behavior of elastomeric and elastomeric-like solids. Overview of structure and behavior of elastomers. Kinematics of large deformation. Constitutive models for equilibrium stress-strain behavior, using invariant measures of deformation and statistical mechanics of molecular networks. Automated Constitutive Model Discovery via Neural Networks. Hysteretic aspects of structure and behavior due to time dependence and structural evolution with deformation. Review of experimental data and models to capture and predict observations. Time permitting: behavior of particle-filled, thermoplastic and biomacromolecular elastomers.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E3414 and MECE E6422 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E6460",
+      "course_number": "MECE 6460",
+      "section_call_number": "001/20340",
+      "times": "W 10:10am - 12:40pm",
+      "location": "253 Engineering Terrace",
+      "instructor": "Mary Boyce",
+      "points": "3.00",
+      "enrollment_raw": "18/25",
+      "enrollment_current": 18,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6460 Mechanics of Elastomeric and Elastomeric-Like Materials. 3.00 points ."
+}

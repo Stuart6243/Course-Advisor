@@ -1,0 +1,36 @@
+{
+  "dedup_key": "398c065f2c638158193b90480ebac324190ca37e",
+  "course_uid": "398c065f2c638158193b90480ebac324190ca37e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSEE W4840",
+  "title": "EMBEDDED SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "I/O, interfacing, and peripherals. Weekly laboratory sessions and term project on design of a microprocessor-based embedded system including at least one custom peripheral. Knowledge of C programming and digital logic required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CSEE W4823 ) CSEE W4823 Embedded system design and implementation combining hardware and software.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CSEE W4840",
+      "course_number": "CSEE 4840",
+      "section_call_number": "001/12397",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Stephen Edwards",
+      "points": "3.00",
+      "enrollment_raw": "101/110",
+      "enrollment_current": 101,
+      "enrollment_capacity": 110
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSEE W4840 EMBEDDED SYSTEMS. 3.00 points ."
+}

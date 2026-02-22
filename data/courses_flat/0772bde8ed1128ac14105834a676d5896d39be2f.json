@@ -1,0 +1,22 @@
+{
+  "dedup_key": "0772bde8ed1128ac14105834a676d5896d39be2f",
+  "course_uid": "0772bde8ed1128ac14105834a676d5896d39be2f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E6333",
+  "title": "FINITE ELEM ANALYSIS II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "FE formulation for beams and plates. Generalized eigenvalue problems (vibrations and buckling). FE formulation for time-dependent parabolic and hyperbolic problems. Nonlinear problems, linearization, and solution algorithms. Geometric and material nonlinearities. Introduction to continuum mechanics. Total and updated Lagrangian formulations. Hyperelasticity and plasticity. Special topics: fracture and damage mechanics, extended finite element method.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ENME E4332",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E6333 FINITE ELEM ANALYSIS II. 3.00 points ."
+}

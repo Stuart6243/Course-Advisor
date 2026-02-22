@@ -1,0 +1,22 @@
+{
+  "dedup_key": "ea6c99e542fae7f8386d6ec19f3c22cbd5c488f2",
+  "course_uid": "ea6c99e542fae7f8386d6ec19f3c22cbd5c488f2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/materials-science-engineering-program/",
+  "source_page_title": "Materials Science and Engineering Program < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E9000",
+  "title": "MATERIALS SCIENCE COLLOQUIUM",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Speakers from universities, national laboratories, and industry are invited to speak on the recent impact of materials science and engineering innovations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E9000 MATERIALS SCIENCE COLLOQUIUM. 0.00 points ."
+}

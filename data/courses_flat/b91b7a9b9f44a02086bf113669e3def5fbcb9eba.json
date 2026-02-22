@@ -1,0 +1,49 @@
+{
+  "dedup_key": "b91b7a9b9f44a02086bf113669e3def5fbcb9eba",
+  "course_uid": "b91b7a9b9f44a02086bf113669e3def5fbcb9eba",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00-1.50 points",
+  "points_min": 1.0,
+  "points_max": 1.5,
+  "description": "May be repeated for credit, but no more than 3 total points may be used for degree credit. Only for Civil Engineering and Engineering Mechanics graduate students who include relevant off-campus work experience as part of their approved program of study. Final report and letter of evaluation required. May not be taken for pass/fail credit or audited",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's written approval.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4999",
+      "course_number": "CIEN 4999",
+      "section_call_number": "001/17998",
+      "times": "Raimondo Betti, Scott Kelly",
+      "location": "",
+      "instructor": "1.00-1.50",
+      "points": "19/30",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4999",
+      "course_number": "CIEN 4999",
+      "section_call_number": "001/17143",
+      "times": "Raimondo Betti, Scott Kelly",
+      "location": "",
+      "instructor": "1.00-1.50",
+      "points": "1/30",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4999 FIELDWORK. 1.00-1.50 points ."
+}

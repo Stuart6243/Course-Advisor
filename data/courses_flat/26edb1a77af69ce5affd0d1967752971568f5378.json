@@ -1,0 +1,36 @@
+{
+  "dedup_key": "26edb1a77af69ce5affd0d1967752971568f5378",
+  "course_uid": "26edb1a77af69ce5affd0d1967752971568f5378",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E4321",
+  "title": "DIGITAL VLSI CIRCUITS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Design and analysis of high speed logic and memory. Digital CMOS and BiCMOS device modeling. Integrated circuit fabrication and layout. Interconnect and parasitic elements. Static and dynamic techniques. Worst-case design. Heat removal and I/O. Yield and circuit reliability. Logic gates, pass logic, latches, PLAs, ROMs, RAMs, receivers, drivers, repeaters, sense amplifiers",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Recommended preparation: ELEN E3106 , ELEN E3331 , and CSEE W3827 .",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EECS E4321",
+      "course_number": "EECS 4321",
+      "section_call_number": "001/11259",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "428 Pupin Laboratories",
+      "instructor": "Kenneth Shepard",
+      "points": "3.00",
+      "enrollment_raw": "112/147",
+      "enrollment_current": 112,
+      "enrollment_capacity": 147
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E4321 DIGITAL VLSI CIRCUITS. 3.00 points ."
+}

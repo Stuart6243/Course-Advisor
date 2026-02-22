@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d5f640a86b0199aaa69a89e7f8f2669c59a5d4bc",
+  "course_uid": "d5f640a86b0199aaa69a89e7f8f2669c59a5d4bc",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E3110",
+  "title": "PRINCIPLES OF TRANSPORT PHENOMENA",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Problems and applications will focus on energy, biological and chemical systems and processes",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Mechanics, Vector Calculus, Ordinary Differential Equations Corequisites: CHEN E3020 A mechanistic and mathematical description of the engineering fundamentals of heat and mass transport and fluid mechanics based on mass, momentum and energy balances from the molecular to the continuum to the industrial device scale.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E3110",
+      "course_number": "CHEN 3110",
+      "section_call_number": "001/10192",
+      "times": "M W 10:10am - 11:25am",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Christopher Boyce",
+      "points": "3.00",
+      "enrollment_raw": "26/40",
+      "enrollment_current": 26,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E3110 PRINCIPLES OF TRANSPORT PHENOMENA. 3.00 points ."
+}

@@ -1,0 +1,49 @@
+{
+  "dedup_key": "4ee3db977896ce6d3c08ef7ca5a6f70d99f49d60",
+  "course_uid": "4ee3db977896ce6d3c08ef7ca5a6f70d99f49d60",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6895",
+  "title": "TOPICS-INFORMATION PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics spanning Electrical Engineering and Computer Science such as speech processing and recognition, image and multimedia content analysis, and other areas drawing on signal processing, information theory, machine learning, pattern recognition, and related topics. Content varies from year to year, and different topics rotate through the course numbers 6890 to 6899. Topic: Advanced Big Data Analytics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6895",
+      "course_number": "EECS 6895",
+      "section_call_number": "001/11536",
+      "times": "T 7:00pm - 9:30pm",
+      "location": "501 Northwest Corner",
+      "instructor": "Ching-yung Lin",
+      "points": "3.00",
+      "enrollment_raw": "73/80",
+      "enrollment_current": 73,
+      "enrollment_capacity": 80
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6895",
+      "course_number": "EECS 6895",
+      "section_call_number": "V01/16732",
+      "times": "Ching-yung Lin",
+      "location": "",
+      "instructor": "3.00",
+      "points": "11/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6895 TOPICS-INFORMATION PROCESSING. 3.00 points ."
+}

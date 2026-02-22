@@ -1,0 +1,49 @@
+{
+  "dedup_key": "ee7849f9da0a793fa66fd7c7b37c0551f14e3e05",
+  "course_uid": "ee7849f9da0a793fa66fd7c7b37c0551f14e3e05",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E6212",
+  "title": "CARBON SEQUESTRATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "New technologies for capturing carbon dioxide and disposing of it away from the atmosphere. Detailed discussion of the extent of the human modifications to the natural carbon cycle, the motivation and scope of future carbon management strategies and the role of carbon sequestration. Introduction of several carbon sequestration technologies that allow for the capture and permanent disposal of carbon dioxide. Engineering issues in their implementation, economic impacts, and the environmental issues raised by the various methods.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( EAEE E3200 ) or EAEE E3200 ; or equivalent or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E6212",
+      "course_number": "EAEE 6212",
+      "section_call_number": "001/13433",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "303 Uris Hall",
+      "instructor": "Sara Hamilton",
+      "points": "3.00",
+      "enrollment_raw": "13/17",
+      "enrollment_current": 13,
+      "enrollment_capacity": 17
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E6212",
+      "course_number": "EAEE 6212",
+      "section_call_number": "V01/20094",
+      "times": "Sara Hamilton",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E6212 CARBON SEQUESTRATION. 3.00 points ."
+}

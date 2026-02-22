@@ -1,0 +1,36 @@
+{
+  "dedup_key": "49e6e9b3df4296211a8c4cf690342023d7ea576e",
+  "course_uid": "49e6e9b3df4296211a8c4cf690342023d7ea576e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4305",
+  "title": "MECH ＆ THERMODYNAMICS OF PROPULSION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Principles of propulsion. Thermodynamic cycles of air breathing propulsion systems including ramjet, scramjet, turbojet, and turbofan engine and rocket propulsion system concepts. Turbine engine and rocket performance characteristics. Component and cycle analysis of jet engines and turbomachinery. Advanced propulsion systems. Columbia Engineering interdisciplinary course.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E3301 ) and ( MECE E4306 ) or instructor approval",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4305",
+      "course_number": "MECE 4305",
+      "section_call_number": "001/19983",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "David Tew",
+      "points": "3.00",
+      "enrollment_raw": "28/30",
+      "enrollment_current": 28,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4305 MECH ＆ THERMODYNAMICS OF PROPULSION. 3.00 points ."
+}

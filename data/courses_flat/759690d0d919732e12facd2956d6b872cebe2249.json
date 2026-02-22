@@ -1,0 +1,36 @@
+{
+  "dedup_key": "759690d0d919732e12facd2956d6b872cebe2249",
+  "course_uid": "759690d0d919732e12facd2956d6b872cebe2249",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6883",
+  "title": "TOPICS IN SIGNAL PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Content varies from year to year, and different topics rotate through the course numbers 6880 to 6889",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ELEN E4810 Advanced topics in signal processing, such as multidimensional signal processing, image feature extraction, image/video editing and indexing, advanced digital filter design, multirate signal processing, adaptive signal processing, and wave-form coding of signals.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6883",
+      "course_number": "ELEN 6883",
+      "section_call_number": "001/11533",
+      "times": "F 8:10am - 10:00am",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Chong Li, Chonggang Wang",
+      "points": "3.00",
+      "enrollment_raw": "45/50",
+      "enrollment_current": 45,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6883 TOPICS IN SIGNAL PROCESSING. 3.00 points ."
+}

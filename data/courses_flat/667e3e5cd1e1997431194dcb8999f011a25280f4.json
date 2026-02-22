@@ -1,0 +1,49 @@
+{
+  "dedup_key": "667e3e5cd1e1997431194dcb8999f011a25280f4",
+  "course_uid": "667e3e5cd1e1997431194dcb8999f011a25280f4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4136",
+  "title": "Entrepreneurship in Engineering and Construction",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Capstone practicum where teams develop strategies and business plans for a new enterprise in the engineering and construction industry. Identification of attractive market segments and locations; development of an entry strategy; acquisition of financing, bonding and insurance; organizational design; plans for recruiting and retaining personnel; personnel compensation/incentives. Invited industry speakers. Priority given to graduate students in Construction Engineering and Management.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4136",
+      "course_number": "CIEN 4136",
+      "section_call_number": "001/12694",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Pierce Reynoldson",
+      "points": "3",
+      "enrollment_raw": "15/40",
+      "enrollment_current": 15,
+      "enrollment_capacity": 40
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4136",
+      "course_number": "CIEN 4136",
+      "section_call_number": "V01/18016",
+      "times": "Pierce Reynoldson",
+      "location": "",
+      "instructor": "3",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4136 Entrepreneurship in Engineering and Construction. 3 points ."
+}

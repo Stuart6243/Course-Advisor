@@ -1,0 +1,24 @@
+{
+  "dedup_key": "681201ef56488136e4d4dfa96dfe807ce0919701",
+  "course_uid": "681201ef56488136e4d4dfa96dfe807ce0919701",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E0001",
+  "title": "GEOTECHNICAL/STRUCTURAL TRACK",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "CIEN E0001 GEOTECHNICAL/STRUCTURAL TRACK. 0.00 points ."
+}

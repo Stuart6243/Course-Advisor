@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9ba0d1800f0768984869994e2387e683aaef80f0",
+  "course_uid": "9ba0d1800f0768984869994e2387e683aaef80f0",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4257",
+  "title": "ENVIR DATA ANALYSIS ＆ MODELING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction parametric and non-parametric statistical models applied to climate and environmental data analysis. Time and space data analysis methods will be focused, including clustering, autoregressive models, trend analysis, Bayesian analysis, missing data imputation, geostatistics, principal components analysis. Application to problems of climate variation and change; hydrology; air, water and soil pollution dynamics; disease propagation; ecological change; and resource assessment. The class requires the use of R with hands-on programming applied to a current environmental data analysis problem.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: (STAT W4001 and ENGI E1006 ) or ( IEOR E3658 and ENGI E1006 ) or ( IEOR E4150 and ENGI E1006 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EAEE E4257",
+      "course_number": "EAEE 4257",
+      "section_call_number": "001/13037",
+      "times": "M W 10:10am - 11:25am",
+      "location": "420 Pupin Laboratories",
+      "instructor": "Bolun Xu",
+      "points": "3.00",
+      "enrollment_raw": "32/50",
+      "enrollment_current": 32,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4257 ENVIR DATA ANALYSIS ＆ MODELING. 3.00 points ."
+}

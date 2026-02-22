@@ -1,0 +1,22 @@
+{
+  "dedup_key": "9befb0baecd8bba81461929d269d38d420854004",
+  "course_uid": "9befb0baecd8bba81461929d269d38d420854004",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E6364",
+  "title": "NONLINEAR COMPUTATIONAL MECH",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The formulations and solution strategies for finite element analysis of nonlinear problems are developed. Topics include the sources of nonlinear behavior (geometric, constitutive, boundary condition), derivation of the governing discrete equations for nonlinear systems such as large displacement, nonlinear elasticity, rate independent and dependent plasticity and other nonlinear constitutive laws, solution strategies for nonlinear problems (e.g. incrementation, iteration), and computational procedures for large systems of nonlinear algebraic equations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ENME E4332 ) or ENME E4332 ; or equivalent, elementary computer programming, linear algebra.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E6364 NONLINEAR COMPUTATIONAL MECH. 3.00 points ."
+}

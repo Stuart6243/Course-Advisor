@@ -1,0 +1,36 @@
+{
+  "dedup_key": "bb20ae10d36b1bb3e9eaf2adc7aa81301b3cd460",
+  "course_uid": "bb20ae10d36b1bb3e9eaf2adc7aa81301b3cd460",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E6007",
+  "title": "LAB-TO-MARKET",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to and application of commercialization of biomedical innovations. Topics include needs clarification, stakeholder analysis, market analysis, value proposition, business models, intellectual property, regulatory, and reimbursement. Development of path-to-market strategy and pitch techniques",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E6007",
+      "course_number": "BMEN 6007",
+      "section_call_number": "001/13385",
+      "times": "T 4:10pm - 7:25pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Megan Heenan",
+      "points": "3.00",
+      "enrollment_raw": "50/70",
+      "enrollment_current": 50,
+      "enrollment_capacity": 70
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E6007 LAB-TO-MARKET. 3.00 points ."
+}

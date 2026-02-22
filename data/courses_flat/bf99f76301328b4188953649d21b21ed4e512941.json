@@ -1,0 +1,36 @@
+{
+  "dedup_key": "bf99f76301328b4188953649d21b21ed4e512941",
+  "course_uid": "bf99f76301328b4188953649d21b21ed4e512941",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4995",
+  "title": "Topics In Civil Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Special topics sections arranged as the need and availability arises. Topics are usually offered on a one-time basis. Since the content of this course changes each time it is offered, it may be repeated for credit",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4995",
+      "course_number": "CIEN 4995",
+      "section_call_number": "001/13527",
+      "times": "W 1:10pm - 3:40pm",
+      "location": "606 Martin Luther King Building",
+      "instructor": "Shiho Kawashima",
+      "points": "3.00",
+      "enrollment_raw": "5/30",
+      "enrollment_current": 5,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4995 Topics In Civil Engineering. 3.00 points ."
+}

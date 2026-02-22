@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d61c703ba715bda0cff842601c23aadb2bf677dd",
+  "course_uid": "d61c703ba715bda0cff842601c23aadb2bf677dd",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E6005",
+  "title": "Biomedical Innovation I",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Project-based design experience for graduate students. Elements of design process, including need identification, concept generation, concept selection, and implementation. Development of design prototype and introduction to entrepreneurship and implementation strategies. Real-world training in biomedical design and innovation.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Master's students only.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E6005",
+      "course_number": "BMEN 6005",
+      "section_call_number": "001/13384",
+      "times": "M W 2:10pm - 4:00pm",
+      "location": "616 Martin Luther King Building",
+      "instructor": "Megan Heenan",
+      "points": "3",
+      "enrollment_raw": "36/50",
+      "enrollment_current": 36,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E6005 Biomedical Innovation I. 3 points ."
+}

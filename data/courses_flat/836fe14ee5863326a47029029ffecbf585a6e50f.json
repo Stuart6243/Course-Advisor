@@ -1,0 +1,24 @@
+{
+  "dedup_key": "836fe14ee5863326a47029029ffecbf585a6e50f",
+  "course_uid": "836fe14ee5863326a47029029ffecbf585a6e50f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E6140",
+  "title": "ENVIRONMENTAL PHYSICOCHEMICAL PROCESSES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: CIEE E4163 AND CIEE E4252; or the equivalent, or the instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "EAEE E6140 ENVIRONMENTAL PHYSICOCHEMICAL PROCESSES. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "d0a61e018faa9f4d752e51c304f814797d019390",
+  "course_uid": "d0a61e018faa9f4d752e51c304f814797d019390",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4520",
+  "title": "SYNTHETIC BIOLOGY:PRIN GENETIC CIRCUITS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Basic principles of synthetic biology and survey of the field. Fundamentals of biological circuits, including circuit design, modern techniques for DNA assembly, quantitative characterization of genetic circuits, and ODE modeling of biological circuits with MATLAB. Knowledge of biology, ordinary differential equations, and MATLAB will be assumed. Intended for advanced undergraduate and graduate students.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4520 SYNTHETIC BIOLOGY:PRIN GENETIC CIRCUITS. 3.00 points ."
+}

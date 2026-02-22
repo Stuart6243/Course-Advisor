@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8df921a0fb7b1542d617fbdeae25df003ce79912",
+  "course_uid": "8df921a0fb7b1542d617fbdeae25df003ce79912",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3902",
+  "title": "UNDERGRADUATE THESIS",
+  "points_raw": "0.00-6.00 points",
+  "points_min": 0.0,
+  "points_max": 6.0,
+  "description": "An independent theoretical or experimental investigation by an undergraduate major of an appropriate problem in computer science carried out under the supervision of a faculty member. A formal written report is mandatory and an oral presentation may also be required. May be taken over more than one term, in which case the grade is deferred until all 6 points have been completed. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Agreement by a faculty member to serve as thesis adviser.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3902 UNDERGRADUATE THESIS. 0.00-6.00 points ."
+}

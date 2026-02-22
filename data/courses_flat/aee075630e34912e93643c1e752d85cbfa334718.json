@@ -1,0 +1,49 @@
+{
+  "dedup_key": "aee075630e34912e93643c1e752d85cbfa334718",
+  "course_uid": "aee075630e34912e93643c1e752d85cbfa334718",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E3128",
+  "title": "DESIGN PROJECTS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "This project integrates structural, geotechnical and environmental/water resources design problems with construction management tasks and sustainability, legal and other social issues. Project is completed in teams, and communication skills are stressed. Outside lecturers will address important current issues in engineering practice. Every student in the course will be exposed with equal emphasis to issues related to geotechnical engineering, water resources / environmental engineering, structural engineering, and construction engineering and management",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E3125 ) and ( CIEN E3126 ) CIEN E3125 AND CIEN E3126 Capstone design project in civil engineering.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 4.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E3128",
+      "course_number": "CIEN 3128",
+      "section_call_number": "001/12146",
+      "times": "Th 1:10pm - 2:25pm",
+      "location": "252 Engineering Terrace",
+      "instructor": "Tom Panayotidi",
+      "points": "4.00",
+      "enrollment_raw": "23/23",
+      "enrollment_current": 23,
+      "enrollment_capacity": 23
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E3128",
+      "course_number": "CIEN 3128",
+      "section_call_number": "001/12146",
+      "times": "T 1:10pm - 3:25pm",
+      "location": "252 Engineering Terrace",
+      "instructor": "Tom Panayotidi",
+      "points": "4.00",
+      "enrollment_raw": "23/23",
+      "enrollment_current": 23,
+      "enrollment_capacity": 23
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E3128 DESIGN PROJECTS. 4.00 points ."
+}

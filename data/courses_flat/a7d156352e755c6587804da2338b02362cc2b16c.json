@@ -1,0 +1,36 @@
+{
+  "dedup_key": "a7d156352e755c6587804da2338b02362cc2b16c",
+  "course_uid": "a7d156352e755c6587804da2338b02362cc2b16c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E3020",
+  "title": "ANALYSIS OF CHEM ENGIN PROBLMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "ordinary differential equations. Corequisites: CHEE E3010 Advance chemical-engineering problem-solving skills through the use of computational tools (primarily developed in Excel or Python). Examples are drawn from thermodynamics, transport phenomena, and chemical kinetics. The course is project based, emphasizing data analysis and report writing. Unstructured collaboration with peers is highly encouraged. Requisite numerical methods and Chemical Engineering concepts introduced",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: A Python course.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 1 Lab: 1",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E3020",
+      "course_number": "CHEN 3020",
+      "section_call_number": "001/12748",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Alexander Urban",
+      "points": "3.00",
+      "enrollment_raw": "36/45",
+      "enrollment_current": 36,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E3020 ANALYSIS OF CHEM ENGIN PROBLMS. 3.00 points ."
+}

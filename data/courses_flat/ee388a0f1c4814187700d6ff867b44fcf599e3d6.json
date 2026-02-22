@@ -1,0 +1,22 @@
+{
+  "dedup_key": "ee388a0f1c4814187700d6ff867b44fcf599e3d6",
+  "course_uid": "ee388a0f1c4814187700d6ff867b44fcf599e3d6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4231",
+  "title": "SOLAR FUELS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamentals and applications of solar energy conversion, especially technologies for conversion of sunlight into storable chemical energy or solar fuels. Topics include fundamentals of photoelectrochemistry, kinetics of solar fuels production, solar harvesting technologies, solar reactors, and solar thermal production of solar fuels. Applications include solar fuels technology for grid-scale energy storage, chemical industry, manufacturing, environmental remediation.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEN E3230 ) or Or Graduate Standing or instructor's permission",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4231 SOLAR FUELS. 3.00 points ."
+}

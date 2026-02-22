@@ -1,0 +1,51 @@
+{
+  "dedup_key": "4ccdadc3ead4437aa7c7a4049a84e6225b2e33b7",
+  "course_uid": "4ccdadc3ead4437aa7c7a4049a84e6225b2e33b7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4999",
+  "title": "FIELDWORK",
+  "points_raw": "1.00-3.00 points",
+  "points_min": 1.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4999",
+      "course_number": "CHEN 4999",
+      "section_call_number": "001/10226",
+      "times": "Christopher Vic Chen",
+      "location": "",
+      "instructor": "1.00-3.00",
+      "points": "3/25",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4999",
+      "course_number": "CHEN 4999",
+      "section_call_number": "001/17537",
+      "times": "Christopher Vic Chen, Sakul Ratanalert",
+      "location": "",
+      "instructor": "1.00-3.00",
+      "points": "1/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "CHEN E4999 FIELDWORK. 1.00-3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d98661d9cb67cc265b6d80cf31967980c638fae5",
+  "course_uid": "d98661d9cb67cc265b6d80cf31967980c638fae5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E6612",
+  "title": "Robotics Studio (Advanced)",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Hands-on studio class exposing students to practical aspects of the design, fabrication, and training of physical robotic systems. Students experience the entire robot creation process, covering conceptual design, detailed design, simulation and modeling, digital manufacturing, electronics and sensor design, software programming. This advanced version of Robotics Studio involves using Machine Learning instead of manual programming of the robot. This course is an advanced version of MECE 4611; only one of these versions can be taken",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E6612",
+      "course_number": "MECE 6612",
+      "section_call_number": "001/19933",
+      "times": "W 11:40am - 12:55pm",
+      "location": "Room TBA",
+      "instructor": "Hod Lipson",
+      "points": "3.00",
+      "enrollment_raw": "25/40",
+      "enrollment_current": 25,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E6612 Robotics Studio (Advanced). 3.00 points ."
+}

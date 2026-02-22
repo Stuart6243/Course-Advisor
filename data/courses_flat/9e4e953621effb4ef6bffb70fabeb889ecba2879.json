@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9e4e953621effb4ef6bffb70fabeb889ecba2879",
+  "course_uid": "9e4e953621effb4ef6bffb70fabeb889ecba2879",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3043",
+  "title": "SOLID ST,MICROWAVE,FBR OPT LAB",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Optical electronics and communications. Microwave circuits. Physical electronics.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E3106 ) and ELEN E3401 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 1.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3043",
+      "course_number": "ELEN 3043",
+      "section_call_number": "001/11183",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Wen Wang",
+      "points": "3.00",
+      "enrollment_raw": "21/50",
+      "enrollment_current": 21,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3043 SOLID ST,MICROWAVE,FBR OPT LAB. 3.00 points ."
+}

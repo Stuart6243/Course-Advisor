@@ -1,0 +1,38 @@
+{
+  "dedup_key": "2586e1d6b657fdcdac03d218ff2329fbf5fdfd56",
+  "course_uid": "2586e1d6b657fdcdac03d218ff2329fbf5fdfd56",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E3020",
+  "title": "BIOMEDICAL ENGINEERING II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( BIOL UN2005 ) and ( BIOL UN2006 ) or BIOL C2005 AND BIOL C2006; BMEN E3820 AND BMEN E4002 OR BMEN E4002 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E3020",
+      "course_number": "BMEN 3020",
+      "section_call_number": "001/13327",
+      "times": "M W 10:10am - 11:25am",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Nandan Nerurkar, Grace McIlvain, Clark Hung",
+      "points": "3.00",
+      "enrollment_raw": "53/65",
+      "enrollment_current": 53,
+      "enrollment_capacity": 65
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "BMEN E3020 BIOMEDICAL ENGINEERING II. 3.00 points ."
+}

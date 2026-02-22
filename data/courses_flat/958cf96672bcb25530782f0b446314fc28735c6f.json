@@ -1,0 +1,36 @@
+{
+  "dedup_key": "958cf96672bcb25530782f0b446314fc28735c6f",
+  "course_uid": "958cf96672bcb25530782f0b446314fc28735c6f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4550",
+  "title": "MEDICAL PHYSICS SEMINAR",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Required for all graduate students in the Medical Physics Program. Practicing professionals and faculty in the field present selected topics in medical physics",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APPH E4550",
+      "course_number": "APPH 4550",
+      "section_call_number": "001/10855",
+      "times": "M 9:00am - 10:15am",
+      "location": "214 Seeley W. Mudd Building",
+      "instructor": "Cheng Wuu",
+      "points": "0.00",
+      "enrollment_raw": "7/10",
+      "enrollment_current": 7,
+      "enrollment_capacity": 10
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E4550 MEDICAL PHYSICS SEMINAR. 0.00 points ."
+}

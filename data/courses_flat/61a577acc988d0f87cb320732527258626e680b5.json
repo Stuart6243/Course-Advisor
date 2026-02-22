@@ -1,0 +1,36 @@
+{
+  "dedup_key": "61a577acc988d0f87cb320732527258626e680b5",
+  "course_uid": "61a577acc988d0f87cb320732527258626e680b5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSEE E6863",
+  "title": "FORMAL VERIF HW SW SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to the theory and practice of formal methods for the design and analysis of correct (i.e. bug-free) concurrent and embedded hardware/software systems. Topics include temporal logics; model checking; deadlock and liveness issues; fairness; satisfiability (SAT) checkers; binary decision diagrams (BDDs); abstraction techniques; introduction to commercial formal verification tools. Industrial state-of-art, case studies and experiences: software analysis (C/C /Java), hardware verification (RTL).",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( COMS W3261 and COMS W3137 ) or ( COMS W3134 and COMS W3136 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CSEE E6863",
+      "course_number": "CSEE 6863",
+      "section_call_number": "001/12883",
+      "times": "M 6:10pm - 8:00pm",
+      "location": "702 Hamilton Hall",
+      "instructor": "Michael Theobald, Franjo Ivancic",
+      "points": "3.00",
+      "enrollment_raw": "95/86",
+      "enrollment_current": 95,
+      "enrollment_capacity": 86
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSEE E6863 FORMAL VERIF HW SW SYSTEMS. 3.00 points ."
+}

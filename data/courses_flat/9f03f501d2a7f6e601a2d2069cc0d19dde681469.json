@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9f03f501d2a7f6e601a2d2069cc0d19dde681469",
+  "course_uid": "9f03f501d2a7f6e601a2d2069cc0d19dde681469",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E3920",
+  "title": "BIOMEDICAL ENGIN DESIGN II",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "A two-semester design sequence to be taken in the senior year. Elements of the design process, with specific applications to biomedical engineering: concept formulation, systems synthesis, design analysis, optimization, biocompatibility, impact on patient health and comfort, health care costs, regulatory issues, and medical ethics. Selection and execution of a project involving the design of an actual engineering device or system. Introduction to entrepreneurship, biomedical start-ups, and venture capital. Semester I: statistical analysis of detection/classification systems (receiver operation characteristic analysis, logistic regression), development of design prototype, need, approach, benefits and competition analysis. Semester II: spiral develop process and testing, iteration and refinement of the initial design/prototype and business plan development. A lab fee of $100 each is collected",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 1.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E3920",
+      "course_number": "BMEN 3920",
+      "section_call_number": "001/13330",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "750 Schapiro Cepser",
+      "instructor": "Lauren Heckelman",
+      "points": "4.00",
+      "enrollment_raw": "36/55",
+      "enrollment_current": 36,
+      "enrollment_capacity": 55
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E3920 BIOMEDICAL ENGIN DESIGN II. 4.00 points ."
+}

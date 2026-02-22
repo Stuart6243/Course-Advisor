@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e51fa5daef019b76235c57eaf85125f2d132901d",
+  "course_uid": "e51fa5daef019b76235c57eaf85125f2d132901d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4300",
+  "title": "APPLIED ELECTRODYNAMICS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Study of phenomena of time dependent electric and magnetic fields including induction, waves, and radiation as well as special relativity. Applications are emphasized",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: APPH E3300 Overview of properties and interactions of static electric and magnetic fields.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E4300",
+      "course_number": "APPH 4300",
+      "section_call_number": "001/13570",
+      "times": "W 4:10pm - 6:40pm",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Carlos Paz Soldan",
+      "points": "3.00",
+      "enrollment_raw": "23/35",
+      "enrollment_current": 23,
+      "enrollment_capacity": 35
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E4300",
+      "course_number": "APPH 4300",
+      "section_call_number": "V01/17896",
+      "times": "Carlos Paz Soldan",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E4300 APPLIED ELECTRODYNAMICS. 3.00 points ."
+}

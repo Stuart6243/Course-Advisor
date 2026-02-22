@@ -1,0 +1,22 @@
+{
+  "dedup_key": "9a8a5d54681ff1ada3b34fb81e83290063712d4d",
+  "course_uid": "9a8a5d54681ff1ada3b34fb81e83290063712d4d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4910",
+  "title": "SOLID STATE CHEMISTRY IN PHARMACEUTICAL",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Must be engineering juniors or seniors, engineering graduate students, or PhD and undergraduate students in the sciences, e.g. chemistry or biology. Prerequisites: Pre-requisites: Thermodynamics (any), or General Chemistry Students must be engineering juniors or seniors, engineering graduate students, or PhD and undergraduate students in the sciences, e.g. chemistry or biology",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Thermodynamics any, or General Chemistry Students.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4910 SOLID STATE CHEMISTRY IN PHARMACEUTICAL. 3.00 points ."
+}

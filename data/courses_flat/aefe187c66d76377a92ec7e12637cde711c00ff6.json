@@ -1,0 +1,51 @@
+{
+  "dedup_key": "aefe187c66d76377a92ec7e12637cde711c00ff6",
+  "course_uid": "aefe187c66d76377a92ec7e12637cde711c00ff6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MEBM E4439",
+  "title": "MODELING ＆ ID OF DYNAMIC SYST",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "Prerequisites: ( APMA E2101 ) and ( ELEN E3801 ) or APMA E2101 AND ELEN E3801 ; EEME E3601 ; APMA E2101 , ELEN E3801 , or corequisite EEME E3601 , or permission of instructor.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MEBM E4439",
+      "course_number": "MEBM 4439",
+      "section_call_number": "001/13164",
+      "times": "Th 7:00pm - 9:30pm",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Nicolas Chbat",
+      "points": "3.00",
+      "enrollment_raw": "9/30",
+      "enrollment_current": 9,
+      "enrollment_capacity": 30
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MEBM E4439",
+      "course_number": "MEBM 4439",
+      "section_call_number": "V01/17945",
+      "times": "Nicolas Chbat",
+      "location": "",
+      "instructor": "3.00",
+      "points": "3/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "MEBM E4439 MODELING ＆ ID OF DYNAMIC SYST. 3.00 points ."
+}

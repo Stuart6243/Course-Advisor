@@ -1,0 +1,36 @@
+{
+  "dedup_key": "92b7b4325e454474600932a54bce5e19d4f7cbf3",
+  "course_uid": "92b7b4325e454474600932a54bce5e19d4f7cbf3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4461",
+  "title": "Materials Selection for Mechanical Design",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Understanding the properties and behavior of materials is critical to the mechanical design and subsequent function of any product or part – including wide-ranging applications from aircraft fuselage to robotic manipulators to flexures to telescope mirrors to flywheels to sports equipment to thermal insulators. This course provides a fundamental understanding of the microstructure of a range of materials (metals, polymers, ceramics, composites, hybrid) and the connection to design-determining or limiting properties including stiffness, expansion, thermal expansion, strength, energy storage and dissipation, toughness, and fatigue. Objective functions which are used to determine a “material index” for the selection of the best materials for use in a particular mechanical design are developed, underscoring the combined role of material properties and loading conditions in optimizing for materials selection. For example, take the case of determining a material index for selecting a best set of materials for a lightweight, stiff beam – how do the material density and elastic modulus together with the beam geometry and loading conditions factor in to determining the material index for materials selection? Note that the resulting material index for selecting best materials for a lightweight stiff beam (bending) is different than that for a lightweight stiff rod (tension). The material indices provide the framework for construction and use of materials selection charts to rapidly compare the effectiveness of wide-ranging materials for different applications.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: MECE E3414",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4461",
+      "course_number": "MECE 4461",
+      "section_call_number": "001/13521",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "415 Schapiro Cepser",
+      "instructor": "Mary Boyce",
+      "points": "3.00",
+      "enrollment_raw": "33/40",
+      "enrollment_current": 33,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4461 Materials Selection for Mechanical Design. 3.00 points ."
+}

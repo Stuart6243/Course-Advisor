@@ -1,0 +1,36 @@
+{
+  "dedup_key": "fb7980b6f9d84cd32357e172fdcd2747267d3965",
+  "course_uid": "fb7980b6f9d84cd32357e172fdcd2747267d3965",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4172",
+  "title": "3D UI AND AUGMENTED REALITY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Interaction techniques and metaphors, from desktop to immersive. Selection and manipulation. Travel and navigation. Symbolic, menu, gestural, and multimodal interaction. Dialogue design. 3D software support. 3D interaction devices and displays. Virtual and augmented reality. Tangible user interfaces. Review of relevant 3D math",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W4160 ) or ( COMS W4170 ) or COMS W4160 OR COMS W4170 ; Or instructor's permission Design, development, and evaluation of 3D user interfaces.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "CC/GS: Partial Fulfillment of Science Requirement",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4172",
+      "course_number": "COMS 4172",
+      "section_call_number": "001/12354",
+      "times": "T Th 1:10pm - 2:25pm",
+      "location": "233 Seeley W. Mudd Building",
+      "instructor": "Steven Feiner",
+      "points": "3.00",
+      "enrollment_raw": "44/44",
+      "enrollment_current": 44,
+      "enrollment_capacity": 44
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4172 3D UI AND AUGMENTED REALITY. 3.00 points ."
+}

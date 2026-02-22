@@ -1,0 +1,22 @@
+{
+  "dedup_key": "5b1f8afea84d2662e3737bf887e5d2bc13d119b9",
+  "course_uid": "5b1f8afea84d2662e3737bf887e5d2bc13d119b9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4008",
+  "title": "COMPUTATION DISCRETE OPT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Discrete optimization problems. Mathematical techniques and testing strengths and limits in practice on relevant applications. Transportation (travelling salesman and vehicle routing) and matching (online advertisement and school allocation) problems.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Linear programming, basic probability theory.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4008 COMPUTATION DISCRETE OPT. 3.00 points ."
+}

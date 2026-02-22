@@ -1,0 +1,62 @@
+{
+  "dedup_key": "f44b84391d8e86b42ac46e6473d391d78b7818b2",
+  "course_uid": "f44b84391d8e86b42ac46e6473d391d78b7818b2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3083",
+  "title": "ELECTRONIC CIRCUITS LABORATORY",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Companion lab course for ELEN E3331 . Experiments cover such topics as macromodeling of nonidealities of opamps using SPICE; Schmitt triggers and astable multivibrations using op-amps and diodes; logic inverters and amplifiers using bipolar junction transistors; logic inverters and ring oscillators using MOSFETs; filter design using opamps. The lab generally meets on alternate weeks.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E3081 ) Corequisites: ELEN E3331",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lab: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3083",
+      "course_number": "ELEN 3083",
+      "section_call_number": "001/11794",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "1205 Seeley W. Mudd Building",
+      "instructor": "David Vallancourt",
+      "points": "1.00",
+      "enrollment_raw": "44/46",
+      "enrollment_current": 44,
+      "enrollment_capacity": 46
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3083",
+      "course_number": "ELEN 3083",
+      "section_call_number": "002/11795",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "1205 Seeley W. Mudd Building",
+      "instructor": "David Vallancourt",
+      "points": "1.00",
+      "enrollment_raw": "40/46",
+      "enrollment_current": 40,
+      "enrollment_capacity": 46
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3083",
+      "course_number": "ELEN 3083",
+      "section_call_number": "003/11796",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "1205 Seeley W. Mudd Building",
+      "instructor": "David Vallancourt",
+      "points": "1.00",
+      "enrollment_raw": "22/46",
+      "enrollment_current": 22,
+      "enrollment_capacity": 46
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3083 ELECTRONIC CIRCUITS LABORATORY. 1.00 point ."
+}

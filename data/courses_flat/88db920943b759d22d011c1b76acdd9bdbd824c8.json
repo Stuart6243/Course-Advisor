@@ -1,0 +1,49 @@
+{
+  "dedup_key": "88db920943b759d22d011c1b76acdd9bdbd824c8",
+  "course_uid": "88db920943b759d22d011c1b76acdd9bdbd824c8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4130",
+  "title": "SOLAR ENERGY & STORAGE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Nature of solar radiation as electromagnetic waves and photons. Availability of solar radiation at different times and at various places in the world. Thermodynamics of solar energy. Elements of quantum mechanics for the understanding of solar cells, photosynthesis, and electrochemistry. Theory, design, manufacturing, and installation of solar cells. Lithium-ion rechargeable batteries and other energy-storage devices. Architecture of buildings to utilize solar energy",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: General physics PHYS C1401x, C1402y, C1403x, C1601x, and C1602y, freshman mathematics including ordinary differential equations MATH V1201 and MATH V1202, MATH E1210.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E4130",
+      "course_number": "APPH 4130",
+      "section_call_number": "001/13414",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "1024 Seeley W. Mudd Building",
+      "instructor": "Julian Chen",
+      "points": "3.00",
+      "enrollment_raw": "20/35",
+      "enrollment_current": 20,
+      "enrollment_capacity": 35
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E4130",
+      "course_number": "APPH 4130",
+      "section_call_number": "V01/17895",
+      "times": "Julian Chen",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E4130 SOLAR ENERGY & STORAGE. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "eb047cd858ace1adac0e8084baf7cbed6b1318d4",
+  "course_uid": "eb047cd858ace1adac0e8084baf7cbed6b1318d4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EACE E4250",
+  "title": "Hydrosystems Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Coverage of unit hydrologic processes such as precipitation, evaporation, infiltration, runoff generation, open channel and pipe flow, subsurface flow and well hydraulics in the context of example watersheds and specific integrative problems such as risk-based design for flood control, provision of water, and assessment of environmental impact or potential for non-point source pollution. Spatial hydrologic analysis using GIS and watershed models",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CHEN E3110 OR ENME E3161 ; or equiv, or instructors permission Quantitative introduction to hydrologic and hydraulic systems, with a focus on integrated modeling and analysis of the water cycle and associated mass transport for water resources and environmental engineering.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EACE E4250",
+      "course_number": "EACE 4250",
+      "section_call_number": "001/12811",
+      "times": "M W 11:40am - 12:55pm",
+      "location": "307 Uris Hall",
+      "instructor": "Wenli Zhao",
+      "points": "3.00",
+      "enrollment_raw": "15/24",
+      "enrollment_current": 15,
+      "enrollment_capacity": 24
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EACE E4250 Hydrosystems Engineering. 3.00 points ."
+}

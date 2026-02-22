@@ -1,0 +1,49 @@
+{
+  "dedup_key": "c5d674f916fcb417634a052458ce7aa771ffa151",
+  "course_uid": "c5d674f916fcb417634a052458ce7aa771ffa151",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3018",
+  "title": "MECHANICAL ENGINEERING LAB I",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Experiments in instrumentation and measurement: optical, pressure, fluid flow, temperature, stress, and electricity; viscometry, cantilever beam, digital data acquisition. Probability theory: distribution, functions of random variables, tests of significance, correlation, ANOVA, linear regression",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E3018",
+      "course_number": "MECE 3018",
+      "section_call_number": "001/11341",
+      "times": "T 1:10pm - 3:55pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "James Hone",
+      "points": "3.00",
+      "enrollment_raw": "43/43",
+      "enrollment_current": 43,
+      "enrollment_capacity": 43
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E3018",
+      "course_number": "MECE 3018",
+      "section_call_number": "002/11342",
+      "times": "Th 1:10pm - 3:55pm",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "James Hone",
+      "points": "3.00",
+      "enrollment_raw": "42/43",
+      "enrollment_current": 42,
+      "enrollment_capacity": 43
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3018 MECHANICAL ENGINEERING LAB I. 3.00 points ."
+}

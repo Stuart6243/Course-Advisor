@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d70d8057cd30ad5d0aab7cad1eac1b95dd3d5d74",
+  "course_uid": "d70d8057cd30ad5d0aab7cad1eac1b95dd3d5d74",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APBM E4650",
+  "title": "ANATOMY FOR PHYSICISTS ＆ ENGR",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Systemic approach to the study of the human body from a medical imaging point of view: skeletal, respiratory, cardiovascular, digestive, and urinary systems, breast and womens issues, head and neck, and central nervous system. Lectures are reinforced by examples from clinical two- and three-dimensional and functional imaging (CT, MRI, PET, SPECT, U/S, etc.)",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Engineering or physics background.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APBM E4650",
+      "course_number": "APBM 4650",
+      "section_call_number": "001/14285",
+      "times": "T Th 4:00pm - 5:20pm",
+      "location": "Ll110 Hammer Hlth Sciences Center",
+      "instructor": "Anna Rozenshtein, Perry Gerard, Zohaib Ahmad, Monique Katz",
+      "points": "3.00",
+      "enrollment_raw": "17/24",
+      "enrollment_current": 17,
+      "enrollment_capacity": 24
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APBM E4650 ANATOMY FOR PHYSICISTS ＆ ENGR. 3.00 points ."
+}

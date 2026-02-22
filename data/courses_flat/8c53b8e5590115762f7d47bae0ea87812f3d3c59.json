@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8c53b8e5590115762f7d47bae0ea87812f3d3c59",
+  "course_uid": "8c53b8e5590115762f7d47bae0ea87812f3d3c59",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4102",
+  "title": "STOCHASTIC MODELING FOR MSE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "A specialized version of IEOR E4106 for MSE students",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4101 Introduction to stochastic processes and models, with emphasis on applications to engineering and management; random walks, gambler’s ruin problem, Markov chains in both discrete and continuous time, Poisson processes, renewal processes, stopping times, Wald’s equation, binomial lattice model for pricing risky assets, simple option pricing; simulation of simple stochastic processes, Brownian motion, and geometric Brownian motion.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4102",
+      "course_number": "IEOR 4102",
+      "section_call_number": "001/13275",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "142 Uris Hall",
+      "instructor": "Karl Sigman",
+      "points": "3.00",
+      "enrollment_raw": "67/95",
+      "enrollment_current": 67,
+      "enrollment_capacity": 95
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4102 STOCHASTIC MODELING FOR MSE. 3.00 points ."
+}

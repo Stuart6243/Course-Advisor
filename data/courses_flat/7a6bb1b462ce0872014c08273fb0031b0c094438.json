@@ -1,0 +1,22 @@
+{
+  "dedup_key": "7a6bb1b462ce0872014c08273fb0031b0c094438",
+  "course_uid": "7a6bb1b462ce0872014c08273fb0031b0c094438",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4501",
+  "title": "Biomaterials and Scaffold Design",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "An introduction to the strategies and fundamental bioengineering design criteria in the development of biomaterials and tissue ngineered grafts. Materials structuralfunctional relationships, biocompatibility in terms of material and host responses. Through discussions, readings, and a group design project, students acquire an understanding of cell-material interactions and identify the arameters critical in the design and selection of biomaterials for biomedical applications.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4501 Biomaterials and Scaffold Design. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "437d36b2449abfbc577c7b7f6dc6449141e5c1b3",
+  "course_uid": "437d36b2449abfbc577c7b7f6dc6449141e5c1b3",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4247",
+  "title": "DES OF LARGE-SCALE FOUND SYST",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Design process from the start of field investigations through construction and the application of deep foundations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E3141 ) CIEN E3141 Focus on deep foundations in difficult conditions and constraints of designing foundations.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4247 DES OF LARGE-SCALE FOUND SYST. 3.00 points ."
+}

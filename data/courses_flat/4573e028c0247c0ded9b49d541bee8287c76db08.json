@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4573e028c0247c0ded9b49d541bee8287c76db08",
+  "course_uid": "4573e028c0247c0ded9b49d541bee8287c76db08",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E4010",
+  "title": "INTRODUCTN TO NUCLEAR SCIENCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introductory course is for individuals with an interest in medical physics and other branches of radiation science. Topics include basic concepts, nuclear models, semi-empirical mass formula, interaction of radiation with matter, nuclear detectors, nuclear structure and instability, radioactive decay process and radiation, particle accelerators, and fission and fusion processes and technologies",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: APMA E2000 AND MATH V1202 AND MATH V2030 AND PHYS W1403 ; or equivalents.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E4010",
+      "course_number": "APPH 4010",
+      "section_call_number": "001/13411",
+      "times": "T 6:30pm - 9:00pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Stephen Ostrow",
+      "points": "3.00",
+      "enrollment_raw": "25/27",
+      "enrollment_current": 25,
+      "enrollment_capacity": 27
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E4010 INTRODUCTN TO NUCLEAR SCIENCE. 3.00 points ."
+}

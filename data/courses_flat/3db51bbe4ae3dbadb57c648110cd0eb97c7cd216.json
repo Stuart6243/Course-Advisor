@@ -1,0 +1,22 @@
+{
+  "dedup_key": "3db51bbe4ae3dbadb57c648110cd0eb97c7cd216",
+  "course_uid": "3db51bbe4ae3dbadb57c648110cd0eb97c7cd216",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3302",
+  "title": "Thermodynamics Recitation",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Only students registered for MECE E3301 can register for this course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Recitation course to accompany MECE E3301 Thermodynamics.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3302 Thermodynamics Recitation. 0.00 points ."
+}

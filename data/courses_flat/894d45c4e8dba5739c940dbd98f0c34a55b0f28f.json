@@ -1,0 +1,36 @@
+{
+  "dedup_key": "894d45c4e8dba5739c940dbd98f0c34a55b0f28f",
+  "course_uid": "894d45c4e8dba5739c940dbd98f0c34a55b0f28f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4775",
+  "title": "Causal Inference",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Causal Inference theory and applications. The theoretical topics include the 3-layer causal hierarchy, causal bayesian networks, structural learning, the identification problem and the do-calculus, linear identifiability, bounding, and counterfactual analysis. The applied part includes intersection with statistics, the empirical-data sciences (social and health), and AI and ML.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: COMS W4771 Discrete Math, Calculus, Statistics basic probability, modeling, experimental design, Some programming experience",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4775",
+      "course_number": "COMS 4775",
+      "section_call_number": "001/13753",
+      "times": "M W 4:10pm - 5:25pm",
+      "location": "750 Schapiro Cepser",
+      "instructor": "Elias Bareinboim",
+      "points": "3.00",
+      "enrollment_raw": "26/60",
+      "enrollment_current": 26,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4775 Causal Inference. 3.00 points ."
+}

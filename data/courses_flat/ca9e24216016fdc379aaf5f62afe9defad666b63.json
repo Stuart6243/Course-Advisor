@@ -1,0 +1,36 @@
+{
+  "dedup_key": "ca9e24216016fdc379aaf5f62afe9defad666b63",
+  "course_uid": "ca9e24216016fdc379aaf5f62afe9defad666b63",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E4312",
+  "title": "ANALOG ELECTRONIC CIRCUITS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Analog layout techniques. An extensive design project is an integral part of the course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3331 ) and ( ELEN E3801 ) ELEN E3331 AND ELEN E3801 Differential and multistage amplifiers; small-signal analysis; biasing techniques; frequency response; negative feedback; stability criteria; frequency compensation techniques.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E4312",
+      "course_number": "ELEN 4312",
+      "section_call_number": "001/13530",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "702 Hamilton Hall",
+      "instructor": "Armagan Dascurcu",
+      "points": "3.00",
+      "enrollment_raw": "76/86",
+      "enrollment_current": 76,
+      "enrollment_capacity": 86
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E4312 ANALOG ELECTRONIC CIRCUITS. 3.00 points ."
+}

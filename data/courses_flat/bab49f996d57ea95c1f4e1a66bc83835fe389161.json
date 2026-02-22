@@ -1,0 +1,62 @@
+{
+  "dedup_key": "bab49f996d57ea95c1f4e1a66bc83835fe389161",
+  "course_uid": "bab49f996d57ea95c1f4e1a66bc83835fe389161",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E4306",
+  "title": "Applied Stochastic Analysis",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Core material includes: (i) review of probability theory (including limit theorems), and introduction to discrete Markov chains and Monte Carlo methods; (ii) elementary theory of stochastic process, Ito's stochastic calculus and stochastic differential equations; (iii) introductions to probabilistic representation of elliptic partial differential equations (the Fokker-Planck equation theory); (iv) stochastic approximation algorithms; and (v) asymptotic analysis of SDEs",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Elementary probability theory IEOR E3658 or above, stochastic process the first part of IEOR E4106 or STAT G4264, knowledge on analysis MATH GU4601 or above, differential equations APMA E4200 , numerical methods APMA E4300 & programming skills Provides elementary introduction to fundamental ideas in stochastic analysis for applied mathematics.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4306",
+      "course_number": "APMA 4306",
+      "section_call_number": "001/12964",
+      "times": "M W 10:10am - 11:25am",
+      "location": "545 Seeley W. Mudd Building",
+      "instructor": "Liliana Borcea",
+      "points": "3.00",
+      "enrollment_raw": "43/45",
+      "enrollment_current": 43,
+      "enrollment_capacity": 45
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4306",
+      "course_number": "APMA 4306",
+      "section_call_number": "C01/18311",
+      "times": "Liliana Borcea",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APMA E4306",
+      "course_number": "APMA 4306",
+      "section_call_number": "V01/17539",
+      "times": "Liliana Borcea",
+      "location": "",
+      "instructor": "3.00",
+      "points": "5/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E4306 Applied Stochastic Analysis. 3.00 points ."
+}

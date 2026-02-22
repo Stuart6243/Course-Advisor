@@ -1,0 +1,22 @@
+{
+  "dedup_key": "936d8b093183296dfcdd018582c229a35fc38a83",
+  "course_uid": "936d8b093183296dfcdd018582c229a35fc38a83",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3312",
+  "title": "Heat Transfer Recitation",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Only students registered for MECE E3311 can register for this course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Recitation course to accompany MECE E3311 Heat Transfer.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3312 Heat Transfer Recitation. 0.00 points ."
+}

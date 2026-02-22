@@ -1,0 +1,49 @@
+{
+  "dedup_key": "1a50b24370cbacf3d049b01eb415d9753a212871",
+  "course_uid": "1a50b24370cbacf3d049b01eb415d9753a212871",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4573",
+  "title": "TOPICS IN OR",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Each offering of this course is devoted to a particular sector of Operations Research and its contemporary research, practice, and approaches. If topics are different, then course can be taken more than once for credit",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4004 AND IEOR E4106 AND IEOR E4150 ; IEOR E4150 , IEOR E4004 , and IEOR E4106 , or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4573",
+      "course_number": "IEOR 4573",
+      "section_call_number": "001/11893",
+      "times": "W 5:40pm - 8:10pm",
+      "location": "702 Hamilton Hall",
+      "instructor": "Robert Kramer, Mahir Yavuz",
+      "points": "1.50",
+      "enrollment_raw": "39/63",
+      "enrollment_current": 39,
+      "enrollment_capacity": 63
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4573",
+      "course_number": "IEOR 4573",
+      "section_call_number": "001/17836",
+      "times": "W 5:40pm - 8:10pm",
+      "location": "601 Fairchild Life Sciences Bldg",
+      "instructor": "Mahir Yavuz",
+      "points": "1.50",
+      "enrollment_raw": "12/55",
+      "enrollment_current": 12,
+      "enrollment_capacity": 55
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4573 TOPICS IN OR. 1.50 point ."
+}

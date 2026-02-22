@@ -1,0 +1,36 @@
+{
+  "dedup_key": "91e773b71e562474dacbcc422b0c02fd1b152f1d",
+  "course_uid": "91e773b71e562474dacbcc422b0c02fd1b152f1d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6694",
+  "title": "TOPICS DATA-DRIVEN ANAL ＆ COMP",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected advanced topics in data-driven analysis and computation. Content varies from year to year, and different topics rotate through the course numbers 6690 to 6699",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EECS E6694",
+      "course_number": "EECS 6694",
+      "section_call_number": "001/11266",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "829 Seeley W. Mudd Building",
+      "instructor": "Micah Goldblum",
+      "points": "3.00",
+      "enrollment_raw": "42/40",
+      "enrollment_current": 42,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6694 TOPICS DATA-DRIVEN ANAL ＆ COMP. 3.00 points ."
+}

@@ -1,0 +1,49 @@
+{
+  "dedup_key": "db6678cfb975de4c039d6d48237cdbb5fb8bea6b",
+  "course_uid": "db6678cfb975de4c039d6d48237cdbb5fb8bea6b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ECBM E6070",
+  "title": "TPC NEUROSCI ＆ DEEP LEARN",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected advanced topics in neuroscience and deep learning. Content varies from year to year, and different topics rotate through the course numbers 6070 to 6079.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ECBM E6070",
+      "course_number": "ECBM 6070",
+      "section_call_number": "001/11516",
+      "times": "M 7:00pm - 9:30pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Aurel Lazar",
+      "points": "3.00",
+      "enrollment_raw": "10/50",
+      "enrollment_current": 10,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ECBM E6070",
+      "course_number": "ECBM 6070",
+      "section_call_number": "V01/16655",
+      "times": "Aurel Lazar",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ECBM E6070 TPC NEUROSCI ＆ DEEP LEARN. 3.00 points ."
+}

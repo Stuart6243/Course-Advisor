@@ -1,0 +1,22 @@
+{
+  "dedup_key": "969a77cc0c4dde8ab4b67852f3c46e5a18a460f9",
+  "course_uid": "969a77cc0c4dde8ab4b67852f3c46e5a18a460f9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E6181",
+  "title": "Advanced Electrochemical Energy Storage",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Topics include current understanding of Lithium/Lithium Anode Solid-Electrolyte-Interphase, Reversible and Irreversible Side Reactions in Redox flow systems, electrochemically correlated mechanical fracture at multiple scales, relationships between electrolyte solvation and electrode insertion, roughening, smoothing, and detachment behavior of metal anodes, best practices in structural, chemical, and microscopic characterization, morphological vs. macro-homogenous transport models, particle to electrode to cell nonlinearity",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: EAEE E4002 AND EAEE E4180 Most modern commercial implementations of electrochemical energy storage are not fully deterministic: provides context and best-hypotheses for modern challenges.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E6181 Advanced Electrochemical Energy Storage. 3.00 points ."
+}

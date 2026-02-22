@@ -1,0 +1,36 @@
+{
+  "dedup_key": "b43ebf9656f167333b01011e8aa914e9b71a3dac",
+  "course_uid": "b43ebf9656f167333b01011e8aa914e9b71a3dac",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECH E4320",
+  "title": "INTRO TO COMBUSTION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Thermodynamics and kinetics of reacting flows; chemical kinetic mechanisms for fuel oxidation and pollutant formation; transport phenomena; conservation equations for reacting flows; laminar nonpremixed flames (including droplet vaporization and burning); laminar premixed flames; flame stabilization, quenching, ignition, extinction, and other limit phenomena; detonations; flame aerodynamics and turbulent flames",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Introductory thermodynamics, fluid dynamics, and heat transfer at the undergraduate level or instructor’s permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECH E4320",
+      "course_number": "MECH 4320",
+      "section_call_number": "001/11118",
+      "times": "Th 1:10pm - 3:40pm",
+      "location": "C01 80 Claremont",
+      "instructor": "Michael Burke",
+      "points": "3.00",
+      "enrollment_raw": "16/30",
+      "enrollment_current": 16,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECH E4320 INTRO TO COMBUSTION. 3.00 points ."
+}

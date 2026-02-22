@@ -1,0 +1,24 @@
+{
+  "dedup_key": "d8477a6d37aad666ab8e2b97e9d1e11e9346e734",
+  "course_uid": "d8477a6d37aad666ab8e2b97e9d1e11e9346e734",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MRKT B8623",
+  "title": "Intro To Product Management",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "MRKT B8623 Intro To Product Management. 1.50 point ."
+}

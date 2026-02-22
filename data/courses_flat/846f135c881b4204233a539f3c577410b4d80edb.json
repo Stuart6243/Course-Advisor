@@ -1,0 +1,22 @@
+{
+  "dedup_key": "846f135c881b4204233a539f3c577410b4d80edb",
+  "course_uid": "846f135c881b4204233a539f3c577410b4d80edb",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3102",
+  "title": "Fluids Recitation",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Only students registered for MECE E3100 can register for this course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Recitation course to accompany MECE E3100 INTRO TO MECHANCIS OF FLUIDS.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3102 Fluids Recitation. 0.00 points ."
+}

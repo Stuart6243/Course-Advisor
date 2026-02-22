@@ -1,0 +1,36 @@
+{
+  "dedup_key": "58921fae2412d8074d54adf031606ca8c1120a73",
+  "course_uid": "58921fae2412d8074d54adf031606ca8c1120a73",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6173",
+  "title": "Virtual Reality and Augmented Reality",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "However, I am willing to admit students who don’t have this background, with the understanding that you will need. This course will cover selected topics in virtual reality (VR) and augmented reality (AR). There are two main components, with everyone participating in both: papers and projects",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: You will ideally have taken COMS W4172 3D User Interfaces and Augmented Reality or equivalent and be comfortable with developing in Unity.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS E6173",
+      "course_number": "COMS 6173",
+      "section_call_number": "001/12864",
+      "times": "W 2:10pm - 4:00pm",
+      "location": "467 Ext Schermerhorn Hall",
+      "instructor": "Steven Feiner",
+      "points": "3.00",
+      "enrollment_raw": "17/30",
+      "enrollment_current": 17,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6173 Virtual Reality and Augmented Reality. 3.00 points ."
+}

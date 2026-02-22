@@ -1,0 +1,36 @@
+{
+  "dedup_key": "ddb983297f6dfa675460a56adb2fd8ee5f7ac46a",
+  "course_uid": "ddb983297f6dfa675460a56adb2fd8ee5f7ac46a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3136",
+  "title": "ESSENTIAL DATA STRUCTURES",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Basic elements of programming in C and C , arraybased data structures, heaps, linked lists, C programming in UNIX environment, object-oriented programming in C , trees, graphs, generic programming, hash tables. Due to significant overlap, students may only receive credit for either COMS W3134 , W3136 , or W3137",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W1004 ) or ( COMS W1005 ) or (COMS W1007) or ( ENGI E1006 ) COMS W1005 OR COMS W1007 OR ENGI E1006 OR COMS W1004 A second programming course intended for nonmajors with at least one semester of introductory programming experience.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W3136",
+      "course_number": "COMS 3136",
+      "section_call_number": "001/19602",
+      "times": "T 4:10pm - 6:30pm",
+      "location": "330 Uris Hall",
+      "instructor": "Brian Borowski",
+      "points": "4.00",
+      "enrollment_raw": "13/30",
+      "enrollment_current": 13,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3136 ESSENTIAL DATA STRUCTURES. 4.00 points ."
+}

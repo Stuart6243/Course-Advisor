@@ -1,0 +1,24 @@
+{
+  "dedup_key": "26a7e8cce524672c1b3b0c4e465f42ff640cbea1",
+  "course_uid": "26a7e8cce524672c1b3b0c4e465f42ff640cbea1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "DROM B8153",
+  "title": "People Analytics: Creating Business Value from Data",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "DROM B8153 People Analytics: Creating Business Value from Data. 1.50 point ."
+}

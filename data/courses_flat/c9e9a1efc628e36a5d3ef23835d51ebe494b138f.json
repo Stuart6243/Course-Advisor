@@ -1,0 +1,22 @@
+{
+  "dedup_key": "c9e9a1efc628e36a5d3ef23835d51ebe494b138f",
+  "course_uid": "c9e9a1efc628e36a5d3ef23835d51ebe494b138f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/materials-science-engineering-program/",
+  "source_page_title": "Materials Science and Engineering Program < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E6100",
+  "title": "TRANSMISSION ELEC MICROSCOPY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Course Fee: $600. Theory and practice of transmission electron microscopy (TEM): principles of electron scattering, diffraction, and microscopy; analytical techniques used to determine local chemistry; introduction to sample preparation; laboratory and in-class remote access demonstrations, several hours of hands-on laboratory operation of the microscope; the use of simulation and analysis software; guest lectures on cryomicroscopy for life sciences and high resolution transmission electron microscopy for physical sciences; and, time permitting, a visit to the electron microscopy facility in the Center for Functional Nanomaterials (CFN) at the Brookhaven National Laboratory (BNL).",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect.: 3",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E6100 TRANSMISSION ELEC MICROSCOPY. 3.00 points ."
+}

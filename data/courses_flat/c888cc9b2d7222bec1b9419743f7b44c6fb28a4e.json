@@ -1,0 +1,49 @@
+{
+  "dedup_key": "c888cc9b2d7222bec1b9419743f7b44c6fb28a4e",
+  "course_uid": "c888cc9b2d7222bec1b9419743f7b44c6fb28a4e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4281",
+  "title": "INTRO TO QUANTUM COMPUTING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to quantum computing. Shor's factoring algorithm, Grover's database search algorithm, the quantum summation algorithm. Relationship between classical and quantum computing. Potential power of quantum computers.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4281",
+      "course_number": "COMS 4281",
+      "section_call_number": "001/12843",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "209 Havemeyer Hall",
+      "instructor": "Henry Yuen",
+      "points": "3.00",
+      "enrollment_raw": "77/100",
+      "enrollment_current": 77,
+      "enrollment_capacity": 100
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4281",
+      "course_number": "COMS 4281",
+      "section_call_number": "001/12356",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "451 Computer Science Bldg",
+      "instructor": "James Bartusek",
+      "points": "3.00",
+      "enrollment_raw": "92/100",
+      "enrollment_current": 92,
+      "enrollment_capacity": 100
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4281 INTRO TO QUANTUM COMPUTING. 3.00 points ."
+}

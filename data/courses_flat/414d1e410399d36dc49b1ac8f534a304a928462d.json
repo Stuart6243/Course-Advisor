@@ -1,0 +1,22 @@
+{
+  "dedup_key": "414d1e410399d36dc49b1ac8f534a304a928462d",
+  "course_uid": "414d1e410399d36dc49b1ac8f534a304a928462d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MACH E4320",
+  "title": "Intro to Combustion",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Thermodynamics and kinetics of reacting flows; chemical kinetic mechanisms for fuel oxidation and pollutant formation; transport phenomena; conservation equations for reacting flows; laminar nonpremixed flames (including droplet vaporization and burning); laminar premixed flames; flame stabilization, quenching, ignition, extinction, and other limit phenomena; detonations; flame aerodynamics and turbulent flames.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MECE E3301 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MACH E4320 Intro to Combustion. 3.00 points ."
+}

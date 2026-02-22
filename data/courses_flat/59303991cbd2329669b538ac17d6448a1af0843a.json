@@ -1,0 +1,24 @@
+{
+  "dedup_key": "59303991cbd2329669b538ac17d6448a1af0843a",
+  "course_uid": "59303991cbd2329669b538ac17d6448a1af0843a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN C3004",
+  "title": "URBAN INFRASTRUCTURE SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "CIEN C3004 URBAN INFRASTRUCTURE SYSTEMS. 3.00 points ."
+}

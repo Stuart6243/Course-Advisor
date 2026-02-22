@@ -1,0 +1,36 @@
+{
+  "dedup_key": "582532349d00f48e258402bc09a2183cb2d63b97",
+  "course_uid": "582532349d00f48e258402bc09a2183cb2d63b97",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6945",
+  "title": "DEVICE NANOFABRICATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Recommended: ELEN E4944 . This course provides an understanding of the methods used for structuring matter on the nanometer length: thin-film technology; lithographic patterning and technologies including photon, electron, ion and atom, scanning probe, soft lithography, and nanoimprinting; pattern transfer; self-assembly; process integration; and applications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E3106 ) and ( ELEN E3401 ) or ELEN E3106 AND ELEN E3401 ; or equivalents.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6945",
+      "course_number": "ELEN 6945",
+      "section_call_number": "001/18124",
+      "times": "Th 1:10pm - 3:40pm",
+      "location": "214 Pupin Laboratories",
+      "instructor": "Jose Bahamonde",
+      "points": "3.00",
+      "enrollment_raw": "0/50",
+      "enrollment_current": 0,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6945 DEVICE NANOFABRICATION. 3.00 points ."
+}

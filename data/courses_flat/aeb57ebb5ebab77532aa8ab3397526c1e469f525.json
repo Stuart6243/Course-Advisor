@@ -1,0 +1,36 @@
+{
+  "dedup_key": "aeb57ebb5ebab77532aa8ab3397526c1e469f525",
+  "course_uid": "aeb57ebb5ebab77532aa8ab3397526c1e469f525",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3401",
+  "title": "ELECTROMAGNETICS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Basic field concepts. Interaction of time-varying electromagnetic fields. Field calculation of lumped circuit parameters. Transition from electrostatic to quasistatic and electromagnetic regimes. Transmission lines. Energy transfer, dissipation, and storage. Waveguides. Radiation.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: or equivalents.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E3401",
+      "course_number": "ELEN 3401",
+      "section_call_number": "001/11501",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "141 Uris Hall",
+      "instructor": "Keren Bergman",
+      "points": "4.00",
+      "enrollment_raw": "79/80",
+      "enrollment_current": 79,
+      "enrollment_capacity": 80
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3401 ELECTROMAGNETICS. 4.00 points ."
+}

@@ -1,0 +1,49 @@
+{
+  "dedup_key": "65013b135374f613de6013a026f94c6e42899645",
+  "course_uid": "65013b135374f613de6013a026f94c6e42899645",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4235",
+  "title": "Multihazard design of structures",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamental considerations of wave mechanics; design philosophies; reliability and risk concepts; basics of fluid mechanics; design of structures subjected to blast; elements of seismic design; elements of fire design; flood considerations; advanced analysis in support of structural design.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CIEN E3125 ) or ( CIEN E4232 ) or CIEN E3125 OR CIEN E4232 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4235",
+      "course_number": "CIEN 4235",
+      "section_call_number": "001/12785",
+      "times": "Th 7:00pm - 9:30pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Virginia Mosquera",
+      "points": "3",
+      "enrollment_raw": "17/50",
+      "enrollment_current": 17,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E4235",
+      "course_number": "CIEN 4235",
+      "section_call_number": "V01/19901",
+      "times": "Virginia Mosquera",
+      "location": "",
+      "instructor": "3",
+      "points": "0/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4235 Multihazard design of structures. 3 points ."
+}

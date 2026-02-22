@@ -1,0 +1,22 @@
+{
+  "dedup_key": "7150b0761281cdfb6eb9231ea8f1c86394106c3e",
+  "course_uid": "7150b0761281cdfb6eb9231ea8f1c86394106c3e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4212",
+  "title": "STRUCTURAL FAILURES",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "The nature and causes of structural failures and the lessons learned from them; insight into failure investigation in the practice of forensic structural engineering. Case histories of actual failures of real-life structures during construction and in service are introduced, examined, analyzed, and discussed. Students are assigned documented cases of failures of structures of various types and materials to review, discuss, and, in some cases, to conduct investigations of the causes and responsibilities. Students are required to prepare written reports and make oral presentations of selected cases.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: A course each in engineering materials, structural analysis, concrete design, steel design, soil mechanics and foundations, and construction; graduate student standing or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4212 STRUCTURAL FAILURES. 3.00 points ."
+}

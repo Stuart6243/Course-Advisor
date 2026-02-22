@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e78289c67ca61537b039b724ee0206d99de1b128",
+  "course_uid": "e78289c67ca61537b039b724ee0206d99de1b128",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4630",
+  "title": "TOPICS IN SOFT MATERIALS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Self-contained treatments of selected topics in soft materials (e.g. polymers, colloids, amphiphiles, liquid crystals, glasses, powders). Topics and instructor may change from year to year. Intended for junior/senior level undergraduates and graduate students in engineering and the physical sciences",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Physical chemistry or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4630",
+      "course_number": "CHEN 4630",
+      "section_call_number": "001/12734",
+      "times": "M W 10:10am - 11:25am",
+      "location": "524 Seeley W. Mudd Building",
+      "instructor": "Christopher Durning",
+      "points": "3.00",
+      "enrollment_raw": "26/45",
+      "enrollment_current": 26,
+      "enrollment_capacity": 45
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4630",
+      "course_number": "CHEN 4630",
+      "section_call_number": "V01/17237",
+      "times": "Christopher Durning",
+      "location": "",
+      "instructor": "3.00",
+      "points": "2/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4630 TOPICS IN SOFT MATERIALS. 3.00 points ."
+}

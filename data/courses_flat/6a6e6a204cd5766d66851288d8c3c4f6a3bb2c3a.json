@@ -1,0 +1,36 @@
+{
+  "dedup_key": "6a6e6a204cd5766d66851288d8c3c4f6a3bb2c3a",
+  "course_uid": "6a6e6a204cd5766d66851288d8c3c4f6a3bb2c3a",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4525",
+  "title": "Advanced Cell and Tissue Engineering: From Concepts to Translation",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Covers advancements in the fields of cellular and developmental biology, molecular biology and materials science towards the development of “tissue engineered” therapies. Emphasis on tissue engineering therapies applied to musculoskeletal tissues, such as bone, cartilage, and skeletal muscle, and nervous tissues (central and peripheral nervous system). Design considerations and concepts in market analysis examined.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Biology and Physiology",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "BMEN E4525",
+      "course_number": "BMEN 4525",
+      "section_call_number": "001/13376",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "633 Seeley W. Mudd Building",
+      "instructor": "Treena Arinzeh",
+      "points": "3.00",
+      "enrollment_raw": "21/30",
+      "enrollment_current": 21,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4525 Advanced Cell and Tissue Engineering: From Concepts to Translation. 3.00 points ."
+}

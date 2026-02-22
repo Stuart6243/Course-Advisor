@@ -1,0 +1,22 @@
+{
+  "dedup_key": "e74221604eaa52db08093cbbdd3845f859560906",
+  "course_uid": "e74221604eaa52db08093cbbdd3845f859560906",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4720",
+  "title": "TOPICS IN QUANT FINANCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Offerings vary each year; some topics include energy derivatives, experimental finance, foreign exchange and related derivative instruments, inflation derivatives, hedge fund management, modeling equity derivatives in Java, mortgage-backed securities, numerical solutions of partial differential equations, quantitative portfolio management, risk management, trade and technology in financial markets",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( IEOR E4700 ) and IEOR E4700 ; Additional prerequisites will be announced depending on offering Selected topics of interest in the area of quantitative finance.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4720 TOPICS IN QUANT FINANCE. 3.00 points ."
+}

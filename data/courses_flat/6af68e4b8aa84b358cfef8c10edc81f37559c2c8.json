@@ -1,0 +1,22 @@
+{
+  "dedup_key": "6af68e4b8aa84b358cfef8c10edc81f37559c2c8",
+  "course_uid": "6af68e4b8aa84b358cfef8c10edc81f37559c2c8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CSOR W4223",
+  "title": "Networks, Crowds, and the Web",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction of fundamental ideas and algorithms on networks of information collected by online services. Properties pervasive in large networks, dynamics of individuals that lead to large collective phenomena, mechanisms underlying the web economy, and results and tools informing societal impact of algorithms on privacy, polarization and discrimination covered.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: The class assumes students are familiar with elementary concepts of probability (any class that includes probability suffices), and took one class of data structures or has experience programming with data.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CSOR W4223 Networks, Crowds, and the Web. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "72d7f9d025d8ca7f2dbeb55d413d7b43baddec49",
+  "course_uid": "72d7f9d025d8ca7f2dbeb55d413d7b43baddec49",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E9910",
+  "title": "GRADUATE RESEARCH I",
+  "points_raw": "1.00-6.00 points",
+  "points_min": 1.0,
+  "points_max": 6.0,
+  "description": "The department must approve the number of credits. May be repeated for credit. This course is only for M.S. candidates holding GRA or TA appointments. Note: It is NOT required that a student take Graduate Research I prior to taking Graduate Research II. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Submission of an outline of the proposed research for approval by the faculty member who will supervise.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E9910 GRADUATE RESEARCH I. 1.00-6.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d48eb78286951d228f4fa13a01414afd75193bde",
+  "course_uid": "d48eb78286951d228f4fa13a01414afd75193bde",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4732",
+  "title": "Computer Vision II: Learning",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Students without any of these prerequisites are advised to contact the instructor prior to taking the course. Advanced course in computer vision. Topics include convolutional networks and back-propagation, object and action recognition, self-supervised and few-shot learning, image synthesis and generative models, object tracking, vision and language, vision and audio, 3D representations, interpretability, and bias, ethics, and media deception",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: COMS W4731 ; Fundamentals of calculus, linear algebra, and Python programming.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4732",
+      "course_number": "COMS 4732",
+      "section_call_number": "001/12363",
+      "times": "F 9:10am - 11:40am",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Aleksander Holynski",
+      "points": "3.00",
+      "enrollment_raw": "101/110",
+      "enrollment_current": 101,
+      "enrollment_capacity": 110
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4732 Computer Vision II: Learning. 3.00 points ."
+}

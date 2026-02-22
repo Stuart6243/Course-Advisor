@@ -1,0 +1,22 @@
+{
+  "dedup_key": "9fc69d8bdebe90be9fddbcdfd4c58a2b4e7514bf",
+  "course_uid": "9fc69d8bdebe90be9fddbcdfd4c58a2b4e7514bf",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/interdisciplinary-engineering-courses/",
+  "source_page_title": "Interdisciplinary Engineering Courses < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENGI E4200",
+  "title": "Global Engineering Concepts",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduces students to contemporary cases in engineering that impact the world globally and locally. Taught by Columbia Engineering faculty members, approaching the cases in an interdisciplinary manner, bringing students together across the MS programs. Focuses on the School’s vision of Engineering for Humanity in five areas: Sustainability, Health, Security, Connectedness, and Creativity",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Students must be enrolled in the Global Engineering track.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENGI E4200 Global Engineering Concepts. 3.00 points ."
+}

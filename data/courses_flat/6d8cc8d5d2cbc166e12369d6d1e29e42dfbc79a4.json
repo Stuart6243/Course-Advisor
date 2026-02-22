@@ -1,0 +1,36 @@
+{
+  "dedup_key": "6d8cc8d5d2cbc166e12369d6d1e29e42dfbc79a4",
+  "course_uid": "6d8cc8d5d2cbc166e12369d6d1e29e42dfbc79a4",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E3127",
+  "title": "STRUCTURAL DESIGN PROJECTS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Design of steel members in accordance with AISC 360: moment redistribution in beams; plastic analysis; bearing plates; beam-columns: exact and approximate second-order analysis; design by the Effective Length method and the Direct Analysis method. Design of concrete members in accordance with ACI 318: bar anchorage and development length, bar splices, design for shear, short columns, slender columns. AISC/ASCE NSSBC design project: design of a steel bridge in accordance with National Student Steel Bridge Competition rules; computer simulation and design by using SAP2000",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( CIEN E3125 ) and ( CIEN E3126 ) or CIEN E3125 AND CIEN E3126 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CIEN E3127",
+      "course_number": "CIEN 3127",
+      "section_call_number": "001/12778",
+      "times": "M W 10:10am - 11:25am",
+      "location": "420 Pupin Laboratories",
+      "instructor": "Tom Panayotidi",
+      "points": "3.00",
+      "enrollment_raw": "19/35",
+      "enrollment_current": 19,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E3127 STRUCTURAL DESIGN PROJECTS. 3.00 points ."
+}

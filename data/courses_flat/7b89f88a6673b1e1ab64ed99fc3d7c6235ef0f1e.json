@@ -1,0 +1,22 @@
+{
+  "dedup_key": "7b89f88a6673b1e1ab64ed99fc3d7c6235ef0f1e",
+  "course_uid": "7b89f88a6673b1e1ab64ed99fc3d7c6235ef0f1e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E8100",
+  "title": "TOPICS IN BIOLOGY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Conceptual and technical frameworks from both biological and physical science disciplines are utilized. The objective is to reveal to graduate students where potential lies to apply techniques from their own disciplines to address pertinent biological questions in their research. Classes entail reading, criticism and group discussion of research papers and textbook materials providing overviews to various biological areas including: evolution, immune system, development and cell specialization, the cytoskeleton and cell motility, DNA transcription in gene circuits, protein networks, recombinant DNA technology, aging, and gene therapy",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructors permission This research seminar introduces topics at the forefront of biological research in a format and language accessible to quantitative scientists and engineers lacking biological training.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E8100 TOPICS IN BIOLOGY. 3.00 points ."
+}

@@ -1,0 +1,51 @@
+{
+  "dedup_key": "ecc7b70d48a800a533401e3935ced3b0280a89e2",
+  "course_uid": "ecc7b70d48a800a533401e3935ced3b0280a89e2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E9902",
+  "title": "SEMINAR IN COMPUTER SCIENCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS E9902",
+      "course_number": "COMS 9902",
+      "section_call_number": "048/19793",
+      "times": "T 7:00pm - 9:00pm",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Eugene Wu",
+      "points": "3.00",
+      "enrollment_raw": "9/25",
+      "enrollment_current": 9,
+      "enrollment_capacity": 25
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E9902",
+      "course_number": "COMS 9902",
+      "section_call_number": "001/12393",
+      "times": "T 2:40pm - 3:55pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Eugene Wu, Kostis Kaffes",
+      "points": "3.00",
+      "enrollment_raw": "26/25",
+      "enrollment_current": 26,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "COMS E9902 SEMINAR IN COMPUTER SCIENCE. 3.00 points ."
+}

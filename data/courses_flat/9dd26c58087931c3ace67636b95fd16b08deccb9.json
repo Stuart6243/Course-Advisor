@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9dd26c58087931c3ace67636b95fd16b08deccb9",
+  "course_uid": "9dd26c58087931c3ace67636b95fd16b08deccb9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E6520",
+  "title": "Instructive Biomaterials",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Covers biomaterials that are instructive or have been designed or engineered to be instructive; structure-function-property relationships in natural and synthetic biomaterials. Advances in understanding of material properties emphasized; including electroactivity, chemical, mechanical, geometry/architecture, and the modification of material surfaces and context of their effect on biological function. Evolving field of smart biomaterials discussed. Exercises/demonstrations using materials characterization equipment conducted.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E6520",
+      "course_number": "BMEN 6520",
+      "section_call_number": "001/13203",
+      "times": "W 1:10pm - 3:40pm",
+      "location": "603 Hamilton Hall",
+      "instructor": "Treena Arinzeh",
+      "points": "3.00",
+      "enrollment_raw": "16/30",
+      "enrollment_current": 16,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E6520 Instructive Biomaterials. 3.00 points ."
+}

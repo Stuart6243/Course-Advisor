@@ -1,0 +1,49 @@
+{
+  "dedup_key": "af5d8bd0755baa599c9c172317f18c285e3809ac",
+  "course_uid": "af5d8bd0755baa599c9c172317f18c285e3809ac",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4800",
+  "title": "PROTEIN ENGINEERING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamental tools and techniques currently used to engineer protein molecules. Methods used to analyze the impact of these alterations on different protein functions with specific emphasis on enzymatic catalysis. Case studies reinforce concepts covered, and demonstrate the wide impact of protein engineering research. Application of basic concepts in the chemical engineering curriculum (reaction kinetics, mathematical modeling, thermodynamics) to specific approaches utilized in protein engineering.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4800",
+      "course_number": "CHEN 4800",
+      "section_call_number": "001/10223",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Scott Banta",
+      "points": "3.00",
+      "enrollment_raw": "18/45",
+      "enrollment_current": 18,
+      "enrollment_capacity": 45
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4800",
+      "course_number": "CHEN 4800",
+      "section_call_number": "V01/19017",
+      "times": "Scott Banta",
+      "location": "",
+      "instructor": "3.00",
+      "points": "3/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4800 PROTEIN ENGINEERING. 3.00 points ."
+}

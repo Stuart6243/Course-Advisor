@@ -1,0 +1,49 @@
+{
+  "dedup_key": "190828d52ffa0d86679610ce76e0345546bd0c06",
+  "course_uid": "190828d52ffa0d86679610ce76e0345546bd0c06",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6892",
+  "title": "TOPICS-INFORMATION PROCESSING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced topics spanning electrical engineering and computer science such as speech processing and recognition, image and multimedia content analysis, and other areas drawing on signal processing, information theory, machine learning, pattern recognition, and related topics. Content varies from year to year, and different topics rotate through the course numbers 6890 to 6899",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6892",
+      "course_number": "EECS 6892",
+      "section_call_number": "001/11535",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "141 Uris Hall",
+      "instructor": "Javad Ghaderi",
+      "points": "3.00",
+      "enrollment_raw": "65/65",
+      "enrollment_current": 65,
+      "enrollment_capacity": 65
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "EECS E6892",
+      "course_number": "EECS 6892",
+      "section_call_number": "V01/17138",
+      "times": "Javad Ghaderi",
+      "location": "",
+      "instructor": "3.00",
+      "points": "5/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6892 TOPICS-INFORMATION PROCESSING. 3.00 points ."
+}

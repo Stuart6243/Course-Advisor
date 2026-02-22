@@ -1,0 +1,22 @@
+{
+  "dedup_key": "3cbb4a3a29fafeff704c3d278d18cdbd2455f32b",
+  "course_uid": "3cbb4a3a29fafeff704c3d278d18cdbd2455f32b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E4105",
+  "title": "Ceramic Nanomaterials",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Ceramic nanomaterials and nanostructures: synthesis, characterization, size-dependent properties, and applications; surface energy, surface tension and surface stress; effect of ligands, surfactants, adsorbents, isoelectric point, and surface charges; supersaturation and homogenous nucleation for monodispersity.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEM UN1404 ) or or equivalent undergraduate thermodynamics.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E4105 Ceramic Nanomaterials. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "c3062bae0c09c951e8c21aa11f8756f87e23b50d",
+  "course_uid": "c3062bae0c09c951e8c21aa11f8756f87e23b50d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E6365",
+  "title": "NUCLEAR MEDICINE PRACTICUM",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Practical applications of nuclear medicine theory and application for processing and analysis of clinical images and radiation safety and quality assurance programs. Topics may include tomography, instrumentation, and functional imaging. Reports",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: APPH E6319 ; Grade of B+ or better in APPH E6319 and instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lab: 6.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E6365",
+      "course_number": "APPH 6365",
+      "section_call_number": "001/11108",
+      "times": "Klaus Hamacher",
+      "location": "",
+      "instructor": "3.00",
+      "points": "0/3",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E6365 NUCLEAR MEDICINE PRACTICUM. 3.00 points ."
+}

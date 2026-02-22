@@ -1,0 +1,22 @@
+{
+  "dedup_key": "b4ed80d77923bb65d38c872d9c84c6123f286153",
+  "course_uid": "b4ed80d77923bb65d38c872d9c84c6123f286153",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4228",
+  "title": "Separation Science and Technology in Sustainable Earth Resources Development",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Detailed study of the chemical and physicochemical principles underlying separations in development of earth resources in a safe and sustainable manner. Covers wide-range of solid-solid, solid-liquid and liquid-liquid separations used in processing of mineral resources. Interfacial science and engineering principles of important industrial processes of flotation, flocculation, dewatering, interfacial transport, magnetic/gravity/electrostatic separations, solvent extraction, solid-support extraction, crystallization and precipitation. Emphasis on concepts in interfacial chemistry and concepts associated with 'mines of the future' framework.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: EAEE E3103 and undergraduate level courses in chemistry especially inorganic, physical and organic.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4228 Separation Science and Technology in Sustainable Earth Resources Development. 3.00 points ."
+}

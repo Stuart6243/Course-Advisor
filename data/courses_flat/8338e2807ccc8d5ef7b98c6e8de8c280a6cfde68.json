@@ -1,0 +1,22 @@
+{
+  "dedup_key": "8338e2807ccc8d5ef7b98c6e8de8c280a6cfde68",
+  "course_uid": "8338e2807ccc8d5ef7b98c6e8de8c280a6cfde68",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENGI E4300",
+  "title": "Design Justice: Human-Centered Design and Social Justice",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to Human-Centered Design and Innovation. Unpack the role of design in the market economy for an individual consumer, for a designer/developer and for an enterprise or other organization. Consider how designing in good faith for most can lead to injustice for some. Examine how - to use the PROP framework of the Columbia School of Social Work[1] - power, race, oppression, and privilege can be executed through the design process. Equip students with tools to engage in the design process and to facilitate the engagement of others. Explore strategies for guiding design and innovation towards more just solutions. [1] https://socialwork.columbia.edu/about/dei/dei-mission-statement/",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: IEME E4200 or COMS W4170 Or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENGI E4300 Design Justice: Human-Centered Design and Social Justice. 3.00 points ."
+}

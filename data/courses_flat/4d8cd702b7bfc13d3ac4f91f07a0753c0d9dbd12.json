@@ -1,0 +1,36 @@
+{
+  "dedup_key": "4d8cd702b7bfc13d3ac4f91f07a0753c0d9dbd12",
+  "course_uid": "4d8cd702b7bfc13d3ac4f91f07a0753c0d9dbd12",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ORCS E4200",
+  "title": "Data-driven Decision Modeling",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to modeling, estimating, and solving decision-making problems in the context of artificial intelligence and analytics. Potential topics include choice models, quantity models, online learning using multi-armed bandits, dynamic decision modeling, dynamic games, and Bayesian learning theory. Practice both theory and applications using Python programming",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ORCS E4200",
+      "course_number": "ORCS 4200",
+      "section_call_number": "001/12280",
+      "times": "T Th 4:10pm - 5:25pm",
+      "location": "331 Uris Hall",
+      "instructor": "Lily Xu",
+      "points": "3.00",
+      "enrollment_raw": "24/50",
+      "enrollment_current": 24,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ORCS E4200 Data-driven Decision Modeling. 3.00 points ."
+}

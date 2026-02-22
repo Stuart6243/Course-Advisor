@@ -1,0 +1,49 @@
+{
+  "dedup_key": "6b61b5f53bc135ac323954a1acadb054fae075ab",
+  "course_uid": "6b61b5f53bc135ac323954a1acadb054fae075ab",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ORCA E2500",
+  "title": "FOUNDATIONS OF DATA SCIENCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Designed to provide an introduction to data science for sophomore SEAS majors. Combines three perspectives: inferential thinking, computational thinking, and real-world applications. Given data arising from some real-world phenomenon, how does one analyze that data so as to understand that phenomenon? Teaches critical concepts and skills in computer programming, statistical inference, and machine learning, in conjunction with hands-on analysis of real-world datasets such as economic data, document collections, geographical data, and social networks. At least one project will address a problem relevant to New York City",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: MATH UN1101 and MATH UN1102 MATH V1101 AND MATH V1102; Some familiarity with programming.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ORCA E2500",
+      "course_number": "ORCA 2500",
+      "section_call_number": "001/11859",
+      "times": "F 10:10am - 12:40pm",
+      "location": "329 Pupin Laboratories",
+      "instructor": "Daniel Fernandez",
+      "points": "3.00",
+      "enrollment_raw": "83/100",
+      "enrollment_current": 83,
+      "enrollment_capacity": 100
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ORCA E2500",
+      "course_number": "ORCA 2500",
+      "section_call_number": "001/13321",
+      "times": "F 10:10am - 12:40pm",
+      "location": "329 Pupin Laboratories",
+      "instructor": "Daniel Fernandez",
+      "points": "3.00",
+      "enrollment_raw": "73/75",
+      "enrollment_current": 73,
+      "enrollment_capacity": 75
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ORCA E2500 FOUNDATIONS OF DATA SCIENCE. 3.00 points ."
+}

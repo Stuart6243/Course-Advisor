@@ -1,0 +1,36 @@
+{
+  "dedup_key": "37ff3eb89b86ce4240920ad2e4abd7460f5c50ab",
+  "course_uid": "37ff3eb89b86ce4240920ad2e4abd7460f5c50ab",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4490",
+  "title": "Magnetic Resonance Spectroscopy: A Window to the Living Brain",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Covers all aspects of in vivo MRS from theory to experiment, from data acquisition to the derivation of metabolic signatures, from study design to clinical interpretation. Includes theoretical concepts, hands-on training in MRS data literacy and direct experimental experience using a 3T MR scanner",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: BMEN E4001 OR BMEN E4002 Introduction to use of magnetic resonance spectroscopy (MRS) with focus on brain.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4490",
+      "course_number": "BMEN 4490",
+      "section_call_number": "001/19813",
+      "times": "F 3:10pm - 5:40pm",
+      "location": "222 Pupin Laboratories",
+      "instructor": "Jia Guo",
+      "points": "3.00",
+      "enrollment_raw": "15/25",
+      "enrollment_current": 15,
+      "enrollment_capacity": 25
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4490 Magnetic Resonance Spectroscopy: A Window to the Living Brain. 3.00 points ."
+}

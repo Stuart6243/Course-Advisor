@@ -1,0 +1,49 @@
+{
+  "dedup_key": "f0d87790b6b882ce4c6a69c6c2f2654959b6cbfe",
+  "course_uid": "f0d87790b6b882ce4c6a69c6c2f2654959b6cbfe",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4113",
+  "title": "FUND-LARGE-SCALE DIST SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "COMS W3157 or good working knowledge of C and C++. COMS W4118 or CSEE W4119 . Prerequisites: ( COMS W3134 or COMS W3136 or COMS W3137 ) and ( COMS W3157 or COMS W4118 or CSEE W4119 ) Design and implementation of large-scale distributed and cloud systems. Teaches abstractions, design and implementation techniques that enable the building of fast, scalable, fault-tolerant distributed systems. Topics include distributed communication models (e.g. sockets, remote procedure calls, distributed shared memory), distributed synchronization (clock synchronization, logical clocks, distributed mutex), distributed file systems, replication, consistency models, fault tolerance, distributed transactions, agreement and commitment, Paxos-based consensus, MapReduce infrastructures, scalable distributed databases. Combines concepts and algorithms with descriptions of real-world implementations at Google, Facebook, Yahoo, Microsoft, LinkedIn, etc",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W3134 or COMS W3136 or COMS W3137 ) and ( COMS W3157 or COMS W4118 or CSEE W4119 ) COMS W3134 , W3136 , or W3137 .",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4113",
+      "course_number": "COMS 4113",
+      "section_call_number": "001/12831",
+      "times": "F 10:10am - 12:40pm",
+      "location": "451 Computer Science Bldg",
+      "instructor": "Roxana Geambasu",
+      "points": "3.00",
+      "enrollment_raw": "105/110",
+      "enrollment_current": 105,
+      "enrollment_capacity": 110
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W4113",
+      "course_number": "COMS 4113",
+      "section_call_number": "V01/17905",
+      "times": "Roxana Geambasu",
+      "location": "",
+      "instructor": "3.00",
+      "points": "13/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4113 FUND-LARGE-SCALE DIST SYSTEMS. 3.00 points ."
+}

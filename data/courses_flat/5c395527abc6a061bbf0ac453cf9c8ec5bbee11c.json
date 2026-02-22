@@ -1,0 +1,22 @@
+{
+  "dedup_key": "5c395527abc6a061bbf0ac453cf9c8ec5bbee11c",
+  "course_uid": "5c395527abc6a061bbf0ac453cf9c8ec5bbee11c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6413",
+  "title": "LIGHTWAVE SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fiber optics. Guiding, dispersion, attenuation, and nonlinear properties of fibers. Optical modulation schemes. Photonic components, optical amplifiers. Semiconductor laser transmitters. Receiver design. Fiber optic telecommunication links. Nonregenerative transmission using erbium-doped fiber amplifier chains. Coherent detection. Local area networks. Advanced topics in light wave networks",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ELEN E4411 ) ELEN E4411 ; Recommended preparation: ELEN E6412 .",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6413 LIGHTWAVE SYSTEMS. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "443de0a2666c218d1b17a15aebff116dbec26ade",
+  "course_uid": "443de0a2666c218d1b17a15aebff116dbec26ade",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E6006",
+  "title": "BIOMEDICAL DESIGN II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Second semester of project-based design experience for graduate students. Elements of design process, with focus on skills development, prototype development and testing, and business planning. Real-world training in biomedical design, innovation, and entrepreneurship",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E6006",
+      "course_number": "BMEN 6006",
+      "section_call_number": "001/14302",
+      "times": "M W 2:00pm - 3:45pm",
+      "location": "616 Martin Luther King Building",
+      "instructor": "Megan Heenan",
+      "points": "3.00",
+      "enrollment_raw": "12/50",
+      "enrollment_current": 12,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E6006 BIOMEDICAL DESIGN II. 3.00 points ."
+}

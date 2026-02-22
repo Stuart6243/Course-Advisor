@@ -1,0 +1,36 @@
+{
+  "dedup_key": "db7e91d29b1647a7b98f2285098129a22cba6094",
+  "course_uid": "db7e91d29b1647a7b98f2285098129a22cba6094",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CIEN E4258",
+  "title": "Embodied AI for Construction and Facilities Management",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Sensor modalities and their applications in construction and facilities management. Deep learning concepts and their application in robot perception. Markov Decision Process (MDP) and its application in planning and control. Formulation of embodied AI perception and control problems as MDP. Application of classic reinforcement learning algorithms to solve MDP problems. Analysis of agents’ performance through objective and subjective metrics. Understanding the critical interactions between users/occupants and embodied AI agents. Hands-on experience with robot simulation and/or collaborative robots in controlled lab environments.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CIEN E4256 ) or ( CIEN E4011 ) Basic familiarity with Python.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CIEN E4258",
+      "course_number": "CIEN 4258",
+      "section_call_number": "001/13081",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "644 Seeley W. Mudd Building",
+      "instructor": "Zhengbo Zou",
+      "points": "3.00",
+      "enrollment_raw": "7/40",
+      "enrollment_current": 7,
+      "enrollment_capacity": 40
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CIEN E4258 Embodied AI for Construction and Facilities Management. 3.00 points ."
+}

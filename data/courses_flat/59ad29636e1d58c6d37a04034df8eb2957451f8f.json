@@ -1,0 +1,36 @@
+{
+  "dedup_key": "59ad29636e1d58c6d37a04034df8eb2957451f8f",
+  "course_uid": "59ad29636e1d58c6d37a04034df8eb2957451f8f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4700",
+  "title": "PRINCIPLES OF GENOMIC TECHNOL",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Chemical and physical aspects of genome structure and organization, genetic information flow from DNA to RNA to Protein. Nucleic acid hybridization and sequence complexity of DNA and RNA. Genome mapping and sequencing methods. The engineering of DNA polymerase for DNA sequencing and polymerase chain reaction. Fluorescent DNA sequencing and high-throughput DNA sequencer development. Construction of gene chip and micro array for gene expression analysis. Technology and biochemical approach for functional genomics analysis. Gene discovery and genetics database search method. The application of genetic database for new therapeutics discovery",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Undergraduate-level biology, organic chemistry and instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4700",
+      "course_number": "CHEN 4700",
+      "section_call_number": "001/10222",
+      "times": "M 7:00pm - 9:30pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Jingyue Ju",
+      "points": "3.00",
+      "enrollment_raw": "40/45",
+      "enrollment_current": 40,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4700 PRINCIPLES OF GENOMIC TECHNOL. 3.00 points ."
+}

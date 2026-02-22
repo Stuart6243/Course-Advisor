@@ -1,0 +1,22 @@
+{
+  "dedup_key": "707eefffc4d4472b96b3e03aac0f74f93ad3da46",
+  "course_uid": "707eefffc4d4472b96b3e03aac0f74f93ad3da46",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E4999",
+  "title": "SUPERVISED INTERNSHIP",
+  "points_raw": "1.00-3.00 points",
+  "points_min": 1.0,
+  "points_max": 3.0,
+  "description": "Only for master's students in the Department of Applied Physics and Applied Mathematics who may need relevant work experience as part of their program of study. Final report required. May not be taken for pass/fail or audited",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Internship and approval from adviser must be obtained in advance.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E4999 SUPERVISED INTERNSHIP. 1.00-3.00 points ."
+}

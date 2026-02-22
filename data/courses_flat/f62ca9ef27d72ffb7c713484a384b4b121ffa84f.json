@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f62ca9ef27d72ffb7c713484a384b4b121ffa84f",
+  "course_uid": "f62ca9ef27d72ffb7c713484a384b4b121ffa84f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4419",
+  "title": "Internet Technology, Economics, and Policy",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Programming background is not required. Technology, economic and policy aspects of the Internet. Summarizes how the Internet works technically, including protocols, standards, radio spectrum, global infrastructure and interconnection. Micro-economics with a focus on media and telecommunication economic concerns, including competition and monopolies, platforms, and behavioral economics. US constitution, freedom of speech, administrative procedures act and regulatory process, universal service, role of FCC. Not a substitute for CSEE4119. Suitable for non-majors",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: General engineering, economics, law or technology background.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS W4419",
+      "course_number": "COMS 4419",
+      "section_call_number": "001/12357",
+      "times": "M W 4:10pm - 5:25pm",
+      "location": "825 Seeley W. Mudd Building",
+      "instructor": "Henning Schulzrinne",
+      "points": "3.00",
+      "enrollment_raw": "39/44",
+      "enrollment_current": 39,
+      "enrollment_capacity": 44
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4419 Internet Technology, Economics, and Policy. 3.00 points ."
+}

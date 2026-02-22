@@ -1,0 +1,49 @@
+{
+  "dedup_key": "1eb6fb3b6181447c76b6b488340cda8a7a3ea468",
+  "course_uid": "1eb6fb3b6181447c76b6b488340cda8a7a3ea468",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4520",
+  "title": "DATA SCIENCE FOR MECHANICAL SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Java, MATLAB, Python, or Instructor’s permission Introduction to the practical application of data science, machine learning, and artificial intelligence and their application in Mechanical Engineering. A review of relevant programming tools necessary for applying data science is provided, as well as a detailed review of data infrastructure and database construction for data science. A series of industry case studies from experts in the field of data science will be presented",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Knowledge of basic computer programming e.g.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4520",
+      "course_number": "MECE 4520",
+      "section_call_number": "001/11119",
+      "times": "T Th 10:10am - 11:25am",
+      "location": "501 Schermerhorn Hall",
+      "instructor": "Changyao Chen",
+      "points": "3.00",
+      "enrollment_raw": "110/150",
+      "enrollment_current": 110,
+      "enrollment_capacity": 150
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4520",
+      "course_number": "MECE 4520",
+      "section_call_number": "V01/17946",
+      "times": "Changyao Chen",
+      "location": "",
+      "instructor": "3.00",
+      "points": "5/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4520 DATA SCIENCE FOR MECHANICAL SYSTEMS. 3.00 points ."
+}

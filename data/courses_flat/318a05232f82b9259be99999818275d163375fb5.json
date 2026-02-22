@@ -1,0 +1,49 @@
+{
+  "dedup_key": "318a05232f82b9259be99999818275d163375fb5",
+  "course_uid": "318a05232f82b9259be99999818275d163375fb5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6761",
+  "title": "COMPUTER COMMUNICATNS NETWORKS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Analytical approach to the design of (data) communication networks. Necessary tools for performance analysis and design of network protocols and algorithms. Practical engineering applications in layered Internet protocols in Data link layer, Network layer, and Transport layer. Review of relevant aspects of stochastic processes, control, and optimization.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( IEOR E3658 ) or equivalent, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6761",
+      "course_number": "ELEN 6761",
+      "section_call_number": "001/11242",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "1024 Seeley W. Mudd Building",
+      "instructor": "Javad Ghaderi",
+      "points": "3.00",
+      "enrollment_raw": "19/50",
+      "enrollment_current": 19,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6761",
+      "course_number": "ELEN 6761",
+      "section_call_number": "V01/18108",
+      "times": "Javad Ghaderi",
+      "location": "",
+      "instructor": "3.00",
+      "points": "0/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6761 COMPUTER COMMUNICATNS NETWORKS. 3.00 points ."
+}

@@ -1,0 +1,62 @@
+{
+  "dedup_key": "0db84e1e2bcb808a1cad969653cfeba0cd8d91fc",
+  "course_uid": "0db84e1e2bcb808a1cad969653cfeba0cd8d91fc",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3081",
+  "title": "CIRCUIT ANALYSIS LABORATORY",
+  "points_raw": "1.00 point",
+  "points_min": 1.0,
+  "points_max": 1.0,
+  "description": "Companion lab course for ELEN E3201 . Experiments cover such topics as: use of measurement instruments; HSPICE simulation; basic network theorems; linearization of nonlinear circuits using negative feedback; op-amp circuits; integrators; second order RLC circuits. The lab generally meets on alternate weeks.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E1201 ) or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lab: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3081",
+      "course_number": "ELEN 3081",
+      "section_call_number": "001/11197",
+      "times": "M 2:40pm - 5:10pm",
+      "location": "1206 Seeley W. Mudd Building",
+      "instructor": "Charles Zukowski",
+      "points": "1.00",
+      "enrollment_raw": "35/36",
+      "enrollment_current": 35,
+      "enrollment_capacity": 36
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3081",
+      "course_number": "ELEN 3081",
+      "section_call_number": "002/11198",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "1206 Seeley W. Mudd Building",
+      "instructor": "Charles Zukowski",
+      "points": "1.00",
+      "enrollment_raw": "22/24",
+      "enrollment_current": 22,
+      "enrollment_capacity": 24
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3081",
+      "course_number": "ELEN 3081",
+      "section_call_number": "003/11199",
+      "times": "F 10:10am - 12:40pm",
+      "location": "1206 Seeley W. Mudd Building",
+      "instructor": "Charles Zukowski",
+      "points": "1.00",
+      "enrollment_raw": "37/36",
+      "enrollment_current": 37,
+      "enrollment_capacity": 36
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3081 CIRCUIT ANALYSIS LABORATORY. 1.00 point ."
+}

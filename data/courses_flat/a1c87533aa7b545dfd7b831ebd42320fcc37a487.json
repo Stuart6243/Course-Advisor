@@ -1,0 +1,36 @@
+{
+  "dedup_key": "a1c87533aa7b545dfd7b831ebd42320fcc37a487",
+  "course_uid": "a1c87533aa7b545dfd7b831ebd42320fcc37a487",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4400",
+  "title": "Pharmaceutical Process Development",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Course topics include: comprehensive overview of the biopharmaceutical business (therapeutic areas, markets, drug discovery, clinical development, commercialization), process research, creation, development, optimization, sustainability, green chemistry and engineering, safety (patient, process, and personnel), unit operations and associated calculations relevant to pharmaceutical processes, process scale-up, implementation, assessment, technology transfer, new technologies, economic analysis, drug product formulation and manufacturing, and regulatory considerations. Case studies and real-life examples are presented throughout the course",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: CHEN E2100 or Or equivalent or instructor's permission Chemical engineering fundamentals as applied to process research, development, and manufacturing of pharmaceutical products.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4400",
+      "course_number": "CHEN 4400",
+      "section_call_number": "001/10219",
+      "times": "W 7:00pm - 9:30pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Elias Mattas",
+      "points": "3.00",
+      "enrollment_raw": "32/45",
+      "enrollment_current": 32,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4400 Pharmaceutical Process Development. 3.00 points ."
+}

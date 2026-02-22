@@ -1,0 +1,49 @@
+{
+  "dedup_key": "e457ec198d8321abcb869bac403ed023f5fb6af7",
+  "course_uid": "e457ec198d8321abcb869bac403ed023f5fb6af7",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/civil-engineering-engineering-mechanics/",
+  "source_page_title": "Civil Engineering and Engineering Mechanics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E3161",
+  "title": "FLUID MECHANICS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Fluid statics. Fundamental principles and concepts of flow analysis. Differential and finite control volume approach to flow analysis. Dimensional analysis. Application of flow analysis: flow in pipes, external flow, flow in open channels",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ENME E3105 ) and ENME E3105 ; and ordinary differential equations.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ENME E3161",
+      "course_number": "ENME 3161",
+      "section_call_number": "001/13544",
+      "times": "T 1:00pm - 4:00pm",
+      "location": "161 Engineering Terrace",
+      "instructor": "Marco Giometto",
+      "points": "4.00",
+      "enrollment_raw": "23/35",
+      "enrollment_current": 23,
+      "enrollment_capacity": 35
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ENME E3161",
+      "course_number": "ENME 3161",
+      "section_call_number": "001/13544",
+      "times": "Th 1:10pm - 3:40pm",
+      "location": "327 Seeley W. Mudd Building",
+      "instructor": "Marco Giometto",
+      "points": "4.00",
+      "enrollment_raw": "23/35",
+      "enrollment_current": 23,
+      "enrollment_capacity": 35
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E3161 FLUID MECHANICS. 4.00 points ."
+}

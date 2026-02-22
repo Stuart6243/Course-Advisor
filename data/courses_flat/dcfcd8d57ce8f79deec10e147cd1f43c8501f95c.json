@@ -1,0 +1,22 @@
+{
+  "dedup_key": "dcfcd8d57ce8f79deec10e147cd1f43c8501f95c",
+  "course_uid": "dcfcd8d57ce8f79deec10e147cd1f43c8501f95c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AEME E4306",
+  "title": "Intro to Aerodynamics",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Principles of flight, incompressible flows, compressible regimes. Inviscid compressible aerodynamics in nozzles (wind tunnels, jet engines), around wings (aircraft, space shuttle) and around blunt bodies (rockets, reentry vehicles). Physics of normal shock waves, oblique shock waves, and explosion waves",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AEME E4306 Intro to Aerodynamics. 3.00 points ."
+}

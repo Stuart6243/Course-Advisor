@@ -1,0 +1,62 @@
+{
+  "dedup_key": "1a8f9daa1d293842681f99bb65926e0d104f0850",
+  "course_uid": "1a8f9daa1d293842681f99bb65926e0d104f0850",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4571",
+  "title": "TOPICS IN OPERATIONS RESEARCH",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Special topics arranged as the need and availability arises. Topics are usually offered on a one-time basis. Since the content of this course changes each time it is offered, it may be repeated for credit. Consult the department for section assignment",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4004 AND IEOR E4106 AND IEOR E4150 ; IEOR E4150 , IEOR E4004 , and IEOR E4106 , or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4571",
+      "course_number": "IEOR 4571",
+      "section_call_number": "001/11829",
+      "times": "W 1:10pm - 3:40pm",
+      "location": "1127 Seeley W. Mudd Building",
+      "instructor": "Khosrow Dehnad, Robert Kramer",
+      "points": "3.00",
+      "enrollment_raw": "41/50",
+      "enrollment_current": 41,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4571",
+      "course_number": "IEOR 4571",
+      "section_call_number": "V01/17936",
+      "times": "Khosrow Dehnad, Robert Kramer",
+      "location": "",
+      "instructor": "3.00",
+      "points": "1/99",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4571",
+      "course_number": "IEOR 4571",
+      "section_call_number": "001/16808",
+      "times": "F 3:00pm - 5:30pm",
+      "location": "331 Uris Hall",
+      "instructor": "Gary Kazantsev",
+      "points": "3.00",
+      "enrollment_raw": "8/50",
+      "enrollment_current": 8,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4571 TOPICS IN OPERATIONS RESEARCH. 3.00 points ."
+}

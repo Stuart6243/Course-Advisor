@@ -1,0 +1,36 @@
+{
+  "dedup_key": "953b509326dbd463efa9b1146ce1c3b27dee74a9",
+  "course_uid": "953b509326dbd463efa9b1146ce1c3b27dee74a9",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E6333",
+  "title": "RADIATION THERAPY PHYS PRACT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Students spend two to four days per week studying the clinical aspects of radiation therapy physics. Projects on the application of medical physics in cancer therapy within a hospital environment are assigned; each entails one or two weeks of work and requires a laboratory report. Two areas are emphasized: 1. computer-assisted treatment planning (design of typical treatment plans for various treatment sites including prostate, breast, head and neck, lung, brain, esophagus, and cervix) and 2. clinical dosimetry and calibrations (radiation measurements for both photon and electron beams, as well as daily, monthly, and part of annual QA)",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: APPH E6335 ; Grade of B+ or better in APPH E6335 and instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APPH E6333",
+      "course_number": "APPH 6333",
+      "section_call_number": "001/11106",
+      "times": "Cheng Wuu",
+      "location": "",
+      "instructor": "3.00",
+      "points": "4/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E6333 RADIATION THERAPY PHYS PRACT. 3.00 points ."
+}

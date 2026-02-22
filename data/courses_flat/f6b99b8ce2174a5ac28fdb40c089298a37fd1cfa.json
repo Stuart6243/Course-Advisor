@@ -1,0 +1,22 @@
+{
+  "dedup_key": "f6b99b8ce2174a5ac28fdb40c089298a37fd1cfa",
+  "course_uid": "f6b99b8ce2174a5ac28fdb40c089298a37fd1cfa",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEME E6602",
+  "title": "MODERN CONTROL THEORY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Singular value decomposition. ARX model and state space model system identification. Recursive least squares filters and Kalman filters. LQR, H ∞, linear robust control, predictive control, adaptive control. Liapunov and Popov stability. Nonlinear adaptive control, nonlinear robust control, sliding mode control.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEME E6602 MODERN CONTROL THEORY. 3.00 points ."
+}

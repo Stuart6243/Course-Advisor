@@ -1,0 +1,22 @@
+{
+  "dedup_key": "678f9a900be7cff8f16b796ddf048502c6e1e2b1",
+  "course_uid": "678f9a900be7cff8f16b796ddf048502c6e1e2b1",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6111",
+  "title": "ADVANCED DATABASE SYSTEMS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Continuation of ( COMS W4111 ), covers the latest trends in both database research and industry. Programming projects in Python are required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W4111 ) and COMS W4111 ; Working knowledge of Python or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS E6111 ADVANCED DATABASE SYSTEMS. 3.00 points ."
+}

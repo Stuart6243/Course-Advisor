@@ -1,0 +1,36 @@
+{
+  "dedup_key": "40d2a29fb291eea91b303d40538c2eaee43c2389",
+  "course_uid": "40d2a29fb291eea91b303d40538c2eaee43c2389",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6340",
+  "title": "Power Management Integrated Circuits",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Modern power management integrated circuits (PMIC) design introduced comperhensively. Advanced topics in power management introduced, including linear regulators, digital linear regulators, switch-mode power converters, control schemes for DC-DC converters, compensation methods of DC-DC converters, power losses in DC-DC converters, switched capacitor converters, power converter modeling and simulation, design examples.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ELEN E4312 ) and ( ELEN E4361 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E6340",
+      "course_number": "ELEN 6340",
+      "section_call_number": "001/15016",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "332 Uris Hall",
+      "instructor": "XIN ZHANG",
+      "points": "3.00",
+      "enrollment_raw": "54/55",
+      "enrollment_current": 54,
+      "enrollment_capacity": 55
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6340 Power Management Integrated Circuits. 3.00 points ."
+}

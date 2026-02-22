@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9068cb39411b6b8a515ff60080ded40b80d6ad6f",
+  "course_uid": "9068cb39411b6b8a515ff60080ded40b80d6ad6f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "AERO E4810",
+  "title": "Introduction to Human Spaceflight",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to human spaceflight from a systems engineering perspective. Historical and current space programs and spacecraft. Motivation, cost, and rationale for human space exploration. Overview of space environment needed to sustain human life and health, including physiological and psychological concerns in space habitat. Astronaut selection and training processes, spacewalking, robotics, mission operations, and future program directions. Systems integration for successful operation of a spacecraft. Highlights from current events and space research, Space Shuttle, Hubble Space Telescope, and International Space Station (ISS). Includes team design project.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Permission of Instructor – All students interested must join the waitlist and fill out a questionnaire when registering for the class in order to be considered.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "AERO E4810",
+      "course_number": "AERO 4810",
+      "section_call_number": "001/18260",
+      "times": "F 1:10pm - 3:40pm",
+      "location": "325 Pupin Laboratories",
+      "instructor": "Michael Massimino",
+      "points": "3.00",
+      "enrollment_raw": "20/20",
+      "enrollment_current": 20,
+      "enrollment_capacity": 20
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "AERO E4810 Introduction to Human Spaceflight. 3.00 points ."
+}

@@ -1,0 +1,49 @@
+{
+  "dedup_key": "c5228a732ba28e61fbbda18b903b162a2a7d3a36",
+  "course_uid": "c5228a732ba28e61fbbda18b903b162a2a7d3a36",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APAM E3999",
+  "title": "UNDERGRADUATE FIELDWORK",
+  "points_raw": "1.00-2.00 points",
+  "points_min": 1.0,
+  "points_max": 2.0,
+  "description": "May be repeated for credit, but no more than 3 total points may be used toward the 128credit degree requirement. Only for APAM undergraduate students who include relevant off-campus work experience as part of their approved program of study. Final report and letter of evaluation required. Fieldwork credits may not count toward any major core, technical, elective, and nontechnical requirements. May not be taken for pass/fail credit or audited.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Obtained internship and approval from faculty advisor.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "APAM E3999",
+      "course_number": "APAM 3999",
+      "section_call_number": "003/20428",
+      "times": "Siu-Wai Chan",
+      "location": "",
+      "instructor": "1.00-2.00",
+      "points": "1/10",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APAM E3999",
+      "course_number": "APAM 3999",
+      "section_call_number": "001/18057",
+      "times": "Yuan Yang",
+      "location": "",
+      "instructor": "1.00-2.00",
+      "points": "1/5",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APAM E3999 UNDERGRADUATE FIELDWORK. 1.00-2.00 points ."
+}

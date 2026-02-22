@@ -1,0 +1,36 @@
+{
+  "dedup_key": "546193ef0a526dc060774a67634ff6e39e176ef6",
+  "course_uid": "546193ef0a526dc060774a67634ff6e39e176ef6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMCS E4480",
+  "title": "Statistical machine learning for genomics",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Recommended: COMS W4771 . Introduction to statistical machine learning methods using applications in genomic data and in particular high-dimensional single-cell data. Concepts of molecular biology relevant to genomic technologies, challenges of high-dimensional genomic data analysis, bioinformatics preprocessing pipelines, dimensionality reduction, unsupervised learning, clustering, probabilistic modeling, hidden Markov models, Gibbs sampling, deep neural networks, gene regulation. Programming assignments and final project will be required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Proficiency in Python/R programming, and background in probability/statistics.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMCS E4480",
+      "course_number": "BMCS 4480",
+      "section_call_number": "001/14958",
+      "times": "Th 10:10am - 12:40pm",
+      "location": "140 Uris Hall",
+      "instructor": "Elham Azizi",
+      "points": "3.00",
+      "enrollment_raw": "31/50",
+      "enrollment_current": 31,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMCS E4480 Statistical machine learning for genomics. 3.00 points ."
+}

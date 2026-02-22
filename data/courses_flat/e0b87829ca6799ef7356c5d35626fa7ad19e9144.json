@@ -1,0 +1,22 @@
+{
+  "dedup_key": "e0b87829ca6799ef7356c5d35626fa7ad19e9144",
+  "course_uid": "e0b87829ca6799ef7356c5d35626fa7ad19e9144",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4320",
+  "title": "MOLECULAR PHENOMENA-CHEM ENGI",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "This course introduces a molecular level understanding of topics in modern chemical engineering. It builds upon and validates the concepts presented in the rest of the chemical engineering curriculum via a molecular perspective.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( CHEN E3120 ) or CHEE E3010 ; or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4320 MOLECULAR PHENOMENA-CHEM ENGI. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "61c2e94ad9fefa557181117ec41058e938437ef2",
+  "course_uid": "61c2e94ad9fefa557181117ec41058e938437ef2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EECS E6692",
+  "title": "TOPICS DATA-DRIVEN ANAL ＆ COMP",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Selected advanced topics in data-driven analysis and computation. Content varies from year to year, and different topics rotate through the course numbers 6690 to 6699",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EECS E6692 TOPICS DATA-DRIVEN ANAL ＆ COMP. 3.00 points ."
+}

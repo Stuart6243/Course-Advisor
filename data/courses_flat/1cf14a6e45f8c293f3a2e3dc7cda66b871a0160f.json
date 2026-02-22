@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1cf14a6e45f8c293f3a2e3dc7cda66b871a0160f",
+  "course_uid": "1cf14a6e45f8c293f3a2e3dc7cda66b871a0160f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E6873",
+  "title": "Statistical signal processing and learning",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Hypothesis testing, signal detection, parameter estimation, signal estimation, and selected advanced topics. Suitable for students doing research in communications, control, signal processing, and related areas",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ELEN E4815 Introduction to the fundamental principles of statistical signal processing related to detection and estimation.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ELEN E6873",
+      "course_number": "ELEN 6873",
+      "section_call_number": "001/11531",
+      "times": "M 10:10am - 12:40pm",
+      "location": "330 Uris Hall",
+      "instructor": "Guido Jajamovich",
+      "points": "3.00",
+      "enrollment_raw": "16/60",
+      "enrollment_current": 16,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E6873 Statistical signal processing and learning. 3.00 points ."
+}

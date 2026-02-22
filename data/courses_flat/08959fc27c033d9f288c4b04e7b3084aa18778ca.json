@@ -1,0 +1,22 @@
+{
+  "dedup_key": "08959fc27c033d9f288c4b04e7b3084aa18778ca",
+  "course_uid": "08959fc27c033d9f288c4b04e7b3084aa18778ca",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4480",
+  "title": "Statistical machine learning for genomics",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to statistical machine learning methods using applications in genomic data and in particular high-dimensional single-cell data. Concepts of molecular biology relevant to genomic technologies, challenges of highdimensional genomic data analysis, bioinformatics preprocessing pipelines, dimensionality reduction, unsupervised learning, clustering, probabilistic modeling, hidden Markov models, Gibbs sampling, deep neural networks, gene regulation. Programming assignments and final project will be required.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: APMA E2101 and MATH UN1202 and MATH UN2010 Proficiency in Python/R programming, and background in probability/statistics.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4480 Statistical machine learning for genomics. 3.00 points ."
+}

@@ -1,0 +1,49 @@
+{
+  "dedup_key": "1276a375e7f4cf9cdbd108d7d2fe973509c4374f",
+  "course_uid": "1276a375e7f4cf9cdbd108d7d2fe973509c4374f",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4575",
+  "title": "TOPICS IN OPERATIONS RESEARCH",
+  "points_raw": "1.50 point",
+  "points_min": 1.5,
+  "points_max": 1.5,
+  "description": "Probability and statistics, Basic optimization (e.g., familiarity with linear and convex optimization, gradient descent, basic algorithm design constructs), familiarity with Programming in python (or experience with programming in other languages like C/C++/Matlab and willingness to learn python). Knowledge of machine learning is not required, but some basic familiarity may help. This course introduces engineering undergraduates to the essential concepts, tools, and skills required to create and manage a successful technology-driven business. Students will learn through a mix of lectures, case studies, assignments, and a final business plan project, guided by a professor with an engineering background and over three decades of real-world startup experience. Each offering of this course is devoted to a particular sector of Operations Research and its contemporary research, practice, and approaches. If topics are different, then course can be taken more than once for credit",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: IEOR E4004IEOR E4106IEOR E4150 or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4575",
+      "course_number": "IEOR 4575",
+      "section_call_number": "001/11894",
+      "times": "M 1:10pm - 3:40pm",
+      "location": "644 Seeley W. Mudd Building",
+      "instructor": "Hugh Thomas",
+      "points": "1.50",
+      "enrollment_raw": "14/30",
+      "enrollment_current": 14,
+      "enrollment_capacity": 30
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E4575",
+      "course_number": "IEOR 4575",
+      "section_call_number": "001/13298",
+      "times": "M 1:10pm - 3:40pm",
+      "location": "331 Uris Hall",
+      "instructor": "Grace Lin",
+      "points": "1.50",
+      "enrollment_raw": "42/45",
+      "enrollment_current": 42,
+      "enrollment_capacity": 45
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4575 TOPICS IN OPERATIONS RESEARCH. 1.50 point ."
+}

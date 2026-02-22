@@ -1,0 +1,36 @@
+{
+  "dedup_key": "c4537fb8f83785a52778fbd68f7eaed0071990e5",
+  "course_uid": "c4537fb8f83785a52778fbd68f7eaed0071990e5",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4510",
+  "title": "PROCESS ＆ PRODUCT DESIGN II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Students carry out a semester-long process or product design project. The project culminates with a formal written design report and a public presentation.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: CHEN E4500 or ( CHEN E4001 and CHEN E4002 )",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "CHEN E4510",
+      "course_number": "CHEN 4510",
+      "section_call_number": "001/12753",
+      "times": "M W 5:40pm - 6:55pm",
+      "location": "1224 Seeley W. Mudd Building",
+      "instructor": "Sakul Ratanalert",
+      "points": "3.00",
+      "enrollment_raw": "11/30",
+      "enrollment_current": 11,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4510 PROCESS ＆ PRODUCT DESIGN II. 3.00 points ."
+}

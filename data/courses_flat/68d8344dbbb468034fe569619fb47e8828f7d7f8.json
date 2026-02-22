@@ -1,0 +1,22 @@
+{
+  "dedup_key": "68d8344dbbb468034fe569619fb47e8828f7d7f8",
+  "course_uid": "68d8344dbbb468034fe569619fb47e8828f7d7f8",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EEME E8601",
+  "title": "ADV TOPICS IN CONTROL THEORY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "May be taken more than once, since the content changes from year to year, electing different topics from control theory such as learning and repetitive control, adaptive control, system identification, Kalman filtering, etc.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( EEME E4601 and EEME E6601) or instructor’s permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EEME E8601 ADV TOPICS IN CONTROL THEORY. 3.00 points ."
+}

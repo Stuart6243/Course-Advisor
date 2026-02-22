@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9ee520810fc2b07fe27880b776c83e5f9175d8c6",
+  "course_uid": "9ee520810fc2b07fe27880b776c83e5f9175d8c6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E3610",
+  "title": "MATERIALS/PROCESSES IN MANUFAC",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to microstructures and properties of metals, polymers, ceramics and composites; typical manufacturing processes: material removal, shaping, joining, and property alteration; behavior of engineering materials in the manufacturing processes.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ENME E3113 ) or the equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E3610",
+      "course_number": "MECE 3610",
+      "section_call_number": "001/12122",
+      "times": "M W 1:10pm - 2:25pm",
+      "location": "614 Schermerhorn Hall",
+      "instructor": "Sinisa Vukelic",
+      "points": "3.00",
+      "enrollment_raw": "108/120",
+      "enrollment_current": 108,
+      "enrollment_capacity": 120
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E3610 MATERIALS/PROCESSES IN MANUFAC. 3.00 points ."
+}

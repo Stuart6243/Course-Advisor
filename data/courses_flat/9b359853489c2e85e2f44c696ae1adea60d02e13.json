@@ -1,0 +1,62 @@
+{
+  "dedup_key": "9b359853489c2e85e2f44c696ae1adea60d02e13",
+  "course_uid": "9b359853489c2e85e2f44c696ae1adea60d02e13",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E9800",
+  "title": "DOCTORAL RESEARCH INSTRUCTION",
+  "points_raw": "3.00-12.00 points",
+  "points_min": 3.0,
+  "points_max": 12.0,
+  "description": "A candidate for the Eng.Sc.D. degree in mechanical engineering must register for 12 points of doctoral research instruction. Registration in MECE E9800 may not be used to satisfy the minimum residence requirement for the degree",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E9800",
+      "course_number": "MECE 9800",
+      "section_call_number": "001/16965",
+      "times": "Hod Lipson",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "0/1",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E9800",
+      "course_number": "MECE 9800",
+      "section_call_number": "002/18384",
+      "times": "Nicolas Chbat",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "0/1",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    },
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E9800",
+      "course_number": "MECE 9800",
+      "section_call_number": "001/17953",
+      "times": "Nicolas Chbat",
+      "location": "",
+      "instructor": "3.00-12.00",
+      "points": "0/1",
+      "enrollment_raw": "",
+      "enrollment_current": null,
+      "enrollment_capacity": null
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E9800 DOCTORAL RESEARCH INSTRUCTION. 3.00-12.00 points ."
+}

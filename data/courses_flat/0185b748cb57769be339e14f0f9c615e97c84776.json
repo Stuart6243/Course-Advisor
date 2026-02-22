@@ -1,0 +1,22 @@
+{
+  "dedup_key": "0185b748cb57769be339e14f0f9c615e97c84776",
+  "course_uid": "0185b748cb57769be339e14f0f9c615e97c84776",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4314",
+  "title": "ENERGY DYNAMICS OF GREEN BLDGS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Heating and cooling loads. Humidity control. Solar gain and passive solar design. Global energy implications. Green buildings. Building-integrated photovoltaics. Roof-mounted gardens and greenhouses. Financial assessment tools and case studies. Open to Mechanical Engineering graduate students only",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( MECE E3301 ) and ( MECE E3311 ) MECE E3301 AND MECE E3311 Introduction to analysis and design of heating, ventilating and air-conditioning systems.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4314 ENERGY DYNAMICS OF GREEN BLDGS. 3.00 points ."
+}

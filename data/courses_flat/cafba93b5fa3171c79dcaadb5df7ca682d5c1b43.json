@@ -1,0 +1,38 @@
+{
+  "dedup_key": "cafba93b5fa3171c79dcaadb5df7ca682d5c1b43",
+  "course_uid": "cafba93b5fa3171c79dcaadb5df7ca682d5c1b43",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS E6424",
+  "title": "HARDWARE SECURITY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "",
+  "description_source": "none",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "COMS E6424",
+      "course_number": "COMS 6424",
+      "section_call_number": "001/12380",
+      "times": "M W 10:10am - 11:25am",
+      "location": "1024 Seeley W. Mudd Building",
+      "instructor": "Simha Sethumadhavan",
+      "points": "3.00",
+      "enrollment_raw": "31/30",
+      "enrollment_current": 31,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": true,
+  "parse_warnings": [
+    "missing_description"
+  ],
+  "raw_title_text": "COMS E6424 HARDWARE SECURITY. 3.00 points ."
+}

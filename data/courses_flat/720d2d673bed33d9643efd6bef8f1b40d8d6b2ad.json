@@ -1,0 +1,22 @@
+{
+  "dedup_key": "720d2d673bed33d9643efd6bef8f1b40d8d6b2ad",
+  "course_uid": "720d2d673bed33d9643efd6bef8f1b40d8d6b2ad",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APMA E6301",
+  "title": "ANALYTIC METHODS FOR PDE'S",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced calculus, basic concepts in analysis, or instructor's permission. Introduction to analytic theory of PDEs of fundamental and applied science; wave (hyperbolic), Laplace and Poisson equations (elliptic), heat (parabolic) and Schroedinger (dispersive) equations; fundamental solutions, Greens functions, weak/distribution solutions, maximum principle, energy estimates, variational methods, method of characteristics; elementary functional analysis and applications to PDEs; introduction to nonlinear PDEs, shocks; selected applications",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( APMA E3101 ) and ( APMA E4200 ) APMA E3101 AND APMA E4200 ; or their equivalents.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APMA E6301 ANALYTIC METHODS FOR PDE'S. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9d745c722da8b85914445d013fb0479c7eb3d86e",
+  "course_uid": "9d745c722da8b85914445d013fb0479c7eb3d86e",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4110",
+  "title": "BIOSTATISTICS FOR ENGINEERS",
+  "points_raw": "4.00 points",
+  "points_min": 4.0,
+  "points_max": 4.0,
+  "description": "Fundamental concepts of probability and statistics applied to biology and medicine. Probability distributions, hypothesis testing and inference, summarizing data and testing for trends. Signal detection theory and the receiver operator characteristic. Lectures accompanied by data analysis assignments using MATLAB as well as discussion of case studies in biomedicine.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( APMA E2000 and APMA E2101 and MATH UN1202",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "BMEN E4110",
+      "course_number": "BMEN 4110",
+      "section_call_number": "001/13196",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "207 Mathematics Building",
+      "instructor": "Nuttida Rungratsameetaweemana",
+      "points": "4.00",
+      "enrollment_raw": "155/130",
+      "enrollment_current": 155,
+      "enrollment_capacity": 130
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4110 BIOSTATISTICS FOR ENGINEERS. 4.00 points ."
+}

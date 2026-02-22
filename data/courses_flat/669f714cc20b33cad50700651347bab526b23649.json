@@ -1,0 +1,22 @@
+{
+  "dedup_key": "669f714cc20b33cad50700651347bab526b23649",
+  "course_uid": "669f714cc20b33cad50700651347bab526b23649",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4182",
+  "title": "SECURITY II",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced security. Centralized, distributed, and cloud system security. Cryptographic protocol design choices. Hardware and software security techniques. Security testing and fuzzing. Blockchain. Human security issues. Note: May not earn credit for both W4182 and W4180 or W4187.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: COMS W4118 AND COMS W4181 AND CSEE W4119",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4182 SECURITY II. 3.00 points ."
+}

@@ -1,0 +1,36 @@
+{
+  "dedup_key": "f656ab2ec2f083790b5380afb9657cc512527bb6",
+  "course_uid": "f656ab2ec2f083790b5380afb9657cc512527bb6",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "APPH E9500",
+  "title": "Plasma and Fusion Colloquium",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Plasma and Fusion Colloquium: All plasma and fusion graduate students are strongly encouraged to attend the department seminar as long as they are in residence. Interested undergraduates are also welcome. No degree credit is granted",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "APPH E9500",
+      "course_number": "APPH 9500",
+      "section_call_number": "001/18290",
+      "times": "F 3:00pm - 5:00pm",
+      "location": "233 Seeley W. Mudd Building",
+      "instructor": "Carlos Paz Soldan",
+      "points": "0.00",
+      "enrollment_raw": "35/48",
+      "enrollment_current": 35,
+      "enrollment_capacity": 48
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "APPH E9500 Plasma and Fusion Colloquium. 0.00 points ."
+}

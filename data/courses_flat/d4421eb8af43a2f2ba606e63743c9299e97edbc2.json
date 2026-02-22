@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d4421eb8af43a2f2ba606e63743c9299e97edbc2",
+  "course_uid": "d4421eb8af43a2f2ba606e63743c9299e97edbc2",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E4301",
+  "title": "MATERIALS SCIENCE LABORATORY",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "General experimental techniques in materials science, including X-ray diffraction, scanning electron microscopies, atomic force microscopy, materials synthesis and thermodynamics, characterization of material properties (mechanical, electrochemical, magnetic, electronic). Additional experiments at discretion of instructor",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Introductory materials course or equivalent or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MSAE E4301",
+      "course_number": "MSAE 4301",
+      "section_call_number": "001/13423",
+      "times": "M 1:00pm - 5:00pm",
+      "location": "214 Seeley W. Mudd Building",
+      "instructor": "Ismail Noyan",
+      "points": "3.00",
+      "enrollment_raw": "10/14",
+      "enrollment_current": 10,
+      "enrollment_capacity": 14
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E4301 MATERIALS SCIENCE LABORATORY. 3.00 points ."
+}

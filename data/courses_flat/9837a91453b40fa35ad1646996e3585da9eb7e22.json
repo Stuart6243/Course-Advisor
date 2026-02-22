@@ -1,0 +1,36 @@
+{
+  "dedup_key": "9837a91453b40fa35ad1646996e3585da9eb7e22",
+  "course_uid": "9837a91453b40fa35ad1646996e3585da9eb7e22",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/electrical-engineering/",
+  "source_page_title": "Electrical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ELEN E3106",
+  "title": "SOLID STATE DEVICES-MATERIALS",
+  "points_raw": "3.50 points",
+  "points_min": 3.5,
+  "points_max": 3.5,
+  "description": "Crystal structure and energy band theory of solids. Carrier concentration and transport in semiconductors. P-n junction and junction transistors. Semiconductor surface and MOS transistors. Optical effects and optoelectronic devices. Fabrication of devices and the effect of process variation and distribution statistics on device and circuit performance.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( MATH UN1201 ) or ( APMA E2000 ) or or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "ELEN E3106",
+      "course_number": "ELEN 3106",
+      "section_call_number": "001/11200",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "417 International Affairs Bldg",
+      "instructor": "Savannah Eisner",
+      "points": "3.50",
+      "enrollment_raw": "71/80",
+      "enrollment_current": 71,
+      "enrollment_capacity": 80
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ELEN E3106 SOLID STATE DEVICES-MATERIALS. 3.50 points ."
+}

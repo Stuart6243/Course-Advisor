@@ -1,0 +1,22 @@
+{
+  "dedup_key": "5d364aa5dfcf7fdd74e6ac7a37f7559438a1aa02",
+  "course_uid": "5d364aa5dfcf7fdd74e6ac7a37f7559438a1aa02",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4112",
+  "title": "DATABASE SYSTEM IMPLEMENTATION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "CSEE W3827 is recommended. The principles and practice of building large-scale database management systems. Storage methods and indexing, query processing and optimization, materialized views, transaction processing and recovery, object-relational databases, parallel and distributed databases, performance considerations. Programming projects are required",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( COMS W4111 ) and COMS W4111 ; fluency in Java or C++.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 2.5.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4112 DATABASE SYSTEM IMPLEMENTATION. 3.00 points ."
+}

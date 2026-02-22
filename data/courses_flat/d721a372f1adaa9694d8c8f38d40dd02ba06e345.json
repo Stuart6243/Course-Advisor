@@ -1,0 +1,36 @@
+{
+  "dedup_key": "d721a372f1adaa9694d8c8f38d40dd02ba06e345",
+  "course_uid": "d721a372f1adaa9694d8c8f38d40dd02ba06e345",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E4207",
+  "title": "HUMAN FACTORS: PERFORMANCE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Sensory and cognitive (brain) processing considerations in the design, development, and operations of systems, products, and tools. User or operator limits and potential in sensing, perceiving decision making, movement coordination, memory, and motivation.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "IEOR E4207",
+      "course_number": "IEOR 4207",
+      "section_call_number": "001/11809",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Leon Gold",
+      "points": "3.00",
+      "enrollment_raw": "43/52",
+      "enrollment_current": 43,
+      "enrollment_capacity": 52
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E4207 HUMAN FACTORS: PERFORMANCE. 3.00 points ."
+}

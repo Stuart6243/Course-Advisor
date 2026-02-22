@@ -1,0 +1,36 @@
+{
+  "dedup_key": "61b54870e32f9265d779b45d7d1ac7b03aef1191",
+  "course_uid": "61b54870e32f9265d779b45d7d1ac7b03aef1191",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4211",
+  "title": "ENERGY SOURCES AND CONVERSION",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Energy conversion systems for electrical power generation, automobiles, propulsion and refrigeration. Engines, steam and gas turbines, wind turbines; devices such as fuel cells, thermoelectric converters, and photovoltaic cells. Specialized topics may include carbon-dioxide sequestration, cogeneration, hybrid vehicles and energy storage devices",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( MECE E3301 ) MECE E3301 Energy sources such as oil, gas, coal, gas hydrates, hydrogen, solar, and wind.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "MECE E4211",
+      "course_number": "MECE 4211",
+      "section_call_number": "001/11115",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "644 Seeley W. Mudd Building",
+      "instructor": "Vijay Modi",
+      "points": "3.00",
+      "enrollment_raw": "30/44",
+      "enrollment_current": 30,
+      "enrollment_capacity": 44
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4211 ENERGY SOURCES AND CONVERSION. 3.00 points ."
+}

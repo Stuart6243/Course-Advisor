@@ -1,0 +1,36 @@
+{
+  "dedup_key": "81f9e44a49e2fc1903d2d1b0b17f39ee05220340",
+  "course_uid": "81f9e44a49e2fc1903d2d1b0b17f39ee05220340",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E4114",
+  "title": "MECHANCS OF FRACTURE ＆ FATIGUE",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Elastic stresses at a crack; energy and stress intensity criteria for crack growth; effect of plastic zone at the crack; fracture testing applications. Fatigue characterization by stress-life and strain-life; damage index; crack propagation; fail safe and safe life analysis.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: Undergraduate mechanics of solids course.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "ENME E4114",
+      "course_number": "ENME 4114",
+      "section_call_number": "001/12885",
+      "times": "Th 4:10pm - 6:40pm",
+      "location": "227 Seeley W. Mudd Building",
+      "instructor": "Adrian Brugger",
+      "points": "3.00",
+      "enrollment_raw": "3/30",
+      "enrollment_current": 3,
+      "enrollment_capacity": 30
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E4114 MECHANCS OF FRACTURE ＆ FATIGUE. 3.00 points ."
+}

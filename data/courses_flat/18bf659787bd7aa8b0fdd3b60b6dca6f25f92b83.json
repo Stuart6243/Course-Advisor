@@ -1,0 +1,22 @@
+{
+  "dedup_key": "18bf659787bd7aa8b0fdd3b60b6dca6f25f92b83",
+  "course_uid": "18bf659787bd7aa8b0fdd3b60b6dca6f25f92b83",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W4773",
+  "title": "Machine Learning Theory",
+  "points_raw": "3 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Core topics from unsupervised learning such as clustering, dimensionality reduction and density estimation will be studied in detail. Topics in clustering: k-means clustering, hierarchical clustering, spectral clustering, clustering with various forms of feedback, good initialization techniques and convergence analysis of various clustering procedures. Topics in dimensionality reduction: linear techniques such as PCA, ICA, Factor Analysis, Random Projections, non-linear techniques such as LLE, IsoMap, Laplacian Eigenmaps, tSNE, and study of embeddings of general metric spaces, what sorts of theoretical guarantees can one provide about such techniques. Miscellaneous topics: design and analysis of data structures for fast Nearest Neighbor search such as Cover Trees and LSH. Algorithms will be implemented in either Matlab or Python.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: COMS W4771",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W4773 Machine Learning Theory. 3 points ."
+}

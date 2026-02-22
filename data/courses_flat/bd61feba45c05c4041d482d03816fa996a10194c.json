@@ -1,0 +1,22 @@
+{
+  "dedup_key": "bd61feba45c05c4041d482d03816fa996a10194c",
+  "course_uid": "bd61feba45c05c4041d482d03816fa996a10194c",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E6505",
+  "title": "Advanced Biomaterials for Tissue Engineering",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Advanced biomaterial selection and biomimetic scaffold design for tissue engineering and regenerative medicine. Formulation of bio-inspired design criteria, scaffold characterization and testing, and applications on forming complex tissues or organogenesis. Laboratory component includes basic scaffold fabrication, characterization and in vitro evaluation of biocompatibility. Group projects target the design of scaffolds for select tissue engineering applications.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( BMEN E4501 ) or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E6505 Advanced Biomaterials for Tissue Engineering. 3.00 points ."
+}

@@ -1,0 +1,22 @@
+{
+  "dedup_key": "dcbc4d2982533f401ae35d11d6b4b5b55cf7c0aa",
+  "course_uid": "dcbc4d2982533f401ae35d11d6b4b5b55cf7c0aa",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/biomedical-engineering/",
+  "source_page_title": "Biomedical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "BMEN E4302",
+  "title": "BIOMECHANICS OF MUSCULOSKELETAL SOFT TIS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Restricted to seniors and graduate students. Biomechanics of orthopaedic soft tissues (cartilage, tendon, ligament, meniscus, etc.). Basic and advanced viscoelasticity applied to the muscoskeletal system. Topics include mechanical properties, applied viscoelasticity theory, and biology of orthopaedic soft tissues",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( ENME E3113 ) or ENME E3113 ; or equivalent.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect.: 3.",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "BMEN E4302 BIOMECHANICS OF MUSCULOSKELETAL SOFT TIS. 3.00 points ."
+}

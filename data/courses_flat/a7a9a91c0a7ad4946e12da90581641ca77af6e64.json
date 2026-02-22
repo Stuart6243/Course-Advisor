@@ -1,0 +1,49 @@
+{
+  "dedup_key": "a7a9a91c0a7ad4946e12da90581641ca77af6e64",
+  "course_uid": "a7a9a91c0a7ad4946e12da90581641ca77af6e64",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/chemical-engineering/",
+  "source_page_title": "Chemical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "CHEN E4001",
+  "title": "ESSENTIALS OF CHEM ENGIN A",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Part of an accelerated consideration of the essential chemical engineering principles from the undergraduate program, including selected topics from Introduction to Chemical Engineering, Transport Phenomena I and II, and Chemical Engineering Control. While required for all M.S. students with Scientist to Engineer status, the credits from this course may not be applied toward any chemical engineering degree",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: First-year chemistry and physics, vector calculus, ordinary differential equations, and the instructors permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4001",
+      "course_number": "CHEN 4001",
+      "section_call_number": "001/10209",
+      "times": "T Th 11:40am - 12:55pm",
+      "location": "627 Seeley W. Mudd Building",
+      "instructor": "Christopher Vic Chen",
+      "points": "3.00",
+      "enrollment_raw": "18/50",
+      "enrollment_current": 18,
+      "enrollment_capacity": 50
+    },
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "CHEN E4001",
+      "course_number": "CHEN 4001",
+      "section_call_number": "R01/10210",
+      "times": "F 10:00am - 11:15am",
+      "location": "413 Kent Hall",
+      "instructor": "Christopher Vic Chen",
+      "points": "3.00",
+      "enrollment_raw": "0/60",
+      "enrollment_current": 0,
+      "enrollment_capacity": 60
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "CHEN E4001 ESSENTIALS OF CHEM ENGIN A. 3.00 points ."
+}

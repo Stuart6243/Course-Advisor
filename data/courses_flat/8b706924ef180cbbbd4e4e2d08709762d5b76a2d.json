@@ -1,0 +1,36 @@
+{
+  "dedup_key": "8b706924ef180cbbbd4e4e2d08709762d5b76a2d",
+  "course_uid": "8b706924ef180cbbbd4e4e2d08709762d5b76a2d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECS E6616",
+  "title": "ROBOT LEARNING",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Dimensionality reduction, classification, and regression problems in robotics. Deep Learning: Convolutional Neural Networks for robot vision, Recurrent Neural Networks, and sensorimotor robot control using neural networks. Model Predictive Control using learned dynamics models for legged robots and manipulators. Reinforcement Learning in robotics: model-based and model-free methods, deep reinforcement learning, sensorimotor control using reinforcement learning",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ( MECE E4602 ) and ( MECS E4603 ) or ( COMS W4733 ) MECE E4602 OR MECS E4603 OR COMS W4733 Robots using machine learning to achieve high performance in unscripted situations.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECS E6616",
+      "course_number": "MECS 6616",
+      "section_call_number": "001/12169",
+      "times": "M W 10:10am - 11:25am",
+      "location": "203 Mathematics Building",
+      "instructor": "Matei Ciocarlie",
+      "points": "3.00",
+      "enrollment_raw": "71/90",
+      "enrollment_current": 71,
+      "enrollment_capacity": 90
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECS E6616 ROBOT LEARNING. 3.00 points ."
+}

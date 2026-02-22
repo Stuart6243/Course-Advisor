@@ -1,0 +1,36 @@
+{
+  "dedup_key": "1112e94777668ae325c289b5d7bf53a2e6ec2011",
+  "course_uid": "1112e94777668ae325c289b5d7bf53a2e6ec2011",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/computer-science/",
+  "source_page_title": "Computer Science < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "COMS W3107",
+  "title": "Clean Object-Oriented Design",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "A course in designing, documenting, coding, and testing robust computer software, according to object-oriented design patterns and clean coding practices. Taught in Java.Object-oriented design principles include: use cases; CRC; UML; javadoc; patterns (adapter, builder, command, composite, decorator, facade, factory, iterator, lazy evaluation, observer, singleton, strategy, template, visitor); design by contract; loop invariants; interfaces and inheritance hierarchies; anonymous classes and null objects; graphical widgets; events and listeners; Java's Object class; generic types; reflection; timers, threads, and locks.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: COMS W1004 or permission of instructor.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "COMS W3107",
+      "course_number": "COMS 3107",
+      "section_call_number": "001/12817",
+      "times": "T Th 2:40pm - 3:55pm",
+      "location": "602 Hamilton Hall",
+      "instructor": "Christian Murphy",
+      "points": "3.00",
+      "enrollment_raw": "75/80",
+      "enrollment_current": 75,
+      "enrollment_capacity": 80
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "COMS W3107 Clean Object-Oriented Design. 3.00 points ."
+}

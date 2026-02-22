@@ -1,0 +1,22 @@
+{
+  "dedup_key": "3de65bb88139975e215d196c5a58a5f6f9f38c94",
+  "course_uid": "3de65bb88139975e215d196c5a58a5f6f9f38c94",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "ENME E4212",
+  "title": "EXPERIMENTL SOLID MECHANCS",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Fundamental concepts in solid mechanics and measurement science. Performance of high-quality experimental studies",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ENME E3113 Experimental techniques, including photoelasticity, strain measurements, digital image correlation, and other optics in stress analysis, emphasizing engineering applications.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "ENME E4212 EXPERIMENTL SOLID MECHANCS. 3.00 points ."
+}

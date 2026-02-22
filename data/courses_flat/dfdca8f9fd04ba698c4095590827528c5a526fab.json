@@ -1,0 +1,36 @@
+{
+  "dedup_key": "dfdca8f9fd04ba698c4095590827528c5a526fab",
+  "course_uid": "dfdca8f9fd04ba698c4095590827528c5a526fab",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/earth-environmental-engineering/",
+  "source_page_title": "Earth and Environmental Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "EAEE E4300",
+  "title": "INTRO TO CARBON MANAGEMENT",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to natural and anthropogenic carbon cycle, and carbon - climate. Rationale and need to manage carbon and tools with which to do so (basic science, psychology, economics and policy background, negotiations - society; emphasis on interdisciplinary and inter-dependent approach). Simple carbon emission model to estimate the impacts of a specific intervention with regards to national, per capita and global emissions. Student-led case studies (e.g. reforestation, biofuels, CCS, efficiency, alternative energy) to illustrate necessary systems approach required to tackle global challenges",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: Undergraduate level mathematics and science, or instructor's permission.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "Lect: 3.",
+  "sections": [
+    {
+      "term": "Fall 2025",
+      "catalog_ref": "EAEE E4300",
+      "course_number": "EAEE 4300",
+      "section_call_number": "001/13432",
+      "times": "M 4:10pm - 6:40pm",
+      "location": "303 Uris Hall",
+      "instructor": "Sara Hamilton",
+      "points": "3.00",
+      "enrollment_raw": "41/50",
+      "enrollment_current": 41,
+      "enrollment_capacity": 50
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "EAEE E4300 INTRO TO CARBON MANAGEMENT. 3.00 points ."
+}

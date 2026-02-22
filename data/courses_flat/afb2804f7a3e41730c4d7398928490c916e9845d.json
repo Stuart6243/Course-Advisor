@@ -1,0 +1,36 @@
+{
+  "dedup_key": "afb2804f7a3e41730c4d7398928490c916e9845d",
+  "course_uid": "afb2804f7a3e41730c4d7398928490c916e9845d",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/",
+  "source_page_title": "Industrial Engineering and Operations Research < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "IEOR E2000",
+  "title": "Data Engineering with Python",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to essential data engineering methods. Potential topics include Arrays, Linked Lists, Stacks and Queues, Trees and Graphs, Hash Tables, Search Algorithms and Efficiency, Relational databases, SQL, NoSQL, and Data Wrangling. Practice both theory and applications using Python programming",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "Prerequisites: ENGI E1006 ; Or competency in Python.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "IEOR E2000",
+      "course_number": "IEOR 2000",
+      "section_call_number": "001/13268",
+      "times": "M W 2:40pm - 3:55pm",
+      "location": "303 Seeley W. Mudd Building",
+      "instructor": "Yi Zhang",
+      "points": "3.00",
+      "enrollment_raw": "60/58",
+      "enrollment_current": 60,
+      "enrollment_capacity": 58
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "IEOR E2000 Data Engineering with Python. 3.00 points ."
+}

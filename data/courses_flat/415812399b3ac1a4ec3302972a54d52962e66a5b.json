@@ -1,0 +1,36 @@
+{
+  "dedup_key": "415812399b3ac1a4ec3302972a54d52962e66a5b",
+  "course_uid": "415812399b3ac1a4ec3302972a54d52962e66a5b",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/mechanical-engineering/",
+  "source_page_title": "Mechanical Engineering < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MECE E4401",
+  "title": "Introduction to Kinematics of Machines and Robots",
+  "points_raw": "3.00 points",
+  "points_min": 3.0,
+  "points_max": 3.0,
+  "description": "Introduction to kinematic analysis and design of machines and robots. Analytical and graphical synthesis of four-bar linkages. Planar displacements of rigid bodies. Spherical displacements of rigid bodies. Spatial displacements of rigid bodies. Rigid body velocities and wrenches. Concepts of kinematics of open-chain linkages.",
+  "description_source": "extra_paragraph",
+  "prerequisites_text": "Prerequisites: ( ENME E3105 and APMA E3101 ) or ( MATH UN2010 and APMA E3101 ) College level mechanics and linear algebra.",
+  "prerequisites_source": "courseblockdesc",
+  "notes_text": "",
+  "sections": [
+    {
+      "term": "Spring 2026",
+      "catalog_ref": "MECE E4401",
+      "course_number": "MECE 4401",
+      "section_call_number": "001/12129",
+      "times": "T 4:10pm - 6:40pm",
+      "location": "337 Seeley W. Mudd Building",
+      "instructor": "Qiao Lin",
+      "points": "3.00",
+      "enrollment_raw": "26/34",
+      "enrollment_current": 26,
+      "enrollment_capacity": 34
+    }
+  ],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MECE E4401 Introduction to Kinematics of Machines and Robots. 3.00 points ."
+}

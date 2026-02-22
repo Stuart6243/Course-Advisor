@@ -1,0 +1,22 @@
+{
+  "dedup_key": "d1cc8b08753c5f949f67a5c438903cd6a3745c56",
+  "course_uid": "d1cc8b08753c5f949f67a5c438903cd6a3745c56",
+  "bulletin_year": "2025-2026",
+  "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/applied-physics-applied-mathematics/",
+  "source_page_title": "Applied Physics and Applied Mathematics < Columbia Engineering Academic Catalog | Columbia University",
+  "department_or_group": "",
+  "course_code": "MSAE E9000",
+  "title": "MATERIALS SCIENCE COLLOQUIUM",
+  "points_raw": "0.00 points",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Speakers from universities, national laboratories, and industry are invited to speak on the recent impact of materials science and engineering innovations",
+  "description_source": "courseblockdesc",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": false,
+  "parse_warnings": [],
+  "raw_title_text": "MSAE E9000 MATERIALS SCIENCE COLLOQUIUM. 0.00 points ."
+}
