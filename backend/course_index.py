@@ -12,30 +12,75 @@ from typing import Optional
 
 # Common department expansions used in searchable_text.
 DEPARTMENT_NAMES = {
-    "AERO": "aerospace aeronautical",
-    "AEME": "aerospace mechanical turbomachinery",
-    "BMEN": "biomedical engineering",
-    "CBMF": "chemical biochemical",
-    "CHEN": "chemical engineering",
-    "CIEN": "civil engineering",
-    "COMS": "computer science",
-    "CSOR": "operations research computer science",
-    "EAEE": "earth environmental engineering",
-    "ECBM": "electrical computer biomedical",
+    # 航空航天
+    "AERO": "aerospace aeronautical flight space",
+    "AEME": "aerospace mechanical turbomachinery propulsion aerodynamics",
+    # 生物医学
+    "BMEN": "biomedical engineering biology medical",
+    "BMCS": "biomedical computational statistics genomics",
+    "BMEB": "biomedical electrical neuroscience brain",
+    "BMEE": "biomedical electrical neural control instrumentation",
+    "BINF": "bioinformatics computational biomedical health",
+    "APBM": "applied physics biomedical anatomy",
+    "MEBM": "mechanical biomedical modeling morphogenesis",
+    "EEBM": "electrical biomedical neuroscience neuroengineering",
+    # 化学工程
+    "CHEN": "chemical engineering chemistry",
+    "CHEE": "chemical engineering thermodynamics colloid",
+    "CBMF": "chemical biochemical molecular",
+    "CHAP": "chemical applied physics statistical mechanics",
+    # 土木工程
+    "CIEN": "civil engineering structural construction",
+    "CIEE": "civil environmental infrastructure risk",
+    "CEEM": "civil engineering mechanics research",
+    "CEOR": "civil engineering operations infrastructure optimization",
+    # 计算机科学
+    "COMS": "computer science programming software algorithms",
+    "CSOR": "operations research computer science optimization",
+    "CSEE": "computer science electrical engineering embedded systems",
+    "ORCS": "operations research computer science data decision",
+    # 地球环境
+    "EAEE": "earth environmental engineering sustainability climate",
+    "EACE": "earth environmental civil hydrosystems pollution",
+    "ECIA": "environmental civil infrastructure water management",
+    "EESC": "earth environmental science climate dynamics",
+    # 电子电气
     "EECS": "electrical engineering computer science",
-    "ELEN": "electrical engineering",
-    "ENME": "engineering mechanics",
-    "IEOR": "industrial engineering operations research",
-    "MECE": "mechanical engineering",
-    "MSAE": "materials science applied engineering",
-    "APMA": "applied mathematics",
-    "APPH": "applied physics",
-    "PHYS": "physics",
-    "MATH": "mathematics",
-    "STAT": "statistics",
-    "ENGI": "engineering general",
-    "PLCE": "planning conservation environment",
+    "ELEN": "electrical engineering circuits signals electronics",
+    "ECBM": "electrical computer biomedical",
+    "EEEL": "electrical engineering energy economics optimization",
+    "EEME": "electrical engineering mechanical control systems",
+    # 工业工程与运筹
+    "IEOR": "industrial engineering operations research optimization",
+    "EEOR": "electrical engineering operations research convex optimization",
+    "DROM": "decision risk operations management analytics healthcare",
+    "ORCA": "operations research data science foundations",
+    # 机械工程
+    "MECE": "mechanical engineering design manufacturing robotics",
+    "MECS": "mechanical computer science evolutionary robotics",
+    "MECH": "mechanical engineering combustion",
+    "MEEM": "mechanical engineering materials small scale",
+    "MEEE": "mechanical electrical acoustics signal",
+    "MEIE": "mechanical engineering innovation space flight human",
+    "IEME": "industrial engineering mechanical human centered design innovation",
+    "MACH": "mechanical applied combustion",
+    # 材料科学
+    "MSAE": "materials science applied engineering crystallography",
+    # 应用数学/物理
+    "APMA": "applied mathematics analysis numerical methods",
+    "APPH": "applied physics quantum optics condensed matter",
+    "APAM": "applied physics applied mathematics research",
+    "APCH": "applied physics chemistry soft condensed matter",
+    # 工程通识
+    "ENGI": "engineering general introduction gateway art",
+    "ENME": "engineering mechanics dynamics structures",
+    # 其他
+    "PLCE": "planning conservation environment urban",
     "PSAM": "quantitative methods social science",
+    "GRAP": "graphics computer engineering visualization",
+    "HSAM": "humanities science applied mathematics data history",
+    "AHCE": "humanities civil engineering history roman",
+    "MRKT": "marketing product management",
 }
 
 

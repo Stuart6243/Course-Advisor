@@ -1,9 +1,7 @@
 """
 FastAPI 主入口。
-定义所有 API 路由，管理应用生命周期。
+定义 API 路由并管理应用生命周期。
 """
-# 在现有 import 区域添加：
-from groq_client import GroqClient
 
 from __future__ import annotations
 
@@ -11,16 +9,20 @@ import io
 import json
 from contextlib import asynccontextmanager
 from datetime import datetime
-from typing import Any, Literal
+from pathlib import Path
+from typing import Any, Literal, Optional
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 import config
+from course_index import build_enriched_entry, add_to_index, save_enriched_index
 from course_retriever import retrieve_courses
 from export_handler import export_as_json, export_as_markdown
+from file_importer import complete_course_json, generate_course_uid, import_file
+from groq_client import GroqClient
 from ollama_client import OllamaClient
 from query_parser import extract_query_intent
 from response_generator import generate_response_stream
@@ -37,46 +39,55 @@ class ChatRequest(BaseModel):
     language: Literal["en", "zh", "es", "fr"] = "en"
 
 
+class ManualImportRequest(BaseModel):
+    course_code: str
+    title: str
+    points_raw: Optional[str] = ""
+    points_min: Optional[float] = 0.0
+    points_max: Optional[float] = 0.0
+    description: Optional[str] = ""
+    prerequisites_text: Optional[str] = ""
+    department_or_group: Optional[str] = ""
+    sections: Optional[list] = []
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # 1. 本地 Ollama 客户端（离线 fallback）
     app.state.ollama = OllamaClient(
         config.OLLAMA_BASE_URL,
         config.OLLAMA_MODEL,
         config.OLLAMA_TIMEOUT,
     )
-
-    # 2. Groq 云 API 客户端
     app.state.groq = GroqClient()
+    app.state.enriched_index = []
+
     groq_available = await app.state.groq.is_available()
     if groq_available:
         print("✅ Groq API connected")
     else:
         print("⚠️ Groq API unavailable, will use local Ollama")
 
-    # 3. 加载 enriched index
-    app.state.enriched_index = []
     if config.ENRICHED_INDEX_PATH.exists():
         try:
             with config.ENRICHED_INDEX_PATH.open("r", encoding="utf-8") as f:
                 loaded = json.load(f)
-                if isinstance(loaded, list):
-                    app.state.enriched_index = loaded
+            if isinstance(loaded, list):
+                app.state.enriched_index = loaded
             print(f"✅ Loaded {len(app.state.enriched_index)} courses")
         except Exception:
             app.state.enriched_index = []
 
-    # 4. 预热本地模型（仅在 local/hybrid 模式且有需要时）
     if config.WARMUP_ON_STARTUP and config.INFERENCE_MODE in ("local", "hybrid"):
         print("Warming up local LLM...")
         try:
             await app.state.ollama.chat(
                 [{"role": "user", "content": "hi"}],
-                system_prompt="Reply ok.", max_tokens=4
+                system_prompt="Reply ok.",
+                max_tokens=4,
             )
             print("  ✅ Local model warmed up")
-        except Exception as e:
-            print(f"  ⚠️ Local warmup failed: {e}")
+        except Exception as exc:
+            print(f"  ⚠️ Local warmup failed: {exc}")
 
     try:
         yield
@@ -97,42 +108,24 @@ app.add_middleware(
 )
 
 
-
-
-
-
-
-
 async def get_llm_client(request: Request, task: str = "response"):
     """
-    根据 INFERENCE_MODE 和可用性选择 LLM 客户端。
-    
-    task: "intent" | "response"
-    返回: (client, client_type) — client_type 是 "groq" 或 "ollama"
+    根据 INFERENCE_MODE 选择 LLM 客户端。
+    返回 (client, provider)，provider 为 "groq" 或 "ollama"。
     """
+    _ = task
     mode = config.INFERENCE_MODE
     groq = request.app.state.groq
     ollama = request.app.state.ollama
 
     if mode == "groq":
         return groq, "groq"
-    elif mode == "local":
-        return ollama, "ollama"
-    else:  # hybrid
-        if await groq.is_available():
-            return groq, "groq"
+    if mode == "local":
         return ollama, "ollama"
 
-
-
-
-
-
-
-
-
-
-
+    if await groq.is_available():
+        return groq, "groq"
+    return ollama, "ollama"
 
 
 @app.post("/api/chat")
@@ -141,41 +134,28 @@ async def chat(payload: ChatRequest, request: Request):
         try:
             index_data = request.app.state.enriched_index
 
-            # 1. 意图提取（规则引擎优先）
-            llm_client, client_type = await get_llm_client(request, "intent")
-            intent = await extract_query_intent(payload.message, llm_client)
+            intent_client, _ = await get_llm_client(request, "intent")
+            intent = await extract_query_intent(payload.message, intent_client)
 
-            # 2. 检索
             courses = retrieve_courses(
-                index_data, intent, str(config.COURSES_DIR),
-                max_results=config.MAX_RETRIEVAL_RESULTS
+                index_data,
+                intent,
+                str(config.COURSES_DIR),
+                max_results=config.MAX_RETRIEVAL_RESULTS,
             )
 
-            # 3. 回答生成（选择最佳客户端）
-            resp_client, resp_type = await get_llm_client(request, "response")
-            
-            # 如果用 Groq，指定模型
-            if resp_type == "groq":
-                # 临时 monkey-patch 让 generate_response_stream 用 Groq
-                async for chunk in generate_response_stream(
-                    intent=intent, courses=courses,
-                    ollama=resp_client,  # GroqClient 接口兼容
-                    language=payload.language,
-                ):
-                    event = {"type": "chunk", "content": chunk}
-                    yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
-            else:
-                async for chunk in generate_response_stream(
-                    intent=intent, courses=courses,
-                    ollama=resp_client,
-                    language=payload.language,
-                ):
-                    event = {"type": "chunk", "content": chunk}
-                    yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+            response_client, _ = await get_llm_client(request, "response")
+            async for chunk in generate_response_stream(
+                intent=intent,
+                courses=courses,
+                ollama=response_client,
+                language=payload.language,
+            ):
+                event = {"type": "chunk", "content": chunk}
+                yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
 
-            # 4. sources + done
-            seen = set()
-            source_codes = []
+            seen: set[str] = set()
+            source_codes: list[str] = []
             for course in courses:
                 code = (course.get("course_code") or "").strip()
                 if code and code not in seen:
@@ -189,7 +169,78 @@ async def chat(payload: ChatRequest, request: Request):
     return StreamingResponse(stream(), media_type="text/event-stream")
 
 
+@app.post("/api/import")
+async def import_course(request: Request, file: UploadFile = File(...)):
+    """接收上传文件并导入课程库。"""
+    file_bytes = await file.read()
+    if len(file_bytes) > config.MAX_IMPORT_SIZE_MB * 1024 * 1024:
+        return {
+            "success": False,
+            "message": f"File exceeds {config.MAX_IMPORT_SIZE_MB}MB limit.",
+        }
 
+    llm_client, _ = await get_llm_client(request, task="response")
+    result = await import_file(
+        file_bytes=file_bytes,
+        filename=file.filename or "unknown",
+        llm_client=llm_client,
+        courses_dir=str(config.COURSES_DIR),
+        enriched_index=request.app.state.enriched_index,
+        enriched_index_path=str(config.ENRICHED_INDEX_PATH),
+    )
+    return result
+
+
+@app.post("/api/import/manual")
+async def import_manual(payload: ManualImportRequest, request: Request):
+    """接收用户手动填写的课程信息，直接入库（不需要 LLM）。"""
+    data = payload.model_dump()
+    code = (data.get("course_code") or "").strip()
+    title = (data.get("title") or "").strip()
+
+    if not code or not title:
+        return {"success": False, "message": "course_code and title are required."}
+
+    uid = generate_course_uid(code, title)
+
+    # 检查重复
+    for entry in request.app.state.enriched_index:
+        if entry.get("course_uid") == uid:
+            return {
+                "success": False,
+                "message": f"Course {code} already exists in database.",
+            }
+
+    # 补全并保存 JSON
+    full_json = complete_course_json(data, uid)
+    save_path = Path(config.COURSES_DIR) / f"{uid}.json"
+    save_path.write_text(
+        json.dumps(full_json, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    # 更新 enriched index
+    raw_entry = {
+        "course_uid": uid,
+        "course_code": code,
+        "title": title,
+        "file_name": f"{uid}.json",
+        "path": f"courses_flat/{uid}.json",
+    }
+    enriched = build_enriched_entry(raw_entry, full_json)
+    add_to_index(request.app.state.enriched_index, enriched)
+    save_enriched_index(
+        request.app.state.enriched_index, str(config.ENRICHED_INDEX_PATH)
+    )
+
+    return {
+        "success": True,
+        "course": {
+            "course_code": code,
+            "title": title,
+            "points": data.get("points_raw", ""),
+        },
+        "message": f"Successfully imported {code}: {title}",
+    }
 
 
 @app.get("/api/health")
@@ -197,21 +248,18 @@ async def health(request: Request):
     ollama_ok = await request.app.state.ollama.is_available()
     groq_ok = await request.app.state.groq.is_available()
     index_data = request.app.state.enriched_index
-    
+    total = len(index_data) if isinstance(index_data, list) else 0
+
     return {
         "status": "ok",
         "inference_mode": config.INFERENCE_MODE,
         "groq_available": groq_ok,
         "ollama_available": ollama_ok,
+        "ollama_connected": ollama_ok,
         "model": config.OLLAMA_MODEL,
         "groq_model": config.GROQ_RESPONSE_MODEL,
-        "courses_count": len(index_data) if isinstance(index_data, list) else 0,
+        "courses_count": total,
     }
-
-
-
-
-
 
 
 @app.post("/api/export")
@@ -229,49 +277,11 @@ async def export_chat(payload: ExportRequest):
     filename = f"course-advisor-chat-{timestamp}.{extension}"
     headers = {"Content-Disposition": f'attachment; filename="{filename}"'}
 
-    return StreamingResponse(io.BytesIO(content.encode("utf-8")), media_type=media_type, headers=headers)
-
-
-@app.post("/api/chat")
-async def chat(payload: ChatRequest, request: Request):
-    async def stream():
-        try:
-            ollama = request.app.state.ollama
-            index_data = request.app.state.enriched_index
-
-            intent = await extract_query_intent(payload.message, ollama)
-            courses = retrieve_courses(index_data, intent, str(config.COURSES_DIR))
-
-            async for chunk in generate_response_stream(
-                intent=intent,
-                courses=courses,
-                ollama=ollama,
-                language=payload.language,
-            ):
-                event = {"type": "chunk", "content": chunk}
-                yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
-
-            seen: set[str] = set()
-            source_codes: list[str] = []
-            for course in courses:
-                code = (course.get("course_code") or "").strip()
-                if code and code not in seen:
-                    seen.add(code)
-                    source_codes.append(code)
-
-            sources_event = {"type": "sources", "courses": source_codes}
-            yield f"data: {json.dumps(sources_event, ensure_ascii=False)}\n\n"
-            yield f"data: {json.dumps({'type': 'done'}, ensure_ascii=False)}\n\n"
-        except Exception as exc:
-            error_event = {"type": "error", "message": str(exc)}
-            yield f"data: {json.dumps(error_event, ensure_ascii=False)}\n\n"
-
-    return StreamingResponse(stream(), media_type="text/event-stream")
-
-
-@app.post("/api/import")
-async def import_not_implemented():
-    raise HTTPException(status_code=501, detail="Not implemented")
+    return StreamingResponse(
+        io.BytesIO(content.encode("utf-8")),
+        media_type=media_type,
+        headers=headers,
+    )
 
 
 @app.get("/api/courses/stats")
@@ -295,5 +305,4 @@ async def courses_stats(request: Request):
             if isinstance(term, str) and term.strip()
         }
     )
-
     return {"total": len(index_data), "departments": departments, "terms": terms}
