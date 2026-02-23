@@ -1,0 +1,57 @@
+{
+  "header": {
+    "title": "课程顾问 AI",
+    "newChat": "新对话"
+  },
+  "landing": {
+    "title": "从哪里开始？",
+    "placeholder": "问任何关于课程规划的问题..."
+  },
+  "chat": {
+    "placeholder": "向顾问 AI 提问...",
+    "disclaimer": "AI 可能出错，重要信息请核实。"
+  },
+  "settings": {
+    "title": "设置",
+    "language": "界面语言",
+    "import": "导入课程资料",
+    "importDrag": "拖放文件到此处",
+    "importLimit": "单文件限 25MB • PDF, HTML",
+    "importChoose": "选择文件",
+    "importProcessing": "正在处理...",
+    "importSuccess": "课程导入成功！",
+    "importError": "导入失败",
+    "export": "导出聊天记录",
+    "exportBtn": "导出数据",
+    "exported": "已导出！",
+    "manualImport": {
+      "title": "补全课程信息",
+      "description": "无法从文件中完整提取课程信息，请手动补充缺失字段。",
+      "courseCode": "课程代码",
+      "courseCodePlaceholder": "如 CIEN E3125",
+      "courseTitle": "课程名称",
+      "courseTitlePlaceholder": "如 Structural Design",
+      "points": "学分",
+      "pointsPlaceholder": "如 3.0",
+      "description": "课程描述（可选）",
+      "prerequisites": "先修课要求（可选）",
+      "submit": "添加到数据库",
+      "cancel": "取消",
+      "extractedPreview": "从文件中提取到的文本：",
+      "codeInvalid": "课程代码需同时包含大写字母和数字。",
+      "required": "课程代码和课程名称为必填。"
+    }
+  },
+  "connection": {
+    "groqConnected": "已连接（Groq 云端）",
+    "ollamaConnected": "已连接（本地 AI）",
+    "disconnected": "AI 未连接",
+    "hybrid": "混合模式"
+  },
+  "languages": {
+    "en": "English (US)",
+    "zh": "中文",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

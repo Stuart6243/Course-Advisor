@@ -1,0 +1,57 @@
+{
+  "header": {
+    "title": "Asesor de Cursos AI",
+    "newChat": "Nueva conversación"
+  },
+  "landing": {
+    "title": "¿Por dónde empezamos?",
+    "placeholder": "Pregunta sobre tus cursos..."
+  },
+  "chat": {
+    "placeholder": "Pregunta al Asesor AI...",
+    "disclaimer": "El AI puede cometer errores. Verifica la información importante."
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "import": "Importar Base de Conocimiento",
+    "importDrag": "Arrastra archivos aquí",
+    "importLimit": "Límite 25MB por archivo • PDF, HTML",
+    "importChoose": "Elegir archivo",
+    "importProcessing": "Procesando...",
+    "importSuccess": "¡Curso importado correctamente!",
+    "importError": "Error al importar",
+    "export": "Exportar Historial",
+    "exportBtn": "Exportar Datos",
+    "exported": "¡Exportado!",
+    "manualImport": {
+      "title": "Completar información del curso",
+      "description": "No pudimos extraer completamente los detalles del curso. Por favor completa los campos faltantes.",
+      "courseCode": "Código del curso",
+      "courseCodePlaceholder": "Ej. CIEN E3125",
+      "courseTitle": "Título del curso",
+      "courseTitlePlaceholder": "Ej. Structural Design",
+      "points": "Créditos",
+      "pointsPlaceholder": "Ej. 3.0",
+      "description": "Descripción (opcional)",
+      "prerequisites": "Prerrequisitos (opcional)",
+      "submit": "Agregar a la base de datos",
+      "cancel": "Cancelar",
+      "extractedPreview": "Texto extraído del archivo:",
+      "codeInvalid": "El código del curso debe incluir letras mayúsculas y números.",
+      "required": "Código y título del curso son obligatorios."
+    }
+  },
+  "connection": {
+    "groqConnected": "Conectado vía Groq Cloud",
+    "ollamaConnected": "Conectado vía AI Local",
+    "disconnected": "AI no conectado",
+    "hybrid": "Modo Híbrido"
+  },
+  "languages": {
+    "en": "English (US)",
+    "zh": "中文",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

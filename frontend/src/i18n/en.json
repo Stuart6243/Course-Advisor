@@ -1,0 +1,57 @@
+{
+  "header": {
+    "title": "Course Advisor AI",
+    "newChat": "New Chat"
+  },
+  "landing": {
+    "title": "Where should we begin?",
+    "placeholder": "Ask anything regarding your course path..."
+  },
+  "chat": {
+    "placeholder": "Ask Advisor AI...",
+    "disclaimer": "Advisor AI can make mistakes. Consider checking important information."
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Interface Language",
+    "import": "Import Knowledge Base",
+    "importDrag": "Drag & drop files here",
+    "importLimit": "Limit 25MB per file • PDF, HTML",
+    "importChoose": "Choose file",
+    "importProcessing": "Processing file...",
+    "importSuccess": "Course imported successfully!",
+    "importError": "Import failed",
+    "export": "Export Chat History",
+    "exportBtn": "Export Data",
+    "exported": "Exported!",
+    "manualImport": {
+      "title": "Complete Course Information",
+      "description": "We couldn't fully extract course details from the file. Please fill in the missing fields.",
+      "courseCode": "Course Code",
+      "courseCodePlaceholder": "e.g. CIEN E3125",
+      "courseTitle": "Course Title",
+      "courseTitlePlaceholder": "e.g. Structural Design",
+      "points": "Credits",
+      "pointsPlaceholder": "e.g. 3.0",
+      "description": "Description (optional)",
+      "prerequisites": "Prerequisites (optional)",
+      "submit": "Add to Database",
+      "cancel": "Cancel",
+      "extractedPreview": "Extracted text from your file:",
+      "codeInvalid": "Course code must include uppercase letters and numbers.",
+      "required": "Course code and title are required."
+    }
+  },
+  "connection": {
+    "groqConnected": "Connected via Groq Cloud",
+    "ollamaConnected": "Connected via Local AI",
+    "disconnected": "AI not connected",
+    "hybrid": "Hybrid Mode"
+  },
+  "languages": {
+    "en": "English (US)",
+    "zh": "中文",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

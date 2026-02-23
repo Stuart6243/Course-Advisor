@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import io
 import json
+from collections import OrderedDict
 from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
@@ -18,10 +19,16 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 import config
-from course_index import build_enriched_entry, add_to_index, save_enriched_index
+from course_index import add_to_index, build_enriched_entry, save_enriched_index
 from course_retriever import retrieve_courses
 from export_handler import export_as_json, export_as_markdown
-from file_importer import complete_course_json, generate_course_uid, import_file
+from file_importer import (
+    complete_course_json,
+    generate_course_uid,
+    import_file,
+    normalize_course_code,
+    validate_course_code,
+)
 from groq_client import GroqClient
 from ollama_client import OllamaClient
 from query_parser import extract_query_intent
@@ -60,6 +67,7 @@ async def lifespan(app: FastAPI):
     )
     app.state.groq = GroqClient()
     app.state.enriched_index = []
+    app.state.conversations: OrderedDict[str, list[dict[str, str]]] = OrderedDict()
 
     groq_available = await app.state.groq.is_available()
     if groq_available:
@@ -95,6 +103,7 @@ async def lifespan(app: FastAPI):
         app.state.ollama = None
         app.state.groq = None
         app.state.enriched_index = []
+        app.state.conversations = OrderedDict()
 
 
 app = FastAPI(lifespan=lifespan)
@@ -133,8 +142,12 @@ async def chat(payload: ChatRequest, request: Request):
     async def stream():
         try:
             index_data = request.app.state.enriched_index
+            convos: OrderedDict[str, list[dict[str, str]]] = request.app.state.conversations
+            cid = (payload.conversation_id or "").strip() or "default"
+            history = list(convos.get(cid, []))
 
             intent_client, _ = await get_llm_client(request, "intent")
+            # 意图提取只看当前问题，不使用历史。
             intent = await extract_query_intent(payload.message, intent_client)
 
             courses = retrieve_courses(
@@ -145,14 +158,32 @@ async def chat(payload: ChatRequest, request: Request):
             )
 
             response_client, _ = await get_llm_client(request, "response")
+            messages_for_llm = history + [{"role": "user", "content": payload.message}]
+
+            full_response = ""
             async for chunk in generate_response_stream(
                 intent=intent,
                 courses=courses,
                 ollama=response_client,
                 language=payload.language,
+                conversation_history=messages_for_llm,
             ):
+                full_response += chunk
                 event = {"type": "chunk", "content": chunk}
                 yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+
+            # 回答完成后更新会话历史。
+            history.append({"role": "user", "content": payload.message})
+            history.append({"role": "assistant", "content": full_response})
+
+            max_msgs = config.CONVERSATION_MAX_TURNS * 2
+            if len(history) > max_msgs:
+                history = history[-max_msgs:]
+
+            convos[cid] = history
+            convos.move_to_end(cid)
+            while len(convos) > config.CONVERSATION_MAX_SESSIONS:
+                convos.popitem(last=False)
 
             seen: set[str] = set()
             source_codes: list[str] = []
@@ -195,15 +226,30 @@ async def import_course(request: Request, file: UploadFile = File(...)):
 async def import_manual(payload: ManualImportRequest, request: Request):
     """接收用户手动填写的课程信息，直接入库（不需要 LLM）。"""
     data = payload.model_dump()
-    code = (data.get("course_code") or "").strip()
+    code = normalize_course_code(data.get("course_code") or "")
     title = (data.get("title") or "").strip()
 
     if not code or not title:
         return {"success": False, "message": "course_code and title are required."}
+    if len(title) < 3:
+        return {
+            "success": False,
+            "message": f"Title too short: '{title}'. Minimum 3 characters.",
+        }
+    if not validate_course_code(code):
+        return {
+            "success": False,
+            "message": (
+                f"Invalid course_code format: '{code}'. Expected pattern: XXXX Y1234 "
+                "(e.g., CIEN E3125, COMS W4111)."
+            ),
+        }
+
+    data["course_code"] = code
+    data["title"] = title
 
     uid = generate_course_uid(code, title)
 
-    # 检查重复
     for entry in request.app.state.enriched_index:
         if entry.get("course_uid") == uid:
             return {
@@ -211,14 +257,12 @@ async def import_manual(payload: ManualImportRequest, request: Request):
                 "message": f"Course {code} already exists in database.",
             }
 
-    # 补全并保存 JSON
     full_json = complete_course_json(data, uid)
     save_path = Path(config.COURSES_DIR) / f"{uid}.json"
     save_path.write_text(
         json.dumps(full_json, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
-    # 更新 enriched index
     raw_entry = {
         "course_uid": uid,
         "course_code": code,

@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 import config
-from course_index import add_to_index, build_enriched_entry, save_enriched_index
+from course_index import DEPARTMENT_NAMES, add_to_index, build_enriched_entry, save_enriched_index
 
 
 CONVERSION_SYSTEM_PROMPT = """你是一个课程信息提取专家。你的任务是从原始文本中提取课程信息，并转换为精确的 JSON 格式。
@@ -58,7 +58,12 @@ CONVERSION_SYSTEM_PROMPT = """你是一个课程信息提取专家。你的任�
 6. 如果文本包含多门课程的信息，只提取第一门"""
 
 
-def _as_float(value: Any, default: float = 0.0) -> float:
+COURSE_CODE_PATTERN = re.compile(r"^[A-Z]{2,4}\s+[A-Z]?\d{4}$")
+MULTI_SPACE_RE = re.compile(r"\s+")
+KNOWN_DEPARTMENT_PREFIXES = set(DEPARTMENT_NAMES.keys())
+
+
+def _as_float(value: Any, default: float | None = 0.0) -> float | None:
     if isinstance(value, (int, float)):
         return float(value)
     if isinstance(value, str):
@@ -91,6 +96,59 @@ def _safe_str(value: Any) -> str:
     if value is None:
         return ""
     return str(value).strip()
+
+
+def normalize_course_code(code: str) -> str:
+    """归一 course_code：大写 + 多空格压缩。"""
+    text = _safe_str(code).upper()
+    return MULTI_SPACE_RE.sub(" ", text).strip()
+
+
+def validate_course_code(code: str) -> bool:
+    """严格校验课程代码格式。"""
+    raw = _safe_str(code)
+    normalized = normalize_course_code(raw)
+    # validate_course_code 保持“严格输入”语义：必须已是规范大写格式。
+    if raw != normalized:
+        return False
+    return bool(COURSE_CODE_PATTERN.match(raw))
+
+
+def quality_score(data: dict) -> tuple[int, list[str]]:
+    """导入质量评分：返回 (0-100, issues)。"""
+    score = 100
+    issues: list[str] = []
+
+    code = normalize_course_code(data.get("course_code", ""))
+    title = _safe_str(data.get("title"))
+
+    if not validate_course_code(code):
+        score -= 40
+        issues.append("invalid_course_code")
+
+    if len(title) < 3:
+        score -= 30
+        issues.append("title_too_short")
+    elif len(title) < 8:
+        score -= 10
+        issues.append("title_suspiciously_short")
+
+    points_raw = _safe_str(data.get("points_raw"))
+    points_min = _as_float(data.get("points_min"), default=None)
+    if (points_min is None or points_min <= 0) and not points_raw:
+        score -= 15
+        issues.append("missing_points")
+
+    if not _safe_str(data.get("description")):
+        score -= 10
+        issues.append("missing_description")
+
+    prefix = code.split()[0] if code else ""
+    if prefix and prefix not in KNOWN_DEPARTMENT_PREFIXES:
+        score -= 20
+        issues.append(f"unknown_department:{prefix}")
+
+    return max(0, score), issues
 
 
 def extract_text_from_pdf(file_bytes: bytes) -> str:
@@ -184,65 +242,51 @@ def parse_conversion_response(raw_text: str) -> dict:
 
 
 def validate_course_json(data: dict) -> tuple[bool, str]:
-    """验证转换结果的字段完整性。"""
+    """验证转换结果字段。"""
     if not isinstance(data, dict):
         return False, "Invalid conversion result."
 
     if "error" in data:
         return False, _safe_str(data.get("error")) or "Conversion failed."
 
-    course_code = _safe_str(data.get("course_code"))
+    course_code = normalize_course_code(data.get("course_code"))
     title = _safe_str(data.get("title"))
+
     if not course_code:
         return False, "Missing required field: course_code"
     if not title:
         return False, "Missing required field: title"
+    if len(title) < 3:
+        return False, f"Title too short: '{title}'. Minimum 3 characters."
+    if not validate_course_code(course_code):
+        return (
+            False,
+            f"Invalid course_code format: '{course_code}'. Expected pattern: XXXX Y1234",
+        )
 
-    has_letters = re.search(r"[A-Z]", course_code.upper()) is not None
-    has_numbers = re.search(r"\d", course_code) is not None
-    if not (has_letters and has_numbers):
-        return False, "Invalid course_code format."
+    points_min = _as_float(data.get("points_min"), default=None)
+    points_max = _as_float(data.get("points_max"), default=None)
+    points_raw = _safe_str(data.get("points_raw"))
 
-    points_min = data.get("points_min")
-    points_max = data.get("points_max")
-    if not isinstance(points_min, (int, float)) and not (
-        isinstance(points_min, str) and points_min.strip()
-    ):
-        return False, "points_min must be a number."
-    if not isinstance(points_max, (int, float)) and not (
-        isinstance(points_max, str) and points_max.strip()
-    ):
-        return False, "points_max must be a number."
+    if points_min is None and points_max is None and not points_raw:
+        return False, "Missing points information."
 
     return True, ""
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 def generate_course_uid(course_code: str, title: str) -> str:
     """生成课程唯一 ID。"""
-    key = f"{course_code.strip()}|{title.strip()}"
+    key = f"{normalize_course_code(course_code)}|{_safe_str(title)}"
     return hashlib.sha1(key.encode("utf-8")).hexdigest()
 
 
 def complete_course_json(data: dict, uid: str) -> dict:
     """补全课程 JSON 中的系统字段和默认字段。"""
-    course_code = _safe_str(data.get("course_code"))
+    course_code = normalize_course_code(data.get("course_code"))
     title = _safe_str(data.get("title"))
     points_raw = _safe_str(data.get("points_raw"))
-    points_min = _as_float(data.get("points_min"), default=0.0)
-    points_max = _as_float(data.get("points_max"), default=0.0)
+    points_min = _as_float(data.get("points_min"), default=0.0) or 0.0
+    points_max = _as_float(data.get("points_max"), default=0.0) or 0.0
 
     raw_sections = data.get("sections")
     sections: list[dict] = []
@@ -294,23 +338,19 @@ def complete_course_json(data: dict, uid: str) -> dict:
     }
 
 
-
 def _identify_missing_fields(data: dict) -> list[str]:
     """识别缺失的关键字段。"""
-    missing = []
-    if not data.get("course_code", "").strip():
+    missing: list[str] = []
+    if not normalize_course_code(data.get("course_code", "")):
         missing.append("course_code")
-    if not data.get("title", "").strip():
+    if len(_safe_str(data.get("title"))) < 3:
         missing.append("title")
-    if not data.get("points_min") and not data.get("points_raw"):
+
+    points_min = _as_float(data.get("points_min"), default=None)
+    points_max = _as_float(data.get("points_max"), default=None)
+    if points_min is None and points_max is None and not _safe_str(data.get("points_raw")):
         missing.append("points")
     return missing
-
-
-
-
-
-
 
 
 async def import_file(
@@ -347,9 +387,6 @@ async def import_file(
         )
 
         parsed = parse_conversion_response(raw_response)
-        
-        
-        # 在 import_file() 的 validate_course_json 失败分支中，改为：
         valid, error_msg = validate_course_json(parsed)
         if not valid:
             return {
@@ -361,8 +398,28 @@ async def import_file(
                 "message": error_msg,
             }
 
-        course_code = _safe_str(parsed.get("course_code"))
-        title = _safe_str(parsed.get("title"))
+        parsed["course_code"] = normalize_course_code(parsed.get("course_code"))
+        parsed["title"] = _safe_str(parsed.get("title"))
+
+        score, issues = quality_score(parsed)
+        if score < config.IMPORT_MIN_QUALITY_SCORE:
+            issue_text = ", ".join(issues) if issues else "unknown"
+            return {
+                "success": False,
+                "needs_manual_input": True,
+                "partial_data": parsed,
+                "missing_fields": _identify_missing_fields(parsed),
+                "quality_score": score,
+                "quality_issues": issues,
+                "extracted_text_preview": input_text[:500],
+                "message": (
+                    f"Import quality too low ({score}/100): {issue_text}. "
+                    "Please review and correct manually."
+                ),
+            }
+
+        course_code = parsed["course_code"]
+        title = parsed["title"]
         uid = generate_course_uid(course_code, title)
 
         exists = any((entry.get("course_uid") or "") == uid for entry in enriched_index)

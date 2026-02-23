@@ -1,5 +1,3 @@
-
-
 """
 LLM 回答生成模块。
 将检索到的课程信息组织为 LLM 上下文，生成流式自然语言回答。
@@ -7,9 +5,7 @@ LLM 回答生成模块。
 
 from __future__ import annotations
 
-from typing import AsyncGenerator
-
-from ollama_client import OllamaClient
+from typing import Any, AsyncGenerator
 
 import config
 
@@ -21,7 +17,19 @@ LANGUAGE_NAMES = {
     "fr": "French",
 }
 
-ANSWER_SYSTEM_PROMPT_TEMPLATE = """You are a Columbia University AI Course Advisor. Answer based ONLY on the course data below. Do not invent information. If data is insufficient, say so. Respond in {language_name}.
+ANTI_HALLUCINATION_PREAMBLE = """ABSOLUTE RULE: You are a Columbia University course advisor. You ONLY answer based on the course data provided below.
+- If the provided course data is empty or does not match the question, respond with a course-search guidance message.
+- NEVER generate encyclopedic/Wikipedia-style knowledge about any topic.
+- NEVER fabricate course names, codes, instructors, or schedules that are not in the provided data."""
+
+FOLLOWUP_GUIDANCE = """## Conversation Context Rules
+- If the user refers to previous messages (e.g., "those", "the ones I mentioned", "which of those", "上面那些"), use the conversation history to understand references.
+- You may reference courses discussed in prior turns of this conversation.
+- If the user states a preference (e.g., "my favorite department is AERO"), remember it for follow-up questions.
+- Even if no new course data is provided in this turn, you can still answer based on earlier turns."""
+
+ANSWER_SYSTEM_PROMPT_TEMPLATE = """{anti_hallucination}
+Respond in {language_name}.
 
 Question: {original_question}
 Type: {query_type}
@@ -29,12 +37,15 @@ Type: {query_type}
 Courses:
 {formatted_courses}"""
 
-NO_RESULTS_MESSAGES = {
-    "en": "I couldn't find any courses matching your criteria. Could you try rephrasing your question or broadening your search? For example, you could ask about a specific department, instructor, or time slot.",
-    "zh": "很抱歉，没有找到符合您条件的课程。您可以尝试换一种方式提问，或者扩大搜索范围。比如可以问某个系别、某位教授或某个时间段的课程。",
-    "es": "No pude encontrar cursos que coincidan con tus criterios. ¿Podrías reformular tu pregunta o ampliar tu búsqueda?",
-    "fr": "Je n'ai pas trouvé de cours correspondant à vos critères. Pourriez-vous reformuler votre question ou élargir votre recherche?",
+EMPTY_RESULT_MESSAGES = {
+    "en": "I couldn't find any Columbia courses matching your query. Try asking about a specific department (e.g., 'computer science courses'), course code (e.g., 'COMS W4111'), or instructor name.",
+    "zh": "未找到匹配的哥大课程。请尝试提问具体的系别（如「计算机系课程」）、课程代码（如「COMS W4111」）或教授姓名。",
+    "es": "No encontré cursos de Columbia que coincidan con tu consulta. Intenta preguntar sobre un departamento, código de curso o nombre de instructor específico.",
+    "fr": "Je n'ai trouvé aucun cours de Columbia correspondant à votre recherche. Essayez de demander un département, un code de cours ou un nom d'instructeur spécifique.",
 }
+
+# 兼容旧测试与旧调用命名
+NO_RESULTS_MESSAGES = EMPTY_RESULT_MESSAGES
 
 
 def _language_name(language: str) -> str:
@@ -55,23 +66,17 @@ def _format_points(course: dict) -> str:
     return f"{min_points}-{max_points}"
 
 
-# 修改 4a: format_course_for_context — 精简到 ~100 tokens/课
-# 替换原来的 format_course_for_context 函数
-# ============================================================
-
 def format_course_for_context(course: dict) -> str:
-    """精简版：每门课控制在 ~100 tokens。"""
+    """精简版课程上下文：减少 token 占用。"""
     code = (course.get("course_code") or "").strip() or "?"
     title = (course.get("title") or "").strip() or "?"
     points = _format_points(course)
 
-    # 先修课：只取前 80 字符
     prereqs = (course.get("prerequisites_text") or "").strip()
     if len(prereqs) > 80:
         prereqs = prereqs[:80] + "..."
     prereq_line = prereqs if prereqs else "None"
 
-    # 描述：只取前 100 字符
     desc = (course.get("description") or "").strip()
     desc_line = ""
     if desc:
@@ -79,7 +84,6 @@ def format_course_for_context(course: dict) -> str:
             desc = desc[:100] + "..."
         desc_line = f"\n  Desc: {desc}"
 
-    # Sections：最多 2 个
     section_lines = []
     for sec in (course.get("sections") or [])[:2]:
         term = (sec.get("term") or "").strip() or "?"
@@ -88,73 +92,80 @@ def format_course_for_context(course: dict) -> str:
         location = (sec.get("location") or "").strip() or "TBA"
         current = sec.get("enrollment_current", "?")
         capacity = sec.get("enrollment_capacity", "?")
-        section_lines.append(f"  {term}: {times}, {instructor}, {location}, {current}/{capacity}")
+        section_lines.append(
+            f"  {term}: {times}, {instructor}, {location}, {current}/{capacity}"
+        )
 
     sections_text = "\n".join(section_lines) if section_lines else "  No sections"
-
     return f"[{code}] {title} | {points}\n  Prereqs: {prereq_line}{desc_line}\n{sections_text}"
 
 
-
-# ============================================================
-# 修改 4b: build_answer_prompt + generate_response_stream
-# 替换原来的这两个函数
-# ============================================================
-
-def build_answer_prompt(intent: dict, courses: list[dict], language: str) -> tuple[str, list[dict]]:
-    """
-    构造发给 LLM 的 system prompt 和 messages。
-    课程数量限制在前 5 门。
-    """
-    # 关键改动：只取前 5 门课
-    courses_to_use = courses[:config.MAX_RETRIEVAL_RESULTS]
+def build_answer_prompt(
+    intent: dict,
+    courses: list[dict],
+    language: str,
+    conversation_history: list[dict[str, str]] | None = None,
+) -> tuple[str, list[dict[str, str]]]:
+    """构造发给 LLM 的 system prompt 和 messages。"""
+    is_followup = conversation_history is not None and len(conversation_history) > 1
+    courses_to_use = courses[: config.MAX_RETRIEVAL_RESULTS]
 
     formatted_courses = "(No courses found)"
     if courses_to_use:
-        formatted_courses = "\n\n".join(format_course_for_context(c) for c in courses_to_use)
+        formatted_courses = "\n\n".join(
+            format_course_for_context(c) for c in courses_to_use
+        )
+    elif is_followup:
+        formatted_courses = (
+            "(No new course data for this turn. Answer based on conversation history if applicable.)"
+        )
+
+    anti_hallucination = ANTI_HALLUCINATION_PREAMBLE
+    if is_followup:
+        anti_hallucination += f"\n\n{FOLLOWUP_GUIDANCE}"
 
     system_prompt = ANSWER_SYSTEM_PROMPT_TEMPLATE.format(
+        anti_hallucination=anti_hallucination,
         language_name=_language_name(language),
         original_question=intent.get("original_question") or "",
         query_type=intent.get("query_type") or "general",
         formatted_courses=formatted_courses,
     )
-    messages = [
-        {
-            "role": "user",
-            "content": intent.get("original_question") or "",
-        }
-    ]
+
+    if conversation_history:
+        messages = list(conversation_history)
+    else:
+        messages = [{"role": "user", "content": intent.get("original_question") or ""}]
+
     return system_prompt, messages
 
 
 async def generate_response_stream(
     intent: dict,
     courses: list[dict],
-    ollama: OllamaClient,
+    ollama: Any,
     language: str,
+    conversation_history: list[dict[str, str]] | None = None,
 ) -> AsyncGenerator[str, None]:
-    """
-    流式生成回答。
-    """
-    query_type = (intent.get("query_type") or "general").lower()
+    """流式生成回答。"""
     lang = language if language in LANGUAGE_NAMES else "en"
+    is_followup = conversation_history is not None and len(conversation_history) > 1
 
-    if query_type != "general" and not courses:
-        yield NO_RESULTS_MESSAGES.get(lang, NO_RESULTS_MESSAGES["en"])
+    if not courses and not is_followup:
+        yield EMPTY_RESULT_MESSAGES.get(lang, EMPTY_RESULT_MESSAGES["en"])
         return
 
-    if query_type == "general":
-        system_prompt = (
-            "You are a Columbia University AI Course Advisor. "
-            "If the question is outside your scope, say so clearly and suggest asking course-related questions. "
-            f"Respond in {_language_name(lang)}."
-        )
-        messages = [{"role": "user", "content": intent.get("original_question") or ""}]
-    else:
-        system_prompt, messages = build_answer_prompt(intent, courses, lang)
+    system_prompt, messages = build_answer_prompt(
+        intent,
+        courses,
+        lang,
+        conversation_history=conversation_history,
+    )
 
-    # 关键改动：传入 max_tokens=512 限制输出长度
-    async for token in ollama.chat_stream(messages, system_prompt=system_prompt, max_tokens=config.RESPONSE_MAX_TOKENS):
+    async for token in ollama.chat_stream(
+        messages,
+        system_prompt=system_prompt,
+        max_tokens=config.RESPONSE_MAX_TOKENS,
+    ):
         if token:
             yield token

@@ -1,0 +1,57 @@
+{
+  "header": {
+    "title": "Conseiller de Cours AI",
+    "newChat": "Nouvelle conversation"
+  },
+  "landing": {
+    "title": "Par où commencer ?",
+    "placeholder": "Posez vos questions sur vos cours..."
+  },
+  "chat": {
+    "placeholder": "Demandez au Conseiller AI...",
+    "disclaimer": "L'AI peut faire des erreurs. Vérifiez les informations importantes."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "import": "Importer des cours",
+    "importDrag": "Glissez-déposez les fichiers ici",
+    "importLimit": "Limite 25 Mo par fichier • PDF, HTML",
+    "importChoose": "Choisir un fichier",
+    "importProcessing": "Traitement en cours...",
+    "importSuccess": "Cours importé avec succès !",
+    "importError": "Échec de l'importation",
+    "export": "Exporter l'historique",
+    "exportBtn": "Exporter les données",
+    "exported": "Exporté !",
+    "manualImport": {
+      "title": "Compléter les informations du cours",
+      "description": "Impossible d'extraire complètement les détails du cours. Veuillez compléter les champs manquants.",
+      "courseCode": "Code du cours",
+      "courseCodePlaceholder": "Ex. CIEN E3125",
+      "courseTitle": "Titre du cours",
+      "courseTitlePlaceholder": "Ex. Structural Design",
+      "points": "Crédits",
+      "pointsPlaceholder": "Ex. 3.0",
+      "description": "Description (optionnel)",
+      "prerequisites": "Prérequis (optionnel)",
+      "submit": "Ajouter à la base de données",
+      "cancel": "Annuler",
+      "extractedPreview": "Texte extrait du fichier :",
+      "codeInvalid": "Le code du cours doit inclure des lettres majuscules et des chiffres.",
+      "required": "Le code et le titre du cours sont obligatoires."
+    }
+  },
+  "connection": {
+    "groqConnected": "Connecté via Groq Cloud",
+    "ollamaConnected": "Connecté via AI Local",
+    "disconnected": "AI non connecté",
+    "hybrid": "Mode Hybride"
+  },
+  "languages": {
+    "en": "English (US)",
+    "zh": "中文",
+    "es": "Español",
+    "fr": "Français"
+  }
+}

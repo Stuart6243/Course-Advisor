@@ -199,8 +199,8 @@ def test_c4_chat_sse_and_stats(enriched_index: list[dict]) -> None:
 
 def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:
     intent_payload = {
-        "query_type": "general",
-        "course_codes": [],
+        "query_type": "detail",
+        "course_codes": ["CIEN E3125"],
         "keywords": [],
         "department": None,
         "instructor": None,
@@ -209,7 +209,7 @@ def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:
         "points_range": None,
         "term": None,
         "comparison_targets": [],
-        "original_question": "How do I register?",
+        "original_question": "What time does CIEN E3125 meet?",
     }
     dummy = DummyOllama(
         chat_response=json.dumps(intent_payload),
@@ -224,7 +224,7 @@ def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:
             "POST",
             "/api/chat",
             json={
-                "message": "How do I register?",
+                "message": "What time does CIEN E3125 meet?",
                 "conversation_id": "t2",
                 "language": "en",
             },

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "REG-01",
+    "category": "anti_hallucination",
+    "question": "Tell me about ancient Roman engineering",
+    "expect_behavior": "refuse_or_redirect",
+    "expect_contains_none": ["aqueduct", "Colosseum", "Roman road", "concrete"],
+    "expect_contains_any": ["couldn't find", "Columbia", "try", "department", "course code"],
+    "notes": "不得输出百科知识。必须引导用户提问 Columbia 课程。"
+  },
+  {
+    "id": "REG-02",
+    "category": "anti_hallucination",
+    "question": "What is quantum mechanics?",
+    "expect_behavior": "refuse_or_redirect",
+    "expect_contains_none": ["wave function", "Schrödinger", "superposition"],
+    "expect_contains_any": ["couldn't find", "Columbia", "physics", "department"],
+    "notes": "通用物理知识不在课程数据中，应拒答。"
+  },
+  {
+    "id": "REG-03",
+    "category": "anti_hallucination",
+    "question": "我想学习英语，有什么课程推荐的吗",
+    "expect_behavior": "refuse_or_redirect_if_no_results",
+    "notes": "如果数据库无英语课则应说明未找到；不得编造课程。"
+  },
+  {
+    "id": "REG-04",
+    "category": "empty_results",
+    "question": "Recommend courses about underwater basket weaving",
+    "expect_behavior": "refuse_or_redirect",
+    "expect_contains_any": ["couldn't find", "no courses", "try"],
+    "notes": "荒谬查询，检索结果必为空，不得编造。"
+  },
+  {
+    "id": "REG-05",
+    "category": "conversation_memory",
+    "question_sequence": [
+      "My favorite department is AERO. Remember this.",
+      "What department did I just say I like?"
+    ],
+    "expect_second_contains": ["AERO", "aerospace"],
+    "notes": "第二轮回答必须引用第一轮提到的 AERO。验证 conversation_id 历史拼接。"
+  },
+  {
+    "id": "REG-06",
+    "category": "conversation_memory",
+    "question_sequence": [
+      "I'm interested in courses taught on Tuesdays.",
+      "Any of those in the morning?"
+    ],
+    "expect_second_contains": ["Tuesday", "morning"],
+    "notes": "第二轮的'those'应引用第一轮的周二课程。"
+  },
+  {
+    "id": "REG-07",
+    "category": "import_validation",
+    "test_type": "import_code_validation",
+    "invalid_codes": ["GNIRPS 6202", "FALL2025", "POINTS300", "ab 1234", "TOOLONGPREFIX E1234", "COMS"],
+    "valid_codes": ["CIEN E3125", "COMS W4111", "AERO 3001", "MSAE E4100"],
+    "notes": "对每个 code 调用 validate_course_code()，确认结果正确。"
+  },
+  {
+    "id": "REG-08",
+    "category": "import_quality_gate",
+    "test_type": "quality_score",
+    "test_cases": [
+      {"data": {"course_code": "CIEN E3125", "title": "Structural Design", "points_min": 3.0, "description": "A course about structures"}, "expect_score_gte": 80},
+      {"data": {"course_code": "GNIRPS 6202", "title": "X", "points_min": 0}, "expect_score_lte": 30},
+      {"data": {"course_code": "COMS W4111", "title": "Intro to Databases"}, "expect_score_gte": 50}
+    ],
+    "notes": "验证 quality_score 函数对不同质量数据的评分。"
+  }
+]
