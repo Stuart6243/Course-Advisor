@@ -31,6 +31,35 @@ DEFAULT_INTENT = {
     "original_question": ""
 }
 
+STATS_QUERY_PATTERNS = (
+    "how many departments",
+    "how many department",
+    "list all departments",
+    "list departments",
+    "what departments",
+    "which departments",
+    "how many courses",
+    "total courses",
+    "有多少系",
+    "所有系别",
+    "列出所有",
+    "课程总数",
+)
+
+RECALL_QUERY_PATTERNS = (
+    "you mentioned",
+    "we discussed",
+    "we talked about",
+    "courses you mentioned",
+    "courses we discussed",
+    "list all courses",
+    "based on the current conversation",
+    "上面提到",
+    "你提到的",
+    "我们聊过",
+    "之前推荐的",
+)
+
 def _default_intent_copy() -> dict:
     return {
         "query_type": "general",
@@ -115,6 +144,49 @@ def normalize_question(question: str) -> str:
 # 3. 规则引擎（核心）
 # ============================================================
 
+# 短语级映射（优先级最高，先匹配）
+DEPT_PHRASE_MAP = {
+    # Civil Engineering
+    "civil engineering": "CIEN",
+    "civil eng": "CIEN",
+    # Electrical Engineering
+    "electrical engineering": "ELEN",
+    "electrical eng": "ELEN",
+    "ee courses": "ELEN",
+    # Mechanical Engineering
+    "mechanical engineering": "MECE",
+    "mechanical eng": "MECE",
+    "mech eng": "MECE",
+    # Biomedical Engineering
+    "biomedical engineering": "BMEN",
+    "biomed eng": "BMEN",
+    "biomedical eng": "BMEN",
+    # Chemical Engineering
+    "chemical engineering": "CHEN",
+    "chem eng": "CHEN",
+    # Industrial Engineering (IEOR)
+    "industrial engineering": "IEOR",
+    "operations research": "IEOR",
+    # Applied Mathematics
+    "applied mathematics": "APMA",
+    "applied math": "APMA",
+    # Applied physics
+    "applied physics": "APPH",
+    # Computer Science
+    "computer science": "COMS",
+    "comp sci": "COMS",
+    # Earth and Environmental Engineering
+    "earth and environmental": "EAEE",
+    "environmental engineering": "EAEE",
+    # Materials Science
+    "materials science": "MSAE",
+    # Nuclear engineering (if exists)
+    "nuclear engineering": "NUCL",
+}
+
+# 短语匹配按长度降序，避免短词抢先命中（如 "applied math" vs "math"）
+_SORTED_PHRASE_MAP = sorted(DEPT_PHRASE_MAP.items(), key=lambda x: -len(x[0]))
+
 # 系别名称 → 前缀 的反向映射（从 DEPARTMENT_NAMES 自动构建）
 DEPT_KEYWORD_MAP: dict[str, str] = {}
 for _prefix, _names in DEPARTMENT_NAMES.items():
@@ -131,7 +203,6 @@ DEPT_KEYWORD_MAP.update({
     "electrical": "ELEN", "ee": "ELEN",
     "ieor": "IEOR",
     "biomedical": "BMEN", "biomed": "BMEN",
-    "math": "APMA", "mathematics": "APMA",
     "physics": "APPH",
     "stats": "STAT", "statistics": "STAT",
     "materials": "MSAE",
@@ -139,6 +210,10 @@ DEPT_KEYWORD_MAP.update({
     "robotics": "MECE", "robot": "MECE",
     "data": "COMS",
 })
+
+# 移除易冲突通用词，避免误匹配到错误系别
+for _generic_word in ("engineering", "applied", "science", "math", "mathematics"):
+    DEPT_KEYWORD_MAP.pop(_generic_word, None)
 
 # 正则模式
 COURSE_CODE_RE = re.compile(r'\b([A-Z]{4})\s+([A-Z]?\d{4})\b')
@@ -174,6 +249,9 @@ STOP_WORDS = frozenset({
     'how', 'which', 'where', 'when', 'who', 'whom', 'why', 'been', 'being',
     'not', 'but', 'if', 'then', 'than', 'too', 'very', 'just', 'only',
     'recommend', 'suggest', 'compare', 'need',
+    'give', 'other', 'another', 'more', 'additional', 'else',
+    'based', 'current', 'conversation', 'mentioned', 'them',
+    'department', 'departments',
 })
 
 
@@ -184,6 +262,15 @@ def rule_based_extract(question: str) -> dict | None:
     q_lower = question.lower()
     intent = _default_intent_copy()
     intent["original_question"] = question
+
+    if any(pattern in q_lower for pattern in STATS_QUERY_PATTERNS):
+        intent["query_type"] = "stats"
+        intent["keywords"] = []
+        return intent
+    if any(pattern in q_lower for pattern in RECALL_QUERY_PATTERNS):
+        intent["query_type"] = "search"
+        intent["keywords"] = []
+        return intent
 
     # --- 1. 提取课程代码 ---
     codes_raw = COURSE_CODE_RE.findall(question.upper())
@@ -214,13 +301,21 @@ def rule_based_extract(question: str) -> dict | None:
         intent["query_type"] = "search"
 
     # --- 3. 提取系别 ---
-    # 按关键词长度降序匹配，避免短词误匹配
-    sorted_dept_keywords = sorted(DEPT_KEYWORD_MAP.keys(), key=len, reverse=True)
-    for word in sorted_dept_keywords:
-        # 要求词边界匹配
-        if re.search(r'\b' + re.escape(word) + r'\b', q_lower):
-            intent["department"] = DEPT_KEYWORD_MAP[word]
+    # 阶段 1：短语级优先匹配
+    department = None
+    for phrase, dept in _SORTED_PHRASE_MAP:
+        if phrase in q_lower:
+            department = dept
             break
+
+    # 阶段 2：短语未命中时，再做单词级兜底
+    if not department:
+        sorted_dept_keywords = sorted(DEPT_KEYWORD_MAP.keys(), key=len, reverse=True)
+        for word in sorted_dept_keywords:
+            if re.search(r'\b' + re.escape(word) + r'\b', q_lower):
+                department = DEPT_KEYWORD_MAP[word]
+                break
+    intent["department"] = department
 
     # --- 4. 提取教授名 ---
     prof_match = re.search(
@@ -309,7 +404,7 @@ def rule_based_extract(question: str) -> dict | None:
 EXTRACTION_SYSTEM_PROMPT = """Extract query intent as JSON only. No other text. /no_think
 
 Format:
-{"query_type":"search|compare|recommend|detail|schedule|general","course_codes":[],"keywords":[],"department":null,"instructor":null,"time_preference":null,"day_preference":[],"points_range":null,"term":null,"comparison_targets":[],"original_question":""}
+{"query_type":"search|compare|recommend|detail|schedule|general|stats","course_codes":[],"keywords":[],"department":null,"instructor":null,"time_preference":null,"day_preference":[],"points_range":null,"term":null,"comparison_targets":[],"original_question":""}
 
 Department codes: AERO=aerospace, CIEN=civil, COMS=computer science, MECE=mechanical, IEOR=industrial/operations, ELEN=electrical, APMA=applied math, EAEE=environmental, BMEN=biomedical, CHEN=chemical, MSAE=materials, ENME=mechanics.
 time_preference: "morning"|"afternoon"|"evening". day_preference: ["Monday","Tuesday",...].

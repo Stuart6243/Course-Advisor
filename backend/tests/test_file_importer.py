@@ -157,3 +157,48 @@ def test_import_file_html_and_duplicate_and_unsupported(tmp_path: Path) -> None:
     )
     assert unsupported["success"] is False
     assert "Unsupported file format" in unsupported["message"]
+
+
+def test_import_file_description_fallback(tmp_path: Path) -> None:
+    html_bytes = b"""
+    <html><body>
+    <h1>MRKT B9651 MS Marketing Analytics</h1>
+    <p>3.00 points</p>
+    <h2>Course Description</h2>
+    <p>This course covers STP analytics, customer analytics, and 4P analytics.
+    Students use Python and Excel with weekly modules and project grading.</p>
+    </body></html>
+    """
+
+    llm_payload = {
+        "course_code": "MRKT B9651",
+        "title": "MS Marketing Analytics",
+        "points_raw": "3.00 points",
+        "points_min": 3.0,
+        "points_max": 3.0,
+        "description": "",
+        "prerequisites_text": "",
+        "notes_text": "",
+        "sections": [],
+    }
+    dummy_llm = DummyLLM(json.dumps(llm_payload, ensure_ascii=False))
+
+    courses_dir = tmp_path / "courses_flat"
+    index_path = tmp_path / "courses_enriched_index.json"
+    enriched_index: list[dict] = []
+    result = asyncio.run(
+        import_file(
+            file_bytes=html_bytes,
+            filename="marketing.html",
+            llm_client=dummy_llm,
+            courses_dir=str(courses_dir),
+            enriched_index=enriched_index,
+            enriched_index_path=str(index_path),
+        )
+    )
+    assert result["success"] is True
+    assert result["course"]["description_length"] >= 20
+
+    uid = generate_course_uid("MRKT B9651", "MS Marketing Analytics")
+    saved = json.loads((courses_dir / f"{uid}.json").read_text())
+    assert "analytics" in saved["description"].lower()

@@ -26,7 +26,32 @@ FOLLOWUP_GUIDANCE = """## Conversation Context Rules
 - If the user refers to previous messages (e.g., "those", "the ones I mentioned", "which of those", "上面那些"), use the conversation history to understand references.
 - You may reference courses discussed in prior turns of this conversation.
 - If the user states a preference (e.g., "my favorite department is AERO"), remember it for follow-up questions.
-- Even if no new course data is provided in this turn, you can still answer based on earlier turns."""
+- Even if no new course data is provided in this turn, you can still answer based on earlier turns.
+- CRITICAL: If user asks to list/summarize what was discussed, only include courses that appear in conversation history.
+- Do NOT introduce courses from a fresh search when answering conversation recall questions."""
+
+RECALL_QUERY_GUARDRAILS = """## Recall Query Rules
+- The user is asking about conversation history.
+- ONLY reference courses explicitly present in conversation history messages.
+- Ignore newly retrieved courses for this turn.
+- If unsure, say you can only confirm courses that were explicitly mentioned."""
+
+RECALL_QUERY_PATTERNS = (
+    "you mentioned",
+    "we discussed",
+    "we talked about",
+    "courses you mentioned",
+    "courses we discussed",
+    "what did we talk",
+    "what did i ask",
+    "list all courses",
+    "previously discussed",
+    "based on the current conversation",
+    "上面提到",
+    "你提到的",
+    "我们聊过",
+    "之前推荐的",
+)
 
 ANSWER_SYSTEM_PROMPT_TEMPLATE = """{anti_hallucination}
 Respond in {language_name}.
@@ -108,6 +133,7 @@ def build_answer_prompt(
 ) -> tuple[str, list[dict[str, str]]]:
     """构造发给 LLM 的 system prompt 和 messages。"""
     is_followup = conversation_history is not None and len(conversation_history) > 1
+    is_recall_query = is_conversation_recall_query(intent, conversation_history)
     courses_to_use = courses[: config.MAX_RETRIEVAL_RESULTS]
 
     formatted_courses = "(No courses found)"
@@ -119,10 +145,16 @@ def build_answer_prompt(
         formatted_courses = (
             "(No new course data for this turn. Answer based on conversation history if applicable.)"
         )
+    if is_recall_query:
+        formatted_courses = (
+            "(Ignore this section for recall query. Answer ONLY from conversation history.)"
+        )
 
     anti_hallucination = ANTI_HALLUCINATION_PREAMBLE
     if is_followup:
         anti_hallucination += f"\n\n{FOLLOWUP_GUIDANCE}"
+    if is_recall_query:
+        anti_hallucination += f"\n\n{RECALL_QUERY_GUARDRAILS}"
 
     system_prompt = ANSWER_SYSTEM_PROMPT_TEMPLATE.format(
         anti_hallucination=anti_hallucination,
@@ -138,6 +170,19 @@ def build_answer_prompt(
         messages = [{"role": "user", "content": intent.get("original_question") or ""}]
 
     return system_prompt, messages
+
+
+def is_conversation_recall_query(
+    intent: dict,
+    conversation_history: list[dict[str, str]] | None = None,
+) -> bool:
+    """判断是否为“回忆型 follow-up”问题。"""
+    is_followup = conversation_history is not None and len(conversation_history) > 1
+    if not is_followup:
+        return False
+
+    question = (intent.get("original_question") or "").lower()
+    return any(pattern in question for pattern in RECALL_QUERY_PATTERNS)
 
 
 async def generate_response_stream(

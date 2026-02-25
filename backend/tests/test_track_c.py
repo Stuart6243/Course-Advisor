@@ -16,8 +16,12 @@ from fastapi.testclient import TestClient
 import config
 from course_index import load_enriched_index
 from course_retriever import retrieve_courses
-from query_parser import parse_extraction_response
-from response_generator import NO_RESULTS_MESSAGES, generate_response_stream
+from query_parser import parse_extraction_response, rule_based_extract
+from response_generator import (
+    NO_RESULTS_MESSAGES,
+    build_answer_prompt,
+    generate_response_stream,
+)
 from server import app
 
 
@@ -121,6 +125,42 @@ def test_c2_retrieve_courses(enriched_index: list[dict]) -> None:
     r3 = retrieve_courses(enriched_index, bad_points, str(config.COURSES_DIR))
     assert isinstance(r3, list)
 
+    # Keyword ranking misses should still be backfilled from department candidates.
+    sparse_keyword_intent = {
+        "query_type": "recommend",
+        "course_codes": [],
+        "keywords": ["give"],  # intentionally sparse/noisy
+        "department": "COMS",
+        "instructor": None,
+        "time_preference": None,
+        "day_preference": [],
+        "points_range": None,
+        "term": None,
+        "comparison_targets": [],
+        "original_question": "give me cs courses",
+    }
+    r4 = retrieve_courses(
+        enriched_index,
+        sparse_keyword_intent,
+        str(config.COURSES_DIR),
+        max_results=5,
+    )
+    assert len(r4) == 5
+    assert all((course.get("course_code") or "").startswith("COMS ") for course in r4)
+
+
+def test_c2b_rule_based_stats_and_recall() -> None:
+    stats_intent = rule_based_extract("How many departments do you have? list them all")
+    assert stats_intent is not None
+    assert stats_intent["query_type"] == "stats"
+
+    recall_intent = rule_based_extract(
+        "based on the current conversation, list all courses you mentioned"
+    )
+    assert recall_intent is not None
+    assert recall_intent["query_type"] == "search"
+    assert recall_intent["keywords"] == []
+
 
 @pytest.mark.asyncio
 async def test_c3_generate_response_no_results() -> None:
@@ -142,6 +182,38 @@ async def test_c3_generate_response_no_results() -> None:
     async for c in generate_response_stream(intent, [], dummy, "en"):
         parts.append(c)
     assert "".join(parts) == NO_RESULTS_MESSAGES["en"]
+
+
+def test_c3b_build_prompt_for_recall_query() -> None:
+    intent = {
+        "query_type": "search",
+        "course_codes": [],
+        "keywords": [],
+        "department": None,
+        "instructor": None,
+        "time_preference": None,
+        "day_preference": [],
+        "points_range": None,
+        "term": None,
+        "comparison_targets": [],
+        "original_question": "Based on the current conversation, list all courses you mentioned",
+    }
+    courses = [
+        {"course_code": "BMEN E4000", "title": "SHOULD_NOT_BE_USED", "sections": []},
+    ]
+    history = [
+        {"role": "user", "content": "Tell me about AERO E3001"},
+        {"role": "assistant", "content": "AERO E3001 ..."},
+        {"role": "user", "content": intent["original_question"]},
+    ]
+    system_prompt, _ = build_answer_prompt(
+        intent=intent,
+        courses=courses,
+        language="en",
+        conversation_history=history,
+    )
+    assert "Recall Query Rules" in system_prompt
+    assert "Answer ONLY from conversation history" in system_prompt
 
 
 def test_c4_chat_sse_and_stats(enriched_index: list[dict]) -> None:
@@ -195,6 +267,118 @@ def test_c4_chat_sse_and_stats(enriched_index: list[dict]) -> None:
         assert payload["total"] == len(enriched_index)
         assert isinstance(payload["departments"], list)
         assert isinstance(payload["terms"], list)
+
+
+def test_c4b_chat_stats_query_short_circuit(enriched_index: list[dict]) -> None:
+    dummy = DummyOllama(
+        chat_response='{"query_type":"search"}',
+        stream_chunks=["should not be used"],
+    )
+
+    with TestClient(app) as client:
+        app.state.ollama = dummy
+        app.state.enriched_index = enriched_index
+
+        with client.stream(
+            "POST",
+            "/api/chat",
+            json={
+                "message": "How many departments do you have? list them all",
+                "conversation_id": "stats-1",
+                "language": "en",
+            },
+        ) as response:
+            assert response.status_code == 200
+            lines = [line for line in response.iter_lines() if line]
+
+        events = [json.loads(line[6:]) for line in lines if line.startswith("data: ")]
+        chunk = next(evt for evt in events if evt.get("type") == "chunk")
+        assert str(len(enriched_index)) in chunk["content"]
+        assert "departments" in chunk["content"].lower()
+        assert "COMS" in chunk["content"]
+        sources = next(evt for evt in events if evt.get("type") == "sources")
+        assert sources["courses"] == []
+
+
+def test_c4c_chat_recall_query_ignores_current_retrieval(enriched_index: list[dict]) -> None:
+    dummy = DummyOllama(
+        chat_response='{"query_type":"search"}',
+        stream_chunks=["ok"],
+    )
+
+    with TestClient(app) as client:
+        app.state.ollama = dummy
+        app.state.enriched_index = enriched_index
+
+        with client.stream(
+            "POST",
+            "/api/chat",
+            json={
+                "message": "Tell me about AERO E3001",
+                "conversation_id": "recall-1",
+                "language": "en",
+            },
+        ) as first:
+            assert first.status_code == 200
+            _ = [line for line in first.iter_lines() if line]
+
+        with client.stream(
+            "POST",
+            "/api/chat",
+            json={
+                "message": "based on the current conversation, list all courses you mentioned",
+                "conversation_id": "recall-1",
+                "language": "en",
+            },
+        ) as second:
+            assert second.status_code == 200
+            lines = [line for line in second.iter_lines() if line]
+
+        events = [json.loads(line[6:]) for line in lines if line.startswith("data: ")]
+        sources = next(evt for evt in events if evt.get("type") == "sources")
+        assert sources["courses"] == []
+
+
+def test_c4d_chat_ambiguous_followup_inherits_department(
+    enriched_index: list[dict],
+) -> None:
+    dummy = DummyOllama(
+        chat_response='{"query_type":"search"}',
+        stream_chunks=["ok"],
+    )
+
+    with TestClient(app) as client:
+        app.state.ollama = dummy
+        app.state.enriched_index = enriched_index
+
+        with client.stream(
+            "POST",
+            "/api/chat",
+            json={
+                "message": "Compare AERO E3001 and AERO E4101",
+                "conversation_id": "followup-1",
+                "language": "en",
+            },
+        ) as first:
+            assert first.status_code == 200
+            _ = [line for line in first.iter_lines() if line]
+
+        with client.stream(
+            "POST",
+            "/api/chat",
+            json={
+                "message": "Any other courses you would recommend?",
+                "conversation_id": "followup-1",
+                "language": "en",
+            },
+        ) as second:
+            assert second.status_code == 200
+            lines = [line for line in second.iter_lines() if line]
+
+        events = [json.loads(line[6:]) for line in lines if line.startswith("data: ")]
+        sources = next(evt for evt in events if evt.get("type") == "sources")
+        assert len(sources["courses"]) > 0
+        assert all(code.startswith("AERO ") for code in sources["courses"])
 
 
 def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:

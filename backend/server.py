@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import io
 import json
+import re
 from collections import OrderedDict
 from contextlib import asynccontextmanager
 from datetime import datetime
@@ -32,7 +33,7 @@ from file_importer import (
 from groq_client import GroqClient
 from ollama_client import OllamaClient
 from query_parser import extract_query_intent
-from response_generator import generate_response_stream
+from response_generator import generate_response_stream, is_conversation_recall_query
 
 
 class ExportRequest(BaseModel):
@@ -58,6 +59,16 @@ class ManualImportRequest(BaseModel):
     sections: Optional[list] = []
 
 
+GENERIC_RECOMMEND_KEYWORDS = {
+    "other",
+    "another",
+    "more",
+    "additional",
+    "else",
+}
+COURSE_CODE_RE = re.compile(r"\b([A-Z]{2,4})\s+[A-Z]?\d{4}\b")
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.state.ollama = OllamaClient(
@@ -68,6 +79,7 @@ async def lifespan(app: FastAPI):
     app.state.groq = GroqClient()
     app.state.enriched_index = []
     app.state.conversations: OrderedDict[str, list[dict[str, str]]] = OrderedDict()
+    app.state.conversations_meta: OrderedDict[str, dict[str, Any]] = OrderedDict()
 
     groq_available = await app.state.groq.is_available()
     if groq_available:
@@ -104,6 +116,7 @@ async def lifespan(app: FastAPI):
         app.state.groq = None
         app.state.enriched_index = []
         app.state.conversations = OrderedDict()
+        app.state.conversations_meta = OrderedDict()
 
 
 app = FastAPI(lifespan=lifespan)
@@ -137,42 +150,150 @@ async def get_llm_client(request: Request, task: str = "response"):
     return ollama, "ollama"
 
 
+def _is_ambiguous_recommend_followup(intent: dict) -> bool:
+    if (intent.get("query_type") or "").lower() != "recommend":
+        return False
+    if intent.get("department") or intent.get("course_codes"):
+        return False
+    keywords = [str(k).strip().lower() for k in (intent.get("keywords") or []) if k]
+    if not keywords:
+        return True
+    return all(k in GENERIC_RECOMMEND_KEYWORDS for k in keywords)
+
+
+def _extract_single_department_from_codes(course_codes: list[str]) -> str | None:
+    prefixes: set[str] = set()
+    for code in course_codes:
+        text = str(code).strip().upper()
+        if not text:
+            continue
+        prefix = text.split(" ", 1)[0]
+        if prefix:
+            prefixes.add(prefix)
+    if len(prefixes) == 1:
+        return next(iter(prefixes))
+    return None
+
+
+def _infer_department_from_context(
+    history: list[dict[str, str]],
+    conversation_meta: dict[str, Any] | None,
+) -> str | None:
+    if conversation_meta:
+        last_intent = conversation_meta.get("last_intent") or {}
+        if last_intent.get("department"):
+            return str(last_intent["department"]).strip().upper()
+        dept = _extract_single_department_from_codes(last_intent.get("course_codes") or [])
+        if dept:
+            return dept
+
+    for msg in reversed(history):
+        content = str(msg.get("content") or "").upper()
+        matches = COURSE_CODE_RE.findall(content)
+        if not matches:
+            continue
+        prefixes = {dept.strip().upper() for dept in matches if dept}
+        if len(prefixes) == 1:
+            return next(iter(prefixes))
+    return None
+
+
+def _format_stats_message(index_data: list[dict], language: str) -> str:
+    dept_counts: dict[str, int] = {}
+    for entry in index_data:
+        dept = (entry.get("department_prefix") or "UNKNOWN").strip().upper() or "UNKNOWN"
+        dept_counts[dept] = dept_counts.get(dept, 0) + 1
+
+    sorted_depts = sorted(dept_counts.items(), key=lambda item: (-item[1], item[0]))
+
+    if language == "zh":
+        lines = [
+            f"当前数据库共有 **{len(index_data)}** 门课程，覆盖 **{len(sorted_depts)}** 个系别：",
+            "",
+        ]
+        lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
+        return "\n".join(lines)
+
+    if language == "es":
+        lines = [
+            f"Tenemos **{len(index_data)}** cursos en total, distribuidos en **{len(sorted_depts)}** departamentos:",
+            "",
+        ]
+        lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
+        return "\n".join(lines)
+
+    if language == "fr":
+        lines = [
+            f"Nous avons **{len(index_data)}** cours au total, répartis sur **{len(sorted_depts)}** départements :",
+            "",
+        ]
+        lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
+        return "\n".join(lines)
+
+    lines = [
+        f"We currently have **{len(index_data)}** courses across **{len(sorted_depts)}** departments:",
+        "",
+    ]
+    lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
+    return "\n".join(lines)
+
+
 @app.post("/api/chat")
 async def chat(payload: ChatRequest, request: Request):
     async def stream():
         try:
             index_data = request.app.state.enriched_index
             convos: OrderedDict[str, list[dict[str, str]]] = request.app.state.conversations
+            convos_meta: OrderedDict[str, dict[str, Any]] = request.app.state.conversations_meta
             cid = (payload.conversation_id or "").strip() or "default"
             history = list(convos.get(cid, []))
+            conversation_meta = convos_meta.get(cid, {})
 
             intent_client, _ = await get_llm_client(request, "intent")
             # 意图提取只看当前问题，不使用历史。
             intent = await extract_query_intent(payload.message, intent_client)
-
-            courses = retrieve_courses(
-                index_data,
-                intent,
-                str(config.COURSES_DIR),
-                max_results=config.MAX_RETRIEVAL_RESULTS,
-            )
-
-            response_client, _ = await get_llm_client(request, "response")
             messages_for_llm = history + [{"role": "user", "content": payload.message}]
+            recall_query = is_conversation_recall_query(intent, messages_for_llm)
 
-            full_response = ""
-            async for chunk in generate_response_stream(
-                intent=intent,
-                courses=courses,
-                ollama=response_client,
-                language=payload.language,
-                conversation_history=messages_for_llm,
-            ):
-                full_response += chunk
-                event = {"type": "chunk", "content": chunk}
-                yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+            if _is_ambiguous_recommend_followup(intent):
+                inferred_dept = _infer_department_from_context(history, conversation_meta)
+                if inferred_dept:
+                    intent["department"] = inferred_dept
+                    keywords = intent.get("keywords") or []
+                    intent["keywords"] = [
+                        kw for kw in keywords
+                        if str(kw).strip().lower() not in GENERIC_RECOMMEND_KEYWORDS
+                    ]
 
-            # 回答完成后更新会话历史。
+            if (intent.get("query_type") or "").lower() == "stats":
+                full_response = _format_stats_message(index_data, payload.language)
+                yield f"data: {json.dumps({'type': 'chunk', 'content': full_response}, ensure_ascii=False)}\n\n"
+                courses: list[dict] = []
+            else:
+                if recall_query:
+                    courses = []
+                else:
+                    courses = retrieve_courses(
+                        index_data,
+                        intent,
+                        str(config.COURSES_DIR),
+                        max_results=config.MAX_RETRIEVAL_RESULTS,
+                    )
+
+                response_client, _ = await get_llm_client(request, "response")
+                full_response = ""
+                async for chunk in generate_response_stream(
+                    intent=intent,
+                    courses=courses,
+                    ollama=response_client,
+                    language=payload.language,
+                    conversation_history=messages_for_llm,
+                ):
+                    full_response += chunk
+                    event = {"type": "chunk", "content": chunk}
+                    yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+
+            # 回答完成后更新会话历史和 meta。
             history.append({"role": "user", "content": payload.message})
             history.append({"role": "assistant", "content": full_response})
 
@@ -182,8 +303,11 @@ async def chat(payload: ChatRequest, request: Request):
 
             convos[cid] = history
             convos.move_to_end(cid)
+            convos_meta[cid] = {"last_intent": dict(intent)}
+            convos_meta.move_to_end(cid)
             while len(convos) > config.CONVERSATION_MAX_SESSIONS:
-                convos.popitem(last=False)
+                old_cid, _ = convos.popitem(last=False)
+                convos_meta.pop(old_cid, None)
 
             seen: set[str] = set()
             source_codes: list[str] = []

@@ -143,7 +143,7 @@ def retrieve_courses(
     - 最终 0 结果 → 返回空列表
     - 加载某个 JSON 失败 → 跳过该课程，继续其他
     """
-    if (intent.get("query_type") or "").lower() == "general":
+    if (intent.get("query_type") or "").lower() in ("general", "stats"):
         return []
 
     filters = build_filters_from_intent(intent)
@@ -159,6 +159,16 @@ def retrieve_courses(
     if keywords:
         safe_keywords = [str(k) for k in keywords if k is not None]
         ranked = search_by_keywords(candidates, safe_keywords)
+        if len(ranked) < max_results:
+            seen_paths = {entry.get("path") for entry in ranked}
+            for entry in candidates:
+                path = entry.get("path")
+                if path in seen_paths:
+                    continue
+                ranked.append(entry)
+                seen_paths.add(path)
+                if len(ranked) >= max_results:
+                    break
         top_entries = ranked[:max_results]
     else:
         top_entries = candidates[:max_results]

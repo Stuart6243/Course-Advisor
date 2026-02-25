@@ -31,7 +31,7 @@ CONVERSION_SYSTEM_PROMPT = """你是一个课程信息提取专家。你的任�
   "points_max": 3.0,
   "bulletin_year": "如 '2025-2026'，不确定则空字符串",
   "department_or_group": "系别全称，不确定则空字符串",
-  "description": "课程描述文字，没有则空字符串",
+  "description": "课程描述文字（最重要字段），没有则空字符串",
   "prerequisites_text": "先修课要求的完整文字，没有则空字符串",
   "notes_text": "其他备注信息，没有则空字符串",
   "sections": [
@@ -55,12 +55,24 @@ CONVERSION_SYSTEM_PROMPT = """你是一个课程信息提取专家。你的任�
 3. 绝对不要编造文本中不存在的信息
 4. sections 数组可以为空（如果文本中没有具体的开课信息）
 5. points_min 和 points_max 必须是数字（float），如果无法确定学分，都设为 0.0
-6. 如果文本包含多门课程的信息，只提取第一门"""
+6. 如果文本包含多门课程的信息，只提取第一门
+7. description 字段必须尽量完整：如果文档包含模块/主题/教学目标/工具（如 Python、Excel）/评分方式，请全部整合到 description
+8. description 不得为空且不得只写一句空泛话；若有 syllabus/module breakdown，要覆盖所有关键模块"""
 
 
 COURSE_CODE_PATTERN = re.compile(r"^[A-Z]{2,4}\s+[A-Z]?\d{4}$")
 MULTI_SPACE_RE = re.compile(r"\s+")
 KNOWN_DEPARTMENT_PREFIXES = set(DEPARTMENT_NAMES.keys())
+DESCRIPTION_FALLBACK_PATTERNS = (
+    re.compile(
+        r"(?:course\s+description|description)\s*[:：]?\s*(.{80,2000}?)(?:\n\s*\n|$)",
+        re.IGNORECASE | re.DOTALL,
+    ),
+    re.compile(
+        r"(?:module|topics?|outline|syllabus)\s*[:：]?\s*(.{80,2000}?)(?:\n\s*\n|$)",
+        re.IGNORECASE | re.DOTALL,
+    ),
+)
 
 
 def _as_float(value: Any, default: float | None = 0.0) -> float | None:
@@ -353,6 +365,27 @@ def _identify_missing_fields(data: dict) -> list[str]:
     return missing
 
 
+def _extract_description_fallback(extracted_text: str) -> str:
+    """当 LLM description 为空时，从原文中回退提取描述段落。"""
+    text = extracted_text or ""
+    if not text.strip():
+        return ""
+
+    normalized = re.sub(r"\r\n?", "\n", text)
+    for pattern in DESCRIPTION_FALLBACK_PATTERNS:
+        match = pattern.search(normalized)
+        if not match:
+            continue
+        candidate = re.sub(r"\s+", " ", match.group(1)).strip()
+        if len(candidate) >= 20:
+            return candidate[:1200]
+
+    collapsed = re.sub(r"\s+", " ", normalized).strip()
+    if len(collapsed) >= 120:
+        return collapsed[:1200]
+    return ""
+
+
 async def import_file(
     file_bytes: bytes,
     filename: str,
@@ -387,6 +420,11 @@ async def import_file(
         )
 
         parsed = parse_conversion_response(raw_response)
+        if len(_safe_str(parsed.get("description"))) < 20:
+            fallback_description = _extract_description_fallback(extracted_text)
+            if fallback_description:
+                parsed["description"] = fallback_description
+
         valid, error_msg = validate_course_json(parsed)
         if not valid:
             return {
@@ -454,6 +492,7 @@ async def import_file(
                 "course_code": completed["course_code"],
                 "title": completed["title"],
                 "points": completed["points_raw"],
+                "description_length": len(completed.get("description", "")),
             },
             "message": f"Successfully imported {completed['course_code']}: {completed['title']}",
         }

@@ -56225,5 +56225,66 @@
       "Spring 2026"
     ],
     "searchable_text": "psam un3707 persuasion at scale: causal inference, machine learning, and evidence-based understanding of the information environment chris wiggins, eunji kim quantitative methods social science spring 2026 monday wednesday morning by employing statistical and computational methods, including randomized controlled trials, natural experiments, and machine learning techniques, students will engage directly with real-world data to"
+  },
+  {
+    "course_uid": "2716daa0d4f8769d4a064388c29d35be3353b71f",
+    "course_code": "MRKT B9651",
+    "title": "MARKETING ANALYTICS",
+    "file_name": "2716daa0d4f8769d4a064388c29d35be3353b71f.json",
+    "path": "courses_flat/2716daa0d4f8769d4a064388c29d35be3353b71f.json",
+    "department_prefix": "MRKT",
+    "points_min": 0.0,
+    "points_max": 0.0,
+    "has_description": true,
+    "prerequisites_codes": [],
+    "bulletin_year": "",
+    "sections_summary": [
+      {
+        "term": "Fall 2025",
+        "times": "Tuesday 9:00AM-12:15PM",
+        "days": [
+          "Tuesday",
+          "Monday"
+        ],
+        "time_of_day": "morning",
+        "instructor": "Hortense Fong, Malek Ben Sliman",
+        "location": "Geffen 590",
+        "enrollment_current": 0,
+        "enrollment_capacity": 0
+      },
+      {
+        "term": "Fall 2025",
+        "times": "Tuesday 2:00PM-5:15PM",
+        "days": [
+          "Tuesday",
+          "Monday"
+        ],
+        "time_of_day": "afternoon",
+        "instructor": "Hortense Fong, Malek Ben Sliman",
+        "location": "Geffen 590",
+        "enrollment_current": 0,
+        "enrollment_capacity": 0
+      },
+      {
+        "term": "Fall 2025",
+        "times": "Tuesday 9:00AM-12:15PM",
+        "days": [
+          "Tuesday",
+          "Monday"
+        ],
+        "time_of_day": "morning",
+        "instructor": "Hortense Fong, Malek Ben Sliman",
+        "location": "Geffen 620",
+        "enrollment_current": 0,
+        "enrollment_capacity": 0
+      }
+    ],
+    "all_instructors": [
+      "Hortense Fong, Malek Ben Sliman"
+    ],
+    "all_terms": [
+      "Fall 2025"
+    ],
+    "searchable_text": "mrkt b9651 marketing analytics hortense fong, malek ben sliman marketing product management fall 2025 tuesday monday tuesday monday tuesday monday morning afternoon morning marketing activity is the core of operating a business. marketing analytics supports marketing activity by providing the tools and frameworks for identifying, delivering, and capturing value from cust"
   }
 ]
