@@ -1,11 +1,11 @@
 import {useCallback, useRef, useState} from 'react';
-import {Language, Message} from '../types';
+import {ChatSettings, Language, Message} from '../types';
 import {sendMessageStream} from '../services/api';
 
 const nowTime = () =>
   new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
 
-export function useChat(language: Language) {
+export function useChat(language: Language, settings: ChatSettings) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId, setConversationId] = useState(() => crypto.randomUUID());
@@ -65,6 +65,7 @@ export function useChat(language: Language) {
           trimmed,
           conversationId,
           language,
+          settings,
           (chunk) => {
             setMessages((prev) =>
               prev.map((msg) =>
@@ -92,7 +93,7 @@ export function useChat(language: Language) {
         finishAssistant(msg);
       }
     },
-    [conversationId, language],
+    [conversationId, language, settings],
   );
 
   const newChat = useCallback(() => {

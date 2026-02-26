@@ -6,11 +6,15 @@ import LandingView from './components/LandingView';
 import SettingsDrawer from './components/SettingsDrawer';
 import {useChat} from './hooks/useChat';
 import './i18n';
-import {Language} from './types';
+import {ChatSettings, Language} from './types';
 
 export default function App() {
   const [language, setLanguage] = useState<Language>('en');
-  const {messages, isLoading, sendMessage, newChat} = useChat(language);
+  const [chatSettings, setChatSettings] = useState<ChatSettings>({
+    maxHistoryTurns: 10,
+    maxResults: 5,
+  });
+  const {messages, isLoading, sendMessage, newChat} = useChat(language, chatSettings);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const {i18n} = useTranslation();
 
@@ -19,6 +23,10 @@ export default function App() {
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang);
     i18n.changeLanguage(lang);
+  };
+
+  const handleSettingsChange = (settings: ChatSettings) => {
+    setChatSettings(settings);
   };
 
   return (
@@ -44,6 +52,9 @@ export default function App() {
         language={language}
         onLanguageChange={handleLanguageChange}
         messages={messages}
+        maxHistoryTurns={chatSettings.maxHistoryTurns}
+        maxResults={chatSettings.maxResults}
+        onSettingsChange={handleSettingsChange}
       />
     </div>
   );

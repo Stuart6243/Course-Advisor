@@ -3,7 +3,7 @@
  * 所有 HTTP 请求通过 Vite proxy 转发到后端 localhost:8000。
  */
 
-import {HealthStatus, ImportResult, ManualCourseData} from '../types';
+import {ChatSettings, HealthStatus, ImportResult, ManualCourseData} from '../types';
 
 const API_BASE = '/api';
 
@@ -40,19 +40,26 @@ export async function sendMessageStream(
   message: string,
   conversationId: string,
   language: string,
+  settings: ChatSettings | undefined,
   onChunk: (text: string) => void,
   onSources: (courses: string[]) => void,
   onDone: () => void,
   onError: (msg: string) => void,
 ): Promise<void> {
+  const payload: Record<string, unknown> = {
+    message,
+    conversation_id: conversationId,
+    language,
+  };
+  if (settings) {
+    payload.max_history_turns = settings.maxHistoryTurns;
+    payload.max_results = settings.maxResults;
+  }
+
   const res = await fetch(`${API_BASE}/chat`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      message,
-      conversation_id: conversationId,
-      language,
-    }),
+    body: JSON.stringify(payload),
   });
 
   if (!res.ok || !res.body) {

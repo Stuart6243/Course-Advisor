@@ -8,6 +8,11 @@ export type Message = {
 
 export type Language = 'en' | 'zh' | 'es' | 'fr';
 
+export type ChatSettings = {
+  maxHistoryTurns: number;
+  maxResults: number;
+};
+
 export type HealthStatus = {
   status: string;
   inference_mode: string;

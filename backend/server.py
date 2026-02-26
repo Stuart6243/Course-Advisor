@@ -17,7 +17,7 @@ from typing import Any, Literal, Optional
 from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 import config
 from course_index import add_to_index, build_enriched_entry, save_enriched_index
@@ -45,6 +45,22 @@ class ChatRequest(BaseModel):
     message: str
     conversation_id: str
     language: Literal["en", "zh", "es", "fr"] = "en"
+    max_history_turns: Optional[int] = None
+    max_results: Optional[int] = None
+
+    @field_validator("max_history_turns")
+    @classmethod
+    def validate_max_history_turns(cls, value: Optional[int]) -> Optional[int]:
+        if value is not None and not (1 <= value <= 50):
+            raise ValueError("max_history_turns must be between 1 and 50")
+        return value
+
+    @field_validator("max_results")
+    @classmethod
+    def validate_max_results(cls, value: Optional[int]) -> Optional[int]:
+        if value is not None and not (1 <= value <= 20):
+            raise ValueError("max_results must be between 1 and 20")
+        return value
 
 
 class ManualImportRequest(BaseModel):
@@ -248,6 +264,20 @@ async def chat(payload: ChatRequest, request: Request):
             cid = (payload.conversation_id or "").strip() or "default"
             history = list(convos.get(cid, []))
             conversation_meta = convos_meta.get(cid, {})
+            max_history_turns = (
+                payload.max_history_turns
+                if payload.max_history_turns is not None
+                else config.CONVERSATION_MAX_TURNS
+            )
+            max_results = (
+                payload.max_results
+                if payload.max_results is not None
+                else config.MAX_RETRIEVAL_RESULTS
+            )
+
+            history_limit = max_history_turns * 2
+            if len(history) > history_limit:
+                history = history[-history_limit:]
 
             intent_client, _ = await get_llm_client(request, "intent")
             # 意图提取只看当前问题，不使用历史。
@@ -277,7 +307,7 @@ async def chat(payload: ChatRequest, request: Request):
                         index_data,
                         intent,
                         str(config.COURSES_DIR),
-                        max_results=config.MAX_RETRIEVAL_RESULTS,
+                        max_results=max_results,
                     )
 
                 response_client, _ = await get_llm_client(request, "response")
@@ -297,7 +327,7 @@ async def chat(payload: ChatRequest, request: Request):
             history.append({"role": "user", "content": payload.message})
             history.append({"role": "assistant", "content": full_response})
 
-            max_msgs = config.CONVERSATION_MAX_TURNS * 2
+            max_msgs = max_history_turns * 2
             if len(history) > max_msgs:
                 history = history[-max_msgs:]
 

@@ -1,4 +1,4 @@
-import {type ChangeEvent, useRef, useState} from 'react';
+import {type ChangeEvent, useEffect, useRef, useState} from 'react';
 import {
   ChevronDown,
   Database,
@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import {useTranslation} from 'react-i18next';
 import {exportChat, importFile, importManual} from '../services/api';
-import {Language, ManualCourseData, Message} from '../types';
+import {ChatSettings, Language, ManualCourseData, Message} from '../types';
 import ManualImportForm from './ManualImportForm';
 
 type Props = {
@@ -19,6 +19,9 @@ type Props = {
   language: Language;
   onLanguageChange: (lang: Language) => void;
   messages: Message[];
+  maxHistoryTurns: number;
+  maxResults: number;
+  onSettingsChange: (settings: ChatSettings) => void;
 };
 
 type StatusTone = 'success' | 'error' | 'info';
@@ -34,6 +37,9 @@ export default function SettingsDrawer({
   language,
   onLanguageChange,
   messages,
+  maxHistoryTurns,
+  maxResults,
+  onSettingsChange,
 }: Props) {
   const {t, i18n} = useTranslation();
   const [notice, setNotice] = useState<Notice | null>(null);
@@ -45,7 +51,14 @@ export default function SettingsDrawer({
   const [exportFormat, setExportFormat] = useState<'markdown' | 'json'>('markdown');
   const [isExporting, setIsExporting] = useState(false);
   const [exported, setExported] = useState(false);
+  const [localMaxHistoryTurns, setLocalMaxHistoryTurns] = useState(maxHistoryTurns);
+  const [localMaxResults, setLocalMaxResults] = useState(maxResults);
   const timeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    setLocalMaxHistoryTurns(maxHistoryTurns);
+    setLocalMaxResults(maxResults);
+  }, [maxHistoryTurns, maxResults]);
 
   const clearNoticeLater = () => {
     if (timeoutRef.current) {
@@ -59,6 +72,43 @@ export default function SettingsDrawer({
   const handleLanguage = (lang: Language) => {
     onLanguageChange(lang);
     i18n.changeLanguage(lang);
+  };
+
+  const clampInt = (value: number, min: number, max: number) => {
+    if (!Number.isFinite(value)) {
+      return min;
+    }
+    return Math.min(max, Math.max(min, Math.round(value)));
+  };
+
+  const applySettings = (next: ChatSettings, tone: StatusTone, text: string) => {
+    onSettingsChange(next);
+    setLocalMaxHistoryTurns(next.maxHistoryTurns);
+    setLocalMaxResults(next.maxResults);
+    setNotice({tone, text});
+    clearNoticeLater();
+  };
+
+  const handleSaveSettings = () => {
+    applySettings(
+      {
+        maxHistoryTurns: clampInt(localMaxHistoryTurns, 1, 50),
+        maxResults: clampInt(localMaxResults, 1, 20),
+      },
+      'success',
+      t('settings.settingsSaved'),
+    );
+  };
+
+  const handleResetSettings = () => {
+    applySettings(
+      {
+        maxHistoryTurns: 10,
+        maxResults: 5,
+      },
+      'info',
+      t('settings.settingsReset'),
+    );
   };
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -189,6 +239,65 @@ export default function SettingsDrawer({
                 <ChevronDown className="w-5 h-5" />
               </div>
             </div>
+          </section>
+
+          <hr className="border-t border-border-dark" />
+
+          <section className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">
+                {t('settings.querySettings')}
+              </span>
+              <button
+                type="button"
+                onClick={handleResetSettings}
+                className="text-xs text-slate-500 hover:text-white transition-colors"
+              >
+                {t('settings.resetDefaults')}
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-white text-sm font-medium" htmlFor="max-history-turns">
+                {t('settings.maxHistoryTurns')}
+              </label>
+              <input
+                id="max-history-turns"
+                type="number"
+                min={1}
+                max={50}
+                step={1}
+                value={localMaxHistoryTurns}
+                onChange={(e) => setLocalMaxHistoryTurns(Number(e.target.value || 1))}
+                className="w-full rounded-xl bg-input-bg border border-[#3c4753] text-white px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+              />
+              <p className="text-xs text-slate-500">{t('settings.maxHistoryTurnsHint')}</p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-white text-sm font-medium" htmlFor="max-results">
+                {t('settings.maxResults')}
+              </label>
+              <input
+                id="max-results"
+                type="number"
+                min={1}
+                max={20}
+                step={1}
+                value={localMaxResults}
+                onChange={(e) => setLocalMaxResults(Number(e.target.value || 1))}
+                className="w-full rounded-xl bg-input-bg border border-[#3c4753] text-white px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+              />
+              <p className="text-xs text-slate-500">{t('settings.maxResultsHint')}</p>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleSaveSettings}
+              className="w-full mt-1 rounded-xl bg-primary hover:bg-blue-600 text-white font-semibold h-11 transition-colors"
+            >
+              {t('settings.saveSettings')}
+            </button>
           </section>
 
           <hr className="border-t border-border-dark" />

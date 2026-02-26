@@ -99,6 +99,12 @@ ZH_MAPPINGS = {
     "早上": "morning",
     # 操作
     "推荐": "recommend", "比较": "compare", "对比": "compare",
+    "建议": "recommend suggest", "推荐一下": "recommend",
+    "给我": "give me", "帮我找": "help me find",
+    "有什么": "what are", "有哪些": "what are",
+    "有什么好的": "good courses", "有哪些好的": "good courses",
+    "介绍": "recommend", "推荐课程": "recommend courses",
+    "课程建议": "course recommendations", "课程": "courses", "好的": "good",
     "什么时候": "when schedule", "学分": "credits",
     "先修课": "prerequisites", "教授": "professor",
     "想学": "want to study", "想上": "want to take",
@@ -120,7 +126,36 @@ ES_MAPPINGS = {
     "jueves": "Thursday", "viernes": "Friday",
     "mañana": "morning", "tarde": "afternoon", "noche": "evening",
     "recomendar": "recommend", "comparar": "compare",
+    "recomiéndame": "recommend", "recomendame": "recommend",
+    "sugiéreme": "suggest", "sugiereme": "suggest",
+    "dame": "give me", "ayúdame a encontrar": "help me find",
+    "qué cursos": "what courses", "cuáles cursos": "what courses",
+    "cursos buenos": "good courses",
+    "sugerencias": "suggestions", "recomendaciones": "recommendations",
+    "computación": "computer science", "matemáticas": "mathematics",
+    "buenos cursos": "good courses", "mejores cursos": "best courses",
     "créditos": "credits", "profesor": "professor",
+}
+
+FR_MAPPINGS = {
+    "recommande": "recommend",
+    "recommandez": "recommend",
+    "recommande-moi": "recommend me",
+    "recommandez-moi": "recommend me",
+    "suggère": "suggest",
+    "suggerez": "suggest",
+    "suggère-moi": "suggest me",
+    "suggerez-moi": "suggest me",
+    "donne-moi": "give me",
+    "donnez-moi": "give me",
+    "aide-moi à trouver": "help me find",
+    "quels cours": "what courses",
+    "quelles cours": "what courses",
+    "informatique": "computer science",
+    "suggestions": "suggestions",
+    "recommandations": "recommendations",
+    "bons cours": "good courses",
+    "meilleurs cours": "best courses",
 }
 
 
@@ -132,8 +167,9 @@ def normalize_question(question: str) -> str:
     """
     additions = []
     q = question
-    for source, target in {**ZH_MAPPINGS, **ES_MAPPINGS}.items():
-        if source in q:
+    q_lower = q.lower()
+    for source, target in {**ZH_MAPPINGS, **ES_MAPPINGS, **FR_MAPPINGS}.items():
+        if source.lower() in q_lower:
             additions.append(target)
     if additions:
         return q + " " + " ".join(additions)
@@ -219,11 +255,20 @@ for _generic_word in ("engineering", "applied", "science", "math", "mathematics"
 COURSE_CODE_RE = re.compile(r'\b([A-Z]{4})\s+([A-Z]?\d{4})\b')
 COMPARE_RE = re.compile(r'\b(compare|comparison|difference|differ|vs\.?|versus)\b', re.I)
 RECOMMEND_RE = re.compile(
-    r'\b(recommend|suggest|interested|'
+    r'\b('
+    r'recommend|suggest|interested|advice|advise|recommend me|'
     r'want to (?:learn|study|take)|'
     r'should i take|looking for|looking to take|'
-    r'good (?:courses?|classes?)|best (?:courses?|classes?)|'
-    r'what (?:courses?|classes?) (?:should|would|can|do))\b', re.I
+    r'help me find|give me|show me|'
+    r'good(?:\s+\w+){0,4}\s+(?:courses?|classes?)|'
+    r'best(?:\s+\w+){0,4}\s+(?:courses?|classes?)|'
+    r'what (?:courses?|classes?) (?:should|would|can|do)|'
+    r'suggestions?|recommendations?|course recommendations?|'
+    r'recomiéndame|recomendame|sugiéreme|sugiereme|dame|'
+    r'recommande|recommandez|recommande-moi|recommandez-moi|'
+    r'suggère|suggerez|suggère-moi|suggerez-moi|donne-moi|donnez-moi'
+    r')\b',
+    re.I
 )
 INSTRUCTOR_RE = re.compile(r'\b(professor|prof\.?|instructor|taught by|teach(?:es|ing)?)\b', re.I)
 
