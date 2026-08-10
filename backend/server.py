@@ -20,7 +20,12 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, field_validator
 
 import config
-from course_index import add_to_index, build_enriched_entry, save_enriched_index
+from course_index import (
+    add_to_index,
+    build_enriched_entry,
+    build_enriched_index_from_dir,
+    save_enriched_index,
+)
 from course_retriever import retrieve_courses
 from export_handler import export_as_json, export_as_markdown
 from file_importer import (
@@ -84,6 +89,36 @@ GENERIC_RECOMMEND_KEYWORDS = {
 }
 COURSE_CODE_RE = re.compile(r"\b([A-Z]{2,4})\s+[A-Z]?\d{4}\b")
 
+# 指代词/回指表达：出现这些词，且当前问题没有给出新的系别/课程代码/教授，
+# 说明用户是在追问“上一轮那些课”，此时应复用上一轮的课程，而不是重新全库检索。
+_REFERENCE_WORD_RE = re.compile(
+    r"\b(those|them|they|these|it|that one|the (?:first|second|third|last|former|latter|ones?)|"
+    r"above|aforementioned|previous(?:ly)?)\b",
+    re.I,
+)
+_REFERENCE_CJK = (
+    "它", "他们", "它们", "那些", "这些", "那几", "这几", "上面", "前面",
+    "刚才", "第一", "第二", "第三", "之前", "那个", "这个", "其中",
+)
+
+
+def _is_reference_message(text: str) -> bool:
+    if not text:
+        return False
+    if _REFERENCE_WORD_RE.search(text):
+        return True
+    return any(tok in text for tok in _REFERENCE_CJK)
+
+
+def _is_referential_followup(intent: dict, message: str, is_followup: bool) -> bool:
+    """是否为“指代上一轮课程”的追问。"""
+    if not is_followup:
+        return False
+    # 如果用户明确给了新的锚点（课程代码/系别/教授），说明是新查询，不算回指。
+    if intent.get("course_codes") or intent.get("department") or intent.get("instructor"):
+        return False
+    return _is_reference_message(message)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -112,6 +147,19 @@ async def lifespan(app: FastAPI):
             print(f"✅ Loaded {len(app.state.enriched_index)} courses")
         except Exception:
             app.state.enriched_index = []
+
+    # 索引缺失或为空时，直接从 courses_flat 目录自动构建一次，
+    # 避免新机器/首次运行因为没有 enriched 索引而 0 门课、所有查询返回空。
+    if not app.state.enriched_index and config.COURSES_DIR.exists():
+        print("⚙️  Enriched index missing/empty — building from courses_flat ...")
+        try:
+            built = build_enriched_index_from_dir(str(config.COURSES_DIR))
+            if built:
+                app.state.enriched_index = built
+                save_enriched_index(built, str(config.ENRICHED_INDEX_PATH))
+                print(f"✅ Built and saved {len(built)} courses")
+        except Exception as exc:
+            print(f"⚠️ Failed to auto-build index: {exc}")
 
     if config.WARMUP_ON_STARTUP and config.INFERENCE_MODE in ("local", "hybrid"):
         print("Warming up local LLM...")
@@ -279,11 +327,18 @@ async def chat(payload: ChatRequest, request: Request):
             if len(history) > history_limit:
                 history = history[-history_limit:]
 
-            intent_client, _ = await get_llm_client(request, "intent")
-            # 意图提取只看当前问题，不使用历史。
-            intent = await extract_query_intent(payload.message, intent_client)
+            intent_client, intent_provider = await get_llm_client(request, "intent")
+            # 意图提取只看当前问题，不使用历史。Groq 用轻量 8b 模型（省 70b 配额）。
+            intent_model = (
+                config.GROQ_INTENT_MODEL if intent_provider == "groq" else ""
+            )
+            intent = await extract_query_intent(
+                payload.message, intent_client, model=intent_model
+            )
             messages_for_llm = history + [{"role": "user", "content": payload.message}]
+            is_followup = len(history) >= 2
             recall_query = is_conversation_recall_query(intent, messages_for_llm)
+            prev_courses = conversation_meta.get("last_courses") or []
 
             if _is_ambiguous_recommend_followup(intent):
                 inferred_dept = _infer_department_from_context(history, conversation_meta)
@@ -302,6 +357,10 @@ async def chat(payload: ChatRequest, request: Request):
             else:
                 if recall_query:
                     courses = []
+                elif _is_referential_followup(intent, payload.message, is_followup) and prev_courses:
+                    # 回指追问（“那些课里…”“tell me more about it”）：
+                    # 复用上一轮实际展示过的课程，避免重新全库检索拉来无关课程。
+                    courses = prev_courses
                 else:
                     courses = retrieve_courses(
                         index_data,
@@ -333,7 +392,12 @@ async def chat(payload: ChatRequest, request: Request):
 
             convos[cid] = history
             convos.move_to_end(cid)
-            convos_meta[cid] = {"last_intent": dict(intent)}
+            # 记住这一轮展示的课程，供下一轮回指追问复用。
+            # 若本轮没有检索到课程（例如纯回忆型问题），保留上一轮的课程上下文。
+            convos_meta[cid] = {
+                "last_intent": dict(intent),
+                "last_courses": courses if courses else prev_courses,
+            }
             convos_meta.move_to_end(cid)
             while len(convos) > config.CONVERSATION_MAX_SESSIONS:
                 old_cid, _ = convos.popitem(last=False)

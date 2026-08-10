@@ -64,7 +64,9 @@ export default function ManualImportForm({
     e.preventDefault();
     setError('');
 
-    const code = formData.course_code.trim();
+    // 归一化后再校验：与后端一致（大写 + 多空格压缩），
+    // 这样用户输入小写/多空格也能通过，且格式要求和后端严格一致。
+    const code = formData.course_code.trim().toUpperCase().replace(/\s+/g, ' ');
     const title = formData.title.trim();
 
     if (!code || !title) {
@@ -72,7 +74,9 @@ export default function ManualImportForm({
       return;
     }
 
-    if (!/(?=.*[A-Z])(?=.*\d)/.test(code)) {
+    // 后端严格格式：2-4 个大写字母 + 空格 + 可选 1 大写字母 + 4 位数字
+    // 例：CIEN E3125, COMS W4111, AERO 3001
+    if (!/^[A-Z]{2,4}\s[A-Z]?\d{4}$/.test(code)) {
       setError(t('settings.manualImport.codeInvalid'));
       return;
     }

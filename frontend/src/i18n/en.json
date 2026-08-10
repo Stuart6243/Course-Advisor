@@ -9,7 +9,8 @@
   },
   "chat": {
     "placeholder": "Ask Advisor AI...",
-    "disclaimer": "Advisor AI can make mistakes. Consider checking important information."
+    "disclaimer": "Advisor AI can make mistakes. Consider checking important information.",
+    "sources": "Courses referenced:"
   },
   "settings": {
     "title": "Settings",
@@ -47,7 +48,7 @@
       "submit": "Add to Database",
       "cancel": "Cancel",
       "extractedPreview": "Extracted text from your file:",
-      "codeInvalid": "Course code must include uppercase letters and numbers.",
+      "codeInvalid": "Invalid format. Use e.g. CIEN E3125 (2-4 letters, space, optional letter + 4 digits).",
       "required": "Course code and title are required."
     }
   },

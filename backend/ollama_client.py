@@ -41,11 +41,17 @@ class OllamaClient:
             pass
         return f"Ollama API error: HTTP {response.status_code}"
 
-    async def chat(self, messages: list[dict], system_prompt: str = "", max_tokens: int = 0) -> str:
-        """非流式聊天。发送消息列表，返回完整回答文本。"""
+    async def chat(
+        self, messages: list[dict], system_prompt: str = "", max_tokens: int = 0, model: str = ""
+    ) -> str:
+        """非流式聊天。发送消息列表，返回完整回答文本。
+
+        model: 接受该参数以与 GroqClient 接口对齐；本地 Ollama 只加载了单一模型，
+        因此空值时使用 self.model。
+        """
         request_messages = self._build_messages(messages, system_prompt)
         body = {
-            "model": self.model,
+            "model": model or self.model,
             "messages": request_messages,
             "stream": False,
         }
@@ -72,12 +78,12 @@ class OllamaClient:
         return self._strip_think_tags(str(content))
 
     async def chat_stream(
-        self, messages: list[dict], system_prompt: str = "", max_tokens: int = 0
+        self, messages: list[dict], system_prompt: str = "", max_tokens: int = 0, model: str = ""
     ) -> AsyncGenerator[str, None]:
         """流式聊天。逐个 yield token 字符串。"""
         request_messages = self._build_messages(messages, system_prompt)
         body = {
-            "model": self.model,
+            "model": model or self.model,
             "messages": request_messages,
             "stream": True,
         }

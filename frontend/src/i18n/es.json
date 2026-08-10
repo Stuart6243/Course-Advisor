@@ -9,7 +9,8 @@
   },
   "chat": {
     "placeholder": "Pregunta al Asesor AI...",
-    "disclaimer": "El AI puede cometer errores. Verifica la información importante."
+    "disclaimer": "El AI puede cometer errores. Verifica la información importante.",
+    "sources": "Cursos referenciados:"
   },
   "settings": {
     "title": "Configuración",
@@ -47,7 +48,7 @@
       "submit": "Agregar a la base de datos",
       "cancel": "Cancelar",
       "extractedPreview": "Texto extraído del archivo:",
-      "codeInvalid": "El código del curso debe incluir letras mayúsculas y números.",
+      "codeInvalid": "Formato inválido. Ej.: CIEN E3125 (2-4 letras + espacio + letra opcional + 4 dígitos).",
       "required": "Código y título del curso son obligatorios."
     }
   },

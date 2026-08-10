@@ -9,7 +9,8 @@
   },
   "chat": {
     "placeholder": "向顾问 AI 提问...",
-    "disclaimer": "AI 可能出错，重要信息请核实。"
+    "disclaimer": "AI 可能出错，重要信息请核实。",
+    "sources": "参考课程："
   },
   "settings": {
     "title": "设置",
@@ -47,7 +48,7 @@
       "submit": "添加到数据库",
       "cancel": "取消",
       "extractedPreview": "从文件中提取到的文本：",
-      "codeInvalid": "课程代码需同时包含大写字母和数字。",
+      "codeInvalid": "格式无效。示例：CIEN E3125（2-4 个字母 + 空格 + 可选字母 + 4 位数字）。",
       "required": "课程代码和课程名称为必填。"
     }
   },

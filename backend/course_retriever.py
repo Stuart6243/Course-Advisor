@@ -147,6 +147,7 @@ def retrieve_courses(
         return []
 
     filters = build_filters_from_intent(intent)
+    has_structural = bool(filters)
     candidates = filter_by_fields(enriched_index, filters)
 
     if not candidates:
@@ -159,7 +160,12 @@ def retrieve_courses(
     if keywords:
         safe_keywords = [str(k) for k in keywords if k is not None]
         ranked = search_by_keywords(candidates, safe_keywords)
+        # 没有任何结构化过滤条件（系别/课程代码/学分/时间…），
+        # 且关键词一个都没命中 -> 不要用整库的前 N 门课来凑数（否则会返回一堆无关课程）。
+        if not has_structural and not ranked:
+            return []
         if len(ranked) < max_results:
+            # 补齐时只从已过滤的候选集里取，不引入无关课程。
             seen_paths = {entry.get("path") for entry in ranked}
             for entry in candidates:
                 path = entry.get("path")
@@ -171,6 +177,9 @@ def retrieve_courses(
                     break
         top_entries = ranked[:max_results]
     else:
+        # 无关键词又无结构化条件 -> 无锚点，返回空而不是整库前 N 门。
+        if not has_structural:
+            return []
         top_entries = candidates[:max_results]
 
     data_root = Path(courses_dir).parent

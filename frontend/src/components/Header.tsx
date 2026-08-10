@@ -1,4 +1,4 @@
-import {GraduationCap, Plus} from 'lucide-react';
+import {GraduationCap, Plus, Settings} from 'lucide-react';
 import {useTranslation} from 'react-i18next';
 import ConnectionStatus from './ConnectionStatus';
 
@@ -31,14 +31,10 @@ export default function Header({onNewChat, onOpenSettings}: Props) {
         </button>
         <button
           onClick={onOpenSettings}
-          className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-border-dark hover:ring-primary transition-colors"
+          aria-label="Settings"
+          className="w-9 h-9 rounded-full flex items-center justify-center text-slate-300 ring-2 ring-border-dark hover:ring-primary hover:text-white transition-colors"
         >
-          <img
-            src="https://picsum.photos/seed/avatar/100/100"
-            alt="User"
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
+          <Settings className="w-5 h-5" />
         </button>
       </div>
     </header>

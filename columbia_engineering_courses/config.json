@@ -1,0 +1,12 @@
+{
+  "seed_url": "https://bulletin.columbia.edu/columbia-engineering/about-school/",
+  "bulletin_year": "2025-2026",
+  "allowed_path_prefixes": [
+    "/columbia-engineering/about-school/",
+    "/columbia-engineering/academic-departments-programs/",
+    "/columbia-engineering/interdisciplinary-engineering-courses/"
+  ],
+  "exclude_path_prefixes": [
+    "/columbia-engineering/academic-departments-programs/key-course-listings/"
+  ]
+}

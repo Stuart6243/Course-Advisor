@@ -1,0 +1,24 @@
+{
+  "dedup_key": "943ef1753bbcf48cbe55f882c467d349d51f5a90",
+  "course_uid": "943ef1753bbcf48cbe55f882c467d349d51f5a90",
+  "bulletin_year": "",
+  "source_page_url": "",
+  "source_page_title": "",
+  "department_or_group": "",
+  "course_code": "MRKT B9651",
+  "title": "Marketing Analytics",
+  "points_raw": "3",
+  "points_min": 0.0,
+  "points_max": 0.0,
+  "description": "Marketing activity is the core of operating a business. Marketing analytics supports marketing activity by providing the tools and frameworks for identifying, delivering, and capturing value from customers. The course is organized around three modules. Each module features a different set of quantitative tools and programs that ensure students are exposed to a range of resources utilized by marketing professionals. Python and Excel will be used in the course. • The first module focuses on segmentation-targeting-positioning (STP) analytics. To make effective strategic decisions, managers must identify, and measure customers’ wants, assess the competitive environment, select the most appropriate customer targets and then develop marketing programs that satisfy customers’ needs better than the competition. • The second module focuses on customer analytics. To deliver value to customers, managers must understand how to acquire new customers and retain existing ones, and especially the right customers. • The third module focuses on 4P (product, place, promotion, price) analytics. To optimize marketing decisions and programs, managers must be able to quantify the impact of the marketing",
+  "description_source": "imported",
+  "prerequisites_text": "",
+  "prerequisites_source": "none",
+  "notes_text": "",
+  "sections": [],
+  "needs_review": true,
+  "parse_warnings": [
+    "imported_file"
+  ],
+  "raw_title_text": "MRKT B9651 Marketing Analytics. 3"
+}

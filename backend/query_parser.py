@@ -542,13 +542,15 @@ def parse_extraction_response(raw_text: str) -> dict:
 # 6. 主入口
 # ============================================================
 
-async def extract_query_intent(question: str, llm_client) -> dict:
+async def extract_query_intent(question: str, llm_client, model: str = "") -> dict:
     """
     完整意图提取流程：
     1. 多语言关键词归一化
     2. 规则引擎尝试提取
     3. 成功 → 直接返回（不调用 LLM，0 延迟）
-    4. 失败 → LLM fallback（使用精简 prompt + qwen2.5:7b）
+    4. 失败 → LLM fallback（Groq 用 8b-instant，本地用默认模型）
+
+    model: 指定 fallback 使用的模型名（Groq 传 8b，省 70b 每日配额）。
     """
     # Step 1: 归一化
     normalized = normalize_question(question)
@@ -566,6 +568,7 @@ async def extract_query_intent(question: str, llm_client) -> dict:
             messages=messages,
             system_prompt=EXTRACTION_SYSTEM_PROMPT,
             max_tokens=config.INTENT_MAX_TOKENS,
+            model=model,
         )
         intent = parse_extraction_response(raw_response)
     except Exception:

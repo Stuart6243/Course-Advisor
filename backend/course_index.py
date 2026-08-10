@@ -342,6 +342,60 @@ def build_enriched_index(raw_index_path: str, courses_dir: str) -> list[dict]:
     return enriched
 
 
+def build_enriched_index_from_dir(courses_dir: str) -> list[dict]:
+    """
+    直接扫描 courses_flat 目录下的所有课程 JSON 构建 enriched index。
+
+    以课程文件目录为「唯一真源」，避免依赖可能过期/缺条目的 raw index
+    （raw index 与实际课程文件数量曾出现漂移）。
+    """
+    courses_path = Path(courses_dir)
+    if not courses_path.exists():
+        return []
+
+    enriched: list[dict] = []
+    failed = 0
+    for json_file in sorted(courses_path.glob("*.json")):
+        detail = load_course_detail(str(json_file))
+        if detail is None:
+            failed += 1
+            continue
+        raw_entry = {
+            "course_uid": detail.get("course_uid", ""),
+            "course_code": detail.get("course_code", ""),
+            "title": detail.get("title", ""),
+            "file_name": json_file.name,
+            "path": f"courses_flat/{json_file.name}",
+        }
+        enriched.append(build_enriched_entry(raw_entry, detail))
+
+    print(f"[Index Build/dir] files={len(enriched) + failed}, success={len(enriched)}, failed={failed}")
+    return enriched
+
+
+def build_raw_index_from_dir(courses_dir: str) -> list[dict]:
+    """从 courses_flat 目录重建 raw index（{uid, code, title, file_name, path}）。"""
+    courses_path = Path(courses_dir)
+    if not courses_path.exists():
+        return []
+
+    raw: list[dict] = []
+    for json_file in sorted(courses_path.glob("*.json")):
+        detail = load_course_detail(str(json_file))
+        if detail is None:
+            continue
+        raw.append(
+            {
+                "course_uid": detail.get("course_uid", ""),
+                "course_code": detail.get("course_code", ""),
+                "title": detail.get("title", ""),
+                "file_name": json_file.name,
+                "path": f"courses_flat/{json_file.name}",
+            }
+        )
+    return raw
+
+
 def save_enriched_index(index: list[dict], output_path: str) -> None:
     """Save enriched index JSON."""
     out_path = Path(output_path)
@@ -482,10 +536,10 @@ def run_build_and_save(raw_index_path: str, courses_dir: str, enriched_index_pat
     Build and save enriched index, printing Track-B style progress summary.
     """
     print(f"Building enriched index...")
-    print(f"  Raw index: {raw_index_path}")
-    print(f"  Courses dir: {courses_dir}")
+    print(f"  Courses dir (source of truth): {courses_dir}")
 
-    idx = build_enriched_index(raw_index_path, courses_dir)
+    # 以 courses_flat 目录为唯一真源重建，避免 raw index 缺条目导致丢课。
+    idx = build_enriched_index_from_dir(courses_dir)
     save_enriched_index(idx, enriched_index_path)
 
     print(f"\n✅ Saved {len(idx)} enriched entries to {enriched_index_path}")

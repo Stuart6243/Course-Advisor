@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import {Bot, Check, Copy} from 'lucide-react';
+import {Bot, Check, Copy, User} from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import {useTranslation} from 'react-i18next';
 import {Message} from '../types';
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
 
 export default function MessageBubble({message, index}: Props) {
   const [copied, setCopied] = useState(false);
+  const {t} = useTranslation();
+  const sources = message.sources ?? [];
 
   const handleCopy = async () => {
     try {
@@ -33,12 +36,9 @@ export default function MessageBubble({message, index}: Props) {
             <Bot className="w-5 h-5" />
           </div>
         ) : (
-          <img
-            src="https://picsum.photos/seed/avatar/100/100"
-            alt="User"
-            className="w-8 h-8 rounded-full object-cover"
-            referrerPolicy="no-referrer"
-          />
+          <div className="w-8 h-8 rounded-full bg-surface-dark flex items-center justify-center text-slate-300 ring-1 ring-border-dark">
+            <User className="w-5 h-5" />
+          </div>
         )}
       </div>
       <div
@@ -65,6 +65,21 @@ export default function MessageBubble({message, index}: Props) {
                   <span className="inline-block ml-1 animate-pulse text-primary">▍</span>
                 ) : null}
               </div>
+              {!message.isStreaming && sources.length > 0 ? (
+                <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                  <span className="text-xs text-slate-500 mr-0.5">
+                    {t('chat.sources')}
+                  </span>
+                  {sources.map((code) => (
+                    <span
+                      key={code}
+                      className="text-xs font-medium text-primary bg-primary/10 ring-1 ring-primary/20 rounded-md px-2 py-0.5"
+                    >
+                      {code}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
               <div className="flex justify-end">
                 <button
                   onClick={handleCopy}

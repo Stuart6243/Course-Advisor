@@ -210,8 +210,8 @@ def test_run_build_and_save_track_b_output(monkeypatch: pytest.MonkeyPatch, caps
         }
     ]
 
-    def fake_build(raw_index_path: str, courses_dir: str) -> list[dict]:
-        assert raw_index_path == "RAW"
+    def fake_build(courses_dir: str) -> list[dict]:
+        # 现在以 courses_flat 目录为唯一真源构建（不再依赖 raw index）。
         assert courses_dir == "COURSES"
         return fake_idx
 
@@ -221,7 +221,7 @@ def test_run_build_and_save_track_b_output(monkeypatch: pytest.MonkeyPatch, caps
         assert index == fake_idx
         saved["output_path"] = output_path
 
-    monkeypatch.setattr(course_index, "build_enriched_index", fake_build)
+    monkeypatch.setattr(course_index, "build_enriched_index_from_dir", fake_build)
     monkeypatch.setattr(course_index, "save_enriched_index", fake_save)
 
     output_path = str(tmp_path / "enriched.json")

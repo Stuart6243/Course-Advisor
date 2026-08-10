@@ -9,7 +9,8 @@
   },
   "chat": {
     "placeholder": "Demandez au Conseiller AI...",
-    "disclaimer": "L'AI peut faire des erreurs. Vérifiez les informations importantes."
+    "disclaimer": "L'AI peut faire des erreurs. Vérifiez les informations importantes.",
+    "sources": "Cours référencés :"
   },
   "settings": {
     "title": "Paramètres",
@@ -47,7 +48,7 @@
       "submit": "Ajouter à la base de données",
       "cancel": "Annuler",
       "extractedPreview": "Texte extrait du fichier :",
-      "codeInvalid": "Le code du cours doit inclure des lettres majuscules et des chiffres.",
+      "codeInvalid": "Format invalide. Ex. : CIEN E3125 (2-4 lettres + espace + lettre optionnelle + 4 chiffres).",
       "required": "Le code et le titre du cours sont obligatoires."
     }
   },

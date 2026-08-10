@@ -50,8 +50,14 @@ export function useChat(language: Language, settings: ChatSettings) {
             msg.id === assistantId
               ? {
                   ...msg,
+                  // 出错时：如果已经流出了部分内容，保留它并在末尾附一行错误提示，
+                  // 而不是把已显示的回答整段替换成错误信息。
                   content:
-                    typeof fallbackText === 'string' ? fallbackText : msg.content,
+                    typeof fallbackText === 'string'
+                      ? msg.content
+                        ? `${msg.content}\n\n_⚠️ ${fallbackText}_`
+                        : fallbackText
+                      : msg.content,
                   isStreaming: false,
                 }
               : msg,
@@ -78,8 +84,15 @@ export function useChat(language: Language, settings: ChatSettings) {
               ),
             );
           },
-          () => {
-            // Sources are already provided by backend; no UI rendering needed here.
+          (courses) => {
+            // 后端在回答结束时给出本轮引用的课程代码，挂到助手消息上用于展示。
+            if (courses && courses.length) {
+              setMessages((prev) =>
+                prev.map((msg) =>
+                  msg.id === assistantId ? {...msg, sources: courses} : msg,
+                ),
+              );
+            }
           },
           () => {
             finishAssistant();

@@ -4,6 +4,7 @@ export type Message = {
   content: string;
   time: string;
   isStreaming?: boolean;
+  sources?: string[];
 };
 
 export type Language = 'en' | 'zh' | 'es' | 'fr';
