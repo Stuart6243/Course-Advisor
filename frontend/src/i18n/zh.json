@@ -16,7 +16,8 @@
     "copy": "复制",
     "copied": "已复制",
     "stop": "停止生成",
-    "scrollToBottom": "滚动到底部"
+    "scrollToBottom": "滚动到底部",
+    "contextLost": "后端已重启，不再记得这段对话。上面的消息仍然显示，但「那些课」这类追问将无法生效，请重新完整地提问。"
   },
   "settings": {
     "title": "设置",

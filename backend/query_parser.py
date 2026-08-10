@@ -372,7 +372,9 @@ for _generic_word in ("engineering", "applied", "science", "math", "mathematics"
     DEPT_KEYWORD_MAP.pop(_generic_word, None)
 
 # 正则模式
-COURSE_CODE_RE = re.compile(r'\b([A-Z]{4})\s+([A-Z]?\d{4})\b')
+# 允许字母与数字之间是空格、连字符，或完全没有分隔：
+# 用户实际会写成 COMS W4111 / COMS-W4111 / COMSW4111 / coms  w4111。
+COURSE_CODE_RE = re.compile(r'\b([A-Z]{4})[\s\-_]*([A-Z]?\d{4})\b')
 COMPARE_RE = re.compile(r'\b(compare|comparison|difference|differ|vs\.?|versus)\b', re.I)
 RECOMMEND_RE = re.compile(
     r'\b('

@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {ArrowDown, ArrowUp, Square} from 'lucide-react';
+import {AlertTriangle, ArrowDown, ArrowUp, Square} from 'lucide-react';
 import {useTranslation} from 'react-i18next';
 import {Message} from '../types';
 import AutoResizeTextarea from './AutoResizeTextarea';
@@ -10,12 +10,19 @@ type Props = {
   isLoading: boolean;
   onSend: (text: string) => Promise<void> | void;
   onStop?: () => void;
+  contextLost?: boolean;
 };
 
 /** 距底部多少像素以内算「贴着底部」。 */
 const STICK_TO_BOTTOM_THRESHOLD = 120;
 
-export default function ChatView({messages, isLoading, onSend, onStop}: Props) {
+export default function ChatView({
+  messages,
+  isLoading,
+  onSend,
+  onStop,
+  contextLost,
+}: Props) {
   const {t} = useTranslation();
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -68,6 +75,12 @@ export default function ChatView({messages, isLoading, onSend, onStop}: Props) {
         id="chat-container"
       >
         <div className="max-w-3xl mx-auto px-4 py-8 flex flex-col gap-6">
+          {contextLost ? (
+            <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+              <AlertTriangle className="w-4 h-4 mt-0.5 flex-none" />
+              <span>{t('chat.contextLost')}</span>
+            </div>
+          ) : null}
           {messages.map((msg, idx) => (
             <MessageBubble key={msg.id} message={msg} index={idx} />
           ))}

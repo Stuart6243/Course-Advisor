@@ -16,7 +16,8 @@
     "copy": "Copiar",
     "copied": "Copiado",
     "stop": "Detener generación",
-    "scrollToBottom": "Ir al final"
+    "scrollToBottom": "Ir al final",
+    "contextLost": "El backend se reinició y ya no recuerda esta conversación. Los mensajes anteriores siguen visibles, pero las preguntas de seguimiento como «esos cursos» no funcionarán; vuelve a formular tu pregunta."
   },
   "settings": {
     "title": "Configuración",

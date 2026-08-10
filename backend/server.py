@@ -30,6 +30,7 @@ from course_retriever import retrieve_courses
 from export_handler import export_as_json, export_as_markdown
 from file_importer import (
     _find_existing_by_code as find_existing_by_code,
+    backfill_points,
     complete_course_json,
     generate_course_uid,
     import_file,
@@ -43,13 +44,15 @@ from response_generator import generate_response_stream, is_conversation_recall_
 
 
 class ExportRequest(BaseModel):
-    messages: list[dict[str, Any]]
+    # 限制条数，避免一次导出请求占用大量内存（旧版 4MB 载荷可直接通过）
+    messages: list[dict[str, Any]] = Field(max_length=2000)
     format: Literal["markdown", "json"]
 
 
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=4000)
-    conversation_id: str
+    # conversation_id 是内存字典的 key，限长避免被塞入超大字符串
+    conversation_id: str = Field(min_length=1, max_length=128)
     language: Literal["en", "zh", "es", "fr"] = "en"
     max_history_turns: Optional[int] = None
     max_results: Optional[int] = None
@@ -127,7 +130,7 @@ GENERIC_RECOMMEND_KEYWORDS = {
     "additional",
     "else",
 }
-COURSE_CODE_RE = re.compile(r"\b([A-Z]{2,4})\s+[A-Z]?\d{4}\b")
+COURSE_CODE_RE = re.compile(r"\b([A-Z]{2,4})[\s\-_]*[A-Z]?\d{4}\b")
 
 # 指代词/回指表达：出现这些词，且当前问题没有给出新的系别/课程代码/教授，
 # 说明用户是在追问“上一轮那些课”，此时应复用上一轮的课程，而不是重新全库检索。
@@ -450,6 +453,19 @@ async def chat(payload: ChatRequest, request: Request):
             if len(history) > history_limit:
                 history = history[-history_limit:]
 
+            # 告知前端后端侧还记得多少轮。对话历史存在内存里，
+            # 进程一重启（开发时 --reload 每次存盘都会重启）就清空，
+            # 而前端 UI 仍完整显示着之前的对话 —— 用户会看到助手突然"失忆"
+            # 却不知道为什么。前端据此提示"上下文已重置"。
+            yield (
+                "data: "
+                + json.dumps(
+                    {"type": "meta", "history_turns": len(history) // 2},
+                    ensure_ascii=False,
+                )
+                + "\n\n"
+            )
+
             intent_client, intent_provider = await get_llm_client(request, "intent")
             # 意图提取只看当前问题，不使用历史。Groq 用轻量 8b 模型（省 70b 配额）。
             intent_model = (
@@ -601,6 +617,9 @@ async def import_manual(payload: ManualImportRequest, request: Request):
 
     data["course_code"] = code
     data["title"] = title
+    # 表单只收 points_raw，这里回填 points_min/max，
+    # 否则手动录入的课程永远无法被「3 学分的课」这类查询命中。
+    data = backfill_points(data)
 
     uid = generate_course_uid(code, title)
 
@@ -616,23 +635,38 @@ async def import_manual(payload: ManualImportRequest, request: Request):
         }
 
     full_json = complete_course_json(data, uid)
-    save_path = Path(config.COURSES_DIR) / f"{uid}.json"
-    save_path.write_text(
-        json.dumps(full_json, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
 
-    raw_entry = {
-        "course_uid": uid,
-        "course_code": code,
-        "title": title,
-        "file_name": f"{uid}.json",
-        "path": f"courses_flat/{uid}.json",
-    }
-    enriched = build_enriched_entry(raw_entry, full_json)
-    add_to_index(request.app.state.enriched_index, enriched)
-    save_enriched_index(
-        request.app.state.enriched_index, str(config.ENRICHED_INDEX_PATH)
-    )
+    # 磁盘只读/权限不足/磁盘满时，旧版让 PermissionError 直接冒泡成 500，
+    # 前端只会看到一个没有 JSON body 的错误。这里捕获并返回可读信息。
+    try:
+        courses_dir = Path(config.COURSES_DIR)
+        courses_dir.mkdir(parents=True, exist_ok=True)
+        save_path = courses_dir / f"{uid}.json"
+        save_path.write_text(
+            json.dumps(full_json, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+
+        raw_entry = {
+            "course_uid": uid,
+            "course_code": code,
+            "title": title,
+            "file_name": f"{uid}.json",
+            "path": f"courses_flat/{uid}.json",
+        }
+        enriched = build_enriched_entry(raw_entry, full_json)
+        add_to_index(request.app.state.enriched_index, enriched)
+        save_enriched_index(
+            request.app.state.enriched_index, str(config.ENRICHED_INDEX_PATH)
+        )
+    except OSError as exc:
+        print(f"[ERROR] /api/import/manual write failed: {exc}")
+        return {
+            "success": False,
+            "message": (
+                f"Could not write the course file: {exc.strerror or exc}. "
+                f"Check that {config.COURSES_DIR} exists and is writable."
+            ),
+        }
 
     return {
         "success": True,
@@ -657,14 +691,14 @@ async def health(request: Request):
     # 前端状态点和健康检查都看不出问题，直到发消息才报错。
     mode = config.INFERENCE_MODE
     if mode == "groq":
-        usable = groq_ok
+        model_ok = groq_ok
     elif mode == "local":
-        usable = ollama_ok
+        model_ok = ollama_ok
     else:
-        usable = groq_ok or ollama_ok
+        model_ok = groq_ok or ollama_ok
 
     reasons: list[str] = []
-    if not usable:
+    if not model_ok:
         if mode in ("groq", "hybrid"):
             if not config.GROQ_API_KEY:
                 reasons.append("GROQ_API_KEY is not set")
@@ -675,6 +709,15 @@ async def health(request: Request):
                 f"Ollama not reachable at {config.OLLAMA_BASE_URL} "
                 f"or model '{config.OLLAMA_MODEL}' not pulled"
             )
+
+    # 课程库为空时同样是不可用状态：模型再正常，用户也只会一直看到
+    # 「找不到匹配课程」，而完全意识不到是数据没加载。
+    if total == 0:
+        reasons.append(
+            f"No courses loaded — check that {config.COURSES_DIR} contains course JSON files"
+        )
+
+    usable = model_ok and total > 0
 
     return {
         "status": "ok" if usable else "degraded",

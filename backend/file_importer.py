@@ -286,6 +286,50 @@ def validate_course_json(data: dict) -> tuple[bool, str]:
     return True, ""
 
 
+# "3.00 points" / "1.5-6 points" / "3 pts" / "3.00" 都要能解析出结构化学分。
+POINTS_RANGE_RE = re.compile(
+    r"(\d+(?:\.\d+)?)\s*(?:-|–|—|to|~)\s*(\d+(?:\.\d+)?)", re.IGNORECASE
+)
+POINTS_SINGLE_RE = re.compile(r"(\d+(?:\.\d+)?)")
+
+
+def parse_points_raw(points_raw: str) -> tuple[float, float] | None:
+    """
+    从 points_raw 文本解析出 (points_min, points_max)。
+
+    手动录入表单只收 points_raw，旧版直接把 points_min/max 留成 0.0，
+    结果这门课永远无法被「3 学分的课」这类结构化查询命中。
+    """
+    text = _safe_str(points_raw)
+    if not text:
+        return None
+
+    range_match = POINTS_RANGE_RE.search(text)
+    if range_match:
+        lo, hi = float(range_match.group(1)), float(range_match.group(2))
+        return (min(lo, hi), max(lo, hi))
+
+    single = POINTS_SINGLE_RE.search(text)
+    if single:
+        value = float(single.group(1))
+        return (value, value)
+    return None
+
+
+def backfill_points(data: dict) -> dict:
+    """points_min/max 缺失或为 0 时，尝试从 points_raw 回填。"""
+    result = dict(data)
+    current_min = _as_float(result.get("points_min"), default=None)
+    current_max = _as_float(result.get("points_max"), default=None)
+    if current_min and current_max:
+        return result
+
+    parsed = parse_points_raw(result.get("points_raw", ""))
+    if parsed:
+        result["points_min"], result["points_max"] = parsed
+    return result
+
+
 def _find_existing_by_code(enriched_index: list[dict], course_code: str) -> dict | None:
     """按 course_code 在索引中查找已存在的课程（大小写/空格不敏感）。"""
     target = normalize_course_code(course_code)
@@ -452,6 +496,9 @@ async def import_file(
 
         parsed["course_code"] = normalize_course_code(parsed.get("course_code"))
         parsed["title"] = _safe_str(parsed.get("title"))
+        # LLM 常常只填了 points_raw 而漏掉数值字段，这里回填，
+        # 否则导入的课程无法被学分类查询检索到。
+        parsed = backfill_points(parsed)
 
         score, issues = quality_score(parsed)
         if score < config.IMPORT_MIN_QUALITY_SCORE:

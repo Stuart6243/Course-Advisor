@@ -76,6 +76,7 @@ export async function sendMessageStream(
   onDone: () => void,
   onError: (msg: string) => void,
   signal?: AbortSignal,
+  onMeta?: (meta: {historyTurns: number}) => void,
 ): Promise<void> {
   const payload: Record<string, unknown> = {
     message,
@@ -146,6 +147,10 @@ export async function sendMessageStream(
       const event = JSON.parse(payload);
       if (event.type === 'chunk' && typeof event.content === 'string') {
         onChunk(event.content);
+        return;
+      }
+      if (event.type === 'meta') {
+        onMeta?.({historyTurns: Number(event.history_turns ?? 0)});
         return;
       }
       if (event.type === 'sources' && Array.isArray(event.courses)) {

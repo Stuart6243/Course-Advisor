@@ -356,6 +356,132 @@ def test_first_turn_never_referential():
     assert not server._is_referential_followup(intent, "what are its prerequisites?", is_followup=False)
 
 
+# ---------------------------------------------------------------- 第二轮审查发现
+@pytest.mark.parametrize(
+    "raw,expected",
+    [
+        ("3.00 points", (3.0, 3.0)),
+        ("3 points", (3.0, 3.0)),
+        ("1.5-6 points", (1.5, 6.0)),
+        ("1 to 4 points", (1.0, 4.0)),
+        ("4.5", (4.5, 4.5)),
+        ("", None),
+        ("no numbers here", None),
+    ],
+)
+def test_bug26_points_raw_parsing(raw, expected):
+    from file_importer import parse_points_raw
+    assert parse_points_raw(raw) == expected
+
+
+def test_bug26_manual_import_points_are_searchable():
+    """
+    手动录入表单只收 points_raw，旧版把 points_min/max 留成 0，
+    这门课就永远无法被「3 学分的课」检索到。
+    """
+    from file_importer import backfill_points
+    filled = backfill_points({"course_code": "TEST W1234", "title": "T", "points_raw": "3.00 points"})
+    assert filled["points_min"] == 3.0
+    assert filled["points_max"] == 3.0
+
+    entry = {
+        "course_code": "TEST W1234", "points_min": filled["points_min"],
+        "points_max": filled["points_max"], "sections_summary": [],
+        "all_instructors": [], "all_terms": [],
+    }
+    assert filter_by_fields([entry], {"points_min": 3.0, "points_max": 3.0})
+
+
+def test_bug26_backfill_does_not_clobber_existing():
+    from file_importer import backfill_points
+    filled = backfill_points({"points_raw": "3 points", "points_min": 1.0, "points_max": 6.0})
+    assert (filled["points_min"], filled["points_max"]) == (1.0, 6.0)
+
+
+@pytest.mark.parametrize(
+    "question,expected",
+    [
+        ("COMS W4111", ["COMS W4111"]),
+        ("COMS-W4111", ["COMS W4111"]),
+        ("COMSW4111", ["COMS W4111"]),
+        ("coms w4111", ["COMS W4111"]),
+        ("COMS  W4111", ["COMS W4111"]),
+        ("COMS_W4111", ["COMS W4111"]),
+    ],
+)
+def test_bug30_course_code_variants(question, expected):
+    """用户实际会写 COMS-W4111 / COMSW4111，旧版只认单一空格分隔。"""
+    intent = _intent(question)
+    assert intent["course_codes"] == expected
+
+
+def test_bug28_health_degraded_when_no_courses(monkeypatch):
+    """0 门课时 status 必须是 degraded —— 否则用户只会看到「找不到课程」。"""
+    import server as srv
+    from fastapi.testclient import TestClient
+
+    monkeypatch.setattr(config, "WARMUP_ON_STARTUP", False)
+    with TestClient(srv.app) as client:
+        client.app.state.enriched_index = []
+        body = client.get("/api/health").json()
+        assert body["status"] == "degraded"
+        assert body["usable"] is False
+        assert any("No courses loaded" in r for r in body["reasons"])
+
+
+def test_bug29_chat_emits_meta_with_history_turns(monkeypatch):
+    """
+    后端历史存在内存里，--reload 时每次存盘都会清空。
+    前端靠 meta.history_turns 判断上下文是否断掉并提示用户。
+    """
+    import server as srv
+    from fastapi.testclient import TestClient
+
+    class Fake:
+        async def is_available(self, force=False): return True
+        async def chat(self, m, system_prompt="", max_tokens=512, model=""): return "{}"
+        async def chat_stream(self, m, system_prompt="", max_tokens=512, model=""):
+            yield "ok"
+
+    monkeypatch.setattr(config, "WARMUP_ON_STARTUP", False)
+    monkeypatch.setattr(config, "INFERENCE_MODE", "local")
+
+    def parse(resp):
+        return [json.loads(l[6:]) for l in resp.text.splitlines() if l.startswith("data: ")]
+
+    with TestClient(srv.app) as client:
+        client.app.state.ollama = Fake()
+        body = {"message": "aerospace courses", "conversation_id": "meta-t", "language": "en"}
+        events = parse(client.post("/api/chat", json=body))
+        meta = next(e for e in events if e["type"] == "meta")
+        assert meta["history_turns"] == 0, "首轮应为 0"
+
+        events = parse(client.post("/api/chat", json=body))
+        meta = next(e for e in events if e["type"] == "meta")
+        assert meta["history_turns"] == 1, "第二轮应能看到 1 轮历史"
+
+        # 模拟后端重启
+        client.app.state.conversations.clear()
+        events = parse(client.post("/api/chat", json=body))
+        meta = next(e for e in events if e["type"] == "meta")
+        assert meta["history_turns"] == 0, "重启后应回到 0，前端据此提示上下文已重置"
+
+
+def test_bug33_oversized_payloads_rejected(monkeypatch):
+    import server as srv
+    from fastapi.testclient import TestClient
+
+    monkeypatch.setattr(config, "WARMUP_ON_STARTUP", False)
+    with TestClient(srv.app) as client:
+        r = client.post("/api/chat", json={
+            "message": "hi", "conversation_id": "z" * 500, "language": "en"})
+        assert r.status_code == 422, "conversation_id 应限长"
+
+        r = client.post("/api/export", json={
+            "messages": [{"role": "user", "content": "x"}] * 5000, "format": "json"})
+        assert r.status_code == 422, "导出条数应有上限"
+
+
 # ---------------------------------------------------------------- 综合：结果相关性
 def test_no_irrelevant_results_for_unanchored_queries(index):
     """没有任何锚点的问题不应硬凑课程出来。"""

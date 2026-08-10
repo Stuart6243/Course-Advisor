@@ -9,8 +9,12 @@ export function useChat(language: Language, settings: ChatSettings) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId, setConversationId] = useState(() => safeUUID());
+  const [contextLost, setContextLost] = useState(false);
   const loadingRef = useRef(false);
   const abortRef = useRef<AbortController | null>(null);
+  // 供 onMeta 回调读取当前消息数，避免把 messages 加进 sendMessage 的依赖数组
+  const messagesRef = useRef<Message[]>([]);
+  messagesRef.current = messages;
 
   const setLoading = (next: boolean) => {
     loadingRef.current = next;
@@ -115,6 +119,19 @@ export function useChat(language: Language, settings: ChatSettings) {
             finishAssistant(errorMsg || 'Request failed.');
           },
           controller.signal,
+          ({historyTurns}) => {
+            // 后端对话历史存在内存里，进程重启（开发时 --reload 每次存盘都重启）
+            // 就会清空，而这里 UI 仍显示着完整对话。
+            // 前端已有 >=1 轮但后端报 0 轮，说明上下文断了，明确告诉用户。
+            const priorTurns = Math.floor(
+              messagesRef.current.filter((m) => m.role === 'user').length,
+            );
+            if (priorTurns > 1 && historyTurns === 0) {
+              setContextLost(true);
+            } else {
+              setContextLost(false);
+            }
+          },
         );
       } catch (err) {
         if (controller.signal.aborted) {
@@ -140,8 +157,9 @@ export function useChat(language: Language, settings: ChatSettings) {
     abortRef.current = null;
     setMessages([]);
     setConversationId(safeUUID());
+    setContextLost(false);
     setLoading(false);
   }, []);
 
-  return {messages, isLoading, sendMessage, stopGeneration, newChat};
+  return {messages, isLoading, sendMessage, stopGeneration, newChat, contextLost};
 }

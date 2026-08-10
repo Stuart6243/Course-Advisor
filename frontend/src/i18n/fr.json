@@ -16,7 +16,8 @@
     "copy": "Copier",
     "copied": "Copié",
     "stop": "Arrêter la génération",
-    "scrollToBottom": "Aller en bas"
+    "scrollToBottom": "Aller en bas",
+    "contextLost": "Le backend a redémarré et ne se souvient plus de cette conversation. Les messages précédents restent affichés, mais les questions de suivi comme « ces cours » ne fonctionneront pas — reformulez votre question."
   },
   "settings": {
     "title": "Paramètres",

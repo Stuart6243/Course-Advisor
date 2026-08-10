@@ -16,7 +16,8 @@
     "copy": "Copy",
     "copied": "Copied",
     "stop": "Stop generating",
-    "scrollToBottom": "Scroll to bottom"
+    "scrollToBottom": "Scroll to bottom",
+    "contextLost": "The backend restarted, so it no longer remembers this conversation. Earlier messages are still shown here, but follow-up questions like \"those courses\" won't work — please restate your question."
   },
   "settings": {
     "title": "Settings",

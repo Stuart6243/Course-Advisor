@@ -41,10 +41,8 @@ export default function App() {
     {maxHistoryTurns: 10, maxResults: 5},
     isChatSettings,
   );
-  const {messages, isLoading, sendMessage, stopGeneration, newChat} = useChat(
-    language,
-    chatSettings,
-  );
+  const {messages, isLoading, sendMessage, stopGeneration, newChat, contextLost} =
+    useChat(language, chatSettings);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const {i18n} = useTranslation();
 
@@ -79,6 +77,7 @@ export default function App() {
           isLoading={isLoading}
           onSend={sendMessage}
           onStop={stopGeneration}
+          contextLost={contextLost}
         />
       ) : (
         <LandingView onStart={sendMessage} />
