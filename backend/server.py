@@ -17,7 +17,7 @@ from typing import Any, Literal, Optional
 from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, field_validator
 
 import config
 from course_index import (
@@ -29,6 +29,7 @@ from course_index import (
 from course_retriever import retrieve_courses
 from export_handler import export_as_json, export_as_markdown
 from file_importer import (
+    _find_existing_by_code as find_existing_by_code,
     complete_course_json,
     generate_course_uid,
     import_file,
@@ -47,11 +48,19 @@ class ExportRequest(BaseModel):
 
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str = Field(min_length=1, max_length=4000)
     conversation_id: str
     language: Literal["en", "zh", "es", "fr"] = "en"
     max_history_turns: Optional[int] = None
     max_results: Optional[int] = None
+
+    @field_validator("message")
+    @classmethod
+    def validate_message(cls, value: str) -> str:
+        text = (value or "").strip()
+        if not text:
+            raise ValueError("message must not be empty")
+        return text
 
     @field_validator("max_history_turns")
     @classmethod
@@ -79,6 +88,37 @@ class ManualImportRequest(BaseModel):
     department_or_group: Optional[str] = ""
     sections: Optional[list] = []
 
+
+ERROR_MESSAGES: dict[str, dict[str, str]] = {
+    "en": {
+        "missing_key": "The cloud model isn't configured. Set GROQ_API_KEY in the terminal that runs the backend, or switch INFERENCE_MODE to \"local\" to use Ollama.",
+        "rate_limited": "The cloud model is rate-limited right now. Please wait a moment and try again.",
+        "timeout": "The model took too long to respond. Please try again, or ask a more specific question.",
+        "unreachable": "Couldn't reach the model service. Check that Ollama is running (or that you're online for Groq).",
+        "generic": "Something went wrong while generating the answer. Please try again.",
+    },
+    "zh": {
+        "missing_key": "云端模型未配置。请在运行后端的终端里设置 GROQ_API_KEY，或把 INFERENCE_MODE 改成 \"local\" 以使用本地 Ollama。",
+        "rate_limited": "云端模型当前触发了限流，请稍等片刻再试。",
+        "timeout": "模型响应超时。请重试，或把问题问得更具体一些。",
+        "unreachable": "无法连接模型服务。请确认 Ollama 已启动（或网络可访问 Groq）。",
+        "generic": "生成回答时出错了，请重试。",
+    },
+    "es": {
+        "missing_key": "El modelo en la nube no está configurado. Define GROQ_API_KEY en la terminal del backend, o cambia INFERENCE_MODE a \"local\" para usar Ollama.",
+        "rate_limited": "El modelo en la nube está limitado por ahora. Espera un momento e inténtalo de nuevo.",
+        "timeout": "El modelo tardó demasiado en responder. Inténtalo de nuevo o haz una pregunta más específica.",
+        "unreachable": "No se pudo conectar con el servicio del modelo. Verifica que Ollama esté en ejecución.",
+        "generic": "Ocurrió un error al generar la respuesta. Inténtalo de nuevo.",
+    },
+    "fr": {
+        "missing_key": "Le modèle cloud n'est pas configuré. Définissez GROQ_API_KEY dans le terminal du backend, ou passez INFERENCE_MODE à \"local\" pour utiliser Ollama.",
+        "rate_limited": "Le modèle cloud est actuellement limité. Patientez un instant puis réessayez.",
+        "timeout": "Le modèle a mis trop de temps à répondre. Réessayez ou posez une question plus précise.",
+        "unreachable": "Impossible de joindre le service du modèle. Vérifiez qu'Ollama est démarré.",
+        "generic": "Une erreur s'est produite lors de la génération de la réponse. Veuillez réessayer.",
+    },
+}
 
 GENERIC_RECOMMEND_KEYWORDS = {
     "other",
@@ -214,6 +254,42 @@ async def get_llm_client(request: Request, task: str = "response"):
     return ollama, "ollama"
 
 
+async def get_fallback_client(request: Request, primary_provider: str):
+    """
+    hybrid 模式下的运行时兜底客户端。
+
+    get_llm_client 只在请求开始前探测一次可用性，一旦选中 Groq，
+    后续调用失败（429 限流 / 超时 / 网关抖动）就直接报错，不会切到本地。
+    Groq 免费额度下限流是常态而非边缘情况，所以这里额外提供一个兜底客户端，
+    供 generate_response_stream 在「首个 token 之前失败」时整轮重试。
+    """
+    if config.INFERENCE_MODE != "hybrid" or primary_provider != "groq":
+        return None
+    ollama = request.app.state.ollama
+    if ollama is None:
+        return None
+    if not await ollama.is_available():
+        return None
+    return ollama
+
+
+def _user_facing_error(exc: Exception, language: str) -> str:
+    """把内部异常转成面向用户的提示，不直接暴露 str(exc)。"""
+    text = str(exc).lower()
+    if "groq_api_key" in text or "api key" in text:
+        key = "missing_key"
+    elif "429" in text or "rate limit" in text or "too many requests" in text:
+        key = "rate_limited"
+    elif "timeout" in text or "timed out" in text:
+        key = "timeout"
+    elif "connect" in text or "connection" in text:
+        key = "unreachable"
+    else:
+        key = "generic"
+    messages = ERROR_MESSAGES.get(language) or ERROR_MESSAGES["en"]
+    return messages[key]
+
+
 def _is_ambiguous_recommend_followup(intent: dict) -> bool:
     if (intent.get("query_type") or "").lower() != "recommend":
         return False
@@ -262,43 +338,52 @@ def _infer_department_from_context(
     return None
 
 
+STATS_HEADERS = {
+    "en": "We currently have **{total}** courses across **{depts}** departments:",
+    "zh": "当前数据库共有 **{total}** 门课程，覆盖 **{depts}** 个系别：",
+    "es": "Tenemos **{total}** cursos en total, distribuidos en **{depts}** departamentos:",
+    "fr": "Nous avons **{total}** cours au total, répartis sur **{depts}** départements :",
+}
+
+# 列表项里的「门课 / courses / cursos / cours」也要跟着语言走，
+# 旧版四种语言都硬编码成英文 "courses"。
+STATS_UNIT = {"en": "courses", "zh": "门", "es": "cursos", "fr": "cours"}
+
+STATS_MORE = {
+    "en": "_...and {n} more departments._",
+    "zh": "_……还有 {n} 个系别未列出。_",
+    "es": "_...y {n} departamentos más._",
+    "fr": "_...et {n} autres départements._",
+}
+
+# 一次列 56 个系太长，默认只列前 N 个。
+STATS_MAX_DEPTS = 20
+
+
 def _format_stats_message(index_data: list[dict], language: str) -> str:
+    lang = language if language in STATS_HEADERS else "en"
+
     dept_counts: dict[str, int] = {}
     for entry in index_data:
         dept = (entry.get("department_prefix") or "UNKNOWN").strip().upper() or "UNKNOWN"
         dept_counts[dept] = dept_counts.get(dept, 0) + 1
 
     sorted_depts = sorted(dept_counts.items(), key=lambda item: (-item[1], item[0]))
-
-    if language == "zh":
-        lines = [
-            f"当前数据库共有 **{len(index_data)}** 门课程，覆盖 **{len(sorted_depts)}** 个系别：",
-            "",
-        ]
-        lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
-        return "\n".join(lines)
-
-    if language == "es":
-        lines = [
-            f"Tenemos **{len(index_data)}** cursos en total, distribuidos en **{len(sorted_depts)}** departamentos:",
-            "",
-        ]
-        lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
-        return "\n".join(lines)
-
-    if language == "fr":
-        lines = [
-            f"Nous avons **{len(index_data)}** cours au total, répartis sur **{len(sorted_depts)}** départements :",
-            "",
-        ]
-        lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
-        return "\n".join(lines)
+    unit = STATS_UNIT[lang]
 
     lines = [
-        f"We currently have **{len(index_data)}** courses across **{len(sorted_depts)}** departments:",
+        STATS_HEADERS[lang].format(total=len(index_data), depts=len(sorted_depts)),
         "",
     ]
-    lines.extend([f"- **{dept}**: {count} courses" for dept, count in sorted_depts])
+    lines.extend(
+        f"- **{dept}**: {count} {unit}" for dept, count in sorted_depts[:STATS_MAX_DEPTS]
+    )
+
+    remaining = len(sorted_depts) - STATS_MAX_DEPTS
+    if remaining > 0:
+        lines.append("")
+        lines.append(STATS_MORE[lang].format(n=remaining))
+
     return "\n".join(lines)
 
 
@@ -369,7 +454,10 @@ async def chat(payload: ChatRequest, request: Request):
                         max_results=max_results,
                     )
 
-                response_client, _ = await get_llm_client(request, "response")
+                response_client, response_provider = await get_llm_client(
+                    request, "response"
+                )
+                fallback_client = await get_fallback_client(request, response_provider)
                 full_response = ""
                 async for chunk in generate_response_stream(
                     intent=intent,
@@ -377,12 +465,18 @@ async def chat(payload: ChatRequest, request: Request):
                     ollama=response_client,
                     language=payload.language,
                     conversation_history=messages_for_llm,
+                    max_results=max_results,
+                    fallback_client=fallback_client,
                 ):
                     full_response += chunk
                     event = {"type": "chunk", "content": chunk}
                     yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
 
             # 回答完成后更新会话历史和 meta。
+            # 注意：这里基于「写回时的最新历史」追加，而不是请求开始时读到的快照。
+            # 否则同一 conversation_id 并发两条消息时，后写会覆盖先写（lost update）。
+            latest = convos.get(cid, [])
+            history = list(latest) if len(latest) >= len(history) else history
             history.append({"role": "user", "content": payload.message})
             history.append({"role": "assistant", "content": full_response})
 
@@ -413,7 +507,11 @@ async def chat(payload: ChatRequest, request: Request):
             yield f"data: {json.dumps({'type': 'sources', 'courses': source_codes}, ensure_ascii=False)}\n\n"
             yield f"data: {json.dumps({'type': 'done'}, ensure_ascii=False)}\n\n"
         except Exception as exc:
-            yield f"data: {json.dumps({'type': 'error', 'message': str(exc)}, ensure_ascii=False)}\n\n"
+            print(f"[ERROR] /api/chat failed: {type(exc).__name__}: {exc}")
+            friendly = _user_facing_error(exc, payload.language)
+            yield f"data: {json.dumps({'type': 'error', 'message': friendly}, ensure_ascii=False)}\n\n"
+            # 始终补一个 done，前端无需依赖异常路径来收尾。
+            yield f"data: {json.dumps({'type': 'done'}, ensure_ascii=False)}\n\n"
 
     return StreamingResponse(stream(), media_type="text/event-stream")
 
@@ -468,12 +566,16 @@ async def import_manual(payload: ManualImportRequest, request: Request):
 
     uid = generate_course_uid(code, title)
 
-    for entry in request.app.state.enriched_index:
-        if entry.get("course_uid") == uid:
-            return {
-                "success": False,
-                "message": f"Course {code} already exists in database.",
-            }
+    # 按 course_code 去重（旧版按 sha1(code|title)，换个标题就能重复入库）。
+    existing = find_existing_by_code(request.app.state.enriched_index, code)
+    if existing is not None:
+        return {
+            "success": False,
+            "message": (
+                f"Course {code} already exists in database "
+                f"(\"{existing.get('title', '')}\")."
+            ),
+        }
 
     full_json = complete_course_json(data, uid)
     save_path = Path(config.COURSES_DIR) / f"{uid}.json"
@@ -512,9 +614,35 @@ async def health(request: Request):
     index_data = request.app.state.enriched_index
     total = len(index_data) if isinstance(index_data, list) else 0
 
+    # 如实反映「当前 INFERENCE_MODE 下到底能不能用」，
+    # 旧版无论配置多离谱都返回 status: ok，导致忘记 export GROQ_API_KEY 时
+    # 前端状态点和健康检查都看不出问题，直到发消息才报错。
+    mode = config.INFERENCE_MODE
+    if mode == "groq":
+        usable = groq_ok
+    elif mode == "local":
+        usable = ollama_ok
+    else:
+        usable = groq_ok or ollama_ok
+
+    reasons: list[str] = []
+    if not usable:
+        if mode in ("groq", "hybrid"):
+            if not config.GROQ_API_KEY:
+                reasons.append("GROQ_API_KEY is not set")
+            else:
+                reasons.append("Groq API unreachable or rejected the key")
+        if mode in ("local", "hybrid"):
+            reasons.append(
+                f"Ollama not reachable at {config.OLLAMA_BASE_URL} "
+                f"or model '{config.OLLAMA_MODEL}' not pulled"
+            )
+
     return {
-        "status": "ok",
-        "inference_mode": config.INFERENCE_MODE,
+        "status": "ok" if usable else "degraded",
+        "usable": usable,
+        "reasons": reasons,
+        "inference_mode": mode,
         "groq_available": groq_ok,
         "ollama_available": ollama_ok,
         "ollama_connected": ollama_ok,

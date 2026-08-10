@@ -10,7 +10,13 @@
   "chat": {
     "placeholder": "Ask Advisor AI...",
     "disclaimer": "Advisor AI can make mistakes. Consider checking important information.",
-    "sources": "Courses referenced:"
+    "sources": "Courses referenced:",
+    "assistantName": "Advisor AI",
+    "userName": "You",
+    "copy": "Copy",
+    "copied": "Copied",
+    "stop": "Stop generating",
+    "scrollToBottom": "Scroll to bottom"
   },
   "settings": {
     "title": "Settings",
@@ -36,27 +42,29 @@
     "exported": "Exported!",
     "manualImport": {
       "title": "Complete Course Information",
-      "description": "We couldn't fully extract course details from the file. Please fill in the missing fields.",
+      "description": "Description (optional)",
       "courseCode": "Course Code",
       "courseCodePlaceholder": "e.g. CIEN E3125",
       "courseTitle": "Course Title",
       "courseTitlePlaceholder": "e.g. Structural Design",
       "points": "Credits",
       "pointsPlaceholder": "e.g. 3.0",
-      "description": "Description (optional)",
       "prerequisites": "Prerequisites (optional)",
       "submit": "Add to Database",
       "cancel": "Cancel",
       "extractedPreview": "Extracted text from your file:",
       "codeInvalid": "Invalid format. Use e.g. CIEN E3125 (2-4 letters, space, optional letter + 4 digits).",
       "required": "Course code and title are required."
-    }
+    },
+    "importFormats": "Supported formats: PDF, HTML",
+    "exportError": "Export failed"
   },
   "connection": {
     "groqConnected": "Connected via Groq Cloud",
     "ollamaConnected": "Connected via Local AI",
     "disconnected": "AI not connected",
-    "hybrid": "Hybrid Mode"
+    "hybrid": "Hybrid Mode",
+    "degraded": "Backend reachable, but no model is available"
   },
   "languages": {
     "en": "English (US)",

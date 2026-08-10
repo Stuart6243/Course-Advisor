@@ -418,10 +418,13 @@ def filter_by_fields(index: list[dict], filters: dict) -> list[dict]:
     if not filters:
         return list(index)
 
+    # 显式点名课程代码时，以课程代码为主筛条件，但不再直接 return —
+    # 旧版在这里提前返回，导致同一条查询里的 term / days / time_of_day
+    # 等附加条件被静默忽略（"CIEN E3125 春季有开吗" 的学期条件不生效）。
     course_codes = [c.strip().upper() for c in (filters.get("course_codes") or []) if c]
-    if course_codes:
-        code_set = set(course_codes)
-        return [e for e in index if (e.get("course_code", "").upper() in code_set)]
+    code_set = set(course_codes)
+    if code_set:
+        index = [e for e in index if (e.get("course_code", "").upper() in code_set)]
 
     department = (filters.get("department") or "").strip().lower()
     instructor = (filters.get("instructor") or "").strip().lower()
@@ -439,17 +442,29 @@ def filter_by_fields(index: list[dict], filters: dict) -> list[dict]:
 
         if instructor:
             instructors = [i.lower() for i in entry.get("all_instructors", []) if i]
-            if not any(instructor in name for name in instructors):
+            # 支持只给姓或只给名："Panayotidi" 应命中 "Tom Panayotidi"
+            needle_parts = [p for p in instructor.split() if len(p) > 1]
+            if not any(
+                instructor in name or all(p in name for p in needle_parts)
+                for name in instructors
+            ):
                 continue
 
-        if points_min is not None:
-            val = entry.get("points_min")
-            if val is None or float(val) < float(points_min):
+        # 学分按「区间相交」判断，而不是要求课程区间完全落在请求区间内。
+        # 旧逻辑下一门 1.0-6.0 points 的课问「3 学分的课」会被排除，
+        # 尽管它确实可以按 3 学分选。
+        if points_min is not None or points_max is not None:
+            entry_min = entry.get("points_min")
+            entry_max = entry.get("points_max")
+            if entry_min is None and entry_max is None:
                 continue
-
-        if points_max is not None:
-            val = entry.get("points_max")
-            if val is None or float(val) > float(points_max):
+            lo = float(entry_min if entry_min is not None else entry_max)
+            hi = float(entry_max if entry_max is not None else entry_min)
+            if lo > hi:
+                lo, hi = hi, lo
+            want_lo = float(points_min) if points_min is not None else float("-inf")
+            want_hi = float(points_max) if points_max is not None else float("inf")
+            if hi < want_lo or lo > want_hi:
                 continue
 
         if term:
@@ -479,13 +494,92 @@ def filter_by_fields(index: list[dict], filters: dict) -> list[dict]:
     return results
 
 
-def search_by_keywords(candidates: list[dict], keywords: list[str]) -> list[dict]:
+# 占位型课程：独立研究、研讨、专题、论文等。对本科生选课几乎没有参考价值，
+# 但它们的标题往往字面包含系别名（"TOPICS IN COMPUTER SCIENCE"），
+# 在关键词打分里反而排第一。这里显式降权。
+PLACEHOLDER_TITLE_RE = re.compile(
+    r"\b(tutorial|seminar|projects?|topics?|research|readings?|"
+    r"independent\s+study|special\s+topics?|fieldwork|internship|"
+    r"thesis|dissertation|colloquium|practicum|advanced\s+study)\b",
+    re.IGNORECASE,
+)
+
+
+def extract_course_level(course_code: str) -> int:
+    """从课程代码中取出 4 位数字课号。取不到返回 9999。"""
+    match = re.search(r"(\d{4})\s*$", (course_code or "").strip())
+    return int(match.group(1)) if match else 9999
+
+
+def course_quality_score(entry: dict) -> int:
+    """
+    本科生视角的课程「可选性」评分，用作检索排序的 tie-break。
+
+    解决的问题：按系别检索时所有课的关键词得分相同，
+    排序退化成课号字母序，Top-5 全是 E69xx/E99xx 的占位课程。
+    """
+    score = 0
+    title = entry.get("title") or ""
+    level = extract_course_level(entry.get("course_code") or "")
+
+    # 有真实课程描述 —— 最重要的信号，否则没法回答"这门课讲什么"
+    if entry.get("has_description"):
+        score += 30
+
+    # 本学期真的开课，且有时间/教师信息
+    sections = entry.get("sections_summary") or []
+    if sections:
+        score += 25
+        if any((s.get("times") or "").strip() for s in sections):
+            score += 10
+        if any((s.get("instructor") or "").strip() for s in sections):
+            score += 5
+
+    # 占位/科研类课程降权
+    if PLACEHOLDER_TITLE_RE.search(title):
+        score -= 45
+
+    # 课号层级：本科与硕士基础课优先，9000+ 基本是博士科研
+    if level < 6000:
+        score += 20
+    elif level >= 9000:
+        score -= 30
+    else:
+        score -= 10
+
+    return score
+
+
+def sort_by_quality(entries: list[dict]) -> list[dict]:
+    """无关键词区分度时，按课程质量排序（而不是课号字母序）。"""
+    return sorted(
+        entries,
+        key=lambda e: (
+            -course_quality_score(e),
+            extract_course_level(e.get("course_code") or ""),
+            e.get("course_code", ""),
+        ),
+    )
+
+
+def search_by_keywords(
+    candidates: list[dict],
+    keywords: list[str],
+    limit: int = 15,
+    min_score: int = 1,
+) -> list[dict]:
     """
     Stage-2 scoring and ranking using keywords and searchable_text.
+
+    同分时用 course_quality_score 做 tie-break，避免退化成课号字母序。
+
+    min_score: 相关度下限。没有任何结构化锚点（系别/课号/教授）时应调高，
+    否则一个泛化词命中 searchable_text 就足以"凑"出结果
+    （"what is the meaning of life" 会因为 life 命中 LIFE CYCLE ASSESSMENT 而返回课程）。
     """
     normalized = [kw.strip().lower() for kw in keywords if kw and kw.strip()]
     if not normalized:
-        return candidates[:20]
+        return sort_by_quality(candidates)[:20]
 
     scored: list[tuple[int, dict]] = []
     for entry in candidates:
@@ -502,17 +596,19 @@ def search_by_keywords(candidates: list[dict], keywords: list[str]) -> list[dict
             if kw in searchable:
                 score += 1
 
-        if score > 0:
+        if score >= min_score:
             scored.append((score, entry))
 
     scored.sort(
         key=lambda item: (
             -item[0],
+            -course_quality_score(item[1]),
+            extract_course_level(item[1].get("course_code") or ""),
             item[1].get("course_code", ""),
             item[1].get("title", ""),
         )
     )
-    return [entry for _, entry in scored[:15]]
+    return [entry for _, entry in scored[:limit]]
 
 
 def add_to_index(index: list[dict], new_entry: dict) -> None:

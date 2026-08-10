@@ -24,6 +24,10 @@ type Props = {
   onSettingsChange: (settings: ChatSettings) => void;
 };
 
+// 版本号从 package.json 注入（vite.config.ts 中 define），
+// 旧版这里写死 "v2.4.0 • Build 8839a"，是永远不会更新的假数据。
+const APP_VERSION = `v${__APP_VERSION__}`;
+
 type StatusTone = 'success' | 'error' | 'info';
 
 type Notice = {
@@ -185,6 +189,11 @@ export default function SettingsDrawer({
       );
       setExported(true);
       window.setTimeout(() => setExported(false), 1500);
+    } catch (err) {
+      // 旧版没有 catch，导出失败会变成 unhandled rejection，UI 上毫无反馈。
+      const msg = err instanceof Error ? err.message : String(err);
+      setNotice({tone: 'error', text: `${t('settings.exportError')}: ${msg}`});
+      clearNoticeLater();
     } finally {
       setIsExporting(false);
     }
@@ -307,7 +316,7 @@ export default function SettingsDrawer({
               <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">
                 {t('settings.import')}
               </span>
-              <span className="text-slate-500 text-xs" title="Supported formats: PDF, HTML">
+              <span className="text-slate-500 text-xs" title={t('settings.importFormats')}>
                 <Info className="w-4 h-4" />
               </span>
             </div>
@@ -382,7 +391,7 @@ export default function SettingsDrawer({
         </div>
 
         <div className="p-4 border-t border-border-dark text-center">
-          <p className="text-xs text-slate-600">v2.4.0 • Build 8839a</p>
+          <p className="text-xs text-slate-600">{APP_VERSION}</p>
         </div>
       </div>
 

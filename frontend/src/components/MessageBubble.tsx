@@ -48,7 +48,7 @@ export default function MessageBubble({message, index}: Props) {
           className={`flex items-baseline gap-2 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
         >
           <span className="font-bold text-sm">
-            {message.role === 'assistant' ? 'Advisor AI' : 'You'}
+            {message.role === 'assistant' ? t('chat.assistantName') : t('chat.userName')}
           </span>
           <span className="text-xs text-slate-500">{message.time}</span>
         </div>
@@ -84,10 +84,10 @@ export default function MessageBubble({message, index}: Props) {
                 <button
                   onClick={handleCopy}
                   className="flex items-center gap-1 text-xs text-slate-400 hover:text-white transition-colors"
-                  aria-label="Copy response"
+                  aria-label={t('chat.copy')}
                 >
                   {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                  {copied ? '✓' : 'Copy'}
+                  {copied ? t('chat.copied') : t('chat.copy')}
                 </button>
               </div>
             </div>

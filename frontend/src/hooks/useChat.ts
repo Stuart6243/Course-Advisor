@@ -1,6 +1,6 @@
-import {useCallback, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {ChatSettings, Language, Message} from '../types';
-import {sendMessageStream} from '../services/api';
+import {safeUUID, sendMessageStream} from '../services/api';
 
 const nowTime = () =>
   new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
@@ -8,13 +8,21 @@ const nowTime = () =>
 export function useChat(language: Language, settings: ChatSettings) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [conversationId, setConversationId] = useState(() => crypto.randomUUID());
+  const [conversationId, setConversationId] = useState(() => safeUUID());
   const loadingRef = useRef(false);
+  const abortRef = useRef<AbortController | null>(null);
 
   const setLoading = (next: boolean) => {
     loadingRef.current = next;
     setIsLoading(next);
   };
+
+  // 组件卸载时中止在途请求，避免向已卸载组件 setState。
+  useEffect(() => {
+    return () => {
+      abortRef.current?.abort();
+    };
+  }, []);
 
   const sendMessage = useCallback(
     async (text: string) => {
@@ -23,8 +31,8 @@ export function useChat(language: Language, settings: ChatSettings) {
         return;
       }
 
-      const userId = crypto.randomUUID();
-      const assistantId = crypto.randomUUID();
+      const userId = safeUUID();
+      const assistantId = safeUUID();
 
       const userMessage: Message = {
         id: userId,
@@ -43,6 +51,9 @@ export function useChat(language: Language, settings: ChatSettings) {
 
       setMessages((prev) => [...prev, userMessage, assistantMessage]);
       setLoading(true);
+
+      const controller = new AbortController();
+      abortRef.current = controller;
 
       const finishAssistant = (fallbackText?: string) => {
         setMessages((prev) =>
@@ -63,6 +74,9 @@ export function useChat(language: Language, settings: ChatSettings) {
               : msg,
           ),
         );
+        if (abortRef.current === controller) {
+          abortRef.current = null;
+        }
         setLoading(false);
       };
 
@@ -100,8 +114,13 @@ export function useChat(language: Language, settings: ChatSettings) {
           (errorMsg) => {
             finishAssistant(errorMsg || 'Request failed.');
           },
+          controller.signal,
         );
       } catch (err) {
+        if (controller.signal.aborted) {
+          finishAssistant();
+          return;
+        }
         const msg = err instanceof Error ? err.message : 'Request failed.';
         finishAssistant(msg);
       }
@@ -109,11 +128,20 @@ export function useChat(language: Language, settings: ChatSettings) {
     [conversationId, language, settings],
   );
 
+  /** 停止生成：保留已经流出的内容。 */
+  const stopGeneration = useCallback(() => {
+    abortRef.current?.abort();
+    abortRef.current = null;
+  }, []);
+
   const newChat = useCallback(() => {
+    // 切换会话前先中止在途请求，否则旧的流会继续写入并让状态错乱。
+    abortRef.current?.abort();
+    abortRef.current = null;
     setMessages([]);
-    setConversationId(crypto.randomUUID());
+    setConversationId(safeUUID());
     setLoading(false);
   }, []);
 
-  return {messages, isLoading, sendMessage, newChat};
+  return {messages, isLoading, sendMessage, stopGeneration, newChat};
 }

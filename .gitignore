@@ -1,4 +1,16 @@
 .DS_Store
+**/.DS_Store
+
+# Agent 工作树副本（整个项目的重复拷贝，不应进版本库）
+.claude/worktrees/
+
+# 误提交的 Node 产物（backend 是纯 Python 项目）
+backend/package-lock.json
+
+# 一次性调试脚本
+_probe.py
+_rp.py
+history_probe.py
 
 # Python
 __pycache__/

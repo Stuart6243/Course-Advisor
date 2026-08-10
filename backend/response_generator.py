@@ -130,11 +130,18 @@ def build_answer_prompt(
     courses: list[dict],
     language: str,
     conversation_history: list[dict[str, str]] | None = None,
+    max_results: int | None = None,
 ) -> tuple[str, list[dict[str, str]]]:
-    """构造发给 LLM 的 system prompt 和 messages。"""
+    """构造发给 LLM 的 system prompt 和 messages。
+
+    max_results: 本轮实际要送进上下文的课程数上限。为 None 时退回全局默认值。
+    旧版这里硬编码 config.MAX_RETRIEVAL_RESULTS，导致用户在设置里调大 maxResults 后
+    前端 source chips 显示 N 条、模型却只看到 5 条，回答与引用列表对不上。
+    """
     is_followup = conversation_history is not None and len(conversation_history) > 1
     is_recall_query = is_conversation_recall_query(intent, conversation_history)
-    courses_to_use = courses[: config.MAX_RETRIEVAL_RESULTS]
+    limit = max_results if max_results and max_results > 0 else config.MAX_RETRIEVAL_RESULTS
+    courses_to_use = courses[:limit]
 
     formatted_courses = "(No courses found)"
     if courses_to_use:
@@ -191,8 +198,14 @@ async def generate_response_stream(
     ollama: Any,
     language: str,
     conversation_history: list[dict[str, str]] | None = None,
+    max_results: int | None = None,
+    fallback_client: Any = None,
 ) -> AsyncGenerator[str, None]:
-    """流式生成回答。"""
+    """流式生成回答。
+
+    fallback_client: 主客户端在「尚未吐出第一个 token」时失败，则整轮换用该客户端重试。
+    已经流出内容后再失败不会重试（避免重复输出），异常照常向上抛给 server 处理。
+    """
     lang = language if language in LANGUAGE_NAMES else "en"
     is_followup = conversation_history is not None and len(conversation_history) > 1
 
@@ -205,12 +218,27 @@ async def generate_response_stream(
         courses,
         lang,
         conversation_history=conversation_history,
+        max_results=max_results,
     )
 
-    async for token in ollama.chat_stream(
-        messages,
-        system_prompt=system_prompt,
-        max_tokens=config.RESPONSE_MAX_TOKENS,
-    ):
-        if token:
-            yield token
+    yielded = False
+    try:
+        async for token in ollama.chat_stream(
+            messages,
+            system_prompt=system_prompt,
+            max_tokens=config.RESPONSE_MAX_TOKENS,
+        ):
+            if token:
+                yielded = True
+                yield token
+    except Exception:
+        # 已经流出内容 or 没有备用客户端 -> 交给上层处理
+        if yielded or fallback_client is None:
+            raise
+        async for token in fallback_client.chat_stream(
+            messages,
+            system_prompt=system_prompt,
+            max_tokens=config.RESPONSE_MAX_TOKENS,
+        ):
+            if token:
+                yield token

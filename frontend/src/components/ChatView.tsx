@@ -1,5 +1,5 @@
-import {useEffect, useRef, useState} from 'react';
-import {ArrowDown, ArrowUp} from 'lucide-react';
+import {useCallback, useEffect, useRef, useState} from 'react';
+import {ArrowDown, ArrowUp, Square} from 'lucide-react';
 import {useTranslation} from 'react-i18next';
 import {Message} from '../types';
 import AutoResizeTextarea from './AutoResizeTextarea';
@@ -9,16 +9,46 @@ type Props = {
   messages: Message[];
   isLoading: boolean;
   onSend: (text: string) => Promise<void> | void;
+  onStop?: () => void;
 };
 
-export default function ChatView({messages, isLoading, onSend}: Props) {
+/** 距底部多少像素以内算「贴着底部」。 */
+const STICK_TO_BOTTOM_THRESHOLD = 120;
+
+export default function ChatView({messages, isLoading, onSend, onStop}: Props) {
   const {t} = useTranslation();
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const [stickToBottom, setStickToBottom] = useState(true);
 
+  const handleScroll = useCallback(() => {
+    const el = containerRef.current;
+    if (!el) {
+      return;
+    }
+    const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
+    setStickToBottom(distanceFromBottom <= STICK_TO_BOTTOM_THRESHOLD);
+  }, []);
+
+  // 只有用户本来就贴着底部时才自动滚动。
+  // 旧版每来一个 token 就无条件 scrollIntoView({behavior:'smooth'})，
+  // 导致生成期间没法往上翻看历史消息，一滚就被拽回底部。
   useEffect(() => {
+    if (!stickToBottom) {
+      return;
+    }
+    const isStreaming = messages.some((msg) => msg.isStreaming);
+    messagesEndRef.current?.scrollIntoView({
+      // 流式期间用 auto，避免 smooth 动画被后续 token 不断打断而抖动
+      behavior: isStreaming ? 'auto' : 'smooth',
+    });
+  }, [messages, stickToBottom]);
+
+  const scrollToBottom = () => {
+    setStickToBottom(true);
     messagesEndRef.current?.scrollIntoView({behavior: 'smooth'});
-  }, [messages]);
+  };
 
   const handleSend = () => {
     if (!inputText.trim() || isLoading) {
@@ -31,7 +61,12 @@ export default function ChatView({messages, isLoading, onSend}: Props) {
 
   return (
     <>
-      <main className="flex-1 overflow-y-auto relative scroll-smooth pb-32" id="chat-container">
+      <main
+        ref={containerRef}
+        onScroll={handleScroll}
+        className="flex-1 overflow-y-auto relative pb-32"
+        id="chat-container"
+      >
         <div className="max-w-3xl mx-auto px-4 py-8 flex flex-col gap-6">
           {messages.map((msg, idx) => (
             <MessageBubble key={msg.id} message={msg} index={idx} />
@@ -40,14 +75,30 @@ export default function ChatView({messages, isLoading, onSend}: Props) {
         </div>
       </main>
 
-      <div className="fixed bottom-28 right-8 z-30">
-        <button
-          onClick={() => messagesEndRef.current?.scrollIntoView({behavior: 'smooth'})}
-          className="w-10 h-10 rounded-full bg-border-dark border border-slate-700 text-slate-300 shadow-lg hover:bg-slate-700 hover:text-white flex items-center justify-center transition-all group"
-        >
-          <ArrowDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-        </button>
-      </div>
+      {isLoading && onStop ? (
+        <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40">
+          <button
+            onClick={onStop}
+            className="flex items-center gap-2 rounded-full bg-surface-dark border border-border-dark px-4 py-2 text-sm text-slate-200 shadow-lg hover:bg-slate-700 hover:text-white transition-colors"
+          >
+            <Square className="w-3.5 h-3.5 fill-current" />
+            {t('chat.stop')}
+          </button>
+        </div>
+      ) : null}
+
+      {!stickToBottom ? (
+        <div className="fixed bottom-28 right-8 z-30">
+          <button
+            onClick={scrollToBottom}
+            aria-label={t('chat.scrollToBottom')}
+            title={t('chat.scrollToBottom')}
+            className="w-10 h-10 rounded-full bg-border-dark border border-slate-700 text-slate-300 shadow-lg hover:bg-slate-700 hover:text-white flex items-center justify-center transition-all group"
+          >
+            <ArrowDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+          </button>
+        </div>
+      ) : null}
 
       <div className="fixed bottom-0 left-0 w-full bg-gradient-to-t from-background-dark via-background-dark/95 to-transparent pt-10 pb-6 px-4 z-40 pointer-events-none">
         <div className="max-w-3xl mx-auto relative pointer-events-auto">

@@ -10,7 +10,20 @@
 import config
 import json
 import re
+import unicodedata
 from course_index import DEPARTMENT_NAMES
+
+
+def fold_accents(text: str) -> str:
+    """去掉变音符号，让西/法语词能被 [a-z]+ 完整切出。
+
+    旧版直接用 re.findall(r'[a-z]+', ...)，会把 "computación" 切成 "computaci"、
+    "recomiéndame" 切成 "recomi"+"ndame"，产生大量垃圾关键词并检索出无关课程。
+    NFKD 分解后丢弃组合字符即可得到 "computacion" / "recomiendame"。
+    CJK 字符不会产生 ASCII 输出，因此中文查询仍走映射表 + LLM fallback 路径。
+    """
+    decomposed = unicodedata.normalize("NFKD", text or "")
+    return "".join(ch for ch in decomposed if not unicodedata.combining(ch))
 
 
 # ============================================================
@@ -22,6 +35,10 @@ DEFAULT_INTENT = {
     "course_codes": [],
     "keywords": [],
     "department": None,
+    # department_terms: 用户用来指代系别的原词（如 "computer science"→{"computer","science"}）。
+    # 这些词在按 department 结构化过滤之后已经不具备区分度，
+    # 必须排除在 Stage-2 关键词打分之外，否则全系课程同分、排序退化成课号字母序。
+    "department_terms": [],
     "instructor": None,
     "time_preference": None,
     "day_preference": [],
@@ -66,6 +83,7 @@ def _default_intent_copy() -> dict:
         "course_codes": [],
         "keywords": [],
         "department": None,
+        "department_terms": [],
         "instructor": None,
         "time_preference": None,
         "day_preference": [],
@@ -115,6 +133,22 @@ ZH_MAPPINGS = {
     "结构": "structural", "设计": "design", "编程": "programming",
     "算法": "algorithms", "力学": "mechanics", "热力学": "thermodynamics",
     "信号处理": "signal processing", "控制": "control systems",
+    # 补充常见主题，避免中文查询频繁掉进 LLM fallback
+    "量子": "quantum", "量子计算": "quantum computing",
+    "深度学习": "deep learning", "神经网络": "neural networks",
+    "计算机视觉": "computer vision", "自然语言": "natural language",
+    "数据库": "database", "操作系统": "operating systems",
+    "网络": "networks", "安全": "security", "密码": "cryptography",
+    "优化": "optimization", "概率": "probability", "线性代数": "linear algebra",
+    "微积分": "calculus", "流体": "fluid mechanics", "有限元": "finite element",
+    "复合材料": "composite materials", "纳米": "nanotechnology",
+    "能源": "energy", "可持续": "sustainability", "气候": "climate",
+    "金融工程": "financial engineering", "供应链": "supply chain",
+    "生物": "biology bioengineering", "医学影像": "medical imaging",
+    "嵌入式": "embedded systems", "电路": "circuits",
+    "航空航天": "aerospace", "推进": "propulsion", "空气动力": "aerodynamics",
+    "入门": "introduction", "基础": "fundamentals", "高级": "advanced",
+    "毕业设计": "capstone design", "实习": "internship",
 }
 
 ES_MAPPINGS = {
@@ -135,6 +169,26 @@ ES_MAPPINGS = {
     "computación": "computer science", "matemáticas": "mathematics",
     "buenos cursos": "good courses", "mejores cursos": "best courses",
     "créditos": "credits", "profesor": "professor",
+    # 学科主题（缺失会导致检索静默返回无关课程）
+    "robótica": "robotics robot", "robotica": "robotics robot",
+    "aprendizaje automático": "machine learning",
+    "aprendizaje automatico": "machine learning",
+    "aprendizaje profundo": "deep learning",
+    "inteligencia artificial": "artificial intelligence ai",
+    "ciencia de datos": "data science",
+    "estructural": "structural", "estructuras": "structural",
+    "termodinámica": "thermodynamics", "termodinamica": "thermodynamics",
+    "mecánica": "mechanics", "mecanica": "mechanics",
+    "algoritmos": "algorithms", "programación": "programming",
+    "programacion": "programming", "diseño": "design", "diseno": "design",
+    "señales": "signal processing", "senales": "signal processing",
+    "control": "control systems", "energía": "energy", "energia": "energy",
+    "medio ambiente": "environmental engineering",
+    "biomédica": "biomedical", "biomedica": "biomedical",
+    "materiales": "materials science",
+    "aeroespacial": "aerospace", "química": "chemical engineering",
+    "quimica": "chemical engineering",
+    "por la mañana": "morning", "por la tarde": "afternoon",
 }
 
 FR_MAPPINGS = {
@@ -156,6 +210,38 @@ FR_MAPPINGS = {
     "recommandations": "recommendations",
     "bons cours": "good courses",
     "meilleurs cours": "best courses",
+    # 系别
+    "génie civil": "civil engineering", "genie civil": "civil engineering",
+    "génie mécanique": "mechanical engineering",
+    "genie mecanique": "mechanical engineering",
+    "génie électrique": "electrical engineering",
+    "genie electrique": "electrical engineering",
+    "génie chimique": "chemical engineering",
+    "genie chimique": "chemical engineering",
+    "aérospatiale": "aerospace", "aerospatiale": "aerospace",
+    "mathématiques": "mathematics", "mathematiques": "mathematics",
+    "physique": "physics", "statistique": "statistics",
+    "biomédical": "biomedical", "biomedical": "biomedical",
+    "matériaux": "materials science", "materiaux": "materials science",
+    "environnement": "environmental engineering",
+    # 学科主题
+    "robotique": "robotics robot",
+    "apprentissage automatique": "machine learning",
+    "apprentissage profond": "deep learning",
+    "intelligence artificielle": "artificial intelligence ai",
+    "science des données": "data science",
+    "science des donnees": "data science",
+    "algorithmes": "algorithms", "programmation": "programming",
+    "structures": "structural", "structurel": "structural",
+    "thermodynamique": "thermodynamics", "mécanique": "mechanics",
+    "conception": "design", "traitement du signal": "signal processing",
+    "énergie": "energy", "energie": "energy",
+    # 时间/学分/称谓
+    "lundi": "Monday", "mardi": "Tuesday", "mercredi": "Wednesday",
+    "jeudi": "Thursday", "vendredi": "Friday",
+    "matin": "morning", "après-midi": "afternoon", "apres-midi": "afternoon",
+    "soir": "evening", "crédits": "credits",
+    "professeur": "professor",
 }
 
 
@@ -223,6 +309,17 @@ DEPT_PHRASE_MAP = {
 # 短语匹配按长度降序，避免短词抢先命中（如 "applied math" vs "math"）
 _SORTED_PHRASE_MAP = sorted(DEPT_PHRASE_MAP.items(), key=lambda x: -len(x[0]))
 
+# 单词级系别匹配时，只有这些「纯系别名」可以从关键词中剔除。
+# 像 robotics / structural / climate / data 虽然也路由到某个系，
+# 但它们本身是主题词，剔除后会丢失检索信号
+# （"recommend robotics courses" 会退化成「随便给几门 MECE 课」）。
+PURE_DEPT_WORDS = frozenset({
+    "cs", "compsci", "computer", "ieor", "aero", "aerospace",
+    "civil", "mechanical", "mech", "electrical", "ee",
+    "biomedical", "biomed", "environmental", "materials",
+    "statistics", "stats", "physics", "chemical", "chem",
+})
+
 # 系别名称 → 前缀 的反向映射（从 DEPARTMENT_NAMES 自动构建）
 DEPT_KEYWORD_MAP: dict[str, str] = {}
 for _prefix, _names in DEPARTMENT_NAMES.items():
@@ -272,6 +369,75 @@ RECOMMEND_RE = re.compile(
 )
 INSTRUCTOR_RE = re.compile(r'\b(professor|prof\.?|instructor|taught by|teach(?:es|ing)?)\b', re.I)
 
+# --- 教授名提取 ---
+# 历史 bug：整条正则加 re.I 会让 [A-Z] 也匹配小写字母，导致名字后面的动词被一起吞掉
+# （"Professor Panayotidi teach" → instructor="Panayotidi teach" → 0 结果）。
+# 修复方式：职称部分用作用域内联标志 (?i:...) 忽略大小写，名字部分保持大小写敏感。
+_PROF_TITLE = r"(?i:\bprofessors?\b|\bprof\b\.?|\binstructors?\b|\bdr\b\.?)"
+
+# 严格版：名字必须首字母大写，天然排除后面的小写动词。
+PROF_STRICT_RE = re.compile(
+    _PROF_TITLE + r"\s+([A-Z][a-zA-Z'\-]+(?:\s+[A-Z][a-zA-Z'\-]+)*)"
+)
+# 宽松版：用户全小写输入时兜底，靠 noise token 过滤动词。
+PROF_LOOSE_RE = re.compile(
+    _PROF_TITLE + r"\s+([a-zA-Z'\-]{2,}(?:\s+[a-zA-Z'\-]{2,}){0,2})", re.I
+)
+# "taught by X" / "taught by Professor X"
+TAUGHT_BY_RE = re.compile(
+    r"\btaught\s+by\s+(?:professor\s+|prof\.?\s+|dr\.?\s+)?"
+    r"([a-zA-Z'\-]{2,}(?:\s+[a-zA-Z'\-]{2,}){0,2})",
+    re.I,
+)
+
+# 跟在教授名前后、需要剥掉的噪声词。
+INSTRUCTOR_NOISE_TOKENS = frozenset({
+    "teach", "teaches", "teaching", "taught",
+    "offer", "offers", "offering", "offered", "give", "gives",
+    "course", "courses", "class", "classes", "section", "sections",
+    "lecture", "lectures", "seminar",
+    "this", "next", "last", "the", "a", "an", "any", "all",
+    "spring", "fall", "summer", "winter", "semester", "term", "year",
+    "is", "are", "was", "were", "does", "do", "did", "has", "have", "had",
+    "in", "on", "at", "for", "with", "about", "by", "from", "of", "and", "or",
+    "what", "which", "who", "whom", "whose", "when", "where", "how",
+    "show", "list", "find", "tell", "me", "my", "i", "you",
+    "available", "offered", "still", "also",
+})
+
+
+def _clean_instructor_name(raw: str) -> str:
+    """剥掉教授名前后的噪声词（动词、疑问词、学期名等）。"""
+    tokens = [tok for tok in re.split(r"\s+", (raw or "").strip()) if tok]
+    stripped = [tok.strip(".,;:?!\"'") for tok in tokens]
+    stripped = [tok for tok in stripped if tok]
+
+    while stripped and stripped[-1].lower() in INSTRUCTOR_NOISE_TOKENS:
+        stripped.pop()
+    while stripped and stripped[0].lower() in INSTRUCTOR_NOISE_TOKENS:
+        stripped.pop(0)
+
+    # 名字最多 3 个词，超出说明多吞了句子成分。
+    return " ".join(stripped[:3]).strip()
+
+
+def extract_instructor(question: str) -> str | None:
+    """从问题中提取教授名，提取不到返回 None。"""
+    for regex in (PROF_STRICT_RE, TAUGHT_BY_RE, PROF_LOOSE_RE):
+        match = regex.search(question)
+        if not match:
+            continue
+        name = _clean_instructor_name(match.group(1))
+        if len(name) >= 2:
+            return name
+
+    # 没有职称词但出现 "taught by / teaches" 等信号时，退回找首字母大写的候选名。
+    if INSTRUCTOR_RE.search(question):
+        for candidate in re.findall(r"\b([A-Z][a-zA-Z'\-]{2,})\b", question):
+            if candidate.lower() not in INSTRUCTOR_NOISE_TOKENS:
+                return candidate
+    return None
+
 TIME_KEYWORDS = {"morning": "morning", "afternoon": "afternoon", "evening": "evening"}
 
 DAY_KEYWORDS = {
@@ -293,10 +459,24 @@ STOP_WORDS = frozenset({
     'please', 'could', 'would', 'should', 'also', 'more', 'much', 'many',
     'how', 'which', 'where', 'when', 'who', 'whom', 'why', 'been', 'being',
     'not', 'but', 'if', 'then', 'than', 'too', 'very', 'just', 'only',
-    'recommend', 'suggest', 'compare', 'need',
+    'recommend', 'suggest', 'compare', 'need', 'interested', 'looking',
+    'want', 'wants', 'wanted', 'good', 'best', 'easy', 'easiest', 'hard',
     'give', 'other', 'another', 'more', 'additional', 'else',
     'based', 'current', 'conversation', 'mentioned', 'them',
     'department', 'departments',
+    # --- 西班牙语功能词（已折叠变音符号后的形式）---
+    'que', 'cual', 'cuales', 'cursos', 'curso', 'clase', 'clases',
+    'los', 'las', 'una', 'unos', 'unas', 'del', 'para', 'por', 'con',
+    'sobre', 'hay', 'tiene', 'tienen', 'quiero', 'busco', 'dame',
+    'recomiendame', 'recomendame', 'sugiereme', 'ayudame', 'encontrar',
+    'buenos', 'buenas', 'mejores', 'mejor', 'algunos', 'algunas',
+    'disponibles', 'disponible', 'ciencias',
+    # --- 法语功能词 ---
+    'cours', 'quels', 'quelles', 'quel', 'quelle', 'sont', 'est',
+    'des', 'les', 'une', 'sur', 'dans', 'pour', 'avec', 'moi', 'toi',
+    'recommande', 'recommandez', 'suggere', 'suggerez', 'donne', 'donnez',
+    'aide', 'trouver', 'bons', 'bonnes', 'meilleurs', 'meilleur',
+    'disponible', 'disponibles', 'veux', 'cherche',
 })
 
 
@@ -348,9 +528,12 @@ def rule_based_extract(question: str) -> dict | None:
     # --- 3. 提取系别 ---
     # 阶段 1：短语级优先匹配
     department = None
+    department_terms: list[str] = []
     for phrase, dept in _SORTED_PHRASE_MAP:
         if phrase in q_lower:
             department = dept
+            # 记下用户实际用来指代系别的词，供 Stage-2 打分时排除。
+            department_terms = [w for w in re.findall(r"[a-z]+", phrase) if len(w) > 2]
             break
 
     # 阶段 2：短语未命中时，再做单词级兜底
@@ -359,27 +542,13 @@ def rule_based_extract(question: str) -> dict | None:
         for word in sorted_dept_keywords:
             if re.search(r'\b' + re.escape(word) + r'\b', q_lower):
                 department = DEPT_KEYWORD_MAP[word]
+                department_terms = [word] if word in PURE_DEPT_WORDS else []
                 break
     intent["department"] = department
+    intent["department_terms"] = department_terms
 
     # --- 4. 提取教授名 ---
-    prof_match = re.search(
-        r'(?:professor|prof\.?)\s+([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+)?)',
-        question, re.I
-    )
-    if prof_match:
-        intent["instructor"] = prof_match.group(1).strip()
-    elif INSTRUCTOR_RE.search(question):
-        # 找大写开头的名字
-        name_candidates = re.findall(r'\b([A-Z][a-z]{2,})\b', question)
-        noise = {'What', 'Show', 'List', 'Find', 'Courses', 'Classes',
-                 'Teaching', 'Teach', 'Does', 'Professor', 'Available',
-                 'Spring', 'Fall', 'Summer', 'Monday', 'Tuesday',
-                 'Wednesday', 'Thursday', 'Friday', 'The', 'Are'}
-        for name in name_candidates:
-            if name not in noise:
-                intent["instructor"] = name
-                break
+    intent["instructor"] = extract_instructor(question)
 
     # --- 5. 提取时间偏好 ---
     for key, val in TIME_KEYWORDS.items():
@@ -388,9 +557,11 @@ def rule_based_extract(question: str) -> dict | None:
             break
 
     # --- 6. 提取星期偏好 ---
+    # 注意 s? ：用户写 "Tuesdays"（复数）非常常见，
+    # 旧版只匹配 \btuesday\b，导致时间条件被静默丢弃且不提示用户。
     days = []
     for key, val in DAY_KEYWORDS.items():
-        if re.search(r'\b' + re.escape(key) + r'\b', q_lower):
+        if re.search(r'\b' + re.escape(key) + r's?\b', q_lower):
             if val not in days:
                 days.append(val)
     intent["day_preference"] = days
@@ -409,8 +580,15 @@ def rule_based_extract(question: str) -> dict | None:
         intent["term"] = f"{term_match.group(1).capitalize()} {term_match.group(2)}"
 
     # --- 9. 提取搜索关键词 ---
-    words = re.findall(r'[a-z]+', q_lower)
-    keywords = [w for w in words if w not in STOP_WORDS and len(w) > 2]
+    # 先折叠变音符号，否则 "computación"/"robótica" 会被切碎成无意义片段。
+    words = re.findall(r'[a-z]+', fold_accents(q_lower))
+    seen_kw: set[str] = set()
+    keywords: list[str] = []
+    for w in words:
+        if w in STOP_WORDS or len(w) <= 2 or w in seen_kw:
+            continue
+        seen_kw.add(w)
+        keywords.append(w)
     intent["keywords"] = keywords[:5]
 
     # --- 10. 判断是否有足够信号 ---

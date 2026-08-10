@@ -286,6 +286,17 @@ def validate_course_json(data: dict) -> tuple[bool, str]:
     return True, ""
 
 
+def _find_existing_by_code(enriched_index: list[dict], course_code: str) -> dict | None:
+    """按 course_code 在索引中查找已存在的课程（大小写/空格不敏感）。"""
+    target = normalize_course_code(course_code)
+    if not target:
+        return None
+    for entry in enriched_index:
+        if normalize_course_code(entry.get("course_code", "")) == target:
+            return entry
+    return None
+
+
 def generate_course_uid(course_code: str, title: str) -> str:
     """生成课程唯一 ID。"""
     key = f"{normalize_course_code(course_code)}|{_safe_str(title)}"
@@ -411,12 +422,15 @@ async def import_file(
         if not extracted_text.strip():
             return {"success": False, "message": "Could not extract text from file."}
 
-        input_text = extracted_text[:5000]
+        input_text = extracted_text[: config.IMPORT_INPUT_MAX_CHARS]
         messages = [{"role": "user", "content": input_text}]
+        # 用独立的 IMPORT_MAX_TOKENS：模型这里要输出一整个课程 JSON
+        # （含完整 description + sections），沿用 512 的回答上限会把 JSON 截断，
+        # 表现为 description 残缺或解析失败后误触发「需要手动录入」。
         raw_response = await llm_client.chat(
             messages,
             system_prompt=CONVERSION_SYSTEM_PROMPT,
-            max_tokens=config.RESPONSE_MAX_TOKENS,
+            max_tokens=config.IMPORT_MAX_TOKENS,
         )
 
         parsed = parse_conversion_response(raw_response)
@@ -460,11 +474,21 @@ async def import_file(
         title = parsed["title"]
         uid = generate_course_uid(course_code, title)
 
-        exists = any((entry.get("course_uid") or "") == uid for entry in enriched_index)
-        if exists:
+        # 去重必须按 course_code，而不是 sha1(code|title)：
+        # 后者只要标题略有差别就能把同一门课重复入库，
+        # 这正是索引里积累出 100+ 条重复记录的原因之一。
+        existing = _find_existing_by_code(enriched_index, course_code)
+        if existing is not None:
             return {
                 "success": False,
-                "message": f"Course {course_code} already exists in database.",
+                "message": (
+                    f"Course {course_code} already exists in database "
+                    f"(\"{existing.get('title', '')}\")."
+                ),
+                "existing_course": {
+                    "course_code": existing.get("course_code", ""),
+                    "title": existing.get("title", ""),
+                },
             }
 
         completed = complete_course_json(parsed, uid)

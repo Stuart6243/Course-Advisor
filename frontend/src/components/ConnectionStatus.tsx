@@ -5,6 +5,8 @@ import {HealthStatus} from '../types';
 
 const defaultHealth: HealthStatus = {
   status: 'error',
+  usable: false,
+  reasons: [],
   inference_mode: 'unknown',
   groq_available: false,
   ollama_connected: false,
@@ -39,12 +41,19 @@ export default function ConnectionStatus() {
   let dotClass = 'bg-red-400 animate-pulse';
   let tooltip = t('connection.disconnected');
 
-  if (health.groq_available) {
+  if (health.usable && health.groq_available) {
     dotClass = 'bg-emerald-400';
     tooltip = t('connection.groqConnected');
-  } else if (health.ollama_connected) {
+  } else if (health.usable && health.ollama_connected) {
     dotClass = 'bg-amber-400';
     tooltip = t('connection.ollamaConnected');
+  } else if (health.status === 'degraded') {
+    // 后端起来了但当前 INFERENCE_MODE 下没有可用模型
+    // （最常见：忘了 export GROQ_API_KEY）。把原因直接显示出来。
+    dotClass = 'bg-red-400 animate-pulse';
+    tooltip = health.reasons.length
+      ? `${t('connection.degraded')}: ${health.reasons.join('; ')}`
+      : t('connection.degraded');
   }
 
   return (

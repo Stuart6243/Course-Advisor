@@ -16,6 +16,10 @@ export type ChatSettings = {
 
 export type HealthStatus = {
   status: string;
+  /** 当前 INFERENCE_MODE 下是否真的有可用模型 */
+  usable: boolean;
+  /** 不可用时的具体原因，用于 tooltip 提示 */
+  reasons: string[];
   inference_mode: string;
   groq_available: boolean;
   ollama_connected: boolean;

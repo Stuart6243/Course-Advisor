@@ -417,4 +417,13 @@ def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:
             lines = [line for line in response.iter_lines() if line]
 
         events = [json.loads(line[6:]) for line in lines if line.startswith("data: ")]
-        assert events[-1]["type"] == "error"
+        types = [event["type"] for event in events]
+
+        # 必须发出 error 事件
+        assert "error" in types
+        # error 之后仍要补一个 done，前端不必依赖异常路径收尾
+        assert types[-1] == "done"
+        # 错误信息应是面向用户的文案，不能直接泄露内部异常字符串
+        error_event = next(event for event in events if event["type"] == "error")
+        assert "dummy stream failure" not in error_event["message"]
+        assert error_event["message"].strip()

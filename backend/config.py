@@ -37,7 +37,18 @@ IMPORT_MIN_QUALITY_SCORE = 40
 # ============================================================
 INTENT_MAX_TOKENS = 256
 INTENT_TIMEOUT = 30
-RESPONSE_MAX_TOKENS = 512
+
+# 回答生成上限。512 太小：比较/推荐 5 门课时回答必然被腰斩。
+# 1536 tokens ≈ 1000 英文单词 / 700 汉字，足够覆盖 5 门课的详细对比。
+RESPONSE_MAX_TOKENS = 1536
+
+# 文件导入转换上限。导入时模型要输出一整个课程 JSON（含完整 description
+# 与 sections 数组），复用 RESPONSE_MAX_TOKENS 会导致 JSON 在中途断裂，
+# 表现为 description 残缺或解析失败后误触发「需要手动录入」。
+IMPORT_MAX_TOKENS = 3000
+
+# 送进 LLM 的导入原文长度上限（字符）。太短会截掉 syllabus 后半段。
+IMPORT_INPUT_MAX_CHARS = 12000
 
 # ============================================================
 # 检索控制

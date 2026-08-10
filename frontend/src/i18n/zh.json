@@ -10,7 +10,13 @@
   "chat": {
     "placeholder": "向顾问 AI 提问...",
     "disclaimer": "AI 可能出错，重要信息请核实。",
-    "sources": "参考课程："
+    "sources": "参考课程：",
+    "assistantName": "课程顾问",
+    "userName": "我",
+    "copy": "复制",
+    "copied": "已复制",
+    "stop": "停止生成",
+    "scrollToBottom": "滚动到底部"
   },
   "settings": {
     "title": "设置",
@@ -36,27 +42,29 @@
     "exported": "已导出！",
     "manualImport": {
       "title": "补全课程信息",
-      "description": "无法从文件中完整提取课程信息，请手动补充缺失字段。",
+      "description": "课程描述（可选）",
       "courseCode": "课程代码",
       "courseCodePlaceholder": "如 CIEN E3125",
       "courseTitle": "课程名称",
       "courseTitlePlaceholder": "如 Structural Design",
       "points": "学分",
       "pointsPlaceholder": "如 3.0",
-      "description": "课程描述（可选）",
       "prerequisites": "先修课要求（可选）",
       "submit": "添加到数据库",
       "cancel": "取消",
       "extractedPreview": "从文件中提取到的文本：",
       "codeInvalid": "格式无效。示例：CIEN E3125（2-4 个字母 + 空格 + 可选字母 + 4 位数字）。",
       "required": "课程代码和课程名称为必填。"
-    }
+    },
+    "importFormats": "支持格式：PDF、HTML",
+    "exportError": "导出失败"
   },
   "connection": {
     "groqConnected": "已连接（Groq 云端）",
     "ollamaConnected": "已连接（本地 AI）",
     "disconnected": "AI 未连接",
-    "hybrid": "混合模式"
+    "hybrid": "混合模式",
+    "degraded": "后端可访问，但没有可用的模型"
   },
   "languages": {
     "en": "English (US)",
