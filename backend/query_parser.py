@@ -63,18 +63,41 @@ STATS_QUERY_PATTERNS = (
     "课程总数",
 )
 
+# 回忆型查询：用户在问「这段对话里出现过哪些课」，而不是发起新检索。
+# 这是全项目唯一定义处，response_generator 从这里导入，
+# 避免两份列表内容漂移（旧版两个文件各有一份，条目还不一样）。
 RECALL_QUERY_PATTERNS = (
     "you mentioned",
+    "you have mentioned",
+    "you've mentioned",
     "we discussed",
+    "we have discussed",
     "we talked about",
+    "we've talked",
     "courses you mentioned",
     "courses we discussed",
+    "mentioned so far",
+    "discussed so far",
+    "talked about so far",
     "list all courses",
+    "list all the courses",
+    "list the courses",
+    "all the courses you",
+    "what did we talk",
+    "what did we discuss",
+    "what did i ask",
+    "previously discussed",
+    "earlier in this conversation",
     "based on the current conversation",
     "上面提到",
     "你提到的",
+    "你提到过",
     "我们聊过",
+    "我们讨论过",
     "之前推荐的",
+    "之前提到",
+    "目前为止",
+    "列出所有课",
 )
 
 def _default_intent_copy() -> dict:

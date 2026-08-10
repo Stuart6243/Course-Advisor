@@ -36,22 +36,11 @@ RECALL_QUERY_GUARDRAILS = """## Recall Query Rules
 - Ignore newly retrieved courses for this turn.
 - If unsure, say you can only confirm courses that were explicitly mentioned."""
 
-RECALL_QUERY_PATTERNS = (
-    "you mentioned",
-    "we discussed",
-    "we talked about",
-    "courses you mentioned",
-    "courses we discussed",
-    "what did we talk",
-    "what did i ask",
-    "list all courses",
-    "previously discussed",
-    "based on the current conversation",
-    "上面提到",
-    "你提到的",
-    "我们聊过",
-    "之前推荐的",
-)
+# 单一来源：定义在 query_parser，这里只导入。
+# 旧版两个文件各维护一份列表，内容已经不一致
+# （response_generator 多了 "what did we talk" 等 3 条），
+# 导致同一个问题在「检索侧」和「生成侧」被判定成不同类型。
+from query_parser import RECALL_QUERY_PATTERNS  # noqa: E402
 
 ANSWER_SYSTEM_PROMPT_TEMPLATE = """{anti_hallucination}
 Respond in {language_name}.
@@ -221,12 +210,17 @@ async def generate_response_stream(
         max_results=max_results,
     )
 
+    # 输出预算按本轮实际进入上下文的课程数动态计算：
+    # 固定值在 5 门课时浪费余量、在 20 门课时又不够用。
+    limit = max_results if max_results and max_results > 0 else config.MAX_RETRIEVAL_RESULTS
+    token_budget = config.response_token_budget(min(len(courses), limit))
+
     yielded = False
     try:
         async for token in ollama.chat_stream(
             messages,
             system_prompt=system_prompt,
-            max_tokens=config.RESPONSE_MAX_TOKENS,
+            max_tokens=token_budget,
         ):
             if token:
                 yielded = True
@@ -238,7 +232,7 @@ async def generate_response_stream(
         async for token in fallback_client.chat_stream(
             messages,
             system_prompt=system_prompt,
-            max_tokens=config.RESPONSE_MAX_TOKENS,
+            max_tokens=token_budget,
         ):
             if token:
                 yield token

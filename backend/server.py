@@ -131,15 +131,44 @@ COURSE_CODE_RE = re.compile(r"\b([A-Z]{2,4})\s+[A-Z]?\d{4}\b")
 
 # 指代词/回指表达：出现这些词，且当前问题没有给出新的系别/课程代码/教授，
 # 说明用户是在追问“上一轮那些课”，此时应复用上一轮的课程，而不是重新全库检索。
+#
+# 注意 its/their/which one 等：旧版只匹配 \bit\b，
+# "what are its prerequisites?" 因为 its≠it 没被识别成回指，
+# 于是拿 ['prerequisites'] 去全库检索，把 AERO 的对话拽到一堆 ELEN 课上。
 _REFERENCE_WORD_RE = re.compile(
-    r"\b(those|them|they|these|it|that one|the (?:first|second|third|last|former|latter|ones?)|"
-    r"above|aforementioned|previous(?:ly)?)\b",
+    r"\b("
+    r"those|them|they|these|their|theirs|its|his|her|hers|"
+    r"it|that one|this one|the same|"
+    r"which (?:one|ones|of)|any of|one of|each of|both|the rest|the other|"
+    r"the (?:first|second|third|fourth|fifth|last|former|latter|ones?)|"
+    r"above|aforementioned|previous(?:ly)?|earlier|so far|"
+    r"(?:recommend|suggest|pick|choose|show)\s+(?:me\s+)?(?:one|another|any|some)"
+    r")\b",
     re.I,
 )
 _REFERENCE_CJK = (
     "它", "他们", "它们", "那些", "这些", "那几", "这几", "上面", "前面",
     "刚才", "第一", "第二", "第三", "之前", "那个", "这个", "其中",
+    "哪个", "哪一个", "哪门", "这门", "那门", "再推荐", "还有别的", "刚说",
 )
+
+# “属性型”追问词：用户在问已讨论课程的某个属性，而不是发起新检索。
+# 这类问题往往一个指代词都没有（"what are the prerequisites?"），
+# 但拿这些词去全库检索只会捞回一堆无关课程。
+_ATTRIBUTE_WORDS = frozenset({
+    "prerequisite", "prerequisites", "prereq", "prereqs",
+    "credit", "credits", "point", "points", "unit", "units",
+    "instructor", "instructors", "professor", "professors", "teacher",
+    "teach", "teaches", "teaching", "taught",
+    "time", "times", "schedule", "when", "where", "location", "room",
+    "enrollment", "capacity", "full", "seats", "spots",
+    "difficulty", "difficult", "harder", "easier", "workload",
+    "syllabus", "description", "detail", "details", "info", "information",
+    "offered", "semester", "term", "level", "meet", "meets",
+    "fewer", "fewest", "least", "most", "better", "cheapest",
+    "shortest", "longest", "earliest", "latest", "sophomore", "junior",
+    "senior", "freshman", "beginner", "advanced",
+})
 
 
 def _is_reference_message(text: str) -> bool:
@@ -150,6 +179,14 @@ def _is_reference_message(text: str) -> bool:
     return any(tok in text for tok in _REFERENCE_CJK)
 
 
+def _is_attribute_question(intent: dict) -> bool:
+    """关键词全是属性词 -> 在问上一轮课程的属性，而不是新检索。"""
+    keywords = [str(k).strip().lower() for k in (intent.get("keywords") or []) if str(k).strip()]
+    if not keywords:
+        return True
+    return all(k in _ATTRIBUTE_WORDS for k in keywords)
+
+
 def _is_referential_followup(intent: dict, message: str, is_followup: bool) -> bool:
     """是否为“指代上一轮课程”的追问。"""
     if not is_followup:
@@ -157,7 +194,8 @@ def _is_referential_followup(intent: dict, message: str, is_followup: bool) -> b
     # 如果用户明确给了新的锚点（课程代码/系别/教授），说明是新查询，不算回指。
     if intent.get("course_codes") or intent.get("department") or intent.get("instructor"):
         return False
-    return _is_reference_message(message)
+    # 显式指代词，或整句只在问属性（没有任何新主题词）
+    return _is_reference_message(message) or _is_attribute_question(intent)
 
 
 @asynccontextmanager

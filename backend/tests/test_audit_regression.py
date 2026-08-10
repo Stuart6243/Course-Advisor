@@ -15,6 +15,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import config  # noqa: E402
+import server  # noqa: E402
 from course_index import (  # noqa: E402
     course_quality_score,
     filter_by_fields,
@@ -22,6 +23,7 @@ from course_index import (  # noqa: E402
 )
 from course_retriever import dedupe_by_course_code, retrieve_courses  # noqa: E402
 from query_parser import (  # noqa: E402
+    DEFAULT_INTENT,
     extract_instructor,
     fold_accents,
     rule_based_extract,
@@ -164,10 +166,35 @@ def test_bug04_plural_days_recognized(question, expected):
 
 # ---------------------------------------------------------------- #7 token 上限
 def test_bug07_token_limits_are_separate_and_large_enough():
-    assert config.RESPONSE_MAX_TOKENS >= 1024, "512 会让多课程对比回答被截断"
     assert config.IMPORT_MAX_TOKENS >= 2048, "导入要输出完整课程 JSON"
-    assert config.IMPORT_MAX_TOKENS > config.RESPONSE_MAX_TOKENS
     assert config.IMPORT_INPUT_MAX_CHARS >= 4000
+    # 导入预算必须高于常规 5 门课的回答预算
+    assert config.IMPORT_MAX_TOKENS > config.response_token_budget(5)
+
+
+def test_bug07_response_budget_scales_with_course_count():
+    """固定值在 5 门课时浪费、20 门课时不够，预算必须跟着课程数走。"""
+    b5 = config.response_token_budget(5)
+    b20 = config.response_token_budget(20)
+
+    assert b5 >= 768, "5 门课详细对比约需 580 tok，预算要有余量"
+    assert b20 >= 2000, "20 门课列表约需 2000 tok"
+    assert b20 > b5, "预算必须随课程数增长"
+
+    # 防跑飞：任何输入都不能超过绝对上限
+    assert config.response_token_budget(9999) <= config.RESPONSE_MAX_TOKENS
+    # 无课程的 follow-up 也要够写一段回答
+    assert config.response_token_budget(0) >= 512
+
+
+def test_bug07_local_context_window_not_exceeded():
+    """本地 qwen3-nothink 的 Modelfile 写死 num_ctx=8192，是硬约束。"""
+    LOCAL_CTX = 8192
+    worst_prompt_tokens = 1865 + 400  # 20 门课上下文 + system prompt 实测值
+    assert worst_prompt_tokens + config.response_token_budget(20) < LOCAL_CTX
+
+    import_prompt_tokens = config.IMPORT_INPUT_MAX_CHARS // 4 + 400
+    assert import_prompt_tokens + config.IMPORT_MAX_TOKENS < LOCAL_CTX
 
 
 # ---------------------------------------------------------------- #8 max_results
@@ -256,6 +283,77 @@ def test_bug21_variable_credit_course_matches_point_query():
     codes = [e["course_code"] for e in result]
     assert "AAAA E1000" in codes, "1.0-6.0 学分的课应能匹配「3 学分」查询"
     assert "BBBB E1000" not in codes
+
+
+# ---------------------------------------------------------------- 多轮指代
+def _intent(question: str) -> dict:
+    """
+    模拟生产路径：规则引擎拿不准时会 fallback 到 LLM，
+    LLM 也失败则退回默认 intent（关键词为空）。
+    这里用默认 intent 代表那条分支，保证判定逻辑在两条路径下都正确。
+    """
+    intent = rule_based_extract(normalize_question(question))
+    if intent is None:
+        intent = dict(DEFAULT_INTENT)
+        intent["original_question"] = question
+    return intent
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        # 物主代词 —— 旧版 \bit\b 匹配不到 "its"
+        "what are its prerequisites?",
+        "who are their instructors?",
+        # which one / any of —— 旧版完全没覆盖
+        "which one has fewer prerequisites?",
+        "which of those is easier?",
+        "are any of them in the morning?",
+        # 省略式追问
+        "recommend one for a sophomore",
+        "suggest another",
+        # 纯属性提问，一个指代词都没有
+        "what are the prerequisites?",
+        "how many credits?",
+        "when does it meet?",
+        # 中文
+        "哪个更简单？",
+        "它的先修课是什么？",
+        "再推荐一门",
+    ],
+)
+def test_deep_followup_reuses_previous_courses(question):
+    """
+    这些追问旧版会被当成新查询，拿 ['prerequisites'] 之类的词去全库检索，
+    把 AERO 的对话拽到一堆 ELEN 课上（实测 15 轮里有 4 轮发生课程漂移）。
+    """
+    intent = _intent(question)
+    assert server._is_referential_followup(intent, question, is_followup=True), (
+        f"未被识别为回指追问: {question} (keywords={intent['keywords']})"
+    )
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "what about civil engineering instead?",   # 新系别
+        "tell me about COMS W4111",                # 新课号
+        "which courses does Professor Panayotidi teach?",  # 新教授
+        "recommend some robotics courses",         # 新主题
+        "I want to learn about thermodynamics",    # 新主题
+    ],
+)
+def test_new_topic_not_treated_as_followup(question):
+    """有新锚点/新主题时必须重新检索，不能粘在上一轮的课程上。"""
+    intent = _intent(question)
+    assert not server._is_referential_followup(intent, question, is_followup=True), (
+        f"被误判为回指: {question}"
+    )
+
+
+def test_first_turn_never_referential():
+    intent = _intent("what are its prerequisites?")
+    assert not server._is_referential_followup(intent, "what are its prerequisites?", is_followup=False)
 
 
 # ---------------------------------------------------------------- 综合：结果相关性
