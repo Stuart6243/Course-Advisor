@@ -12,6 +12,10 @@ from typing import AsyncGenerator
 import config
 
 
+class GroqStreamProtocolError(RuntimeError):
+    """Groq returned a malformed or prematurely terminated SSE stream."""
+
+
 class GroqClient:
     """Groq API 客户端，接口与 OllamaClient 对齐。"""
 
@@ -120,6 +124,7 @@ class GroqClient:
         for attempt in range(2):
             yielded = False
             try:
+                completed = False
                 async with httpx.AsyncClient(timeout=self.timeout) as client:
                     async with client.stream(
                         "POST", self.api_url, headers=headers, json=payload
@@ -134,18 +139,37 @@ class GroqClient:
                                 continue
                             data_str = line[6:]
                             if data_str.strip() == "[DONE]":
+                                completed = True
                                 break
                             try:
                                 data = json.loads(data_str)
-                                delta = data["choices"][0].get("delta", {})
+                            except json.JSONDecodeError as exc:
+                                raise GroqStreamProtocolError(
+                                    "Groq stream contained malformed JSON"
+                                ) from exc
+                            try:
+                                choices = data.get("choices", [])
+                                if not choices:
+                                    continue
+                                delta = choices[0].get("delta", {})
                                 content = delta.get("content", "")
-                                if content:
-                                    yielded = True
-                                    yield content
-                            except (json.JSONDecodeError, KeyError, IndexError):
-                                continue
+                            except (AttributeError, KeyError, IndexError, TypeError) as exc:
+                                raise GroqStreamProtocolError(
+                                    "Groq stream contained an invalid event"
+                                ) from exc
+                            if content:
+                                yielded = True
+                                yield str(content)
+                if not completed:
+                    raise GroqStreamProtocolError(
+                        "Groq stream ended before the [DONE] marker"
+                    )
+                if not yielded:
+                    raise GroqStreamProtocolError(
+                        "Groq stream completed without answer content"
+                    )
                 return
-            except (httpx.TimeoutException, httpx.TransportError):
+            except (httpx.TimeoutException, httpx.TransportError, GroqStreamProtocolError):
                 if not yielded and attempt == 0:
                     await asyncio.sleep(self.RETRY_BACKOFF)
                     continue

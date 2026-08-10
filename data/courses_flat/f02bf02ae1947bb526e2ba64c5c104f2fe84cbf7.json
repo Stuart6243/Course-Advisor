@@ -21,13 +21,13 @@
       "catalog_ref": "MSAE E3157",
       "course_number": "MSAE 3157",
       "section_call_number": "001/12992",
-      "times": "Yuan Yang",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "5/10",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Yuan Yang",
+      "points": "3.00",
+      "enrollment_raw": "5/10",
+      "enrollment_current": 5,
+      "enrollment_capacity": 10
     }
   ],
   "needs_review": false,

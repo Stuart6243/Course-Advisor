@@ -1,6 +1,7 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {AlertTriangle, ArrowDown, ArrowUp, Square} from 'lucide-react';
 import {useTranslation} from 'react-i18next';
+import {MAX_MESSAGE_LENGTH} from '../constants';
 import {Message} from '../types';
 import AutoResizeTextarea from './AutoResizeTextarea';
 import MessageBubble from './MessageBubble';
@@ -28,6 +29,8 @@ export default function ChatView({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
   const [stickToBottom, setStickToBottom] = useState(true);
+  const composingRef = useRef(false);
+  const messageTooLong = inputText.length > MAX_MESSAGE_LENGTH;
 
   const handleScroll = useCallback(() => {
     const el = containerRef.current;
@@ -58,7 +61,7 @@ export default function ChatView({
   };
 
   const handleSend = () => {
-    if (!inputText.trim() || isLoading) {
+    if (!inputText.trim() || messageTooLong || isLoading) {
       return;
     }
     const text = inputText;
@@ -71,12 +74,19 @@ export default function ChatView({
       <main
         ref={containerRef}
         onScroll={handleScroll}
+        role="log"
+        aria-live="polite"
+        aria-relevant="additions text"
+        aria-busy={isLoading}
         className="flex-1 overflow-y-auto relative pb-32"
         id="chat-container"
       >
         <div className="max-w-3xl mx-auto px-4 py-8 flex flex-col gap-6">
           {contextLost ? (
-            <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+            <div
+              className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200"
+              role="alert"
+            >
               <AlertTriangle className="w-4 h-4 mt-0.5 flex-none" />
               <span>{t('chat.contextLost')}</span>
             </div>
@@ -89,8 +99,9 @@ export default function ChatView({
       </main>
 
       {isLoading && onStop ? (
-        <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40">
+        <div className="fixed bottom-36 left-1/2 -translate-x-1/2 z-40">
           <button
+            type="button"
             onClick={onStop}
             className="flex items-center gap-2 rounded-full bg-surface-dark border border-border-dark px-4 py-2 text-sm text-slate-200 shadow-lg hover:bg-slate-700 hover:text-white transition-colors"
           >
@@ -103,6 +114,7 @@ export default function ChatView({
       {!stickToBottom ? (
         <div className="fixed bottom-28 right-8 z-30">
           <button
+            type="button"
             onClick={scrollToBottom}
             aria-label={t('chat.scrollToBottom')}
             title={t('chat.scrollToBottom')}
@@ -120,23 +132,53 @@ export default function ChatView({
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
+                if (
+                  e.key === 'Enter' &&
+                  !e.shiftKey &&
+                  !e.nativeEvent.isComposing &&
+                  !composingRef.current
+                ) {
                   e.preventDefault();
                   handleSend();
                 }
               }}
+              onCompositionStart={() => {
+                composingRef.current = true;
+              }}
+              onCompositionEnd={() => {
+                composingRef.current = false;
+              }}
               className="w-full bg-transparent text-slate-200 placeholder-slate-500 text-[15px] p-4 pr-12 rounded-xl focus:ring-0 focus:outline-none resize-none overflow-hidden max-h-48"
               placeholder={t('chat.placeholder')}
+              ariaLabel={t('chat.placeholder')}
+              ariaDescribedBy="chat-composer-help"
               minHeight="56px"
               disabled={isLoading}
             />
             <button
+              type="button"
               onClick={handleSend}
-              disabled={!inputText.trim() || isLoading}
+              disabled={!inputText.trim() || messageTooLong || isLoading}
+              aria-label={t('chat.send')}
               className="absolute bottom-2 right-2 p-1.5 rounded-lg bg-primary text-white hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <ArrowUp className="w-5 h-5" />
             </button>
+          </div>
+          <div
+            id="chat-composer-help"
+            className="mt-1 min-h-5 px-1 text-xs"
+            aria-live="polite"
+          >
+            {messageTooLong ? (
+              <p className="text-red-400">
+                {t('chat.messageTooLong', {max: MAX_MESSAGE_LENGTH, count: inputText.length})}
+              </p>
+            ) : inputText.length > MAX_MESSAGE_LENGTH * 0.9 ? (
+              <p className="text-right text-slate-500">
+                {inputText.length}/{MAX_MESSAGE_LENGTH}
+              </p>
+            ) : null}
           </div>
           <div className="text-center mt-2">
             <p className="text-[11px] text-slate-500">{t('chat.disclaimer')}</p>

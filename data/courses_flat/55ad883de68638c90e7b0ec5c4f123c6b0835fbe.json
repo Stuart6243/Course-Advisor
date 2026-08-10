@@ -21,13 +21,13 @@
       "catalog_ref": "CHEN E3999",
       "course_number": "CHEN 3999",
       "section_call_number": "001/20042",
-      "times": "Daniel Esposito",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "1/10",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Daniel Esposito",
+      "points": "1.00-2.00",
+      "enrollment_raw": "1/10",
+      "enrollment_current": 1,
+      "enrollment_capacity": 10
     }
   ],
   "needs_review": false,

@@ -34,13 +34,13 @@
       "catalog_ref": "BMEN E4550",
       "course_number": "BMEN 4550",
       "section_call_number": "V01/16636",
-      "times": "Lance Kam",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Lance Kam",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

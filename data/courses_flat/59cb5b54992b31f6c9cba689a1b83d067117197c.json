@@ -21,13 +21,13 @@
       "catalog_ref": "EAEE E4999",
       "course_number": "EAEE 4999",
       "section_call_number": "001/19991",
-      "times": "Elizabeth Allende, Yin Yip Ngai",
+      "times": "",
       "location": "",
-      "instructor": "1.00",
-      "points": "2/5",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Elizabeth Allende, Yin Yip Ngai",
+      "points": "1.00",
+      "enrollment_raw": "2/5",
+      "enrollment_current": 2,
+      "enrollment_capacity": 5
     }
   ],
   "needs_review": false,

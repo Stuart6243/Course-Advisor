@@ -47,13 +47,13 @@
       "catalog_ref": "COMS W4111",
       "course_number": "COMS 4111",
       "section_call_number": "V01/18106",
-      "times": "Kenneth Ross",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "5/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Kenneth Ross",
+      "points": "3.00",
+      "enrollment_raw": "5/99",
+      "enrollment_current": 5,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",

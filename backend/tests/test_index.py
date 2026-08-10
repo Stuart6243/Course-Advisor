@@ -13,6 +13,7 @@ import pytest
 
 import course_index
 from course_index import (
+    build_enriched_entry,
     build_enriched_index,
     extract_department_prefix,
     extract_prerequisite_codes,
@@ -79,6 +80,151 @@ def test_parse_days_from_times() -> None:
         "evening",
     )
     assert parse_days_from_times("") == ([], "")
+    assert parse_days_from_times("Savannah Hall") == ([], "")
+    assert parse_days_from_times("TBA") == ([], "")
+
+
+def test_enriched_entry_isolates_review_and_shifted_sections() -> None:
+    raw = {
+        "course_uid": "seed-1",
+        "course_code": "COMS GU4111",
+        "title": "DATABASE SYSTEMS",
+        "file_name": "seed-1.json",
+    }
+    detail = {
+        **raw,
+        "description": "Relational database design.",
+        "source_page_url": "https://example.test/coms/",
+        "needs_review": False,
+        "parse_warnings": [
+            "section_validation:002/22222:enrollment_exceeds_capacity"
+        ],
+        "course_review_warnings": [],
+        "section_review_warnings": [
+            "section_validation:002/22222:enrollment_exceeds_capacity"
+        ],
+        "sections": [
+            {
+                "term": "Spring 2026",
+                "section_call_number": "001/11111",
+                "times": "TBA",
+                "location": "Savannah Hall",
+                "instructor": "Savannah Smith",
+                "points": "3.00",
+                "enrollment_raw": "10/30",
+                "enrollment_current": 10,
+                "enrollment_capacity": 30,
+            },
+            {
+                "term": "Fall 2026",
+                "section_call_number": "002/22222",
+                "times": "M 10:00am - 11:00am",
+                "location": "Room 2",
+                "instructor": "Review Instructor",
+                "points": "3.00",
+                "enrollment_raw": "31/30",
+                "enrollment_current": 31,
+                "enrollment_capacity": 30,
+            },
+            {
+                "term": "Winter 2026",
+                "section_call_number": "003/33333",
+                "times": "Shifted Instructor",
+                "location": "Room 3",
+                "instructor": "3.00",
+                "points": "10/30",
+                "enrollment_raw": "",
+                "enrollment_current": None,
+                "enrollment_capacity": None,
+            },
+        ],
+    }
+
+    entry = build_enriched_entry(raw, detail)
+
+    assert [row["section_id"] for row in entry["sections_summary"]] == [
+        "001/11111"
+    ]
+    assert entry["sections_summary"][0]["days"] == []
+    assert entry["sections_summary"][0]["validation_status"] == "published"
+    assert entry["catalog_validation_status"] == "published"
+    assert entry["catalog_validation_warnings"] == []
+    assert entry["sections_summary"][0]["provenance"]["course_uid"] == "seed-1"
+    assert [row["section_id"] for row in entry["review_sections_summary"]] == [
+        "002/22222",
+        "003/33333",
+    ]
+    assert entry["review_sections_summary"][0]["validation_warnings"] == [
+        "enrollment_exceeds_capacity"
+    ]
+    assert "invalid_points" in entry["review_sections_summary"][1][
+        "validation_errors"
+    ]
+    assert entry["all_instructors"] == ["Savannah Smith"]
+    assert entry["all_terms"] == ["Spring 2026"]
+    assert "review instructor" not in entry["searchable_text"]
+    assert "shifted instructor" not in entry["searchable_text"]
+
+
+def test_legacy_course_review_status_is_auditable_but_not_searchable() -> None:
+    raw = {
+        "course_uid": "legacy-review",
+        "course_code": "MRKT B9651",
+        "title": "Marketing Analytics",
+        "file_name": "legacy-review.json",
+    }
+    detail = {
+        **raw,
+        "description": "A detailed imported course description.",
+        "needs_review": True,
+        "parse_warnings": ["imported_file"],
+        "sections": [],
+    }
+
+    entry = build_enriched_entry(raw, detail)
+
+    assert entry["catalog_validation_status"] == "review"
+    assert entry["catalog_validation_warnings"] == ["imported_file"]
+    assert filter_by_fields([entry], {}) == []
+    assert search_by_keywords([entry], ["marketing"]) == []
+
+
+def test_missing_description_course_remains_searchable_with_quality_warning() -> None:
+    raw = {
+        "course_uid": "cien-e3125",
+        "course_code": "CIEN E3125",
+        "title": "STRUCTURAL DESIGN",
+        "file_name": "cien-e3125.json",
+    }
+    detail = {
+        **raw,
+        "description": "",
+        "needs_review": True,
+        "parse_warnings": ["missing_description"],
+        "sections": [
+            {
+                "term": "Spring 2026",
+                "section_call_number": "001/11111",
+                "times": "M 10:00am - 11:00am",
+                "location": "Mudd",
+                "instructor": "Ada Engineer",
+                "points": "3.00",
+                "enrollment_raw": "10/30",
+                "enrollment_current": 10,
+                "enrollment_capacity": 30,
+            }
+        ],
+    }
+
+    entry = build_enriched_entry(raw, detail)
+
+    assert entry["has_description"] is False
+    assert entry["catalog_validation_status"] == "published"
+    assert entry["catalog_validation_warnings"] == ["missing_description"]
+    assert filter_by_fields([entry], {"course_codes": ["CIEN E3125"]}) == [entry]
+    assert search_by_keywords([entry], ["structural"])[0]["course_code"] == (
+        "CIEN E3125"
+    )
 
 
 def test_build_enriched_index_and_load(tmp_path: Path) -> None:

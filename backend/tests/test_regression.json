@@ -57,7 +57,7 @@
     "category": "import_validation",
     "test_type": "import_code_validation",
     "invalid_codes": ["GNIRPS 6202", "FALL2025", "POINTS300", "ab 1234", "TOOLONGPREFIX E1234", "COMS"],
-    "valid_codes": ["CIEN E3125", "COMS W4111", "AERO 3001", "MSAE E4100"],
+    "valid_codes": ["CIEN E3125", "COMS W4111", "AERO E3001", "MSAE E4100"],
     "notes": "对每个 code 调用 validate_course_code()，确认结果正确。"
   },
   {

@@ -34,13 +34,13 @@
       "catalog_ref": "IEOR E4700",
       "course_number": "IEOR 4700",
       "section_call_number": "V01/17940",
-      "times": "Xunyu Zhou",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "0/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xunyu Zhou",
+      "points": "3.00",
+      "enrollment_raw": "0/99",
+      "enrollment_current": 0,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
@@ -60,13 +60,13 @@
       "catalog_ref": "IEOR E4700",
       "course_number": "IEOR 4700",
       "section_call_number": "V01/16661",
-      "times": "Anran Hu",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Anran Hu",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

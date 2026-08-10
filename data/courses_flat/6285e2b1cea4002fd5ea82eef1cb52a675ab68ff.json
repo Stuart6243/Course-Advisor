@@ -34,13 +34,13 @@
       "catalog_ref": "MSAE E4202",
       "course_number": "MSAE 4202",
       "section_call_number": "V01/16792",
-      "times": "James Im",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "2/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "James Im",
+      "points": "3.00",
+      "enrollment_raw": "2/99",
+      "enrollment_current": 2,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": true,

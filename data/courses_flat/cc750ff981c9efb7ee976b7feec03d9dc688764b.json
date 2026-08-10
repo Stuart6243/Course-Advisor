@@ -73,13 +73,13 @@
       "catalog_ref": "COMS W4771",
       "course_number": "COMS 4771",
       "section_call_number": "V02/20064",
-      "times": "Tony Dear",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "9/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Tony Dear",
+      "points": "3.00",
+      "enrollment_raw": "9/99",
+      "enrollment_current": 9,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

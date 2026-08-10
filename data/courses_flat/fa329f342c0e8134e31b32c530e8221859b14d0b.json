@@ -34,26 +34,26 @@
       "catalog_ref": "APMA E6100",
       "course_number": "APMA 6100",
       "section_call_number": "N01/20379",
-      "times": "Kui Ren",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "0/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Kui Ren",
+      "points": "0.00",
+      "enrollment_raw": "0/99",
+      "enrollment_current": 0,
+      "enrollment_capacity": 99
     },
     {
       "term": "Fall 2025",
       "catalog_ref": "APMA E6100",
       "course_number": "APMA 6100",
       "section_call_number": "V01/19894",
-      "times": "Kui Ren",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Kui Ren",
+      "points": "0.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

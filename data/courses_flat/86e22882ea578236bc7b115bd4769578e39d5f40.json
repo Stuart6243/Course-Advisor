@@ -21,26 +21,26 @@
       "catalog_ref": "CEEM E4899",
       "course_number": "CEEM 4899",
       "section_call_number": "001/20450",
-      "times": "Xuan Di",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "2/20",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xuan Di",
+      "points": "0.00",
+      "enrollment_raw": "2/20",
+      "enrollment_current": 2,
+      "enrollment_capacity": 20
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "CEEM E4899",
       "course_number": "CEEM 4899",
       "section_call_number": "001/20229",
-      "times": "Xuan Di",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "1/20",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xuan Di",
+      "points": "0.00",
+      "enrollment_raw": "1/20",
+      "enrollment_current": 1,
+      "enrollment_capacity": 20
     }
   ],
   "needs_review": false,

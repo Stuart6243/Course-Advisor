@@ -99,13 +99,13 @@
       "catalog_ref": "IEOR E8100",
       "course_number": "IEOR 8100",
       "section_call_number": "V02/19848",
-      "times": "Agostino Capponi",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Agostino Capponi",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",

@@ -41,10 +41,25 @@ export default function ConnectionStatus() {
   let dotClass = 'bg-red-400 animate-pulse';
   let tooltip = t('connection.disconnected');
 
-  if (health.usable && health.groq_available) {
+  const configuredProvider =
+    health.inference_mode === 'local'
+      ? health.ollama_connected
+        ? 'ollama'
+        : null
+      : health.inference_mode === 'groq'
+        ? health.groq_available
+          ? 'groq'
+          : null
+        : health.groq_available
+          ? 'groq'
+          : health.ollama_connected
+            ? 'ollama'
+            : null;
+
+  if (health.usable && configuredProvider === 'groq') {
     dotClass = 'bg-emerald-400';
     tooltip = t('connection.groqConnected');
-  } else if (health.usable && health.ollama_connected) {
+  } else if (health.usable && configuredProvider === 'ollama') {
     dotClass = 'bg-amber-400';
     tooltip = t('connection.ollamaConnected');
   } else if (health.status === 'degraded') {
@@ -61,6 +76,8 @@ export default function ConnectionStatus() {
       <span
         title={tooltip}
         className={`w-2.5 h-2.5 rounded-full ${dotClass}`}
+        role="status"
+        aria-live="polite"
         aria-label={tooltip}
       />
       <div className="pointer-events-none absolute left-4 top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-md border border-border-dark bg-surface-dark px-2 py-1 text-xs text-slate-300 shadow-lg group-hover:block">

@@ -21,26 +21,26 @@
       "catalog_ref": "IEOR E4199",
       "course_number": "IEOR 4199",
       "section_call_number": "001/11891",
-      "times": "Michael Miller",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "199/250",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Michael Miller",
+      "points": "0.00",
+      "enrollment_raw": "199/250",
+      "enrollment_current": 199,
+      "enrollment_capacity": 250
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "IEOR E4199",
       "course_number": "IEOR 4199",
       "section_call_number": "001/18252",
-      "times": "0.00",
+      "times": "",
       "location": "",
-      "instructor": "7/8",
-      "points": "",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "7/8",
+      "enrollment_current": 7,
+      "enrollment_capacity": 8
     }
   ],
   "needs_review": false,

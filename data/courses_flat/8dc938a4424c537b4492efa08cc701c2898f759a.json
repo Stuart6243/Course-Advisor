@@ -34,13 +34,13 @@
       "catalog_ref": "ELEN E4730",
       "course_number": "ELEN 4730",
       "section_call_number": "V01/17541",
-      "times": "Xiaodong Wang, Jeremy Johnston",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xiaodong Wang, Jeremy Johnston",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

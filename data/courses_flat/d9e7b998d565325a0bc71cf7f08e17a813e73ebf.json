@@ -21,26 +21,26 @@
       "catalog_ref": "BMEN E3999",
       "course_number": "BMEN 3999",
       "section_call_number": "001/20760",
-      "times": "Lauren Heckelman",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "1/100",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Lauren Heckelman",
+      "points": "1.00-2.00",
+      "enrollment_raw": "1/100",
+      "enrollment_current": 1,
+      "enrollment_capacity": 100
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "BMEN E3999",
       "course_number": "BMEN 3999",
       "section_call_number": "001/13365",
-      "times": "Lauren Heckelman",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "1/100",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Lauren Heckelman",
+      "points": "1.00-2.00",
+      "enrollment_raw": "1/100",
+      "enrollment_current": 1,
+      "enrollment_capacity": 100
     }
   ],
   "needs_review": false,

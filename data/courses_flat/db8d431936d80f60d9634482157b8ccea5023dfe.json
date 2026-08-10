@@ -34,13 +34,13 @@
       "catalog_ref": "COMS W4181",
       "course_number": "COMS 4181",
       "section_call_number": "V01/17910",
-      "times": "Sebastian Zimmeck",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "6/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Sebastian Zimmeck",
+      "points": "3.00",
+      "enrollment_raw": "6/99",
+      "enrollment_current": 6,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

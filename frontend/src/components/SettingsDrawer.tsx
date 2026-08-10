@@ -9,8 +9,10 @@ import {
   X,
 } from 'lucide-react';
 import {useTranslation} from 'react-i18next';
-import {exportChat, importFile, importManual} from '../services/api';
-import {ChatSettings, Language, ManualCourseData, Message} from '../types';
+import {ApiRequestError, exportChat, importFile, importManual} from '../services/api';
+import {MAX_HISTORY_TURNS, MAX_IMPORT_FILE_SIZE_MB} from '../constants';
+import {useDialogFocus} from '../hooks/useDialogFocus';
+import {ChatSettings, ImportResult, Language, ManualCourseData, Message} from '../types';
 import ManualImportForm from './ManualImportForm';
 
 type Props = {
@@ -28,7 +30,7 @@ type Props = {
 // 旧版这里写死 "v2.4.0 • Build 8839a"，是永远不会更新的假数据。
 const APP_VERSION = `v${__APP_VERSION__}`;
 
-type StatusTone = 'success' | 'error' | 'info';
+type StatusTone = 'success' | 'warning' | 'error' | 'info';
 
 type Notice = {
   tone: StatusTone;
@@ -52,17 +54,47 @@ export default function SettingsDrawer({
   const [manualPartial, setManualPartial] = useState<Partial<ManualCourseData> | undefined>();
   const [manualMissing, setManualMissing] = useState<string[] | undefined>();
   const [manualPreview, setManualPreview] = useState<string | undefined>();
+  const [manualMessage, setManualMessage] = useState<string | undefined>();
   const [exportFormat, setExportFormat] = useState<'markdown' | 'json'>('markdown');
   const [isExporting, setIsExporting] = useState(false);
   const [exported, setExported] = useState(false);
   const [localMaxHistoryTurns, setLocalMaxHistoryTurns] = useState(maxHistoryTurns);
   const [localMaxResults, setLocalMaxResults] = useState(maxResults);
   const timeoutRef = useRef<number | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const importAbortRef = useRef<AbortController | null>(null);
+  const dialogRef = useDialogFocus({
+    isOpen,
+    isTopmost: !manualOpen,
+    onClose: () => {
+      importAbortRef.current?.abort();
+      onClose();
+    },
+    initialFocusRef: closeButtonRef,
+  });
 
   useEffect(() => {
-    setLocalMaxHistoryTurns(maxHistoryTurns);
-    setLocalMaxResults(maxResults);
-  }, [maxHistoryTurns, maxResults]);
+    if (isOpen) {
+      // 每次打开都从已保存设置重新建立 draft；关闭未保存的修改不会泄漏到下次。
+      setLocalMaxHistoryTurns(maxHistoryTurns);
+      setLocalMaxResults(maxResults);
+    }
+  }, [isOpen, maxHistoryTurns, maxResults]);
+
+  useEffect(
+    () => () => {
+      importAbortRef.current?.abort();
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+      }
+    },
+    [],
+  );
+
+  const closeDrawer = () => {
+    importAbortRef.current?.abort();
+    onClose();
+  };
 
   const clearNoticeLater = () => {
     if (timeoutRef.current) {
@@ -71,6 +103,36 @@ export default function SettingsDrawer({
     timeoutRef.current = window.setTimeout(() => {
       setNotice(null);
     }, 3000);
+  };
+
+  const localizedRequestError = (error: unknown) =>
+    error instanceof ApiRequestError
+      ? t(`errors.${error.code}`)
+      : error instanceof Error
+        ? error.message
+        : t('settings.importError');
+
+  const showSuccessfulImport = (result: ImportResult) => {
+    const courseLabel = result.course
+      ? `${result.course.course_code} - ${result.course.title}`
+      : '';
+    if (result.status === 'review' || result.search_visible === false) {
+      setNotice({
+        tone: 'warning',
+        text: t('settings.importReview', {course: courseLabel}),
+      });
+    } else if (result.status === 'published') {
+      setNotice({
+        tone: 'success',
+        text: t('settings.importPublished', {course: courseLabel}),
+      });
+    } else {
+      setNotice({
+        tone: 'success',
+        text: `${t('settings.importSuccess')} ${courseLabel}`.trim(),
+      });
+    }
+    clearNoticeLater();
   };
 
   const handleLanguage = (lang: Language) => {
@@ -96,7 +158,7 @@ export default function SettingsDrawer({
   const handleSaveSettings = () => {
     applySettings(
       {
-        maxHistoryTurns: clampInt(localMaxHistoryTurns, 1, 50),
+        maxHistoryTurns: clampInt(localMaxHistoryTurns, 1, MAX_HISTORY_TURNS),
         maxResults: clampInt(localMaxResults, 1, 20),
       },
       'success',
@@ -122,20 +184,29 @@ export default function SettingsDrawer({
       return;
     }
 
+    if (!/\.(?:pdf|html?|htm)$/i.test(file.name)) {
+      setNotice({tone: 'error', text: t('settings.importUnsupported')});
+      clearNoticeLater();
+      return;
+    }
+    if (file.size > MAX_IMPORT_FILE_SIZE_MB * 1024 * 1024) {
+      setNotice({
+        tone: 'error',
+        text: t('settings.importTooLarge', {max: MAX_IMPORT_FILE_SIZE_MB}),
+      });
+      clearNoticeLater();
+      return;
+    }
+
     setIsImporting(true);
     setNotice({tone: 'info', text: t('settings.importProcessing')});
+    const controller = new AbortController();
+    importAbortRef.current = controller;
 
     try {
-      const result = await importFile(file);
+      const result = await importFile(file, controller.signal);
       if (result.success) {
-        const courseLabel = result.course
-          ? `${result.course.course_code} - ${result.course.title}`
-          : '';
-        setNotice({
-          tone: 'success',
-          text: `${t('settings.importSuccess')} ${courseLabel}`.trim(),
-        });
-        clearNoticeLater();
+        showSuccessfulImport(result);
         return;
       }
 
@@ -143,6 +214,7 @@ export default function SettingsDrawer({
         setManualPartial(result.partial_data);
         setManualMissing(result.missing_fields);
         setManualPreview(result.extracted_text_preview);
+        setManualMessage(result.message || t('settings.importError'));
         setManualOpen(true);
         setNotice({tone: 'error', text: result.message || t('settings.importError')});
         return;
@@ -154,26 +226,35 @@ export default function SettingsDrawer({
       });
       clearNoticeLater();
     } catch (err) {
-      const msg = err instanceof Error ? err.message : t('settings.importError');
+      if (controller.signal.aborted) {
+        setNotice({tone: 'info', text: t('settings.importCancelled')});
+        clearNoticeLater();
+        return;
+      }
+      const msg = localizedRequestError(err);
       setNotice({tone: 'error', text: `${t('settings.importError')}: ${msg}`});
       clearNoticeLater();
     } finally {
+      if (importAbortRef.current === controller) {
+        importAbortRef.current = null;
+      }
       setIsImporting(false);
     }
   };
 
   const handleManualSubmit = async (data: ManualCourseData) => {
-    const result = await importManual(data);
+    let result: ImportResult;
+    try {
+      result = await importManual(data);
+    } catch (error) {
+      throw new Error(localizedRequestError(error));
+    }
     if (!result.success) {
       throw new Error(result.message || t('settings.importError'));
     }
 
     setManualOpen(false);
-    setNotice({
-      tone: 'success',
-      text: `${t('settings.importSuccess')} ${result.course?.course_code ?? ''} ${result.course?.title ?? ''}`.trim(),
-    });
-    clearNoticeLater();
+    showSuccessfulImport(result);
   };
 
   const handleExport = async () => {
@@ -202,30 +283,53 @@ export default function SettingsDrawer({
   const noticeClass =
     notice?.tone === 'success'
       ? 'text-emerald-400'
+      : notice?.tone === 'warning'
+        ? 'text-amber-300'
       : notice?.tone === 'error'
         ? 'text-red-400'
         : 'text-slate-300';
 
   return (
     <div
+      aria-hidden={!isOpen}
+      inert={!isOpen ? true : undefined}
       className={`fixed inset-0 z-50 flex justify-end transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
     >
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={closeDrawer} />
 
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="settings-title"
+        aria-hidden={manualOpen || undefined}
+        inert={manualOpen ? true : undefined}
+        tabIndex={-1}
         className={`relative w-full max-w-[480px] h-full bg-drawer-bg border-l border-border-dark shadow-2xl flex flex-col transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <header className="flex items-center justify-between px-6 py-5 border-b border-border-dark shrink-0">
-          <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">
+          <h2 id="settings-title" className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">
             {t('settings.title')}
           </h2>
           <button
-            onClick={onClose}
+            ref={closeButtonRef}
+            onClick={closeDrawer}
+            aria-label={t('settings.close')}
             className="text-slate-400 hover:text-white transition-colors rounded-full p-1 hover:bg-[#293038] flex items-center justify-center"
           >
             <X className="w-5 h-5" />
           </button>
         </header>
+
+        {notice ? (
+          <p
+            className={`border-b border-border-dark px-6 py-3 text-sm ${noticeClass}`}
+            role={notice.tone === 'error' ? 'alert' : 'status'}
+            aria-live="polite"
+          >
+            {notice.text}
+          </p>
+        ) : null}
 
         <div className="flex-1 overflow-y-auto custom-scrollbar p-6 flex flex-col gap-8">
           <section className="flex flex-col gap-3">
@@ -274,13 +378,16 @@ export default function SettingsDrawer({
                 id="max-history-turns"
                 type="number"
                 min={1}
-                max={50}
+                max={MAX_HISTORY_TURNS}
                 step={1}
+                aria-describedby="max-history-turns-hint"
                 value={localMaxHistoryTurns}
                 onChange={(e) => setLocalMaxHistoryTurns(Number(e.target.value || 1))}
                 className="w-full rounded-xl bg-input-bg border border-[#3c4753] text-white px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
               />
-              <p className="text-xs text-slate-500">{t('settings.maxHistoryTurnsHint')}</p>
+              <p id="max-history-turns-hint" className="text-xs text-slate-500">
+                {t('settings.maxHistoryTurnsHint')}
+              </p>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -293,11 +400,14 @@ export default function SettingsDrawer({
                 min={1}
                 max={20}
                 step={1}
+                aria-describedby="max-results-hint"
                 value={localMaxResults}
                 onChange={(e) => setLocalMaxResults(Number(e.target.value || 1))}
                 className="w-full rounded-xl bg-input-bg border border-[#3c4753] text-white px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
               />
-              <p className="text-xs text-slate-500">{t('settings.maxResultsHint')}</p>
+              <p id="max-results-hint" className="text-xs text-slate-500">
+                {t('settings.maxResultsHint')}
+              </p>
             </div>
 
             <button
@@ -320,7 +430,7 @@ export default function SettingsDrawer({
                 <Info className="w-4 h-4" />
               </span>
             </div>
-            <div className="group relative flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-[#3c4753] hover:border-slate-500 hover:bg-input-bg transition-all px-6 py-10">
+            <div className="group relative flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-[#3c4753] hover:border-slate-500 hover:bg-input-bg focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/40 transition-all px-6 py-10">
               <div className="flex flex-col items-center gap-2 text-center">
                 <div className="p-3 bg-[#293038] rounded-full text-slate-300 group-hover:text-white group-hover:bg-primary/20 transition-colors">
                   <Upload className="w-6 h-6" />
@@ -330,6 +440,8 @@ export default function SettingsDrawer({
               </div>
               <button
                 type="button"
+                tabIndex={-1}
+                aria-hidden="true"
                 className="mt-2 flex items-center justify-center rounded-lg bg-[#293038] hover:bg-[#363f4a] text-white text-sm font-semibold px-4 py-2 transition-colors"
               >
                 {isImporting ? t('settings.importProcessing') : t('settings.importChoose')}
@@ -340,9 +452,18 @@ export default function SettingsDrawer({
                 className="absolute inset-0 opacity-0 cursor-pointer"
                 onChange={handleFileChange}
                 disabled={isImporting}
+                aria-label={t('settings.importChoose')}
               />
             </div>
-            {notice ? <p className={`text-sm ${noticeClass}`}>{notice.text}</p> : null}
+            {isImporting ? (
+              <button
+                type="button"
+                onClick={() => importAbortRef.current?.abort()}
+                className="self-start text-sm text-amber-300 hover:text-amber-200"
+              >
+                {t('settings.importCancel')}
+              </button>
+            ) : null}
           </section>
 
           <hr className="border-t border-border-dark" />
@@ -401,6 +522,7 @@ export default function SettingsDrawer({
         partialData={manualPartial}
         missingFields={manualMissing}
         extractedTextPreview={manualPreview}
+        initialMessage={manualMessage}
         onSubmit={handleManualSubmit}
       />
     </div>

@@ -21,13 +21,13 @@
       "catalog_ref": "IEOR E4599",
       "course_number": "IEOR 4599",
       "section_call_number": "001/17725",
-      "times": "Michael Miller",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "256/250",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Michael Miller",
+      "points": "0.00",
+      "enrollment_raw": "256/250",
+      "enrollment_current": 256,
+      "enrollment_capacity": 250
     }
   ],
   "needs_review": false,

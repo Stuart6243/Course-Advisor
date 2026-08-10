@@ -8,55 +8,178 @@ Stage 2: searchable_text 关键词精筛（评分排序）
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 from course_index import (
-    course_quality_score,
     filter_by_fields,
+    has_points_filters,
+    has_schedule_filters,
+    has_section_filters,
     load_course_detail,
+    matching_sections,
+    points_range_matches,
     search_by_keywords,
+    section_matches_filters,
     sort_by_quality,
+)
+from section_validator import validate_section
+
+
+COURSE_OVERLAY_FIELDS = frozenset(
+    {
+        "description",
+        "prerequisites_text",
+        "notes_text",
+        "points_raw",
+        "points_min",
+        "points_max",
+    }
+)
+SECTION_OVERLAY_FIELDS = frozenset(
+    {
+        "term",
+        "catalog_ref",
+        "course_number",
+        "section_call_number",
+        "section_id",
+        "times",
+        "location",
+        "instructor",
+        "points",
+        "enrollment_raw",
+        "enrollment_current",
+        "enrollment_capacity",
+    }
 )
 
 
-def _entry_richness(entry: dict) -> tuple:
-    """同一课号的多条索引记录里，判断哪条信息更完整。"""
-    sections = entry.get("sections_summary") or []
+def _section_identity(section: dict[str, Any]) -> tuple[str, str]:
+    term = str(section.get("term") or "").strip().casefold()
+    section_id = str(
+        section.get("section_call_number") or section.get("section_id") or ""
+    ).strip().casefold()
+    return term, section_id
+
+
+def _overlay_version_key(overlay: dict[str, Any]) -> tuple[int, int, str]:
+    """Return an explicit, input-order-independent overlay recency key."""
+
+    def numeric(value: object) -> int:
+        if isinstance(value, bool):
+            return -1
+        try:
+            return int(value)  # type: ignore[arg-type]
+        except (TypeError, ValueError):
+            return -1
+
     return (
-        1 if entry.get("has_description") else 0,
-        len(sections),
-        sum(1 for s in sections if (s.get("instructor") or "").strip()),
-        len(entry.get("searchable_text") or ""),
+        numeric(overlay.get("created_at_ns")),
+        numeric(overlay.get("revision")),
+        str(overlay.get("version_id") or ""),
     )
 
 
-def dedupe_by_course_code(entries: list[dict]) -> list[dict]:
-    """
-    按 course_code 去重，保留信息最完整的那条。
+def _merge_published_overlays(detail: dict, entry: dict, filters: dict) -> dict:
+    """Merge allowlisted published payload fields into a detail copy."""
 
-    索引里存在 ~147 条重复记录（同一课号来自不同 bulletin 页面，course_uid 不同，
-    因此 add_to_index 的 uid 去重拦不住）。不去重会导致同一门课在回答里出现两次，
-    并白白挤占 max_results 名额。这里只在查询链路去重，不改动 data/ 下的原始文件。
-    """
-    best_index: dict[str, int] = {}
-    result: list[dict] = []
-
-    for entry in entries:
-        code = (entry.get("course_code") or "").strip().upper()
-        if not code:
-            result.append(entry)
+    merged = dict(detail)
+    sections = [
+        dict(section)
+        for section in (detail.get("sections") or [])
+        if isinstance(section, dict)
+    ]
+    applied_versions: list[str] = []
+    applied_provenance: list[dict[str, Any]] = []
+    prepared: list[tuple[dict, dict, dict, tuple[str, str]]] = []
+    for overlay in entry.get("published_syllabus_overlays") or []:
+        if not isinstance(overlay, dict) or overlay.get("status") != "published":
             continue
-
-        if code not in best_index:
-            best_index[code] = len(result)
-            result.append(entry)
+        payload = overlay.get("payload")
+        if not isinstance(payload, dict):
             continue
+        overlay_section = payload.get("section")
+        if not isinstance(overlay_section, dict):
+            continue
+        sanitized_section = {
+            key: value
+            for key, value in overlay_section.items()
+            if key in SECTION_OVERLAY_FIELDS
+        }
+        sanitized_section["term"] = str(
+            overlay.get("term") or sanitized_section.get("term") or ""
+        ).strip()
+        sanitized_section["section_call_number"] = str(
+            overlay.get("section_id")
+            or sanitized_section.get("section_call_number")
+            or sanitized_section.get("section_id")
+            or ""
+        ).strip()
+        sanitized_section.pop("section_id", None)
+        identity = _section_identity(sanitized_section)
+        if not all(identity):
+            continue
+        prepared.append((overlay, payload, sanitized_section, identity))
 
-        pos = best_index[code]
-        if _entry_richness(entry) > _entry_richness(result[pos]):
-            # 保持原位置（相关度顺序不变），但换成信息更全的那条
-            result[pos] = entry
+    # Canonical ordering makes section replacement, provenance, and returned
+    # section order independent of the store/list iteration order.  If a
+    # defensive caller supplies multiple published versions for one identity,
+    # the explicit latest version is applied last.
+    prepared.sort(key=lambda item: (item[3], _overlay_version_key(item[0])))
+    eligible_course_overlays: list[tuple[dict, dict]] = []
+    for overlay, payload, sanitized_section, identity in prepared:
+        for position, existing in enumerate(sections):
+            if _section_identity(existing) == identity:
+                existing_allowlisted = {
+                    key: value
+                    for key, value in existing.items()
+                    if key in SECTION_OVERLAY_FIELDS
+                }
+                sections[position] = {**existing_allowlisted, **sanitized_section}
+                sanitized_section = sections[position]
+                break
+        else:
+            sections.append(sanitized_section)
+        if not has_section_filters(filters) or section_matches_filters(
+            sanitized_section, filters
+        ):
+            eligible_course_overlays.append((overlay, payload))
+        version_id = str(overlay.get("version_id") or "").strip()
+        if version_id:
+            applied_versions.append(version_id)
+        provenance = overlay.get("provenance")
+        if isinstance(provenance, dict):
+            applied_provenance.append(dict(provenance))
 
-    return result
+    # Description/prerequisite/course-credit fields describe one syllabus
+    # version and therefore must come from one deterministic winner.  Applying
+    # each overlay in term/list order made an unfiltered code/topic query use
+    # whichever term happened to sort last.
+    if eligible_course_overlays:
+        _winner, winner_payload = max(
+            eligible_course_overlays,
+            key=lambda item: _overlay_version_key(item[0]),
+        )
+        for field in COURSE_OVERLAY_FIELDS:
+            if field in winner_payload:
+                merged[field] = winner_payload[field]
+
+    sections.sort(key=_section_identity)
+    merged["sections"] = sections
+    if applied_versions:
+        merged["syllabus_overlay_versions"] = list(dict.fromkeys(applied_versions))
+        merged["syllabus_provenance"] = applied_provenance
+    return merged
+
+
+def _valid_detail_sections(detail: dict) -> list[dict]:
+    """Exclude whole rows with semantic errors before filters or prompting."""
+
+    return [
+        dict(section)
+        for section in (detail.get("sections") or [])
+        if isinstance(section, dict)
+        and validate_section(section).status == "published"
+    ]
 
 
 def _as_float(value) -> float | None:
@@ -127,36 +250,191 @@ def build_filters_from_intent(intent: dict) -> dict:
     return filters
 
 
-def _relaxed_filters(filters: dict) -> dict:
-    relaxed = dict(filters)
-    relaxed.pop("time_of_day", None)
-    relaxed.pop("days", None)
-    return relaxed
+_CREDIT_CONSTRAINT_TERMS = frozenset(
+    {
+        "credit",
+        "credits",
+        "point",
+        "points",
+        "unit",
+        "units",
+        "least",
+        "most",
+        "minimum",
+        "maximum",
+        "min",
+        "max",
+        "between",
+        "menos",
+        "entre",
+        "credito",
+        "creditos",
+        "punto",
+        "puntos",
+        "unidad",
+        "unidades",
+        "como",
+        "maximo",
+        "mas",
+        "maximum",
+        "moins",
+        "plus",
+    }
+)
+
+_ATTRIBUTE_QUERY_TERMS = frozenset(
+    {
+        "prerequisite",
+        "prerequisites",
+        "prereq",
+        "prereqs",
+        "credit",
+        "credits",
+        "point",
+        "points",
+        "unit",
+        "units",
+        "instructor",
+        "instructors",
+        "professor",
+        "professors",
+        "teacher",
+        "teach",
+        "teaches",
+        "teaching",
+        "taught",
+        "time",
+        "times",
+        "schedule",
+        "when",
+        "where",
+        "location",
+        "room",
+        "meet",
+        "meets",
+        "offered",
+        "semester",
+        "term",
+        "enrollment",
+        "capacity",
+        "seat",
+        "seats",
+        "syllabus",
+        "description",
+        "detail",
+        "details",
+        "info",
+        "information",
+        # Spanish/French attribute words retained by normalize_question.
+        "prerrequisito",
+        "prerrequisitos",
+        "requisito",
+        "requisitos",
+        "previos",
+        "credito",
+        "creditos",
+        "punto",
+        "puntos",
+        "unidad",
+        "unidades",
+        "profesor",
+        "profesores",
+        "docente",
+        "docentes",
+        "horario",
+        "cuando",
+        "reune",
+        "descripcion",
+        "detalle",
+        "inscripcion",
+        "cupo",
+        "cupos",
+        "prerequis",
+        "prealable",
+        "prealables",
+        "professeur",
+        "professeurs",
+        "horaire",
+        "quand",
+        "inscription",
+        "places",
+    }
+)
 
 
-def _retry_relaxed_candidates(enriched_index: list[dict], filters: dict) -> list[dict]:
-    if len(filters) <= 1:
+def _ranking_keywords(intent: dict, filters: dict) -> list[str]:
+    """Remove words already represented by deterministic field filters.
+
+    Once silent candidate backfilling is removed, structured words such as
+    ``Monday`` or ``credits`` must not become mandatory topical keywords.
+    Otherwise a perfectly valid structured match would score zero simply
+    because course titles do not contain the word "credits".
+    """
+    ignored: set[str] = set(_ATTRIBUTE_QUERY_TERMS)
+
+    ignored.update(
+        str(term).strip().lower()
+        for term in (intent.get("department_terms") or [])
+        if str(term).strip()
+    )
+
+    for code in filters.get("course_codes") or []:
+        ignored.update(part.lower() for part in str(code).replace("-", " ").split())
+
+    # An explicitly named course is itself the relevance decision.  Free-form
+    # question words (especially untranslated multilingual words) must not
+    # suppress that record; all additional structured filters still apply.
+    if filters.get("course_codes"):
         return []
 
-    # Prefer dropping time constraints first, then day constraints.
-    if "time_of_day" in filters:
-        relaxed = dict(filters)
-        relaxed.pop("time_of_day", None)
-        candidates = filter_by_fields(enriched_index, relaxed)
-        if candidates:
-            return candidates
+    for day in filters.get("days") or []:
+        day_text = str(day).strip().lower()
+        if day_text:
+            ignored.add(day_text)
+            ignored.add(f"{day_text}s")
+        ignored.update(
+            {
+                "lunes",
+                "martes",
+                "miercoles",
+                "jueves",
+                "viernes",
+                "sabado",
+                "domingo",
+                "lundi",
+                "mardi",
+                "mercredi",
+                "jeudi",
+                "vendredi",
+                "samedi",
+                "dimanche",
+            }
+        )
 
-    if "days" in filters:
-        relaxed = dict(filters)
-        relaxed.pop("days", None)
-        candidates = filter_by_fields(enriched_index, relaxed)
-        if candidates:
-            return candidates
+    time_of_day = str(filters.get("time_of_day") or "").strip().lower()
+    if time_of_day:
+        ignored.add(time_of_day)
+        ignored.update(
+            {"manana", "tarde", "noche", "matin", "soir", "apres", "midi"}
+        )
 
-    relaxed = _relaxed_filters(filters)
-    if relaxed != filters:
-        return filter_by_fields(enriched_index, relaxed)
-    return []
+    term = str(filters.get("term") or "").strip().lower()
+    if term:
+        ignored.update(term.split())
+
+    if "points_min" in filters or "points_max" in filters:
+        ignored.update(_CREDIT_CONSTRAINT_TERMS)
+
+    instructor = str(filters.get("instructor") or "").strip().lower()
+    if instructor:
+        ignored.update(instructor.split())
+        ignored.update({"professor", "prof", "instructor", "teacher"})
+
+    return [
+        text
+        for keyword in (intent.get("keywords") or [])
+        if (text := str(keyword).strip()) and text.lower() not in ignored
+    ]
 
 
 def retrieve_courses(
@@ -186,8 +464,8 @@ def retrieve_courses(
     6. 返回完整课程 JSON 列表
 
     边界情况：
-    - 粗筛 0 结果 + filters 有多个条件 → 尝试放宽（移除 time_of_day 或 days 重试）
-    - 最终 0 结果 → 返回空列表
+    - 粗筛 0 结果 → 精确返回空列表，不静默删除时间/星期条件
+    - 关键词命中不足 max_results → 返回实际命中，不用无关课程补齐
     - 加载某个 JSON 失败 → 跳过该课程，继续其他
     """
     if (intent.get("query_type") or "").lower() in ("general", "stats"):
@@ -198,51 +476,23 @@ def retrieve_courses(
     candidates = filter_by_fields(enriched_index, filters)
 
     if not candidates:
-        candidates = _retry_relaxed_candidates(enriched_index, filters)
-
-    if not candidates:
         return []
-
-    # 先去重，避免重复课号占掉 max_results 名额。
-    candidates = dedupe_by_course_code(candidates)
 
     # 已经按 department 结构化过滤过了，用户用来指代系别的词
     # （"computer science" → COMS）在 Stage-2 打分中不再具备区分度：
     # 它们对全系课程一律命中，导致同分并退化成课号字母序，
     # 且会把标题字面含系别名的占位课（TOPICS IN COMPUTER SCIENCE）顶到第一。
-    keywords = [str(k) for k in (intent.get("keywords") or []) if k is not None]
-    if intent.get("department"):
-        dept_terms = {
-            str(t).strip().lower()
-            for t in (intent.get("department_terms") or [])
-            if str(t).strip()
-        }
-        if dept_terms:
-            keywords = [k for k in keywords if k.strip().lower() not in dept_terms]
+    keywords = _ranking_keywords(intent, filters)
 
     if keywords:
-        # 无结构化锚点时抬高相关度门槛：必须命中课号或标题（score>=3），
-        # 只在 searchable_text 里蹭到一个泛化词（score=1）不算相关。
-        min_score = 1 if has_structural else 3
+        # 剩下的都是主题词：必须命中课号/标题级别的相关度
+        # (score >= 3)；只在 searchable_text 里蹭到一个泛化词不算。
         ranked = search_by_keywords(
-            candidates, keywords, limit=max(15, max_results), min_score=min_score
+            candidates, keywords, limit=max_results, min_score=3
         )
-        # 没有任何结构化过滤条件（系别/课程代码/学分/时间…），
-        # 且关键词一个都没命中 -> 不要用整库的前 N 门课来凑数（否则会返回一堆无关课程）。
-        if not has_structural and not ranked:
+        if not ranked:
             return []
-        if len(ranked) < max_results:
-            # 补齐时只从已过滤的候选集里取，不引入无关课程；补齐部分按质量排序。
-            seen_codes = {(e.get("course_code") or "").upper() for e in ranked}
-            for entry in sort_by_quality(candidates):
-                code = (entry.get("course_code") or "").upper()
-                if code in seen_codes:
-                    continue
-                ranked.append(entry)
-                seen_codes.add(code)
-                if len(ranked) >= max_results:
-                    break
-        top_entries = ranked[:max_results]
+        top_entries = ranked
     else:
         # 无关键词又无结构化条件 -> 无锚点，返回空而不是整库前 N 门。
         if not has_structural:
@@ -253,7 +503,6 @@ def retrieve_courses(
 
     data_root = Path(courses_dir).parent
     detailed_courses: list[dict] = []
-    seen_codes: set[str] = set()
     for entry in top_entries:
         rel_path = entry.get("path")
         if not rel_path:
@@ -262,12 +511,25 @@ def retrieve_courses(
         detail = load_course_detail(str(detail_path))
         if detail is None:
             continue
-        # 详情加载后再兜底去重一次：索引与详情文件的 course_code 可能不一致。
-        code = (detail.get("course_code") or "").strip().upper()
-        if code and code in seen_codes:
-            continue
-        if code:
-            seen_codes.add(code)
+        detail.setdefault("course_uid", entry.get("course_uid", ""))
+
+        detail = _merge_published_overlays(detail, entry, filters)
+        detail_sections = _valid_detail_sections(detail)
+        matched_detail_sections = matching_sections(detail_sections, filters)
+        if has_section_filters(filters) and not matched_detail_sections:
+            if detail_sections or has_schedule_filters(filters):
+                # Keep the detail-level contract exact even if an index is stale.
+                continue
+            # A course with no published sections can still answer a pure
+            # credit query from its course-level range.  It cannot satisfy any
+            # term/day/time/instructor condition.
+            if not has_points_filters(filters) or not points_range_matches(
+                detail.get("points_min"), detail.get("points_max"), filters
+            ):
+                continue
+
+        detail["sections"] = detail_sections
+        detail["matched_sections"] = [dict(section) for section in matched_detail_sections]
         detailed_courses.append(detail)
 
     return detailed_courses

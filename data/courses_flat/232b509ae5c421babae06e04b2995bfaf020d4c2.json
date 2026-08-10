@@ -36,11 +36,11 @@
       "section_call_number": "001/12429",
       "times": "F 11:00am - 12:00pm",
       "location": "829 Seeley W. Mudd Building",
-      "instructor": "0.00",
-      "points": "23/35",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "23/35",
+      "enrollment_current": 23,
+      "enrollment_capacity": 35
     }
   ],
   "needs_review": false,

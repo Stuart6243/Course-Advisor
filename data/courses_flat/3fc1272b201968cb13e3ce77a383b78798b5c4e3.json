@@ -34,13 +34,13 @@
       "catalog_ref": "ELEN E4488",
       "course_number": "ELEN 4488",
       "section_call_number": "V01/18158",
-      "times": "Christine Hendon",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Christine Hendon",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

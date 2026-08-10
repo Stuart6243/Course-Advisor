@@ -2,7 +2,7 @@ import importlib.util
 from pathlib import Path
 import unittest
 
-MODULE_PATH = Path('columbia_engineering_courses/scrape_columbia_courses.py')
+MODULE_PATH = Path(__file__).resolve().parents[1] / 'scrape_columbia_courses.py'
 spec = importlib.util.spec_from_file_location('scrape_columbia_courses', MODULE_PATH)
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
@@ -66,6 +66,85 @@ class TestScraperHelpers(unittest.TestCase):
         self.assertEqual(sections[0]['section_call_number'], '001/12794')
         self.assertEqual(sections[0]['location'], '309 Havemeyer Hall')
         self.assertEqual(issues, [])
+
+    def test_parse_section_rows_preserves_empty_cells(self):
+        from bs4 import BeautifulSoup
+
+        html = '''
+        <div class="courseblock">
+          <div class="desc_sched">
+            <table class="scheduletbl">
+              <tr><td><strong>Spring 2026: TEST E9999</strong></td></tr>
+              <tr>
+                <th>COURSE NUMBER</th><th>SECTION/CALL NUMBER</th>
+                <th>TIMES/LOCATION</th><th>INSTRUCTOR</th>
+                <th>POINTS</th><th>ENROLLMENT</th>
+              </tr>
+              <tr>
+                <td>TEST 9999</td><td>001/10001</td><td>&nbsp;<br/></td>
+                <td>Savannah Eisner</td><td>1.00-3.00</td><td>2/20</td>
+              </tr>
+              <tr>
+                <td>TEST 9999</td><td>002/10002</td><td>M 10:00am - 11:00am<br/>Room 1</td>
+                <td></td><td>3.00</td><td>5/20</td>
+              </tr>
+              <tr>
+                <td>TEST 9999</td><td>003/10003</td><td></td>
+                <td></td><td>2.00</td><td>0/20</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        '''
+        block = BeautifulSoup(html, 'html.parser').select_one('.courseblock')
+        sections, issues = mod.parse_section_rows(block)
+
+        self.assertEqual(issues, [])
+        self.assertEqual(len(sections), 3)
+        self.assertEqual(sections[0]['times'], '')
+        self.assertEqual(sections[0]['instructor'], 'Savannah Eisner')
+        self.assertEqual(sections[0]['points'], '1.00-3.00')
+        self.assertEqual(sections[0]['enrollment_raw'], '2/20')
+        self.assertEqual(sections[1]['times'], 'M 10:00am - 11:00am')
+        self.assertEqual(sections[1]['location'], 'Room 1')
+        self.assertEqual(sections[1]['instructor'], '')
+        self.assertEqual(sections[1]['points'], '3.00')
+        self.assertEqual(sections[1]['enrollment_raw'], '5/20')
+        self.assertEqual(sections[2]['times'], '')
+        self.assertEqual(sections[2]['instructor'], '')
+        self.assertEqual(sections[2]['points'], '2.00')
+        self.assertEqual(sections[2]['enrollment_raw'], '0/20')
+
+    def test_section_review_does_not_mark_the_whole_course_review(self):
+        from bs4 import BeautifulSoup
+
+        html = '''
+        <div class="courseblock">
+          <p class="courseblocktitle"><strong>COMS GU4111 DATABASE SYSTEMS. <em>3.00 points</em>.</strong></p>
+          <p class="courseblockdesc">A complete study of database design, queries, indexing, and transactions.</p>
+          <div class="desc_sched"><table class="scheduletbl">
+            <tr><td><strong>Spring 2026: COMS GU4111</strong></td></tr>
+            <tr><th>COURSE NUMBER</th><th>SECTION/CALL NUMBER</th><th>TIMES/LOCATION</th><th>INSTRUCTOR</th><th>POINTS</th><th>ENROLLMENT</th></tr>
+            <tr><td>COMS 4111</td><td>001/11111</td><td>TBA</td><td>Ada One</td><td>3.00</td><td>10/30</td></tr>
+            <tr><td>COMS 4111</td><td>002/22222</td><td>M 10:00am - 11:00am</td><td>Grace Two</td><td>3.00</td><td>31/30</td></tr>
+          </table></div>
+        </div>
+        '''
+        record = mod.parse_course_block(
+            block=BeautifulSoup(html, 'html.parser').select_one('.courseblock'),
+            year='2025-2026',
+            source_url='https://bulletin.columbia.edu/columbia-engineering/test/',
+            source_page_title='test',
+            department='Computer Science',
+        )
+
+        self.assertFalse(record['needs_review'])
+        self.assertEqual(record['course_review_warnings'], [])
+        self.assertTrue(any(
+            warning.endswith('enrollment_exceeds_capacity')
+            for warning in record['section_review_warnings']
+        ))
+        self.assertEqual(len(record['sections']), 2)
 
     def test_parse_course_block_reclassifies_prereq_and_description(self):
         from bs4 import BeautifulSoup

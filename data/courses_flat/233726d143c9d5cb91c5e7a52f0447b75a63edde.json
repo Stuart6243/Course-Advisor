@@ -21,13 +21,13 @@
       "catalog_ref": "EAEE E3998",
       "course_number": "EAEE 3998",
       "section_call_number": "001/13493",
-      "times": "Robert Farrauto",
+      "times": "",
       "location": "",
-      "instructor": "2.00",
-      "points": "10/15",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Robert Farrauto",
+      "points": "2.00",
+      "enrollment_raw": "10/15",
+      "enrollment_current": 10,
+      "enrollment_capacity": 15
     }
   ],
   "needs_review": false,

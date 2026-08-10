@@ -34,13 +34,13 @@
       "catalog_ref": "COMS W4710",
       "course_number": "COMS 4710",
       "section_call_number": "V01/17540",
-      "times": "Ansaf Salleb-Aouissi",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "31/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Ansaf Salleb-Aouissi",
+      "points": "3.00",
+      "enrollment_raw": "31/99",
+      "enrollment_current": 31,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

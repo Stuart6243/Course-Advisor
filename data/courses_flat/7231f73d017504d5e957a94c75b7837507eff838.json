@@ -34,13 +34,13 @@
       "catalog_ref": "COMS W4236",
       "course_number": "COMS 4236",
       "section_call_number": "V02/17911",
-      "times": "Xi Chen",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xi Chen",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

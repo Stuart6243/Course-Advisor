@@ -16,7 +16,7 @@ from fastapi.testclient import TestClient
 import config
 from course_index import load_enriched_index
 from course_retriever import retrieve_courses
-from query_parser import parse_extraction_response, rule_based_extract
+from query_parser import IntentParseError, parse_extraction_response, rule_based_extract
 from response_generator import (
     NO_RESULTS_MESSAGES,
     build_answer_prompt,
@@ -71,7 +71,11 @@ def test_c1_parse_extraction_response() -> None:
         ]
         == "compare"
     )
-    assert parse_extraction_response("garbage")["query_type"] == "general"
+    # Malformed output must remain distinguishable from a valid general intent so the
+    # caller can fall back to the other provider.
+    with pytest.raises(IntentParseError):
+        parse_extraction_response("garbage")
+    assert parse_extraction_response('{"query_type":"general"}')["query_type"] == "general"
 
 
 def test_c2_retrieve_courses(enriched_index: list[dict]) -> None:
@@ -125,7 +129,7 @@ def test_c2_retrieve_courses(enriched_index: list[dict]) -> None:
     r3 = retrieve_courses(enriched_index, bad_points, str(config.COURSES_DIR))
     assert isinstance(r3, list)
 
-    # Keyword ranking misses should still be backfilled from department candidates.
+    # A topical keyword miss must not be padded with unrelated department rows.
     sparse_keyword_intent = {
         "query_type": "recommend",
         "course_codes": [],
@@ -145,8 +149,7 @@ def test_c2_retrieve_courses(enriched_index: list[dict]) -> None:
         str(config.COURSES_DIR),
         max_results=5,
     )
-    assert len(r4) == 5
-    assert all((course.get("course_code") or "").startswith("COMS ") for course in r4)
+    assert r4 == []
 
 
 def test_c2b_rule_based_stats_and_recall() -> None:
@@ -421,8 +424,10 @@ def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:
 
         # 必须发出 error 事件
         assert "error" in types
-        # error 之后仍要补一个 done，前端不必依赖异常路径收尾
-        assert types[-1] == "done"
+        # error is terminal.  Sending done afterwards makes the frontend report a failed
+        # generation as a successful completion and can finalize the message twice.
+        assert types[-1] == "error"
+        assert types.count("done") == 0
         # 错误信息应是面向用户的文案，不能直接泄露内部异常字符串
         error_event = next(event for event in events if event["type"] == "error")
         assert "dummy stream failure" not in error_event["message"]

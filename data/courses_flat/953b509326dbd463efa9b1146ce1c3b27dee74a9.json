@@ -21,13 +21,13 @@
       "catalog_ref": "APPH E6333",
       "course_number": "APPH 6333",
       "section_call_number": "001/11106",
-      "times": "Cheng Wuu",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "4/10",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Cheng Wuu",
+      "points": "3.00",
+      "enrollment_raw": "4/10",
+      "enrollment_current": 4,
+      "enrollment_capacity": 10
     }
   ],
   "needs_review": false,

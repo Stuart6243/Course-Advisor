@@ -21,13 +21,13 @@
       "catalog_ref": "CIEN E9800",
       "course_number": "CIEN 9800",
       "section_call_number": "001/18117",
-      "times": "Raimondo Betti",
+      "times": "",
       "location": "",
-      "instructor": "3.00-12.00",
-      "points": "1/15",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Raimondo Betti",
+      "points": "3.00-12.00",
+      "enrollment_raw": "1/15",
+      "enrollment_current": 1,
+      "enrollment_capacity": 15
     }
   ],
   "needs_review": false,

@@ -34,13 +34,13 @@
       "catalog_ref": "APPH E4300",
       "course_number": "APPH 4300",
       "section_call_number": "V01/17896",
-      "times": "Carlos Paz Soldan",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "2/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Carlos Paz Soldan",
+      "points": "3.00",
+      "enrollment_raw": "2/99",
+      "enrollment_current": 2,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

@@ -34,13 +34,13 @@
       "catalog_ref": "CIEN E4136",
       "course_number": "CIEN 4136",
       "section_call_number": "V01/18016",
-      "times": "Pierce Reynoldson",
+      "times": "",
       "location": "",
-      "instructor": "3",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Pierce Reynoldson",
+      "points": "3",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

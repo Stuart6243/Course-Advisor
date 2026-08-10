@@ -21,7 +21,7 @@ from course_index import (  # noqa: E402
     filter_by_fields,
     load_enriched_index,
 )
-from course_retriever import dedupe_by_course_code, retrieve_courses  # noqa: E402
+from course_retriever import retrieve_courses  # noqa: E402
 from query_parser import (  # noqa: E402
     DEFAULT_INTENT,
     extract_instructor,
@@ -94,9 +94,9 @@ def test_bug02_department_terms_stripped_from_scoring():
 
 
 def test_bug02_topical_words_survive_department_routing():
-    """robotics 虽然路由到 MECE，但它是主题词，不能被当作系别词剔除。"""
+    """robotics 是跨系主题，不能硬锁 MECE，也不能被剔除。"""
     intent = rule_based_extract(normalize_question("recommend some robotics courses"))
-    assert intent["department"] == "MECE"
+    assert intent["department"] is None
     assert intent["department_terms"] == []
     assert "robotics" in intent["keywords"]
 
@@ -122,30 +122,40 @@ def test_bug02_quality_score_penalizes_placeholder_courses():
     assert course_quality_score(real) > course_quality_score(placeholder)
 
 
-# ---------------------------------------------------------------- #3 重复课程
-def test_bug03_dedupe_keeps_richest_record():
+# ---------------------------------------------------------------- #3 重复课程记录保持独立
+def test_bug03_same_code_records_are_not_merged():
     entries = [
-        {"course_code": "ENGI E4300", "has_description": False, "sections_summary": []},
         {
+            "course_uid": "uid-a",
+            "course_code": "ENGI E4300",
+            "has_description": False,
+            "sections_summary": [],
+        },
+        {
+            "course_uid": "uid-b",
             "course_code": "ENGI E4300",
             "has_description": True,
             "sections_summary": [{"instructor": "A"}],
         },
-        {"course_code": "COMS W4111", "has_description": True, "sections_summary": []},
     ]
-    result = dedupe_by_course_code(entries)
+    result = filter_by_fields(entries, {"course_codes": ["ENGI E4300"]})
     assert len(result) == 2
-    assert result[0]["has_description"] is True, "应保留信息更完整的那条"
+    assert [entry["course_uid"] for entry in result] == ["uid-a", "uid-b"]
 
 
-def test_bug03_no_duplicate_codes_in_results(index):
+def test_bug03_results_do_not_repeat_the_same_record(index):
     for question in [
         "Compare CIEN E3125 and ENME E3113",
         "I'm interested in machine learning",
         "computer science courses",
     ]:
-        codes = _codes(_search(index, question, max_results=10))
-        assert len(codes) == len(set(codes)), f"{question} 返回了重复课号: {codes}"
+        courses = _search(index, question, max_results=10)
+        identities = [
+            course.get("course_uid") or course.get("source_page_url")
+            for course in courses
+        ]
+        nonempty = [identity for identity in identities if identity]
+        assert len(nonempty) == len(set(nonempty)), f"同一记录被重复返回: {identities}"
 
 
 # ---------------------------------------------------------------- #4 星期复数
@@ -256,13 +266,13 @@ def test_bug20_course_code_filter_respects_other_filters():
         {
             "course_code": "CIEN E3125",
             "all_terms": ["Spring 2026"],
-            "sections_summary": [],
+            "sections_summary": [{"term": "Spring 2026", "times": "M 10:00am"}],
             "all_instructors": [],
         },
         {
             "course_code": "CIEN E3125",
             "all_terms": ["Fall 2025"],
-            "sections_summary": [],
+            "sections_summary": [{"term": "Fall 2025", "times": "M 10:00am"}],
             "all_instructors": [],
         },
     ]

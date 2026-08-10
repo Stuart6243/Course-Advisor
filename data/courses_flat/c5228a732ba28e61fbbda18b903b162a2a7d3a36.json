@@ -21,26 +21,26 @@
       "catalog_ref": "APAM E3999",
       "course_number": "APAM 3999",
       "section_call_number": "003/20428",
-      "times": "Siu-Wai Chan",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "1/10",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Siu-Wai Chan",
+      "points": "1.00-2.00",
+      "enrollment_raw": "1/10",
+      "enrollment_current": 1,
+      "enrollment_capacity": 10
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "APAM E3999",
       "course_number": "APAM 3999",
       "section_call_number": "001/18057",
-      "times": "Yuan Yang",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "1/5",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Yuan Yang",
+      "points": "1.00-2.00",
+      "enrollment_raw": "1/5",
+      "enrollment_current": 1,
+      "enrollment_capacity": 5
     }
   ],
   "needs_review": false,

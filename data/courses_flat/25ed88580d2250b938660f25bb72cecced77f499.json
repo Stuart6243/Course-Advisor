@@ -34,13 +34,13 @@
       "catalog_ref": "MECE E4610",
       "course_number": "MECE 4610",
       "section_call_number": "V01/17948",
-      "times": "Sinisa Vukelic",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "7/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Sinisa Vukelic",
+      "points": "3.00",
+      "enrollment_raw": "7/99",
+      "enrollment_current": 7,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

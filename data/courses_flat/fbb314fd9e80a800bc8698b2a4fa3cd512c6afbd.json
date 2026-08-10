@@ -21,26 +21,26 @@
       "catalog_ref": "BMEN E4999",
       "course_number": "BMEN 4999",
       "section_call_number": "001/13248",
-      "times": "Clark Hung",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "11/100",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Clark Hung",
+      "points": "1.00-2.00",
+      "enrollment_raw": "11/100",
+      "enrollment_current": 11,
+      "enrollment_capacity": 100
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "BMEN E4999",
       "course_number": "BMEN 4999",
       "section_call_number": "001/13381",
-      "times": "Clark Hung",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "0/100",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Clark Hung",
+      "points": "1.00-2.00",
+      "enrollment_raw": "0/100",
+      "enrollment_current": 0,
+      "enrollment_capacity": 100
     }
   ],
   "needs_review": false,

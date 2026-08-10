@@ -21,13 +21,13 @@
       "catalog_ref": "CIEN E3999",
       "course_number": "CIEN 3999",
       "section_call_number": "001/19984",
-      "times": "Scott Kelly",
+      "times": "",
       "location": "",
-      "instructor": "1.00-1.50",
-      "points": "1/20",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Scott Kelly",
+      "points": "1.00-1.50",
+      "enrollment_raw": "1/20",
+      "enrollment_current": 1,
+      "enrollment_capacity": 20
     }
   ],
   "needs_review": false,

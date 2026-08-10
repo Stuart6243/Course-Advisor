@@ -47,13 +47,13 @@
       "catalog_ref": "COMS W4705",
       "course_number": "COMS 4705",
       "section_call_number": "V01/17914",
-      "times": "Daniel Bauer",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "11/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Daniel Bauer",
+      "points": "3.00",
+      "enrollment_raw": "11/99",
+      "enrollment_current": 11,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
@@ -99,13 +99,13 @@
       "catalog_ref": "COMS W4705",
       "course_number": "COMS 4705",
       "section_call_number": "V02/20123",
-      "times": "Daniel Bauer",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "7/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Daniel Bauer",
+      "points": "3.00",
+      "enrollment_raw": "7/99",
+      "enrollment_current": 7,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

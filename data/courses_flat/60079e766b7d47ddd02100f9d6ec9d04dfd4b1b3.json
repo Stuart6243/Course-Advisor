@@ -21,26 +21,26 @@
       "catalog_ref": "ELEN E3990",
       "course_number": "ELEN 3990",
       "section_call_number": "001/17965",
-      "times": "Xiaodong Wang",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "2/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xiaodong Wang",
+      "points": "1.00-2.00",
+      "enrollment_raw": "2/99",
+      "enrollment_current": 2,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "ELEN E3990",
       "course_number": "ELEN 3990",
       "section_call_number": "001/16708",
-      "times": "Xiaodong Wang",
+      "times": "",
       "location": "",
-      "instructor": "1.00-2.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xiaodong Wang",
+      "points": "1.00-2.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

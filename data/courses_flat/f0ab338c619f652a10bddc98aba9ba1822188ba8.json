@@ -21,13 +21,13 @@
       "catalog_ref": "COMS E6910",
       "course_number": "COMS 6910",
       "section_call_number": "062/17969",
-      "times": "Nakul Verma",
+      "times": "",
       "location": "",
-      "instructor": "1.00",
-      "points": "24/25",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Nakul Verma",
+      "points": "1.00",
+      "enrollment_raw": "24/25",
+      "enrollment_current": 24,
+      "enrollment_capacity": 25
     }
   ],
   "needs_review": false,

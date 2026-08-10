@@ -34,13 +34,13 @@
       "catalog_ref": "APPH E4112",
       "course_number": "APPH 4112",
       "section_call_number": "V01/17894",
-      "times": "Nanfang Yu",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "0/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Nanfang Yu",
+      "points": "3.00",
+      "enrollment_raw": "0/99",
+      "enrollment_current": 0,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

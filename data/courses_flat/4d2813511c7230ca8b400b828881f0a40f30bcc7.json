@@ -34,13 +34,13 @@
       "catalog_ref": "ELEN E6312",
       "course_number": "ELEN 6312",
       "section_call_number": "V01/20312",
-      "times": "Armagan Dascurcu",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "0/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Armagan Dascurcu",
+      "points": "3.00",
+      "enrollment_raw": "0/99",
+      "enrollment_current": 0,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

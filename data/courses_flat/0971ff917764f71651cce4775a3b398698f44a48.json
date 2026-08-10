@@ -34,13 +34,13 @@
       "catalog_ref": "CSEE W4119",
       "course_number": "CSEE 4119",
       "section_call_number": "V03/17921",
-      "times": "Henning Schulzrinne",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Henning Schulzrinne",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
@@ -60,13 +60,13 @@
       "catalog_ref": "CSEE W4119",
       "course_number": "CSEE 4119",
       "section_call_number": "V01/16651",
-      "times": "Xia Zhou",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "9/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Xia Zhou",
+      "points": "3.00",
+      "enrollment_raw": "9/99",
+      "enrollment_current": 9,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

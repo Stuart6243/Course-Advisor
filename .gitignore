@@ -41,3 +41,4 @@ frontend/dist/
 
 # Local backup artifacts
 *.bak
+.data.section-repair.lock

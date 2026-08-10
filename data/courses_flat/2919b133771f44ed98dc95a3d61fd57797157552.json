@@ -34,13 +34,13 @@
       "catalog_ref": "BMEN E4580",
       "course_number": "BMEN 4580",
       "section_call_number": "V01/16638",
-      "times": "Henry Hess",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Henry Hess",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

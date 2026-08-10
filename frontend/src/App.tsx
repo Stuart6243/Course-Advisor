@@ -22,8 +22,10 @@ const isChatSettings = (value: unknown): value is ChatSettings => {
   return (
     typeof v.maxHistoryTurns === 'number' &&
     typeof v.maxResults === 'number' &&
+    Number.isInteger(v.maxHistoryTurns) &&
+    Number.isInteger(v.maxResults) &&
     v.maxHistoryTurns >= 1 &&
-    v.maxHistoryTurns <= 50 &&
+    v.maxHistoryTurns <= 10 &&
     v.maxResults >= 1 &&
     v.maxResults <= 20
   );
@@ -45,14 +47,31 @@ export default function App() {
     useChat(language, chatSettings);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const {i18n} = useTranslation();
+  const [, setTranslationRevision] = useState(0);
 
   const hasStarted = messages.length > 0;
 
   // 从 localStorage 恢复的语言要同步给 i18next，否则界面文案仍是英文。
   useEffect(() => {
-    if (i18n.language !== language) {
-      void i18n.changeLanguage(language);
-    }
+    let active = true;
+    document.documentElement.lang = language;
+
+    const syncLanguage = async () => {
+      if (i18n.language !== language) {
+        await i18n.changeLanguage(language);
+      }
+      // Some i18next/browser timing combinations finish the async language
+      // change before react-i18next's listener is attached.  Force one root
+      // render so static children and later health updates use the same locale.
+      if (active) {
+        setTranslationRevision((revision) => revision + 1);
+      }
+    };
+
+    void syncLanguage();
+    return () => {
+      active = false;
+    };
   }, [i18n, language]);
 
   const handleLanguageChange = (lang: Language) => {
@@ -66,22 +85,28 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col overflow-hidden bg-background-dark text-slate-100 font-display selection:bg-primary/30 selection:text-white">
-      <Header
-        onNewChat={newChat}
-        onOpenSettings={() => setIsSettingsOpen(true)}
-      />
-
-      {hasStarted ? (
-        <ChatView
-          messages={messages}
-          isLoading={isLoading}
-          onSend={sendMessage}
-          onStop={stopGeneration}
-          contextLost={contextLost}
+      <div
+        className="contents"
+        aria-hidden={isSettingsOpen || undefined}
+        inert={isSettingsOpen ? true : undefined}
+      >
+        <Header
+          onNewChat={newChat}
+          onOpenSettings={() => setIsSettingsOpen(true)}
         />
-      ) : (
-        <LandingView onStart={sendMessage} />
-      )}
+
+        {hasStarted ? (
+          <ChatView
+            messages={messages}
+            isLoading={isLoading}
+            onSend={sendMessage}
+            onStop={stopGeneration}
+            contextLost={contextLost}
+          />
+        ) : (
+          <LandingView onStart={sendMessage} />
+        )}
+      </div>
 
       <SettingsDrawer
         isOpen={isSettingsOpen}

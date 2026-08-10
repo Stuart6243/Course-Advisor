@@ -21,26 +21,26 @@
       "catalog_ref": "CIEN E4999",
       "course_number": "CIEN 4999",
       "section_call_number": "001/17998",
-      "times": "Raimondo Betti, Scott Kelly",
+      "times": "",
       "location": "",
-      "instructor": "1.00-1.50",
-      "points": "19/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Raimondo Betti, Scott Kelly",
+      "points": "1.00-1.50",
+      "enrollment_raw": "19/30",
+      "enrollment_current": 19,
+      "enrollment_capacity": 30
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "CIEN E4999",
       "course_number": "CIEN 4999",
       "section_call_number": "001/17143",
-      "times": "Raimondo Betti, Scott Kelly",
+      "times": "",
       "location": "",
-      "instructor": "1.00-1.50",
-      "points": "1/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Raimondo Betti, Scott Kelly",
+      "points": "1.00-1.50",
+      "enrollment_raw": "1/30",
+      "enrollment_current": 1,
+      "enrollment_capacity": 30
     }
   ],
   "needs_review": false,

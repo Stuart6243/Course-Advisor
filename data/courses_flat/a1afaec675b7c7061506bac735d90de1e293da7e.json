@@ -34,26 +34,26 @@
       "catalog_ref": "ELEN E6885",
       "course_number": "ELEN 6885",
       "section_call_number": "C01/20694",
-      "times": "Chong Li, Chonggang Wang",
+      "times": "",
       "location": "",
-      "instructor": "3",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Chong Li, Chonggang Wang",
+      "points": "3",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     },
     {
       "term": "Fall 2025",
       "catalog_ref": "ELEN E6885",
       "course_number": "ELEN 6885",
       "section_call_number": "V01/18109",
-      "times": "Chong Li, Chonggang Wang",
+      "times": "",
       "location": "",
-      "instructor": "3",
-      "points": "4/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Chong Li, Chonggang Wang",
+      "points": "3",
+      "enrollment_raw": "4/99",
+      "enrollment_current": 4,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

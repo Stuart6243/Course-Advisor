@@ -34,13 +34,13 @@
       "catalog_ref": "EECS E6895",
       "course_number": "EECS 6895",
       "section_call_number": "V01/16732",
-      "times": "Ching-yung Lin",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "11/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Ching-yung Lin",
+      "points": "3.00",
+      "enrollment_raw": "11/99",
+      "enrollment_current": 11,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

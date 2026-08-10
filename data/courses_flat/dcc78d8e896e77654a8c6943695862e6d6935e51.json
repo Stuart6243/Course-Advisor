@@ -34,26 +34,26 @@
       "catalog_ref": "EEME E4601",
       "course_number": "EEME 4601",
       "section_call_number": "C01/18226",
-      "times": "Homayoon Beigi",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "0/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Homayoon Beigi",
+      "points": "3.00",
+      "enrollment_raw": "0/99",
+      "enrollment_current": 0,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "EEME E4601",
       "course_number": "EEME 4601",
       "section_call_number": "V01/16657",
-      "times": "Homayoon Beigi",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "4/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Homayoon Beigi",
+      "points": "3.00",
+      "enrollment_raw": "4/99",
+      "enrollment_current": 4,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

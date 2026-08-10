@@ -34,13 +34,13 @@
       "catalog_ref": "IEOR E4571",
       "course_number": "IEOR 4571",
       "section_call_number": "V01/17936",
-      "times": "Khosrow Dehnad, Robert Kramer",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Khosrow Dehnad, Robert Kramer",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",

@@ -60,13 +60,13 @@
       "catalog_ref": "COMS W4701",
       "course_number": "COMS 4701",
       "section_call_number": "V01/17913",
-      "times": "Ansaf Salleb-Aouissi, Yun Lin",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "8/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Ansaf Salleb-Aouissi, Yun Lin",
+      "points": "3.00",
+      "enrollment_raw": "8/99",
+      "enrollment_current": 8,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
@@ -99,13 +99,13 @@
       "catalog_ref": "COMS W4701",
       "course_number": "COMS 4701",
       "section_call_number": "V02/20063",
-      "times": "Yun Lin",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "8/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Yun Lin",
+      "points": "3.00",
+      "enrollment_raw": "8/99",
+      "enrollment_current": 8,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

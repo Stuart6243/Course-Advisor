@@ -34,13 +34,13 @@
       "catalog_ref": "MSAE E4090",
       "course_number": "MSAE 4090",
       "section_call_number": "V01/16667",
-      "times": "Yuan Yang",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Yuan Yang",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

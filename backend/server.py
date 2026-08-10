@@ -5,6 +5,8 @@ FastAPI 主入口。
 
 from __future__ import annotations
 
+import asyncio
+import copy
 import io
 import json
 import re
@@ -16,31 +18,38 @@ from typing import Any, Literal, Optional
 
 from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field, field_validator
 
 import config
+from conversation_scope import (
+    Attribute as ScopeAttribute,
+    ConversationScope,
+    Operation as ScopeOperation,
+    Scope,
+    parse_conversation_scope,
+)
+from course_codes import extract_course_codes
 from course_index import (
-    add_to_index,
-    build_enriched_entry,
     build_enriched_index_from_dir,
     save_enriched_index,
 )
 from course_retriever import retrieve_courses
 from export_handler import export_as_json, export_as_markdown
 from file_importer import (
-    _find_existing_by_code as find_existing_by_code,
-    backfill_points,
-    complete_course_json,
-    generate_course_uid,
     import_file,
-    normalize_course_code,
-    validate_course_code,
+    import_manual_syllabus,
 )
 from groq_client import GroqClient
 from ollama_client import OllamaClient
-from query_parser import extract_query_intent
-from response_generator import generate_response_stream, is_conversation_recall_query
+from prerequisites import compare_course_prerequisites
+from query_parser import IntentExtractionResult, extract_query_intent_result
+from response_generator import (
+    generate_response_stream,
+    is_conversation_recall_query,
+    select_courses_for_context,
+)
+from syllabus_store import SyllabusStore, apply_published_overlays
 
 
 class ExportRequest(BaseModel):
@@ -68,8 +77,10 @@ class ChatRequest(BaseModel):
     @field_validator("max_history_turns")
     @classmethod
     def validate_max_history_turns(cls, value: Optional[int]) -> Optional[int]:
-        if value is not None and not (1 <= value <= 50):
-            raise ValueError("max_history_turns must be between 1 and 50")
+        if value is not None and not (1 <= value <= config.CONVERSATION_MAX_TURNS):
+            raise ValueError(
+                f"max_history_turns must be between 1 and {config.CONVERSATION_MAX_TURNS}"
+            )
         return value
 
     @field_validator("max_results")
@@ -84,12 +95,21 @@ class ManualImportRequest(BaseModel):
     course_code: str
     title: str
     points_raw: Optional[str] = ""
-    points_min: Optional[float] = 0.0
-    points_max: Optional[float] = 0.0
+    points_min: Optional[float] = None
+    points_max: Optional[float] = None
+    term: Optional[str] = ""
+    section_id: Optional[str] = ""
+    times: Optional[str] = ""
+    location: Optional[str] = ""
+    instructor: Optional[str] = ""
+    enrollment_raw: Optional[str] = ""
+    enrollment_current: Optional[int] = None
+    enrollment_capacity: Optional[int] = None
     description: Optional[str] = ""
     prerequisites_text: Optional[str] = ""
+    notes_text: Optional[str] = ""
     department_or_group: Optional[str] = ""
-    sections: Optional[list] = []
+    sections: list[dict[str, Any]] = Field(default_factory=list)
 
 
 ERROR_MESSAGES: dict[str, dict[str, str]] = {
@@ -130,8 +150,6 @@ GENERIC_RECOMMEND_KEYWORDS = {
     "additional",
     "else",
 }
-COURSE_CODE_RE = re.compile(r"\b([A-Z]{2,4})[\s\-_]*[A-Z]?\d{4}\b")
-
 # 指代词/回指表达：出现这些词，且当前问题没有给出新的系别/课程代码/教授，
 # 说明用户是在追问“上一轮那些课”，此时应复用上一轮的课程，而不是重新全库检索。
 #
@@ -171,6 +189,23 @@ _ATTRIBUTE_WORDS = frozenset({
     "fewer", "fewest", "least", "most", "better", "cheapest",
     "shortest", "longest", "earliest", "latest", "sophomore", "junior",
     "senior", "freshman", "beginner", "advanced",
+    "morning", "afternoon", "evening", "monday", "tuesday",
+    "wednesday", "thursday", "friday", "saturday", "sunday",
+    "one", "ones", "another", "first", "second", "third", "fourth",
+    "fifth", "former", "latter",
+})
+
+_FOLLOWUP_NON_TOPIC_WORDS = _ATTRIBUTE_WORDS | frozenset({
+    "fewer", "fewest", "least", "more", "most", "lowest", "highest",
+    "which", "those", "these", "them", "they", "their", "its", "among",
+    "prerrequisito", "prerrequisitos", "requisito", "requisitos",
+    "credito", "creditos", "horario", "cuando", "profesor", "profesores",
+    "prerequis", "prealable", "prealables", "credits", "horaire", "quand",
+    "professeur", "professeurs", "moins", "plus", "lequel", "laquelle",
+    "primero", "segundo", "premier", "deuxieme", "cuantos", "combien",
+    "vaut", "cuando", "reune", "quand", "lieu", "comparalo", "compare-le",
+    "lista", "liste", "estos", "estas", "esos", "esas", "ces", "cinq",
+    "five", "cinco", "menos", "parmi", "entre", "eux", "ellos",
 })
 
 
@@ -190,15 +225,226 @@ def _is_attribute_question(intent: dict) -> bool:
     return all(k in _ATTRIBUTE_WORDS for k in keywords)
 
 
+def _intent_has_new_search_anchor(intent: dict) -> bool:
+    """Return whether intent contains a genuine new catalog-search anchor."""
+    if intent.get("course_codes") or intent.get("department") or intent.get("instructor"):
+        return True
+    keywords = {
+        str(keyword).strip().lower()
+        for keyword in (intent.get("keywords") or [])
+        if str(keyword).strip()
+    }
+    return any(keyword not in _FOLLOWUP_NON_TOPIC_WORDS for keyword in keywords)
+
+
 def _is_referential_followup(intent: dict, message: str, is_followup: bool) -> bool:
     """是否为“指代上一轮课程”的追问。"""
     if not is_followup:
         return False
-    # 如果用户明确给了新的锚点（课程代码/系别/教授），说明是新查询，不算回指。
-    if intent.get("course_codes") or intent.get("department") or intent.get("instructor"):
-        return False
-    # 显式指代词，或整句只在问属性（没有任何新主题词）
-    return _is_reference_message(message) or _is_attribute_question(intent)
+    parsed = parse_conversation_scope(
+        message,
+        previous_count=2,
+        has_current_focus=True,
+        new_search_anchor=_intent_has_new_search_anchor(intent),
+    )
+    return parsed.scope is not Scope.NEW_SEARCH
+
+
+def _course_identity(course: dict) -> str:
+    return str(course.get("course_uid") or course.get("course_code") or "").strip().upper()
+
+
+def _append_unique_course(target: list[dict], course: dict | None) -> None:
+    if not isinstance(course, dict):
+        return
+    identity = _course_identity(course)
+    if identity and any(_course_identity(existing) == identity for existing in target):
+        return
+    target.append(course)
+
+
+def _resolve_focus_course(
+    raw_focus: object,
+    previous_courses: list[dict],
+) -> dict | None:
+    if isinstance(raw_focus, dict):
+        return raw_focus
+    if isinstance(raw_focus, str):
+        wanted = raw_focus.strip().upper()
+        for course in previous_courses:
+            if _course_identity(course) == wanted or str(
+                course.get("course_code") or ""
+            ).strip().upper() == wanted:
+                return course
+    return None
+
+
+def _courses_for_conversation_scope(
+    parsed_scope: ConversationScope,
+    previous_courses: list[dict],
+    current_course: dict | None,
+) -> tuple[list[dict], dict | None, str | None]:
+    """Resolve previous-result ordinals/focus without touching the catalog."""
+    if parsed_scope.scope is Scope.NEW_SEARCH:
+        return [], current_course, None
+
+    if parsed_scope.scope is Scope.CURRENT_COURSE:
+        selected: dict | None = None
+        if parsed_scope.ordinal is not None:
+            position = parsed_scope.ordinal - 1
+            if 0 <= position < len(previous_courses):
+                selected = previous_courses[position]
+            else:
+                return [], current_course, "ordinal_out_of_range"
+        elif current_course is not None:
+            selected = current_course
+        elif len(previous_courses) == 1:
+            selected = previous_courses[0]
+        if selected is None:
+            return [], current_course, "current_course_unavailable"
+        return [selected], selected, None
+
+    selected_courses: list[dict] = []
+    if parsed_scope.operation is ScopeOperation.COMPARE and (
+        parsed_scope.uses_focus or parsed_scope.ordinals
+    ):
+        if parsed_scope.uses_focus:
+            _append_unique_course(selected_courses, current_course)
+        for ordinal in parsed_scope.ordinals:
+            position = ordinal - 1
+            if 0 <= position < len(previous_courses):
+                _append_unique_course(selected_courses, previous_courses[position])
+            else:
+                return [], current_course, "ordinal_out_of_range"
+        if selected_courses:
+            return selected_courses, current_course, None
+
+    return list(previous_courses), current_course, None
+
+
+def _clip_message_content(content: str, limit: int) -> str:
+    if len(content) <= limit:
+        return content
+    if limit <= 1:
+        return content[:limit]
+    marker = "\n…\n"
+    if limit <= len(marker) + 2:
+        return content[:limit]
+    usable = limit - len(marker)
+    head = (usable * 2) // 3
+    return content[:head] + marker + content[-(usable - head) :]
+
+
+def _trim_conversation_history(
+    history: list[dict[str, str]],
+    *,
+    max_turns: int,
+    max_chars: int | None = None,
+) -> list[dict[str, str]]:
+    """Keep complete recent turns under both turn and character limits."""
+    char_budget = (
+        config.CONVERSATION_MAX_CHARS
+        if max_chars is None
+        else max(0, max_chars)
+    )
+    capped = list(history[-max_turns * 2 :])
+    turns = [capped[index : index + 2] for index in range(0, len(capped), 2)]
+    selected: list[list[dict[str, str]]] = []
+    remaining = char_budget
+
+    for turn in reversed(turns):
+        turn_size = sum(len(str(message.get("content") or "")) for message in turn)
+        if turn_size <= remaining:
+            selected.append([dict(message) for message in turn])
+            remaining -= turn_size
+            continue
+        if not selected and remaining > 0:
+            per_message = max(1, remaining // max(1, len(turn)))
+            clipped_turn: list[dict[str, str]] = []
+            for message in turn:
+                copied = dict(message)
+                copied["content"] = _clip_message_content(
+                    str(message.get("content") or ""), per_message
+                )
+                clipped_turn.append(copied)
+            selected.append(clipped_turn)
+        break
+
+    return [message for turn in reversed(selected) for message in turn]
+
+
+IMPORT_READ_CHUNK_BYTES = 1024 * 1024
+IMPORT_PIPELINE_TIMEOUT_SECONDS = 120.0
+
+
+async def _read_upload_limited(upload: UploadFile, limit_bytes: int) -> bytes:
+    """Read at most limit+1 bytes, never materializing an oversized upload."""
+
+    chunks: list[bytes] = []
+    total = 0
+    while True:
+        remaining_probe = limit_bytes + 1 - total
+        chunk = await upload.read(min(IMPORT_READ_CHUNK_BYTES, remaining_probe))
+        if not chunk:
+            return b"".join(chunks)
+        chunks.append(chunk)
+        total += len(chunk)
+        if total > limit_bytes:
+            raise ValueError(f"File exceeds {config.MAX_IMPORT_SIZE_MB}MB limit.")
+
+
+def _ensure_import_state(application: FastAPI) -> None:
+    if not isinstance(
+        getattr(application.state, "seed_enriched_index", None), list
+    ):
+        application.state.seed_enriched_index = copy.deepcopy(
+            getattr(application.state, "enriched_index", []) or []
+        )
+    if not isinstance(
+        getattr(application.state, "syllabus_store", None), SyllabusStore
+    ):
+        application.state.syllabus_store = SyllabusStore(
+            Path(config.DATA_DIR) / "syllabus_store"
+        )
+    if getattr(application.state, "import_lock", None) is None:
+        application.state.import_lock = asyncio.Lock()
+
+
+def _refresh_runtime_overlays(application: FastAPI) -> None:
+    """Rebuild from immutable seed + the complete published overlay snapshot."""
+
+    _ensure_import_state(application)
+    seed = application.state.seed_enriched_index
+    overlays = application.state.syllabus_store.effective_overlays()
+    application.state.enriched_index = apply_published_overlays(seed, overlays)
+
+
+def _manual_payload_data(payload: ManualImportRequest) -> dict[str, Any]:
+    """Accept direct fields while retaining compatibility with sections[0]."""
+
+    data = payload.model_dump()
+    legacy = data.get("sections", [None])[0] if data.get("sections") else None
+    if isinstance(legacy, dict):
+        aliases = {
+            "term": ("term",),
+            "section_id": ("section_id", "section_call_number"),
+            "points_raw": ("points_raw", "points"),
+            "times": ("times",),
+            "location": ("location",),
+            "instructor": ("instructor",),
+            "enrollment_raw": ("enrollment_raw",),
+            "enrollment_current": ("enrollment_current",),
+            "enrollment_capacity": ("enrollment_capacity",),
+        }
+        for target, sources in aliases.items():
+            if data.get(target) not in (None, ""):
+                continue
+            for source in sources:
+                if legacy.get(source) not in (None, ""):
+                    data[target] = legacy[source]
+                    break
+    data.pop("sections", None)
+    return data
 
 
 @asynccontextmanager
@@ -208,8 +454,18 @@ async def lifespan(app: FastAPI):
         config.OLLAMA_MODEL,
         config.OLLAMA_TIMEOUT,
     )
+    # Intent extraction uses the JSON-stable model and its shorter task timeout.
+    app.state.ollama_intent = OllamaClient(
+        config.OLLAMA_BASE_URL,
+        config.OLLAMA_INTENT_MODEL,
+        config.INTENT_TIMEOUT,
+    )
     app.state.groq = GroqClient()
+    app.state.groq_intent = GroqClient(timeout=config.INTENT_TIMEOUT)
     app.state.enriched_index = []
+    app.state.seed_enriched_index = []
+    app.state.syllabus_store = SyllabusStore(Path(config.DATA_DIR) / "syllabus_store")
+    app.state.import_lock = asyncio.Lock()
     app.state.conversations: OrderedDict[str, list[dict[str, str]]] = OrderedDict()
     app.state.conversations_meta: OrderedDict[str, dict[str, Any]] = OrderedDict()
 
@@ -242,6 +498,15 @@ async def lifespan(app: FastAPI):
         except Exception as exc:
             print(f"⚠️ Failed to auto-build index: {exc}")
 
+    # Keep the loaded catalog immutable in memory.  Runtime search is always a
+    # fresh seed copy plus the complete published-only overlay snapshot.
+    app.state.seed_enriched_index = copy.deepcopy(app.state.enriched_index)
+    try:
+        _refresh_runtime_overlays(app)
+    except Exception as exc:
+        app.state.enriched_index = copy.deepcopy(app.state.seed_enriched_index)
+        print(f"⚠️ Failed to load syllabus overlays: {exc}")
+
     if config.WARMUP_ON_STARTUP and config.INFERENCE_MODE in ("local", "hybrid"):
         print("Warming up local LLM...")
         try:
@@ -258,8 +523,13 @@ async def lifespan(app: FastAPI):
         yield
     finally:
         app.state.ollama = None
+        app.state.ollama_intent = None
         app.state.groq = None
+        app.state.groq_intent = None
         app.state.enriched_index = []
+        app.state.seed_enriched_index = []
+        app.state.syllabus_store = None
+        app.state.import_lock = None
         app.state.conversations = OrderedDict()
         app.state.conversations_meta = OrderedDict()
 
@@ -290,28 +560,83 @@ async def get_llm_client(request: Request, task: str = "response"):
     if mode == "local":
         return ollama, "ollama"
 
-    if await groq.is_available():
-        return groq, "groq"
-    return ollama, "ollama"
+    # Hybrid means Groq is the primary runtime.  Do not preflight either provider here:
+    # the actual request is authoritative and failures are handled lazily by the stream
+    # orchestrator.  In particular, a normal Groq request must never wait on Ollama's
+    # potentially 60-second /api/tags probe.
+    return groq, "groq"
 
 
 async def get_fallback_client(request: Request, primary_provider: str):
     """
     hybrid 模式下的运行时兜底客户端。
 
-    get_llm_client 只在请求开始前探测一次可用性，一旦选中 Groq，
-    后续调用失败（429 限流 / 超时 / 网关抖动）就直接报错，不会切到本地。
-    Groq 免费额度下限流是常态而非边缘情况，所以这里额外提供一个兜底客户端，
-    供 generate_response_stream 在「首个 token 之前失败」时整轮重试。
+    Groq 免费额度下限流是常态而非边缘情况，所以这里提供本地客户端供
+    SSE orchestrator 在运行时执行一次 reset-and-replace fallback。这里只返回
+    客户端引用；不得在健康的 Groq 请求前探测或加载 Ollama。
     """
     if config.INFERENCE_MODE != "hybrid" or primary_provider != "groq":
         return None
     ollama = request.app.state.ollama
-    if ollama is None:
-        return None
-    if not await ollama.is_available():
-        return None
+    # Availability is intentionally not probed here.  Calling chat_stream only after the
+    # primary fails is both faster on the healthy path and avoids a stale health result.
     return ollama
+
+
+async def _extract_intent_for_request(
+    payload: ChatRequest,
+    request: Request,
+) -> IntentExtractionResult:
+    """Run rule -> configured primary -> lazy Ollama fallback -> minimal intent."""
+    mode = config.INFERENCE_MODE
+    groq = getattr(request.app.state, "groq_intent", None) or request.app.state.groq
+    ollama_intent = getattr(request.app.state, "ollama_intent", None)
+    if ollama_intent is None:
+        ollama_intent = OllamaClient(
+            config.OLLAMA_BASE_URL,
+            config.OLLAMA_INTENT_MODEL,
+            config.INTENT_TIMEOUT,
+        )
+
+    if mode == "local":
+        return await extract_query_intent_result(
+            payload.message,
+            ollama_intent,
+            model=config.OLLAMA_INTENT_MODEL,
+            primary_source="ollama",
+            timeout=config.INTENT_TIMEOUT,
+        )
+
+    fallback_client = ollama_intent if mode == "hybrid" else None
+    return await extract_query_intent_result(
+        payload.message,
+        groq,
+        model=config.GROQ_INTENT_MODEL,
+        primary_source="groq",
+        fallback_client=fallback_client,
+        fallback_model=config.OLLAMA_INTENT_MODEL,
+        fallback_source="ollama",
+        timeout=config.INTENT_TIMEOUT,
+    )
+
+
+def _fallback_reason(exc: Exception) -> str:
+    text = str(exc).lower()
+    if isinstance(exc, (asyncio.TimeoutError, TimeoutError)) or "timeout" in text or "timed out" in text:
+        return "timeout"
+    if "429" in text or "rate limit" in text or "too many requests" in text:
+        return "rate_limited"
+    if (
+        "ended before" in text
+        or "malformed" in text
+        or "invalid event" in text
+        or "without answer content" in text
+        or "protocol" in text
+    ):
+        return "invalid_stream"
+    if "connect" in text or "transport" in text or "network" in text:
+        return "unreachable"
+    return "provider_error"
 
 
 def _user_facing_error(exc: Exception, language: str) -> str:
@@ -370,10 +695,10 @@ def _infer_department_from_context(
 
     for msg in reversed(history):
         content = str(msg.get("content") or "").upper()
-        matches = COURSE_CODE_RE.findall(content)
-        if not matches:
+        codes = extract_course_codes(content)
+        if not codes:
             continue
-        prefixes = {dept.strip().upper() for dept in matches if dept}
+        prefixes = {code.split(" ", 1)[0] for code in codes}
         if len(prefixes) == 1:
             return next(iter(prefixes))
     return None
@@ -431,6 +756,18 @@ def _format_stats_message(index_data: list[dict], language: str) -> str:
 @app.post("/api/chat")
 async def chat(payload: ChatRequest, request: Request):
     async def stream():
+        response_provider = "deterministic"
+        actual_provider = response_provider
+        fallback_used = False
+        fallback_reason: str | None = None
+        full_response = ""
+
+        async def client_disconnected() -> bool:
+            try:
+                return await request.is_disconnected()
+            except Exception:
+                return False
+
         try:
             index_data = request.app.state.enriched_index
             convos: OrderedDict[str, list[dict[str, str]]] = request.app.state.conversations
@@ -443,43 +780,43 @@ async def chat(payload: ChatRequest, request: Request):
                 if payload.max_history_turns is not None
                 else config.CONVERSATION_MAX_TURNS
             )
+            max_history_turns = min(max_history_turns, config.CONVERSATION_MAX_TURNS)
             max_results = (
                 payload.max_results
                 if payload.max_results is not None
                 else config.MAX_RETRIEVAL_RESULTS
             )
 
-            history_limit = max_history_turns * 2
-            if len(history) > history_limit:
-                history = history[-history_limit:]
-
-            # 告知前端后端侧还记得多少轮。对话历史存在内存里，
-            # 进程一重启（开发时 --reload 每次存盘都会重启）就清空，
-            # 而前端 UI 仍完整显示着之前的对话 —— 用户会看到助手突然"失忆"
-            # 却不知道为什么。前端据此提示"上下文已重置"。
-            yield (
-                "data: "
-                + json.dumps(
-                    {"type": "meta", "history_turns": len(history) // 2},
-                    ensure_ascii=False,
-                )
-                + "\n\n"
+            # The model budget includes the current request, not only cached
+            # history.  ChatRequest caps one message at 4k, so the current user
+            # text always fits and is preserved verbatim while older complete
+            # turns are discarded/clipped first.
+            history = _trim_conversation_history(
+                history,
+                max_turns=max_history_turns,
+                max_chars=config.CONVERSATION_MAX_CHARS - len(payload.message),
             )
 
-            intent_client, intent_provider = await get_llm_client(request, "intent")
-            # 意图提取只看当前问题，不使用历史。Groq 用轻量 8b 模型（省 70b 配额）。
-            intent_model = (
-                config.GROQ_INTENT_MODEL if intent_provider == "groq" else ""
-            )
-            intent = await extract_query_intent(
-                payload.message, intent_client, model=intent_model
-            )
+            intent_result = await _extract_intent_for_request(payload, request)
+            intent = intent_result.intent
             messages_for_llm = history + [{"role": "user", "content": payload.message}]
             is_followup = len(history) >= 2
             recall_query = is_conversation_recall_query(intent, messages_for_llm)
-            prev_courses = conversation_meta.get("last_courses") or []
+            prev_courses = [
+                course
+                for course in (conversation_meta.get("last_courses") or [])
+                if isinstance(course, dict)
+            ]
+            current_course = _resolve_focus_course(
+                conversation_meta.get("current_course"), prev_courses
+            )
+            revision = int(conversation_meta.get("revision") or 0)
+            # Capture explicit anchors before contextual department inheritance;
+            # inherited state must not masquerade as a new user-provided topic.
+            new_search_anchor = _intent_has_new_search_anchor(intent)
+            ambiguous_recommend = _is_ambiguous_recommend_followup(intent)
 
-            if _is_ambiguous_recommend_followup(intent):
+            if ambiguous_recommend:
                 inferred_dept = _infer_department_from_context(history, conversation_meta)
                 if inferred_dept:
                     intent["department"] = inferred_dept
@@ -488,18 +825,37 @@ async def chat(payload: ChatRequest, request: Request):
                         kw for kw in keywords
                         if str(kw).strip().lower() not in GENERIC_RECOMMEND_KEYWORDS
                     ]
+                    # "Any other courses?" is a deliberate new search within
+                    # inherited context, rather than a detail about old results.
+                    new_search_anchor = True
+
+            parsed_scope = parse_conversation_scope(
+                payload.message,
+                previous_count=len(prev_courses),
+                has_current_focus=current_course is not None,
+                new_search_anchor=new_search_anchor,
+            )
+            intent["conversation_scope"] = parsed_scope.as_dict()
+            scope_error: str | None = None
+            next_current_course = current_course
+            reused_previous_results = False
 
             if (intent.get("query_type") or "").lower() == "stats":
-                full_response = _format_stats_message(index_data, payload.language)
-                yield f"data: {json.dumps({'type': 'chunk', 'content': full_response}, ensure_ascii=False)}\n\n"
                 courses: list[dict] = []
+                response_client = None
+                fallback_client = None
+                response_provider = "deterministic"
             else:
                 if recall_query:
                     courses = []
-                elif _is_referential_followup(intent, payload.message, is_followup) and prev_courses:
-                    # 回指追问（“那些课里…”“tell me more about it”）：
-                    # 复用上一轮实际展示过的课程，避免重新全库检索拉来无关课程。
-                    courses = prev_courses
+                    reused_previous_results = True
+                elif parsed_scope.scope is not Scope.NEW_SEARCH:
+                    reused_previous_results = True
+                    courses, next_current_course, scope_error = _courses_for_conversation_scope(
+                        parsed_scope, prev_courses, current_course
+                    )
+                    if scope_error:
+                        intent["scope_error"] = scope_error
                 else:
                     courses = retrieve_courses(
                         index_data,
@@ -507,24 +863,186 @@ async def chat(payload: ChatRequest, request: Request):
                         str(config.COURSES_DIR),
                         max_results=max_results,
                     )
+                    next_current_course = courses[0] if len(courses) == 1 else None
+
+                prompt_basis = select_courses_for_context(courses, max_results)
+                if (
+                    parsed_scope.attribute is ScopeAttribute.PREREQUISITES
+                    and parsed_scope.operation
+                    in (ScopeOperation.ARGMIN, ScopeOperation.ARGMAX)
+                    and prompt_basis
+                ):
+                    comparison = compare_course_prerequisites(
+                        prompt_basis, operation=parsed_scope.operation.value
+                    )
+                    comparison_facts = comparison.as_dict()
+                    winner_ids = {
+                        winner.strip().upper() for winner in comparison.winners
+                    }
+                    excluded_ids = {
+                        identifier.strip().upper()
+                        for identifier in comparison.excluded_unknown
+                    }
+                    comparison_facts["winner_course_codes"] = [
+                        str(course.get("course_code") or "").strip()
+                        for course in prompt_basis
+                        if _course_identity(course) in winner_ids
+                    ]
+                    comparison_facts["excluded_unknown_course_codes"] = [
+                        str(course.get("course_code") or "").strip()
+                        for course in prompt_basis
+                        if _course_identity(course) in excluded_ids
+                    ]
+                    intent["prerequisite_comparison"] = comparison_facts
+                    if len(comparison.winners) == 1:
+                        winner = comparison.winners[0].strip().upper()
+                        next_current_course = next(
+                            (
+                                course
+                                for course in prompt_basis
+                                if _course_identity(course) == winner
+                            ),
+                            next_current_course,
+                        )
+                    elif comparison.tied:
+                        next_current_course = None
 
                 response_client, response_provider = await get_llm_client(
                     request, "response"
                 )
                 fallback_client = await get_fallback_client(request, response_provider)
-                full_response = ""
-                async for chunk in generate_response_stream(
-                    intent=intent,
-                    courses=courses,
-                    ollama=response_client,
-                    language=payload.language,
-                    conversation_history=messages_for_llm,
-                    max_results=max_results,
-                    fallback_client=fallback_client,
-                ):
-                    full_response += chunk
-                    event = {"type": "chunk", "content": chunk}
-                    yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+
+            if response_provider == "deterministic":
+                prompt_basis = []
+
+            # A genuine new catalog search with zero matches must not expose
+            # old course turns to the response model.  Passing no history makes
+            # generate_response_stream return the localized EMPTY_RESULT text
+            # directly (without invoking chat_stream).  Referential/recall
+            # empty-basis turns retain their separate history semantics.
+            generation_history = messages_for_llm
+            if (
+                parsed_scope.scope is Scope.NEW_SEARCH
+                and not prompt_basis
+                and not recall_query
+                and response_provider != "deterministic"
+            ):
+                generation_history = None
+
+            actual_provider = response_provider
+            fallback_available = bool(
+                response_provider == "groq" and fallback_client is not None
+            )
+            meta_event = {
+                "type": "meta",
+                "provider": response_provider,
+                "fallback_available": fallback_available,
+                "history_turns": len(history) // 2,
+                "revision": revision,
+                "intent_provider": intent_result.source,
+                "intent_fallback_used": intent_result.fallback_used,
+                "intent_fallback_reason": intent_result.fallback_reason,
+            }
+            yield f"data: {json.dumps(meta_event, ensure_ascii=False)}\n\n"
+
+            if response_provider == "deterministic":
+                full_response = _format_stats_message(index_data, payload.language)
+                yield f"data: {json.dumps({'type': 'chunk', 'content': full_response}, ensure_ascii=False)}\n\n"
+            else:
+                try:
+                    async for chunk in generate_response_stream(
+                        intent=intent,
+                        courses=prompt_basis,
+                        ollama=response_client,
+                        language=payload.language,
+                        conversation_history=generation_history,
+                        max_results=max_results,
+                    ):
+                        if await client_disconnected():
+                            return
+                        full_response += chunk
+                        event = {"type": "chunk", "content": chunk}
+                        yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+                except asyncio.CancelledError:
+                    # Browser stop/disconnect cancels the ASGI task.  It is not a provider
+                    # failure and must never start an Ollama generation.
+                    raise
+                except Exception as primary_exc:
+                    if await client_disconnected():
+                        return
+
+                    primary_partial = full_response
+                    primary_reason = _fallback_reason(primary_exc)
+                    if fallback_client is None:
+                        error_event: dict[str, Any] = {
+                            "type": "error",
+                            "message": _user_facing_error(primary_exc, payload.language),
+                            "provider": response_provider,
+                            "fallback_used": False,
+                            "fallback_reason": primary_reason,
+                            "interrupted": bool(primary_partial),
+                        }
+                        if primary_partial:
+                            error_event["partial_content"] = primary_partial
+                            error_event["partial_provider"] = response_provider
+                        yield f"data: {json.dumps(error_event, ensure_ascii=False)}\n\n"
+                        return
+
+                    fallback_used = True
+                    fallback_reason = primary_reason
+                    actual_provider = "ollama"
+                    fallback_event = {
+                        "type": "fallback",
+                        "action": "reset",
+                        "from": response_provider,
+                        "to": "ollama",
+                        "reason": fallback_reason,
+                    }
+                    yield f"data: {json.dumps(fallback_event, ensure_ascii=False)}\n\n"
+                    if await client_disconnected():
+                        return
+
+                    # Reset the server accumulator at the same boundary as the frontend.
+                    # The fallback receives the same prompt/history and generates from zero.
+                    full_response = ""
+                    try:
+                        async for chunk in generate_response_stream(
+                            intent=intent,
+                            courses=prompt_basis,
+                            ollama=fallback_client,
+                            language=payload.language,
+                            conversation_history=generation_history,
+                            max_results=max_results,
+                        ):
+                            if await client_disconnected():
+                                return
+                            full_response += chunk
+                            event = {"type": "chunk", "content": chunk}
+                            yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+                    except asyncio.CancelledError:
+                        raise
+                    except Exception as fallback_exc:
+                        if await client_disconnected():
+                            return
+                        error_event = {
+                            "type": "error",
+                            "message": _user_facing_error(fallback_exc, payload.language),
+                            "provider": "ollama",
+                            "fallback_used": True,
+                            "fallback_reason": fallback_reason,
+                            "interrupted": True,
+                        }
+                        # The UI may already have reset and displayed Ollama chunks.  Send
+                        # the recoverable Groq partial so it can restore the last coherent
+                        # answer instead of leaving an empty/half-local success state.
+                        if primary_partial:
+                            error_event["partial_content"] = primary_partial
+                            error_event["partial_provider"] = response_provider
+                        yield f"data: {json.dumps(error_event, ensure_ascii=False)}\n\n"
+                        return
+
+            if await client_disconnected():
+                return
 
             # 回答完成后更新会话历史和 meta。
             # 注意：这里基于「写回时的最新历史」追加，而不是请求开始时读到的快照。
@@ -533,150 +1051,177 @@ async def chat(payload: ChatRequest, request: Request):
             history = list(latest) if len(latest) >= len(history) else history
             history.append({"role": "user", "content": payload.message})
             history.append({"role": "assistant", "content": full_response})
-
-            max_msgs = max_history_turns * 2
-            if len(history) > max_msgs:
-                history = history[-max_msgs:]
+            history = _trim_conversation_history(
+                history, max_turns=max_history_turns
+            )
 
             convos[cid] = history
             convos.move_to_end(cid)
-            # 记住这一轮展示的课程，供下一轮回指追问复用。
-            # 若本轮没有检索到课程（例如纯回忆型问题），保留上一轮的课程上下文。
+            if response_provider == "deterministic" or reused_previous_results:
+                next_last_courses = prev_courses
+            else:
+                # A genuine zero-result new search clears stale results instead
+                # of making the next pronoun refer to an older unrelated query.
+                next_last_courses = prompt_basis
+            focus_code = ""
+            if isinstance(next_current_course, dict):
+                focus_code = _course_identity(next_current_course)
             convos_meta[cid] = {
                 "last_intent": dict(intent),
-                "last_courses": courses if courses else prev_courses,
+                "last_courses": next_last_courses,
+                "current_course": focus_code or None,
+                "revision": revision + 1,
             }
             convos_meta.move_to_end(cid)
             while len(convos) > config.CONVERSATION_MAX_SESSIONS:
                 old_cid, _ = convos.popitem(last=False)
                 convos_meta.pop(old_cid, None)
 
-            seen: set[str] = set()
             source_codes: list[str] = []
-            for course in courses:
+            for course in prompt_basis:
                 code = (course.get("course_code") or "").strip()
-                if code and code not in seen:
-                    seen.add(code)
+                if code:
                     source_codes.append(code)
             yield f"data: {json.dumps({'type': 'sources', 'courses': source_codes}, ensure_ascii=False)}\n\n"
-            yield f"data: {json.dumps({'type': 'done'}, ensure_ascii=False)}\n\n"
+            done_event = {
+                "type": "done",
+                "provider": actual_provider,
+                "fallback_used": fallback_used,
+                "fallback_reason": fallback_reason,
+            }
+            yield f"data: {json.dumps(done_event, ensure_ascii=False)}\n\n"
+        except asyncio.CancelledError:
+            raise
         except Exception as exc:
+            if await client_disconnected():
+                return
             print(f"[ERROR] /api/chat failed: {type(exc).__name__}: {exc}")
             friendly = _user_facing_error(exc, payload.language)
-            yield f"data: {json.dumps({'type': 'error', 'message': friendly}, ensure_ascii=False)}\n\n"
-            # 始终补一个 done，前端无需依赖异常路径来收尾。
-            yield f"data: {json.dumps({'type': 'done'}, ensure_ascii=False)}\n\n"
+            error_event = {
+                "type": "error",
+                "message": friendly,
+                "provider": actual_provider,
+                "fallback_used": fallback_used,
+                "fallback_reason": fallback_reason,
+                "interrupted": bool(full_response),
+            }
+            if full_response:
+                error_event["partial_content"] = full_response
+                error_event["partial_provider"] = actual_provider
+            yield f"data: {json.dumps(error_event, ensure_ascii=False)}\n\n"
 
     return StreamingResponse(stream(), media_type="text/event-stream")
 
 
 @app.post("/api/import")
 async def import_course(request: Request, file: UploadFile = File(...)):
-    """接收上传文件并导入课程库。"""
-    file_bytes = await file.read()
-    if len(file_bytes) > config.MAX_IMPORT_SIZE_MB * 1024 * 1024:
-        return {
-            "success": False,
-            "message": f"File exceeds {config.MAX_IMPORT_SIZE_MB}MB limit.",
-        }
+    """Attach a PDF/HTML syllabus without ever mutating catalog seed files."""
 
-    llm_client, _ = await get_llm_client(request, task="response")
-    result = await import_file(
-        file_bytes=file_bytes,
-        filename=file.filename or "unknown",
-        llm_client=llm_client,
-        courses_dir=str(config.COURSES_DIR),
-        enriched_index=request.app.state.enriched_index,
-        enriched_index_path=str(config.ENRICHED_INDEX_PATH),
-    )
-    return result
+    limit_bytes = config.MAX_IMPORT_SIZE_MB * 1024 * 1024
+    content_length = request.headers.get("content-length")
+    if content_length and content_length.isdigit() and int(content_length) > (
+        limit_bytes + IMPORT_READ_CHUNK_BYTES
+    ):
+        await file.close()
+        return JSONResponse(
+            status_code=413,
+            content={
+                "success": False,
+                "status": "rejected",
+                "message": f"File exceeds {config.MAX_IMPORT_SIZE_MB}MB limit.",
+            },
+        )
+
+    try:
+        try:
+            file_bytes = await _read_upload_limited(file, limit_bytes)
+        except ValueError as exc:
+            return JSONResponse(
+                status_code=413,
+                content={"success": False, "status": "rejected", "message": str(exc)},
+            )
+        if await request.is_disconnected():
+            raise asyncio.CancelledError
+
+        _ensure_import_state(request.app)
+        llm_client, _ = await get_llm_client(request, task="response")
+
+        async def pre_commit_check() -> None:
+            if await request.is_disconnected():
+                raise asyncio.CancelledError
+
+        async with request.app.state.import_lock:
+            try:
+                result = await asyncio.wait_for(
+                    import_file(
+                        file_bytes=file_bytes,
+                        filename=file.filename or "unknown",
+                        llm_client=llm_client,
+                        courses_dir=str(config.COURSES_DIR),
+                        enriched_index=request.app.state.seed_enriched_index,
+                        enriched_index_path=str(config.ENRICHED_INDEX_PATH),
+                        syllabus_store=request.app.state.syllabus_store,
+                        pre_commit_check=pre_commit_check,
+                    ),
+                    timeout=IMPORT_PIPELINE_TIMEOUT_SECONDS,
+                )
+            except TimeoutError:
+                return JSONResponse(
+                    status_code=504,
+                    content={
+                        "success": False,
+                        "status": "rejected",
+                        "message": "Syllabus import timed out; no runtime view was changed.",
+                    },
+                )
+            if result.get("success") and result.get("published_overlay_present"):
+                _refresh_runtime_overlays(request.app)
+
+        if result.get("success"):
+            return result
+        if result.get("error_code") in {
+            "store_commit_failed",
+            "import_pipeline_failed",
+        }:
+            return JSONResponse(status_code=500, content=result)
+        status_code = 422 if result.get("status") == "rejected" else 400
+        return JSONResponse(status_code=status_code, content=result)
+    except asyncio.CancelledError:
+        # Cancellation never refreshes the runtime view.  Store commits are
+        # atomic, so a cancellation cannot expose a partial generation.
+        raise
+    finally:
+        await file.close()
 
 
 @app.post("/api/import/manual")
 async def import_manual(payload: ManualImportRequest, request: Request):
-    """接收用户手动填写的课程信息，直接入库（不需要 LLM）。"""
-    data = payload.model_dump()
-    code = normalize_course_code(data.get("course_code") or "")
-    title = (data.get("title") or "").strip()
+    """Attach direct input to an existing versioned syllabus identity."""
 
-    if not code or not title:
-        return {"success": False, "message": "course_code and title are required."}
-    if len(title) < 3:
-        return {
-            "success": False,
-            "message": f"Title too short: '{title}'. Minimum 3 characters.",
-        }
-    if not validate_course_code(code):
-        return {
-            "success": False,
-            "message": (
-                f"Invalid course_code format: '{code}'. Expected pattern: XXXX Y1234 "
-                "(e.g., CIEN E3125, COMS W4111)."
-            ),
-        }
+    _ensure_import_state(request.app)
+    data = _manual_payload_data(payload)
+    async with request.app.state.import_lock:
+        try:
+            result = import_manual_syllabus(
+                data=data,
+                enriched_index=request.app.state.seed_enriched_index,
+                syllabus_store=request.app.state.syllabus_store,
+            )
+        except Exception as exc:
+            return JSONResponse(
+                status_code=500,
+                content={
+                    "success": False,
+                    "status": "rejected",
+                    "message": f"Could not commit syllabus version: {exc}",
+                },
+            )
+        if result.get("success") and result.get("published_overlay_present"):
+            _refresh_runtime_overlays(request.app)
 
-    data["course_code"] = code
-    data["title"] = title
-    # 表单只收 points_raw，这里回填 points_min/max，
-    # 否则手动录入的课程永远无法被「3 学分的课」这类查询命中。
-    data = backfill_points(data)
-
-    uid = generate_course_uid(code, title)
-
-    # 按 course_code 去重（旧版按 sha1(code|title)，换个标题就能重复入库）。
-    existing = find_existing_by_code(request.app.state.enriched_index, code)
-    if existing is not None:
-        return {
-            "success": False,
-            "message": (
-                f"Course {code} already exists in database "
-                f"(\"{existing.get('title', '')}\")."
-            ),
-        }
-
-    full_json = complete_course_json(data, uid)
-
-    # 磁盘只读/权限不足/磁盘满时，旧版让 PermissionError 直接冒泡成 500，
-    # 前端只会看到一个没有 JSON body 的错误。这里捕获并返回可读信息。
-    try:
-        courses_dir = Path(config.COURSES_DIR)
-        courses_dir.mkdir(parents=True, exist_ok=True)
-        save_path = courses_dir / f"{uid}.json"
-        save_path.write_text(
-            json.dumps(full_json, ensure_ascii=False, indent=2), encoding="utf-8"
-        )
-
-        raw_entry = {
-            "course_uid": uid,
-            "course_code": code,
-            "title": title,
-            "file_name": f"{uid}.json",
-            "path": f"courses_flat/{uid}.json",
-        }
-        enriched = build_enriched_entry(raw_entry, full_json)
-        add_to_index(request.app.state.enriched_index, enriched)
-        save_enriched_index(
-            request.app.state.enriched_index, str(config.ENRICHED_INDEX_PATH)
-        )
-    except OSError as exc:
-        print(f"[ERROR] /api/import/manual write failed: {exc}")
-        return {
-            "success": False,
-            "message": (
-                f"Could not write the course file: {exc.strerror or exc}. "
-                f"Check that {config.COURSES_DIR} exists and is writable."
-            ),
-        }
-
-    return {
-        "success": True,
-        "course": {
-            "course_code": code,
-            "title": title,
-            "points": data.get("points_raw", ""),
-        },
-        "message": f"Successfully imported {code}: {title}",
-    }
+    if result.get("success"):
+        return result
+    return JSONResponse(status_code=422, content=result)
 
 
 @app.get("/api/health")

@@ -34,13 +34,13 @@
       "catalog_ref": "COMS W4232",
       "course_number": "COMS 4232",
       "section_call_number": "V01/16649",
-      "times": "Alexandr Andoni",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "6/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Alexandr Andoni",
+      "points": "3.00",
+      "enrollment_raw": "6/99",
+      "enrollment_current": 6,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

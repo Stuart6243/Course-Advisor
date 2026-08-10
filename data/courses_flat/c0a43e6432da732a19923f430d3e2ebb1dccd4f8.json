@@ -21,13 +21,13 @@
       "catalog_ref": "APPH E4018",
       "course_number": "APPH 4018",
       "section_call_number": "001/12976",
-      "times": "Aravind Devarakonda",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "20/25",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Aravind Devarakonda",
+      "points": "3.00",
+      "enrollment_raw": "20/25",
+      "enrollment_current": 20,
+      "enrollment_capacity": 25
     }
   ],
   "needs_review": false,

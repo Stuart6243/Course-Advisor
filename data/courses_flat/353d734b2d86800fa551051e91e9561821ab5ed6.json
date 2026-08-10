@@ -34,26 +34,26 @@
       "catalog_ref": "APMA E4301",
       "course_number": "APMA 4301",
       "section_call_number": "C01/19793",
-      "times": "Qiang Du",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Qiang Du",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "APMA E4301",
       "course_number": "APMA 4301",
       "section_call_number": "V01/16631",
-      "times": "Qiang Du",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "5/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Qiang Du",
+      "points": "3.00",
+      "enrollment_raw": "5/99",
+      "enrollment_current": 5,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

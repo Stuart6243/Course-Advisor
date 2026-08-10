@@ -21,26 +21,26 @@
       "catalog_ref": "CHEN E9800",
       "course_number": "CHEN 9800",
       "section_call_number": "001/10006",
-      "times": "Allie Obermeyer",
+      "times": "",
       "location": "",
-      "instructor": "3.00-12.00",
-      "points": "1/1",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Allie Obermeyer",
+      "points": "3.00-12.00",
+      "enrollment_raw": "1/1",
+      "enrollment_current": 1,
+      "enrollment_capacity": 1
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "CHEN E9800",
       "course_number": "CHEN 9800",
       "section_call_number": "001/16308",
-      "times": "Allie Obermeyer",
+      "times": "",
       "location": "",
-      "instructor": "3.00-12.00",
-      "points": "1/1",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Allie Obermeyer",
+      "points": "3.00-12.00",
+      "enrollment_raw": "1/1",
+      "enrollment_current": 1,
+      "enrollment_capacity": 1
     }
   ],
   "needs_review": false,

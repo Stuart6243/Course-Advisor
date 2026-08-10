@@ -34,13 +34,13 @@
       "catalog_ref": "CIEN E4235",
       "course_number": "CIEN 4235",
       "section_call_number": "V01/19901",
-      "times": "Virginia Mosquera",
+      "times": "",
       "location": "",
-      "instructor": "3",
-      "points": "0/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Virginia Mosquera",
+      "points": "3",
+      "enrollment_raw": "0/99",
+      "enrollment_current": 0,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

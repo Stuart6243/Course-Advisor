@@ -11,7 +11,10 @@ from pathlib import Path
 # ============================================================
 # Ollama 配置
 # ============================================================
-OLLAMA_BASE_URL = "http://localhost:11434"
+OLLAMA_BASE_URL = (
+    os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434").strip().rstrip("/")
+    or "http://127.0.0.1:11434"
+)
 OLLAMA_MODEL = "qwen3-nothink:latest"  # 主模型：回答生成
 OLLAMA_FALLBACK_MODEL = "qwen2.5:7b"  # 备用模型：JSON 输出稳定
 OLLAMA_INTENT_MODEL = OLLAMA_FALLBACK_MODEL
@@ -30,7 +33,7 @@ ENRICHED_INDEX_PATH = DATA_DIR / "courses_enriched_index.json"
 # ============================================================
 SUPPORTED_IMPORT_FORMATS = [".pdf", ".html", ".htm"]
 MAX_IMPORT_SIZE_MB = 25
-IMPORT_MIN_QUALITY_SCORE = 40
+AUTO_PUBLISH_QUALITY_SCORE = 80
 
 # ============================================================
 # LLM 输出控制
@@ -92,6 +95,9 @@ MAX_COURSE_CONTEXT_CHARS = 200
 # ============================================================
 CONVERSATION_MAX_TURNS = 10
 CONVERSATION_MAX_SESSIONS = 200
+# Character budget for stored/prompted history after the 10-turn cap.  Roughly
+# 3k tokens leaves room in the local 8k context for course evidence + output.
+CONVERSATION_MAX_CHARS = 12000
 
 # ============================================================
 # Groq 云 API 配置

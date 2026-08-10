@@ -21,13 +21,13 @@
       "catalog_ref": "APPH E6365",
       "course_number": "APPH 6365",
       "section_call_number": "001/11108",
-      "times": "Klaus Hamacher",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "0/3",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Klaus Hamacher",
+      "points": "3.00",
+      "enrollment_raw": "0/3",
+      "enrollment_current": 0,
+      "enrollment_capacity": 3
     }
   ],
   "needs_review": false,

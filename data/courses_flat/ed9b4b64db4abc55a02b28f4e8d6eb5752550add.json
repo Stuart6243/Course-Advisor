@@ -34,13 +34,13 @@
       "catalog_ref": "EEOR E6616",
       "course_number": "EEOR 6616",
       "section_call_number": "V01/19800",
-      "times": "Bento Natura",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Bento Natura",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

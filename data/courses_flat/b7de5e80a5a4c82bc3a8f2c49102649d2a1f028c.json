@@ -21,13 +21,13 @@
       "catalog_ref": "IEOR E4799",
       "course_number": "IEOR 4799",
       "section_call_number": "060/17726",
-      "times": "Sebastien Donadio, Michael Miller",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "13/250",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Sebastien Donadio, Michael Miller",
+      "points": "0.00",
+      "enrollment_raw": "13/250",
+      "enrollment_current": 13,
+      "enrollment_capacity": 250
     }
   ],
   "needs_review": false,

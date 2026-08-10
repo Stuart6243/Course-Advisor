@@ -21,13 +21,13 @@
       "catalog_ref": "MSAE E3156",
       "course_number": "MSAE 3156",
       "section_call_number": "001/13419",
-      "times": "Simon Billinge",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "6/35",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Simon Billinge",
+      "points": "3.00",
+      "enrollment_raw": "6/35",
+      "enrollment_current": 6,
+      "enrollment_capacity": 35
     }
   ],
   "needs_review": false,

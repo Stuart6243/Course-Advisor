@@ -1,9 +1,15 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {ChatSettings, Language, Message} from '../types';
 import {safeUUID, sendMessageStream} from '../services/api';
+import {MAX_MESSAGE_LENGTH} from '../constants';
+import i18n from '../i18n';
+import type {StreamErrorEvent} from '../services/sse';
 
 const nowTime = () =>
   new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+
+export const localizeStreamError = (event: StreamErrorEvent, language: Language) =>
+  event.code ? i18n.getFixedT(language)(`errors.${event.code}`) : event.message;
 
 export function useChat(language: Language, settings: ChatSettings) {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -12,6 +18,8 @@ export function useChat(language: Language, settings: ChatSettings) {
   const [contextLost, setContextLost] = useState(false);
   const loadingRef = useRef(false);
   const abortRef = useRef<AbortController | null>(null);
+  const generationRef = useRef(0);
+  const expectedRevisionRef = useRef<number | null>(null);
   // 供 onMeta 回调读取当前消息数，避免把 messages 加进 sendMessage 的依赖数组
   const messagesRef = useRef<Message[]>([]);
   messagesRef.current = messages;
@@ -24,6 +32,7 @@ export function useChat(language: Language, settings: ChatSettings) {
   // 组件卸载时中止在途请求，避免向已卸载组件 setState。
   useEffect(() => {
     return () => {
+      generationRef.current += 1;
       abortRef.current?.abort();
     };
   }, []);
@@ -31,7 +40,7 @@ export function useChat(language: Language, settings: ChatSettings) {
   const sendMessage = useCallback(
     async (text: string) => {
       const trimmed = text.trim();
-      if (!trimmed || loadingRef.current) {
+      if (!trimmed || trimmed.length > MAX_MESSAGE_LENGTH || loadingRef.current) {
         return;
       }
 
@@ -51,6 +60,7 @@ export function useChat(language: Language, settings: ChatSettings) {
         content: '',
         time: nowTime(),
         isStreaming: true,
+        status: 'streaming',
       };
 
       setMessages((prev) => [...prev, userMessage, assistantMessage]);
@@ -58,29 +68,26 @@ export function useChat(language: Language, settings: ChatSettings) {
 
       const controller = new AbortController();
       abortRef.current = controller;
+      const generation = ++generationRef.current;
+      let requestRevision: number | null = null;
+      let streamedContent = '';
+      let fallbackSnapshot: {content: string; provider: string} | null = null;
+      let activeProvider: string | undefined;
+      const isCurrentGeneration = () =>
+        generationRef.current === generation && abortRef.current === controller;
 
-      const finishAssistant = (fallbackText?: string) => {
+      const finishAssistant = (
+        update: (message: Message) => Message,
+      ) => {
+        if (!isCurrentGeneration()) {
+          return;
+        }
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === assistantId
-              ? {
-                  ...msg,
-                  // 出错时：如果已经流出了部分内容，保留它并在末尾附一行错误提示，
-                  // 而不是把已显示的回答整段替换成错误信息。
-                  content:
-                    typeof fallbackText === 'string'
-                      ? msg.content
-                        ? `${msg.content}\n\n_⚠️ ${fallbackText}_`
-                        : fallbackText
-                      : msg.content,
-                  isStreaming: false,
-                }
-              : msg,
+            msg.id === assistantId ? update(msg) : msg,
           ),
         );
-        if (abortRef.current === controller) {
-          abortRef.current = null;
-        }
+        abortRef.current = null;
         setLoading(false);
       };
 
@@ -90,56 +97,184 @@ export function useChat(language: Language, settings: ChatSettings) {
           conversationId,
           language,
           settings,
-          (chunk) => {
-            setMessages((prev) =>
-              prev.map((msg) =>
-                msg.id === assistantId
-                  ? {
-                      ...msg,
-                      content: msg.content + chunk,
-                    }
-                  : msg,
-              ),
-            );
-          },
-          (courses) => {
-            // 后端在回答结束时给出本轮引用的课程代码，挂到助手消息上用于展示。
-            if (courses && courses.length) {
+          {
+            onChunk: (chunk) => {
+              if (!isCurrentGeneration()) {
+                return;
+              }
+              streamedContent += chunk;
+              setMessages((prev) =>
+                prev.map((msg) =>
+                  msg.id === assistantId
+                    ? {
+                        ...msg,
+                        content: msg.content + chunk,
+                      }
+                    : msg,
+                ),
+              );
+            },
+            onSources: (courses) => {
+              if (!isCurrentGeneration()) {
+                return;
+              }
               setMessages((prev) =>
                 prev.map((msg) =>
                   msg.id === assistantId ? {...msg, sources: courses} : msg,
                 ),
               );
-            }
-          },
-          () => {
-            finishAssistant();
-          },
-          (errorMsg) => {
-            finishAssistant(errorMsg || 'Request failed.');
+            },
+            onDone: (event) => {
+              activeProvider = event.provider;
+              if (isCurrentGeneration() && requestRevision !== null) {
+                expectedRevisionRef.current = requestRevision + 1;
+              }
+              finishAssistant((msg) => ({
+                ...msg,
+                isStreaming: false,
+                status: 'complete',
+                provider: event.provider ?? msg.provider,
+                fallbackUsed: event.fallback_used ?? msg.fallbackUsed,
+                fallbackFailed: false,
+                fallbackReason: event.fallback_reason ?? msg.fallbackReason,
+              }));
+            },
+            onError: (event) => {
+              finishAssistant((msg) => {
+                const fallbackPrimary = fallbackSnapshot?.content ?? '';
+                const hasServerPartial = event.partial_content !== undefined;
+                const shouldRestoreClientSnapshot = Boolean(
+                  !hasServerPartial && fallbackPrimary,
+                );
+                const recovered = hasServerPartial
+                  ? event.partial_content ?? ''
+                  : shouldRestoreClientSnapshot
+                    ? fallbackPrimary
+                    : streamedContent || msg.content;
+                const errorMessage = localizeStreamError(event, language);
+                const content = recovered
+                  ? `${recovered}\n\n_⚠️ ${errorMessage}_`
+                  : errorMessage;
+                return {
+                  ...msg,
+                  content,
+                  isStreaming: false,
+                  status: recovered ? 'interrupted' : 'error',
+                  provider: hasServerPartial
+                    ? event.partial_provider ?? event.provider ?? msg.provider
+                    : shouldRestoreClientSnapshot
+                      ? fallbackSnapshot?.provider
+                      : event.provider ?? activeProvider ?? msg.provider,
+                  fallbackUsed: event.fallback_used ?? msg.fallbackUsed,
+                  fallbackFailed: Boolean(fallbackSnapshot),
+                  fallbackReason: event.fallback_reason ?? msg.fallbackReason,
+                };
+              });
+            },
+            onAbort: () => {
+              if (!isCurrentGeneration()) {
+                return;
+              }
+              setMessages((prev) => {
+                const stoppedContent = streamedContent || fallbackSnapshot?.content || '';
+                if (!stoppedContent) {
+                  return prev.filter((msg) => msg.id !== assistantId);
+                }
+                return prev.map((msg) =>
+                  msg.id === assistantId
+                    ? {
+                        ...msg,
+                        content: stoppedContent,
+                        isStreaming: false,
+                        status: 'stopped',
+                        provider: streamedContent
+                          ? activeProvider ?? msg.provider
+                          : fallbackSnapshot?.provider ?? msg.provider,
+                        fallbackFailed: Boolean(!streamedContent && fallbackSnapshot?.content),
+                      }
+                    : msg,
+                );
+              });
+              abortRef.current = null;
+              setLoading(false);
+            },
+            onFallback: (event) => {
+              if (!isCurrentGeneration()) {
+                return;
+              }
+              fallbackSnapshot = {
+                content: streamedContent,
+                provider: event.from,
+              };
+              streamedContent = '';
+              activeProvider = event.to;
+              // replace/reset 语义：Groq 局部回答不得与 Ollama 完整回答拼接。
+              setMessages((prev) =>
+                prev.map((msg) =>
+                  msg.id === assistantId
+                    ? {
+                        ...msg,
+                        content: '',
+                        sources: [],
+                        provider: event.to,
+                        fallbackUsed: true,
+                        fallbackFailed: false,
+                        fallbackReason: event.reason,
+                      }
+                    : msg,
+                ),
+              );
+            },
+            onMeta: (event) => {
+              if (!isCurrentGeneration()) {
+                return;
+              }
+              if (event.provider) {
+                activeProvider = event.provider;
+                setMessages((prev) =>
+                  prev.map((msg) =>
+                    msg.id === assistantId ? {...msg, provider: event.provider} : msg,
+                  ),
+                );
+              }
+
+              let revisionDiverged = false;
+              if (typeof event.revision === 'number') {
+                requestRevision = event.revision;
+                if (
+                  expectedRevisionRef.current !== null &&
+                  event.revision !== expectedRevisionRef.current
+                ) {
+                  revisionDiverged = true;
+                }
+              }
+
+              const priorTurns = Math.floor(
+                messagesRef.current.filter((m) => m.role === 'user').length,
+              );
+              const historyTurns = Number(event.history_turns ?? 0);
+              if (revisionDiverged || (priorTurns > 1 && historyTurns === 0)) {
+                setContextLost(true);
+              }
+            },
           },
           controller.signal,
-          ({historyTurns}) => {
-            // 后端对话历史存在内存里，进程重启（开发时 --reload 每次存盘都重启）
-            // 就会清空，而这里 UI 仍显示着完整对话。
-            // 前端已有 >=1 轮但后端报 0 轮，说明上下文断了，明确告诉用户。
-            const priorTurns = Math.floor(
-              messagesRef.current.filter((m) => m.role === 'user').length,
-            );
-            if (priorTurns > 1 && historyTurns === 0) {
-              setContextLost(true);
-            } else {
-              setContextLost(false);
-            }
-          },
         );
       } catch (err) {
-        if (controller.signal.aborted) {
-          finishAssistant();
+        if (!isCurrentGeneration()) {
           return;
         }
-        const msg = err instanceof Error ? err.message : 'Request failed.';
-        finishAssistant(msg);
+        const msg = err instanceof Error
+          ? err.message
+          : i18n.getFixedT(language)('errors.request_failed');
+        finishAssistant((message) => ({
+          ...message,
+          content: message.content
+            ? `${message.content}\n\n_⚠️ ${msg}_`
+            : msg,
+          isStreaming: false,
+          status: message.content ? 'interrupted' : 'error',
+        }));
       }
     },
     [conversationId, language, settings],
@@ -148,15 +283,16 @@ export function useChat(language: Language, settings: ChatSettings) {
   /** 停止生成：保留已经流出的内容。 */
   const stopGeneration = useCallback(() => {
     abortRef.current?.abort();
-    abortRef.current = null;
   }, []);
 
   const newChat = useCallback(() => {
     // 切换会话前先中止在途请求，否则旧的流会继续写入并让状态错乱。
+    generationRef.current += 1;
     abortRef.current?.abort();
     abortRef.current = null;
     setMessages([]);
     setConversationId(safeUUID());
+    expectedRevisionRef.current = null;
     setContextLost(false);
     setLoading(false);
   }, []);

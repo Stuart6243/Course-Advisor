@@ -34,13 +34,13 @@
       "catalog_ref": "EAEE E6212",
       "course_number": "EAEE 6212",
       "section_call_number": "V01/20094",
-      "times": "Sara Hamilton",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Sara Hamilton",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

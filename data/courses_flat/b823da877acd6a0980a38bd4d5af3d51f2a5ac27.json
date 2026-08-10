@@ -34,13 +34,13 @@
       "catalog_ref": "CIEN E4129",
       "course_number": "CIEN 4129",
       "section_call_number": "V01/17902",
-      "times": "Ibrahim Odeh",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Ibrahim Odeh",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",

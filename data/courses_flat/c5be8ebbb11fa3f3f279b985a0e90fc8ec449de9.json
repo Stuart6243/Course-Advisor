@@ -34,13 +34,13 @@
       "catalog_ref": "IEOR E4701",
       "course_number": "IEOR 4701",
       "section_call_number": "V01/17941",
-      "times": "Daniel Lacker",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Daniel Lacker",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

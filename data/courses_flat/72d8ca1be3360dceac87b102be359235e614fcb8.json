@@ -179,11 +179,11 @@
       "section_call_number": "R01/12899",
       "times": "F 2:40pm - 3:30pm",
       "location": "302 Fayerweather",
-      "instructor": "0.00",
-      "points": "27/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "27/30",
+      "enrollment_current": 27,
+      "enrollment_capacity": 30
     },
     {
       "term": "Spring 2026",
@@ -192,11 +192,11 @@
       "section_call_number": "R02/12900",
       "times": "Th 4:10pm - 5:00pm",
       "location": "407 Mathematics Building",
-      "instructor": "0.00",
-      "points": "30/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "30/30",
+      "enrollment_current": 30,
+      "enrollment_capacity": 30
     },
     {
       "term": "Spring 2026",
@@ -205,11 +205,11 @@
       "section_call_number": "R03/12902",
       "times": "F 10:10am - 11:00am",
       "location": "302 Fayerweather",
-      "instructor": "0.00",
-      "points": "25/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "25/30",
+      "enrollment_current": 25,
+      "enrollment_capacity": 30
     },
     {
       "term": "Spring 2026",
@@ -218,11 +218,11 @@
       "section_call_number": "R04/12904",
       "times": "Th 4:10pm - 5:00pm",
       "location": "C01 Knox Hall",
-      "instructor": "0.00",
-      "points": "30/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "30/30",
+      "enrollment_current": 30,
+      "enrollment_capacity": 30
     },
     {
       "term": "Spring 2026",
@@ -231,11 +231,11 @@
       "section_call_number": "R05/12905",
       "times": "Th 5:10pm - 6:00pm",
       "location": "407 Mathematics Building",
-      "instructor": "0.00",
-      "points": "30/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "30/30",
+      "enrollment_current": 30,
+      "enrollment_capacity": 30
     },
     {
       "term": "Spring 2026",
@@ -244,11 +244,11 @@
       "section_call_number": "R06/12907",
       "times": "Th 11:40am - 12:30pm",
       "location": "307 Pupin Laboratories",
-      "instructor": "0.00",
-      "points": "30/30",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "0.00",
+      "enrollment_raw": "30/30",
+      "enrollment_current": 30,
+      "enrollment_capacity": 30
     }
   ],
   "needs_review": false,

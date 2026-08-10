@@ -34,13 +34,13 @@
       "catalog_ref": "MEBM E4439",
       "course_number": "MEBM 4439",
       "section_call_number": "V01/17945",
-      "times": "Nicolas Chbat",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "3/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Nicolas Chbat",
+      "points": "3.00",
+      "enrollment_raw": "3/99",
+      "enrollment_current": 3,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": true,

@@ -21,13 +21,13 @@
       "catalog_ref": "CIEN E9900",
       "course_number": "CIEN 9900",
       "section_call_number": "001/17650",
-      "times": "Raimondo Betti",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "1/10",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Raimondo Betti",
+      "points": "0.00",
+      "enrollment_raw": "1/10",
+      "enrollment_current": 1,
+      "enrollment_capacity": 10
     }
   ],
   "needs_review": false,

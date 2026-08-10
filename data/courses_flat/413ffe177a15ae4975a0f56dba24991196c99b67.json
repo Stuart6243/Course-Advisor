@@ -47,13 +47,13 @@
       "catalog_ref": "CSOR W4231",
       "course_number": "CSOR 4231",
       "section_call_number": "V02/19884",
-      "times": "Mihalis Yannakakis",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "8/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Mihalis Yannakakis",
+      "points": "3.00",
+      "enrollment_raw": "8/99",
+      "enrollment_current": 8,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
@@ -86,13 +86,13 @@
       "catalog_ref": "CSOR W4231",
       "course_number": "CSOR 4231",
       "section_call_number": "V01/18235",
-      "times": "Eleni Drinea",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "15/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Eleni Drinea",
+      "points": "3.00",
+      "enrollment_raw": "15/99",
+      "enrollment_current": 15,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

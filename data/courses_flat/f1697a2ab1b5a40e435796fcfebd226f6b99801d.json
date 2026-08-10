@@ -34,13 +34,13 @@
       "catalog_ref": "CIEN E4130",
       "course_number": "CIEN 4130",
       "section_call_number": "V01/20064",
-      "times": "Vincent Tirolo",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Vincent Tirolo",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

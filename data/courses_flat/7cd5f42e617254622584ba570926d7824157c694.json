@@ -34,13 +34,13 @@
       "catalog_ref": "CHAP E4120",
       "course_number": "CHAP 4120",
       "section_call_number": "V01/20169",
-      "times": "Ben O'Shaughnessy",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "1/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Ben O'Shaughnessy",
+      "points": "3.00",
+      "enrollment_raw": "1/99",
+      "enrollment_current": 1,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

@@ -34,13 +34,13 @@
       "catalog_ref": "COMS W4118",
       "course_number": "COMS 4118",
       "section_call_number": "V01/17907",
-      "times": "Jason Nieh",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "8/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Jason Nieh",
+      "points": "3.00",
+      "enrollment_raw": "8/99",
+      "enrollment_current": 8,
+      "enrollment_capacity": 99
     },
     {
       "term": "Spring 2026",
@@ -60,13 +60,13 @@
       "catalog_ref": "COMS W4118",
       "course_number": "COMS 4118",
       "section_call_number": "V01/16647",
-      "times": "Hubertus Franke",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "10/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Hubertus Franke",
+      "points": "3.00",
+      "enrollment_raw": "10/99",
+      "enrollment_current": 10,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

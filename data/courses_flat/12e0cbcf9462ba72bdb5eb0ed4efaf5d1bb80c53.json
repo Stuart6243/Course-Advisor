@@ -21,26 +21,26 @@
       "catalog_ref": "MECE E4999",
       "course_number": "MECE 4999",
       "section_call_number": "001/13165",
-      "times": "Matei Ciocarlie",
+      "times": "",
       "location": "",
-      "instructor": "1.00",
-      "points": "5/15",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Matei Ciocarlie",
+      "points": "1.00",
+      "enrollment_raw": "5/15",
+      "enrollment_current": 5,
+      "enrollment_capacity": 15
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "MECE E4999",
       "course_number": "MECE 4999",
       "section_call_number": "001/20396",
-      "times": "Michael Burke",
+      "times": "",
       "location": "",
-      "instructor": "1.00",
-      "points": "0/15",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Michael Burke",
+      "points": "1.00",
+      "enrollment_raw": "0/15",
+      "enrollment_current": 0,
+      "enrollment_capacity": 15
     }
   ],
   "needs_review": false,

@@ -9,6 +9,13 @@ import re
 from pathlib import Path
 from typing import Optional
 
+from course_codes import extract_course_codes
+from section_validator import (
+    parse_points_value,
+    validate_catalog_record,
+    validate_section,
+)
+
 
 # Common department expansions used in searchable_text.
 DEPARTMENT_NAMES = {
@@ -119,18 +126,7 @@ def extract_prerequisite_codes(prereq_text: str) -> list[str]:
     """
     Extract course codes from prerequisite text and deduplicate in order.
     """
-    if not prereq_text:
-        return []
-
-    raw_codes = re.findall(r"[A-Z]{4}\s+[A-Z]?\d{4}", prereq_text.upper())
-    unique_codes: list[str] = []
-    seen: set[str] = set()
-    for code in raw_codes:
-        normalized = re.sub(r"\s+", " ", code).strip()
-        if normalized and normalized not in seen:
-            seen.add(normalized)
-            unique_codes.append(normalized)
-    return unique_codes
+    return extract_course_codes(prereq_text)
 
 
 def parse_days_from_times(times_str: str) -> tuple[list[str], str]:
@@ -141,19 +137,46 @@ def parse_days_from_times(times_str: str) -> tuple[list[str], str]:
         return [], ""
 
     day_map = {
-        "M": "Monday",
-        "T": "Tuesday",
-        "W": "Wednesday",
-        "Th": "Thursday",
-        "F": "Friday",
-        "Sa": "Saturday",
-        "Su": "Sunday",
+        "m": "Monday",
+        "mon": "Monday",
+        "monday": "Monday",
+        "t": "Tuesday",
+        "tu": "Tuesday",
+        "tue": "Tuesday",
+        "tues": "Tuesday",
+        "tuesday": "Tuesday",
+        "w": "Wednesday",
+        "wed": "Wednesday",
+        "wednesday": "Wednesday",
+        "th": "Thursday",
+        "thu": "Thursday",
+        "thur": "Thursday",
+        "thurs": "Thursday",
+        "thursday": "Thursday",
+        "f": "Friday",
+        "fri": "Friday",
+        "friday": "Friday",
+        "sa": "Saturday",
+        "sat": "Saturday",
+        "saturday": "Saturday",
+        "su": "Sunday",
+        "sun": "Sunday",
+        "sunday": "Sunday",
     }
 
-    day_tokens = re.findall(r"(Th|Su|Sa|[MTWF])", times_str)
+    # Day abbreviations are tokens, not arbitrary substrings.  Without the
+    # alphabetic boundaries below, instructor/location text such as
+    # "Savannah" is interpreted as Saturday and "TBA" as Tuesday.
+    day_tokens = re.findall(
+        r"(?<![A-Za-z])(?:Monday|Mon|M|Tuesday|Tues|Tue|Tu|T|"
+        r"Wednesday|Wed|W|Thursday|Thurs|Thur|Thu|Th|"
+        r"Friday|Fri|F|Saturday|Sat|Sa|Sunday|Sun|Su)(?![A-Za-z])",
+        times_str,
+        flags=re.IGNORECASE,
+    )
     days: list[str] = []
     for token in day_tokens:
-        day_name = day_map[token]
+        day_name = day_map[token.lower()]
         if day_name not in days:
             days.append(day_name)
 
@@ -175,6 +198,142 @@ def parse_days_from_times(times_str: str) -> tuple[list[str], str]:
             time_of_day = "evening"
 
     return days, time_of_day
+
+
+SCHEDULE_SECTION_FILTER_KEYS = frozenset(
+    {"term", "days", "time_of_day", "instructor"}
+)
+POINT_SECTION_FILTER_KEYS = frozenset({"points_min", "points_max"})
+SECTION_FILTER_KEYS = SCHEDULE_SECTION_FILTER_KEYS | POINT_SECTION_FILTER_KEYS
+
+
+def has_section_filters(filters: dict) -> bool:
+    """Return whether *filters* contains an active section-level condition."""
+    return has_schedule_filters(filters) or has_points_filters(filters)
+
+
+def has_schedule_filters(filters: dict) -> bool:
+    """Return whether term/day/time/instructor constrains an offering."""
+    return any(filters.get(key) for key in SCHEDULE_SECTION_FILTER_KEYS)
+
+
+def has_points_filters(filters: dict) -> bool:
+    """Return whether either (possibly zero-valued) credit bound is active."""
+    return any(filters.get(key) is not None for key in POINT_SECTION_FILTER_KEYS)
+
+
+def points_range_matches(
+    actual_min: object,
+    actual_max: object,
+    filters: dict,
+) -> bool:
+    """Return whether a course/section credit range overlaps the request."""
+    if not has_points_filters(filters):
+        return True
+    if actual_min is None and actual_max is None:
+        return False
+    try:
+        low = float(actual_min if actual_min is not None else actual_max)
+        high = float(actual_max if actual_max is not None else actual_min)
+        wanted_low = (
+            float(filters["points_min"])
+            if filters.get("points_min") is not None
+            else float("-inf")
+        )
+        wanted_high = (
+            float(filters["points_max"])
+            if filters.get("points_max") is not None
+            else float("inf")
+        )
+    except (TypeError, ValueError):
+        return False
+    low, high = sorted((low, high))
+    return not (high < wanted_low or low > wanted_high)
+
+
+def _instructor_matches(actual: str, requested: str) -> bool:
+    actual_lower = (actual or "").strip().lower()
+    requested_lower = (requested or "").strip().lower()
+    if not actual_lower or not requested_lower:
+        return False
+
+    # Support a surname or given-name-only query while keeping all requested
+    # name parts on the same section/instructor string.
+    needle_parts = [part for part in requested_lower.split() if len(part) > 1]
+    return requested_lower in actual_lower or (
+        bool(needle_parts) and all(part in actual_lower for part in needle_parts)
+    )
+
+
+def section_matches_filters(section: dict, filters: dict) -> bool:
+    """Evaluate every section-level condition against one section.
+
+    This is deliberately a single predicate.  A course must not satisfy
+    Monday on one section and morning (or a term/instructor) on another.
+    The helper accepts both enriched ``sections_summary`` rows and full course
+    detail sections; missing derived day/time fields are recomputed from the
+    raw ``times`` value.
+    """
+    requested_term = (filters.get("term") or "").strip().lower()
+    if requested_term:
+        actual_term = (section.get("term") or "").strip().lower()
+        if actual_term != requested_term:
+            return False
+
+    requested_instructor = (filters.get("instructor") or "").strip()
+    if requested_instructor and not _instructor_matches(
+        str(section.get("instructor") or ""), requested_instructor
+    ):
+        return False
+
+    # When a term/day/instructor filter selects an actual offering, a credit
+    # constraint must hold on that same section.  The course-level aggregate is
+    # only a broad Stage-1 prefilter and cannot prove a term-specific value.
+    requested_points_min = filters.get("points_min")
+    requested_points_max = filters.get("points_max")
+    if requested_points_min is not None or requested_points_max is not None:
+        section_points = parse_points_value(section.get("points"))
+        if section_points is None:
+            return False
+        if not points_range_matches(section_points[0], section_points[1], filters):
+            return False
+
+    requested_days = {
+        str(day).strip().lower()
+        for day in (filters.get("days") or [])
+        if str(day).strip()
+    }
+    requested_time = (filters.get("time_of_day") or "").strip().lower()
+    if requested_days or requested_time:
+        times = str(section.get("times") or "").strip()
+        parsed_days, parsed_time = parse_days_from_times(times)
+
+        # Prefer deriving from the raw value when it exists.  This also avoids
+        # trusting stale indexes built by the former substring-based day parser.
+        if times:
+            actual_days = {day.lower() for day in parsed_days}
+            actual_time = parsed_time.lower()
+        else:
+            actual_days = {
+                str(day).strip().lower()
+                for day in (section.get("days") or [])
+                if str(day).strip()
+            }
+            actual_time = (section.get("time_of_day") or "").strip().lower()
+
+        if requested_days and not requested_days.issubset(actual_days):
+            return False
+        if requested_time and actual_time != requested_time:
+            return False
+
+    return True
+
+
+def matching_sections(sections: list[dict], filters: dict) -> list[dict]:
+    """Return the sections that satisfy the complete section predicate."""
+    if not has_section_filters(filters):
+        return list(sections or [])
+    return [section for section in (sections or []) if section_matches_filters(section, filters)]
 
 
 def build_searchable_text(course_detail: dict, enriched_entry: dict) -> str:
@@ -231,28 +390,47 @@ def build_enriched_entry(raw_entry: dict, course_detail: dict) -> dict:
 
     sections = course_detail.get("sections", []) or []
     sections_summary: list[dict] = []
+    review_sections_summary: list[dict] = []
     all_instructors: list[str] = []
     all_terms: list[str] = []
 
     for section in sections:
-        term = (section.get("term") or "").strip()
-        times = (section.get("times") or "").strip()
-        instructor = (section.get("instructor") or "").strip()
-        location = (section.get("location") or "").strip()
-        days, time_of_day = parse_days_from_times(times)
-
-        sections_summary.append(
-            {
-                "term": term,
-                "times": times,
-                "days": days,
-                "time_of_day": time_of_day,
-                "instructor": instructor,
-                "location": location,
-                "enrollment_current": section.get("enrollment_current"),
-                "enrollment_capacity": section.get("enrollment_capacity"),
-            }
+        validation = validate_section(section)
+        term = validation.normalized["term"]
+        times = validation.normalized["times"]
+        instructor = validation.normalized["instructor"]
+        location = validation.normalized["location"]
+        days, time_of_day = (
+            parse_days_from_times(times) if not validation.errors else ([], "")
         )
+
+        summary = {
+            "section_id": validation.normalized["section_call_number"],
+            "term": term,
+            "times": times,
+            "days": days,
+            "time_of_day": time_of_day,
+            "instructor": instructor,
+            "location": location,
+            "points": validation.normalized["points"],
+            "enrollment_current": section.get("enrollment_current"),
+            "enrollment_capacity": section.get("enrollment_capacity"),
+            "validation_status": validation.status,
+            "validation_errors": list(validation.errors),
+            "validation_warnings": list(validation.warnings),
+            "provenance": {
+                "source": "catalog_seed",
+                "course_uid": raw_entry.get("course_uid")
+                or course_detail.get("course_uid", ""),
+                "source_page_url": course_detail.get("source_page_url", ""),
+            },
+        }
+        if validation.status != "published":
+            # Retain review metadata for audit/UI, but never feed it into
+            # section filters, all_* fields, or searchable_text.
+            review_sections_summary.append(summary)
+            continue
+        sections_summary.append(summary)
 
         if instructor and instructor not in all_instructors:
             all_instructors.append(instructor)
@@ -260,6 +438,7 @@ def build_enriched_entry(raw_entry: dict, course_detail: dict) -> dict:
             all_terms.append(term)
 
     description = (course_detail.get("description") or "").strip()
+    catalog_validation = validate_catalog_record(course_detail)
     enriched = {
         "course_uid": raw_entry.get("course_uid") or course_detail.get("course_uid", ""),
         "course_code": course_code,
@@ -272,7 +451,10 @@ def build_enriched_entry(raw_entry: dict, course_detail: dict) -> dict:
         "has_description": bool(description),
         "prerequisites_codes": prerequisites_codes,
         "bulletin_year": course_detail.get("bulletin_year", ""),
+        "catalog_validation_status": catalog_validation.status,
+        "catalog_validation_warnings": list(catalog_validation.warnings),
         "sections_summary": sections_summary,
+        "review_sections_summary": review_sections_summary,
         "all_instructors": all_instructors,
         "all_terms": all_terms,
     }
@@ -415,6 +597,14 @@ def filter_by_fields(index: list[dict], filters: dict) -> list[dict]:
     """
     Stage-1 filtering using structured fields.
     """
+    # Legacy seed records marked needs_review stay auditable in the index but
+    # are not candidates.  A published overlay may explicitly elevate a
+    # runtime copy without modifying the immutable course detail.
+    index = [
+        entry
+        for entry in index
+        if entry.get("catalog_validation_status", "published") == "published"
+    ]
     if not filters:
         return list(index)
 
@@ -427,12 +617,13 @@ def filter_by_fields(index: list[dict], filters: dict) -> list[dict]:
         index = [e for e in index if (e.get("course_code", "").upper() in code_set)]
 
     department = (filters.get("department") or "").strip().lower()
-    instructor = (filters.get("instructor") or "").strip().lower()
-    points_min = filters.get("points_min")
-    points_max = filters.get("points_max")
-    term = (filters.get("term") or "").strip().lower()
-    days = [d.strip().lower() for d in (filters.get("days") or []) if d]
-    time_of_day = (filters.get("time_of_day") or "").strip().lower()
+    schedule_filtering = has_schedule_filters(filters)
+    points_filtering = has_points_filters(filters)
+    schedule_only_filters = {
+        key: value
+        for key, value in filters.items()
+        if key not in POINT_SECTION_FILTER_KEYS
+    }
 
     results: list[dict] = []
     for entry in index:
@@ -440,54 +631,41 @@ def filter_by_fields(index: list[dict], filters: dict) -> list[dict]:
             if (entry.get("department_prefix") or "").lower() != department:
                 continue
 
-        if instructor:
-            instructors = [i.lower() for i in entry.get("all_instructors", []) if i]
-            # 支持只给姓或只给名："Panayotidi" 应命中 "Tom Panayotidi"
-            needle_parts = [p for p in instructor.split() if len(p) > 1]
-            if not any(
-                instructor in name or all(p in name for p in needle_parts)
-                for name in instructors
+        sections = entry.get("sections_summary", []) or []
+        schedule_matches = matching_sections(sections, schedule_only_filters)
+        if schedule_filtering and not schedule_matches:
+            continue
+
+        matched = schedule_matches
+        if points_filtering:
+            # New indexes carry section points, allowing the complete
+            # term/day/time/instructor/credits predicate to be proved on one
+            # offering.  The checked-in legacy index lacks summary points, so
+            # use its course range only as a broad prefilter and let detail
+            # loading perform the exact section check.  This avoids both a
+            # false rejection and cross-section Spring-3/Fall-4 leakage.
+            summaries_have_points = bool(schedule_matches) and all(
+                parse_points_value(section.get("points")) is not None
+                for section in schedule_matches
+            )
+            if summaries_have_points:
+                matched = [
+                    section
+                    for section in schedule_matches
+                    if section_matches_filters(section, filters)
+                ]
+                if not matched:
+                    continue
+            elif not points_range_matches(
+                entry.get("points_min"), entry.get("points_max"), filters
             ):
                 continue
 
-        # 学分按「区间相交」判断，而不是要求课程区间完全落在请求区间内。
-        # 旧逻辑下一门 1.0-6.0 points 的课问「3 学分的课」会被排除，
-        # 尽管它确实可以按 3 学分选。
-        if points_min is not None or points_max is not None:
-            entry_min = entry.get("points_min")
-            entry_max = entry.get("points_max")
-            if entry_min is None and entry_max is None:
-                continue
-            lo = float(entry_min if entry_min is not None else entry_max)
-            hi = float(entry_max if entry_max is not None else entry_min)
-            if lo > hi:
-                lo, hi = hi, lo
-            want_lo = float(points_min) if points_min is not None else float("-inf")
-            want_hi = float(points_max) if points_max is not None else float("inf")
-            if hi < want_lo or lo > want_hi:
-                continue
-
-        if term:
-            terms = [t.lower() for t in entry.get("all_terms", []) if t]
-            if term not in terms:
-                continue
-
-        if days:
-            needed = set(days)
-            sections = entry.get("sections_summary", []) or []
-            if not any(
-                needed.issubset({d.lower() for d in (section.get("days") or [])})
-                for section in sections
-            ):
-                continue
-
-        if time_of_day:
-            sections = entry.get("sections_summary", []) or []
-            if not any(
-                (section.get("time_of_day") or "").lower() == time_of_day
-                for section in sections
-            ):
-                continue
+        # Preserve the exact summaries that passed the combined predicate for
+        # downstream ranking/detail loading.  Never mutate the shared index.
+        if schedule_filtering or (points_filtering and bool(sections)):
+            entry = dict(entry)
+            entry["matched_sections"] = matched
 
         results.append(entry)
 
@@ -552,6 +730,11 @@ def course_quality_score(entry: dict) -> int:
 
 def sort_by_quality(entries: list[dict]) -> list[dict]:
     """无关键词区分度时，按课程质量排序（而不是课号字母序）。"""
+    entries = [
+        entry
+        for entry in entries
+        if entry.get("catalog_validation_status", "published") == "published"
+    ]
     return sorted(
         entries,
         key=lambda e: (
@@ -577,6 +760,11 @@ def search_by_keywords(
     否则一个泛化词命中 searchable_text 就足以"凑"出结果
     （"what is the meaning of life" 会因为 life 命中 LIFE CYCLE ASSESSMENT 而返回课程）。
     """
+    candidates = [
+        entry
+        for entry in candidates
+        if entry.get("catalog_validation_status", "published") == "published"
+    ]
     normalized = [kw.strip().lower() for kw in keywords if kw and kw.strip()]
     if not normalized:
         return sort_by_quality(candidates)[:20]

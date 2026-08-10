@@ -21,13 +21,13 @@
       "catalog_ref": "DROM B8000",
       "course_number": "DROM 8000",
       "section_call_number": "060/11861",
-      "times": "Michael Miller",
+      "times": "",
       "location": "",
-      "instructor": "0.00",
-      "points": "0/120",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Michael Miller",
+      "points": "0.00",
+      "enrollment_raw": "0/120",
+      "enrollment_current": 0,
+      "enrollment_capacity": 120
     }
   ],
   "needs_review": true,

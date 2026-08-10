@@ -34,13 +34,13 @@
       "catalog_ref": "CHEN E4130",
       "course_number": "CHEN 4130",
       "section_call_number": "V01/17901",
-      "times": "Sanat Kumar",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "8/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Sanat Kumar",
+      "points": "3.00",
+      "enrollment_raw": "8/99",
+      "enrollment_current": 8,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

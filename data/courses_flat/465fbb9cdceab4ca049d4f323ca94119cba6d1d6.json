@@ -23,11 +23,11 @@
       "section_call_number": "001/12796",
       "times": "M W 11:40am - 12:55pm",
       "location": "307 Uris Hall",
-      "instructor": "3.00",
-      "points": "11/20",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "",
+      "points": "3.00",
+      "enrollment_raw": "11/20",
+      "enrollment_current": 11,
+      "enrollment_capacity": 20
     }
   ],
   "needs_review": false,

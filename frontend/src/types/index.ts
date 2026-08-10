@@ -5,6 +5,11 @@ export type Message = {
   time: string;
   isStreaming?: boolean;
   sources?: string[];
+  provider?: string;
+  fallbackUsed?: boolean;
+  fallbackFailed?: boolean;
+  fallbackReason?: string;
+  status?: 'streaming' | 'complete' | 'stopped' | 'interrupted' | 'error';
 };
 
 export type Language = 'en' | 'zh' | 'es' | 'fr';
@@ -31,6 +36,8 @@ export type HealthStatus = {
 export type ManualCourseData = {
   course_code: string;
   title: string;
+  term: string;
+  section_id: string;
   points_raw?: string;
   points_min?: number;
   points_max?: number;
@@ -39,6 +46,8 @@ export type ManualCourseData = {
   department_or_group?: string;
   sections?: Array<{
     term?: string;
+    section_id?: string;
+    section_call_number?: string;
     times?: string;
     instructor?: string;
     location?: string;
@@ -47,7 +56,17 @@ export type ManualCourseData = {
 
 export type ImportResult = {
   success: boolean;
-  course?: {course_code: string; title: string; points?: string};
+  status?: 'rejected' | 'review' | 'published';
+  search_visible?: boolean;
+  quality_score?: number;
+  quality_issues?: string[];
+  course?: {
+    course_code: string;
+    title: string;
+    points?: string;
+    term?: string;
+    section_id?: string;
+  };
   message: string;
   needs_manual_input?: boolean;
   partial_data?: Partial<ManualCourseData>;

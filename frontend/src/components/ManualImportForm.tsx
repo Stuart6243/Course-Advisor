@@ -1,6 +1,7 @@
-import {FormEvent, useEffect, useMemo, useState} from 'react';
+import {FormEvent, useEffect, useMemo, useRef, useState} from 'react';
 import {ChevronDown, ChevronUp, X} from 'lucide-react';
 import {useTranslation} from 'react-i18next';
+import {useDialogFocus} from '../hooks/useDialogFocus';
 import {ManualCourseData} from '../types';
 
 type Props = {
@@ -9,16 +10,46 @@ type Props = {
   partialData?: Partial<ManualCourseData>;
   missingFields?: string[];
   extractedTextPreview?: string;
+  initialMessage?: string;
   onSubmit: (data: ManualCourseData) => Promise<void>;
 };
 
 const defaultForm: ManualCourseData = {
   course_code: '',
   title: '',
+  term: '',
+  section_id: '',
   points_raw: '',
   description: '',
   prerequisites_text: '',
 };
+
+export function parseManualPoints(raw: string): {min: number; max: number} | null {
+  const match = raw.trim().match(/^(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?$/);
+  if (!match) {
+    return null;
+  }
+  const min = Number(match[1]);
+  const max = Number(match[2] ?? match[1]);
+  if (!Number.isFinite(min) || !Number.isFinite(max) || min <= 0 || max > 30 || min > max) {
+    return null;
+  }
+  return {min, max};
+}
+
+export function normalizeManualTerm(raw: string): string | null {
+  const match = raw.trim().replace(/\s+/g, ' ').match(
+    /^(fall|spring|summer|winter)\s+(\d{4})$/i,
+  );
+  if (!match) {
+    return null;
+  }
+  return `${match[1][0].toUpperCase()}${match[1].slice(1).toLowerCase()} ${match[2]}`;
+}
+
+export function isValidManualCourseCode(code: string): boolean {
+  return /^[A-Z]{2,4}\s(?:[A-Z]|UN|GU|GR)\d{4}$/.test(code);
+}
 
 export default function ManualImportForm({
   isOpen,
@@ -26,13 +57,22 @@ export default function ManualImportForm({
   partialData,
   missingFields,
   extractedTextPreview,
+  initialMessage,
   onSubmit,
 }: Props) {
   const {t} = useTranslation();
   const [formData, setFormData] = useState<ManualCourseData>(defaultForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [invalidFields, setInvalidFields] = useState<Set<string>>(() => new Set());
   const [showPreview, setShowPreview] = useState(false);
+  const firstInputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useDialogFocus({
+    isOpen,
+    canClose: !isSubmitting,
+    onClose,
+    initialFocusRef: firstInputRef,
+  });
 
   const missingSet = useMemo(() => new Set(missingFields ?? []), [missingFields]);
 
@@ -40,44 +80,80 @@ export default function ManualImportForm({
     if (!isOpen) {
       return;
     }
-    setError('');
+    setError(initialMessage ?? '');
+    setInvalidFields(new Set());
     setShowPreview(false);
     setFormData({
       ...defaultForm,
       ...partialData,
       course_code: partialData?.course_code ?? '',
       title: partialData?.title ?? '',
+      term: partialData?.term ?? partialData?.sections?.[0]?.term ?? '',
+      section_id:
+        partialData?.section_id ??
+        partialData?.sections?.[0]?.section_id ??
+        partialData?.sections?.[0]?.section_call_number ??
+        '',
       points_raw: partialData?.points_raw ?? '',
       description: partialData?.description ?? '',
       prerequisites_text: partialData?.prerequisites_text ?? '',
     });
-  }, [isOpen, partialData]);
+  }, [initialMessage, isOpen, partialData]);
 
   if (!isOpen) {
     return null;
   }
 
-  const isCodeMissing = missingSet.has('course_code');
-  const isTitleMissing = missingSet.has('title');
+  const isFieldInvalid = (field: string) =>
+    missingSet.has(field) || invalidFields.has(field);
+  const isCodeMissing = isFieldInvalid('course_code');
+  const isTitleMissing = isFieldInvalid('title');
 
   const onLocalSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
+    setInvalidFields(new Set());
 
     // 归一化后再校验：与后端一致（大写 + 多空格压缩），
     // 这样用户输入小写/多空格也能通过，且格式要求和后端严格一致。
     const code = formData.course_code.trim().toUpperCase().replace(/\s+/g, ' ');
     const title = formData.title.trim();
+    const rawTerm = formData.term.trim().replace(/\s+/g, ' ');
+    const term = normalizeManualTerm(rawTerm);
+    const sectionId = formData.section_id.trim().toUpperCase();
 
-    if (!code || !title) {
+    if (!code || !title || !rawTerm || !sectionId) {
+      const fields = new Set<string>();
+      if (!code) fields.add('course_code');
+      if (!title) fields.add('title');
+      if (!rawTerm) fields.add('term');
+      if (!sectionId) fields.add('section_id');
+      setInvalidFields(fields);
       setError(t('settings.manualImport.required'));
       return;
     }
 
-    // 后端严格格式：2-4 个大写字母 + 空格 + 可选 1 大写字母 + 4 位数字
-    // 例：CIEN E3125, COMS W4111, AERO 3001
-    if (!/^[A-Z]{2,4}\s[A-Z]?\d{4}$/.test(code)) {
+    // 与 shared parser 一致：任意单字母 level；双字母只允许 UN/GU/GR。
+    if (!isValidManualCourseCode(code)) {
+      setInvalidFields(new Set(['course_code']));
       setError(t('settings.manualImport.codeInvalid'));
+      return;
+    }
+
+    if (!term) {
+      setInvalidFields(new Set(['term']));
+      setError(t('settings.manualImport.termInvalid'));
+      return;
+    }
+
+    const points = parseManualPoints(formData.points_raw ?? '');
+    if (!points) {
+      setInvalidFields(new Set(['points_raw']));
+      setError(
+        (formData.points_raw ?? '').trim()
+          ? t('settings.manualImport.pointsInvalid')
+          : t('settings.manualImport.pointsRequired'),
+      );
       return;
     }
 
@@ -87,6 +163,10 @@ export default function ManualImportForm({
         ...formData,
         course_code: code,
         title,
+        term,
+        section_id: sectionId,
+        points_min: points.min,
+        points_max: points.max,
       });
     } catch (err) {
       const msg = err instanceof Error ? err.message : t('settings.importError');
@@ -98,11 +178,23 @@ export default function ManualImportForm({
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/65 px-4">
-      <div className="w-full max-w-2xl bg-surface-dark rounded-xl border border-border-dark shadow-2xl max-h-[90vh] overflow-hidden">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="manual-import-title"
+        tabIndex={-1}
+        className="w-full max-w-2xl bg-surface-dark rounded-xl border border-border-dark shadow-2xl max-h-[90vh] overflow-hidden"
+      >
         <header className="flex items-center justify-between px-5 py-4 border-b border-border-dark">
-          <h3 className="text-white text-lg font-bold">{t('settings.manualImport.title')}</h3>
+          <h3 id="manual-import-title" className="text-white text-lg font-bold">
+            {t('settings.manualImport.title')}
+          </h3>
           <button
+            type="button"
             onClick={onClose}
+            aria-label={t('settings.manualImport.close')}
+            disabled={isSubmitting}
             className="text-slate-400 hover:text-white transition-colors rounded-full p-1"
           >
             <X className="w-5 h-5" />
@@ -117,6 +209,8 @@ export default function ManualImportForm({
               <button
                 type="button"
                 onClick={() => setShowPreview((v) => !v)}
+                aria-expanded={showPreview}
+                aria-controls="manual-import-preview"
                 className="w-full px-4 py-3 text-left text-sm text-slate-200 flex items-center justify-between"
               >
                 <span>{t('settings.manualImport.extractedPreview')}</span>
@@ -127,7 +221,10 @@ export default function ManualImportForm({
                 )}
               </button>
               {showPreview ? (
-                <pre className="px-4 pb-4 text-xs text-slate-400 whitespace-pre-wrap break-words">
+                <pre
+                  id="manual-import-preview"
+                  className="px-4 pb-4 text-xs text-slate-400 whitespace-pre-wrap break-words"
+                >
                   {extractedTextPreview}
                 </pre>
               ) : null}
@@ -140,6 +237,10 @@ export default function ManualImportForm({
                 {t('settings.manualImport.courseCode')}*
               </span>
               <input
+                ref={firstInputRef}
+                aria-required="true"
+                aria-invalid={isCodeMissing || undefined}
+                aria-describedby={error ? 'manual-import-error' : undefined}
                 value={formData.course_code}
                 onChange={(e) =>
                   setFormData((prev) => ({...prev, course_code: e.target.value}))
@@ -154,6 +255,9 @@ export default function ManualImportForm({
                 {t('settings.manualImport.courseTitle')}*
               </span>
               <input
+                aria-required="true"
+                aria-invalid={isTitleMissing || undefined}
+                aria-describedby={error ? 'manual-import-error' : undefined}
                 value={formData.title}
                 onChange={(e) => setFormData((prev) => ({...prev, title: e.target.value}))}
                 placeholder={t('settings.manualImport.courseTitlePlaceholder')}
@@ -162,15 +266,58 @@ export default function ManualImportForm({
             </label>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label className="flex flex-col gap-1">
+              <span className="text-sm text-slate-200">
+                {t('settings.manualImport.term')}*
+              </span>
+              <input
+                aria-required="true"
+                aria-invalid={isFieldInvalid('term') || undefined}
+                aria-describedby={error ? 'manual-import-error' : undefined}
+                value={formData.term}
+                onChange={(e) => setFormData((prev) => ({...prev, term: e.target.value}))}
+                placeholder={t('settings.manualImport.termPlaceholder')}
+                className={`bg-input-bg border rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:ring-1 focus:ring-primary ${isFieldInvalid('term') ? 'border-red-500' : 'border-border-dark'}`}
+              />
+            </label>
+
+            <label className="flex flex-col gap-1">
+              <span className="text-sm text-slate-200">
+                {t('settings.manualImport.sectionId')}*
+              </span>
+              <input
+                aria-required="true"
+                aria-invalid={
+                  isFieldInvalid('section_id') ||
+                  isFieldInvalid('section_call_number') ||
+                  undefined
+                }
+                aria-describedby={error ? 'manual-import-error' : undefined}
+                value={formData.section_id}
+                onChange={(e) =>
+                  setFormData((prev) => ({...prev, section_id: e.target.value}))
+                }
+                placeholder={t('settings.manualImport.sectionIdPlaceholder')}
+                className={`bg-input-bg border rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:ring-1 focus:ring-primary ${isFieldInvalid('section_id') || isFieldInvalid('section_call_number') ? 'border-red-500' : 'border-border-dark'}`}
+              />
+            </label>
+          </div>
+
           <label className="flex flex-col gap-1">
-            <span className="text-sm text-slate-200">{t('settings.manualImport.points')}</span>
+            <span className="text-sm text-slate-200">{t('settings.manualImport.points')}*</span>
             <input
+              aria-required="true"
+              aria-invalid={
+                isFieldInvalid('points_raw') || isFieldInvalid('points') || undefined
+              }
+              aria-describedby={error ? 'manual-import-error' : undefined}
               value={formData.points_raw ?? ''}
               onChange={(e) =>
                 setFormData((prev) => ({...prev, points_raw: e.target.value}))
               }
               placeholder={t('settings.manualImport.pointsPlaceholder')}
-              className="bg-input-bg border border-border-dark rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:ring-1 focus:ring-primary"
+              className={`bg-input-bg border rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:ring-1 focus:ring-primary ${isFieldInvalid('points_raw') || isFieldInvalid('points') ? 'border-red-500' : 'border-border-dark'}`}
             />
           </label>
 
@@ -198,7 +345,11 @@ export default function ManualImportForm({
             />
           </label>
 
-          {error ? <p className="text-sm text-red-400">{error}</p> : null}
+          {error ? (
+            <p id="manual-import-error" className="text-sm text-red-400" role="alert">
+              {error}
+            </p>
+          ) : null}
 
           <div className="flex items-center justify-end gap-3 pt-2">
             <button

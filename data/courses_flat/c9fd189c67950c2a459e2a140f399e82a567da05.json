@@ -21,13 +21,13 @@
       "catalog_ref": "MSAE E3013",
       "course_number": "MSAE 3013",
       "section_call_number": "001/12989",
-      "times": "Ismail Noyan",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "6/15",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Ismail Noyan",
+      "points": "3.00",
+      "enrollment_raw": "6/15",
+      "enrollment_current": 6,
+      "enrollment_capacity": 15
     }
   ],
   "needs_review": false,

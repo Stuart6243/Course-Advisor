@@ -21,26 +21,26 @@
       "catalog_ref": "ENGI E4990",
       "course_number": "ENGI 4990",
       "section_call_number": "001/11997",
-      "times": "Alexis Moore",
+      "times": "",
       "location": "",
-      "instructor": "0.00-6.00",
-      "points": "64/100",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Alexis Moore",
+      "points": "0.00-6.00",
+      "enrollment_raw": "64/100",
+      "enrollment_current": 64,
+      "enrollment_capacity": 100
     },
     {
       "term": "Spring 2026",
       "catalog_ref": "ENGI E4990",
       "course_number": "ENGI 4990",
       "section_call_number": "001/16940",
-      "times": "Alexis Moore",
+      "times": "",
       "location": "",
-      "instructor": "0.00-6.00",
-      "points": "56/49",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Alexis Moore",
+      "points": "0.00-6.00",
+      "enrollment_raw": "56/49",
+      "enrollment_current": 56,
+      "enrollment_capacity": 49
     }
   ],
   "needs_review": false,

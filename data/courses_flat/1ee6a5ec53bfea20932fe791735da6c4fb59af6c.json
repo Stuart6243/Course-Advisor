@@ -34,13 +34,13 @@
       "catalog_ref": "MSAE E4100",
       "course_number": "MSAE 4100",
       "section_call_number": "V01/17950",
-      "times": "Katayun Barmak",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "0/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Katayun Barmak",
+      "points": "3.00",
+      "enrollment_raw": "0/99",
+      "enrollment_current": 0,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

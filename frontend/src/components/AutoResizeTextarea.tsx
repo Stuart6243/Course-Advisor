@@ -1,4 +1,10 @@
-import {type ChangeEvent, type KeyboardEvent, useEffect, useRef} from 'react';
+import {
+  type ChangeEvent,
+  type CompositionEvent,
+  type KeyboardEvent,
+  useEffect,
+  useRef,
+} from 'react';
 
 type Props = {
   value: string;
@@ -8,6 +14,11 @@ type Props = {
   className: string;
   minHeight: string;
   disabled?: boolean;
+  maxLength?: number;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
+  onCompositionStart?: (event: CompositionEvent<HTMLTextAreaElement>) => void;
+  onCompositionEnd?: (event: CompositionEvent<HTMLTextAreaElement>) => void;
 };
 
 export default function AutoResizeTextarea({
@@ -18,6 +29,11 @@ export default function AutoResizeTextarea({
   className,
   minHeight,
   disabled,
+  maxLength,
+  ariaLabel,
+  ariaDescribedBy,
+  onCompositionStart,
+  onCompositionEnd,
 }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -39,6 +55,11 @@ export default function AutoResizeTextarea({
       rows={1}
       style={{minHeight}}
       disabled={disabled}
+      maxLength={maxLength}
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedBy}
+      onCompositionStart={onCompositionStart}
+      onCompositionEnd={onCompositionEnd}
     />
   );
 }

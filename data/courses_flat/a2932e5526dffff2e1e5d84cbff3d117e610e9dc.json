@@ -34,13 +34,13 @@
       "catalog_ref": "CHEN E4020",
       "course_number": "CHEN 4020",
       "section_call_number": "V01/17900",
-      "times": "Kenneth Spall",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "4/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Kenneth Spall",
+      "points": "3.00",
+      "enrollment_raw": "4/99",
+      "enrollment_current": 4,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

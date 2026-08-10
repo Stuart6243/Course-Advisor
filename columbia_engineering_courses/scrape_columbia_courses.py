@@ -7,6 +7,7 @@ import json
 import logging
 import random
 import re
+import sys
 import time
 from collections import deque
 from datetime import datetime, timezone
@@ -15,8 +16,18 @@ from typing import Dict, List, Optional, Sequence, Tuple
 from urllib.parse import urljoin, urlparse, urlunparse
 from urllib.robotparser import RobotFileParser
 
-import requests
 from bs4 import BeautifulSoup, Tag
+
+try:  # Parsing and offline repair must not require the network dependency.
+    import requests
+except ModuleNotFoundError:  # pragma: no cover - exercised in parser-only envs
+    requests = None  # type: ignore[assignment]
+
+try:
+    from backend.section_validator import validate_section
+except ModuleNotFoundError:  # Running this file directly sets sys.path to this folder.
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from backend.section_validator import validate_section
 
 DEFAULT_SEED = "https://bulletin.columbia.edu/columbia-engineering/about-school/"
 DEFAULT_YEAR = "2025-2026"
@@ -264,9 +275,11 @@ def parse_section_rows(block: Tag) -> Tuple[List[dict], List[str]]:
             if not cells:
                 continue
 
+            # Keep one text value per physical cell.  Empty TIMES/LOCATION or
+            # INSTRUCTOR cells are meaningful placeholders; deleting them
+            # shifts every later value into the preceding header column.
             texts = [normalize_text(c.get_text("\n", strip=True)) for c in cells]
-            texts = [t for t in texts if t]
-            if not texts:
+            if not any(texts):
                 continue
 
             if len(texts) == 1 and re.search(r"(Fall|Spring|Summer|Winter)\s+\d{4}", texts[0], re.I):
@@ -311,21 +324,23 @@ def parse_section_rows(block: Tag) -> Tuple[List[dict], List[str]]:
             if enrollment_raw and enrollment_current is None:
                 issues.append("enrollment_parse_warning")
 
-            sections.append(
-                {
-                    "term": current_term,
-                    "catalog_ref": current_catalog_ref,
-                    "course_number": course_number,
-                    "section_call_number": section_call,
-                    "times": times,
-                    "location": location,
-                    "instructor": instructor,
-                    "points": points,
-                    "enrollment_raw": enrollment_raw,
-                    "enrollment_current": enrollment_current,
-                    "enrollment_capacity": enrollment_capacity,
-                }
-            )
+            section = {
+                "term": current_term,
+                "catalog_ref": current_catalog_ref,
+                "course_number": course_number,
+                "section_call_number": section_call,
+                "times": times,
+                "location": location,
+                "instructor": instructor,
+                "points": points,
+                "enrollment_raw": enrollment_raw,
+                "enrollment_current": enrollment_current,
+                "enrollment_capacity": enrollment_capacity,
+            }
+            validation = validate_section(section)
+            for problem in (*validation.errors, *validation.warnings):
+                issues.append(f"section_validation:{section_call or 'unknown'}:{problem}")
+            sections.append(section)
 
     # Dedup sections in-place by stable tuple.
     deduped: List[dict] = []
@@ -474,12 +489,12 @@ def parse_course_block(
 
     notes = "\n".join(dedup_text_list(notes_items)).strip()
 
-    issues = list(title_issues)
+    course_issues = list(title_issues)
     if not description:
-        issues.append("missing_description")
+        course_issues.append("missing_description")
 
     sections, section_issues = parse_section_rows(block)
-    issues.extend(section_issues)
+    issues = sorted(set([*course_issues, *section_issues]))
 
     dedup_key = build_dedup_key(year, course_code, title, source_url)
 
@@ -501,8 +516,13 @@ def parse_course_block(
         "prerequisites_source": prerequisites_source,
         "notes_text": notes,
         "sections": sections,
-        "needs_review": bool(issues),
-        "parse_warnings": sorted(set(issues)),
+        # Section-level anomalies are isolated by the shared validator when
+        # building the enriched index.  They remain auditable here but do not
+        # hide an otherwise sound course and its other published sections.
+        "needs_review": bool(course_issues),
+        "parse_warnings": issues,
+        "course_review_warnings": sorted(set(course_issues)),
+        "section_review_warnings": sorted(set(section_issues)),
         "raw_title_text": title_text,
     }
     return record
@@ -563,9 +583,36 @@ def merge_course_records(base: dict, new: dict) -> dict:
         deduped_sections.append(s)
     base["sections"] = deduped_sections
 
-    warnings = set(base.get("parse_warnings", [])) | set(new.get("parse_warnings", []))
+    def split_warnings(record: dict) -> Tuple[set, set]:
+        raw = set(record.get("parse_warnings", []))
+        explicit_course = record.get("course_review_warnings")
+        explicit_section = record.get("section_review_warnings")
+        section = (
+            set(explicit_section)
+            if isinstance(explicit_section, list)
+            else {
+                warning
+                for warning in raw
+                if warning == "enrollment_parse_warning"
+                or warning.startswith("section_validation:")
+            }
+        )
+        course = (
+            set(explicit_course)
+            if isinstance(explicit_course, list)
+            else raw - section
+        )
+        return course, section
+
+    base_course_warnings, base_section_warnings = split_warnings(base)
+    new_course_warnings, new_section_warnings = split_warnings(new)
+    course_warnings = base_course_warnings | new_course_warnings
+    section_warnings = base_section_warnings | new_section_warnings
+    warnings = course_warnings | section_warnings
     base["parse_warnings"] = sorted(warnings)
-    base["needs_review"] = bool(base["parse_warnings"])
+    base["course_review_warnings"] = sorted(course_warnings)
+    base["section_review_warnings"] = sorted(section_warnings)
+    base["needs_review"] = bool(course_warnings)
 
     return base
 
@@ -605,7 +652,7 @@ def parse_course_page(html: str, url: str, year: str) -> Tuple[List[dict], List[
         else:
             courses_by_key[key] = course
 
-        if course.get("needs_review"):
+        if course.get("parse_warnings"):
             review_items.append(
                 {
                     "issue_types": course.get("parse_warnings", []),
@@ -614,6 +661,7 @@ def parse_course_page(html: str, url: str, year: str) -> Tuple[List[dict], List[
                     "title": course.get("title", ""),
                     "raw_title_text": course.get("raw_title_text", ""),
                     "block_index": idx,
+                    "course_needs_review": bool(course.get("needs_review")),
                 }
             )
 
@@ -805,6 +853,10 @@ def crawl_and_scrape(
     max_delay: float,
     max_pages: int,
 ) -> dict:
+    if requests is None:
+        raise RuntimeError(
+            "requests is required for network crawling; parser/offline modes do not need it"
+        )
     dirs = ensure_dirs(root)
     write_default_config_if_missing(root, seed_url, year)
 

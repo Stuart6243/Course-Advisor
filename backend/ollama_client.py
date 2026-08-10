@@ -12,6 +12,10 @@ from typing import AsyncGenerator
 import httpx
 
 
+class OllamaStreamProtocolError(RuntimeError):
+    """Ollama returned malformed NDJSON or closed before ``done: true``."""
+
+
 class OllamaClient:
     """Ollama API 客户端，支持非流式和流式调用。"""
 
@@ -54,6 +58,11 @@ class OllamaClient:
             "model": model or self.model,
             "messages": request_messages,
             "stream": False,
+            # Qwen 3 may emit a long hidden ``thinking`` stream before any
+            # user-visible content.  Disable it explicitly so the SSE client
+            # receives answer tokens promptly and does not mistake that gap
+            # for a stalled response.
+            "think": False,
         }
         if max_tokens > 0:
             body["options"] = {"num_predict": max_tokens}
@@ -86,6 +95,7 @@ class OllamaClient:
             "model": model or self.model,
             "messages": request_messages,
             "stream": True,
+            "think": False,
         }
         if max_tokens > 0:
             body["options"] = {"num_predict": max_tokens}
@@ -142,6 +152,8 @@ class OllamaClient:
 
             return "".join(output)
 
+        completed = False
+        yielded = False
         try:
             async with httpx.AsyncClient(timeout=self.timeout) as client:
                 async with client.stream(
@@ -157,24 +169,44 @@ class OllamaClient:
 
                         try:
                             chunk = json.loads(line)
-                        except json.JSONDecodeError:
-                            continue
+                        except json.JSONDecodeError as exc:
+                            raise OllamaStreamProtocolError(
+                                "Ollama stream contained malformed JSON"
+                            ) from exc
+                        if not isinstance(chunk, dict):
+                            raise OllamaStreamProtocolError(
+                                "Ollama stream contained an invalid event"
+                            )
+                        if chunk.get("error"):
+                            raise RuntimeError(str(chunk["error"]))
 
                         content = str(chunk.get("message", {}).get("content", ""))
                         if content:
                             cleaned = filter_stream_text(content, final=False)
                             if cleaned:
+                                yielded = True
                                 yield cleaned
 
                         if chunk.get("done") is True:
+                            completed = True
                             tail = filter_stream_text("", final=True)
                             if tail:
+                                yielded = True
                                 yield tail
                             break
         except httpx.TimeoutException as exc:
             raise TimeoutError("Ollama request timed out") from exc
         except httpx.RequestError as exc:
             raise ConnectionError("Failed to connect to Ollama") from exc
+
+        if not completed:
+            raise OllamaStreamProtocolError(
+                "Ollama stream ended before the done marker"
+            )
+        if not yielded:
+            raise OllamaStreamProtocolError(
+                "Ollama stream completed without answer content"
+            )
 
     async def is_available(self) -> bool:
         """检查 Ollama 服务是否在线且目标模型存在。"""

@@ -34,13 +34,13 @@
       "catalog_ref": "BMEB W4020",
       "course_number": "BMEB 4020",
       "section_call_number": "V01/18380",
-      "times": "Aurel Lazar",
+      "times": "",
       "location": "",
-      "instructor": "3",
-      "points": "4/99",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Aurel Lazar",
+      "points": "3",
+      "enrollment_raw": "4/99",
+      "enrollment_current": 4,
+      "enrollment_capacity": 99
     }
   ],
   "needs_review": false,

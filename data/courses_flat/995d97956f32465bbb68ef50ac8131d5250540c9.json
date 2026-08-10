@@ -21,13 +21,13 @@
       "catalog_ref": "COMS E6901",
       "course_number": "COMS 6901",
       "section_call_number": "062/19936",
-      "times": "Nakul Verma",
+      "times": "",
       "location": "",
-      "instructor": "1.00-12.00",
-      "points": "8/40",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Nakul Verma",
+      "points": "1.00-12.00",
+      "enrollment_raw": "8/40",
+      "enrollment_current": 8,
+      "enrollment_capacity": 40
     }
   ],
   "needs_review": false,

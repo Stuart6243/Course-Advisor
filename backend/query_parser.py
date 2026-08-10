@@ -7,11 +7,35 @@
   normalize_question → rule_based_extract → [成功?直接返回 : LLM fallback]
 """
 
-import config
+import asyncio
+from dataclasses import dataclass
 import json
+import math
 import re
 import unicodedata
+
+import config
+from course_codes import extract_course_codes, normalize_course_code
 from course_index import DEPARTMENT_NAMES
+from credit_parser import parse_points_range
+
+
+class IntentParseError(ValueError):
+    """The model response did not contain a JSON object."""
+
+
+class IntentValidationError(ValueError):
+    """The model returned JSON, but it is not a valid query intent."""
+
+
+@dataclass(frozen=True)
+class IntentExtractionResult:
+    """Intent plus provenance used by the SSE metadata contract."""
+
+    intent: dict
+    source: str
+    fallback_used: bool = False
+    fallback_reason: str | None = None
 
 
 def fold_accents(text: str) -> str:
@@ -341,6 +365,7 @@ PURE_DEPT_WORDS = frozenset({
     "civil", "mechanical", "mech", "electrical", "ee",
     "biomedical", "biomed", "environmental", "materials",
     "statistics", "stats", "physics", "chemical", "chem",
+    "bioinformatics", "industrial",
 })
 
 # 系别名称 → 前缀 的反向映射（从 DEPARTMENT_NAMES 自动构建）
@@ -371,10 +396,6 @@ DEPT_KEYWORD_MAP.update({
 for _generic_word in ("engineering", "applied", "science", "math", "mathematics"):
     DEPT_KEYWORD_MAP.pop(_generic_word, None)
 
-# 正则模式
-# 允许字母与数字之间是空格、连字符，或完全没有分隔：
-# 用户实际会写成 COMS W4111 / COMS-W4111 / COMSW4111 / coms  w4111。
-COURSE_CODE_RE = re.compile(r'\b([A-Z]{4})[\s\-_]*([A-Z]?\d{4})\b')
 COMPARE_RE = re.compile(r'\b(compare|comparison|difference|differ|vs\.?|versus)\b', re.I)
 RECOMMEND_RE = re.compile(
     r'\b('
@@ -489,6 +510,10 @@ STOP_WORDS = frozenset({
     'give', 'other', 'another', 'more', 'additional', 'else',
     'based', 'current', 'conversation', 'mentioned', 'them',
     'department', 'departments',
+    # Requested result counts describe the query shape, not a course topic.
+    'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+    'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen',
+    'seventeen', 'eighteen', 'nineteen', 'twenty',
     # --- 西班牙语功能词（已折叠变音符号后的形式）---
     'que', 'cual', 'cuales', 'cursos', 'curso', 'clase', 'clases',
     'los', 'las', 'una', 'unos', 'unas', 'del', 'para', 'por', 'con',
@@ -496,12 +521,16 @@ STOP_WORDS = frozenset({
     'recomiendame', 'recomendame', 'sugiereme', 'ayudame', 'encontrar',
     'buenos', 'buenas', 'mejores', 'mejor', 'algunos', 'algunas',
     'disponibles', 'disponible', 'ciencias',
+    'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho',
+    'nueve', 'diez',
     # --- 法语功能词 ---
     'cours', 'quels', 'quelles', 'quel', 'quelle', 'sont', 'est',
     'des', 'les', 'une', 'sur', 'dans', 'pour', 'avec', 'moi', 'toi',
     'recommande', 'recommandez', 'suggere', 'suggerez', 'donne', 'donnez',
     'aide', 'trouver', 'bons', 'bonnes', 'meilleurs', 'meilleur',
     'disponible', 'disponibles', 'veux', 'cherche',
+    'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit',
+    'neuf', 'dix',
 })
 
 
@@ -523,15 +552,9 @@ def rule_based_extract(question: str) -> dict | None:
         return intent
 
     # --- 1. 提取课程代码 ---
-    codes_raw = COURSE_CODE_RE.findall(question.upper())
-    # 去重保序
-    seen_codes = set()
-    codes = []
-    for dept, num in codes_raw:
-        full = f"{dept} {num}"
-        if full not in seen_codes:
-            seen_codes.add(full)
-            codes.append(full)
+    # Shared parser covers current single-letter levels B/C/E/W and two-letter
+    # levels UN/GU/GR, plus compact/hyphen/underscore spelling variants.
+    codes = extract_course_codes(question)
     intent["course_codes"] = codes
 
     # --- 2. 判断 query_type ---
@@ -566,9 +589,28 @@ def rule_based_extract(question: str) -> dict | None:
         sorted_dept_keywords = sorted(DEPT_KEYWORD_MAP.keys(), key=len, reverse=True)
         for word in sorted_dept_keywords:
             if re.search(r'\b' + re.escape(word) + r'\b', q_lower):
+                # DEPARTMENT_NAMES intentionally enriches searchable text with
+                # topical words.  Those words must not become a hard department
+                # filter (e.g. robotics also appears outside MECE).
+                if word not in PURE_DEPT_WORDS:
+                    continue
                 department = DEPT_KEYWORD_MAP[word]
-                department_terms = [word] if word in PURE_DEPT_WORDS else []
+                department_terms = [word]
                 break
+    if department:
+        # normalize_question appends an English department phrase but keeps the
+        # original Spanish/French wording.  Mark both as structural terms so
+        # e.g. "ciencias de la computación" does not become a mandatory topic
+        # keyword after COMS has already been selected.
+        for source, target in {**ES_MAPPINGS, **FR_MAPPINGS}.items():
+            if source.lower() not in q_lower:
+                continue
+            mapped_department = DEPT_PHRASE_MAP.get(target.lower())
+            if mapped_department != department:
+                continue
+            for word in re.findall(r"[a-z]+", fold_accents(source.lower())):
+                if len(word) > 2 and word not in department_terms:
+                    department_terms.append(word)
     intent["department"] = department
     intent["department_terms"] = department_terms
 
@@ -592,12 +634,7 @@ def rule_based_extract(question: str) -> dict | None:
     intent["day_preference"] = days
 
     # --- 7. 提取学分 ---
-    pts_match = re.search(r'(\d+)[\s-]*credits?', q_lower)
-    if not pts_match:
-        pts_match = re.search(r'(\d+)[\s-]*points?', q_lower)
-    if pts_match:
-        pts = float(pts_match.group(1))
-        intent["points_range"] = [pts, pts]
+    intent["points_range"] = parse_points_range(question)
 
     # --- 8. 提取学期 ---
     term_match = re.search(r'(spring|fall|summer|winter)\s+(\d{4})', q_lower)
@@ -701,81 +738,321 @@ def _remove_think_tags(text: str) -> str:
     return re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
 
 
-def _merge_with_default(parsed: dict) -> dict:
+ALLOWED_QUERY_TYPES = frozenset(
+    {"search", "compare", "recommend", "detail", "schedule", "general", "stats"}
+)
+ALLOWED_TIME_PREFERENCES = frozenset({"morning", "afternoon", "evening"})
+ALLOWED_DAYS = (
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+)
+_DAY_BY_LOWER = {day.lower(): day for day in ALLOWED_DAYS}
+_DEPARTMENT_CODE_RE = re.compile(r"^[A-Z]{2,6}$")
+_TERM_VALUE_RE = re.compile(r"^(Spring|Summer|Fall|Winter)\s+\d{4}$", re.IGNORECASE)
+
+
+def _validated_string_list(value: object, field: str, *, lower: bool = False) -> list[str]:
+    if not isinstance(value, list):
+        raise IntentValidationError(f"{field} must be a list")
+    result: list[str] = []
+    for item in value:
+        if not isinstance(item, str):
+            raise IntentValidationError(f"{field} entries must be strings")
+        cleaned = item.strip()
+        if not cleaned:
+            continue
+        result.append(cleaned.lower() if lower else cleaned)
+    return result
+
+
+def validate_intent_schema(parsed: dict) -> dict:
+    """Validate and normalize one model's JSON without borrowing fields from another model.
+
+    Missing optional fields are filled from ``DEFAULT_INTENT`` only after the payload has
+    passed validation.  In particular, a syntactically valid ``general`` intent remains
+    distinguishable from malformed JSON or an empty object.
+    """
+    if not isinstance(parsed, dict):
+        raise IntentValidationError("intent must be a JSON object")
+
+    query_type = parsed.get("query_type")
+    if not isinstance(query_type, str) or query_type not in ALLOWED_QUERY_TYPES:
+        raise IntentValidationError("query_type is missing or invalid")
+
     merged = _default_intent_copy()
-    for key in DEFAULT_INTENT:
-        if key in parsed:
-            merged[key] = parsed[key]
-    # 防御性归一化
-    if not isinstance(merged.get("course_codes"), list):
-        merged["course_codes"] = []
-    if not isinstance(merged.get("keywords"), list):
-        merged["keywords"] = []
-    if not isinstance(merged.get("day_preference"), list):
-        merged["day_preference"] = []
-    if not isinstance(merged.get("comparison_targets"), list):
-        merged["comparison_targets"] = []
-    points = merged.get("points_range")
-    if not (points is None or (isinstance(points, (list, tuple)) and len(points) == 2)):
-        merged["points_range"] = None
+    merged["query_type"] = query_type
+
+    for field in ("course_codes", "comparison_targets"):
+        raw = parsed.get(field, [])
+        normalized_codes: list[str] = []
+        for item in _validated_string_list(raw, field):
+            normalized = normalize_course_code(item)
+            if normalized is None:
+                raise IntentValidationError(f"{field} contains an invalid course code")
+            if normalized not in normalized_codes:
+                normalized_codes.append(normalized)
+        merged[field] = normalized_codes
+
+    merged["keywords"] = _validated_string_list(
+        parsed.get("keywords", []), "keywords", lower=True
+    )
+    merged["department_terms"] = _validated_string_list(
+        parsed.get("department_terms", []), "department_terms", lower=True
+    )
+
+    department = parsed.get("department")
+    if department is not None:
+        if not isinstance(department, str):
+            raise IntentValidationError("department must be a string or null")
+        department = department.strip().upper()
+        if (
+            not department
+            or not _DEPARTMENT_CODE_RE.fullmatch(department)
+            or department not in DEPARTMENT_NAMES
+        ):
+            raise IntentValidationError("department must be a known department code")
+    merged["department"] = department
+
+    instructor = parsed.get("instructor")
+    if instructor is not None:
+        if not isinstance(instructor, str):
+            raise IntentValidationError("instructor must be a string or null")
+        instructor = instructor.strip() or None
+    merged["instructor"] = instructor
+
+    time_preference = parsed.get("time_preference")
+    if time_preference is not None:
+        if not isinstance(time_preference, str):
+            raise IntentValidationError("time_preference must be a string or null")
+        time_preference = time_preference.strip().lower()
+        if time_preference not in ALLOWED_TIME_PREFERENCES:
+            raise IntentValidationError("time_preference is invalid")
+    merged["time_preference"] = time_preference
+
+    raw_days = parsed.get("day_preference", [])
+    days = _validated_string_list(raw_days, "day_preference")
+    normalized_days: list[str] = []
+    for day in days:
+        normalized = _DAY_BY_LOWER.get(day.lower())
+        if normalized is None:
+            raise IntentValidationError(f"invalid day_preference: {day}")
+        if normalized not in normalized_days:
+            normalized_days.append(normalized)
+    merged["day_preference"] = normalized_days
+
+    points = parsed.get("points_range")
+    if points is not None:
+        if not isinstance(points, (list, tuple)) or len(points) != 2:
+            raise IntentValidationError("points_range must contain exactly two numbers")
+        if any(
+            value is not None
+            and (isinstance(value, bool) or not isinstance(value, (int, float)))
+            for value in points
+        ):
+            raise IntentValidationError("points_range values must be numeric or null")
+        min_points = float(points[0]) if points[0] is not None else None
+        max_points = float(points[1]) if points[1] is not None else None
+        if min_points is None and max_points is None:
+            raise IntentValidationError("points_range needs at least one bound")
+        if any(
+            value is not None and not math.isfinite(value)
+            for value in (min_points, max_points)
+        ):
+            raise IntentValidationError("points_range values must be finite")
+        if (
+            (min_points is not None and min_points < 0)
+            or (max_points is not None and max_points > 30)
+            or (
+                min_points is not None
+                and max_points is not None
+                and min_points > max_points
+            )
+        ):
+            raise IntentValidationError("points_range is outside the valid range")
+        merged["points_range"] = [min_points, max_points]
+
+    term = parsed.get("term")
+    if term is not None:
+        if not isinstance(term, str):
+            raise IntentValidationError("term must be a string or null")
+        term = term.strip()
+        if not term or len(term) > 64 or not _TERM_VALUE_RE.fullmatch(term):
+            raise IntentValidationError("term is invalid")
+    merged["term"] = term
+
+    original_question = parsed.get("original_question", "")
+    if not isinstance(original_question, str):
+        raise IntentValidationError("original_question must be a string")
+    merged["original_question"] = original_question
     return merged
 
 
 def parse_extraction_response(raw_text: str) -> dict:
-    """从 LLM 返回文本中提取 JSON，多层容错。"""
+    """Extract and validate one model response.
+
+    Invalid output raises an internal exception instead of being converted to the default
+    ``general`` intent.  This is what allows the caller to accept a *valid* general intent
+    while still falling back from malformed JSON or illegal fields.
+    """
     text = raw_text or ""
-    parsed = _try_parse_json(text)
+    # Prefer the visible answer over JSON that may appear inside a Qwen <think> block.
+    without_think = _remove_think_tags(text)
+    parsed = _try_parse_json(without_think)
     if parsed is None:
-        parsed = _parse_from_fenced_json(text)
+        parsed = _parse_from_fenced_json(without_think)
     if parsed is None:
-        parsed = _parse_by_json_block(text)
+        parsed = _parse_by_json_block(without_think)
     if parsed is None:
-        without_think = _remove_think_tags(text)
-        parsed = _try_parse_json(without_think)
+        parsed = _try_parse_json(text)
         if parsed is None:
-            parsed = _parse_from_fenced_json(without_think)
+            parsed = _parse_from_fenced_json(text)
         if parsed is None:
-            parsed = _parse_by_json_block(without_think)
+            parsed = _parse_by_json_block(text)
     if parsed is None:
-        return _default_intent_copy()
-    return _merge_with_default(parsed)
+        raise IntentParseError("intent response did not contain valid JSON")
+    return validate_intent_schema(parsed)
 
 
 # ============================================================
 # 6. 主入口
 # ============================================================
 
-async def extract_query_intent(question: str, llm_client, model: str = "") -> dict:
+def _intent_failure_reason(exc: Exception) -> str:
+    text = str(exc).lower()
+    if isinstance(exc, IntentParseError):
+        return "invalid_json"
+    if isinstance(exc, IntentValidationError):
+        return "invalid_schema"
+    if isinstance(exc, (asyncio.TimeoutError, TimeoutError)) or "timeout" in text or "timed out" in text:
+        return "timeout"
+    if "429" in text or "rate limit" in text or "too many requests" in text:
+        return "rate_limited"
+    if "connect" in text or "transport" in text or "network" in text:
+        return "unreachable"
+    return "provider_error"
+
+
+async def _call_intent_model(
+    client,
+    messages: list[dict],
+    *,
+    model: str,
+    timeout: float,
+) -> str:
+    kwargs = {
+        "messages": messages,
+        "system_prompt": EXTRACTION_SYSTEM_PROMPT,
+        "max_tokens": config.INTENT_MAX_TOKENS,
+    }
+    if model:
+        kwargs["model"] = model
+    return await asyncio.wait_for(client.chat(**kwargs), timeout=timeout)
+
+
+async def extract_query_intent_result(
+    question: str,
+    llm_client=None,
+    model: str = "",
+    *,
+    primary_source: str = "ollama",
+    fallback_client=None,
+    fallback_model: str = "",
+    fallback_source: str = "ollama",
+    timeout: float | None = None,
+) -> IntentExtractionResult:
     """
-    完整意图提取流程：
+    Complete deterministic -> primary -> fallback -> minimal intent flow.
+
     1. 多语言关键词归一化
     2. 规则引擎尝试提取
     3. 成功 → 直接返回（不调用 LLM，0 延迟）
-    4. 失败 → LLM fallback（Groq 用 8b-instant，本地用默认模型）
-
-    model: 指定 fallback 使用的模型名（Groq 传 8b，省 70b 每日配额）。
+    4. 失败 → primary LLM；解析和语义校验失败才调用 fallback LLM
+    5. 两个模型都失败 → deterministic minimal intent
     """
-    # Step 1: 归一化
     normalized = normalize_question(question)
-
-    # Step 2: 规则引擎
     rule_result = rule_based_extract(normalized)
     if rule_result is not None:
         rule_result["original_question"] = question  # 保留原始问题
-        return rule_result
+        return IntentExtractionResult(intent=rule_result, source="rule")
 
-    # Step 3: LLM fallback
     messages = [{"role": "user", "content": question}]
-    try:
-        raw_response = await llm_client.chat(
-            messages=messages,
-            system_prompt=EXTRACTION_SYSTEM_PROMPT,
-            max_tokens=config.INTENT_MAX_TOKENS,
-            model=model,
-        )
-        intent = parse_extraction_response(raw_response)
-    except Exception:
-        intent = _default_intent_copy()
+    request_timeout = float(timeout if timeout is not None else config.INTENT_TIMEOUT)
+    primary_reason: str | None = None
 
+    if llm_client is not None:
+        try:
+            raw_response = await _call_intent_model(
+                llm_client,
+                messages,
+                model=model,
+                timeout=request_timeout,
+            )
+            intent = parse_extraction_response(raw_response)
+            intent["original_question"] = question
+            return IntentExtractionResult(intent=intent, source=primary_source)
+        except asyncio.CancelledError:
+            raise
+        except Exception as exc:
+            primary_reason = _intent_failure_reason(exc)
+
+    if fallback_client is not None:
+        try:
+            raw_response = await _call_intent_model(
+                fallback_client,
+                messages,
+                model=fallback_model,
+                timeout=request_timeout,
+            )
+            intent = parse_extraction_response(raw_response)
+            intent["original_question"] = question
+            return IntentExtractionResult(
+                intent=intent,
+                source=fallback_source,
+                fallback_used=True,
+                fallback_reason=primary_reason,
+            )
+        except asyncio.CancelledError:
+            raise
+        except Exception as exc:
+            fallback_reason = _intent_failure_reason(exc)
+            if primary_reason:
+                primary_reason = f"{primary_reason};{fallback_source}_{fallback_reason}"
+            else:
+                primary_reason = fallback_reason
+
+    intent = _default_intent_copy()
     intent["original_question"] = question
-    return intent
+    return IntentExtractionResult(
+        intent=intent,
+        source="minimal",
+        fallback_used=fallback_client is not None,
+        fallback_reason=primary_reason,
+    )
+
+
+async def extract_query_intent(
+    question: str,
+    llm_client,
+    model: str = "",
+    *,
+    fallback_client=None,
+    fallback_model: str = "",
+    timeout: float | None = None,
+) -> dict:
+    """Backward-compatible dict-returning wrapper around the provenance-aware flow."""
+    result = await extract_query_intent_result(
+        question,
+        llm_client,
+        model=model,
+        primary_source="groq" if model == config.GROQ_INTENT_MODEL else "ollama",
+        fallback_client=fallback_client,
+        fallback_model=fallback_model,
+        fallback_source="ollama",
+        timeout=timeout,
+    )
+    return result.intent

@@ -34,13 +34,13 @@
       "catalog_ref": "EECS E6892",
       "course_number": "EECS 6892",
       "section_call_number": "V01/17138",
-      "times": "Javad Ghaderi",
+      "times": "",
       "location": "",
-      "instructor": "3.00",
-      "points": "5/5",
-      "enrollment_raw": "",
-      "enrollment_current": null,
-      "enrollment_capacity": null
+      "instructor": "Javad Ghaderi",
+      "points": "3.00",
+      "enrollment_raw": "5/5",
+      "enrollment_current": 5,
+      "enrollment_capacity": 5
     }
   ],
   "needs_review": false,
