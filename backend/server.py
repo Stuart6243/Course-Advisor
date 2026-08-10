@@ -43,8 +43,10 @@ from file_importer import (
 from groq_client import GroqClient
 from ollama_client import OllamaClient
 from prerequisites import compare_course_prerequisites
+from provider_errors import classify_provider_failure
 from query_parser import IntentExtractionResult, extract_query_intent_result
 from response_generator import (
+    format_prerequisite_answer,
     generate_response_stream,
     is_conversation_recall_query,
     select_courses_for_context,
@@ -117,6 +119,7 @@ ERROR_MESSAGES: dict[str, dict[str, str]] = {
         "missing_key": "The cloud model isn't configured. Set GROQ_API_KEY in the terminal that runs the backend, or switch INFERENCE_MODE to \"local\" to use Ollama.",
         "rate_limited": "The cloud model is rate-limited right now. Please wait a moment and try again.",
         "timeout": "The model took too long to respond. Please try again, or ask a more specific question.",
+        "truncated": "The model reached its response limit before finishing. Please narrow the question and try again.",
         "unreachable": "Couldn't reach the model service. Check that Ollama is running (or that you're online for Groq).",
         "generic": "Something went wrong while generating the answer. Please try again.",
     },
@@ -124,6 +127,7 @@ ERROR_MESSAGES: dict[str, dict[str, str]] = {
         "missing_key": "云端模型未配置。请在运行后端的终端里设置 GROQ_API_KEY，或把 INFERENCE_MODE 改成 \"local\" 以使用本地 Ollama。",
         "rate_limited": "云端模型当前触发了限流，请稍等片刻再试。",
         "timeout": "模型响应超时。请重试，或把问题问得更具体一些。",
+        "truncated": "模型在完整回答前达到了输出上限。请缩小问题范围后重试。",
         "unreachable": "无法连接模型服务。请确认 Ollama 已启动（或网络可访问 Groq）。",
         "generic": "生成回答时出错了，请重试。",
     },
@@ -131,6 +135,7 @@ ERROR_MESSAGES: dict[str, dict[str, str]] = {
         "missing_key": "El modelo en la nube no está configurado. Define GROQ_API_KEY en la terminal del backend, o cambia INFERENCE_MODE a \"local\" para usar Ollama.",
         "rate_limited": "El modelo en la nube está limitado por ahora. Espera un momento e inténtalo de nuevo.",
         "timeout": "El modelo tardó demasiado en responder. Inténtalo de nuevo o haz una pregunta más específica.",
+        "truncated": "El modelo alcanzó el límite de respuesta antes de terminar. Reduce el alcance de la pregunta e inténtalo de nuevo.",
         "unreachable": "No se pudo conectar con el servicio del modelo. Verifica que Ollama esté en ejecución.",
         "generic": "Ocurrió un error al generar la respuesta. Inténtalo de nuevo.",
     },
@@ -138,6 +143,7 @@ ERROR_MESSAGES: dict[str, dict[str, str]] = {
         "missing_key": "Le modèle cloud n'est pas configuré. Définissez GROQ_API_KEY dans le terminal du backend, ou passez INFERENCE_MODE à \"local\" pour utiliser Ollama.",
         "rate_limited": "Le modèle cloud est actuellement limité. Patientez un instant puis réessayez.",
         "timeout": "Le modèle a mis trop de temps à répondre. Réessayez ou posez une question plus précise.",
+        "truncated": "Le modèle a atteint sa limite de réponse avant de terminer. Réduisez la portée de la question et réessayez.",
         "unreachable": "Impossible de joindre le service du modèle. Vérifiez qu'Ollama est démarré.",
         "generic": "Une erreur s'est produite lors de la génération de la réponse. Veuillez réessayer.",
     },
@@ -621,22 +627,7 @@ async def _extract_intent_for_request(
 
 
 def _fallback_reason(exc: Exception) -> str:
-    text = str(exc).lower()
-    if isinstance(exc, (asyncio.TimeoutError, TimeoutError)) or "timeout" in text or "timed out" in text:
-        return "timeout"
-    if "429" in text or "rate limit" in text or "too many requests" in text:
-        return "rate_limited"
-    if (
-        "ended before" in text
-        or "malformed" in text
-        or "invalid event" in text
-        or "without answer content" in text
-        or "protocol" in text
-    ):
-        return "invalid_stream"
-    if "connect" in text or "transport" in text or "network" in text:
-        return "unreachable"
-    return "provider_error"
+    return classify_provider_failure(exc)
 
 
 def _user_facing_error(exc: Exception, language: str) -> str:
@@ -644,14 +635,10 @@ def _user_facing_error(exc: Exception, language: str) -> str:
     text = str(exc).lower()
     if "groq_api_key" in text or "api key" in text:
         key = "missing_key"
-    elif "429" in text or "rate limit" in text or "too many requests" in text:
-        key = "rate_limited"
-    elif "timeout" in text or "timed out" in text:
-        key = "timeout"
-    elif "connect" in text or "connection" in text:
-        key = "unreachable"
     else:
-        key = "generic"
+        reason = classify_provider_failure(exc)
+        actionable = {"rate_limited", "timeout", "truncated", "unreachable"}
+        key = reason if reason in actionable else "generic"
     messages = ERROR_MESSAGES.get(language) or ERROR_MESSAGES["en"]
     return messages[key]
 
@@ -761,6 +748,7 @@ async def chat(payload: ChatRequest, request: Request):
         fallback_used = False
         fallback_reason: str | None = None
         full_response = ""
+        deterministic_response: str | None = None
 
         async def client_disconnected() -> bool:
             try:
@@ -799,6 +787,7 @@ async def chat(payload: ChatRequest, request: Request):
 
             intent_result = await _extract_intent_for_request(payload, request)
             intent = intent_result.intent
+            is_stats_query = (intent.get("query_type") or "").lower() == "stats"
             messages_for_llm = history + [{"role": "user", "content": payload.message}]
             is_followup = len(history) >= 2
             recall_query = is_conversation_recall_query(intent, messages_for_llm)
@@ -834,17 +823,22 @@ async def chat(payload: ChatRequest, request: Request):
                 previous_count=len(prev_courses),
                 has_current_focus=current_course is not None,
                 new_search_anchor=new_search_anchor,
+                force_new_search=ambiguous_recommend,
             )
             intent["conversation_scope"] = parsed_scope.as_dict()
             scope_error: str | None = None
             next_current_course = current_course
             reused_previous_results = False
 
-            if (intent.get("query_type") or "").lower() == "stats":
+            if is_stats_query:
                 courses: list[dict] = []
+                prompt_basis: list[dict] = []
                 response_client = None
                 fallback_client = None
                 response_provider = "deterministic"
+                deterministic_response = _format_stats_message(
+                    index_data, payload.language
+                )
             else:
                 if recall_query:
                     courses = []
@@ -907,13 +901,22 @@ async def chat(payload: ChatRequest, request: Request):
                     elif comparison.tied:
                         next_current_course = None
 
-                response_client, response_provider = await get_llm_client(
-                    request, "response"
-                )
-                fallback_client = await get_fallback_client(request, response_provider)
-
-            if response_provider == "deterministic":
-                prompt_basis = []
+                if parsed_scope.attribute is ScopeAttribute.PREREQUISITES:
+                    response_client = None
+                    fallback_client = None
+                    response_provider = "deterministic"
+                    deterministic_response = format_prerequisite_answer(
+                        prompt_basis,
+                        payload.language,
+                        operation=parsed_scope.operation.value,
+                    )
+                else:
+                    response_client, response_provider = await get_llm_client(
+                        request, "response"
+                    )
+                    fallback_client = await get_fallback_client(
+                        request, response_provider
+                    )
 
             # A genuine new catalog search with zero matches must not expose
             # old course turns to the response model.  Passing no history makes
@@ -946,7 +949,7 @@ async def chat(payload: ChatRequest, request: Request):
             yield f"data: {json.dumps(meta_event, ensure_ascii=False)}\n\n"
 
             if response_provider == "deterministic":
-                full_response = _format_stats_message(index_data, payload.language)
+                full_response = deterministic_response or ""
                 yield f"data: {json.dumps({'type': 'chunk', 'content': full_response}, ensure_ascii=False)}\n\n"
             else:
                 try:
@@ -1057,7 +1060,7 @@ async def chat(payload: ChatRequest, request: Request):
 
             convos[cid] = history
             convos.move_to_end(cid)
-            if response_provider == "deterministic" or reused_previous_results:
+            if is_stats_query or reused_previous_results:
                 next_last_courses = prev_courses
             else:
                 # A genuine zero-result new search clears stale results instead
@@ -1151,6 +1154,14 @@ async def import_course(request: Request, file: UploadFile = File(...)):
                 raise asyncio.CancelledError
 
         async with request.app.state.import_lock:
+            runtime_candidate: list[dict[str, Any]] | None = None
+
+            def prepare_runtime_candidate(overlays: list[dict[str, Any]]) -> None:
+                nonlocal runtime_candidate
+                runtime_candidate = apply_published_overlays(
+                    request.app.state.seed_enriched_index, overlays
+                )
+
             try:
                 result = await asyncio.wait_for(
                     import_file(
@@ -1162,6 +1173,7 @@ async def import_course(request: Request, file: UploadFile = File(...)):
                         enriched_index_path=str(config.ENRICHED_INDEX_PATH),
                         syllabus_store=request.app.state.syllabus_store,
                         pre_commit_check=pre_commit_check,
+                        before_store_commit=prepare_runtime_candidate,
                     ),
                     timeout=IMPORT_PIPELINE_TIMEOUT_SECONDS,
                 )
@@ -1174,8 +1186,20 @@ async def import_course(request: Request, file: UploadFile = File(...)):
                         "message": "Syllabus import timed out; no runtime view was changed.",
                     },
                 )
-            if result.get("success") and result.get("published_overlay_present"):
-                _refresh_runtime_overlays(request.app)
+            if result.get("success"):
+                if runtime_candidate is None:
+                    return JSONResponse(
+                        status_code=500,
+                        content={
+                            "success": False,
+                            "status": "rejected",
+                            "message": (
+                                "Could not validate the syllabus search view; "
+                                "no overlay was published."
+                            ),
+                        },
+                    )
+                request.app.state.enriched_index = runtime_candidate
 
         if result.get("success"):
             return result
@@ -1201,23 +1225,47 @@ async def import_manual(payload: ManualImportRequest, request: Request):
     _ensure_import_state(request.app)
     data = _manual_payload_data(payload)
     async with request.app.state.import_lock:
+        runtime_candidate: list[dict[str, Any]] | None = None
+
+        def prepare_runtime_candidate(overlays: list[dict[str, Any]]) -> None:
+            nonlocal runtime_candidate
+            runtime_candidate = apply_published_overlays(
+                request.app.state.seed_enriched_index, overlays
+            )
+
         try:
             result = import_manual_syllabus(
                 data=data,
                 enriched_index=request.app.state.seed_enriched_index,
                 syllabus_store=request.app.state.syllabus_store,
+                before_store_commit=prepare_runtime_candidate,
             )
-        except Exception as exc:
+        except Exception:
             return JSONResponse(
                 status_code=500,
                 content={
                     "success": False,
                     "status": "rejected",
-                    "message": f"Could not commit syllabus version: {exc}",
+                    "message": (
+                        "Could not validate and commit the syllabus version; "
+                        "no overlay was published."
+                    ),
                 },
             )
-        if result.get("success") and result.get("published_overlay_present"):
-            _refresh_runtime_overlays(request.app)
+        if result.get("success"):
+            if runtime_candidate is None:
+                return JSONResponse(
+                    status_code=500,
+                    content={
+                        "success": False,
+                        "status": "rejected",
+                        "message": (
+                            "Could not validate the syllabus search view; "
+                            "no overlay was published."
+                        ),
+                    },
+                )
+            request.app.state.enriched_index = runtime_candidate
 
     if result.get("success"):
         return result

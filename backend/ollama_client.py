@@ -16,6 +16,10 @@ class OllamaStreamProtocolError(RuntimeError):
     """Ollama returned malformed NDJSON or closed before ``done: true``."""
 
 
+class OllamaResponseTruncatedError(RuntimeError):
+    """Ollama stopped because the configured prediction limit was reached."""
+
+
 class OllamaClient:
     """Ollama API 客户端，支持非流式和流式调用。"""
 
@@ -80,7 +84,13 @@ class OllamaClient:
 
         try:
             data = response.json()
+            if str(data.get("done_reason") or "").strip().lower() == "length":
+                raise OllamaResponseTruncatedError(
+                    "Ollama response was truncated (done_reason=length)"
+                )
             content = data["message"]["content"]
+        except OllamaResponseTruncatedError:
+            raise
         except Exception as exc:
             raise RuntimeError("Invalid Ollama chat response format") from exc
 
@@ -179,6 +189,15 @@ class OllamaClient:
                             )
                         if chunk.get("error"):
                             raise RuntimeError(str(chunk["error"]))
+
+                        if (
+                            chunk.get("done") is True
+                            and str(chunk.get("done_reason") or "").strip().lower()
+                            == "length"
+                        ):
+                            raise OllamaResponseTruncatedError(
+                                "Ollama response was truncated (done_reason=length)"
+                            )
 
                         content = str(chunk.get("message", {}).get("content", ""))
                         if content:

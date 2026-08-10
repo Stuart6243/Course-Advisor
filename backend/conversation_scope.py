@@ -278,13 +278,20 @@ def parse_conversation_scope(
     previous_count: int = 0,
     has_current_focus: bool = False,
     new_search_anchor: bool = False,
+    force_new_search: bool = False,
 ) -> ConversationScope:
     """Parse scope before retrieval.
 
     ``new_search_anchor`` should be set by the caller when the current intent
-    contains a new department, instructor, or other explicit topic.  Course
-    codes are detected directly here.  With no previous results, a reference
-    phrase remains a new search instead of inventing conversation state.
+    contains a possible new department, instructor, or topic.  Explicit
+    references to prior results take precedence over that broad signal.  Course
+    codes are detected directly here and always start a new search.
+
+    ``force_new_search`` is reserved for caller-resolved cases whose semantics
+    are unambiguously a new request even if their wording contains a reference
+    (for example, an inherited-context "recommend another" request).  With no
+    previous results, a reference phrase remains a new search instead of
+    inventing conversation state.
     """
     folded = _fold(text)
     attribute = _attribute(folded)
@@ -302,7 +309,7 @@ def parse_conversation_scope(
     which_one = bool(_WHICH_ONE_RE.search(folded))
     explicit_code = bool(extract_course_codes(text))
 
-    if new_search_anchor or explicit_code:
+    if explicit_code or force_new_search:
         return ConversationScope(
             Scope.NEW_SEARCH, attribute, operation, ordinal, ordinals, False
         )
@@ -310,7 +317,7 @@ def parse_conversation_scope(
     uses_focus = has_current_focus and singular_reference
 
     if operation is Operation.COMPARE and (
-        plural_reference or singular_reference or ordinals or has_current_focus
+        plural_reference or singular_reference or ordinals
     ):
         return ConversationScope(
             Scope.PREVIOUS_RESULTS,
@@ -318,14 +325,19 @@ def parse_conversation_scope(
             operation,
             ordinal,
             ordinals,
-            uses_focus or has_current_focus,
+            uses_focus,
         )
 
     if operation in (Operation.ARGMIN, Operation.ARGMAX) and (
-        plural_reference or which_one or previous_count > 1
+        plural_reference or singular_reference or which_one or ordinals
     ):
         return ConversationScope(
-            Scope.PREVIOUS_RESULTS, attribute, operation, ordinal, ordinals, False
+            Scope.PREVIOUS_RESULTS,
+            attribute,
+            operation,
+            ordinal,
+            ordinals,
+            uses_focus,
         )
 
     if ordinals:
@@ -333,7 +345,7 @@ def parse_conversation_scope(
             Scope.CURRENT_COURSE, attribute, operation, ordinal, ordinals, False
         )
 
-    if plural_reference or which_one or operation is Operation.LIST:
+    if plural_reference or which_one:
         return ConversationScope(
             Scope.PREVIOUS_RESULTS, attribute, operation, ordinal, ordinals, False
         )
@@ -346,6 +358,30 @@ def parse_conversation_scope(
         )
         return ConversationScope(
             scope, attribute, operation, ordinal, ordinals, uses_focus
+        )
+
+    # Broad model/rule keywords are only a new-search signal after explicit
+    # references have been resolved.  This keeps questions such as "Which of
+    # these is introductory?" inside the prior result set without weakening
+    # the hard course-code/force-new-search cases above.
+    if new_search_anchor:
+        return ConversationScope(
+            Scope.NEW_SEARCH, attribute, operation, ordinal, ordinals, False
+        )
+
+    # Elliptical compare/argmin/list requests can still refer to the current
+    # conversation when no explicit new topic was extracted.
+    if operation is Operation.COMPARE and has_current_focus:
+        return ConversationScope(
+            Scope.PREVIOUS_RESULTS, attribute, operation, ordinal, ordinals, False
+        )
+    if operation in (Operation.ARGMIN, Operation.ARGMAX) and previous_count > 1:
+        return ConversationScope(
+            Scope.PREVIOUS_RESULTS, attribute, operation, ordinal, ordinals, False
+        )
+    if operation is Operation.LIST:
+        return ConversationScope(
+            Scope.PREVIOUS_RESULTS, attribute, operation, ordinal, ordinals, False
         )
 
     # Elliptical attribute follow-ups such as "How many credits?" or

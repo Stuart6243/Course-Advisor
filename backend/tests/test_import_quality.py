@@ -41,7 +41,8 @@ def high_quality_payload() -> dict:
 def source_text() -> str:
     return (
         "COMS GU4111 Introduction to Databases 3.00 points Spring 2026 "
-        "section 001/12345 M W 10:00am - 11:15am Ada Lovelace"
+        "section 001/12345 3.00 M W 10:00am - 11:15am Ada Lovelace "
+        "A detailed study of database design, queries, and transactions."
     )
 
 

@@ -18,6 +18,7 @@ import config
 from course_codes import extract_course_codes, normalize_course_code
 from course_index import DEPARTMENT_NAMES
 from credit_parser import parse_points_range
+from provider_errors import classify_provider_failure
 
 
 class IntentParseError(ValueError):
@@ -508,8 +509,11 @@ STOP_WORDS = frozenset({
     'recommend', 'suggest', 'compare', 'need', 'interested', 'looking',
     'want', 'wants', 'wanted', 'good', 'best', 'easy', 'easiest', 'hard',
     'give', 'other', 'another', 'more', 'additional', 'else',
-    'based', 'current', 'conversation', 'mentioned', 'them',
+    'based', 'current', 'conversation', 'mentioned', 'them', 'their',
     'department', 'departments',
+    # Output-shape words are not course topics.  Course identifiers themselves
+    # are extracted separately before keyword ranking.
+    'code', 'codes',
     # Requested result counts describe the query shape, not a course topic.
     'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
     'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen',
@@ -798,6 +802,25 @@ def validate_intent_schema(parsed: dict) -> dict:
                 normalized_codes.append(normalized)
         merged[field] = normalized_codes
 
+    course_codes = merged["course_codes"]
+    comparison_targets = merged["comparison_targets"]
+    if query_type == "compare":
+        if course_codes and comparison_targets and set(course_codes) != set(
+            comparison_targets
+        ):
+            raise IntentValidationError(
+                "comparison_targets conflict with course_codes"
+            )
+        if comparison_targets and not course_codes:
+            # Models occasionally populate only the compare-specific field.
+            # Canonicalize it to the retrieval field without combining
+            # conflicting candidate sets from one uncertain response.
+            merged["course_codes"] = list(comparison_targets)
+    elif comparison_targets:
+        raise IntentValidationError(
+            "comparison_targets are only valid for compare intents"
+        )
+
     merged["keywords"] = _validated_string_list(
         parsed.get("keywords", []), "keywords", lower=True
     )
@@ -923,18 +946,11 @@ def parse_extraction_response(raw_text: str) -> dict:
 # ============================================================
 
 def _intent_failure_reason(exc: Exception) -> str:
-    text = str(exc).lower()
     if isinstance(exc, IntentParseError):
         return "invalid_json"
     if isinstance(exc, IntentValidationError):
         return "invalid_schema"
-    if isinstance(exc, (asyncio.TimeoutError, TimeoutError)) or "timeout" in text or "timed out" in text:
-        return "timeout"
-    if "429" in text or "rate limit" in text or "too many requests" in text:
-        return "rate_limited"
-    if "connect" in text or "transport" in text or "network" in text:
-        return "unreachable"
-    return "provider_error"
+    return classify_provider_failure(exc)
 
 
 async def _call_intent_model(

@@ -39,6 +39,20 @@ def test_day_tokens_have_alphabetic_boundaries() -> None:
     assert parse_day_tokens("Savannah Eisner") == []
     assert parse_day_tokens("TBA") == []
     assert parse_day_tokens("Saturday Sa 9:00am - 10:00am") == ["Saturday"]
+    assert parse_day_tokens("F Sa S 9:00am - 5:00pm") == [
+        "Friday",
+        "Saturday",
+        "Sunday",
+    ]
+
+
+def test_saved_standalone_s_schedule_is_publishable_as_sunday() -> None:
+    result = validate_section(
+        valid_section(times="F Sa S 9:00am - 5:00pm"), require_identity=True
+    )
+    assert result.status == "published"
+    assert result.errors == ()
+    assert result.days == ("Friday", "Saturday", "Sunday")
 
 
 def test_empty_schedule_and_instructor_are_valid_placeholders() -> None:
@@ -54,6 +68,7 @@ def test_empty_schedule_and_instructor_are_valid_placeholders() -> None:
     ("overrides", "expected_error"),
     [
         ({"times": "Savannah Eisner"}, "invalid_times"),
+        ({"times": "M 10:00am - 11:00am Ada Lovelace"}, "invalid_times"),
         ({"instructor": "3.00"}, "invalid_instructor"),
         ({"instructor": "10/30"}, "invalid_instructor"),
         ({"points": "enrollment 10/30"}, "invalid_points"),

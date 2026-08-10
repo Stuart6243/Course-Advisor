@@ -52,6 +52,17 @@ class DummyOllama:
         return True
 
 
+@pytest.fixture(autouse=True)
+def isolated_local_inference(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep Track C deterministic even when real Groq network access exists."""
+
+    monkeypatch.setattr(config, "INFERENCE_MODE", "local")
+    monkeypatch.setattr(config, "WARMUP_ON_STARTUP", False)
+    # lifespan probes Groq availability regardless of inference mode.  An empty
+    # key makes that probe return locally without touching the real service.
+    monkeypatch.setattr(config, "GROQ_API_KEY", "")
+
+
 @pytest.fixture(scope="module")
 def enriched_index() -> list[dict]:
     path = Path(config.ENRICHED_INDEX_PATH)

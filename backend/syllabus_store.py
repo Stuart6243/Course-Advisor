@@ -384,6 +384,37 @@ class SyllabusStore:
             published[-1]["version_id"] if published else None
         )
 
+    @staticmethod
+    def _effective_overlays_from_index(index: dict[str, Any]) -> list[dict[str, Any]]:
+        """Build the published-only snapshot from an uncommitted index.
+
+        Import handlers use this hook to construct and validate the complete
+        runtime search view *before* ``CURRENT`` is replaced.  A failed runtime
+        rebuild therefore cannot leave a published generation that only becomes
+        visible after restart.
+        """
+
+        effective: list[dict[str, Any]] = []
+        for record in index["syllabi"].values():
+            active = record.get("active_published_version")
+            if not active:
+                continue
+            version = next(
+                item for item in record["versions"] if item["version_id"] == active
+            )
+            effective.append(
+                {
+                    "course_code": record["course_code"],
+                    "term": record["term"],
+                    "section_id": record["section_id"],
+                    **copy.deepcopy(version),
+                }
+            )
+        return sorted(
+            effective,
+            key=lambda item: (item["course_code"], item["term"], item["section_id"]),
+        )
+
     def _commit(self, mutated: dict[str, Any]) -> str:
         previous_generation = self._read_current_name()
         generation = f"g-{time.time_ns()}-{uuid.uuid4().hex[:12]}"
@@ -488,6 +519,7 @@ class SyllabusStore:
         evidence: dict[str, Any] | None = None,
         quality_score: int | None = None,
         quality_issues: list[str] | tuple[str, ...] | None = None,
+        before_commit: Callable[[list[dict[str, Any]]], None] | None = None,
     ) -> dict[str, Any]:
         """Attach a version to an existing catalog identity.
 
@@ -531,6 +563,8 @@ class SyllabusStore:
             )
             for existing in record["versions"]:
                 if existing["version_id"] == version_id:
+                    if before_commit is not None:
+                        before_commit(self._effective_overlays_from_index(index))
                     return {
                         "identity_key": key,
                         "version_id": version_id,
@@ -552,6 +586,8 @@ class SyllabusStore:
             }
             record["versions"].append(version)
             self._refresh_active(record)
+            if before_commit is not None:
+                before_commit(self._effective_overlays_from_index(index))
             generation = self._commit(index)
         return {
             "identity_key": key,
@@ -603,7 +639,12 @@ class SyllabusStore:
             "changed": True,
         }
 
-    def attach_many(self, items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    def attach_many(
+        self,
+        items: list[dict[str, Any]],
+        *,
+        before_commit: Callable[[list[dict[str, Any]]], None] | None = None,
+    ) -> list[dict[str, Any]]:
         """Atomically attach several section versions in one generation.
 
         Validation and source hashing happen before the lock.  Once locked, all
@@ -720,6 +761,8 @@ class SyllabusStore:
                         "created": True,
                     }
                 )
+            if before_commit is not None:
+                before_commit(self._effective_overlays_from_index(index))
             if created_any:
                 generation = self._commit(index)
                 for outcome in outcomes:
@@ -762,24 +805,7 @@ class SyllabusStore:
     def effective_overlays(self) -> list[dict[str, Any]]:
         """Published-only snapshot suitable for a retriever/index overlay."""
 
-        index = self._read_index()
-        effective: list[dict[str, Any]] = []
-        for record in index["syllabi"].values():
-            active = record.get("active_published_version")
-            if not active:
-                continue
-            version = next(v for v in record["versions"] if v["version_id"] == active)
-            effective.append(
-                {
-                    "course_code": record["course_code"],
-                    "term": record["term"],
-                    "section_id": record["section_id"],
-                    **copy.deepcopy(version),
-                }
-            )
-        return sorted(
-            effective, key=lambda item: (item["course_code"], item["term"], item["section_id"])
-        )
+        return self._effective_overlays_from_index(self._read_index())
 
     def manifest(self) -> dict[str, Any]:
         index = self._read_index()

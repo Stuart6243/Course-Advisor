@@ -19,7 +19,12 @@ from typing import Any, Awaitable, Callable
 import config
 from course_codes import normalize_course_code as canonical_course_code
 from course_index import DEPARTMENT_NAMES
-from section_validator import MAX_CREDITS, parse_points_value, validate_section
+from section_validator import (
+    MAX_CREDITS,
+    contains_valid_clock_range,
+    parse_points_value,
+    validate_section,
+)
 from syllabus_store import SyllabusStore, hash_source
 
 
@@ -78,6 +83,21 @@ DESCRIPTION_FALLBACK_PATTERNS = (
         r"(?:module|topics?|outline|syllabus)\s*[:：]?\s*(.{80,2000}?)(?:\n\s*\n|$)",
         re.IGNORECASE | re.DOTALL,
     ),
+)
+SECTION_IDENTITY_MAX_GAP = 240
+SECTION_FIELD_MAX_GAP = 240
+SOURCE_TERM_RE = re.compile(
+    r"(?<![A-Za-z])(?:Fall|Spring|Summer|Winter)\s+\d{4}(?!\d)",
+    re.IGNORECASE,
+)
+SOURCE_SECTION_ID_RE = re.compile(r"(?<![A-Za-z0-9])\d{1,4}/\d{3,8}(?![A-Za-z0-9])")
+SOURCE_POINTS_RE = re.compile(
+    r"(?<![A-Za-z0-9./:])"
+    r"(?P<value>\d+(?:\.\d+)?"
+    r"(?:\s*(?:-|–|—|to)\s*\d+(?:\.\d+)?)?"
+    r"(?:\s*(?:points?|credits?|pts?))?)"
+    r"(?![A-Za-z0-9./:])",
+    re.IGNORECASE,
 )
 
 
@@ -234,69 +254,340 @@ def _hard_validation_errors(data: Any) -> list[str]:
     else:
         for position, section in enumerate(sections):
             result = validate_section(section, require_identity=True)
-            errors.extend(f"section_{position}:{problem}" for problem in result.errors)
+            errors.extend(
+                f"section_{position}:{problem}"
+                for problem in result.errors
+                if not _reviewable_section_error(section, problem)
+            )
     return list(dict.fromkeys(errors))
 
 
-def _source_evidence(extracted_text: str, field: str, value: Any) -> dict[str, Any]:
-    requested = re.sub(r"\s+", " ", _safe_str(value)).strip()
-    source = re.sub(r"\s+", " ", extracted_text or "").strip()
-    if not requested or not source:
-        return {"field": field, "value": requested, "verified": False, "quote": ""}
-    start = source.casefold().find(requested.casefold())
-    if start < 0:
-        return {"field": field, "value": requested, "verified": False, "quote": ""}
-    quote_start = max(0, start - 30)
-    quote_end = min(len(source), start + len(requested) + 30)
+def _reviewable_section_error(section: Any, problem: str) -> bool:
+    """Keep parseable-but-suspicious schedule shifts in the review queue."""
+
+    return (
+        problem == "invalid_times"
+        and isinstance(section, dict)
+        and contains_valid_clock_range(section.get("times"))
+    )
+
+
+def _normalized_evidence_text(value: Any) -> str:
+    return re.sub(r"\s+", " ", _safe_str(value)).strip()
+
+
+def _find_source_spans(source: str, value: Any) -> list[tuple[int, int]]:
+    requested = _normalized_evidence_text(value)
+    if not source or not requested:
+        return []
+    folded_source = source.casefold()
+    folded_requested = requested.casefold()
+    spans: list[tuple[int, int]] = []
+    offset = 0
+    while True:
+        start = folded_source.find(folded_requested, offset)
+        if start < 0:
+            break
+        end = start + len(requested)
+        spans.append((start, end))
+        offset = end
+    return spans
+
+
+def _find_points_source_spans(source: str, value: Any) -> list[tuple[int, int]]:
+    """Find complete, numerically equivalent credit expressions.
+
+    Generic substring matching is unsafe for points: a model-produced ``3``
+    must not be verified by the ``3`` inside a section ID such as
+    ``003/12345``.  Parsing both sides also preserves ordinary equivalent
+    forms such as ``3``, ``3.0``, ``3 points``, and credit ranges.
+    """
+
+    requested = parse_points_value(_normalized_evidence_text(value))
+    if not source or requested is None:
+        return []
+    spans: list[tuple[int, int]] = []
+    for match in SOURCE_POINTS_RE.finditer(source):
+        candidate = parse_points_value(match.group("value"))
+        if candidate is None:
+            continue
+        if all(abs(left - right) <= 1e-9 for left, right in zip(requested, candidate)):
+            spans.append(match.span("value"))
+    return spans
+
+
+def _span_distance(left: tuple[int, int], right: tuple[int, int]) -> int:
+    if left[1] <= right[0]:
+        return right[0] - left[1]
+    if right[1] <= left[0]:
+        return left[0] - right[1]
+    return 0
+
+
+def _dedupe_spans(spans: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    return sorted(set(spans))
+
+
+def _identity_anchors(
+    source: str, sections: list[Any]
+) -> tuple[list[tuple[int, int]], list[tuple[int, int]]]:
+    term_spans = [match.span() for match in SOURCE_TERM_RE.finditer(source)]
+    section_id_spans = [match.span() for match in SOURCE_SECTION_ID_RE.finditer(source)]
+    for section in sections:
+        if not isinstance(section, dict):
+            continue
+        term_spans.extend(_find_source_spans(source, section.get("term")))
+        section_id_spans.extend(
+            _find_source_spans(
+                source,
+                section.get("section_call_number") or section.get("section_id"),
+            )
+        )
+    return _dedupe_spans(term_spans), _dedupe_spans(section_id_spans)
+
+
+def _identity_pairs(
+    term_spans: list[tuple[int, int]], section_id_spans: list[tuple[int, int]]
+) -> list[tuple[tuple[int, int], tuple[int, int]]]:
+    """Pair each term with the first following ID before the next term."""
+
+    pairs: list[tuple[tuple[int, int], tuple[int, int]]] = []
+    for position, term_span in enumerate(term_spans):
+        next_term_start = (
+            term_spans[position + 1][0]
+            if position + 1 < len(term_spans)
+            else None
+        )
+        candidates = [
+            section_span
+            for section_span in section_id_spans
+            if section_span[0] >= term_span[1]
+            and (next_term_start is None or section_span[0] < next_term_start)
+            and _span_distance(term_span, section_span) <= SECTION_IDENTITY_MAX_GAP
+        ]
+        if not candidates:
+            continue
+        section_span = min(candidates, key=lambda span: span[0])
+        pairs.append((term_span, section_span))
+    return pairs
+
+
+def _pair_span(
+    pair: tuple[tuple[int, int], tuple[int, int]]
+) -> tuple[int, int]:
+    return min(pair[0][0], pair[1][0]), max(pair[0][1], pair[1][1])
+
+
+def _matching_identity_pair(
+    source: str,
+    term: Any,
+    section_id: Any,
+    pairs: list[tuple[tuple[int, int], tuple[int, int]]],
+) -> tuple[tuple[int, int], tuple[int, int]] | None:
+    normalized_term = _normalized_evidence_text(term).casefold()
+    normalized_section = _normalized_evidence_text(section_id).casefold()
+    candidates = [
+        pair
+        for pair in pairs
+        if source[pair[0][0] : pair[0][1]].casefold() == normalized_term
+        and source[pair[1][0] : pair[1][1]].casefold() == normalized_section
+    ]
+    if not candidates:
+        return None
+    return min(candidates, key=lambda pair: _span_distance(pair[0], pair[1]))
+
+
+def _evidence_from_span(
+    source: str,
+    field: str,
+    value: Any,
+    span: tuple[int, int] | None,
+) -> dict[str, Any]:
+    requested = _normalized_evidence_text(value)
+    if span is None:
+        return {
+            "field": field,
+            "value": requested,
+            "verified": False,
+            "quote": "",
+            "start": None,
+            "end": None,
+        }
+    quote_start = max(0, span[0] - 30)
+    quote_end = min(len(source), span[1] + 30)
     return {
         "field": field,
         "value": requested,
         "verified": True,
         "quote": source[quote_start:quote_end],
+        "start": span[0],
+        "end": span[1],
     }
+
+
+def _source_evidence(extracted_text: str, field: str, value: Any) -> dict[str, Any]:
+    requested = re.sub(r"\s+", " ", _safe_str(value)).strip()
+    source = _normalized_evidence_text(extracted_text)
+    spans = (
+        _find_points_source_spans(source, requested)
+        if field == "points"
+        else _find_source_spans(source, requested)
+    )
+    return _evidence_from_span(source, field, requested, spans[0] if spans else None)
+
+
+def _local_source_evidence(
+    source: str,
+    field: str,
+    value: Any,
+    identity_pair: tuple[tuple[int, int], tuple[int, int]] | None,
+    all_identity_pairs: list[tuple[tuple[int, int], tuple[int, int]]],
+) -> dict[str, Any]:
+    requested = _normalized_evidence_text(value)
+    if not requested or identity_pair is None:
+        return _evidence_from_span(source, field, requested, None)
+
+    selected_pair_span = _pair_span(identity_pair)
+    pair_spans = _dedupe_spans([_pair_span(pair) for pair in all_identity_pairs])
+    pair_position = pair_spans.index(selected_pair_span)
+    # Course-level fields commonly precede the first term.  Never let those
+    # values satisfy section-level evidence merely because they are nearby.
+    context_start = selected_pair_span[0]
+    context_end = (
+        pair_spans[pair_position + 1][0]
+        if pair_position + 1 < len(pair_spans)
+        else min(len(source), selected_pair_span[1] + SECTION_FIELD_MAX_GAP)
+    )
+    eligible: list[tuple[int, int]] = []
+    candidate_spans = (
+        _find_points_source_spans(source, requested)
+        if field == "points"
+        else _find_source_spans(source, requested)
+    )
+    for span in candidate_spans:
+        if span[0] < context_start or span[1] > context_end:
+            continue
+        if _span_distance(span, selected_pair_span) > SECTION_FIELD_MAX_GAP:
+            continue
+        eligible.append(span)
+    selected = (
+        min(eligible, key=lambda span: _span_distance(span, selected_pair_span))
+        if eligible
+        else None
+    )
+    return _evidence_from_span(source, field, requested, selected)
 
 
 def build_import_evidence(data: dict, extracted_text: str) -> dict[str, Any]:
     """Build compact source-backed evidence for fields used by search."""
 
+    source = _normalized_evidence_text(extracted_text)
+    sections = data.get("sections") if isinstance(data.get("sections"), list) else []
+    term_spans, section_id_spans = _identity_anchors(source, sections)
+    identity_pairs = _identity_pairs(term_spans, section_id_spans)
     fields: dict[str, Any] = {
         "course_code": _source_evidence(
-            extracted_text, "course_code", normalize_course_code(data.get("course_code"))
+            source, "course_code", normalize_course_code(data.get("course_code"))
         ),
-        "title": _source_evidence(extracted_text, "title", data.get("title")),
+        "title": _source_evidence(source, "title", data.get("title")),
         "points": _source_evidence(
-            extracted_text,
+            source,
             "points",
             data.get("points_raw")
             or data.get("points_min")
             or data.get("points_max"),
         ),
+        "description": _source_evidence(source, "description", data.get("description")),
         "sections": [],
     }
-    sections = data.get("sections")
     if isinstance(sections, list):
         for section in sections:
             if not isinstance(section, dict):
                 continue
+            term = section.get("term")
+            section_id = section.get("section_call_number") or section.get("section_id")
+            identity_pair = _matching_identity_pair(
+                source, term, section_id, identity_pairs
+            )
+            term_evidence = _source_evidence(source, "term", term)
+            section_id_evidence = _source_evidence(
+                source, "section_id", section_id
+            )
+            if identity_pair is not None:
+                term_evidence = _evidence_from_span(
+                    source, "term", term, identity_pair[0]
+                )
+                section_id_evidence = _evidence_from_span(
+                    source, "section_id", section_id, identity_pair[1]
+                )
+            context_span = _pair_span(identity_pair) if identity_pair else None
             fields["sections"].append(
                 {
-                    "term": _source_evidence(
-                        extracted_text, "term", section.get("term")
+                    "term": term_evidence,
+                    "section_id": section_id_evidence,
+                    "identity_associated": identity_pair is not None,
+                    "context_quote": (
+                        source[max(0, context_span[0] - 60) : min(len(source), context_span[1] + 60)]
+                        if context_span
+                        else ""
                     ),
-                    "section_id": _source_evidence(
-                        extracted_text,
-                        "section_id",
-                        section.get("section_call_number") or section.get("section_id"),
+                    "instructor": _local_source_evidence(
+                        source,
+                        "instructor",
+                        section.get("instructor"),
+                        identity_pair,
+                        identity_pairs,
                     ),
-                    "instructor": _source_evidence(
-                        extracted_text, "instructor", section.get("instructor")
+                    "times": _local_source_evidence(
+                        source,
+                        "times",
+                        section.get("times"),
+                        identity_pair,
+                        identity_pairs,
                     ),
-                    "times": _source_evidence(
-                        extracted_text, "times", section.get("times")
+                    "points": _local_source_evidence(
+                        source,
+                        "points",
+                        section.get("points"),
+                        identity_pair,
+                        identity_pairs,
                     ),
                 }
             )
     return fields
+
+
+def _course_points_interval(data: dict[str, Any]) -> tuple[float, float] | None:
+    points_raw = _safe_str(data.get("points_raw"))
+    if points_raw:
+        parsed = parse_points_raw(points_raw)
+        if parsed is not None:
+            return parsed
+    low = _as_float(data.get("points_min"), default=None)
+    high = _as_float(data.get("points_max"), default=None)
+    if low is None and high is None:
+        return None
+    if low is None:
+        low = high
+    if high is None:
+        high = low
+    if low is None or high is None or low > high:
+        return None
+    return low, high
+
+
+def _section_points_conflict(data: dict[str, Any], section: Any) -> bool:
+    if not isinstance(section, dict):
+        return False
+    course_points = _course_points_interval(data)
+    section_points = parse_points_value(section.get("points"))
+    if course_points is None or section_points is None:
+        return False
+    tolerance = 1e-9
+    return (
+        section_points[0] < course_points[0] - tolerance
+        or section_points[1] > course_points[1] + tolerance
+    )
 
 
 def assess_import(data: dict, extracted_text: str = "") -> ImportAssessment:
@@ -318,6 +609,15 @@ def assess_import(data: dict, extracted_text: str = "") -> ImportAssessment:
             quality_issues.extend(
                 f"section_{position}:{warning}" for warning in result.warnings
             )
+            quality_issues.extend(
+                f"section_{position}:{problem}"
+                for problem in result.errors
+                if _reviewable_section_error(section, problem)
+            )
+            if _section_points_conflict(data, section):
+                quality_issues.append(
+                    f"section_{position}:points_conflict_with_course"
+                )
     if not sections:
         quality_issues.append("missing_sections")
 
@@ -325,9 +625,25 @@ def assess_import(data: dict, extracted_text: str = "") -> ImportAssessment:
         for field in ("course_code", "title", "points"):
             if not evidence[field]["verified"]:
                 quality_issues.append(f"unverified_evidence:{field}")
+        if _safe_str(data.get("description")) and not evidence["description"]["verified"]:
+            quality_issues.append("unverified_evidence:description")
         for position, section_evidence in enumerate(evidence["sections"]):
             for field in ("term", "section_id"):
                 if not section_evidence[field]["verified"]:
+                    quality_issues.append(
+                        f"unverified_evidence:section_{position}.{field}"
+                    )
+            if not section_evidence["identity_associated"]:
+                quality_issues.append(
+                    f"unassociated_evidence:section_{position}.term_section_id"
+                )
+            section = sections[position] if position < len(sections) else {}
+            for field in ("times", "instructor", "points"):
+                if (
+                    isinstance(section, dict)
+                    and _safe_str(section.get(field))
+                    and not section_evidence[field]["verified"]
+                ):
                     quality_issues.append(
                         f"unverified_evidence:section_{position}.{field}"
                     )
@@ -603,6 +919,7 @@ def import_manual_syllabus(
     data: dict[str, Any],
     enriched_index: list[dict],
     syllabus_store: SyllabusStore,
+    before_store_commit: Callable[[list[dict[str, Any]]], None] | None = None,
 ) -> dict[str, Any]:
     """Attach one directly entered section to an existing seed course."""
 
@@ -628,6 +945,13 @@ def import_manual_syllabus(
     score, quality_issues = quality_score(submitted)
     section_result = validate_section(section, require_identity=True)
     quality_issues.extend(section_result.warnings)
+    quality_issues.extend(
+        problem
+        for problem in section_result.errors
+        if _reviewable_section_error(section, problem)
+    )
+    if _section_points_conflict(submitted, section):
+        quality_issues.append("points_conflict_with_course")
     if hard_errors:
         return {
             "success": False,
@@ -717,6 +1041,7 @@ def import_manual_syllabus(
         evidence=evidence,
         quality_score=score,
         quality_issues=quality_issues,
+        before_commit=before_store_commit,
     )
     stored_status = version["status"]
     if stored_status != status:
@@ -751,6 +1076,7 @@ async def import_file(
     syllabus_store_dir: str | None = None,
     syllabus_store: SyllabusStore | None = None,
     pre_commit_check: Callable[[], Awaitable[None]] | None = None,
+    before_store_commit: Callable[[list[dict[str, Any]]], None] | None = None,
 ) -> dict:
     """Extract and attach a syllabus overlay to an existing seed course.
 
@@ -912,7 +1238,9 @@ async def import_file(
         if pre_commit_check is not None:
             await pre_commit_check()
         try:
-            stored_versions = syllabus_store.attach_many(attachments)
+            stored_versions = syllabus_store.attach_many(
+                attachments, before_commit=before_store_commit
+            )
         except Exception:
             return {
                 "success": False,

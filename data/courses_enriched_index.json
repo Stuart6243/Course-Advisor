@@ -59722,51 +59722,60 @@
     "has_description": true,
     "prerequisites_codes": [],
     "bulletin_year": "2025-2026",
-    "sections_summary": [],
-    "all_instructors": [],
-    "all_terms": [],
-    "searchable_text": "ieor e4533 performance, objectives, ＆ results using data analytics industrial engineering operations research optimization okr framework and different variations. measurement techniques (a/b testing, validation, correlation, etc.) identifying what to measure in product experience and business initiatives. data-driven deci",
+    "sections_summary": [
+      {
+        "section_id": "001/13292",
+        "term": "Spring 2026",
+        "times": "F Sa S 9:00am - 5:00pm",
+        "days": [
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "time_of_day": "morning",
+        "instructor": "Nicolas Chikhani",
+        "location": "313 Fayerweather",
+        "points": "1.50",
+        "enrollment_current": 65,
+        "enrollment_capacity": 65,
+        "validation_status": "published",
+        "validation_errors": [],
+        "validation_warnings": [],
+        "provenance": {
+          "source": "catalog_seed",
+          "course_uid": "af2634dafa0b122cd9eef44ca6926ade28a0531a",
+          "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/"
+        }
+      }
+    ],
+    "all_instructors": [
+      "Nicolas Chikhani"
+    ],
+    "all_terms": [
+      "Spring 2026"
+    ],
+    "searchable_text": "ieor e4533 performance, objectives, ＆ results using data analytics nicolas chikhani industrial engineering operations research optimization spring 2026 friday saturday sunday morning okr framework and different variations. measurement techniques (a/b testing, validation, correlation, etc.) identifying what to measure in product experience and business initiatives. data-driven deci",
     "review_sections_summary": [
       {
         "section_id": "001/11825",
         "term": "Fall 2025",
         "times": "F Sa S 9:00am - 5:00pm",
-        "days": [],
-        "time_of_day": "",
+        "days": [
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "time_of_day": "morning",
         "instructor": "Nicolas Chikhani",
         "location": "141 Uris Hall",
         "points": "1.50",
         "enrollment_current": 67,
         "enrollment_capacity": 65,
         "validation_status": "review",
-        "validation_errors": [
-          "invalid_times"
-        ],
+        "validation_errors": [],
         "validation_warnings": [
           "enrollment_exceeds_capacity"
         ],
-        "provenance": {
-          "source": "catalog_seed",
-          "course_uid": "af2634dafa0b122cd9eef44ca6926ade28a0531a",
-          "source_page_url": "https://bulletin.columbia.edu/columbia-engineering/academic-departments-programs/industrial-engineering-operations-research/"
-        }
-      },
-      {
-        "section_id": "001/13292",
-        "term": "Spring 2026",
-        "times": "F Sa S 9:00am - 5:00pm",
-        "days": [],
-        "time_of_day": "",
-        "instructor": "Nicolas Chikhani",
-        "location": "313 Fayerweather",
-        "points": "1.50",
-        "enrollment_current": 65,
-        "enrollment_capacity": 65,
-        "validation_status": "review",
-        "validation_errors": [
-          "invalid_times"
-        ],
-        "validation_warnings": [],
         "provenance": {
           "source": "catalog_seed",
           "course_uid": "af2634dafa0b122cd9eef44ca6926ade28a0531a",

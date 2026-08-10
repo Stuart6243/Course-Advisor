@@ -79,6 +79,10 @@ def test_parse_days_from_times() -> None:
         ["Monday", "Wednesday", "Friday"],
         "evening",
     )
+    assert parse_days_from_times("F Sa S 9:00am - 5:00pm") == (
+        ["Friday", "Saturday", "Sunday"],
+        "morning",
+    )
     assert parse_days_from_times("") == ([], "")
     assert parse_days_from_times("Savannah Hall") == ([], "")
     assert parse_days_from_times("TBA") == ([], "")

@@ -15,8 +15,16 @@ import groq_client as groq_module
 import ollama_client as ollama_module
 import query_parser
 import server as srv
-from groq_client import GroqClient, GroqStreamProtocolError
-from ollama_client import OllamaClient, OllamaStreamProtocolError
+from groq_client import (
+    GroqClient,
+    GroqResponseTruncatedError,
+    GroqStreamProtocolError,
+)
+from ollama_client import (
+    OllamaClient,
+    OllamaResponseTruncatedError,
+    OllamaStreamProtocolError,
+)
 from query_parser import (
     IntentParseError,
     IntentValidationError,
@@ -293,6 +301,38 @@ def test_parse_failure_is_distinct_from_valid_general():
     assert parse_extraction_response('{"query_type":"general"}')["query_type"] == "general"
 
 
+def test_compare_only_targets_are_canonicalized_to_retrieval_codes():
+    intent = parse_extraction_response(
+        json.dumps(
+            {
+                "query_type": "compare",
+                "comparison_targets": ["CIEN E3125", "ENME E3113"],
+            }
+        )
+    )
+    assert intent["comparison_targets"] == ["CIEN E3125", "ENME E3113"]
+    assert intent["course_codes"] == intent["comparison_targets"]
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {
+            "query_type": "compare",
+            "course_codes": ["CIEN E3125", "ENME E3113"],
+            "comparison_targets": ["CIEN E3125", "COMS W4111"],
+        },
+        {
+            "query_type": "search",
+            "comparison_targets": ["CIEN E3125", "ENME E3113"],
+        },
+    ],
+)
+def test_conflicting_comparison_fields_are_rejected(payload):
+    with pytest.raises(IntentValidationError):
+        parse_extraction_response(json.dumps(payload))
+
+
 @pytest.mark.asyncio
 async def test_intent_rules_do_not_call_either_model():
     groq = ScriptedClient(chat=AssertionError("Groq must not run"))
@@ -447,6 +487,33 @@ class _FakeAsyncClient:
         return _FakeStreamResponse(self.lines)
 
 
+class _FakeJsonResponse:
+    status_code = 200
+
+    def __init__(self, payload: dict):
+        self.payload = payload
+
+    def raise_for_status(self):
+        return None
+
+    def json(self):
+        return self.payload
+
+
+class _FakePostAsyncClient:
+    def __init__(self, payload: dict, *args, **kwargs):
+        self.payload = payload
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb):
+        return False
+
+    async def post(self, *args, **kwargs):
+        return _FakeJsonResponse(self.payload)
+
+
 class _FakeChatResponse:
     status_code = 200
 
@@ -525,3 +592,146 @@ async def test_ollama_upstream_eof_without_done_marker_is_failure(monkeypatch):
         async for chunk in client.chat_stream([{"role": "user", "content": "q"}]):
             chunks.append(chunk)
     assert chunks
+
+
+@pytest.mark.asyncio
+async def test_groq_non_stream_length_is_explicit_truncation_failure(monkeypatch):
+    payload = {
+        "choices": [
+            {
+                "message": {"content": "truncated answer"},
+                "finish_reason": "length",
+            }
+        ]
+    }
+    monkeypatch.setattr(
+        groq_module.httpx,
+        "AsyncClient",
+        lambda *args, **kwargs: _FakePostAsyncClient(payload, *args, **kwargs),
+    )
+
+    with pytest.raises(GroqResponseTruncatedError, match="finish_reason=length"):
+        await GroqClient(api_key="test-key").chat(
+            [{"role": "user", "content": "q"}]
+        )
+
+
+@pytest.mark.asyncio
+async def test_ollama_non_stream_length_is_explicit_truncation_failure(monkeypatch):
+    payload = {
+        "message": {"content": "truncated answer"},
+        "done": True,
+        "done_reason": "length",
+    }
+    monkeypatch.setattr(
+        ollama_module.httpx,
+        "AsyncClient",
+        lambda *args, **kwargs: _FakePostAsyncClient(payload, *args, **kwargs),
+    )
+
+    with pytest.raises(OllamaResponseTruncatedError, match="done_reason=length"):
+        await OllamaClient("http://ollama.invalid", "test-model", 1).chat(
+            [{"role": "user", "content": "q"}]
+        )
+
+
+@pytest.mark.asyncio
+async def test_groq_stream_length_is_failure_after_partial_content(monkeypatch):
+    lines = [
+        'data: {"choices":[{"delta":{"content":"partial"},"finish_reason":null}]}',
+        'data: {"choices":[{"delta":{},"finish_reason":"length"}]}',
+        "data: [DONE]",
+    ]
+    monkeypatch.setattr(
+        groq_module.httpx,
+        "AsyncClient",
+        lambda *args, **kwargs: _FakeAsyncClient(lines),
+    )
+    client = GroqClient(api_key="test-key")
+    chunks: list[str] = []
+
+    with pytest.raises(GroqResponseTruncatedError, match="finish_reason=length"):
+        async for chunk in client.chat_stream([{"role": "user", "content": "q"}]):
+            chunks.append(chunk)
+
+    assert chunks == ["partial"]
+
+
+@pytest.mark.asyncio
+async def test_ollama_stream_length_is_failure_after_partial_content(monkeypatch):
+    lines = [
+        '{"message":{"content":"partial answer"},"done":false}',
+        '{"message":{"content":""},"done":true,"done_reason":"length"}',
+    ]
+    monkeypatch.setattr(
+        ollama_module.httpx,
+        "AsyncClient",
+        lambda *args, **kwargs: _FakeAsyncClient(lines),
+    )
+    client = OllamaClient("http://ollama.invalid", "test-model", 1)
+    chunks: list[str] = []
+
+    with pytest.raises(OllamaResponseTruncatedError, match="done_reason=length"):
+        async for chunk in client.chat_stream([{"role": "user", "content": "q"}]):
+            chunks.append(chunk)
+
+    assert chunks
+
+
+def test_groq_length_uses_reset_fallback_and_saves_only_ollama(
+    chat_client, monkeypatch
+):
+    lines = [
+        'data: {"choices":[{"delta":{"content":"Groq partial"},"finish_reason":null}]}',
+        'data: {"choices":[{"delta":{},"finish_reason":"length"}]}',
+        "data: [DONE]",
+    ]
+    monkeypatch.setattr(
+        groq_module.httpx,
+        "AsyncClient",
+        lambda *args, **kwargs: _FakeAsyncClient(lines),
+    )
+    chat_client.app.state.groq = GroqClient(api_key="test-key")
+    chat_client.app.state.ollama = ScriptedClient(stream=["Ollama complete answer"])
+
+    events = _events(_post(chat_client, "groq-length-fallback"))
+    types = [event["type"] for event in events]
+
+    assert types.count("fallback") == 1
+    assert types.count("done") == 1
+    assert next(event for event in events if event["type"] == "fallback")[
+        "reason"
+    ] == "truncated"
+    assert events[-1]["provider"] == "ollama"
+    assert events[-1]["fallback_reason"] == "truncated"
+    assert chat_client.app.state.conversations["groq-length-fallback"][-1] == {
+        "role": "assistant",
+        "content": "Ollama complete answer",
+    }
+
+
+def test_local_ollama_length_never_sends_done_or_writes_history(
+    chat_client, monkeypatch
+):
+    monkeypatch.setattr(config, "INFERENCE_MODE", "local")
+    lines = [
+        '{"message":{"content":"partial answer"},"done":false}',
+        '{"message":{"content":""},"done":true,"done_reason":"length"}',
+    ]
+    monkeypatch.setattr(
+        ollama_module.httpx,
+        "AsyncClient",
+        lambda *args, **kwargs: _FakeAsyncClient(lines),
+    )
+    chat_client.app.state.ollama = OllamaClient(
+        "http://ollama.invalid", "test-model", 1
+    )
+
+    events = _events(_post(chat_client, "ollama-length-failure"))
+    types = [event["type"] for event in events]
+
+    assert types[-1] == "error"
+    assert "sources" not in types
+    assert "done" not in types
+    assert events[-1]["fallback_reason"] == "truncated"
+    assert "ollama-length-failure" not in chat_client.app.state.conversations

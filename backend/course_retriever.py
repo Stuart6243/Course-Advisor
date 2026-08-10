@@ -216,6 +216,10 @@ def build_filters_from_intent(intent: dict) -> dict:
     filters: dict = {}
 
     course_codes = intent.get("course_codes") or []
+    if not course_codes and (intent.get("query_type") or "").lower() == "compare":
+        # Defensive compatibility for direct/legacy callers that bypass the
+        # schema canonicalization and populate only comparison_targets.
+        course_codes = intent.get("comparison_targets") or []
     if course_codes:
         filters["course_codes"] = course_codes
 
@@ -325,6 +329,12 @@ _ATTRIBUTE_QUERY_TERMS = frozenset(
         "details",
         "info",
         "information",
+        # Requested answer shape, not course subject matter.  Keep this
+        # defensive even though the deterministic parser also drops them,
+        # because model-produced intents may retain these words.
+        "code",
+        "codes",
+        "their",
         # Spanish/French attribute words retained by normalize_question.
         "prerrequisito",
         "prerrequisitos",

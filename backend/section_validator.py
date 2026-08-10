@@ -18,18 +18,42 @@ NON_BLOCKING_CATALOG_WARNINGS = frozenset({"missing_description"})
 
 DAY_NAMES = {
     "m": "Monday",
+    "mon": "Monday",
+    "monday": "Monday",
     "t": "Tuesday",
+    "tu": "Tuesday",
+    "tue": "Tuesday",
+    "tues": "Tuesday",
+    "tuesday": "Tuesday",
     "w": "Wednesday",
+    "wed": "Wednesday",
+    "wednesday": "Wednesday",
     "th": "Thursday",
+    "thu": "Thursday",
+    "thur": "Thursday",
+    "thurs": "Thursday",
+    "thursday": "Thursday",
     "f": "Friday",
+    "fri": "Friday",
+    "friday": "Friday",
     "sa": "Saturday",
+    "sat": "Saturday",
+    "saturday": "Saturday",
+    # The saved Columbia schedule source uses ``F Sa S`` for a
+    # Friday/Saturday/Sunday intensive.  ``Sa`` is already Saturday there, so
+    # the standalone ``S`` is unambiguously Sunday for this dataset.
+    "s": "Sunday",
     "su": "Sunday",
+    "sun": "Sunday",
+    "sunday": "Sunday",
 }
 
 # The alphabetic look-arounds are essential: without them ``Savannah`` is
 # interpreted as ``Sa`` (Saturday), and ``TBA`` as ``T`` (Tuesday).
 DAY_TOKEN_RE = re.compile(
-    r"(?<![A-Za-z])(?P<day>Th|Sa|Su|M|T|W|F)(?![A-Za-z])",
+    r"(?<![A-Za-z])(?P<day>Monday|Mon|M|Tuesday|Tues|Tue|Tu|T|"
+    r"Wednesday|Wed|W|Thursday|Thurs|Thur|Thu|Th|"
+    r"Friday|Fri|F|Saturday|Sat|Sa|Sunday|Sun|Su|S)(?![A-Za-z])",
     re.IGNORECASE,
 )
 TIME_RANGE_RE = re.compile(
@@ -205,24 +229,39 @@ def _strict_nonnegative_int(value: Any) -> int | None:
     return parsed
 
 
-def _validate_clock(times: str) -> bool:
+def _valid_clock_match(times: str) -> re.Match[str] | None:
     match = TIME_RANGE_RE.search(times)
     if not match:
-        return False
+        return None
     for key in ("start_h", "end_h"):
         hour = int(match.group(key))
         if not 1 <= hour <= 12:
-            return False
+            return None
     for key in ("start_m", "end_m"):
         minute = int(match.group(key))
         if not 0 <= minute <= 59:
-            return False
+            return None
+    return match
 
-    # Before the first clock only day tokens and punctuation/whitespace are
-    # permitted.  This rejects an instructor name accidentally moved here.
+
+def contains_valid_clock_range(times: Any) -> bool:
+    """Return whether *times* contains a numerically valid clock range."""
+
+    return _valid_clock_match(_text(times)) is not None
+
+
+def _validate_clock(times: str) -> bool:
+    match = _valid_clock_match(times)
+    if match is None:
+        return False
+
+    # Outside the clock range only day tokens and punctuation/whitespace are
+    # permitted.  Checking both sides rejects an instructor name shifted
+    # either before or after an otherwise valid schedule.
     prefix = times[: match.start()]
     prefix = DAY_TOKEN_RE.sub(" ", prefix)
-    return re.search(r"[A-Za-z]", prefix) is None
+    suffix = times[match.end() :]
+    return not any(character.isalpha() for character in prefix + suffix)
 
 
 def _looks_like_non_name(instructor: str) -> bool:

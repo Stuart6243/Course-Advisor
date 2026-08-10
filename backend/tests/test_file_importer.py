@@ -4,6 +4,7 @@ Track D: 文件导入模块测试。
 
 from __future__ import annotations
 
+import copy
 import json
 import asyncio
 from pathlib import Path
@@ -16,6 +17,7 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
 from file_importer import (
+    assess_import,
     extract_text_from_html,
     extract_text_from_pdf,
     generate_course_uid,
@@ -225,7 +227,7 @@ def test_import_file_description_fallback(tmp_path: Path) -> None:
     <html><body>
     <h1>MRKT B9651 MS Marketing Analytics</h1>
     <p>3.00 points</p>
-    <p>Spring 2026 section 001/54321</p>
+        <p>Spring 2026 section 001/54321 3.00</p>
     <h2>Course Description</h2>
     <p>This course covers STP analytics, customer analytics, and 4P analytics.
     Students use Python and Excel with weekly modules and project grading.</p>
@@ -289,6 +291,184 @@ def test_import_file_description_fallback(tmp_path: Path) -> None:
     )
     assert effective is not None
     assert "analytics" in effective["payload"]["description"].lower()
+
+
+@pytest.mark.parametrize(
+    ("case_name", "expected_issue"),
+    [
+        ("description_absent", "unverified_evidence:description"),
+        ("time_instructor_absent", "unverified_evidence:section_0.times"),
+        (
+            "term_section_pairs_swapped",
+            "unassociated_evidence:section_0.term_section_id",
+        ),
+        ("section_points_absent", "unverified_evidence:section_0.points"),
+        ("section_points_id_collision", "unverified_evidence:section_0.points"),
+        ("course_section_points_conflict", "section_0:points_conflict_with_course"),
+        ("person_appended_to_times", "section_0:invalid_times"),
+    ],
+)
+def test_suspicious_source_fields_are_review_only_and_not_effective(
+    tmp_path: Path, case_name: str, expected_issue: str
+) -> None:
+    description = (
+        "A detailed study of database design, queries, transactions, indexing, "
+        "and recovery."
+    )
+    base_section = {
+        "term": "Spring 2026",
+        "course_number": "COMS 4111",
+        "section_call_number": "001/12345",
+        "times": "M 10:00am - 11:00am",
+        "location": "",
+        "instructor": "Ada Lovelace",
+        "points": "3.00",
+        "enrollment_raw": "",
+        "enrollment_current": None,
+        "enrollment_capacity": None,
+    }
+    payload = {
+        "course_code": "COMS GU4111",
+        "title": "Introduction to Databases",
+        "points_raw": "3.00 points",
+        "points_min": 3.0,
+        "points_max": 3.0,
+        "description": description,
+        "prerequisites_text": "",
+        "notes_text": "",
+        "sections": [copy.deepcopy(base_section)],
+    }
+    source = (
+        "COMS GU4111 Introduction to Databases 3.00 points "
+        f"{description} Spring 2026 section 001/12345 3.00 "
+        "M 10:00am - 11:00am Ada Lovelace"
+    )
+
+    if case_name == "description_absent":
+        source = source.replace(f"{description} ", "")
+    elif case_name == "time_instructor_absent":
+        source = source.replace(" M 10:00am - 11:00am Ada Lovelace", "")
+    elif case_name == "term_section_pairs_swapped":
+        payload["sections"] = [
+            {**copy.deepcopy(base_section), "section_call_number": "002/22222"},
+            {
+                **copy.deepcopy(base_section),
+                "term": "Fall 2026",
+                "section_call_number": "001/11111",
+                "times": "",
+                "instructor": "",
+            },
+        ]
+        payload["sections"][0]["times"] = ""
+        payload["sections"][0]["instructor"] = ""
+        source = (
+            "COMS GU4111 Introduction to Databases 3.00 points "
+            f"{description} Spring 2026 section 001/11111 3.00; "
+            "Fall 2026 section 002/22222 3.00"
+        )
+    elif case_name == "section_points_absent":
+        source = source.replace("001/12345 3.00 ", "001/12345 ")
+    elif case_name == "section_points_id_collision":
+        payload["sections"][0]["section_call_number"] = "003/12345"
+        payload["sections"][0]["points"] = "3"
+        source = source.replace("001/12345 3.00 ", "003/12345 ")
+    elif case_name == "course_section_points_conflict":
+        payload["sections"][0]["points"] = "4.00"
+        source = source.replace("001/12345 3.00", "001/12345 4.00")
+    elif case_name == "person_appended_to_times":
+        payload["sections"][0]["times"] = "M 10:00am - 11:00am Ada Lovelace"
+        payload["sections"][0]["instructor"] = ""
+
+    html_bytes = f"<html><body><p>{source}</p></body></html>".encode()
+    store_dir = tmp_path / "syllabus_store"
+    result = asyncio.run(
+        import_file(
+            file_bytes=html_bytes,
+            filename=f"{case_name}.html",
+            llm_client=DummyLLM(json.dumps(payload)),
+            courses_dir=str(tmp_path / "unused-courses"),
+            enriched_index=[
+                {
+                    "course_uid": "seed-coms-4111",
+                    "course_code": "COMS GU4111",
+                    "title": "Introduction to Databases",
+                }
+            ],
+            enriched_index_path=str(tmp_path / "unused-index.json"),
+            syllabus_store_dir=str(store_dir),
+        )
+    )
+
+    assert result["success"] is True
+    assert result["status"] == "review"
+    assert result["search_visible"] is False
+    assert expected_issue in result["quality_issues"]
+    if case_name == "time_instructor_absent":
+        assert "unverified_evidence:section_0.instructor" in result["quality_issues"]
+    store = SyllabusStore(store_dir)
+    assert store.manifest()["effective_published_count"] == 0
+    for section in payload["sections"]:
+        assert store.get_effective(
+            payload["course_code"],
+            section["term"],
+            section["section_call_number"],
+        ) is None
+
+
+@pytest.mark.parametrize(
+    ("section_points", "source_points", "course_points", "points_min", "points_max"),
+    [
+        ("3", "3", "3 points", 3.0, 3.0),
+        ("3", "3.0", "3 points", 3.0, 3.0),
+        ("3", "3 points", "3 points", 3.0, 3.0),
+        ("3-4", "3.0 to 4.0 credits", "3-4 points", 3.0, 4.0),
+    ],
+)
+def test_points_evidence_accepts_complete_equivalent_expressions(
+    section_points: str,
+    source_points: str,
+    course_points: str,
+    points_min: float,
+    points_max: float,
+) -> None:
+    description = (
+        "A detailed study of database design, queries, transactions, indexing, "
+        "and recovery."
+    )
+    payload = {
+        "course_code": "COMS GU4111",
+        "title": "Introduction to Databases",
+        "points_raw": course_points,
+        "points_min": points_min,
+        "points_max": points_max,
+        "description": description,
+        "sections": [
+            {
+                "term": "Spring 2026",
+                "course_number": "COMS 4111",
+                "section_call_number": "001/12345",
+                "times": "M 10:00am - 11:00am",
+                "location": "",
+                "instructor": "Ada Lovelace",
+                "points": section_points,
+                "enrollment_raw": "",
+                "enrollment_current": None,
+                "enrollment_capacity": None,
+            }
+        ],
+    }
+    source = (
+        f"COMS GU4111 Introduction to Databases {course_points} {description} "
+        f"Spring 2026 section 001/12345 {source_points} "
+        "M 10:00am - 11:00am Ada Lovelace"
+    )
+
+    assessment = assess_import(payload, source)
+
+    assert assessment.status == "published"
+    assert assessment.quality_issues == ()
+    assert assessment.evidence["points"]["verified"] is True
+    assert assessment.evidence["sections"][0]["points"]["verified"] is True
 
 
 def test_manual_import_attaches_existing_seed_and_gates_visibility(

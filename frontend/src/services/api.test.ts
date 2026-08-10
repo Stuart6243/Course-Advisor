@@ -1,5 +1,11 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
-import {importFile, sendMessageStream, type ChatStreamCallbacks} from './api';
+import {
+  FIRST_EVENT_TIMEOUT_MS,
+  STREAM_IDLE_TIMEOUT_MS,
+  importFile,
+  sendMessageStream,
+  type ChatStreamCallbacks,
+} from './api';
 
 const encoder = new TextEncoder();
 const META =
@@ -38,6 +44,38 @@ afterEach(() => {
 });
 
 describe('sendMessageStream state machine', () => {
+  it('keeps the default first-event budget above two 30-second intent attempts', async () => {
+    expect(FIRST_EVENT_TIMEOUT_MS).toBeGreaterThan(2 * 30_000);
+
+    vi.useFakeTimers();
+    try {
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockImplementation(
+          (_url: string, init: RequestInit) =>
+            new Promise<Response>((_resolve, reject) => {
+              init.signal?.addEventListener('abort', () => {
+                reject(new DOMException('aborted', 'AbortError'));
+              });
+            }),
+        ),
+      );
+      const handlers = callbacks();
+      const pending = sendMessageStream('q', 'c', 'en', undefined, handlers);
+
+      await vi.advanceTimersByTimeAsync(2 * 30_000 + 1);
+      expect(handlers.onError).not.toHaveBeenCalled();
+
+      await vi.advanceTimersByTimeAsync(FIRST_EVENT_TIMEOUT_MS - 2 * 30_000);
+      await pending;
+      expect(handlers.onError).toHaveBeenCalledWith(
+        expect.objectContaining({code: 'first_event_timeout', interrupted: false}),
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it('reports a distinct first-event timeout without marking success', async () => {
     vi.useFakeTimers();
     try {
@@ -266,6 +304,103 @@ describe('sendMessageStream state machine', () => {
       expect(handlers.onAbort).not.toHaveBeenCalled();
       expect(handlers.onDone).not.toHaveBeenCalled();
     } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('keeps the default idle budget above a 60-second Ollama response wait', async () => {
+    expect(STREAM_IDLE_TIMEOUT_MS).toBeGreaterThanOrEqual(70_000);
+
+    vi.useFakeTimers();
+    try {
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockImplementation((_url: string, init: RequestInit) => {
+          const stream = new ReadableStream<Uint8Array>({
+            start(controller) {
+              controller.enqueue(encoder.encode(META));
+              init.signal?.addEventListener('abort', () => {
+                controller.error(new DOMException('aborted', 'AbortError'));
+              });
+            },
+          });
+          return Promise.resolve(new Response(stream, {status: 200}));
+        }),
+      );
+      const handlers = callbacks();
+      const pending = sendMessageStream('q', 'c', 'en', undefined, handlers);
+
+      await vi.advanceTimersByTimeAsync(60_001);
+      expect(handlers.onError).not.toHaveBeenCalled();
+
+      await vi.advanceTimersByTimeAsync(STREAM_IDLE_TIMEOUT_MS - 60_000);
+      await pending;
+      expect(handlers.onError).toHaveBeenCalledWith(
+        expect.objectContaining({code: 'idle_timeout', interrupted: true}),
+      );
+      expect(handlers.onDone).not.toHaveBeenCalled();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('cancels a hanging reader on timeout and reports timeout after cancel EOF', async () => {
+    vi.useFakeTimers();
+    const streamState: {
+      controller?: ReadableStreamDefaultController<Uint8Array>;
+    } = {};
+    let pending: Promise<void> | null = null;
+    const readerCancelled = vi.fn();
+    try {
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockResolvedValue(
+          new Response(
+            new ReadableStream<Uint8Array>({
+              start(controller) {
+                streamState.controller = controller;
+                controller.enqueue(encoder.encode(META));
+                // Leave an incomplete event buffered.  Timeout-driven EOF must
+                // retain its timeout cause rather than surface protocol_error.
+                controller.enqueue(
+                  encoder.encode('data: {"type":"chunk","content":"partial'),
+                );
+              },
+              cancel: readerCancelled,
+            }),
+            {status: 200},
+          ),
+        ),
+      );
+      const handlers = callbacks();
+      pending = sendMessageStream(
+        'q',
+        'c',
+        'en',
+        undefined,
+        handlers,
+        undefined,
+        {firstEventMs: 100, idleMs: 10},
+      );
+
+      await vi.advanceTimersByTimeAsync(11);
+      expect(readerCancelled).toHaveBeenCalledTimes(1);
+      await pending;
+      expect(handlers.onError).toHaveBeenCalledWith(
+        expect.objectContaining({code: 'idle_timeout', interrupted: true}),
+      );
+      expect(handlers.onDone).not.toHaveBeenCalled();
+    } finally {
+      // Let the old implementation's still-pending read finish so the failing
+      // regression probe cannot leak work into the next test.
+      if (readerCancelled.mock.calls.length === 0 && streamState.controller) {
+        try {
+          streamState.controller.close();
+        } catch {
+          // The fixed path has already cancelled/closed the stream.
+        }
+      }
+      await pending?.catch(() => undefined);
       vi.useRealTimers();
     }
   });

@@ -206,6 +206,35 @@ def test_zero_results_are_not_silently_relaxed(tmp_path: Path) -> None:
     assert courses == []
 
 
+def test_compare_targets_defensively_drive_retrieval_without_course_codes(
+    tmp_path: Path,
+) -> None:
+    index, courses_dir = _make_index(
+        tmp_path,
+        [
+            {"course_code": "CIEN E3125", "title": "STRUCTURAL DESIGN"},
+            {"course_code": "ENME E3113", "title": "MECHANICS OF SOLIDS"},
+            {"course_code": "COMS W4111", "title": "DATABASE SYSTEMS"},
+        ],
+    )
+
+    courses = retrieve_courses(
+        index,
+        _intent(
+            query_type="compare",
+            course_codes=[],
+            comparison_targets=["CIEN E3125", "ENME E3113"],
+        ),
+        str(courses_dir),
+    )
+
+    assert len(courses) == 2
+    assert {course["course_code"] for course in courses} == {
+        "CIEN E3125",
+        "ENME E3113",
+    }
+
+
 def test_matched_sections_contains_only_complete_matches(tmp_path: Path) -> None:
     index, courses_dir = _make_index(
         tmp_path,
@@ -630,6 +659,7 @@ def test_real_handoff_section_and_keyword_acceptance() -> None:
 
     for question in (
         "Recommend five computer science courses",
+        "Find five computer science courses and list their course codes.",
         "Recomiéndame cinco cursos de ciencias de la computación",
         "Recommandez-moi cinq cours d’informatique",
     ):

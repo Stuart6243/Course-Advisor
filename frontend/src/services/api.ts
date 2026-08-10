@@ -20,9 +20,16 @@ const API_BASE = configuredApiOrigin
     : `${configuredApiOrigin}/api`
   : '/api';
 
-/** 首个合法 SSE event 与后续 event 分开计时，避免长回答被绝对 90s 截断。 */
-const FIRST_EVENT_TIMEOUT_MS = 30_000;
-const STREAM_IDLE_TIMEOUT_MS = 45_000;
+/**
+ * 首个合法 SSE event 与后续 event 分开计时，避免长回答被绝对时限截断。
+ *
+ * 后端会在发送首个 meta 前串行尝试 Groq intent 和 Ollama intent fallback，
+ * 两次各有 30s 预算。这里保留 10s 的调度/传输余量，避免在 fallback
+ * 已经开始后由浏览器抢先取消请求。导出常量便于跨层预算回归测试。
+ */
+export const FIRST_EVENT_TIMEOUT_MS = 70_000;
+/** Covers Ollama's 60s response/fallback read budget plus scheduling margin. */
+export const STREAM_IDLE_TIMEOUT_MS = 70_000;
 const TERMINAL_DRAIN_TIMEOUT_MS = 250;
 
 export type ChatStreamCallbacks = {
@@ -181,20 +188,23 @@ export async function sendMessageStream(
   let activeReader: ReadableStreamDefaultReader<Uint8Array> | null = null;
   let sawEvent = false;
 
+  const isTimeoutAbort = () =>
+    abortCause === 'first-event-timeout' || abortCause === 'idle-timeout';
+
   const abortFor = (cause: Exclude<typeof abortCause, null>) => {
     if (requestController.signal.aborted) {
       return;
     }
     abortCause = cause;
     requestController.abort();
+    // Once fetch has resolved with response headers, some browsers no longer
+    // interrupt an outstanding reader.read() from the request signal alone.
+    // Cancel the reader for timeout and external aborts alike.
+    void activeReader?.cancel().catch(() => undefined);
   };
 
   const onExternalAbort = () => {
     abortFor('external');
-    // Once fetch has resolved with response headers, some browsers no longer
-    // interrupt an outstanding reader.read() from the request signal alone.
-    // Cancel the reader explicitly so Stop always reaches a terminal UI state.
-    void activeReader?.cancel().catch(() => undefined);
   };
   signal?.addEventListener('abort', onExternalAbort);
   if (signal?.aborted) {
@@ -278,6 +288,9 @@ export async function sendMessageStream(
 
   const reader = res.body.getReader();
   activeReader = reader;
+  if (requestController.signal.aborted) {
+    void reader.cancel().catch(() => undefined);
+  }
   const decoder = new TextDecoder();
   const eventDecoder = new ChatSseDecoder();
   let terminal: StreamDoneEvent | StreamErrorEvent | null = null;
@@ -395,6 +408,13 @@ export async function sendMessageStream(
         return;
       }
       cleanup();
+      // Cancellation can flush a half-received SSE block as a parse error.  If
+      // our timer fired first, retain the timeout cause instead of misreporting
+      // that cancellation artifact as an upstream protocol failure.
+      if (isTimeoutAbort()) {
+        callbacks.onError(timeoutError());
+        return;
+      }
       if (err instanceof DOMException && err.name === 'AbortError') {
         callbacks.onError(timeoutError());
         return;
@@ -418,6 +438,11 @@ export async function sendMessageStream(
 
   if (abortCause === 'external' || signal?.aborted) {
     callbacks.onAbort();
+    return;
+  }
+
+  if (!terminal && isTimeoutAbort()) {
+    callbacks.onError(timeoutError());
     return;
   }
 

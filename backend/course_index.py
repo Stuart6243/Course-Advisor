@@ -11,6 +11,7 @@ from typing import Optional
 
 from course_codes import extract_course_codes
 from section_validator import (
+    parse_day_tokens,
     parse_points_value,
     validate_catalog_record,
     validate_section,
@@ -136,49 +137,10 @@ def parse_days_from_times(times_str: str) -> tuple[list[str], str]:
     if not times_str:
         return [], ""
 
-    day_map = {
-        "m": "Monday",
-        "mon": "Monday",
-        "monday": "Monday",
-        "t": "Tuesday",
-        "tu": "Tuesday",
-        "tue": "Tuesday",
-        "tues": "Tuesday",
-        "tuesday": "Tuesday",
-        "w": "Wednesday",
-        "wed": "Wednesday",
-        "wednesday": "Wednesday",
-        "th": "Thursday",
-        "thu": "Thursday",
-        "thur": "Thursday",
-        "thurs": "Thursday",
-        "thursday": "Thursday",
-        "f": "Friday",
-        "fri": "Friday",
-        "friday": "Friday",
-        "sa": "Saturday",
-        "sat": "Saturday",
-        "saturday": "Saturday",
-        "su": "Sunday",
-        "sun": "Sunday",
-        "sunday": "Sunday",
-    }
-
-    # Day abbreviations are tokens, not arbitrary substrings.  Without the
-    # alphabetic boundaries below, instructor/location text such as
-    # "Savannah" is interpreted as Saturday and "TBA" as Tuesday.
-    day_tokens = re.findall(
-        r"(?<![A-Za-z])(?:Monday|Mon|M|Tuesday|Tues|Tue|Tu|T|"
-        r"Wednesday|Wed|W|Thursday|Thurs|Thur|Thu|Th|"
-        r"Friday|Fri|F|Saturday|Sat|Sa|Sunday|Sun|Su)(?![A-Za-z])",
-        times_str,
-        flags=re.IGNORECASE,
-    )
-    days: list[str] = []
-    for token in day_tokens:
-        day_name = day_map[token.lower()]
-        if day_name not in days:
-            days.append(day_name)
+    # Keep index derivation and section publication on one shared token parser.
+    # In particular, Columbia's saved source uses standalone ``S`` for Sunday
+    # while ``Sa`` denotes Saturday.
+    days = parse_day_tokens(times_str)
 
     time_of_day = ""
     match = re.search(r"(\d{1,2}):(\d{2})\s*(am|pm)", times_str, flags=re.IGNORECASE)

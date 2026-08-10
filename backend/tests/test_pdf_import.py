@@ -70,10 +70,14 @@ def test_pdf_import_attaches_existing_seed_without_network_or_seed_mutation(
     # full existing seed identity in the deterministic extraction fixture so
     # the normal evidence gate can auto-publish without weakening production
     # verification rules.
+    verified_description = (
+        "Marketing analytics covers segmentation, customer value, pricing, "
+        "distribution, promotion, Python, and Excel."
+    )
     extracted_text = (
         "MRKT B9651 MS MARKETING ANALYTICS 3.00 points "
-        "Fall 2025 001/11111 Tuesday 9:00AM-12:15PM\n"
-        + actual_text
+        "Fall 2025 001/11111 3.00 T 9:00am - 12:15pm Hortense Fong "
+        f"{verified_description}\n{actual_text}"
     )
     monkeypatch.setattr(file_importer, "extract_text_from_pdf", lambda _raw: extracted_text)
 
@@ -113,10 +117,7 @@ def test_pdf_import_attaches_existing_seed_without_network_or_seed_mutation(
         "points_raw": "3.00 points",
         "points_min": 3.0,
         "points_max": 3.0,
-        "description": (
-            "Marketing analytics covers segmentation, customer value, pricing, "
-            "distribution, promotion, Python, and Excel."
-        ),
+        "description": verified_description,
         "prerequisites_text": "",
         "notes_text": "",
         "sections": [

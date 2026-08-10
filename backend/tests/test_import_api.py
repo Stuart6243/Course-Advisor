@@ -265,8 +265,9 @@ def test_html_upload_published_and_docx_rejected(catalog_env: dict) -> None:
     }
     html = b"""
     <html><body><h1>COMS GU4111 DATABASE SYSTEMS</h1>
-    <table><tr><th>Term</th><th>Section</th><th>Points</th></tr>
-    <tr><td>Spring 2027</td><td>004/44444</td><td>3.00 points</td></tr></table>
+        <table><tr><th>Term</th><th>Section</th><th>Points</th><th>Time</th><th>Instructor</th></tr>
+        <tr><td>Spring 2027</td><td>004/44444</td><td>3.00 points</td>
+        <td>W 9:00am - 10:00am</td><td>HTML Instructor</td></tr></table>
     <p>Published HTML overlay description for database systems.</p></body></html>
     """
     with TestClient(srv.app) as client:
@@ -403,4 +404,78 @@ def test_store_commit_failure_returns_500_and_rolls_back_runtime(
         assert not (store_root / "CURRENT").exists()
         assert _generation_count(store_root) == 0
         assert client.app.state.enriched_index == seed_runtime
+    _assert_formal_unchanged(catalog_env)
+
+
+def test_runtime_candidate_failure_never_commits_or_appears_after_restart(
+    catalog_env: dict, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    store_root = catalog_env["data_dir"] / "syllabus_store"
+    real_apply_overlays = srv.apply_published_overlays
+
+    with TestClient(srv.app) as client:
+        seed_runtime = copy.deepcopy(client.app.state.enriched_index)
+
+        def fail_runtime_candidate(*_args, **_kwargs):
+            raise RuntimeError("injected runtime candidate failure")
+
+        monkeypatch.setattr(srv, "apply_published_overlays", fail_runtime_candidate)
+
+        manual = client.post("/api/import/manual", json=_manual_payload())
+        assert manual.status_code == 500
+        assert manual.json()["status"] == "rejected"
+        assert "no overlay was published" in manual.json()["message"]
+        assert not (store_root / "CURRENT").exists()
+        assert _generation_count(store_root) == 0
+        assert client.app.state.enriched_index == seed_runtime
+
+        description = "A detailed database systems syllabus description."
+        client.app.state.ollama.response = json.dumps(
+            {
+                "course_code": "COMS GU4111",
+                "title": "DATABASE SYSTEMS",
+                "points_raw": "3.00 points",
+                "points_min": 3.0,
+                "points_max": 3.0,
+                "description": description,
+                "sections": [
+                    {
+                        "term": "Spring 2026",
+                        "section_call_number": "002/22222",
+                        "times": "M 10:00am - 11:00am",
+                        "instructor": "Overlay Instructor",
+                        "points": "3.00",
+                        "enrollment_raw": "",
+                        "enrollment_current": None,
+                        "enrollment_capacity": None,
+                    }
+                ],
+            }
+        )
+        html = (
+            "<html><body>COMS GU4111 DATABASE SYSTEMS 3.00 points "
+            f"{description} Spring 2026 002/22222 3.00 "
+            "M 10:00am - 11:00am Overlay Instructor</body></html>"
+        ).encode()
+        uploaded = client.post(
+            "/api/import",
+            files={"file": ("candidate.html", html, "text/html")},
+        )
+        assert uploaded.status_code == 500
+        assert uploaded.json()["error_code"] == "store_commit_failed"
+        assert not (store_root / "CURRENT").exists()
+        assert _generation_count(store_root) == 0
+        assert client.app.state.enriched_index == seed_runtime
+
+        monkeypatch.setattr(srv, "apply_published_overlays", real_apply_overlays)
+
+    with TestClient(srv.app) as restarted:
+        assert (
+            restarted.app.state.enriched_index
+            == restarted.app.state.seed_enriched_index
+        )
+        assert restarted.app.state.syllabus_store.manifest()[
+            "effective_published_count"
+        ] == 0
+        assert not (store_root / "CURRENT").exists()
     _assert_formal_unchanged(catalog_env)

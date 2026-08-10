@@ -16,6 +16,10 @@ class GroqStreamProtocolError(RuntimeError):
     """Groq returned a malformed or prematurely terminated SSE stream."""
 
 
+class GroqResponseTruncatedError(RuntimeError):
+    """Groq stopped because the configured output-token limit was reached."""
+
+
 class GroqClient:
     """Groq API 客户端，接口与 OllamaClient 对齐。"""
 
@@ -92,7 +96,12 @@ class GroqClient:
                     continue
                 resp.raise_for_status()
                 data = resp.json()
-                return data["choices"][0]["message"]["content"]
+                choice = data["choices"][0]
+                if str(choice.get("finish_reason") or "").strip().lower() == "length":
+                    raise GroqResponseTruncatedError(
+                        "Groq response was truncated (finish_reason=length)"
+                    )
+                return choice["message"]["content"]
             except (httpx.TimeoutException, httpx.TransportError):
                 if attempt == 0:
                     await asyncio.sleep(self.RETRY_BACKOFF)
@@ -151,7 +160,18 @@ class GroqClient:
                                 choices = data.get("choices", [])
                                 if not choices:
                                     continue
-                                delta = choices[0].get("delta", {})
+                                choice = choices[0]
+                                if (
+                                    str(choice.get("finish_reason") or "")
+                                    .strip()
+                                    .lower()
+                                    == "length"
+                                ):
+                                    raise GroqResponseTruncatedError(
+                                        "Groq response was truncated "
+                                        "(finish_reason=length)"
+                                    )
+                                delta = choice.get("delta", {})
                                 content = delta.get("content", "")
                             except (AttributeError, KeyError, IndexError, TypeError) as exc:
                                 raise GroqStreamProtocolError(

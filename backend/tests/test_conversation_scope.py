@@ -131,3 +131,64 @@ def test_multiple_ordinals_preserve_textual_order() -> None:
     assert parsed.operation is Operation.COMPARE
     assert parsed.ordinals == (2, 1)
     assert parsed.as_dict()["ordinals"] == [2, 1]
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Which of these five is introductory and has the fewest prerequisites?",
+        "这五门里面，哪一门是入门课且先修最少？",
+        "De estos cinco, ¿cuál es introductorio y tiene menos prerrequisitos?",
+        "Parmi ces cinq, lequel est introductif et a le moins de prérequis ?",
+    ],
+)
+def test_explicit_reference_wins_over_broad_keyword_anchor(text: str) -> None:
+    parsed = parse_conversation_scope(
+        text,
+        previous_count=5,
+        has_current_focus=True,
+        new_search_anchor=True,
+    )
+    assert parsed.scope is Scope.PREVIOUS_RESULTS
+    assert parsed.attribute is Attribute.PREREQUISITES
+    assert parsed.operation is Operation.ARGMIN
+
+
+def test_course_code_and_force_new_search_remain_hard_anchors() -> None:
+    explicit_code = parse_conversation_scope(
+        "Compare it with COMS W4111.",
+        previous_count=5,
+        has_current_focus=True,
+        new_search_anchor=False,
+    )
+    assert explicit_code.scope is Scope.NEW_SEARCH
+
+    forced = parse_conversation_scope(
+        "Suggest another.",
+        previous_count=5,
+        has_current_focus=True,
+        force_new_search=True,
+    )
+    assert forced.scope is Scope.NEW_SEARCH
+
+
+@pytest.mark.parametrize(
+    "text,expected_ordinals,expected_uses_focus",
+    [
+        ("Compare them.", (), False),
+        ("Compare the first and third.", (1, 3), False),
+        ("Compare it with the first.", (1,), True),
+    ],
+)
+def test_compare_focus_is_used_only_by_singular_reference(
+    text: str,
+    expected_ordinals: tuple[int, ...],
+    expected_uses_focus: bool,
+) -> None:
+    parsed = parse_conversation_scope(
+        text, previous_count=5, has_current_focus=True
+    )
+    assert parsed.scope is Scope.PREVIOUS_RESULTS
+    assert parsed.operation is Operation.COMPARE
+    assert parsed.ordinals == expected_ordinals
+    assert parsed.uses_focus is expected_uses_focus
