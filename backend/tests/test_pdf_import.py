@@ -13,14 +13,13 @@ BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
-import file_importer
 from course_index import build_enriched_entry
 from course_retriever import retrieve_courses
 from file_importer import extract_text_from_pdf, import_file
 from syllabus_store import SyllabusStore, apply_published_overlays
 
 
-FIXTURE = Path(__file__).parent / "fixtures" / "test_real_course.pdf"
+FIXTURE = Path(__file__).parent / "fixtures" / "test_synthetic_course.pdf"
 COURSE_UID = "b" * 40
 
 
@@ -43,7 +42,7 @@ class FakeLLM:
 def _intent() -> dict:
     return {
         "query_type": "detail",
-        "course_codes": ["MRKT B9651"],
+        "course_codes": ["COMS E9999"],
         "keywords": [],
         "department": None,
         "department_terms": [],
@@ -53,41 +52,32 @@ def _intent() -> dict:
         "points_range": [3.0, 3.0],
         "term": "Fall 2025",
         "comparison_targets": [],
-        "original_question": "MRKT B9651 in Fall 2025",
+        "original_question": "COMS E9999 in Fall 2025",
     }
 
 
 def test_pdf_import_attaches_existing_seed_without_network_or_seed_mutation(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path,
 ) -> None:
     pytest.importorskip("pdfplumber")
     pdf_bytes = FIXTURE.read_bytes()
     actual_text = extract_text_from_pdf(pdf_bytes)
-    assert "B9651: MS MARKETING ANALYTICS" in actual_text
+    assert "COMS E9999: EVIDENCE-GROUNDED SYSTEMS" in actual_text
     assert actual_text.index("Course Times") < actual_text.index("COURSE DESCRIPTION")
 
-    # The supplied PDF abbreviates the department as just "B9651".  Add the
-    # full existing seed identity in the deterministic extraction fixture so
-    # the normal evidence gate can auto-publish without weakening production
-    # verification rules.
     verified_description = (
-        "Marketing analytics covers segmentation, customer value, pricing, "
-        "distribution, promotion, Python, and Excel."
+        "This synthetic course introduces evidence-grounded retrieval, "
+        "deterministic fact rendering, source attribution, streaming interfaces, "
+        "and resilient model fallback."
     )
-    extracted_text = (
-        "MRKT B9651 MS MARKETING ANALYTICS 3.00 points "
-        "Fall 2025 001/11111 3.00 T 9:00am - 12:15pm Hortense Fong "
-        f"{verified_description}\n{actual_text}"
-    )
-    monkeypatch.setattr(file_importer, "extract_text_from_pdf", lambda _raw: extracted_text)
 
     data_dir = tmp_path / "data"
     courses_dir = data_dir / "courses_flat"
     courses_dir.mkdir(parents=True)
     seed_detail = {
         "course_uid": COURSE_UID,
-        "course_code": "MRKT B9651",
-        "title": "MS MARKETING ANALYTICS",
+        "course_code": "COMS E9999",
+        "title": "EVIDENCE-GROUNDED SYSTEMS",
         "points_raw": "3.00 points",
         "points_min": 3.0,
         "points_max": 3.0,
@@ -112,8 +102,8 @@ def test_pdf_import_attaches_existing_seed_without_network_or_seed_mutation(
     before_files = sorted(path.name for path in courses_dir.iterdir())
 
     payload = {
-        "course_code": "MRKT B9651",
-        "title": "MS MARKETING ANALYTICS",
+        "course_code": "COMS E9999",
+        "title": "EVIDENCE-GROUNDED SYSTEMS",
         "points_raw": "3.00 points",
         "points_min": 3.0,
         "points_max": 3.0,
@@ -123,11 +113,11 @@ def test_pdf_import_attaches_existing_seed_without_network_or_seed_mutation(
         "sections": [
             {
                 "term": "Fall 2025",
-                "course_number": "MRKT 9651",
+                "course_number": "COMS 9999",
                 "section_call_number": "001/11111",
                 "times": "T 9:00am - 12:15pm",
-                "location": "Geffen 590",
-                "instructor": "Hortense Fong",
+                "location": "Example Room 101",
+                "instructor": "Ada Example",
                 "points": "3.00",
                 "enrollment_raw": "",
                 "enrollment_current": None,
@@ -163,7 +153,7 @@ def test_pdf_import_attaches_existing_seed_without_network_or_seed_mutation(
     assert len(found) == 1
     assert found[0]["course_uid"] == COURSE_UID
     assert found[0]["matched_sections"][0]["section_call_number"] == "001/11111"
-    assert "segmentation" in found[0]["description"].lower()
+    assert "evidence-grounded" in found[0]["description"].lower()
 
     assert len(llm.calls) == 1
     call = llm.calls[0]

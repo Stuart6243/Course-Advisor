@@ -9,6 +9,9 @@ spec.loader.exec_module(mod)
 
 
 class TestScraperHelpers(unittest.TestCase):
+    def test_default_output_root_is_the_scraper_directory(self):
+        self.assertEqual(Path(mod.DEFAULT_ROOT), MODULE_PATH.parent)
+
     def test_parse_title_line_normal(self):
         code, title, points, issues = mod.parse_title_line('COMS W1004 PROGRAMMING IN JAVA. 3.00 points.')
         self.assertEqual(code, 'COMS W1004')

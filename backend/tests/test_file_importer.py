@@ -57,8 +57,8 @@ def test_extract_text_from_html() -> None:
 
 def test_extract_text_from_pdf() -> None:
     pytest.importorskip("pdfplumber")
-    pdf_path = FIXTURES_DIR / "test_real_course.pdf"
-    assert pdf_path.exists(), "Missing fixture: test_real_course.pdf"
+    pdf_path = FIXTURES_DIR / "test_synthetic_course.pdf"
+    assert pdf_path.exists(), "Missing fixture: test_synthetic_course.pdf"
     text = extract_text_from_pdf(pdf_path.read_bytes())
     assert text.strip()
 
@@ -573,9 +573,9 @@ def test_manual_import_requires_identity_points_and_existing_seed(tmp_path: Path
             ("Term", "Section", "Points", "Spring 2026", "001/12345"),
         ),
         (
-            "marketing.pdf",
-            (FIXTURES_DIR / "test_real_course.pdf").read_bytes(),
-            ("B9651", "MS MARKETING ANALYTICS", "Fall 2025", "Course Times"),
+            "synthetic-course.pdf",
+            (FIXTURES_DIR / "test_synthetic_course.pdf").read_bytes(),
+            ("COMS E9999", "EVIDENCE-GROUNDED SYSTEMS", "Course Times", "Fall 2025"),
         ),
     ],
 )
@@ -585,8 +585,8 @@ def test_pdf_html_prompts_are_deterministic_untrusted_data(
     if filename.endswith(".pdf"):
         pytest.importorskip("pdfplumber")
         code, title, term, section_id = (
-            "MRKT B9651",
-            "MS MARKETING ANALYTICS",
+            "COMS E9999",
+            "EVIDENCE-GROUNDED SYSTEMS",
             "Fall 2025",
             "001/11111",
         )

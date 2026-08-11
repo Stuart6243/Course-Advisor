@@ -5,12 +5,65 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 
 SCRIPT_DIR = Path(__file__).resolve().parents[1]
 MODULE_PATH = SCRIPT_DIR / "offline_section_repair.py"
 spec = importlib.util.spec_from_file_location("offline_section_repair", MODULE_PATH)
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
+
+
+def test_cli_requires_explicit_offline_inputs(capsys) -> None:
+    with pytest.raises(SystemExit) as exc_info:
+        mod.parse_args([])
+
+    assert exc_info.value.code == 2
+    stderr = capsys.readouterr().err
+    assert "the following arguments are required: --snapshot, --raw-dir" in stderr
+
+
+def test_cli_rejects_missing_offline_input_paths(
+    tmp_path: Path, capsys
+) -> None:
+    raw_dir = tmp_path / "raw_html"
+    raw_dir.mkdir()
+    missing_snapshot = tmp_path / "missing-snapshot.json"
+
+    with pytest.raises(SystemExit) as exc_info:
+        mod.parse_args(
+            [
+                "--snapshot",
+                str(missing_snapshot),
+                "--raw-dir",
+                str(raw_dir),
+            ]
+        )
+
+    assert exc_info.value.code == 2
+    stderr = capsys.readouterr().err
+    assert "snapshot must be an existing JSON file" in stderr
+    assert str(missing_snapshot) in stderr
+
+    snapshot = tmp_path / "snapshot.json"
+    snapshot.write_text("{}", encoding="utf-8")
+    missing_raw_dir = tmp_path / "missing-raw-html"
+
+    with pytest.raises(SystemExit) as exc_info:
+        mod.parse_args(
+            [
+                "--snapshot",
+                str(snapshot),
+                "--raw-dir",
+                str(missing_raw_dir),
+            ]
+        )
+
+    assert exc_info.value.code == 2
+    stderr = capsys.readouterr().err
+    assert "raw HTML directory must be an existing directory" in stderr
+    assert str(missing_raw_dir) in stderr
 
 
 def test_offline_manifest_exact_uid_and_no_writes(tmp_path: Path, capsys) -> None:

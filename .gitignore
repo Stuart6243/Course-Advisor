@@ -18,6 +18,11 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage/
+htmlcov/
 
 # Virtual environments
 venv/
@@ -30,6 +35,32 @@ node_modules/
 # Build artifacts
 dist/
 frontend/dist/
+output/
+playwright-report/
+test-results/
+/artifacts/browser/
+
+# Runtime user content
+data/syllabus_store/
+
+# Generated backend evaluation results
+backend/tests/compare_recommend_groq_results.json
+backend/tests/test_results.json
+backend/tests/test_regression_results.json
+
+# Scraper state and run history
+columbia_engineering_courses/raw_html/
+columbia_engineering_courses/snapshots/
+columbia_engineering_courses/logs/
+columbia_engineering_courses/reports/
+columbia_engineering_courses/index/new_courses_*.json
+columbia_engineering_courses/index/course_registry.jsonl
+columbia_engineering_courses/index/course_keys.txt
+
+# Editors and local logs
+.idea/
+.vscode/
+*.log
 
 # Local secrets
 .env

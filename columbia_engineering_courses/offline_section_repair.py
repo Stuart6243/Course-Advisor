@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Read-only manifest for repairing shifted schedule columns from saved HTML.
 
-By default this command is a read-only dry run.  It reparses the selected local
-raw-HTML batch, matches catalog records by exact ``course_uid``, and reports the
-proposed section replacements as JSON.  The explicit ``--apply`` path requires
-an exact saved before-manifest and commits a fully validated staged data-tree
-generation while retaining the prior generation as a rollback backup.
+This command requires an explicit saved snapshot and raw-HTML directory.  By
+default it is a read-only dry run: it reparses that local batch, matches catalog
+records by exact ``course_uid``, and reports the proposed section replacements
+as JSON.  The explicit ``--apply`` path requires an exact saved before-manifest
+and commits a fully validated staged data-tree generation while retaining the
+prior generation as a rollback backup.
 """
 
 from __future__ import annotations
@@ -45,12 +46,27 @@ from backend.section_validator import validate_catalog_record, validate_section
 from scrape_columbia_courses import parse_course_page, sanitize_filename_from_url
 
 
-DEFAULT_RUN_ID = "20260219_050514"
-DEFAULT_SNAPSHOT = SCRIPT_DIR / "snapshots" / f"courses_{DEFAULT_RUN_ID}.json"
-DEFAULT_RAW_DIR = SCRIPT_DIR / "raw_html"
 DEFAULT_FLAT_INDEX = REPO_ROOT / "data" / "courses_flat_index.json"
 DEFAULT_COURSES_DIR = REPO_ROOT / "data" / "courses_flat"
 DEFAULT_ENRICHED_INDEX = REPO_ROOT / "data" / "courses_enriched_index.json"
+
+
+def _existing_snapshot_path(value: str) -> Path:
+    path = Path(value)
+    if not path.is_file():
+        raise argparse.ArgumentTypeError(
+            f"snapshot must be an existing JSON file: {path}"
+        )
+    return path
+
+
+def _existing_raw_dir(value: str) -> Path:
+    path = Path(value)
+    if not path.is_dir():
+        raise argparse.ArgumentTypeError(
+            f"raw HTML directory must be an existing directory: {path}"
+        )
+    return path
 
 
 def _sha256_bytes(data: bytes) -> str:
@@ -932,10 +948,25 @@ def apply_repair(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Offline section repair (read-only unless --apply is explicit)."
+        description=(
+            "Offline section repair from an explicitly selected saved batch "
+            "(read-only unless --apply is explicit)."
+        )
     )
-    parser.add_argument("--snapshot", type=Path, default=DEFAULT_SNAPSHOT)
-    parser.add_argument("--raw-dir", type=Path, default=DEFAULT_RAW_DIR)
+    parser.add_argument(
+        "--snapshot",
+        type=_existing_snapshot_path,
+        required=True,
+        metavar="PATH",
+        help="Saved scraper snapshot JSON for the batch to reparse (required).",
+    )
+    parser.add_argument(
+        "--raw-dir",
+        type=_existing_raw_dir,
+        required=True,
+        metavar="DIR",
+        help="Directory containing the saved raw HTML for that batch (required).",
+    )
     parser.add_argument("--run-id", default=None)
     parser.add_argument("--flat-index", type=Path, default=DEFAULT_FLAT_INDEX)
     parser.add_argument("--courses-dir", type=Path, default=DEFAULT_COURSES_DIR)

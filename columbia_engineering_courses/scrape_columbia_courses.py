@@ -31,7 +31,7 @@ except ModuleNotFoundError:  # Running this file directly sets sys.path to this 
 
 DEFAULT_SEED = "https://bulletin.columbia.edu/columbia-engineering/about-school/"
 DEFAULT_YEAR = "2025-2026"
-DEFAULT_ROOT = "columbia_engineering_courses"
+DEFAULT_ROOT = str(Path(__file__).resolve().parent)
 USER_AGENT = "columbia-engineering-course-scraper/1.0"
 
 ALLOWED_PATH_PREFIXES = (
