@@ -242,11 +242,11 @@ def test_c4_chat_sse_and_stats(enriched_index: list[dict]) -> None:
         "points_range": None,
         "term": None,
         "comparison_targets": [],
-        "original_question": "What time does CIEN E3125 meet?",
+        "original_question": "Tell me about CIEN E3125",
     }
     dummy = DummyOllama(
         chat_response=json.dumps(intent_payload),
-        stream_chunks=["answer chunk A", "answer chunk B"],
+        stream_chunks=["[S1] answer chunk A", "answer chunk B"],
     )
 
     with TestClient(app) as client:
@@ -257,7 +257,7 @@ def test_c4_chat_sse_and_stats(enriched_index: list[dict]) -> None:
             "POST",
             "/api/chat",
             json={
-                "message": "What time does CIEN E3125 meet?",
+                "message": "Tell me about CIEN E3125",
                 "conversation_id": "t1",
                 "language": "en",
             },
@@ -407,7 +407,7 @@ def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:
         "points_range": None,
         "term": None,
         "comparison_targets": [],
-        "original_question": "What time does CIEN E3125 meet?",
+        "original_question": "Evaluate CIEN E3125",
     }
     dummy = DummyOllama(
         chat_response=json.dumps(intent_payload),
@@ -422,7 +422,7 @@ def test_c4_chat_sse_error_event(enriched_index: list[dict]) -> None:
             "POST",
             "/api/chat",
             json={
-                "message": "What time does CIEN E3125 meet?",
+                "message": "Evaluate CIEN E3125",
                 "conversation_id": "t2",
                 "language": "en",
             },

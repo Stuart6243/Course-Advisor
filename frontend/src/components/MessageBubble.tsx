@@ -3,17 +3,98 @@ import {Bot, Check, Copy, User} from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {useTranslation} from 'react-i18next';
-import {Message} from '../types';
+import {CourseSource, Message} from '../types';
 
 type Props = {
   message: Message;
   index: number;
 };
 
+type SourceGroupProps = {
+  label: string;
+  sources: CourseSource[];
+  group: 'answer_sources' | 'prompt_basis';
+};
+
+function SourceGroup({label, sources, group}: SourceGroupProps) {
+  const {t} = useTranslation();
+  const answerGroup = group === 'answer_sources';
+
+  return (
+    <section className="space-y-2 pt-1" data-source-group={group}>
+      <h4 className="text-xs font-medium text-slate-400">{label}</h4>
+      <div className="grid gap-2">
+        {sources.map((source) => (
+          <article
+            key={source.uid}
+            data-source-uid={source.uid}
+            data-course-code={source.course_code}
+            data-source-role={source.role}
+            data-citation-status={source.citation_status}
+            className={`min-w-0 rounded-lg border px-3 py-2 text-xs ${answerGroup ? 'border-primary/25 bg-primary/5' : 'border-border-dark bg-slate-900/30'}`}
+          >
+            <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+              <span className={answerGroup ? 'font-semibold text-primary' : 'font-semibold text-slate-300'}>
+                {source.course_code}
+              </span>
+              <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-400">
+                {source.citation_label}
+              </span>
+            </div>
+            <p className="mt-1 break-words text-slate-300">{source.title}</p>
+            <p className="mt-1 break-words text-[11px] text-slate-500">
+              {source.source_label}
+            </p>
+            <p className="mt-1 break-all text-[10px] text-slate-600" title={source.uid}>
+              {t('chat.sourceUid')}: {source.uid}
+            </p>
+            {source.offerings.length > 0 ? (
+              <div className="mt-2 grid gap-1.5">
+                {source.offerings.map((offering, offeringIndex) => (
+                  <div
+                    key={`${source.uid}-${offering.term ?? ''}-${offering.section_id ?? ''}-${offeringIndex}`}
+                    data-source-offering-index={offeringIndex}
+                    data-source-term={offering.term ?? ''}
+                    data-source-section={offering.section_id ?? ''}
+                    data-source-meeting-time={offering.meeting_time ?? ''}
+                    data-source-location={offering.location ?? ''}
+                    className="min-w-0 rounded border border-border-dark/70 bg-black/10 px-2 py-1 text-[11px] leading-relaxed text-slate-400"
+                  >
+                    <span>{t('chat.sourceTerm')}: {offering.term ?? t('chat.sourceUnknown')}</span>
+                    <span aria-hidden="true"> · </span>
+                    <span>{t('chat.sourceSection')}: {offering.section_id ?? t('chat.sourceUnknown')}</span>
+                    <br />
+                    <span>{t('chat.sourceMeeting')}: {offering.meeting_time ?? t('chat.sourceUnknown')}</span>
+                    <span aria-hidden="true"> · </span>
+                    <span>{t('chat.sourceLocation')}: {offering.location ?? t('chat.sourceUnknown')}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-2 text-[11px] text-slate-500" data-source-offerings="unknown">
+                {t('chat.sourceNoOfferings')}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function MessageBubble({message, index}: Props) {
   const [copied, setCopied] = useState(false);
   const {t} = useTranslation();
-  const sources = message.sources ?? [];
+  const sources = message.sources;
+  const answerSources = sources?.schema_version === 2 ? sources.answer_sources : [];
+  const answerUids = new Set(answerSources.map((source) => source.uid));
+  const candidateSources =
+    sources?.schema_version === 2
+      ? sources.prompt_basis.filter((source) => !answerUids.has(source.uid))
+      : [];
+  const legacyCandidates = sources?.schema_version === 1 ? sources.courses : [];
+  const hasSourceDetails =
+    answerSources.length > 0 || candidateSources.length > 0 || legacyCandidates.length > 0;
   const fallbackLabelKey = message.fallbackFailed
     ? message.provider === 'groq'
       ? 'chat.fallbackRestored'
@@ -103,19 +184,41 @@ function MessageBubble({message, index}: Props) {
                   {t(`chat.status.${message.status}`)}
                 </p>
               ) : null}
-              {!message.isStreaming && sources.length > 0 ? (
-                <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span className="text-xs text-slate-500 mr-0.5">
-                    {t('chat.sources')}
-                  </span>
-                  {sources.map((code, sourceIndex) => (
-                    <span
-                      key={`${code}-${sourceIndex}`}
-                      className="text-xs font-medium text-primary bg-primary/10 ring-1 ring-primary/20 rounded-md px-2 py-0.5"
-                    >
-                      {code}
-                    </span>
-                  ))}
+              {!message.isStreaming && hasSourceDetails ? (
+                <div className="w-full space-y-2" data-source-schema-version={sources?.schema_version}>
+                  {answerSources.length > 0 ? (
+                    <SourceGroup
+                      label={t('chat.verifiedSources')}
+                      sources={answerSources}
+                      group="answer_sources"
+                    />
+                  ) : null}
+                  {candidateSources.length > 0 ? (
+                    <SourceGroup
+                      label={t('chat.candidateSources')}
+                      sources={candidateSources}
+                      group="prompt_basis"
+                    />
+                  ) : null}
+                  {legacyCandidates.length > 0 ? (
+                    <section className="space-y-2 pt-1" data-source-group="prompt_basis">
+                      <h4 className="text-xs font-medium text-slate-400">
+                        {t('chat.candidateSources')}
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {legacyCandidates.map((code, sourceIndex) => (
+                          <span
+                            key={`${code}-${sourceIndex}`}
+                            data-source-legacy="true"
+                            data-course-code={code}
+                            className="rounded-md bg-slate-800 px-2 py-0.5 text-xs font-medium text-slate-300 ring-1 ring-border-dark"
+                          >
+                            {code}
+                          </span>
+                        ))}
+                      </div>
+                    </section>
+                  ) : null}
                 </div>
               ) : null}
               <div className="flex justify-end">

@@ -70,6 +70,8 @@ DEFAULT_INTENT = {
     "points_range": None,
     "term": None,
     "comparison_targets": [],
+    "suitability": None,
+    "department_defaulted_from": None,
     "original_question": ""
 }
 
@@ -138,6 +140,8 @@ def _default_intent_copy() -> dict:
         "points_range": None,
         "term": None,
         "comparison_targets": [],
+        "suitability": None,
+        "department_defaulted_from": None,
         "original_question": ""
     }
 
@@ -195,7 +199,9 @@ ZH_MAPPINGS = {
     "生物": "biology bioengineering", "医学影像": "medical imaging",
     "嵌入式": "embedded systems", "电路": "circuits",
     "航空航天": "aerospace", "推进": "propulsion", "空气动力": "aerodynamics",
-    "入门": "introduction", "基础": "fundamentals", "高级": "advanced",
+    # “入门/基础”描述学生适合度，不是课程标题关键词。它们由规则层
+    # 单独解析为 suitability，不能机械追加 introduction/fundamentals。
+    "高级": "advanced",
     "毕业设计": "capstone design", "实习": "internship",
 }
 
@@ -361,13 +367,16 @@ _SORTED_PHRASE_MAP = sorted(DEPT_PHRASE_MAP.items(), key=lambda x: -len(x[0]))
 # 像 robotics / structural / climate / data 虽然也路由到某个系，
 # 但它们本身是主题词，剔除后会丢失检索信号
 # （"recommend robotics courses" 会退化成「随便给几门 MECE 课」）。
-PURE_DEPT_WORDS = frozenset({
-    "cs", "compsci", "computer", "ieor", "aero", "aerospace",
-    "civil", "mechanical", "mech", "electrical", "ee",
-    "biomedical", "biomed", "environmental", "materials",
-    "statistics", "stats", "physics", "chemical", "chem",
-    "bioinformatics", "industrial",
-})
+PURE_DEPT_WORDS = frozenset(
+    {
+        "cs", "compsci", "computer", "ieor", "aero", "aerospace",
+        "civil", "mechanical", "mech", "electrical", "ee",
+        "biomedical", "biomed", "environmental", "materials",
+        "statistics", "stats", "physics", "chemical", "chem",
+        "bioinformatics", "industrial",
+    }
+    | {prefix.lower() for prefix in DEPARTMENT_NAMES}
+)
 
 # 系别名称 → 前缀 的反向映射（从 DEPARTMENT_NAMES 自动构建）
 DEPT_KEYWORD_MAP: dict[str, str] = {}
@@ -375,6 +384,9 @@ for _prefix, _names in DEPARTMENT_NAMES.items():
     for _word in _names.split():
         if _word not in DEPT_KEYWORD_MAP:  # 先到先得，避免覆盖
             DEPT_KEYWORD_MAP[_word] = _prefix
+    # An explicit department code (for example APMA or COMS) is a stronger
+    # anchor than a later generic-mathematics default.
+    DEPT_KEYWORD_MAP.setdefault(_prefix.lower(), _prefix)
 
 # 补充常见简写和口语化表达
 DEPT_KEYWORD_MAP.update({
@@ -392,6 +404,30 @@ DEPT_KEYWORD_MAP.update({
     "robotics": "MECE", "robot": "MECE",
     "data": "COMS",
 })
+
+# Python's ``\b`` follows Unicode word semantics, so there is no boundary
+# between the ASCII ``s`` and the CJK ``课`` in ``cs课``.  Only genuine ASCII
+# aliases/codes use ASCII-aware lookarounds; ordinary department words retain
+# their existing Unicode word-boundary behavior.
+ASCII_DEPARTMENT_ALIASES = frozenset(
+    {
+        "cs", "compsci", "ieor", "aero", "mech", "ee", "biomed",
+        "stats", "chem",
+    }
+    | {prefix.lower() for prefix in DEPARTMENT_NAMES}
+)
+
+
+def contains_ascii_alias(text: str, alias: str) -> bool:
+    """Match one standalone ASCII alias even when adjacent to CJK text."""
+
+    return bool(
+        re.search(
+            rf"(?<![A-Za-z0-9_]){re.escape(alias)}(?![A-Za-z0-9_])",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
 
 # 移除易冲突通用词，避免误匹配到错误系别
 for _generic_word in ("engineering", "applied", "science", "math", "mathematics"):
@@ -496,6 +532,19 @@ DAY_KEYWORDS = {
     "thurs": "Thursday", "fri": "Friday", "sat": "Saturday", "sun": "Sunday",
 }
 
+BEGINNER_SUITABILITY_RE = re.compile(
+    r"\b(?:beginners?|novices?|entry[- ]level|zero[- ]background|"
+    r"no\s+prior\s+(?:background|experience|knowledge)|"
+    r"without\s+prior\s+(?:background|experience|knowledge))\b|"
+    r"零基础|无基础|没有基础|初学者|新手|入门|基础(?:课|课程)",
+    re.IGNORECASE,
+)
+
+GENERIC_MATHEMATICS_RE = re.compile(
+    r"(?<![A-Za-z0-9_])(?:math|mathematics)(?![A-Za-z0-9_])|数学",
+    re.IGNORECASE,
+)
+
 # 停用词（用于 keyword 提取）
 STOP_WORDS = frozenset({
     'what', 'are', 'the', 'is', 'a', 'an', 'in', 'on', 'for', 'to', 'of',
@@ -508,6 +557,8 @@ STOP_WORDS = frozenset({
     'not', 'but', 'if', 'then', 'than', 'too', 'very', 'just', 'only',
     'recommend', 'suggest', 'compare', 'need', 'interested', 'looking',
     'want', 'wants', 'wanted', 'good', 'best', 'easy', 'easiest', 'hard',
+    'beginner', 'beginners', 'novice', 'novices', 'entry', 'level', 'zero',
+    'prior', 'background', 'experience', 'knowledge', 'without',
     'give', 'other', 'another', 'more', 'additional', 'else',
     'based', 'current', 'conversation', 'mentioned', 'them', 'their',
     'department', 'departments',
@@ -545,6 +596,8 @@ def rule_based_extract(question: str) -> dict | None:
     q_lower = question.lower()
     intent = _default_intent_copy()
     intent["original_question"] = question
+    if BEGINNER_SUITABILITY_RE.search(question):
+        intent["suitability"] = "beginner"
 
     if any(pattern in q_lower for pattern in STATS_QUERY_PATTERNS):
         intent["query_type"] = "stats"
@@ -592,7 +645,12 @@ def rule_based_extract(question: str) -> dict | None:
     if not department:
         sorted_dept_keywords = sorted(DEPT_KEYWORD_MAP.keys(), key=len, reverse=True)
         for word in sorted_dept_keywords:
-            if re.search(r'\b' + re.escape(word) + r'\b', q_lower):
+            matches_word = (
+                contains_ascii_alias(q_lower, word)
+                if word in ASCII_DEPARTMENT_ALIASES
+                else bool(re.search(r'\b' + re.escape(word) + r'\b', q_lower))
+            )
+            if matches_word:
                 # DEPARTMENT_NAMES intentionally enriches searchable text with
                 # topical words.  Those words must not become a hard department
                 # filter (e.g. robotics also appears outside MECE).
@@ -601,6 +659,20 @@ def rule_based_extract(question: str) -> dict | None:
                 department = DEPT_KEYWORD_MAP[word]
                 department_terms = [word]
                 break
+
+    # “数学/math” is a product default for the current Engineering catalog,
+    # not an explicit department name.  Apply it only after course-code and
+    # explicit department resolution so it can never conflict with either.
+    if not codes and not department and GENERIC_MATHEMATICS_RE.search(question):
+        department = "APMA"
+        intent["department_defaulted_from"] = "mathematics"
+        department_terms = [
+            word
+            for word in ("math", "mathematics")
+            if re.search(
+                rf"(?<![A-Za-z0-9_]){word}(?![A-Za-z0-9_])", q_lower
+            )
+        ] or ["mathematics"]
     if department:
         # normalize_question appends an English department phrase but keeps the
         # original Spanish/French wording.  Mark both as structural terms so
@@ -663,6 +735,7 @@ def rule_based_extract(question: str) -> dict | None:
         intent["instructor"] or intent["time_preference"] or
         intent["day_preference"] or intent["points_range"] or
         intent["term"] or
+        intent["suitability"] or
         # recommend/compare 由正则明确触发，本身就是强信号
         intent["query_type"] in ("recommend", "compare") or
         # 对于 keywords，至少要有 1 个有意义的词
@@ -746,6 +819,7 @@ ALLOWED_QUERY_TYPES = frozenset(
     {"search", "compare", "recommend", "detail", "schedule", "general", "stats"}
 )
 ALLOWED_TIME_PREFERENCES = frozenset({"morning", "afternoon", "evening"})
+ALLOWED_SUITABILITY = frozenset({"beginner"})
 ALLOWED_DAYS = (
     "Monday",
     "Tuesday",
@@ -840,6 +914,26 @@ def validate_intent_schema(parsed: dict) -> dict:
         ):
             raise IntentValidationError("department must be a known department code")
     merged["department"] = department
+
+    suitability = parsed.get("suitability")
+    if suitability is not None:
+        if not isinstance(suitability, str):
+            raise IntentValidationError("suitability must be a string or null")
+        suitability = suitability.strip().lower()
+        if suitability not in ALLOWED_SUITABILITY:
+            raise IntentValidationError("suitability is invalid")
+    merged["suitability"] = suitability
+
+    defaulted_from = parsed.get("department_defaulted_from")
+    if defaulted_from is not None:
+        if not isinstance(defaulted_from, str):
+            raise IntentValidationError(
+                "department_defaulted_from must be a string or null"
+            )
+        defaulted_from = defaulted_from.strip().lower()
+        if defaulted_from != "mathematics" or department != "APMA":
+            raise IntentValidationError("department_defaulted_from is invalid")
+    merged["department_defaulted_from"] = defaulted_from
 
     instructor = parsed.get("instructor")
     if instructor is not None:

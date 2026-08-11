@@ -23,6 +23,7 @@ from course_index import (
     sort_by_quality,
 )
 from section_validator import validate_section
+from suitability import SuitabilityStatus, assess_beginner_suitability
 
 
 COURSE_OVERLAY_FIELDS = frozenset(
@@ -447,6 +448,56 @@ def _ranking_keywords(intent: dict, filters: dict) -> list[str]:
     ]
 
 
+def select_distinct_code_first(entries: list[dict], limit: int) -> list[dict]:
+    """Select ranked records in two passes without changing record identity.
+
+    The first pass chooses the highest-ranked representative for each course
+    code.  Only when there are fewer distinct codes than ``limit`` does the
+    second pass refill duplicate-code UIDs in their original ranked order.
+    """
+
+    if limit <= 0 or not entries:
+        return []
+
+    selected_positions: list[int] = []
+    selected_set: set[int] = set()
+    seen_codes: set[str] = set()
+    for position, entry in enumerate(entries):
+        code = str(entry.get("course_code") or "").strip().upper()
+        # Missing codes must not collapse unrelated records into one group.
+        grouping_key = code or f"__missing_code_{position}"
+        if grouping_key in seen_codes:
+            continue
+        seen_codes.add(grouping_key)
+        selected_positions.append(position)
+        selected_set.add(position)
+        if len(selected_positions) >= limit:
+            return [entries[index] for index in selected_positions]
+
+    for position in range(len(entries)):
+        if position in selected_set:
+            continue
+        selected_positions.append(position)
+        if len(selected_positions) >= limit:
+            break
+    return [entries[index] for index in selected_positions]
+
+
+def _set_retrieval_metadata(
+    intent: dict,
+    *,
+    total_matches: int,
+    displayed: int,
+) -> None:
+    """Attach truthful result-size metadata for deterministic renderers."""
+
+    intent["retrieval_metadata"] = {
+        "total_matches": total_matches,
+        "displayed": displayed,
+        "truncated": total_matches > displayed,
+    }
+
+
 def retrieve_courses(
     enriched_index: list[dict],
     intent: dict,
@@ -478,6 +529,7 @@ def retrieve_courses(
     - 关键词命中不足 max_results → 返回实际命中，不用无关课程补齐
     - 加载某个 JSON 失败 → 跳过该课程，继续其他
     """
+    _set_retrieval_metadata(intent, total_matches=0, displayed=0)
     if (intent.get("query_type") or "").lower() in ("general", "stats"):
         return []
 
@@ -498,22 +550,22 @@ def retrieve_courses(
         # 剩下的都是主题词：必须命中课号/标题级别的相关度
         # (score >= 3)；只在 searchable_text 里蹭到一个泛化词不算。
         ranked = search_by_keywords(
-            candidates, keywords, limit=max_results, min_score=3
+            candidates, keywords, limit=len(candidates), min_score=3
         )
         if not ranked:
             return []
-        top_entries = ranked
+        ranked_entries = ranked
     else:
         # 无关键词又无结构化条件 -> 无锚点，返回空而不是整库前 N 门。
         if not has_structural:
             return []
         # 有结构化条件但没有区分性关键词（例如「有哪些计算机课」）：
         # 按课程质量排序，而不是原索引顺序（等价于课号字母序）。
-        top_entries = sort_by_quality(candidates)[:max_results]
+        ranked_entries = sort_by_quality(candidates)
 
     data_root = Path(courses_dir).parent
     detailed_courses: list[dict] = []
-    for entry in top_entries:
+    for entry in ranked_entries:
         rel_path = entry.get("path")
         if not rel_path:
             continue
@@ -542,4 +594,28 @@ def retrieve_courses(
         detail["matched_sections"] = [dict(section) for section in matched_detail_sections]
         detailed_courses.append(detail)
 
-    return detailed_courses
+    if (intent.get("suitability") or "").lower() == "beginner":
+        positive: list[tuple[int, int, dict]] = []
+        unknown: list[tuple[int, dict]] = []
+        for position, detail in enumerate(detailed_courses):
+            evidence = assess_beginner_suitability(detail)
+            detail["suitability"] = evidence.as_dict()
+            if evidence.status is SuitabilityStatus.POSITIVE:
+                positive.append((evidence.priority, position, detail))
+            elif evidence.status is SuitabilityStatus.UNKNOWN:
+                unknown.append((position, detail))
+            # Negative evidence is intentionally excluded for a beginner query.
+        positive.sort(key=lambda item: (item[0], item[1]))
+        eligible_courses = [detail for _, _, detail in positive]
+        eligible_courses.extend(detail for _, detail in unknown)
+    else:
+        eligible_courses = detailed_courses
+
+    limit = max(0, int(max_results))
+    selected = select_distinct_code_first(eligible_courses, limit)
+    _set_retrieval_metadata(
+        intent,
+        total_matches=len(eligible_courses),
+        displayed=len(selected),
+    )
+    return selected

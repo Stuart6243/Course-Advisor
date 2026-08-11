@@ -179,7 +179,7 @@ def _post_sse(base_url: str, conversation_id: str) -> list[dict[str, Any]]:
 
 
 def test_real_http_normal_sse_contract(live_sse_server: str) -> None:
-    groq = FakeStreamingProvider("normal ", "answer")
+    groq = FakeStreamingProvider("[S1] normal ", "answer")
     srv.app.state.groq = groq
     srv.app.state.ollama = FakeStreamingProvider(
         AssertionError("healthy Groq must not call Ollama")
@@ -197,8 +197,14 @@ def test_real_http_normal_sse_contract(live_sse_server: str) -> None:
     assert events[0]["provider"] == "groq"
     assert "".join(
         event["content"] for event in events if event["type"] == "chunk"
-    ) == "normal answer"
-    assert events[-2] == {"type": "sources", "courses": [COURSE_CODE]}
+    ) == "[S1] normal answer"
+    sources = events[-2]
+    assert sources["type"] == "sources"
+    assert sources["schema_version"] == 2
+    assert sources["courses"] == [COURSE_CODE]
+    assert [source["uid"] for source in sources["answer_sources"]] == [COURSE_UID]
+    assert sources["answer_sources"][0]["citation_status"] == "verified"
+    assert [source["uid"] for source in sources["prompt_basis"]] == [COURSE_UID]
     assert events[-1] == {
         "type": "done",
         "provider": "groq",
@@ -255,6 +261,11 @@ def test_real_http_partial_groq_resets_to_complete_ollama_history(
         "content": "Ollama complete answer",
     }
     assert "Groq partial" not in history[-1]["content"]
+    sources = next(event for event in events if event["type"] == "sources")
+    assert sources["schema_version"] == 2
+    assert sources["courses"] == []
+    assert sources["answer_sources"] == []
+    assert [source["uid"] for source in sources["prompt_basis"]] == [COURSE_UID]
     assert groq.calls == 1
     assert ollama.calls == 1
 

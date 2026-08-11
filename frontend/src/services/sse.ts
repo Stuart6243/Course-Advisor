@@ -1,3 +1,11 @@
+import type {
+  CourseCitationStatus,
+  CourseSource,
+  CourseSourceOffering,
+  CourseSourceRole,
+  CourseSourcesEvent,
+} from '../types';
+
 export type Provider = 'groq' | 'ollama' | 'deterministic';
 export type IntentProvider = 'rule' | 'groq' | 'ollama' | 'minimal';
 
@@ -25,10 +33,7 @@ export type StreamFallbackEvent = {
   reason: string;
 };
 
-export type StreamSourcesEvent = {
-  type: 'sources';
-  courses: string[];
-};
+export type StreamSourcesEvent = CourseSourcesEvent;
 
 export type StreamErrorEvent = {
   type: 'error';
@@ -101,6 +106,152 @@ const isIntentProvider = (value: unknown): value is IntentProvider =>
 
 const isNullableString = (value: unknown): value is string | null =>
   value === null || typeof value === 'string';
+
+const isNullableNonEmptyString = (value: unknown): value is string | null =>
+  value === null || isNonEmptyString(value);
+
+const SOURCE_ROLES = new Set<CourseSourceRole>(['answer_source', 'prompt_basis']);
+const CITATION_STATUSES = new Set<CourseCitationStatus>([
+  'verified',
+  'deterministic',
+  'candidate',
+]);
+
+const isSourceRole = (value: unknown): value is CourseSourceRole =>
+  typeof value === 'string' && SOURCE_ROLES.has(value as CourseSourceRole);
+
+const isCitationStatus = (value: unknown): value is CourseCitationStatus =>
+  typeof value === 'string' && CITATION_STATUSES.has(value as CourseCitationStatus);
+
+function validateOffering(value: unknown): CourseSourceOffering {
+  if (
+    !isRecord(value) ||
+    !isNullableNonEmptyString(value.term) ||
+    !isNullableNonEmptyString(value.section_id) ||
+    !isNullableNonEmptyString(value.meeting_time) ||
+    !isNullableNonEmptyString(value.location)
+  ) {
+    throw new SseProtocolError('The server sent an invalid course-source offering.');
+  }
+  return value as CourseSourceOffering;
+}
+
+function validateCourseSource(value: unknown, expectedRole: CourseSourceRole): CourseSource {
+  if (
+    !isRecord(value) ||
+    !isNonEmptyString(value.uid) ||
+    !isNonEmptyString(value.course_code) ||
+    !isNonEmptyString(value.title) ||
+    !isNonEmptyString(value.citation_label) ||
+    !/^S[1-9]\d*$/.test(value.citation_label) ||
+    !isNonEmptyString(value.source_label) ||
+    !isSourceRole(value.role) ||
+    !isCitationStatus(value.citation_status) ||
+    !Array.isArray(value.offerings) ||
+    value.role !== expectedRole
+  ) {
+    throw new SseProtocolError('The server sent an invalid structured course source.');
+  }
+
+  const validStatus =
+    expectedRole === 'answer_source'
+      ? value.citation_status === 'verified' || value.citation_status === 'deterministic'
+      : value.citation_status === 'candidate';
+  if (!validStatus) {
+    throw new SseProtocolError('The server sent an inconsistent course-source role.');
+  }
+
+  const offerings = value.offerings.map(validateOffering);
+  return {...value, offerings} as CourseSource;
+}
+
+function validateSourceArray(value: unknown, role: CourseSourceRole): CourseSource[] {
+  if (!Array.isArray(value)) {
+    throw new SseProtocolError('The server sent an invalid structured source list.');
+  }
+  const sources = value.map((item) => validateCourseSource(item, role));
+  const uids = new Set<string>();
+  for (const source of sources) {
+    if (uids.has(source.uid)) {
+      throw new SseProtocolError('The server sent duplicate course-source UIDs.');
+    }
+    uids.add(source.uid);
+  }
+  return sources;
+}
+
+function validateSourcesEvent(parsed: Record<string, unknown>): StreamSourcesEvent {
+  if (
+    !Array.isArray(parsed.courses) ||
+    !parsed.courses.every((item) => isNonEmptyString(item))
+  ) {
+    throw new SseProtocolError('The server sent invalid course sources.');
+  }
+
+  if (parsed.schema_version === undefined || parsed.schema_version === 1) {
+    if (parsed.answer_sources !== undefined || parsed.prompt_basis !== undefined) {
+      throw new SseProtocolError('The server sent an incomplete structured source event.');
+    }
+    return {
+      type: 'sources',
+      schema_version: 1,
+      courses: [...parsed.courses] as string[],
+    };
+  }
+
+  if (parsed.schema_version !== 2) {
+    throw new SseProtocolError('The server sent an unsupported source schema version.');
+  }
+
+  const answerSources = validateSourceArray(parsed.answer_sources, 'answer_source');
+  const promptBasis = validateSourceArray(parsed.prompt_basis, 'prompt_basis');
+  const basisByUid = new Map(promptBasis.map((source) => [source.uid, source]));
+  if (promptBasis.some((source, index) => source.citation_label !== `S${index + 1}`)) {
+    throw new SseProtocolError('Prompt-basis citation labels were not sequential.');
+  }
+  for (const source of answerSources) {
+    const basisSource = basisByUid.get(source.uid);
+    if (!basisSource) {
+      throw new SseProtocolError('An answer source was not present in the prompt basis.');
+    }
+    const offeringsMatch =
+      source.offerings.length === basisSource.offerings.length &&
+      source.offerings.every((offering, index) => {
+        const basisOffering = basisSource.offerings[index];
+        return (
+          offering.term === basisOffering.term &&
+          offering.section_id === basisOffering.section_id &&
+          offering.meeting_time === basisOffering.meeting_time &&
+          offering.location === basisOffering.location
+        );
+      });
+    if (
+      source.course_code !== basisSource.course_code ||
+      source.title !== basisSource.title ||
+      source.citation_label !== basisSource.citation_label ||
+      source.source_label !== basisSource.source_label ||
+      !offeringsMatch
+    ) {
+      throw new SseProtocolError('An answer source did not match its prompt-basis record.');
+    }
+  }
+
+  const courses = parsed.courses as string[];
+  if (
+    courses.length !== answerSources.length ||
+    courses.some((courseCode, index) => courseCode !== answerSources[index].course_code)
+  ) {
+    throw new SseProtocolError('The legacy source mirror did not match the answer sources.');
+  }
+
+  return {
+    type: 'sources',
+    schema_version: 2,
+    courses: [...courses],
+    answer_sources: answerSources,
+    prompt_basis: promptBasis,
+  };
+}
 
 function validateMetaEvent(parsed: Record<string, unknown>): StreamMetaEvent {
   if (
@@ -179,13 +330,7 @@ function parseEventPayload(payload: string): ChatStreamEvent {
       }
       return parsed as StreamFallbackEvent;
     case 'sources':
-      if (
-        !Array.isArray(parsed.courses) ||
-        !parsed.courses.every((item) => isNonEmptyString(item))
-      ) {
-        throw new SseProtocolError('The server sent invalid course sources.');
-      }
-      return parsed as StreamSourcesEvent;
+      return validateSourcesEvent(parsed);
     case 'error':
       if (typeof parsed.message !== 'string' || !parsed.message.trim()) {
         throw new SseProtocolError('The server sent an invalid error event.');

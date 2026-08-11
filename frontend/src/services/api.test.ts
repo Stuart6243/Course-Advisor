@@ -139,7 +139,109 @@ describe('sendMessageStream state machine', () => {
       expect.objectContaining({action: 'reset', from: 'groq', to: 'ollama'}),
     );
     expect(handlers.onDone).toHaveBeenCalledTimes(1);
+    expect(handlers.onSources).toHaveBeenCalledWith({
+      type: 'sources',
+      schema_version: 1,
+      courses: ['COMS W4111'],
+    });
     expect(handlers.onError).not.toHaveBeenCalled();
+  });
+
+  it('delivers a validated structured v2 source event', async () => {
+    const source = {
+      uid: 'uid-1',
+      course_code: 'COMS W1004',
+      title: 'Introduction to Computer Science and Programming in Java',
+      citation_label: 'S1',
+      source_label: 'Columbia Engineering Bulletin 2025–2026',
+      offerings: [
+        {
+          term: 'Fall 2025',
+          section_id: '001/10001',
+          meeting_time: null,
+          location: null,
+        },
+      ],
+    };
+    const sourceEvent = {
+      type: 'sources',
+      schema_version: 2,
+      courses: ['COMS W1004'],
+      answer_sources: [
+        {...source, role: 'answer_source', citation_status: 'deterministic'},
+      ],
+      prompt_basis: [{...source, role: 'prompt_basis', citation_status: 'candidate'}],
+    };
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        responseFor(
+          META,
+          'data: {"type":"chunk","content":"answer"}\n\n',
+          `data: ${JSON.stringify(sourceEvent)}\n\n`,
+          GROQ_DONE,
+        ),
+      ),
+    );
+    const handlers = callbacks();
+
+    await sendMessageStream('q', 'c', 'en', undefined, handlers);
+
+    expect(handlers.onSources).toHaveBeenCalledWith(sourceEvent);
+    expect(handlers.onDone).toHaveBeenCalledTimes(1);
+    expect(handlers.onError).not.toHaveBeenCalled();
+  });
+
+  it('fails closed when a v2 legacy mirror does not match answer sources', async () => {
+    const invalidSources = {
+      type: 'sources',
+      schema_version: 2,
+      courses: ['WRONG E1000'],
+      answer_sources: [
+        {
+          uid: 'uid-1',
+          course_code: 'COMS W1004',
+          title: 'Intro',
+          citation_label: 'S1',
+          source_label: 'Bulletin',
+          role: 'answer_source',
+          citation_status: 'verified',
+          offerings: [],
+        },
+      ],
+      prompt_basis: [
+        {
+          uid: 'uid-1',
+          course_code: 'COMS W1004',
+          title: 'Intro',
+          citation_label: 'S1',
+          source_label: 'Bulletin',
+          role: 'prompt_basis',
+          citation_status: 'candidate',
+          offerings: [],
+        },
+      ],
+    };
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        responseFor(
+          META,
+          'data: {"type":"chunk","content":"answer"}\n\n',
+          `data: ${JSON.stringify(invalidSources)}\n\n`,
+          GROQ_DONE,
+        ),
+      ),
+    );
+    const handlers = callbacks();
+
+    await sendMessageStream('q', 'c', 'en', undefined, handlers);
+
+    expect(handlers.onDone).not.toHaveBeenCalled();
+    expect(handlers.onSources).not.toHaveBeenCalled();
+    expect(handlers.onError).toHaveBeenCalledWith(
+      expect.objectContaining({code: 'protocol_error'}),
+    );
   });
 
   it('treats EOF without done as an interrupted error', async () => {

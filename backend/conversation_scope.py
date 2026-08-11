@@ -47,6 +47,7 @@ class ConversationScope:
     ordinal: int | None = None
     ordinals: tuple[int, ...] = ()
     uses_focus: bool = False
+    reference_count: int | None = None
 
     def as_dict(self) -> dict:
         return {
@@ -56,6 +57,7 @@ class ConversationScope:
             "ordinal": self.ordinal,
             "ordinals": list(self.ordinals),
             "uses_focus": self.uses_focus,
+            "reference_count": self.reference_count,
         }
 
 
@@ -149,6 +151,7 @@ _PLURAL_REFERENCE_RE = re.compile(
     r"entre\s+estos|de\s+estos|los\s+cinco|anteriores|"
     r"ces\s+cours|ceux|celles|parmi\s+ces|parmi\s+eux|les\s+cinq|precedents?)\b|"
     r"这些(?:课|课程)?|那些(?:课|课程)?|这五门|那五门|这几门|那几门|"
+    r"这(?:两|二)(?:个课|门课?|门课程)|那(?:两|二)(?:个课|门课?|门课程)|"
     r"它们|他们|其中|当中|上面(?:的)?|前面(?:的)?"
 )
 _SINGULAR_REFERENCE_RE = re.compile(
@@ -233,6 +236,19 @@ _ORDINAL_WORD_RE = re.compile(
 _ORDINAL_NUMBER_RE = re.compile(r"\b(?P<number>\d{1,2})(?:st|nd|rd|th)\b")
 _CHINESE_ORDINAL_RE = re.compile(r"第(?P<number>\d{1,2}|[一二两三四五六七八九十])(?:门|个|项)?")
 
+_TWO_REFERENCE_RE = re.compile(
+    r"\b(?:"
+    r"(?:these|those)\s+two\s+(?:courses?|classes?)|"
+    r"the\s+two\s+(?:courses?|classes?)|"
+    r"both(?:\s+of\s+(?:these|those))?\s+(?:courses?|classes?)|"
+    r"(?:these|those)\s+two(?=\s*(?:[?.!,;:]|$))|"
+    r"(?:ambos\s+cursos?|ambas\s+clases?|estos\s+dos\s+cursos?|"
+    r"estas\s+dos\s+clases?)|"
+    r"(?:ces\s+deux\s+cours|tous\s+les\s+deux\s+cours)"
+    r")\b|"
+    r"这(?:两|二)(?:个课|门课?|门课程)|那(?:两|二)(?:个课|门课?|门课程)"
+)
+
 
 def _extract_ordinals(text: str) -> tuple[int, ...]:
     located: list[tuple[int, int]] = []
@@ -251,6 +267,17 @@ def _extract_ordinals(text: str) -> tuple[int, ...]:
         if value not in result:
             result.append(value)
     return tuple(result)
+
+
+def _extract_reference_count(text: str) -> int | None:
+    """Return an explicitly requested prior-result count.
+
+    Counted references are intentionally stricter than generic plurals.  The
+    server uses this value as a hard binding contract, so an explicit "two"
+    can never be implemented by silently slicing a larger result set.
+    """
+
+    return 2 if _TWO_REFERENCE_RE.search(text) else None
 
 
 def _attribute(text: str) -> Attribute | None:
@@ -298,20 +325,41 @@ def parse_conversation_scope(
     operation = _operation(folded)
     ordinals = _extract_ordinals(folded)
     ordinal = ordinals[0] if ordinals else None
+    reference_count = _extract_reference_count(folded)
+    explicit_code = bool(extract_course_codes(text))
+
+    # Explicit course identities always describe a new query, even on the
+    # first turn.  This check must precede the no-history branch because the
+    # server treats a non-null reference_count as a hard no-retrieval contract.
+    if explicit_code or force_new_search:
+        return ConversationScope(
+            Scope.NEW_SEARCH, attribute, operation, ordinal, ordinals, False, None
+        )
 
     if previous_count <= 0:
         return ConversationScope(
-            Scope.NEW_SEARCH, attribute, operation, ordinal, ordinals, False
+            Scope.NEW_SEARCH,
+            attribute,
+            operation,
+            ordinal,
+            ordinals,
+            False,
+            reference_count,
         )
 
     plural_reference = bool(_PLURAL_REFERENCE_RE.search(folded))
     singular_reference = bool(_SINGULAR_REFERENCE_RE.search(folded))
     which_one = bool(_WHICH_ONE_RE.search(folded))
-    explicit_code = bool(extract_course_codes(text))
 
-    if explicit_code or force_new_search:
+    if reference_count is not None:
         return ConversationScope(
-            Scope.NEW_SEARCH, attribute, operation, ordinal, ordinals, False
+            Scope.PREVIOUS_RESULTS,
+            attribute,
+            operation,
+            ordinal,
+            ordinals,
+            False,
+            reference_count,
         )
 
     uses_focus = has_current_focus and singular_reference

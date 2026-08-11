@@ -34,6 +34,7 @@ from query_parser import (
 
 
 COURSE = {
+    "course_uid": "uid-coms-w4111",
     "course_code": "COMS W4111",
     "title": "Introduction to Databases",
     "points_raw": "3 points",
@@ -105,7 +106,7 @@ def _post(client: TestClient, conversation_id: str = "phase-a"):
 
 def test_partial_groq_failure_resets_then_saves_only_complete_ollama(chat_client):
     groq = ScriptedClient(
-        stream=["Groq ", "partial ", "answer", TimeoutError("timed out")]
+        stream=["[S1] Groq ", "partial ", "answer", TimeoutError("timed out")]
     )
     ollama = ScriptedClient(stream=["Ollama ", "complete answer"])
     chat_client.app.state.groq = groq
@@ -144,6 +145,12 @@ def test_partial_groq_failure_resets_then_saves_only_complete_ollama(chat_client
     history = chat_client.app.state.conversations["partial-success"]
     assert history[-1] == {"role": "assistant", "content": "Ollama complete answer"}
     assert "Groq" not in history[-1]["content"]
+    sources = next(event for event in events if event["type"] == "sources")
+    assert sources["answer_sources"] == []
+    assert sources["courses"] == []
+    assert chat_client.app.state.conversations_meta["partial-success"][
+        "last_answer_sources"
+    ] == []
 
 
 @pytest.mark.parametrize(
@@ -192,6 +199,36 @@ def test_failed_ollama_fallback_returns_recoverable_groq_partial_no_done(chat_cl
     assert "fallback-failed" not in chat_client.app.state.conversations
 
 
+def test_failed_turn_never_mutates_existing_history_or_source_state(chat_client):
+    cid = "preserve-completed-state"
+    prior_history = [
+        {"role": "user", "content": "old question"},
+        {"role": "assistant", "content": "old complete answer"},
+    ]
+    prior_meta = {
+        "last_intent": {"query_type": "detail"},
+        "last_answer_sources": [COURSE["course_uid"]],
+        "result_scope_courses": [dict(COURSE)],
+        "current_course_uid": COURSE["course_uid"],
+        "revision": 7,
+    }
+    chat_client.app.state.conversations[cid] = list(prior_history)
+    chat_client.app.state.conversations_meta[cid] = dict(prior_meta)
+    chat_client.app.state.groq = ScriptedClient(
+        stream=["bad partial", RuntimeError("primary failed")]
+    )
+    chat_client.app.state.ollama = ScriptedClient(
+        stream=["also partial", RuntimeError("fallback failed")]
+    )
+
+    events = _events(_post(chat_client, cid))
+
+    assert events[-1]["type"] == "error"
+    assert not any(event["type"] in {"sources", "done"} for event in events)
+    assert chat_client.app.state.conversations[cid] == prior_history
+    assert chat_client.app.state.conversations_meta[cid] == prior_meta
+
+
 def test_cancelled_primary_does_not_invoke_fallback_or_write_history(monkeypatch):
     monkeypatch.setattr(config, "WARMUP_ON_STARTUP", False)
     monkeypatch.setattr(config, "INFERENCE_MODE", "hybrid")
@@ -229,6 +266,27 @@ def test_sse_meta_contract_contains_provider_and_intent_provenance(chat_client):
         "intent_fallback_used": False,
         "intent_fallback_reason": None,
     }
+
+
+def test_math_scope_notice_cannot_turn_empty_provider_output_into_success(chat_client):
+    chat_client.app.state.groq = ScriptedClient(stream=[])
+    chat_client.app.state.ollama = ScriptedClient(stream=["must not run"])
+
+    response = chat_client.post(
+        "/api/chat",
+        json={
+            "message": "Show mathematics courses",
+            "conversation_id": "empty-math-provider",
+            "language": "en",
+        },
+    )
+    events = _events(response)
+    types = [event["type"] for event in events]
+
+    assert types[-1] == "error"
+    assert "sources" not in types
+    assert "done" not in types
+    assert "empty-math-provider" not in chat_client.app.state.conversations
 
 
 def test_server_intent_groq_to_ollama_metadata_and_models(chat_client, monkeypatch):

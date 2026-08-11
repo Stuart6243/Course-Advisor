@@ -44,12 +44,22 @@ from groq_client import GroqClient
 from ollama_client import OllamaClient
 from prerequisites import compare_course_prerequisites
 from provider_errors import classify_provider_failure
-from query_parser import IntentExtractionResult, extract_query_intent_result
+from query_parser import DEFAULT_INTENT, IntentExtractionResult, extract_query_intent_result
 from response_generator import (
+    format_fact_collection_answer,
+    format_course_list_answer,
+    format_math_scope_notice,
     format_prerequisite_answer,
+    format_reference_count_mismatch,
+    format_schedule_answer,
+    format_suitability_answer,
     generate_response_stream,
     is_conversation_recall_query,
     select_courses_for_context,
+)
+from source_contract import (
+    build_sources_event,
+    extract_answer_source_uids,
 )
 from syllabus_store import SyllabusStore, apply_published_overlays
 
@@ -285,14 +295,80 @@ def _resolve_focus_course(
     return None
 
 
+def _strict_course_uid(course: dict) -> str:
+    """Return the catalog UID without falling back to the non-unique code."""
+
+    return str(course.get("course_uid") or "").strip()
+
+
+def _resolve_counted_answer_sources(
+    previous_courses: list[dict],
+    *,
+    reference_count: int,
+    last_answer_source_uids: object,
+    has_last_answer_sources: bool,
+) -> list[dict] | None:
+    """Bind a counted reference to the previous completed answer's exact UIDs.
+
+    New-protocol state is authoritative even when it is empty or malformed.
+    Legacy state may fall back to the prior result scope only when that scope
+    itself has exactly the requested size.  Neither path ever truncates.
+    """
+
+    if has_last_answer_sources:
+        if not isinstance(last_answer_source_uids, list):
+            return None
+        wanted = [str(uid).strip() for uid in last_answer_source_uids]
+        if (
+            len(wanted) != reference_count
+            or any(not uid for uid in wanted)
+            or len(set(wanted)) != len(wanted)
+        ):
+            return None
+    else:
+        if len(previous_courses) != reference_count:
+            return None
+        wanted = [_strict_course_uid(course) for course in previous_courses]
+        if any(not uid for uid in wanted) or len(set(wanted)) != len(wanted):
+            return None
+
+    by_uid: dict[str, list[dict]] = {}
+    for course in previous_courses:
+        uid = _strict_course_uid(course)
+        if uid:
+            by_uid.setdefault(uid, []).append(course)
+
+    selected: list[dict] = []
+    for uid in wanted:
+        matches = by_uid.get(uid) or []
+        if len(matches) != 1:
+            return None
+        selected.append(matches[0])
+    return selected
+
+
 def _courses_for_conversation_scope(
     parsed_scope: ConversationScope,
     previous_courses: list[dict],
     current_course: dict | None,
+    *,
+    last_answer_source_uids: object = None,
+    has_last_answer_sources: bool = False,
 ) -> tuple[list[dict], dict | None, str | None]:
     """Resolve previous-result ordinals/focus without touching the catalog."""
     if parsed_scope.scope is Scope.NEW_SEARCH:
         return [], current_course, None
+
+    if parsed_scope.reference_count is not None:
+        selected = _resolve_counted_answer_sources(
+            previous_courses,
+            reference_count=parsed_scope.reference_count,
+            last_answer_source_uids=last_answer_source_uids,
+            has_last_answer_sources=has_last_answer_sources,
+        )
+        if selected is None:
+            return [], current_course, "reference_count_mismatch"
+        return selected, current_course, None
 
     if parsed_scope.scope is Scope.CURRENT_COURSE:
         selected: dict | None = None
@@ -377,6 +453,76 @@ def _trim_conversation_history(
         break
 
     return [message for turn in reversed(selected) for message in turn]
+
+
+class _ConversationTurnLock:
+    """One short-lived per-conversation lock plus its holder/waiter count."""
+
+    __slots__ = ("lock", "users")
+
+    def __init__(self) -> None:
+        self.lock = asyncio.Lock()
+        self.users = 0
+
+
+def _conversation_lock_registry(
+    application: FastAPI,
+) -> dict[str, _ConversationTurnLock]:
+    """Return the app-local lock registry, initializing legacy test apps lazily."""
+
+    registry = getattr(application.state, "conversation_locks", None)
+    if not isinstance(registry, dict):
+        registry = {}
+        application.state.conversation_locks = registry
+    return registry
+
+
+def _evict_inactive_conversations(application: FastAPI) -> None:
+    """Apply the LRU cap without evicting a conversation that is mid-turn.
+
+    If the oldest session is active, eviction is deferred.  Its lock cleanup
+    calls this helper again, preserving LRU order instead of evicting a newer
+    completed session merely because the true oldest one is still streaming.
+    """
+
+    convos = getattr(application.state, "conversations", None)
+    convos_meta = getattr(application.state, "conversations_meta", None)
+    if not isinstance(convos, OrderedDict) or not isinstance(
+        convos_meta, OrderedDict
+    ):
+        return
+    registry = _conversation_lock_registry(application)
+    while len(convos) > config.CONVERSATION_MAX_SESSIONS:
+        oldest_cid = next(iter(convos))
+        active = registry.get(oldest_cid)
+        if active is not None and active.users > 0:
+            return
+        convos.pop(oldest_cid, None)
+        convos_meta.pop(oldest_cid, None)
+
+
+@asynccontextmanager
+async def _serialized_conversation_turn(application: FastAPI, cid: str):
+    """Serialize state read through terminal commit for one conversation ID."""
+
+    registry = _conversation_lock_registry(application)
+    entry = registry.get(cid)
+    if entry is None:
+        entry = _ConversationTurnLock()
+        registry[cid] = entry
+    entry.users += 1
+    acquired = False
+    try:
+        await entry.lock.acquire()
+        acquired = True
+        yield
+    finally:
+        if acquired:
+            entry.lock.release()
+        entry.users -= 1
+        if entry.users == 0 and registry.get(cid) is entry:
+            registry.pop(cid, None)
+            _evict_inactive_conversations(application)
 
 
 IMPORT_READ_CHUNK_BYTES = 1024 * 1024
@@ -474,6 +620,7 @@ async def lifespan(app: FastAPI):
     app.state.import_lock = asyncio.Lock()
     app.state.conversations: OrderedDict[str, list[dict[str, str]]] = OrderedDict()
     app.state.conversations_meta: OrderedDict[str, dict[str, Any]] = OrderedDict()
+    app.state.conversation_locks: dict[str, _ConversationTurnLock] = {}
 
     groq_available = await app.state.groq.is_available()
     if groq_available:
@@ -538,6 +685,7 @@ async def lifespan(app: FastAPI):
         app.state.import_lock = None
         app.state.conversations = OrderedDict()
         app.state.conversations_meta = OrderedDict()
+        app.state.conversation_locks = {}
 
 
 app = FastAPI(lifespan=lifespan)
@@ -624,6 +772,22 @@ async def _extract_intent_for_request(
         fallback_source="ollama",
         timeout=config.INTENT_TIMEOUT,
     )
+
+
+def _counted_reference_intent(
+    message: str,
+    parsed_scope: ConversationScope,
+) -> IntentExtractionResult:
+    """Build the intent for a hard counted reference without a model call."""
+
+    intent = copy.deepcopy(DEFAULT_INTENT)
+    intent["query_type"] = (
+        "schedule"
+        if parsed_scope.attribute is ScopeAttribute.SCHEDULE
+        else "search"
+    )
+    intent["original_question"] = message
+    return IntentExtractionResult(intent=intent, source="rule")
 
 
 def _fallback_reason(exc: Exception) -> str:
@@ -742,13 +906,16 @@ def _format_stats_message(index_data: list[dict], language: str) -> str:
 
 @app.post("/api/chat")
 async def chat(payload: ChatRequest, request: Request):
-    async def stream():
+    async def locked_stream():
         response_provider = "deterministic"
         actual_provider = response_provider
         fallback_used = False
         fallback_reason: str | None = None
         full_response = ""
         deterministic_response: str | None = None
+        deterministic_answer_uses_basis = False
+        answer_source_uids: list[str] = []
+        source_event: dict[str, Any] | None = None
 
         async def client_disconnected() -> bool:
             try:
@@ -785,21 +952,46 @@ async def chat(payload: ChatRequest, request: Request):
                 max_chars=config.CONVERSATION_MAX_CHARS - len(payload.message),
             )
 
-            intent_result = await _extract_intent_for_request(payload, request)
+            # Canonical conversation state keeps the prior result universe,
+            # the exact UIDs used by the completed answer, and the singular
+            # focus separate.  Old keys remain read-only migration fallbacks.
+            raw_result_scope = (
+                conversation_meta.get("result_scope_courses")
+                if "result_scope_courses" in conversation_meta
+                else conversation_meta.get("last_courses")
+            )
+            prev_courses = [
+                course
+                for course in (raw_result_scope or [])
+                if isinstance(course, dict)
+            ]
+            has_last_answer_sources = "last_answer_sources" in conversation_meta
+            last_answer_source_uids = conversation_meta.get("last_answer_sources")
+            current_course = _resolve_focus_course(
+                conversation_meta.get("current_course_uid")
+                if "current_course_uid" in conversation_meta
+                else conversation_meta.get("current_course"),
+                prev_courses,
+            )
+            revision = int(conversation_meta.get("revision") or 0)
+
+            # Counted references are parsed before intent extraction.  The two
+            # hard Chinese forms therefore never depend on Groq/Ollama and can
+            # never accidentally launch a new catalog search.
+            pre_scope = parse_conversation_scope(
+                payload.message,
+                previous_count=len(prev_courses),
+                has_current_focus=current_course is not None,
+                new_search_anchor=False,
+            )
+            if pre_scope.reference_count is not None:
+                intent_result = _counted_reference_intent(payload.message, pre_scope)
+            else:
+                intent_result = await _extract_intent_for_request(payload, request)
             intent = intent_result.intent
             is_stats_query = (intent.get("query_type") or "").lower() == "stats"
             messages_for_llm = history + [{"role": "user", "content": payload.message}]
-            is_followup = len(history) >= 2
             recall_query = is_conversation_recall_query(intent, messages_for_llm)
-            prev_courses = [
-                course
-                for course in (conversation_meta.get("last_courses") or [])
-                if isinstance(course, dict)
-            ]
-            current_course = _resolve_focus_course(
-                conversation_meta.get("current_course"), prev_courses
-            )
-            revision = int(conversation_meta.get("revision") or 0)
             # Capture explicit anchors before contextual department inheritance;
             # inherited state must not masquerade as a new user-provided topic.
             new_search_anchor = _intent_has_new_search_anchor(intent)
@@ -818,12 +1010,16 @@ async def chat(payload: ChatRequest, request: Request):
                     # inherited context, rather than a detail about old results.
                     new_search_anchor = True
 
-            parsed_scope = parse_conversation_scope(
-                payload.message,
-                previous_count=len(prev_courses),
-                has_current_focus=current_course is not None,
-                new_search_anchor=new_search_anchor,
-                force_new_search=ambiguous_recommend,
+            parsed_scope = (
+                pre_scope
+                if pre_scope.reference_count is not None and not ambiguous_recommend
+                else parse_conversation_scope(
+                    payload.message,
+                    previous_count=len(prev_courses),
+                    has_current_focus=current_course is not None,
+                    new_search_anchor=new_search_anchor,
+                    force_new_search=ambiguous_recommend,
+                )
             )
             intent["conversation_scope"] = parsed_scope.as_dict()
             scope_error: str | None = None
@@ -843,10 +1039,19 @@ async def chat(payload: ChatRequest, request: Request):
                 if recall_query:
                     courses = []
                     reused_previous_results = True
+                elif parsed_scope.reference_count is not None and not prev_courses:
+                    courses = []
+                    reused_previous_results = True
+                    scope_error = "reference_count_mismatch"
+                    intent["scope_error"] = scope_error
                 elif parsed_scope.scope is not Scope.NEW_SEARCH:
                     reused_previous_results = True
                     courses, next_current_course, scope_error = _courses_for_conversation_scope(
-                        parsed_scope, prev_courses, current_course
+                        parsed_scope,
+                        prev_courses,
+                        current_course,
+                        last_answer_source_uids=last_answer_source_uids,
+                        has_last_answer_sources=has_last_answer_sources,
                     )
                     if scope_error:
                         intent["scope_error"] = scope_error
@@ -859,7 +1064,34 @@ async def chat(payload: ChatRequest, request: Request):
                     )
                     next_current_course = courses[0] if len(courses) == 1 else None
 
-                prompt_basis = select_courses_for_context(courses, max_results)
+                # A counted reference is an exact binding, not a fresh result
+                # list, so a lower per-request max_results setting must not
+                # truncate the referenced pair.
+                prompt_basis = (
+                    list(courses)
+                    if parsed_scope.reference_count is not None
+                    else select_courses_for_context(courses, max_results)
+                )
+                # Retrieval metadata normally comes from course_retriever, but
+                # a follow-up can apply a lower max_results limit to a larger
+                # preserved result scope.  Record that truncation explicitly
+                # so deterministic renderers never imply the short basis is
+                # exhaustive.
+                if len(courses) > len(prompt_basis):
+                    retrieval_metadata = intent.get("retrieval_metadata")
+                    if not isinstance(retrieval_metadata, dict):
+                        retrieval_metadata = {}
+                    metadata_total = retrieval_metadata.get("total_matches")
+                    if not isinstance(metadata_total, int) or isinstance(
+                        metadata_total, bool
+                    ):
+                        metadata_total = 0
+                    intent["retrieval_metadata"] = {
+                        **retrieval_metadata,
+                        "total_matches": max(len(courses), metadata_total),
+                        "displayed": len(prompt_basis),
+                        "truncated": True,
+                    }
                 if (
                     parsed_scope.attribute is ScopeAttribute.PREREQUISITES
                     and parsed_scope.operation
@@ -901,14 +1133,89 @@ async def chat(payload: ChatRequest, request: Request):
                     elif comparison.tied:
                         next_current_course = None
 
-                if parsed_scope.attribute is ScopeAttribute.PREREQUISITES:
+                if scope_error == "reference_count_mismatch":
                     response_client = None
                     fallback_client = None
                     response_provider = "deterministic"
+                    deterministic_response = format_reference_count_mismatch(
+                        payload.language, parsed_scope.reference_count or 2
+                    )
+                elif intent.get("suitability") == "beginner":
+                    response_client = None
+                    fallback_client = None
+                    response_provider = "deterministic"
+                    deterministic_answer_uses_basis = True
+                    deterministic_response = format_suitability_answer(
+                        prompt_basis, payload.language, intent=intent
+                    )
+                elif parsed_scope.attribute is ScopeAttribute.PREREQUISITES:
+                    response_client = None
+                    fallback_client = None
+                    response_provider = "deterministic"
+                    deterministic_answer_uses_basis = True
                     deterministic_response = format_prerequisite_answer(
                         prompt_basis,
                         payload.language,
                         operation=parsed_scope.operation.value,
+                        intent=intent,
+                    )
+                elif (
+                    parsed_scope.attribute is ScopeAttribute.SCHEDULE
+                    or bool(intent.get("day_preference"))
+                    or (intent.get("query_type") or "").lower() == "schedule"
+                ):
+                    response_client = None
+                    fallback_client = None
+                    response_provider = "deterministic"
+                    deterministic_answer_uses_basis = True
+                    deterministic_response = format_schedule_answer(
+                        prompt_basis, payload.language, intent=intent
+                    )
+                elif (
+                    parsed_scope.attribute
+                    in {
+                        ScopeAttribute.CREDITS,
+                        ScopeAttribute.INSTRUCTOR,
+                        ScopeAttribute.ENROLLMENT,
+                    }
+                    or (
+                        len(prompt_basis) > 1
+                        and parsed_scope.attribute
+                        in {
+                            ScopeAttribute.DESCRIPTION,
+                            ScopeAttribute.DIFFICULTY,
+                        }
+                    )
+                ):
+                    response_client = None
+                    fallback_client = None
+                    response_provider = "deterministic"
+                    deterministic_answer_uses_basis = True
+                    deterministic_response = format_fact_collection_answer(
+                        prompt_basis,
+                        payload.language,
+                        attribute=parsed_scope.attribute.value,
+                        intent=intent,
+                    )
+                elif (
+                    prompt_basis
+                    and not recall_query
+                    and (
+                        len(prompt_basis) > 1
+                        and (intent.get("query_type") or "").lower()
+                        in {"search", "recommend"}
+                        or parsed_scope.operation is ScopeOperation.LIST
+                    )
+                ):
+                    # Multi-row collection answers are local so every basis UID
+                    # appears exactly once and cannot be silently omitted by an
+                    # LLM while still being advertised as a source.
+                    response_client = None
+                    fallback_client = None
+                    response_provider = "deterministic"
+                    deterministic_answer_uses_basis = True
+                    deterministic_response = format_course_list_answer(
+                        prompt_basis, payload.language, intent=intent
                     )
                 else:
                     response_client, response_provider = await get_llm_client(
@@ -1008,6 +1315,8 @@ async def chat(payload: ChatRequest, request: Request):
                     # Reset the server accumulator at the same boundary as the frontend.
                     # The fallback receives the same prompt/history and generates from zero.
                     full_response = ""
+                    answer_source_uids = []
+                    source_event = None
                     try:
                         async for chunk in generate_response_stream(
                             intent=intent,
@@ -1044,48 +1353,80 @@ async def chat(payload: ChatRequest, request: Request):
                         yield f"data: {json.dumps(error_event, ensure_ascii=False)}\n\n"
                         return
 
+            # A supplemental scope notice cannot turn an empty provider result
+            # into a successful answer.  Validate the completed primary or
+            # fallback body before appending any deterministic notice.
+            if not full_response.strip():
+                raise RuntimeError("response completed without content")
+
+            if (
+                response_provider != "deterministic"
+                and intent.get("department_defaulted_from") == "mathematics"
+            ):
+                scope_notice = f"\n\n_{format_math_scope_notice(payload.language)}_"
+                full_response += scope_notice
+                yield f"data: {json.dumps({'type': 'chunk', 'content': scope_notice}, ensure_ascii=False)}\n\n"
+
             if await client_disconnected():
                 return
 
-            # 回答完成后更新会话历史和 meta。
-            # 注意：这里基于「写回时的最新历史」追加，而不是请求开始时读到的快照。
-            # 否则同一 conversation_id 并发两条消息时，后写会覆盖先写（lost update）。
-            latest = convos.get(cid, [])
-            history = list(latest) if len(latest) >= len(history) else history
+            # Source finalization is based only on the final complete provider.
+            # Groq partial text is never parsed, and reset clears every source
+            # accumulator before Ollama starts.
+            if deterministic_answer_uses_basis:
+                answer_source_uids = [
+                    uid
+                    for course in prompt_basis
+                    if (uid := _strict_course_uid(course))
+                ]
+                citation_status = "deterministic"
+            elif response_provider == "deterministic":
+                answer_source_uids = []
+                citation_status = "deterministic"
+            else:
+                answer_source_uids = extract_answer_source_uids(
+                    full_response, prompt_basis
+                )
+                citation_status = "verified"
+            source_event = build_sources_event(
+                prompt_basis,
+                answer_source_uids,
+                citation_status=citation_status,
+            )
+
+            # Stage the next state locally.  The per-conversation lock makes the
+            # request-start snapshot authoritative; no other turn for this CID
+            # can read or write state until the terminal commit below.
             history.append({"role": "user", "content": payload.message})
             history.append({"role": "assistant", "content": full_response})
             history = _trim_conversation_history(
                 history, max_turns=max_history_turns
             )
 
-            convos[cid] = history
-            convos.move_to_end(cid)
             if is_stats_query or reused_previous_results:
-                next_last_courses = prev_courses
+                next_result_scope = prev_courses
             else:
                 # A genuine zero-result new search clears stale results instead
                 # of making the next pronoun refer to an older unrelated query.
-                next_last_courses = prompt_basis
-            focus_code = ""
-            if isinstance(next_current_course, dict):
-                focus_code = _course_identity(next_current_course)
-            convos_meta[cid] = {
-                "last_intent": dict(intent),
-                "last_courses": next_last_courses,
-                "current_course": focus_code or None,
-                "revision": revision + 1,
-            }
-            convos_meta.move_to_end(cid)
-            while len(convos) > config.CONVERSATION_MAX_SESSIONS:
-                old_cid, _ = convos.popitem(last=False)
-                convos_meta.pop(old_cid, None)
+                next_result_scope = list(courses)
 
-            source_codes: list[str] = []
-            for course in prompt_basis:
-                code = (course.get("course_code") or "").strip()
-                if code:
-                    source_codes.append(code)
-            yield f"data: {json.dumps({'type': 'sources', 'courses': source_codes}, ensure_ascii=False)}\n\n"
+            if next_current_course is None and len(answer_source_uids) == 1:
+                wanted_uid = answer_source_uids[0]
+                next_current_course = next(
+                    (
+                        course
+                        for course in prompt_basis
+                        if _strict_course_uid(course) == wanted_uid
+                    ),
+                    None,
+                )
+            focus_uid = ""
+            if isinstance(next_current_course, dict):
+                focus_uid = _strict_course_uid(next_current_course)
+
+            if source_event is None:  # pragma: no cover - guarded by finalization
+                raise RuntimeError("source finalization did not complete")
+            yield f"data: {json.dumps(source_event, ensure_ascii=False)}\n\n"
             done_event = {
                 "type": "done",
                 "provider": actual_provider,
@@ -1093,6 +1434,28 @@ async def chat(payload: ChatRequest, request: Request):
                 "fallback_reason": fallback_reason,
             }
             yield f"data: {json.dumps(done_event, ensure_ascii=False)}\n\n"
+
+            # Reaching this line means the streaming consumer resumed the
+            # generator after successfully handling the terminal ``done`` event.
+            # Closing/cancelling at any earlier yield leaves both state maps
+            # untouched.  The surrounding per-CID lock is still held here.
+            convos[cid] = history
+            convos.move_to_end(cid)
+            convos_meta[cid] = {
+                "last_intent": dict(intent),
+                "last_answer_sources": list(answer_source_uids),
+                "result_scope_courses": next_result_scope,
+                "current_course_uid": focus_uid or None,
+                # Read compatibility for older in-process clients/tests.  New
+                # requests always prefer the canonical keys above.
+                "last_courses": next_result_scope,
+                "current_course": _course_identity(next_current_course)
+                if isinstance(next_current_course, dict)
+                else None,
+                "revision": revision + 1,
+            }
+            convos_meta.move_to_end(cid)
+            _evict_inactive_conversations(request.app)
         except asyncio.CancelledError:
             raise
         except Exception as exc:
@@ -1112,6 +1475,16 @@ async def chat(payload: ChatRequest, request: Request):
                 error_event["partial_content"] = full_response
                 error_event["partial_provider"] = actual_provider
             yield f"data: {json.dumps(error_event, ensure_ascii=False)}\n\n"
+
+    async def stream():
+        cid = (payload.conversation_id or "").strip() or "default"
+        async with _serialized_conversation_turn(request.app, cid):
+            generator = locked_stream()
+            try:
+                async for event in generator:
+                    yield event
+            finally:
+                await generator.aclose()
 
     return StreamingResponse(stream(), media_type="text/event-stream")
 

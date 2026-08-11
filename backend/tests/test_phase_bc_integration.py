@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 
 import pytest
@@ -27,8 +26,9 @@ from response_generator import (
 
 
 class CaptureModel:
-    def __init__(self) -> None:
+    def __init__(self, response: str = "[S1] ok") -> None:
         self.calls: list[dict] = []
+        self.response = response
 
     async def is_available(self, *args, **kwargs) -> bool:
         return True
@@ -44,7 +44,7 @@ class CaptureModel:
                 "max_tokens": max_tokens,
             }
         )
-        yield "ok"
+        yield self.response
 
 
 def _intent(message: str, *, keywords: list[str] | None = None) -> dict:
@@ -66,6 +66,7 @@ def _intent(message: str, *, keywords: list[str] | None = None) -> dict:
 
 def _course(number: int, *, prerequisites: str = "") -> dict:
     return {
+        "course_uid": f"uid-{number}",
         "course_code": f"TEST E{number:04d}",
         "title": f"Synthetic Course {number}",
         "points_raw": f"{number % 4 + 1} points",
@@ -96,10 +97,6 @@ def _events(response) -> list[dict]:
 
 def _source_codes(events: list[dict]) -> list[str]:
     return next(event for event in events if event["type"] == "sources")["courses"]
-
-
-def _prompt_codes(prompt: str) -> list[str]:
-    return re.findall(r"\[([A-Z]{2,4} [A-Z]{1,2}\d{4})\]", prompt)
 
 
 def test_ordinal_focus_chain_never_retrieves_again(monkeypatch) -> None:
@@ -154,10 +151,15 @@ def test_ordinal_focus_chain_never_retrieves_again(monkeypatch) -> None:
         )
         assert len(retrieval_calls) == 1
         assert _source_codes(second) == ["TEST E1002"]
-        assert _prompt_codes(model.calls[-1]["system_prompt"]) == ["TEST E1002"]
+        second_text = "".join(
+            event["content"] for event in second if event["type"] == "chunk"
+        )
+        assert "TEST E1002" in second_text
+        assert "3 points" in second_text
+        assert model.calls == []
         meta = client.app.state.conversations_meta[cid]
         assert len(meta["last_courses"]) == 5
-        assert meta["current_course"] == "TEST E1002"
+        assert meta["current_course_uid"] == "uid-1002"
 
         third = _events(
             client.post(
@@ -171,7 +173,12 @@ def test_ordinal_focus_chain_never_retrieves_again(monkeypatch) -> None:
         )
         assert len(retrieval_calls) == 1
         assert _source_codes(third) == ["TEST E1002"]
-        assert _prompt_codes(model.calls[-1]["system_prompt"]) == ["TEST E1002"]
+        third_text = "".join(
+            event["content"] for event in third if event["type"] == "chunk"
+        )
+        assert "TEST E1002" in third_text
+        assert "Spring 2026" in third_text
+        assert len(model.calls) == 0
 
         fourth = _events(
             client.post(
@@ -185,10 +192,11 @@ def test_ordinal_focus_chain_never_retrieves_again(monkeypatch) -> None:
         )
         assert len(retrieval_calls) == 1
         assert _source_codes(fourth) == ["TEST E1002", "TEST E1001"]
-        assert _prompt_codes(model.calls[-1]["system_prompt"]) == [
-            "TEST E1002",
-            "TEST E1001",
-        ]
+        fourth_text = "".join(
+            event["content"] for event in fourth if event["type"] == "chunk"
+        )
+        assert fourth_text.index("TEST E1002") < fourth_text.index("TEST E1001")
+        assert len(model.calls) == 0
 
         # A genuine topic is the negative control: it performs a new search.
         client.post(
@@ -274,7 +282,7 @@ def test_prerequisite_argmin_sets_deterministic_focus(monkeypatch) -> None:
             )
         )
         assert call_count == 1
-        assert len(model.calls) == 1
+        assert len(model.calls) == 0
         comparison_text = "".join(
             event["content"]
             for event in comparison_events
@@ -291,14 +299,14 @@ def test_prerequisite_argmin_sets_deterministic_focus(monkeypatch) -> None:
             "TEST E1003",
         ]
         comparison_meta = client.app.state.conversations_meta[cid]
-        assert comparison_meta["current_course"] == "TEST E1001"
+        assert comparison_meta["current_course_uid"] == "uid-1001"
         assert len(comparison_meta["last_courses"]) == 3
         assert comparison_meta["last_intent"]["prerequisite_comparison"][
             "winners"
-        ] == ["TEST E1001"]
+        ] == ["uid-1001"]
         assert comparison_meta["last_intent"]["prerequisite_comparison"][
             "excluded_unknown"
-        ] == ["TEST E1003"]
+        ] == ["uid-1003"]
         assert client.app.state.conversations[cid][-1] == {
             "role": "assistant",
             "content": comparison_text,
@@ -384,7 +392,7 @@ def test_spring_retrieval_prompt_never_leaks_fall_section(tmp_path: Path) -> Non
     assert "Fall 2025" not in rendered
 
 
-def test_prompt_and_sources_share_same_limited_basis(monkeypatch) -> None:
+def test_deterministic_list_and_sources_share_same_limited_basis(monkeypatch) -> None:
     monkeypatch.setattr(config, "WARMUP_ON_STARTUP", False)
     monkeypatch.setattr(config, "INFERENCE_MODE", "local")
     courses = [_course(1001 + index) for index in range(5)]
@@ -419,9 +427,68 @@ def test_prompt_and_sources_share_same_limited_basis(monkeypatch) -> None:
                 },
             )
         )
-        prompt_codes = _prompt_codes(model.calls[-1]["system_prompt"])
-        assert prompt_codes == ["TEST E1001", "TEST E1002"]
-        assert _source_codes(events) == prompt_codes
+        assert _source_codes(events) == ["TEST E1001", "TEST E1002"]
+        body = "".join(
+            event["content"] for event in events if event["type"] == "chunk"
+        )
+        assert "TEST E1001" in body
+        assert "TEST E1002" in body
+        assert "TEST E1003" not in body
+        assert "Showing the first 2 results under the current setting" in body
+        assert "not an exhaustive catalog list" in body
+        assert model.calls == []
+        assert len(client.app.state.conversations_meta[cid]["result_scope_courses"]) == 5
+
+
+def test_instructor_fact_collection_covers_every_basis_uid_without_model(
+    monkeypatch,
+) -> None:
+    monkeypatch.setattr(config, "WARMUP_ON_STARTUP", False)
+    monkeypatch.setattr(config, "INFERENCE_MODE", "local")
+    courses = [_course(1001 + index) for index in range(5)]
+    retrieval_calls = 0
+
+    def retrieve_spy(*args, **kwargs):
+        nonlocal retrieval_calls
+        retrieval_calls += 1
+        return list(courses)
+
+    async def fake_extract(payload, request):
+        return IntentExtractionResult(
+            _intent(payload.message, keywords=["robotics"]), "rule"
+        )
+
+    monkeypatch.setattr(srv, "_extract_intent_for_request", fake_extract)
+    monkeypatch.setattr(srv, "retrieve_courses", retrieve_spy)
+    model = CaptureModel(response="TEST E1001 only")
+
+    with TestClient(srv.app) as client:
+        client.app.state.ollama = model
+        client.app.state.enriched_index = [{}]
+        cid = "instructor-completeness"
+        client.post(
+            "/api/chat",
+            json={"message": "Find robotics courses", "conversation_id": cid},
+        )
+        events = _events(
+            client.post(
+                "/api/chat",
+                json={
+                    "message": "Who teaches these courses?",
+                    "conversation_id": cid,
+                },
+            )
+        )
+
+        assert retrieval_calls == 1
+        assert model.calls == []
+        assert _source_codes(events) == [course["course_code"] for course in courses]
+        body = "".join(
+            event["content"] for event in events if event["type"] == "chunk"
+        )
+        for number in range(1001, 1006):
+            assert f"TEST E{number:04d}" in body
+            assert f"Professor {number}" in body
 
 
 def test_genuine_zero_result_search_clears_stale_course_scope(monkeypatch) -> None:
@@ -622,12 +689,15 @@ def test_duplicate_course_codes_remain_distinct_and_focus_uses_uid(
             "uid-a",
             "uid-b",
         ]
-        client.post(
+        schedule_events = _events(client.post(
             "/api/chat",
             json={"message": "When does it meet?", "conversation_id": cid},
+        ))
+        schedule_text = "".join(
+            event["content"] for event in schedule_events if event["type"] == "chunk"
         )
-        assert "Version B" in model.calls[-1]["system_prompt"]
-        assert "Version A" not in model.calls[-1]["system_prompt"]
+        assert "Version B" in schedule_text
+        assert "Version A" not in schedule_text
 
 
 def test_duplicate_course_code_prerequisite_argmin_focuses_exact_uid(
@@ -681,7 +751,7 @@ def test_duplicate_course_code_prerequisite_argmin_focuses_exact_uid(
         assert retrieval_calls == 1
         assert _source_codes(comparison_events) == ["TEST E1001", "TEST E1001"]
         assert client.app.state.conversations_meta[cid]["current_course"] == "UID-B"
-        assert len(model.calls) == 1
+        assert len(model.calls) == 0
         comparison_intent = client.app.state.conversations_meta[cid]["last_intent"]
         assert comparison_intent["prerequisite_comparison"]["winners"] == [
             "uid-b"
@@ -690,13 +760,16 @@ def test_duplicate_course_code_prerequisite_argmin_focuses_exact_uid(
             "winner_course_codes"
         ] == ["TEST E1001"]
 
-        client.post(
+        schedule_events = _events(client.post(
             "/api/chat",
             json={"message": "When does it meet?", "conversation_id": cid},
-        )
+        ))
         assert retrieval_calls == 1
-        assert "Version B" in model.calls[-1]["system_prompt"]
-        assert "Version A" not in model.calls[-1]["system_prompt"]
+        schedule_text = "".join(
+            event["content"] for event in schedule_events if event["type"] == "chunk"
+        )
+        assert "Version B" in schedule_text
+        assert "Version A" not in schedule_text
 
 
 def test_query_parser_uses_shared_two_letter_codes_credits_and_topic_scope() -> None:

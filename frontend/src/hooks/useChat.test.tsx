@@ -2,6 +2,7 @@ import {act} from 'react';
 import {createRoot, type Root} from 'react-dom/client';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import type {ChatStreamCallbacks} from '../services/api';
+import type {StreamSourcesEvent} from '../services/sse';
 
 const apiMocks = vi.hoisted(() => ({
   safeUUID: vi.fn(),
@@ -18,6 +19,33 @@ let container: HTMLDivElement;
 let root: Root;
 let current: ChatHook;
 let idCounter = 0;
+
+const sourceEvent = (uid: string, courseCode: string): StreamSourcesEvent => {
+  const shared = {
+    uid,
+    course_code: courseCode,
+    title: `${courseCode} title`,
+    citation_label: 'S1',
+    source_label: 'Columbia Engineering Bulletin 2025–2026',
+    offerings: [
+      {
+        term: 'Fall 2025',
+        section_id: '001/10001',
+        meeting_time: 'M 10:10am - 11:25am',
+        location: 'Room 101',
+      },
+    ],
+  };
+  return {
+    type: 'sources',
+    schema_version: 2,
+    courses: [courseCode],
+    answer_sources: [
+      {...shared, role: 'answer_source', citation_status: 'verified'},
+    ],
+    prompt_basis: [{...shared, role: 'prompt_basis', citation_status: 'candidate'}],
+  };
+};
 
 function Harness() {
   current = useChat('en', {maxHistoryTurns: 10, maxResults: 5});
@@ -70,6 +98,7 @@ describe('useChat stream lifecycle', () => {
           revision: 0,
         });
         callbacks.onChunk('Groq partial');
+        callbacks.onSources(sourceEvent('groq-uid', 'COMS W1001'));
         callbacks.onFallback?.({
           type: 'fallback',
           action: 'reset',
@@ -78,6 +107,7 @@ describe('useChat stream lifecycle', () => {
           reason: 'timeout',
         });
         callbacks.onChunk('Ollama full answer');
+        callbacks.onSources(sourceEvent('ollama-uid', 'COMS W1004'));
         callbacks.onDone({
           type: 'done',
           provider: 'ollama',
@@ -95,6 +125,92 @@ describe('useChat stream lifecycle', () => {
     expect(assistant.provider).toBe('ollama');
     expect(assistant.fallbackUsed).toBe(true);
     expect(assistant.status).toBe('complete');
+    expect(assistant.sources?.schema_version).toBe(2);
+    expect(
+      assistant.sources?.schema_version === 2
+        ? assistant.sources.answer_sources.map((source) => source.uid)
+        : [],
+    ).toEqual(['ollama-uid']);
+  });
+
+  it('keeps sources pending until a complete done event commits them atomically', async () => {
+    let callbacks!: ChatStreamCallbacks;
+    let resolveRequest!: () => void;
+    apiMocks.sendMessageStream.mockImplementation(
+      async (
+        _message: string,
+        _conversationId: string,
+        _language: string,
+        _settings: unknown,
+        streamCallbacks: ChatStreamCallbacks,
+      ) => {
+        callbacks = streamCallbacks;
+        await new Promise<void>((resolve) => {
+          resolveRequest = resolve;
+        });
+      },
+    );
+
+    let pending!: Promise<void>;
+    await act(async () => {
+      pending = current.sendMessage('question');
+      await Promise.resolve();
+    });
+    await act(async () => {
+      callbacks.onMeta?.({
+        type: 'meta',
+        provider: 'deterministic',
+        fallback_available: false,
+        history_turns: 0,
+        revision: 0,
+      });
+      callbacks.onChunk('complete answer');
+      callbacks.onSources(sourceEvent('final-uid', 'COMS W1004'));
+      await Promise.resolve();
+    });
+
+    expect(current.messages.find((message) => message.role === 'assistant')?.sources).toBeUndefined();
+
+    await act(async () => {
+      callbacks.onDone({
+        type: 'done',
+        provider: 'deterministic',
+        fallback_used: false,
+        fallback_reason: null,
+      });
+      resolveRequest();
+      await pending;
+    });
+
+    const assistant = current.messages.find((message) => message.role === 'assistant')!;
+    expect(assistant.status).toBe('complete');
+    expect(assistant.sources).toEqual(sourceEvent('final-uid', 'COMS W1004'));
+  });
+
+  it('discards pending sources when the stream ends in an error', async () => {
+    apiMocks.sendMessageStream.mockImplementation(
+      async (
+        _message: string,
+        _conversationId: string,
+        _language: string,
+        _settings: unknown,
+        callbacks: ChatStreamCallbacks,
+      ) => {
+        callbacks.onChunk('partial');
+        callbacks.onSources(sourceEvent('uncommitted-uid', 'COMS W1004'));
+        callbacks.onError({
+          type: 'error',
+          message: 'generation failed',
+          interrupted: true,
+        });
+      },
+    );
+
+    await act(async () => current.sendMessage('question'));
+
+    const assistant = current.messages.find((message) => message.role === 'assistant')!;
+    expect(assistant.status).toBe('interrupted');
+    expect(assistant.sources).toBeUndefined();
   });
 
   it('uses server revisions to distinguish a backend restart from normal continuation', async () => {
@@ -115,7 +231,7 @@ describe('useChat stream lifecycle', () => {
             history_turns: 0,
           });
           callbacks.onChunk('first');
-          callbacks.onSources([]);
+          callbacks.onSources({type: 'sources', schema_version: 1, courses: []});
           callbacks.onDone({
             type: 'done',
             provider: 'groq',
@@ -142,7 +258,7 @@ describe('useChat stream lifecycle', () => {
             history_turns: 0,
           });
           callbacks.onChunk('second');
-          callbacks.onSources([]);
+          callbacks.onSources({type: 'sources', schema_version: 1, courses: []});
           callbacks.onDone({
             type: 'done',
             provider: 'groq',
@@ -213,6 +329,7 @@ describe('useChat stream lifecycle', () => {
           revision: 0,
         });
         callbacks.onChunk('partial answer');
+        callbacks.onSources(sourceEvent('stopped-uid', 'COMS W1004'));
         await new Promise<void>((resolve) => {
           signal.addEventListener('abort', () => {
             callbacks.onAbort();
@@ -236,6 +353,7 @@ describe('useChat stream lifecycle', () => {
     expect(assistant.content).toBe('partial answer');
     expect(assistant.provider).toBe('groq');
     expect(assistant.status).toBe('stopped');
+    expect(assistant.sources).toBeUndefined();
   });
 
   it('ignores callbacks from an old request after starting a new chat', async () => {
@@ -263,6 +381,7 @@ describe('useChat stream lifecycle', () => {
     });
     await act(async () => current.newChat());
     await act(async () => {
+      staleCallbacks.onSources(sourceEvent('stale-uid', 'COMS W1004'));
       staleCallbacks.onChunk('late text');
       staleCallbacks.onDone({
         type: 'done',

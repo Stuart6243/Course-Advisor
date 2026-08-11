@@ -1,10 +1,50 @@
+export type CourseSourceRole = 'answer_source' | 'prompt_basis';
+
+export type CourseCitationStatus = 'verified' | 'deterministic' | 'candidate';
+
+export type CourseSourceOffering = {
+  term: string | null;
+  section_id: string | null;
+  meeting_time: string | null;
+  location: string | null;
+};
+
+export type CourseSource = {
+  uid: string;
+  course_code: string;
+  title: string;
+  citation_label: string;
+  source_label: string;
+  role: CourseSourceRole;
+  citation_status: CourseCitationStatus;
+  offerings: CourseSourceOffering[];
+};
+
+export type LegacyCourseSourcesEvent = {
+  type: 'sources';
+  /** Normalized client-side marker; legacy servers omit this field on the wire. */
+  schema_version: 1;
+  courses: string[];
+};
+
+export type StructuredCourseSourcesEvent = {
+  type: 'sources';
+  schema_version: 2;
+  /** Legacy mirror containing only ordered, actual answer-source course codes. */
+  courses: string[];
+  answer_sources: CourseSource[];
+  prompt_basis: CourseSource[];
+};
+
+export type CourseSourcesEvent = LegacyCourseSourcesEvent | StructuredCourseSourcesEvent;
+
 export type Message = {
   id: string;
   role: 'user' | 'assistant';
   content: string;
   time: string;
   isStreaming?: boolean;
-  sources?: string[];
+  sources?: CourseSourcesEvent;
   provider?: string;
   fallbackUsed?: boolean;
   fallbackFailed?: boolean;

@@ -11,6 +11,7 @@ import {
   type StreamErrorEvent,
   type StreamFallbackEvent,
   type StreamMetaEvent,
+  type StreamSourcesEvent,
 } from './sse';
 
 const configuredApiOrigin = import.meta.env.VITE_API_BASE_URL?.trim().replace(/\/$/, '');
@@ -34,7 +35,7 @@ const TERMINAL_DRAIN_TIMEOUT_MS = 250;
 
 export type ChatStreamCallbacks = {
   onChunk: (text: string) => void;
-  onSources: (courses: string[]) => void;
+  onSources: (event: StreamSourcesEvent) => void;
   onDone: (event: StreamDoneEvent) => void;
   onError: (event: StreamErrorEvent) => void;
   onAbort: () => void;
@@ -353,7 +354,7 @@ export async function sendMessageStream(
             throw new SseProtocolError('The server sent course sources out of order.');
           }
           sourcesSeen = true;
-          callbacks.onSources(event.courses);
+          callbacks.onSources(event);
           break;
         case 'error':
           if (

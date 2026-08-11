@@ -99,6 +99,69 @@ def test_plural_references_list_previous_results(text: str) -> None:
     assert parsed.operation is Operation.LIST
 
 
+@pytest.mark.parametrize(
+    "text",
+    [
+        "这两个课都是什么时间和地点上课",
+        "这两门课都是什么时间和地点上课",
+    ],
+)
+def test_two_course_schedule_reference_is_a_hard_counted_scope(text: str) -> None:
+    parsed = parse_conversation_scope(
+        text,
+        previous_count=5,
+        has_current_focus=True,
+        new_search_anchor=True,
+    )
+    assert parsed.scope is Scope.PREVIOUS_RESULTS
+    assert parsed.attribute is Attribute.SCHEDULE
+    assert parsed.operation is Operation.DETAIL
+    assert parsed.reference_count == 2
+    assert parsed.as_dict()["reference_count"] == 2
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "What times are these two courses offered?",
+        "What times are both courses offered?",
+        "What about these two?",
+    ],
+)
+def test_english_two_course_pronouns_are_counted_references(text: str) -> None:
+    parsed = parse_conversation_scope(text, previous_count=5)
+    assert parsed.scope is Scope.PREVIOUS_RESULTS
+    assert parsed.reference_count == 2
+
+
+@pytest.mark.parametrize("previous_count", [0, 5])
+def test_both_weekdays_is_not_a_counted_course_reference(
+    previous_count: int,
+) -> None:
+    parsed = parse_conversation_scope(
+        "Show courses on both Monday and Tuesday.",
+        previous_count=previous_count,
+        new_search_anchor=True,
+    )
+    assert parsed.reference_count is None
+    assert parsed.scope is Scope.NEW_SEARCH
+
+
+@pytest.mark.parametrize("previous_count", [0, 5])
+def test_explicit_multiple_codes_override_counted_reference_wording(
+    previous_count: int,
+) -> None:
+    parsed = parse_conversation_scope(
+        "What times are both COMS W1004 and COMS W1002 offered?",
+        previous_count=previous_count,
+        has_current_focus=True,
+        new_search_anchor=True,
+    )
+    assert parsed.scope is Scope.NEW_SEARCH
+    assert parsed.attribute is Attribute.SCHEDULE
+    assert parsed.reference_count is None
+
+
 def test_first_turn_never_invents_previous_scope() -> None:
     parsed = parse_conversation_scope("Which of those has fewer prerequisites?")
     assert parsed.scope is Scope.NEW_SEARCH

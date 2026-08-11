@@ -3,7 +3,7 @@ import {ChatSettings, Language, Message} from '../types';
 import {safeUUID, sendMessageStream} from '../services/api';
 import {MAX_MESSAGE_LENGTH} from '../constants';
 import i18n from '../i18n';
-import type {StreamErrorEvent} from '../services/sse';
+import type {StreamErrorEvent, StreamSourcesEvent} from '../services/sse';
 
 const nowTime = () =>
   new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
@@ -72,6 +72,7 @@ export function useChat(language: Language, settings: ChatSettings) {
       let requestRevision: number | null = null;
       let streamedContent = '';
       let fallbackSnapshot: {content: string; provider: string} | null = null;
+      let pendingSources: StreamSourcesEvent | null = null;
       let activeProvider: string | undefined;
       const isCurrentGeneration = () =>
         generationRef.current === generation && abortRef.current === controller;
@@ -114,15 +115,11 @@ export function useChat(language: Language, settings: ChatSettings) {
                 ),
               );
             },
-            onSources: (courses) => {
+            onSources: (event) => {
               if (!isCurrentGeneration()) {
                 return;
               }
-              setMessages((prev) =>
-                prev.map((msg) =>
-                  msg.id === assistantId ? {...msg, sources: courses} : msg,
-                ),
-              );
+              pendingSources = event;
             },
             onDone: (event) => {
               activeProvider = event.provider;
@@ -137,9 +134,11 @@ export function useChat(language: Language, settings: ChatSettings) {
                 fallbackUsed: event.fallback_used ?? msg.fallbackUsed,
                 fallbackFailed: false,
                 fallbackReason: event.fallback_reason ?? msg.fallbackReason,
+                sources: pendingSources ?? undefined,
               }));
             },
             onError: (event) => {
+              pendingSources = null;
               finishAssistant((msg) => {
                 const fallbackPrimary = fallbackSnapshot?.content ?? '';
                 const hasServerPartial = event.partial_content !== undefined;
@@ -168,6 +167,7 @@ export function useChat(language: Language, settings: ChatSettings) {
                   fallbackUsed: event.fallback_used ?? msg.fallbackUsed,
                   fallbackFailed: Boolean(fallbackSnapshot),
                   fallbackReason: event.fallback_reason ?? msg.fallbackReason,
+                  sources: undefined,
                 };
               });
             },
@@ -175,6 +175,7 @@ export function useChat(language: Language, settings: ChatSettings) {
               if (!isCurrentGeneration()) {
                 return;
               }
+              pendingSources = null;
               setMessages((prev) => {
                 const stoppedContent = streamedContent || fallbackSnapshot?.content || '';
                 if (!stoppedContent) {
@@ -191,6 +192,7 @@ export function useChat(language: Language, settings: ChatSettings) {
                           ? activeProvider ?? msg.provider
                           : fallbackSnapshot?.provider ?? msg.provider,
                         fallbackFailed: Boolean(!streamedContent && fallbackSnapshot?.content),
+                        sources: undefined,
                       }
                     : msg,
                 );
@@ -206,6 +208,7 @@ export function useChat(language: Language, settings: ChatSettings) {
                 content: streamedContent,
                 provider: event.from,
               };
+              pendingSources = null;
               streamedContent = '';
               activeProvider = event.to;
               // replace/reset 语义：Groq 局部回答不得与 Ollama 完整回答拼接。
@@ -215,7 +218,7 @@ export function useChat(language: Language, settings: ChatSettings) {
                     ? {
                         ...msg,
                         content: '',
-                        sources: [],
+                        sources: undefined,
                         provider: event.to,
                         fallbackUsed: true,
                         fallbackFailed: false,
@@ -264,6 +267,7 @@ export function useChat(language: Language, settings: ChatSettings) {
         if (!isCurrentGeneration()) {
           return;
         }
+        pendingSources = null;
         const msg = err instanceof Error
           ? err.message
           : i18n.getFixedT(language)('errors.request_failed');
@@ -274,6 +278,7 @@ export function useChat(language: Language, settings: ChatSettings) {
             : msg,
           isStreaming: false,
           status: message.content ? 'interrupted' : 'error',
+          sources: undefined,
         }));
       }
     },
