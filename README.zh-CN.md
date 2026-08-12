@@ -123,6 +123,24 @@ npm run dev
 
 打开 `http://localhost:3000`。Vite 默认将 `/api` 代理到 `http://localhost:8000`。前端单独配置见 [`frontend/README.md`](frontend/README.md)。
 
+### 网络与 API 安全
+
+后端与 Vite 开发服务器都应绑定 `127.0.0.1`。为兼容本机使用，loopback
+请求默认无需 token；对非 loopback 客户端，所有高成本或会写入状态的 POST
+接口（chat、两种 import、export）都会 fail closed，除非后端设置了
+`COURSE_ADVISOR_API_TOKEN`，且请求通过 `Authorization: Bearer ...` 提交。
+token 使用恒定时间比较，缺失 token 不会写入日志。
+
+共享部署应在生产级反向代理完成用户认证，把
+`COURSE_ADVISOR_API_TOKEN` 只放在后端/代理的密钥存储中，并设置
+`COURSE_ADVISOR_ALLOW_LOOPBACK_WITHOUT_AUTH=0`，避免本机代理继承开发绕过。
+不要对外暴露 Vite 开发服务器，也不要把 token 放进任何 `VITE_*` 变量；
+所有 `VITE_*` 值都会进入公开的浏览器代码。
+
+受保护接口还会在解析前限制原始 body，按客户端限速，并限制覆盖完整请求
+生命周期的并发数。运维可通过有界的 `API_*`、`MAX_PDF_*` 和
+`SYLLABUS_STORE_MAX_*` 环境变量调整默认值。
+
 ## 数据与证据模型
 
 仓库内的正式基线包含：
@@ -145,7 +163,7 @@ Source-v2 SSE 事件有意提供两种不同视图：
 
 ## 文件导入
 
-界面和 API 支持不超过 25 MB 的 PDF、HTML、HTM 文件。上传内容按不可信输入处理，并且必须匹配已有 seed 课程。质量门禁会返回三种结果：
+界面和 API 支持不超过 25 MB 的 PDF、HTML、HTM 文件。multipart 解析前即限制请求字节，并同时硬限制 PDF 页数、提取字符、解析时间、section 数量和持久化 overlay 容量。上传内容按不可信输入处理，并且必须匹配已有 seed 课程。质量门禁会返回三种结果：
 
 - `published`：保存版本化 overlay，并进入检索；
 - `review`：保留候选，但不进入当前检索视图；

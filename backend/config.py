@@ -8,6 +8,22 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
+
+def _env_bool(name: str, default: bool) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().casefold() in {"1", "true", "yes", "on"}
+
+
+def _env_int(name: str, default: int, *, minimum: int, maximum: int) -> int:
+    raw = os.getenv(name, "").strip()
+    try:
+        value = int(raw) if raw else default
+    except ValueError:
+        return default
+    return max(minimum, min(maximum, value))
+
 # ============================================================
 # Ollama 配置
 # ============================================================
@@ -34,6 +50,57 @@ ENRICHED_INDEX_PATH = DATA_DIR / "courses_enriched_index.json"
 SUPPORTED_IMPORT_FORMATS = [".pdf", ".html", ".htm"]
 MAX_IMPORT_SIZE_MB = 25
 AUTO_PUBLISH_QUALITY_SCORE = 80
+IMPORT_MULTIPART_OVERHEAD_BYTES = 128 * 1024
+MAX_PDF_PAGES = _env_int("MAX_PDF_PAGES", 100, minimum=1, maximum=500)
+MAX_EXTRACTED_TEXT_CHARS = _env_int(
+    "MAX_EXTRACTED_TEXT_CHARS", 100_000, minimum=4_000, maximum=1_000_000
+)
+PDF_PARSE_TIMEOUT_SECONDS = _env_int(
+    "PDF_PARSE_TIMEOUT_SECONDS", 30, minimum=1, maximum=120
+)
+MAX_IMPORTED_SECTIONS = _env_int(
+    "MAX_IMPORTED_SECTIONS", 50, minimum=1, maximum=200
+)
+
+# Persistent overlay capacity is a hard fail-safe. The store never starts a
+# generation write after one of these limits has been reached.
+SYLLABUS_STORE_MAX_INDEX_BYTES = _env_int(
+    "SYLLABUS_STORE_MAX_INDEX_BYTES", 16 * 1024 * 1024, minimum=64 * 1024, maximum=128 * 1024 * 1024
+)
+SYLLABUS_STORE_MAX_VERSIONS = _env_int(
+    "SYLLABUS_STORE_MAX_VERSIONS", 2_000, minimum=1, maximum=100_000
+)
+SYLLABUS_STORE_MAX_GENERATIONS = _env_int(
+    "SYLLABUS_STORE_MAX_GENERATIONS", 500, minimum=1, maximum=10_000
+)
+
+# ============================================================
+# HTTP security controls
+# ============================================================
+# The token is backend-only. Never expose it through a VITE_* variable.
+API_AUTH_TOKEN = os.getenv("COURSE_ADVISOR_API_TOKEN", "").strip()
+API_ALLOW_LOOPBACK_WITHOUT_AUTH = _env_bool(
+    "COURSE_ADVISOR_ALLOW_LOOPBACK_WITHOUT_AUTH", True
+)
+CHAT_REQUEST_MAX_BYTES = 16 * 1024
+MANUAL_IMPORT_REQUEST_MAX_BYTES = 128 * 1024
+EXPORT_REQUEST_MAX_BYTES = 3 * 1024 * 1024
+API_RATE_WINDOW_SECONDS = _env_int(
+    "API_RATE_WINDOW_SECONDS", 60, minimum=1, maximum=3_600
+)
+API_CHAT_RATE_LIMIT = _env_int("API_CHAT_RATE_LIMIT", 30, minimum=1, maximum=10_000)
+API_WRITE_RATE_LIMIT = _env_int("API_WRITE_RATE_LIMIT", 6, minimum=1, maximum=1_000)
+API_EXPORT_RATE_LIMIT = _env_int("API_EXPORT_RATE_LIMIT", 20, minimum=1, maximum=1_000)
+API_RATE_MAX_CLIENTS = _env_int("API_RATE_MAX_CLIENTS", 2_048, minimum=16, maximum=100_000)
+API_CHAT_MAX_CONCURRENCY = _env_int(
+    "API_CHAT_MAX_CONCURRENCY", 4, minimum=1, maximum=100
+)
+API_WRITE_MAX_CONCURRENCY = _env_int(
+    "API_WRITE_MAX_CONCURRENCY", 1, minimum=1, maximum=20
+)
+API_EXPORT_MAX_CONCURRENCY = _env_int(
+    "API_EXPORT_MAX_CONCURRENCY", 2, minimum=1, maximum=20
+)
 
 # ============================================================
 # LLM 输出控制

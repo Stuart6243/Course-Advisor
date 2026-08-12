@@ -1,8 +1,12 @@
 import {describe, expect, it} from 'vitest';
 
-import {resolveDevServerConfig} from '../../devServerConfig';
+import {DEV_SERVER_HOST, resolveDevServerConfig} from '../../devServerConfig';
 
 describe('resolveDevServerConfig', () => {
+  it('keeps the privileged development proxy on loopback', () => {
+    expect(DEV_SERVER_HOST).toBe('127.0.0.1');
+  });
+
   it('uses values loaded from the Vite env file', () => {
     expect(
       resolveDevServerConfig({

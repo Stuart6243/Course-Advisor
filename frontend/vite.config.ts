@@ -4,7 +4,7 @@ import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 
 import pkg from './package.json' with {type: 'json'};
-import {resolveDevServerConfig} from './devServerConfig';
+import {DEV_SERVER_HOST, resolveDevServerConfig} from './devServerConfig';
 
 export default defineConfig(({mode}) => {
   // Vite loads .env files after config evaluation unless loadEnv is called here.
@@ -23,7 +23,10 @@ export default defineConfig(({mode}) => {
     },
     server: {
       port,
-      host: '0.0.0.0',
+      // The development proxy carries backend privileges, so it must not be a
+      // shared-network gateway. Use an authenticated production reverse proxy
+      // for remote access instead.
+      host: DEV_SERVER_HOST,
       proxy: {
         '/api': {
           target: apiProxyTarget,

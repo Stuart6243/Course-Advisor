@@ -1,3 +1,5 @@
+export const DEV_SERVER_HOST = '127.0.0.1';
+
 export function resolveDevServerConfig(env: Record<string, string | undefined>) {
   const requestedPort = Number(env.VITE_DEV_PORT ?? 3000);
   return {

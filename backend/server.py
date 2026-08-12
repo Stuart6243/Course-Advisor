@@ -19,9 +19,10 @@ from typing import Any, Literal, Optional
 from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 import config
+from api_security import ApiSecurityMiddleware, ApiSecurityState
 from conversation_scope import (
     Attribute as ScopeAttribute,
     ConversationScope,
@@ -64,9 +65,17 @@ from source_contract import (
 from syllabus_store import SyllabusStore, apply_published_overlays
 
 
+class ExportMessage(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    role: str = Field(min_length=1, max_length=32)
+    content: str = Field(max_length=12_000)
+
+
 class ExportRequest(BaseModel):
-    # 限制条数，避免一次导出请求占用大量内存（旧版 4MB 载荷可直接通过）
-    messages: list[dict[str, Any]] = Field(max_length=2000)
+    model_config = ConfigDict(extra="forbid")
+
+    messages: list[ExportMessage] = Field(max_length=200)
     format: Literal["markdown", "json"]
 
 
@@ -103,25 +112,43 @@ class ChatRequest(BaseModel):
         return value
 
 
+class ManualSectionRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    term: Optional[str] = Field(default="", max_length=64)
+    section_id: Optional[str] = Field(default="", max_length=64)
+    section_call_number: Optional[str] = Field(default="", max_length=64)
+    points_raw: Optional[str] = Field(default="", max_length=64)
+    points: Optional[str] = Field(default="", max_length=64)
+    times: Optional[str] = Field(default="", max_length=256)
+    location: Optional[str] = Field(default="", max_length=256)
+    instructor: Optional[str] = Field(default="", max_length=256)
+    enrollment_raw: Optional[str] = Field(default="", max_length=64)
+    enrollment_current: Optional[int] = Field(default=None, ge=0, le=1_000_000)
+    enrollment_capacity: Optional[int] = Field(default=None, ge=0, le=1_000_000)
+
+
 class ManualImportRequest(BaseModel):
-    course_code: str
-    title: str
-    points_raw: Optional[str] = ""
+    model_config = ConfigDict(extra="forbid")
+
+    course_code: str = Field(min_length=1, max_length=32)
+    title: str = Field(min_length=1, max_length=256)
+    points_raw: Optional[str] = Field(default="", max_length=64)
     points_min: Optional[float] = None
     points_max: Optional[float] = None
-    term: Optional[str] = ""
-    section_id: Optional[str] = ""
-    times: Optional[str] = ""
-    location: Optional[str] = ""
-    instructor: Optional[str] = ""
-    enrollment_raw: Optional[str] = ""
-    enrollment_current: Optional[int] = None
-    enrollment_capacity: Optional[int] = None
-    description: Optional[str] = ""
-    prerequisites_text: Optional[str] = ""
-    notes_text: Optional[str] = ""
-    department_or_group: Optional[str] = ""
-    sections: list[dict[str, Any]] = Field(default_factory=list)
+    term: Optional[str] = Field(default="", max_length=64)
+    section_id: Optional[str] = Field(default="", max_length=64)
+    times: Optional[str] = Field(default="", max_length=256)
+    location: Optional[str] = Field(default="", max_length=256)
+    instructor: Optional[str] = Field(default="", max_length=256)
+    enrollment_raw: Optional[str] = Field(default="", max_length=64)
+    enrollment_current: Optional[int] = Field(default=None, ge=0, le=1_000_000)
+    enrollment_capacity: Optional[int] = Field(default=None, ge=0, le=1_000_000)
+    description: Optional[str] = Field(default="", max_length=12_000)
+    prerequisites_text: Optional[str] = Field(default="", max_length=12_000)
+    notes_text: Optional[str] = Field(default="", max_length=12_000)
+    department_or_group: Optional[str] = Field(default="", max_length=256)
+    sections: list[ManualSectionRequest] = Field(default_factory=list, max_length=1)
 
 
 ERROR_MESSAGES: dict[str, dict[str, str]] = {
@@ -556,7 +583,10 @@ def _ensure_import_state(application: FastAPI) -> None:
         getattr(application.state, "syllabus_store", None), SyllabusStore
     ):
         application.state.syllabus_store = SyllabusStore(
-            Path(config.DATA_DIR) / "syllabus_store"
+            Path(config.DATA_DIR) / "syllabus_store",
+            max_index_bytes=config.SYLLABUS_STORE_MAX_INDEX_BYTES,
+            max_versions=config.SYLLABUS_STORE_MAX_VERSIONS,
+            max_generations=config.SYLLABUS_STORE_MAX_GENERATIONS,
         )
     if getattr(application.state, "import_lock", None) is None:
         application.state.import_lock = asyncio.Lock()
@@ -601,6 +631,7 @@ def _manual_payload_data(payload: ManualImportRequest) -> dict[str, Any]:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    app.state.api_security = ApiSecurityState()
     app.state.ollama = OllamaClient(
         config.OLLAMA_BASE_URL,
         config.OLLAMA_MODEL,
@@ -616,7 +647,12 @@ async def lifespan(app: FastAPI):
     app.state.groq_intent = GroqClient(timeout=config.INTENT_TIMEOUT)
     app.state.enriched_index = []
     app.state.seed_enriched_index = []
-    app.state.syllabus_store = SyllabusStore(Path(config.DATA_DIR) / "syllabus_store")
+    app.state.syllabus_store = SyllabusStore(
+        Path(config.DATA_DIR) / "syllabus_store",
+        max_index_bytes=config.SYLLABUS_STORE_MAX_INDEX_BYTES,
+        max_versions=config.SYLLABUS_STORE_MAX_VERSIONS,
+        max_generations=config.SYLLABUS_STORE_MAX_GENERATIONS,
+    )
     app.state.import_lock = asyncio.Lock()
     app.state.conversations: OrderedDict[str, list[dict[str, str]]] = OrderedDict()
     app.state.conversations_meta: OrderedDict[str, dict[str, Any]] = OrderedDict()
@@ -686,10 +722,12 @@ async def lifespan(app: FastAPI):
         app.state.conversations = OrderedDict()
         app.state.conversations_meta = OrderedDict()
         app.state.conversation_locks = {}
+        app.state.api_security = ApiSecurityState()
 
 
 app = FastAPI(lifespan=lifespan)
 
+app.add_middleware(ApiSecurityMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
@@ -1701,12 +1739,13 @@ async def health(request: Request):
 
 @app.post("/api/export")
 async def export_chat(payload: ExportRequest):
+    messages = [message.model_dump() for message in payload.messages]
     if payload.format == "markdown":
-        content = export_as_markdown(payload.messages)
+        content = export_as_markdown(messages)
         media_type = "text/markdown; charset=utf-8"
         extension = "md"
     else:
-        content = export_as_json(payload.messages)
+        content = export_as_json(messages)
         media_type = "application/json; charset=utf-8"
         extension = "json"
 

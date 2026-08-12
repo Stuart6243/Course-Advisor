@@ -123,6 +123,25 @@ npm run dev
 
 Open `http://localhost:3000`. Vite proxies `/api` to `http://localhost:8000` by default. See [`frontend/README.md`](frontend/README.md) for frontend-only configuration.
 
+### Network and API security
+
+The backend and Vite development server are intended to bind to `127.0.0.1`.
+Loopback requests remain token-free for backwards-compatible local use. All
+expensive or state-changing POST endpoints (`chat`, both imports, and export)
+fail closed for non-loopback clients unless the backend-only
+`COURSE_ADVISOR_API_TOKEN` is set and supplied as `Authorization: Bearer ...`.
+The comparison is constant-time; missing tokens are never logged.
+
+For a shared deployment, terminate user authentication at a production reverse
+proxy, set `COURSE_ADVISOR_API_TOKEN` only in the backend/proxy secret store, and
+set `COURSE_ADVISOR_ALLOW_LOOPBACK_WITHOUT_AUTH=0` so a local proxy cannot use
+the development bypass. Do not expose the Vite development server or put this
+token in a `VITE_*` variable: every `VITE_*` value is public browser code.
+
+Protected endpoints also have pre-parse body limits, per-client rate limits,
+and full-request concurrency limits. Operators can tune the bounded `API_*`,
+`MAX_PDF_*`, and `SYLLABUS_STORE_MAX_*` environment settings.
+
 ## Data and evidence model
 
 The checked-in baseline contains:
@@ -145,7 +164,7 @@ Missing catalog evidence is treated as **unknown**. In particular, an absent pre
 
 ## Imports
 
-The UI and API accept PDF, HTML, and HTM files up to 25 MB. Imported content is treated as untrusted input and must resolve to an existing seed course. The quality gate returns one of three outcomes:
+The UI and API accept PDF, HTML, and HTM files up to 25 MB. Request bytes are capped before multipart parsing; PDF page count, extracted text, parse time, section count, and persistent overlay capacity also have hard limits. Imported content is treated as untrusted input and must resolve to an existing seed course. The quality gate returns one of three outcomes:
 
 - `published`: a versioned overlay is stored and becomes searchable;
 - `review`: the candidate is retained outside the active retrieval view;

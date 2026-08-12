@@ -20,6 +20,11 @@ npm run dev
 The development server listens on `http://localhost:3000` by default. The
 browser uses the same-origin `/api` path, which Vite proxies to the backend.
 
+The development server is deliberately loopback-only because its `/api` proxy
+inherits local backend access. Do not use it as a shared-network gateway. For a
+remote deployment, serve the production build behind an authenticated reverse
+proxy and keep `COURSE_ADVISOR_API_TOKEN` in server-side secret storage only.
+
 Configuration can be placed in `.env`; see [.env.example](.env.example):
 
 - `DEV_API_PROXY_TARGET` changes the server-side development proxy target. It

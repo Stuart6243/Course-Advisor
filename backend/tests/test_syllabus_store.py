@@ -10,7 +10,12 @@ BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
-from syllabus_store import SyllabusStore, apply_published_overlays, identity_key
+from syllabus_store import (
+    StoreCapacityError,
+    SyllabusStore,
+    apply_published_overlays,
+    identity_key,
+)
 
 
 def attach(
@@ -193,6 +198,33 @@ def test_two_store_instances_serialize_writers(tmp_path: Path) -> None:
     with ThreadPoolExecutor(max_workers=4) as pool:
         list(pool.map(writer, range(1, 9)))
     assert SyllabusStore(root).manifest()["identity_count"] == 8
+
+
+def test_store_capacity_limits_fail_before_a_new_generation_is_written(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "store"
+    store = SyllabusStore(root, max_versions=1, max_generations=10)
+    attach(store, source=b"first")
+    generation_count = len(list((root / "generations").iterdir()))
+
+    with pytest.raises(StoreCapacityError, match="version capacity"):
+        attach(store, source=b"second")
+    assert len(list((root / "generations").iterdir())) == generation_count
+    assert store.manifest()["version_count"] == 1
+
+    generation_limited = SyllabusStore(root, max_versions=10, max_generations=1)
+    with pytest.raises(StoreCapacityError, match="generation capacity"):
+        attach(generation_limited, section="002/22222", source=b"third")
+    assert len(list((root / "generations").iterdir())) == generation_count
+
+
+def test_store_byte_limit_fails_before_persistence(tmp_path: Path) -> None:
+    root = tmp_path / "store"
+    store = SyllabusStore(root, max_index_bytes=128, max_versions=10)
+    with pytest.raises(StoreCapacityError, match="byte capacity"):
+        attach(store, source=b"content too large for a 128-byte index")
+    assert list((root / "generations").iterdir()) == []
 
 
 def test_runtime_overlay_is_published_only_and_does_not_mutate_seed(

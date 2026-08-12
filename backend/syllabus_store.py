@@ -37,6 +37,10 @@ _LOCKS_GUARD = threading.Lock()
 _THREAD_LOCKS: dict[str, threading.RLock] = {}
 
 
+class StoreCapacityError(RuntimeError):
+    """Raised before a write when the configured persistent-store cap is reached."""
+
+
 def _thread_lock(root: Path) -> threading.RLock:
     key = str(root.resolve())
     with _LOCKS_GUARD:
@@ -283,12 +287,20 @@ class SyllabusStore:
         root: str | Path,
         *,
         failure_injector: Callable[[str], None] | str | set[str] | None = None,
+        max_index_bytes: int = 16 * 1024 * 1024,
+        max_versions: int = 2_000,
+        max_generations: int = 500,
     ) -> None:
+        if min(max_index_bytes, max_versions, max_generations) < 1:
+            raise ValueError("Syllabus store limits must be positive")
         self.root = Path(root)
         self.generations_dir = self.root / "generations"
         self.current_path = self.root / "CURRENT"
         self.lock_path = self.root / "LOCK"
         self.failure_injector = failure_injector
+        self.max_index_bytes = max_index_bytes
+        self.max_versions = max_versions
+        self.max_generations = max_generations
         self._thread_lock = _thread_lock(self.root)
 
     def _inject(self, phase: str) -> None:
@@ -424,6 +436,20 @@ class SyllabusStore:
         committed["created_at_ns"] = time.time_ns()
         self._validate_index(committed, expected_generation=generation)
 
+        version_count = sum(
+            len(record["versions"]) for record in committed["syllabi"].values()
+        )
+        if version_count > self.max_versions:
+            raise StoreCapacityError("Syllabus version capacity reached")
+        generation_count = sum(1 for _ in self.generations_dir.iterdir())
+        if generation_count >= self.max_generations:
+            raise StoreCapacityError("Syllabus generation capacity reached")
+        serialized = json.dumps(
+            committed, ensure_ascii=False, sort_keys=True, indent=2
+        ) + "\n"
+        if len(serialized.encode("utf-8")) > self.max_index_bytes:
+            raise StoreCapacityError("Syllabus index byte capacity reached")
+
         generation_dir = self.generations_dir / generation
         index_path = generation_dir / "index.json"
         pointer_tmp = self.root / f".CURRENT.{uuid.uuid4().hex}.tmp"
@@ -431,8 +457,7 @@ class SyllabusStore:
         try:
             generation_dir.mkdir(exist_ok=False)
             with index_path.open("x", encoding="utf-8") as handle:
-                json.dump(committed, handle, ensure_ascii=False, sort_keys=True, indent=2)
-                handle.write("\n")
+                handle.write(serialized)
                 handle.flush()
                 os.fsync(handle.fileno())
             directory_fd = os.open(generation_dir, os.O_RDONLY)

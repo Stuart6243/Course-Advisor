@@ -11,6 +11,7 @@ import asyncio
 import hashlib
 import io
 import json
+import multiprocessing
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -99,6 +100,10 @@ SOURCE_POINTS_RE = re.compile(
     r"(?![A-Za-z0-9./:])",
     re.IGNORECASE,
 )
+
+
+class ImportLimitError(ValueError):
+    """A document exceeded a declared import resource boundary."""
 
 
 def _as_float(value: Any, default: float | None = 0.0) -> float | None:
@@ -665,8 +670,13 @@ def assess_import(data: dict, extracted_text: str = "") -> ImportAssessment:
     )
 
 
-def extract_text_from_pdf(file_bytes: bytes) -> str:
-    """从 PDF 字节流中提取纯文本。"""
+def extract_text_from_pdf(
+    file_bytes: bytes,
+    *,
+    max_pages: int | None = None,
+    max_chars: int | None = None,
+) -> str:
+    """Extract bounded PDF text and reject documents over hard limits."""
     try:
         import pdfplumber
     except ModuleNotFoundError as exc:
@@ -674,10 +684,90 @@ def extract_text_from_pdf(file_bytes: bytes) -> str:
 
     try:
         with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
-            pages_text = [page.extract_text() or "" for page in pdf.pages]
+            page_limit = config.MAX_PDF_PAGES if max_pages is None else max_pages
+            char_limit = (
+                config.MAX_EXTRACTED_TEXT_CHARS if max_chars is None else max_chars
+            )
+            if len(pdf.pages) > page_limit:
+                raise ImportLimitError(f"PDF exceeds the {page_limit}-page limit")
+            pages_text: list[str] = []
+            extracted_chars = 0
+            for page in pdf.pages:
+                page_text = page.extract_text() or ""
+                extracted_chars += len(page_text)
+                if extracted_chars > char_limit:
+                    raise ImportLimitError(
+                        f"Extracted text exceeds the {char_limit}-character limit"
+                    )
+                pages_text.append(page_text)
+    except ImportLimitError:
+        raise
     except Exception as exc:
         raise ValueError("Invalid PDF file") from exc
     return "\n\n".join(pages_text).strip()
+
+
+def _pdf_extract_worker(
+    connection,
+    file_bytes: bytes,
+    max_pages: int,
+    max_chars: int,
+) -> None:
+    """Child-process entrypoint; never returns parser internals to the caller."""
+
+    try:
+        text = extract_text_from_pdf(
+            file_bytes, max_pages=max_pages, max_chars=max_chars
+        )
+        connection.send(("ok", text))
+    except ImportLimitError as exc:
+        connection.send(("limit", str(exc)))
+    except Exception:
+        connection.send(("invalid", "Invalid PDF file"))
+    finally:
+        connection.close()
+
+
+def _extract_text_from_pdf_in_subprocess(
+    file_bytes: bytes,
+    *,
+    max_pages: int,
+    max_chars: int,
+    timeout_seconds: float,
+) -> str:
+    """Run PDF parsing in a killable process with bounded IPC output."""
+
+    context = multiprocessing.get_context("spawn")
+    receiving, sending = context.Pipe(duplex=False)
+    process = context.Process(
+        target=_pdf_extract_worker,
+        args=(sending, file_bytes, max_pages, max_chars),
+        daemon=True,
+    )
+    process.start()
+    sending.close()
+    try:
+        process.join(max(0.001, float(timeout_seconds)))
+        if process.is_alive():
+            process.terminate()
+            process.join(2)
+            if process.is_alive():  # pragma: no cover - defensive OS failure
+                process.kill()
+                process.join()
+            raise TimeoutError("PDF text extraction timed out")
+        if process.exitcode != 0 or not receiving.poll(0.2):
+            raise ValueError("Invalid PDF file")
+        kind, payload = receiving.recv()
+        if kind == "ok" and isinstance(payload, str):
+            return payload
+        if kind == "limit":
+            raise ImportLimitError(str(payload))
+        raise ValueError("Invalid PDF file")
+    finally:
+        receiving.close()
+        if process.is_alive():  # pragma: no cover - defensive cancellation path
+            process.terminate()
+            process.join()
 
 
 def extract_text_from_html(file_bytes: bytes) -> str:
@@ -1094,12 +1184,53 @@ async def import_file(
             }
 
         if ext == ".pdf":
-            extracted_text = await asyncio.to_thread(extract_text_from_pdf, file_bytes)
+            try:
+                extracted_text = await asyncio.wait_for(
+                    asyncio.to_thread(
+                        _extract_text_from_pdf_in_subprocess,
+                        file_bytes,
+                        max_pages=config.MAX_PDF_PAGES,
+                        max_chars=config.MAX_EXTRACTED_TEXT_CHARS,
+                        timeout_seconds=config.PDF_PARSE_TIMEOUT_SECONDS,
+                    ),
+                    timeout=config.PDF_PARSE_TIMEOUT_SECONDS,
+                )
+            except TimeoutError:
+                return {
+                    "success": False,
+                    "status": "rejected",
+                    "error_code": "pdf_parse_timeout",
+                    "message": "PDF text extraction timed out.",
+                }
+            except ImportLimitError as exc:
+                return {
+                    "success": False,
+                    "status": "rejected",
+                    "error_code": "pdf_limit_exceeded",
+                    "message": str(exc),
+                }
+            except ValueError:
+                return {
+                    "success": False,
+                    "status": "rejected",
+                    "error_code": "invalid_pdf",
+                    "message": "Invalid PDF file.",
+                }
         else:
             extracted_text = await asyncio.to_thread(extract_text_from_html, file_bytes)
 
         if not extracted_text.strip():
             return {"success": False, "message": "Could not extract text from file."}
+        if len(extracted_text) > config.MAX_EXTRACTED_TEXT_CHARS:
+            return {
+                "success": False,
+                "status": "rejected",
+                "error_code": "extracted_text_too_large",
+                "message": (
+                    "Extracted text exceeds the "
+                    f"{config.MAX_EXTRACTED_TEXT_CHARS}-character limit."
+                ),
+            }
 
         input_text = extracted_text[: config.IMPORT_INPUT_MAX_CHARS]
         messages = [
@@ -1123,6 +1254,17 @@ async def import_file(
         )
 
         parsed = parse_conversion_response(raw_response)
+        sections = parsed.get("sections") if isinstance(parsed, dict) else None
+        if isinstance(sections, list) and len(sections) > config.MAX_IMPORTED_SECTIONS:
+            return {
+                "success": False,
+                "status": "rejected",
+                "error_code": "too_many_sections",
+                "message": (
+                    "Extracted syllabus exceeds the "
+                    f"{config.MAX_IMPORTED_SECTIONS}-section limit."
+                ),
+            }
         if len(_safe_str(parsed.get("description"))) < 20:
             fallback_description = _extract_description_fallback(extracted_text)
             if fallback_description:
